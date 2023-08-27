@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BaliProject version="3.2" title="ForthCPU" device="LCMXO3L-6900C-5BG256C" default_implementation="impl1">
+    <Options/>
+    <Implementation title="impl1" dir="impl1" description="impl1" synthesis="synplify" default_strategy="Strategy1">
+        <Options def_top="registers"/>
+        <Source name="impl1/source/alu.v" type="Verilog" type_short="Verilog">
+            <Options top_module="alu"/>
+        </Source>
+        <Source name="impl1/source/data_sources.v" type="Verilog" type_short="Verilog">
+            <Options top_module="data_sources"/>
+        </Source>
+        <Source name="impl1/source/data_sources_testbench.v" type="Verilog" type_short="Verilog" syn_sim="SimOnly">
+            <Options/>
+        </Source>
+        <Source name="impl1/source/multiplier.v" type="Verilog" type_short="Verilog">
+            <Options top_module="multiplier"/>
+        </Source>
+        <Source name="impl1/source/registers.v" type="Verilog" type_short="Verilog">
+            <Options top_module="registers"/>
+        </Source>
+        <Source name="impl1/source/regs_testbench.v" type="Verilog" type_short="Verilog" syn_sim="SimOnly">
+            <Options/>
+        </Source>
+        <Source name="impl1/source/testbench.v" type="Verilog" type_short="Verilog" syn_sim="SimOnly">
+            <Options/>
+        </Source>
+        <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">
+            <Options/>
+        </Source>
+    </Implementation>
+    <Strategy name="Strategy1" file="ForthCPU1.sty"/>
+</BaliProject>
