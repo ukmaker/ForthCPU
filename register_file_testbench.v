@@ -16,6 +16,7 @@ module register_file_testbench;
 	
 	wire [15:0] DOUT_A;
 	wire [15:0] DOUT_B;
+	wire [15:0] DOUT_C;
 
 
 register_file register_file_inst(
@@ -28,7 +29,8 @@ register_file register_file_inst(
 	.CLK(CLK),
 	.RESETN(RESETN),
 	.DOUT_A(DOUT_A),
-	.DOUT_B(DOUT_B)
+	.DOUT_B(DOUT_B),
+	.DOUT_C(DOUT_C)
 );
 
 initial begin

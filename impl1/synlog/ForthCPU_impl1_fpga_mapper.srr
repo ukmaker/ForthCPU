@@ -1,4 +1,4 @@
-# Mon Aug 28 13:25:38 2023
+# Mon Aug 28 14:59:32 2023
 
 
 Copyright (C) 1994-2021 Synopsys, Inc.
@@ -38,18 +38,142 @@ Finished loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h
 
 Starting Optimization and Mapping (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 167MB peak: 167MB)
 
-@W: BN132 :"c:\users\duncan\git\forthcpu\register.v":27:0:27:5|Removing sequential instance registers[7].DOUT[15:0] because it is equivalent to instance registers[3].DOUT[15:0]. To keep the instance, apply constraint syn_preserve=1 on the instance.
-@W: BN132 :"c:\users\duncan\git\forthcpu\register.v":27:0:27:5|Removing sequential instance registers[15].DOUT[15:0] because it is equivalent to instance registers[11].DOUT[15:0]. To keep the instance, apply constraint syn_preserve=1 on the instance.
-@W: BN132 :"c:\users\duncan\git\forthcpu\register.v":27:0:27:5|Removing sequential instance registers[3].DOUT[15:0] because it is equivalent to instance registers[11].DOUT[15:0]. To keep the instance, apply constraint syn_preserve=1 on the instance.
-@A: BN321 |Found multiple drivers on net DOUT0 (in view: work.register_file(verilog)); if one driver is a constant (true or false), use Resolve Mixed Drivers option to connect the net to VCC or GND.
-@E: Net DOUT0 (in view: work.register_file(verilog)) has conflicting drivers, the connections are
-Connection 1: Direction is (Output ) pin:Q[0] inst:registers\[12\].DOUT[15:0] of PrimLib.sdffr(prim)
-Connection 2: Direction is (Output ) pin:Q[0] inst:registers\[11\].DOUT[15:0] of PrimLib.sdffr(prim)
-Connection 3: Direction is (Output ) pin:Q[0] inst:registers\[8\].DOUT[15:0] of PrimLib.sdffr(prim)
-Connection 4: Direction is (Output ) pin:Q[0] inst:registers\[4\].DOUT[15:0] of PrimLib.sdffr(prim)
-Connection 5: Direction is (Output ) pin:Q[0] inst:registers\[0\].DOUT[15:0] of PrimLib.sdffr(prim)
-@E: BN314 :"c:\users\duncan\git\forthcpu\register_file.v":1:7:1:19|Net DOUT0 (in view: work.register_file(verilog)) has multiple drivers 
-Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-# Mon Aug 28 13:25:39 2023
+
+Finished RTL optimizations (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 169MB peak: 169MB)
+
+
+Starting factoring (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 170MB peak: 170MB)
+
+
+Finished factoring (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 170MB peak: 170MB)
+
+
+Available hyper_sources - for debug and ip models
+	None Found
+
+
+Finished generic timing optimizations - Pass 1 (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:01s; Memory used current: 170MB peak: 170MB)
+
+
+Starting Early Timing Optimization (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 170MB peak: 171MB)
+
+
+Finished Early Timing Optimization (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 170MB peak: 171MB)
+
+
+Finished generic timing optimizations - Pass 2 (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 171MB peak: 171MB)
+
+
+Finished preparing to map (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 171MB peak: 171MB)
+
+
+Finished technology mapping (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 171MB peak: 171MB)
+
+Pass		 CPU time		Worst Slack		Luts / Registers
+------------------------------------------------------------
+   1		0h:00m:01s		100000.00ns		   0 /         0
+
+Finished technology timing optimizations and critical path resynthesis (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 171MB peak: 171MB)
+
+@N: FX164 |The option to pack registers in the IOB has not been specified. Please set syn_useioff attribute.  
+
+Finished restoring hierarchy (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 171MB peak: 171MB)
+
+
+Start Writing Netlists (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 136MB peak: 172MB)
+
+Writing Analyst data base C:\Users\Duncan\git\ForthCPU\impl1\synwork\ForthCPU_impl1_m.srm
+
+Finished Writing Netlist Databases (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 172MB peak: 172MB)
+
+Writing EDIF Netlist and constraint files
+@N: FX1056 |Writing EDF file: C:\Users\Duncan\git\ForthCPU\impl1\ForthCPU_impl1.edi
+@N: BW106 |Synplicity Constraint File capacitance units using default value of 1pF 
+
+Finished Writing EDIF Netlist and constraint files (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:02s; Memory used current: 177MB peak: 177MB)
+
+
+Finished Writing Netlists (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:02s; Memory used current: 177MB peak: 177MB)
+
+
+Start final timing analysis (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:02s; Memory used current: 176MB peak: 177MB)
+
+
+
+##### START OF TIMING REPORT #####[
+# Timing report written on Mon Aug 28 14:59:35 2023
+#
+
+
+Top view:               register_file_testbench
+Requested Frequency:    100.0 MHz
+Wire load mode:         top
+Paths requested:        5
+Constraint File(s):    
+@N: MT320 |This timing report is an estimate of place and route data. For final timing results, use the FPGA vendor place and route report.
+
+@N: MT322 |Clock constraints include only register-to-register paths associated with each individual clock.
+
+
+
+Performance Summary
+*******************
+
+
+Worst slack in design: NA
+
+
+
+
+
+
+Clock Relationships
+*******************
+
+Clocks            |    rise  to  rise   |    fall  to  fall   |    rise  to  fall   |    fall  to  rise 
+--------------------------------------------------------------------------------------------------------
+Starting  Ending  |  constraint  slack  |  constraint  slack  |  constraint  slack  |  constraint  slack
+--------------------------------------------------------------------------------------------------------
+========================================================================================================
+ Note: 'No paths' indicates there are no paths in the design for that pair of clock edges.
+       'Diff grp' indicates that paths exist but the starting clock and ending clock are in different clock groups.
+
+
+
+Interface Information 
+*********************
+
+No IO constraint found
+
+
+##### END OF TIMING REPORT #####]
+
+Timing exceptions that could not be applied
+
+Finished final timing analysis (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:02s; Memory used current: 177MB peak: 177MB)
+
+
+Finished timing report (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:02s; Memory used current: 177MB peak: 177MB)
+
+---------------------------------------
+Resource Usage Report
+Part: lcmxo3l_6900c-5
+
+Register bits: 0 of 54912 (0%)
+PIC Latch:       0
+I/O cells:       0
+
+
+Details:
+GSR:            1
+PUR:            1
+VHI:            1
+VLO:            1
+Mapper successful!
+
+At Mapper Exit (Real Time elapsed 0h:00m:03s; CPU Time elapsed 0h:00m:02s; Memory used current: 60MB peak: 177MB)
+
+Process took 0h:00m:03s realtime, 0h:00m:03s cputime
+# Mon Aug 28 14:59:35 2023
 
 ###########################################################]

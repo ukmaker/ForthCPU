@@ -68,7 +68,7 @@ module register_testbench;
 		CLK = 1;
 		#(CLOCK_CYCLE);
 		// load a value
-		IDN = 1;
+		//IDN = 1;
 		LDN = 0;
 		CLK = 0;
 		DIN = 16'h1234;

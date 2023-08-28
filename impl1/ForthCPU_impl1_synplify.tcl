@@ -52,9 +52,10 @@ add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/impl1/source/mult
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/impl1/source/registers.v}
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/register.v}
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/register_file.v}
+add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/register_file_testbench.v}
 
 #-- top module name
-set_option -top_module register_file
+set_option -top_module register_file_testbench
 
 #-- set result format/file last
 project -result_file {C:/Users/Duncan/git/ForthCPU/impl1/ForthCPU_impl1.edi}

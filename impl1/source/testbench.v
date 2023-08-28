@@ -13,7 +13,7 @@ module testbench;
 		wire sign;
 
 
-	alu alu_inst(.OPCODE(opcode), .ARGA(arga), .ARGB(argb), .RESULT(result), .SIGN(sign), .CARRY(carry), .ZERO(zero), .PARITY(parity));
+	alu alu_inst(.ALUX(opcode), .ARGA(arga), .ARGB(argb), .RESULT(result), .SIGN(sign), .CARRY(carry), .ZERO(zero), .PARITY(parity));
 	
 	initial begin
 		opcode = 5'b00000;

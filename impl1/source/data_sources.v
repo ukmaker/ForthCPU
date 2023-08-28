@@ -16,8 +16,8 @@ module data_sources(
 	output reg[15:0] ALU_A, // To the ALU	
 	output reg[15:0] ALU_B,  // To the ALU	
 	
-	output reg[15:0] ADDR_A, // To the Register file	
-	output reg[15:0] ADDR_B  // To the Register file	
+	output reg[3:0] ADDR_A, // To the Register file	
+	output reg[3:0] ADDR_B  // To the Register file	
 
 );
 

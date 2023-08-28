@@ -1,32 +1,38 @@
 # Reading pref.tcl
-# do {C:/Users/Duncan/git/ForthCPU/regitser_file/regitser_file.mdo}
-# Loading project regitser_file
+# do {C:/Users/Duncan/git/ForthCPU/forth_cpu_testbench/forth_cpu_testbench.mdo}
+# Loading project forth_cpu_testbench
 # Model Technology ModelSim - Lattice FPGA Edition vlog 2020.3 Compiler 2020.10 Oct 14 2020
-# Start time: 13:41:26 on Aug 28,2023
-# vlog -reportprogress 300 -sv -mfcu "+incdir+C:/Users/Duncan/git/ForthCPU" "+incdir+C:/Users/Duncan/git/ForthCPU/impl1/source" -work work C:/Users/Duncan/git/ForthCPU/register.v C:/Users/Duncan/git/ForthCPU/register_file.v C:/Users/Duncan/git/ForthCPU/register_file_testbench.v C:/Users/Duncan/git/ForthCPU/impl1/source/data_sources.v C:/Users/Duncan/git/ForthCPU/impl1/source/registers.v C:/Users/Duncan/git/ForthCPU/impl1/source/regs_testbench.v C:/Users/Duncan/git/ForthCPU/impl1/source/multiplier.v C:/Users/Duncan/git/ForthCPU/impl1/source/alu.v C:/Users/Duncan/git/ForthCPU/impl1/source/testbench.v C:/Users/Duncan/git/ForthCPU/register_testbench.v C:/Users/Duncan/git/ForthCPU/impl1/source/data_sources_testbench.v 
+# Start time: 18:40:37 on Aug 28,2023
+# vlog -reportprogress 300 -sv -mfcu "+incdir+C:/Users/Duncan/git/ForthCPU" "+incdir+C:/Users/Duncan/git/ForthCPU/impl1/source" -work work C:/Users/Duncan/git/ForthCPU/register.v C:/Users/Duncan/git/ForthCPU/register_file.v C:/Users/Duncan/git/ForthCPU/impl1/source/alu.v C:/Users/Duncan/git/ForthCPU/impl1/source/data_sources.v C:/Users/Duncan/git/ForthCPU/instruction_decode.v C:/Users/Duncan/git/ForthCPU/forth_cpu.v C:/Users/Duncan/git/ForthCPU/forth_cpu_testbench.v C:/Users/Duncan/git/ForthCPU/impl1/source/registers.v C:/Users/Duncan/git/ForthCPU/impl1/source/regs_testbench.v C:/Users/Duncan/git/ForthCPU/impl1/source/multiplier.v C:/Users/Duncan/git/ForthCPU/impl1/source/testbench.v C:/Users/Duncan/git/ForthCPU/register_testbench.v C:/Users/Duncan/git/ForthCPU/register_file_testbench.v C:/Users/Duncan/git/ForthCPU/instruction_decoder_testbench.v C:/Users/Duncan/git/ForthCPU/impl1/source/data_sources_testbench.v 
 # -- Compiling module register
 # -- Compiling module register_file
-# -- Compiling module register_file_testbench
+# -- Compiling module alu
 # -- Compiling module data_sources
+# -- Compiling module instruction_decode
+# -- Compiling module forth_cpu
+# -- Compiling module forth_cpu_testbench
 # -- Compiling module registers
 # -- Compiling module regs_testbench
 # -- Compiling module multiplier
-# -- Compiling module alu
 # -- Compiling module testbench
 # -- Compiling module register_testbench
+# -- Compiling module register_file_testbench
+# -- Compiling module instruction_decoder_testbench
 # -- Compiling module regs_testbench
 # ** Warning: C:/Users/Duncan/git/ForthCPU/impl1/source/data_sources_testbench.v(3): (vlog-2275) Existing module 'regs_testbench' will be overwritten.
 # 
 # Top level modules:
-# 	register_file_testbench
+# 	forth_cpu_testbench
 # 	regs_testbench
 # 	multiplier
 # 	testbench
 # 	register_testbench
-# End time: 13:41:26 on Aug 28,2023, Elapsed time: 0:00:00
+# 	register_file_testbench
+# 	instruction_decoder_testbench
+# End time: 18:40:37 on Aug 28,2023, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 1
-# vsim -L work -L pmi_work -L ovi_machxo3l register_file_testbench 
-# Start time: 13:41:26 on Aug 28,2023
+# vsim -L work -L pmi_work -L ovi_machxo3l forth_cpu_testbench 
+# Start time: 18:40:37 on Aug 28,2023
 # //  ModelSim - Lattice FPGA Edition 2020.3 Oct 14 2020
 # //
 # //  Copyright 1991-2020 Mentor Graphics Corporation
@@ -41,98 +47,59 @@
 # //  18 U.S.C. Section 1905.
 # //
 # Loading sv_std.std
-# Loading work.register_file_testbench
+# Loading work.forth_cpu_testbench
+# Loading work.forth_cpu
+# Loading work.instruction_decode
+# Loading work.data_sources
+# Loading work.alu
 # Loading work.register_file
 # Loading work.register
+# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'instruction_decode_inst'.  Expected 26, found 17.
+#    Time: 0 ns  Iteration: 0  Instance: /forth_cpu_testbench/test_article/instruction_decode_inst File: C:/Users/Duncan/git/ForthCPU/forth_cpu.v Line: 52
+# ** Warning: (vsim-3722) C:/Users/Duncan/git/ForthCPU/forth_cpu.v(52): [TFMPC] - Missing connection for port 'GPX'.
+# ** Warning: (vsim-3722) C:/Users/Duncan/git/ForthCPU/forth_cpu.v(52): [TFMPC] - Missing connection for port 'OPX'.
+# ** Warning: (vsim-3722) C:/Users/Duncan/git/ForthCPU/forth_cpu.v(52): [TFMPC] - Missing connection for port 'CCX'.
+# ** Warning: (vsim-3722) C:/Users/Duncan/git/ForthCPU/forth_cpu.v(52): [TFMPC] - Missing connection for port 'SKIPX'.
+# ** Warning: (vsim-3722) C:/Users/Duncan/git/ForthCPU/forth_cpu.v(52): [TFMPC] - Missing connection for port 'BUSX'.
+# ** Warning: (vsim-3722) C:/Users/Duncan/git/ForthCPU/forth_cpu.v(52): [TFMPC] - Missing connection for port 'DINX'.
+# ** Warning: (vsim-3722) C:/Users/Duncan/git/ForthCPU/forth_cpu.v(52): [TFMPC] - Missing connection for port 'DOUTX'.
+# ** Warning: (vsim-3722) C:/Users/Duncan/git/ForthCPU/forth_cpu.v(52): [TFMPC] - Missing connection for port 'ADDRX'.
+# ** Warning: (vsim-3722) C:/Users/Duncan/git/ForthCPU/forth_cpu.v(52): [TFMPC] - Missing connection for port 'WRITEX'.
 # .main_pane.wave.interior.cs.body.pw.wf
 # Compile of register.v was successful.
 # Compile of register_file.v was successful.
-# Compile of register_file_testbench.v was successful.
+# Compile of alu.v was successful.
 # Compile of data_sources.v was successful.
+# Compile of instruction_decode.v was successful.
+# Compile of forth_cpu.v was successful.
+# Compile of forth_cpu_testbench.v was successful.
 # Compile of registers.v was successful.
 # Compile of regs_testbench.v was successful.
 # Compile of multiplier.v was successful.
-# Compile of alu.v was successful.
 # Compile of testbench.v was successful.
 # Compile of register_testbench.v was successful.
-# Compile of data_sources_testbench.v was successful.
-# 11 compiles, 0 failed with no errors.
-restart
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.register_file_testbench
-# Loading work.register_file
-# Loading work.register
-run 100ns
-run 1us
-# Compile of register.v was successful.
-# Compile of register_file.v was successful.
 # Compile of register_file_testbench.v was successful.
-# Compile of data_sources.v was successful.
-# Compile of registers.v was successful.
-# Compile of regs_testbench.v was successful.
-# Compile of multiplier.v was successful.
-# Compile of alu.v was successful.
-# Compile of testbench.v was successful.
-# Compile of register_testbench.v was successful.
+# Compile of instruction_decoder_testbench.v was successful.
 # Compile of data_sources_testbench.v was successful.
-# 11 compiles, 0 failed with no errors.
+# 15 compiles, 0 failed with no errors.
 restart
 # ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.register_file_testbench
+# Loading work.forth_cpu_testbench
+# Loading work.forth_cpu
+# Loading work.instruction_decode
+# Loading work.data_sources
+# Loading work.alu
 # Loading work.register_file
 # Loading work.register
-run 1us
-# Compile of register.v was successful.
-# Compile of register_file.v was successful.
-# Compile of register_file_testbench.v was successful.
-# Compile of data_sources.v was successful.
-# Compile of registers.v was successful.
-# Compile of regs_testbench.v was successful.
-# Compile of multiplier.v was successful.
-# Compile of alu.v was successful.
-# Compile of testbench.v was successful.
-# Compile of register_testbench.v was successful.
-# Compile of data_sources_testbench.v was successful.
-# 11 compiles, 0 failed with no errors.
-restart
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.register_file_testbench
-# Loading work.register_file
-# Loading work.register
-run 400ns
-# Compile of register.v was successful.
-# Compile of register_file.v was successful.
-# Compile of register_file_testbench.v was successful.
-# Compile of data_sources.v was successful.
-# Compile of registers.v was successful.
-# Compile of regs_testbench.v was successful.
-# Compile of multiplier.v was successful.
-# Compile of alu.v was successful.
-# Compile of testbench.v was successful.
-# Compile of register_testbench.v was successful.
-# Compile of data_sources_testbench.v was successful.
-# 11 compiles, 0 failed with no errors.
-restart
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.register_file_testbench
-# Loading work.register_file
-# Loading work.register
-run 500ns
-# Compile of register.v was successful.
-# Compile of register_file.v was successful.
-# Compile of register_file_testbench.v was successful.
-# Compile of data_sources.v was successful.
-# Compile of registers.v was successful.
-# Compile of regs_testbench.v was successful.
-# Compile of multiplier.v was successful.
-# Compile of alu.v was successful.
-# Compile of testbench.v was successful.
-# Compile of register_testbench.v was successful.
-# Compile of data_sources_testbench.v was successful.
-# 11 compiles, 0 failed with no errors.
-restart
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.register_file_testbench
-# Loading work.register_file
-# Loading work.register
-run 400ns
+# ** Warning: (vsim-2685) [TFMPC] - Too few port connections for 'instruction_decode_inst'.  Expected 26, found 17.
+#    Time: 0 ns  Iteration: 0  Instance: /forth_cpu_testbench/test_article/instruction_decode_inst File: C:/Users/Duncan/git/ForthCPU/forth_cpu.v Line: 52
+# ** Warning: (vsim-3722) C:/Users/Duncan/git/ForthCPU/forth_cpu.v(52): [TFMPC] - Missing connection for port 'GPX'.
+# ** Warning: (vsim-3722) C:/Users/Duncan/git/ForthCPU/forth_cpu.v(52): [TFMPC] - Missing connection for port 'OPX'.
+# ** Warning: (vsim-3722) C:/Users/Duncan/git/ForthCPU/forth_cpu.v(52): [TFMPC] - Missing connection for port 'CCX'.
+# ** Warning: (vsim-3722) C:/Users/Duncan/git/ForthCPU/forth_cpu.v(52): [TFMPC] - Missing connection for port 'SKIPX'.
+# ** Warning: (vsim-3722) C:/Users/Duncan/git/ForthCPU/forth_cpu.v(52): [TFMPC] - Missing connection for port 'BUSX'.
+# ** Warning: (vsim-3722) C:/Users/Duncan/git/ForthCPU/forth_cpu.v(52): [TFMPC] - Missing connection for port 'DINX'.
+# ** Warning: (vsim-3722) C:/Users/Duncan/git/ForthCPU/forth_cpu.v(52): [TFMPC] - Missing connection for port 'DOUTX'.
+# ** Warning: (vsim-3722) C:/Users/Duncan/git/ForthCPU/forth_cpu.v(52): [TFMPC] - Missing connection for port 'ADDRX'.
+# ** Warning: (vsim-3722) C:/Users/Duncan/git/ForthCPU/forth_cpu.v(52): [TFMPC] - Missing connection for port 'WRITEX'.
+run 2us
