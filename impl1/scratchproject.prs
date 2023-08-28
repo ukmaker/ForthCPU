@@ -3,10 +3,12 @@
 #--  Project file C:\Users\Duncan\git\ForthCPU\impl1\scratchproject.prs
 
 #project files
-add_file -verilog -vlog_std v2001 "C:/Users/Duncan/git/ForthCPU/impl1/source/alu.v"
-add_file -verilog -vlog_std v2001 "C:/Users/Duncan/git/ForthCPU/impl1/source/data_sources.v"
-add_file -verilog -vlog_std v2001 "C:/Users/Duncan/git/ForthCPU/impl1/source/multiplier.v"
-add_file -verilog -vlog_std v2001 "C:/Users/Duncan/git/ForthCPU/impl1/source/registers.v"
+add_file -verilog -vlog_std sysv "C:/Users/Duncan/git/ForthCPU/impl1/source/alu.v"
+add_file -verilog -vlog_std sysv "C:/Users/Duncan/git/ForthCPU/impl1/source/data_sources.v"
+add_file -verilog -vlog_std sysv "C:/Users/Duncan/git/ForthCPU/impl1/source/multiplier.v"
+add_file -verilog -vlog_std sysv "C:/Users/Duncan/git/ForthCPU/impl1/source/registers.v"
+add_file -verilog -vlog_std sysv "C:/Users/Duncan/git/ForthCPU/register.v"
+add_file -verilog -vlog_std sysv "C:/Users/Duncan/git/ForthCPU/register_file.v"
 
 
 #implementation: "impl1"
@@ -15,7 +17,7 @@ impl -add C:\Users\Duncan\git\ForthCPU\impl1 -type fpga
 #
 #implementation attributes
 
-set_option -vlog_std v2001
+set_option -vlog_std sysv
 set_option -project_relative_includes 1
 set_option -include_path {C:/Users/Duncan/git/ForthCPU/impl1/}
 set_option -include_path {C:/Users/Duncan/git/ForthCPU}
@@ -28,7 +30,7 @@ set_option -speed_grade -5
 set_option -part_companion ""
 
 #compilation/mapping options
-set_option -top_module "registers"
+set_option -top_module "register_file"
 
 # hdl_compiler_options
 set_option -distributed_compile 0

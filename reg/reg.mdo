@@ -1,0 +1,33 @@
+if {![file exists "C:/Users/Duncan/git/ForthCPU/reg/reg.mpf"]} { 
+	project new "C:/Users/Duncan/git/ForthCPU/reg" reg
+	project addfile "C:/Users/Duncan/git/ForthCPU/register.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/register_testbench.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/impl1/source/data_sources.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/impl1/source/registers.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/impl1/source/regs_testbench.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/impl1/source/multiplier.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/impl1/source/alu.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/impl1/source/testbench.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/impl1/source/data_sources_testbench.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/register_file.v"
+	vlib  work
+	vdel -lib work -all 
+	vlib work
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU  -work work  "C:/Users/Duncan/git/ForthCPU/register.v"
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU  -work work  "C:/Users/Duncan/git/ForthCPU/register_testbench.v"
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/impl1/source  -work work  "C:/Users/Duncan/git/ForthCPU/impl1/source/data_sources.v"
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/impl1/source  -work work  "C:/Users/Duncan/git/ForthCPU/impl1/source/registers.v"
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/impl1/source  -work work  "C:/Users/Duncan/git/ForthCPU/impl1/source/regs_testbench.v"
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/impl1/source  -work work  "C:/Users/Duncan/git/ForthCPU/impl1/source/multiplier.v"
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/impl1/source  -work work  "C:/Users/Duncan/git/ForthCPU/impl1/source/alu.v"
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/impl1/source  -work work  "C:/Users/Duncan/git/ForthCPU/impl1/source/testbench.v"
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/impl1/source  -work work  "C:/Users/Duncan/git/ForthCPU/impl1/source/data_sources_testbench.v"
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU  -work work  "C:/Users/Duncan/git/ForthCPU/register_file.v"
+} else {
+	project open "C:/Users/Duncan/git/ForthCPU/reg/reg"
+	project compileoutofdate
+}
+vsim -L work -L pmi_work -L ovi_machxo3l  register_testbench
+view wave
+add wave /*
+run 1000ns

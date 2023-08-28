@@ -33,6 +33,10 @@ Implementation : impl1
 Synopsys Verilog Compiler, Version comp202103synp2, Build 093R, Built Aug 10 2021 09:15:36, @
 
 @N|Running in 64-bit mode
+@N: CG1349 :	| Running Verilog Compiler in System Verilog mode
+
+@N: CG1350 :	| Running Verilog Compiler in Multiple File Compilation Unit mode
+
 @I::"C:\lscc\diamond\3.12\synpbase\lib\lucent\machxo3l.v" (library work)
 @I::"C:\lscc\diamond\3.12\synpbase\lib\lucent\pmi_def.v" (library work)
 @I::"C:\lscc\diamond\3.12\synpbase\lib\vlog\hypermods.v" (library __hyper__lib__)
@@ -43,27 +47,88 @@ Synopsys Verilog Compiler, Version comp202103synp2, Build 093R, Built Aug 10 202
 @I::"C:\Users\Duncan\git\ForthCPU\impl1\source\data_sources.v" (library work)
 @I::"C:\Users\Duncan\git\ForthCPU\impl1\source\multiplier.v" (library work)
 @I::"C:\Users\Duncan\git\ForthCPU\impl1\source\registers.v" (library work)
+@I::"C:\Users\Duncan\git\ForthCPU\register.v" (library work)
+@I::"C:\Users\Duncan\git\ForthCPU\register_file.v" (library work)
 Verilog syntax check successful!
-Selecting top level module registers
-@N: CG364 :"C:\Users\Duncan\git\ForthCPU\impl1\source\registers.v":1:7:1:15|Synthesizing module registers in library work.
-Running optimization stage 1 on registers .......
-@N: CL134 :"C:\Users\Duncan\git\ForthCPU\impl1\source\registers.v":17:0:17:5|Found RAM regs, depth=16, width=16
-@N: CL134 :"C:\Users\Duncan\git\ForthCPU\impl1\source\registers.v":17:0:17:5|Found RAM regs, depth=16, width=16
-Finished optimization stage 1 on registers (CPU Time 0h:00m:00s, Memory Used current: 91MB peak: 92MB)
-Running optimization stage 2 on registers .......
-Finished optimization stage 2 on registers (CPU Time 0h:00m:00s, Memory Used current: 91MB peak: 92MB)
+
+Compiler output is up to date.  No re-compile necessary
+
+Selecting top level module register_file
+@N: CG364 :"C:\Users\Duncan\git\ForthCPU\register.v":5:7:5:14|Synthesizing module register in library work.
+@W: CG532 :"C:\Users\Duncan\git\ForthCPU\register.v":20:0:20:6|Within an initial block, only Verilog force statements and memory initialization statements and initialization of entire variable are recognized, and all other content is ignored. Simulation mismatch may occur
+@W: CG204 :"C:\Users\Duncan\git\ForthCPU\register.v":20:0:20:6|Within an initial block, memory initialization statements of entire variable and nested loops are not recognized. Simulation mismatch may occur
+Running optimization stage 1 on register .......
+Finished optimization stage 1 on register (CPU Time 0h:00m:00s, Memory Used current: 92MB peak: 92MB)
+@N: CG364 :"C:\Users\Duncan\git\ForthCPU\register_file.v":1:7:1:19|Synthesizing module register_file in library work.
+@W: CG781 :"C:\Users\Duncan\git\ForthCPU\register_file.v":19:9:19:17|Input IDN on instance registers[0] is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"C:\Users\Duncan\git\ForthCPU\register_file.v":19:9:19:17|Input OEN_A on instance registers[0] is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"C:\Users\Duncan\git\ForthCPU\register_file.v":19:9:19:17|Input OEN_B on instance registers[0] is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"C:\Users\Duncan\git\ForthCPU\register_file.v":19:9:19:17|Input IDN on instance registers[1] is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"C:\Users\Duncan\git\ForthCPU\register_file.v":19:9:19:17|Input OEN_A on instance registers[1] is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"C:\Users\Duncan\git\ForthCPU\register_file.v":19:9:19:17|Input OEN_B on instance registers[1] is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"C:\Users\Duncan\git\ForthCPU\register_file.v":19:9:19:17|Input IDN on instance registers[2] is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"C:\Users\Duncan\git\ForthCPU\register_file.v":19:9:19:17|Input OEN_A on instance registers[2] is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"C:\Users\Duncan\git\ForthCPU\register_file.v":19:9:19:17|Input OEN_B on instance registers[2] is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"C:\Users\Duncan\git\ForthCPU\register_file.v":19:9:19:17|Input IDN on instance registers[3] is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"C:\Users\Duncan\git\ForthCPU\register_file.v":19:9:19:17|Input OEN_A on instance registers[3] is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"C:\Users\Duncan\git\ForthCPU\register_file.v":19:9:19:17|Input OEN_B on instance registers[3] is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"C:\Users\Duncan\git\ForthCPU\register_file.v":19:9:19:17|Input IDN on instance registers[4] is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"C:\Users\Duncan\git\ForthCPU\register_file.v":19:9:19:17|Input OEN_A on instance registers[4] is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"C:\Users\Duncan\git\ForthCPU\register_file.v":19:9:19:17|Input OEN_B on instance registers[4] is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"C:\Users\Duncan\git\ForthCPU\register_file.v":19:9:19:17|Input IDN on instance registers[5] is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"C:\Users\Duncan\git\ForthCPU\register_file.v":19:9:19:17|Input OEN_A on instance registers[5] is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"C:\Users\Duncan\git\ForthCPU\register_file.v":19:9:19:17|Input OEN_B on instance registers[5] is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"C:\Users\Duncan\git\ForthCPU\register_file.v":19:9:19:17|Input IDN on instance registers[6] is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"C:\Users\Duncan\git\ForthCPU\register_file.v":19:9:19:17|Input OEN_A on instance registers[6] is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"C:\Users\Duncan\git\ForthCPU\register_file.v":19:9:19:17|Input OEN_B on instance registers[6] is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"C:\Users\Duncan\git\ForthCPU\register_file.v":19:9:19:17|Input IDN on instance registers[7] is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"C:\Users\Duncan\git\ForthCPU\register_file.v":19:9:19:17|Input OEN_A on instance registers[7] is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"C:\Users\Duncan\git\ForthCPU\register_file.v":19:9:19:17|Input OEN_B on instance registers[7] is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"C:\Users\Duncan\git\ForthCPU\register_file.v":19:9:19:17|Input IDN on instance registers[8] is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"C:\Users\Duncan\git\ForthCPU\register_file.v":19:9:19:17|Input OEN_A on instance registers[8] is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"C:\Users\Duncan\git\ForthCPU\register_file.v":19:9:19:17|Input OEN_B on instance registers[8] is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"C:\Users\Duncan\git\ForthCPU\register_file.v":19:9:19:17|Input IDN on instance registers[9] is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"C:\Users\Duncan\git\ForthCPU\register_file.v":19:9:19:17|Input OEN_A on instance registers[9] is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"C:\Users\Duncan\git\ForthCPU\register_file.v":19:9:19:17|Input OEN_B on instance registers[9] is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"C:\Users\Duncan\git\ForthCPU\register_file.v":19:9:19:17|Input IDN on instance registers[10] is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"C:\Users\Duncan\git\ForthCPU\register_file.v":19:9:19:17|Input OEN_A on instance registers[10] is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"C:\Users\Duncan\git\ForthCPU\register_file.v":19:9:19:17|Input OEN_B on instance registers[10] is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"C:\Users\Duncan\git\ForthCPU\register_file.v":19:9:19:17|Input IDN on instance registers[11] is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"C:\Users\Duncan\git\ForthCPU\register_file.v":19:9:19:17|Input OEN_A on instance registers[11] is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"C:\Users\Duncan\git\ForthCPU\register_file.v":19:9:19:17|Input OEN_B on instance registers[11] is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"C:\Users\Duncan\git\ForthCPU\register_file.v":19:9:19:17|Input IDN on instance registers[12] is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"C:\Users\Duncan\git\ForthCPU\register_file.v":19:9:19:17|Input OEN_A on instance registers[12] is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"C:\Users\Duncan\git\ForthCPU\register_file.v":19:9:19:17|Input OEN_B on instance registers[12] is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"C:\Users\Duncan\git\ForthCPU\register_file.v":19:9:19:17|Input IDN on instance registers[13] is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"C:\Users\Duncan\git\ForthCPU\register_file.v":19:9:19:17|Input OEN_A on instance registers[13] is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"C:\Users\Duncan\git\ForthCPU\register_file.v":19:9:19:17|Input OEN_B on instance registers[13] is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"C:\Users\Duncan\git\ForthCPU\register_file.v":19:9:19:17|Input IDN on instance registers[14] is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"C:\Users\Duncan\git\ForthCPU\register_file.v":19:9:19:17|Input OEN_A on instance registers[14] is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"C:\Users\Duncan\git\ForthCPU\register_file.v":19:9:19:17|Input OEN_B on instance registers[14] is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"C:\Users\Duncan\git\ForthCPU\register_file.v":19:9:19:17|Input IDN on instance registers[15] is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"C:\Users\Duncan\git\ForthCPU\register_file.v":19:9:19:17|Input OEN_A on instance registers[15] is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG781 :"C:\Users\Duncan\git\ForthCPU\register_file.v":19:9:19:17|Input OEN_B on instance registers[15] is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
+@W: CG133 :"C:\Users\Duncan\git\ForthCPU\register_file.v":29:8:29:8|Object i is declared but not assigned. Either assign a value or remove the declaration.
+Running optimization stage 1 on register_file .......
+Finished optimization stage 1 on register_file (CPU Time 0h:00m:00s, Memory Used current: 92MB peak: 93MB)
+Running optimization stage 2 on register_file .......
+@N: CL159 :"C:\Users\Duncan\git\ForthCPU\register_file.v":5:13:5:18|Input ADDR_B is unused.
+@N: CL159 :"C:\Users\Duncan\git\ForthCPU\register_file.v":6:7:6:14|Input UP_DOWNN is unused.
+Finished optimization stage 2 on register_file (CPU Time 0h:00m:00s, Memory Used current: 92MB peak: 93MB)
+Running optimization stage 2 on register .......
+Finished optimization stage 2 on register (CPU Time 0h:00m:00s, Memory Used current: 94MB peak: 94MB)
 
 For a summary of runtime and memory usage per design unit, please see file:
 ==========================================================
 @L: C:\Users\Duncan\git\ForthCPU\impl1\synwork\layer0.rt.csv
 
 
-At c_ver Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 91MB peak: 92MB)
+At c_ver Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 89MB peak: 90MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Sun Aug 27 19:54:10 2023
+# Mon Aug 28 13:25:38 2023
 
 ###########################################################]
 ###########################################################[
@@ -85,12 +150,15 @@ Synopsys Synopsys Netlist Linker, Version comp202103synp2, Build 093R, Built Aug
 
 @N|Running in 64-bit mode
 
-At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 90MB peak: 90MB)
+Linker output is up to date. No re-linking necessary
+
+
+At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 87MB peak: 87MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Sun Aug 27 19:54:10 2023
+# Mon Aug 28 13:25:38 2023
 
 ###########################################################]
 
@@ -105,6 +173,6 @@ At c_hdl Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Sun Aug 27 19:54:10 2023
+# Mon Aug 28 13:25:38 2023
 
 ###########################################################]

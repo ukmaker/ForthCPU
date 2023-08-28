@@ -13,11 +13,11 @@ Hostname: EDAWIN
 
 Implementation : impl1
 
-# Written on Sun Aug 27 19:54:13 2023
+# Written on Mon Aug 28 13:24:12 2023
 
 ##### DESIGN INFO #######################################################
 
-Top View:                "registers"
+Top View:                "register_file"
 Constraint File(s):      (none)
 
 
@@ -35,9 +35,10 @@ Found 0 issues in 0 out of 0 constraints
 Clock Relationships
 *******************
 
-Starting     Ending     |     rise to rise     |     fall to fall     |     rise to fall     |     fall to rise                     
------------------------------------------------------------------------------------------------------------------------------------
-===================================================================================================================================
+Starting              Ending                |     rise to rise     |     fall to fall     |     rise to fall     |     fall to rise                     
+-------------------------------------------------------------------------------------------------------------------------------------------------------
+register_file|CLK     register_file|CLK     |     10.000           |     No paths         |     No paths         |     No paths                         
+=======================================================================================================================================================
  Note: 'No paths' indicates there are no paths in the design for that pair of clock edges.
        'Diff grp' indicates that paths exist but the starting clock and ending clock are in different clock groups.
 
@@ -45,63 +46,66 @@ Starting     Ending     |     rise to rise     |     fall to fall     |     rise
 Unconstrained Start/End Points
 ******************************
 
-p:addr_a[0]
-p:addr_a[1]
-p:addr_a[2]
-p:addr_a[3]
-p:addr_b[0]
-p:addr_b[1]
-p:addr_b[2]
-p:addr_b[3]
-p:din[0]
-p:din[1]
-p:din[2]
-p:din[3]
-p:din[4]
-p:din[5]
-p:din[6]
-p:din[7]
-p:din[8]
-p:din[9]
-p:din[10]
-p:din[11]
-p:din[12]
-p:din[13]
-p:din[14]
-p:din[15]
-p:dout_a[0]
-p:dout_a[1]
-p:dout_a[2]
-p:dout_a[3]
-p:dout_a[4]
-p:dout_a[5]
-p:dout_a[6]
-p:dout_a[7]
-p:dout_a[8]
-p:dout_a[9]
-p:dout_a[10]
-p:dout_a[11]
-p:dout_a[12]
-p:dout_a[13]
-p:dout_a[14]
-p:dout_a[15]
-p:dout_b[0]
-p:dout_b[1]
-p:dout_b[2]
-p:dout_b[3]
-p:dout_b[4]
-p:dout_b[5]
-p:dout_b[6]
-p:dout_b[7]
-p:dout_b[8]
-p:dout_b[9]
-p:dout_b[10]
-p:dout_b[11]
-p:dout_b[12]
-p:dout_b[13]
-p:dout_b[14]
-p:dout_b[15]
-p:wrn
+p:ADDR_A[0]
+p:ADDR_A[1]
+p:ADDR_A[2]
+p:ADDR_A[3]
+p:ADDR_B[0]
+p:ADDR_B[1]
+p:ADDR_B[2]
+p:ADDR_B[3]
+p:DIN[0]
+p:DIN[1]
+p:DIN[2]
+p:DIN[3]
+p:DIN[4]
+p:DIN[5]
+p:DIN[6]
+p:DIN[7]
+p:DIN[8]
+p:DIN[9]
+p:DIN[10]
+p:DIN[11]
+p:DIN[12]
+p:DIN[13]
+p:DIN[14]
+p:DIN[15]
+p:DOUT_A[0]
+p:DOUT_A[1]
+p:DOUT_A[2]
+p:DOUT_A[3]
+p:DOUT_A[4]
+p:DOUT_A[5]
+p:DOUT_A[6]
+p:DOUT_A[7]
+p:DOUT_A[8]
+p:DOUT_A[9]
+p:DOUT_A[10]
+p:DOUT_A[11]
+p:DOUT_A[12]
+p:DOUT_A[13]
+p:DOUT_A[14]
+p:DOUT_A[15]
+p:DOUT_B[0]
+p:DOUT_B[1]
+p:DOUT_B[2]
+p:DOUT_B[3]
+p:DOUT_B[4]
+p:DOUT_B[5]
+p:DOUT_B[6]
+p:DOUT_B[7]
+p:DOUT_B[8]
+p:DOUT_B[9]
+p:DOUT_B[10]
+p:DOUT_B[11]
+p:DOUT_B[12]
+p:DOUT_B[13]
+p:DOUT_B[14]
+p:DOUT_B[15]
+p:IDN
+p:LDN
+p:RESETN
+p:UP_DOWNN
 
 
 Inapplicable constraints

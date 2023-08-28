@@ -12,7 +12,7 @@ set_option -symbolic_fsm_compiler true
 set_option -resource_sharing true
 
 #use verilog 2001 standard option
-set_option -vlog_std v2001
+set_option -vlog_std sysv
 
 #map options
 set_option -frequency 100
@@ -46,13 +46,15 @@ set_option -seqshift_no_replicate 0
 
 #-- add_file options
 set_option -include_path {C:/Users/Duncan/git/ForthCPU}
-add_file -verilog -vlog_std v2001 {C:/Users/Duncan/git/ForthCPU/impl1/source/alu.v}
-add_file -verilog -vlog_std v2001 {C:/Users/Duncan/git/ForthCPU/impl1/source/data_sources.v}
-add_file -verilog -vlog_std v2001 {C:/Users/Duncan/git/ForthCPU/impl1/source/multiplier.v}
-add_file -verilog -vlog_std v2001 {C:/Users/Duncan/git/ForthCPU/impl1/source/registers.v}
+add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/impl1/source/alu.v}
+add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/impl1/source/data_sources.v}
+add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/impl1/source/multiplier.v}
+add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/impl1/source/registers.v}
+add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/register.v}
+add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/register_file.v}
 
 #-- top module name
-set_option -top_module registers
+set_option -top_module register_file
 
 #-- set result format/file last
 project -result_file {C:/Users/Duncan/git/ForthCPU/impl1/ForthCPU_impl1.edi}
