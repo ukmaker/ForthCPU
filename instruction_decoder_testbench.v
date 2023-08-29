@@ -17,23 +17,17 @@ module instruction_decoder_testbench;
 	wire EXECUTE;
 	wire COMMIT;
 	
-	wire [1:0] GPX;
-	wire [3:0] OPX;
-	wire [1:0] INCX;
-	wire [1:0] CCX;
-	wire [1:0] SKIPX;
-	wire [1:0] ARGX;
-	wire [3:0] ARGA;
-	wire [3:0] ARGB;
-
-	wire [1:0] BUSX;
-	wire [1:0] ADDRX;
-	wire [1:0] DINX;
-	wire [1:0] DOUTX;
-	wire [3:0] ALUX;
-	wire [2:0] SOURCEX;
+	wire [1:0] REGX;        // Register operation
+	wire [3:0] ARGA;        // Register address A
+	wire [3:0] ARGB;        // Register address B
+	wire [3:0] REG_SOURCEX; // Data source for register file
+	wire [3:0] ALU_SOURCEX; // Data sources for ALU
+	wire [1:0] ALUX;        // ALU operation
+	wire [1:0] ADDRX;       // Address bus control
+	wire [1:0] DATAX;       // Data bus control
 	
-	wire WRITEX;
+	wire WRITEX;             // Write to memory
+	wire READX;              // Read from memory
 
 instruction_decode isd_inst(
 	.DIN(DIN),
@@ -43,20 +37,17 @@ instruction_decode isd_inst(
 	.DECODE(DECODE),
 	.EXECUTE(EXECUTE),
 	.COMMIT(COMMIT),
-	.GPX(GPX),
-	.OPX(OPX),
-	.INCX(INCX),
-	.CCX(CCX),
-	.SKIPX(SKIPX),
-	.ARGX(ARGX),
+	
+	.REGX(REGX),
 	.ARGA(ARGA),
 	.ARGB(ARGB),
-	.BUSX(BUSX),
-	.ADDRX(ADDRX),
-	.DINX(DINX),
-	.DOUTX(DOUTX),
+	.REG_SOURCEX(REG_SOURCEX),
+	.ALU_SOURCEX(ALU_SOURCEX),
 	.ALUX(ALUX),
-	.SOURCEX(SOURCEX),
+	.ADDRX(ADDRX),
+	.DATAX(DATAX),
+
+	.READX(READX),
 	.WRITEX(WRITEX),
 	.CCZ(CCZ),
 	.CCV(CCV),

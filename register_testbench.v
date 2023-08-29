@@ -5,25 +5,19 @@ module register_testbench;
 	parameter CLOCK_CYCLE = 10;
 	
 	reg [15:0] DIN;
-	wire [15:0] DBUS_A;
-	wire [15:0] DBUS_B;
-	reg LDN;
-	reg IDN;
-	reg OEN_A;
-	reg OEN_B;
+	wire [15:0] DOUT;
+	reg LD_EN;
 	reg INC_DECN;
+	reg INC_DEC_EN;
 	reg CLK;
 	reg RESETN;
 	
 	register register_inst(
 		.DIN(DIN),
-		.DBUS_A(DBUS_A),
-		.DBUS_B(DBUS_B),
+		.DOUT(DOUT),
 		.INC_DECN(INC_DECN),
-		.LDN(LDN),
-		.OEN_A(OEN_A),
-		.OEN_B(OEN_B),
-		.IDN(IDN),
+		.INC_DEC_EN(INC_DEC_EN),
+		.LD_EN(LD_EN),
 		.CLK(CLK),
 		.RESETN(RESETN)
 		);
@@ -32,11 +26,9 @@ module register_testbench;
 	initial begin
 		DIN = 16'b0000000000000000;
 		CLK = 1;
-		LDN = 1;
-		IDN = 1;
-		OEN_A = 1;
-		OEN_B = 1;
+		LD_EN = 1;
 		INC_DECN = 1;
+		INC_DEC_EN = 1;
 		RESETN = 0;
 	end
 
@@ -46,9 +38,8 @@ module register_testbench;
 	initial begin		
 		#(10*CLOCK_CYCLE);
 		// Increment
-		IDN = 0;
+		INC_DECN = 1;
 		CLK = 0;
-		OEN_A = 0;
 		#(CLOCK_CYCLE);
 		CLK = 1;
 		#(CLOCK_CYCLE);
@@ -69,26 +60,23 @@ module register_testbench;
 		#(CLOCK_CYCLE);
 		// load a value
 		//IDN = 1;
-		LDN = 0;
+		LD_EN = 0;
 		CLK = 0;
 		DIN = 16'h1234;
 		#(CLOCK_CYCLE);
 		CLK = 1;
 		#(CLOCK_CYCLE);
 		CLK = 0;
-		LDN = 1;
-		OEN_A = 1;
-		OEN_B = 0;
+		LD_EN = 1;
 		#(CLOCK_CYCLE);
 		CLK = 1;
 		#(CLOCK_CYCLE);
 		CLK = 0;
-		IDN = 0;
+		INC_DEC_EN = 0;
 		#(CLOCK_CYCLE);
 		CLK = 1;
 		#(CLOCK_CYCLE);
 		CLK = 0;
-		OEN_B = 1;
 
 		#(CLOCK_CYCLE);
 		CLK = 1;

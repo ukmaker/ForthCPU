@@ -1,46 +1,40 @@
+/**
+* REGX 2 1 0
+*      |  |  |
+*      |  |   - Load (1) data to the register addressed by ADDR_A
+*      |  ----- Enable (1) inc/dec on the register addressed by ADDR_B*      -------- Increment (1) or decrement (0)
+**/
 module register_file(
 
 	input [15:0] DIN,
 	input [3:0] ADDR_A,
 	input [3:0] ADDR_B,
-	input LDN,
-	input UP_DOWNN,
-	input IDN,
+	input [2:0] REGX,
 	input CLK,
 	input RESETN,
 	
-	output [15:0] DOUT_A,
-	output [15:0] DOUT_B,
-	output [15:0] DOUT_C
+	output reg [15:0] DOUT_A,
+	output reg [15:0] DOUT_B,
+	output reg [15:0] DOUT_PC
 	
 );
 
-reg [15:0] INC_DECX;
-reg [15:0] LDX;
-reg [15:0] IDX;
+reg [14:0] INC_DECN;
+reg [15:0] LD_EN;
+reg [14:0] INC_DEC_EN;
 reg [15:0] OEN_A;
 reg [15:0] OEN_B;
-reg [15:0] OEN_C;
+wire [15:0] DBUS;
 
 register registers[15:0] (
 	.CLK(CLK),
 	.RESETN(RESETN),
-	.INC_DECN(INC_DECX),
+	.INC_DECN({ 1'b1, INC_DECN }),    // Always increment the PC r15
+	.INC_DEC_EN({ 1'b1, INC_DEC_EN}), // 
 	.DIN(DIN),
-	.DBUS_A(DOUT_A),
-	.DBUS_B(DOUT_B),
-	.DBUS_C(DOUT_C),
-	.LDN(LDX),
-	.IDN(IDX),
-	.OEN_A(OEN_A),
-	.OEN_B(OEN_B),
-	.OEN_C(OEN_C)
+	.DOUT(DBUS),
+	.LD_EN(LD_EN)
 );
-
-integer i;
-
-
-
 
 always @ (*)
 begin
@@ -48,26 +42,25 @@ begin
 	OEN_A[ADDR_A] = 0;
 	OEN_B = 16'hffff;
 	OEN_B[ADDR_B] = 0;
-	OEN_C = 16'hffff;
-	OEN_C[15] = 0; // always output the PC
-	INC_DECX = UP_DOWNN;
-	INC_DECX[15] = 1; // Always increment the PC
-	IDX[15] = 0;
+	DOUT_PC <= registers[15].DOUT;
+	INC_DEC_EN = 0;
+	INC_DECN = 0;
 	
-	if(!LDN)
+	if(!REGX[0])
 	begin
 		// load data to the register selected by ADDR_A
-		LDX <= 16'hffff;
-		LDX[ADDR_A] <= 0;
-	end else if(!IDN)
+		LD_EN <= 16'hffff;
+		LD_EN[ADDR_A] <= 0;
+	end else if(REGX[1])
 	begin
-		// enable inc/dec
-		IDX <= 16'h0fff;
-		IDX[ADDR_A] <= 0;
+		INC_DEC_EN[ADDR_B] = 1;
+	
+		if(REGX[2]) // Increment
+		begin
+				INC_DECN[ADDR_B] = 1;
+		end
 	end
 end
 		
-
-
 
 endmodule
