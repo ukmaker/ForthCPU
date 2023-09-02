@@ -1,78 +1,72 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <BaliProject version="3.2" title="ForthCPU" device="LCMXO3L-6900C-5BG256C" default_implementation="impl1">
     <Options/>
+    <Implementation title="dataSourcesController" dir="dataSourcesController" description="dataSourcesController" synthesis="synplify" default_strategy="Area">
+        <Options/>
+        <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">
+            <Options/>
+        </Source>
+    </Implementation>
     <Implementation title="impl1" dir="impl1" description="impl1" synthesis="synplify" default_strategy="Strategy1">
-        <Options VerilogStandard="System Verilog" def_top="instruction_decoder_testbench"/>
-        <Source name="impl1/source/alu.v" type="Verilog" type_short="Verilog">
-            <Options top_module="alu"/>
+        <Options VerilogStandard="System Verilog" def_top="data_sources"/>
+        <Source name="impl1/source/alu.v" type="Verilog" type_short="Verilog" excluded="TRUE">
+            <Options/>
         </Source>
         <Source name="impl1/source/data_sources.v" type="Verilog" type_short="Verilog">
             <Options top_module="data_sources"/>
         </Source>
-        <Source name="impl1/source/data_sources_testbench.v" type="Verilog" type_short="Verilog" syn_sim="SimOnly">
+        <Source name="impl1/source/multiplier.v" type="Verilog" type_short="Verilog" excluded="TRUE">
             <Options/>
         </Source>
-        <Source name="impl1/source/multiplier.v" type="Verilog" type_short="Verilog">
-            <Options top_module="multiplier"/>
-        </Source>
-        <Source name="impl1/source/registers.v" type="Verilog" type_short="Verilog">
-            <Options top_module="registers"/>
-        </Source>
-        <Source name="impl1/source/regs_testbench.v" type="Verilog" type_short="Verilog" syn_sim="SimOnly">
+        <Source name="impl1/source/forth_cpu.v" type="Verilog" type_short="Verilog" excluded="TRUE">
             <Options/>
         </Source>
-        <Source name="impl1/source/testbench.v" type="Verilog" type_short="Verilog" syn_sim="SimOnly">
+        <Source name="impl1/source/instruction_decode.v" type="Verilog" type_short="Verilog" excluded="TRUE">
             <Options/>
         </Source>
-        <Source name="register.v" type="Verilog" type_short="Verilog">
+        <Source name="impl1/source/register.v" type="Verilog" type_short="Verilog" excluded="TRUE">
             <Options/>
         </Source>
-        <Source name="register_testbench.v" type="Verilog" type_short="Verilog" syn_sim="SimOnly">
+        <Source name="impl1/source/register_file.v" type="Verilog" type_short="Verilog" excluded="TRUE">
             <Options/>
         </Source>
-        <Source name="register_file.v" type="Verilog" type_short="Verilog">
+        <Source name="impl1/tests/data_sources_testbench.v" type="Verilog" type_short="Verilog" syn_sim="SimOnly">
             <Options/>
         </Source>
-        <Source name="register_file_testbench.v" type="Verilog" type_short="Verilog">
-            <Options top_module="register_file_testbench"/>
-        </Source>
-        <Source name="instruction_decode.v" type="Verilog" type_short="Verilog">
+        <Source name="impl1/tests/register_file_testbench.v" type="Verilog" type_short="Verilog" excluded="TRUE" syn_sim="SimOnly">
             <Options/>
         </Source>
-        <Source name="instruction_decoder_testbench.v" type="Verilog" type_short="Verilog">
-            <Options top_module="instruction_decoder_testbench"/>
-        </Source>
-        <Source name="forth_cpu.v" type="Verilog" type_short="Verilog" excluded="TRUE">
+        <Source name="impl1/tests/forth_cpu_testbench.v" type="Verilog" type_short="Verilog" excluded="TRUE" syn_sim="SimOnly">
             <Options/>
         </Source>
-        <Source name="forth_cpu_testbench.v" type="Verilog" type_short="Verilog" excluded="TRUE">
+        <Source name="impl1/tests/instruction_decoder_testbench.v" type="Verilog" type_short="Verilog" excluded="TRUE" syn_sim="SimOnly">
             <Options/>
         </Source>
-        <Source name="scratch.v" type="Verilog" type_short="Verilog">
+        <Source name="impl1/tests/register_testbench.v" type="Verilog" type_short="Verilog" excluded="TRUE" syn_sim="SimOnly">
             <Options/>
         </Source>
-        <Source name="forth_cpu_testbench/forth_cpu_testbench.spf" type="Simulation Project File" type_short="SPF">
+        <Source name="impl1/tests/regs_testbench.v" type="Verilog" type_short="Verilog" excluded="TRUE" syn_sim="SimOnly">
+            <Options/>
+        </Source>
+        <Source name="impl1/tests/alu_tests.v" type="Verilog" type_short="Verilog" excluded="TRUE">
+            <Options/>
+        </Source>
+        <Source name="data_sources_test/data_sources_test.spf" type="Simulation Project File" type_short="SPF">
+            <Options/>
+        </Source>
+        <Source name="data_sources_tests/data_sources_tests.spf" type="Simulation Project File" type_short="SPF">
             <Options/>
         </Source>
         <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">
             <Options/>
         </Source>
-        <Source name="instdec/instdec.spf" type="Simulation Project File" type_short="SPF">
+        <Source name="impl1/tests/data_sources_tests/data_sources_tests.spf" type="Simulation Project File" type_short="SPF">
             <Options/>
         </Source>
-        <Source name="instruction_decoder_tests/instruction_decoder_tests.spf" type="Simulation Project File" type_short="SPF">
+        <Source name="impl1/tests/register_file_tests/register_file_tests.spf" type="Simulation Project File" type_short="SPF">
             <Options/>
         </Source>
-        <Source name="reg/reg.spf" type="Simulation Project File" type_short="SPF">
-            <Options/>
-        </Source>
-        <Source name="register_test/register_test.spf" type="Simulation Project File" type_short="SPF">
-            <Options/>
-        </Source>
-        <Source name="register_tests/register_tests.spf" type="Simulation Project File" type_short="SPF">
-            <Options/>
-        </Source>
-        <Source name="regitser_file/regitser_file.spf" type="Simulation Project File" type_short="SPF">
+        <Source name="tests/alu_tests/alu_tests.spf" type="Simulation Project File" type_short="SPF">
             <Options/>
         </Source>
     </Implementation>

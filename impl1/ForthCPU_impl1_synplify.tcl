@@ -46,16 +46,28 @@ set_option -seqshift_no_replicate 0
 
 #-- add_file options
 set_option -include_path {C:/Users/Duncan/git/ForthCPU}
+add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/impl1/source/registers.v}
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/impl1/source/alu.v}
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/impl1/source/data_sources.v}
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/impl1/source/multiplier.v}
-add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/impl1/source/registers.v}
-add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/register.v}
-add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/register_file.v}
-add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/register_file_testbench.v}
+add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/impl1/source/forth_cpu.v}
+add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/impl1/source/forth_cpu_testbench.v}
+add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/impl1/source/instruction_decode.v}
+add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/impl1/source/instruction_decoder_testbench.v}
+add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/impl1/source/register.v}
+add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/impl1/source/register_file.v}
+add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/impl1/source/register_file_testbench.v}
+add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/impl1/source/register_testbench.v}
+add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/impl1/tests/data_sources_testbench.v}
+add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/impl1/tests/forth_cpu_testbench.v}
+add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/impl1/tests/instruction_decoder_testbench.v}
+add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/impl1/tests/register_file_testbench.v}
+add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/impl1/tests/register_testbench.v}
+add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/impl1/tests/regs_testbench.v}
+add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/impl1/tests/testbench.v}
 
 #-- top module name
-set_option -top_module register_file_testbench
+set_option -top_module testbench
 
 #-- set result format/file last
 project -result_file {C:/Users/Duncan/git/ForthCPU/impl1/ForthCPU_impl1.edi}
