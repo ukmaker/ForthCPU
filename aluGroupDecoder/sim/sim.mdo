@@ -1,0 +1,19 @@
+if {![file exists "C:/Users/Duncan/git/ForthCPU/aluGroupDecoder/sim/sim.mpf"]} { 
+	project new "C:/Users/Duncan/git/ForthCPU/aluGroupDecoder/sim" sim
+	project addfile "C:/Users/Duncan/git/ForthCPU/aluGroupDecoder/source/aluGroupDecoder.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/instructionPhaseDecoder/source/instructionPhaseDecoder.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/aluGroupDecoder/test/aluGroupDecoderTests.v"
+	vlib  work
+	vdel -lib work -all 
+	vlib work
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/aluGroupDecoder/source  -work work  "C:/Users/Duncan/git/ForthCPU/aluGroupDecoder/source/aluGroupDecoder.v"
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/instructionPhaseDecoder/source  -work work  "C:/Users/Duncan/git/ForthCPU/instructionPhaseDecoder/source/instructionPhaseDecoder.v"
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/aluGroupDecoder/test  -work work  "C:/Users/Duncan/git/ForthCPU/aluGroupDecoder/test/aluGroupDecoderTests.v"
+} else {
+	project open "C:/Users/Duncan/git/ForthCPU/aluGroupDecoder/sim/sim"
+	project compileoutofdate
+}
+vsim -L work -L pmi_work -L ovi_machxo3l  aluGroupDecoderTests
+view wave
+add wave /*
+run 1000ns

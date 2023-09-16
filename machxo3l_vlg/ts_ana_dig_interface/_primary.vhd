@@ -1,0 +1,41 @@
+library verilog;
+use verilog.vl_types.all;
+entity ts_ana_dig_interface is
+    port(
+        asc_clk         : in     vl_logic;
+        ts_ana_div256_clk: in     vl_logic;
+        ts_ana_dgflow_resetb: in     vl_logic;
+        ts_ana_dig_resetb: in     vl_logic;
+        ts_start_d      : in     vl_logic;
+        ts_ana_beta_cmp : in     vl_logic;
+        ts_ana_beta_cmp_en: out    vl_logic;
+        ts_ana_single_end_en: out    vl_logic;
+        ts_ana_beta_cmp_done: out    vl_logic;
+        ts_st_ch0_d     : in     vl_logic;
+        ts_st_ch1_d     : in     vl_logic;
+        ts_st_ch2_d     : in     vl_logic;
+        ts_skip_config  : in     vl_logic_vector(2 downto 0);
+        ts_se_config    : in     vl_logic_vector(2 downto 0);
+        ts_dgflow_done_d: in     vl_logic;
+        ts_cic_data_valid: in     vl_logic;
+        ts_dgflow_done_clr: out    vl_logic;
+        ts_cic_counter_clr: out    vl_logic;
+        ts_cic_strobe_en: out    vl_logic;
+        ts_sar_reg      : out    vl_logic_vector(5 downto 0);
+        ts_ana_demratio : out    vl_logic_vector(15 downto 0);
+        ts_ana_demout_bit: out    vl_logic;
+        ts_din          : in     vl_logic_vector(7 downto 0);
+        ts_ana_dout     : out    vl_logic_vector(7 downto 0);
+        ts_rd_from_i2c_sar_reg: in     vl_logic;
+        ts_vol_ld_data  : in     vl_logic;
+        ts_vol_rd       : in     vl_logic;
+        ts_force_vbe1_tst: in     vl_logic;
+        ts_force_vbe2_tst: in     vl_logic;
+        ts_force_vbe3_tst: in     vl_logic;
+        ts_force_demratoff_tst: in     vl_logic;
+        ts_force_demoutoff_tst: in     vl_logic;
+        ts_force_siggenoff_tst: in     vl_logic;
+        ts_adc_reset_demratio_clrb: out    vl_logic;
+        ts_disable_cal_tst: out    vl_logic
+    );
+end ts_ana_dig_interface;

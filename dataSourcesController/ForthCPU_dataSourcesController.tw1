@@ -1,0 +1,103 @@
+
+Loading design for application trce from file forthcpu_datasourcescontroller_map.ncd.
+Design name: data_sources
+NCD version: 3.3
+Vendor:      LATTICE
+Device:      LCMXO3L-6900C
+Package:     CABGA256
+Performance: 5
+Loading device for application trce from file 'xo3c6900.nph' in environment: C:/lscc/diamond/3.12/ispfpga.
+Package Status:                     Final          Version 1.17.
+Performance Hardware Data Status:   Final          Version 37.5.
+Setup and Hold Report
+
+--------------------------------------------------------------------------------
+Lattice TRACE Report - Setup, Version Diamond (64-bit) 3.12.1.454
+Mon Sep 04 18:07:04 2023
+
+Copyright (c) 1991-1994 by NeoCAD Inc. All rights reserved.
+Copyright (c) 1995 AT&T Corp.   All rights reserved.
+Copyright (c) 1995-2001 Lucent Technologies Inc.  All rights reserved.
+Copyright (c) 2001 Agere Systems   All rights reserved.
+Copyright (c) 2002-2020 Lattice Semiconductor Corporation,  All rights reserved.
+
+Report Information
+------------------
+Command line:    trce -v 1 -gt -mapchkpnt 0 -sethld -o ForthCPU_dataSourcesController.tw1 -gui -msgset C:/Users/Duncan/git/ForthCPU/promote.xml ForthCPU_dataSourcesController_map.ncd ForthCPU_dataSourcesController.prf 
+Design file:     forthcpu_datasourcescontroller_map.ncd
+Preference file: forthcpu_datasourcescontroller.prf
+Device,speed:    LCMXO3L-6900C,5
+Report level:    verbose report, limited to 1 item per preference
+--------------------------------------------------------------------------------
+
+BLOCK ASYNCPATHS
+BLOCK RESETPATHS
+--------------------------------------------------------------------------------
+
+
+
+================================================================================
+Preference: Default path enumeration
+            655 items scored, 0 timing errors detected.
+--------------------------------------------------------------------------------
+
+Report:    9.023ns delay ABUS_SOURCEX[1] to AOUT[0]
+
+   Name    Fanout   Delay (ns)          Site               Resource
+PADI_DEL    ---     1.372 *OURCEX[1].PAD to *RCEX[1].PADDI ABUS_SOURCEX[1]
+ROUTE        33   e 1.030 *RCEX[1].PADDI to *]/SLICE_77.A1 ABUS_SOURCEX_c[1]
+CTOOFX_DEL  ---     0.661 *]/SLICE_77.A1 to *SLICE_77.OFX0 AOUT_3[0]/SLICE_77
+ROUTE         1   e 1.030 *SLICE_77.OFX0 to    SLICE_81.D0 N_321
+CTOF_DEL    ---     0.452    SLICE_81.D0 to    SLICE_81.F0 SLICE_81
+ROUTE         1   e 1.030    SLICE_81.F0 to  AOUT[0].PADDO AOUT_c[0]
+DOPAD_DEL   ---     3.448  AOUT[0].PADDO to    AOUT[0].PAD AOUT[0]
+                  --------
+                    9.023   (65.8% logic, 34.2% route), 4 logic levels.
+
+Report:    9.023ns is the maximum delay for this preference.
+
+
+================================================================================
+Preference: Default net enumeration
+            155 items scored, 0 timing errors detected.
+--------------------------------------------------------------------------------
+
+Report:    1.030ns maximum delay on N_129
+
+           Delays             Connection(s)
+         e 1.030ns ALU_B_3[0]/SLICE_79.OFX0 to SLICE_83.D0     
+
+Report:    1.030ns is the maximum delay for this preference.
+
+Report Summary
+--------------
+----------------------------------------------------------------------------
+Preference                              |   Constraint|       Actual|Levels
+----------------------------------------------------------------------------
+                                        |             |             |
+Default path enumeration                |     0.000 ns|     9.023 ns|   0  
+                                        |             |             |
+Default net enumeration                 |     0.000 ns|     1.030 ns|   0  
+                                        |             |             |
+----------------------------------------------------------------------------
+
+
+All preferences were met.
+
+
+Clock Domains Analysis
+------------------------
+
+Found 0 clocks:
+
+
+Timing summary (Setup):
+---------------
+
+Timing errors: 0  Score: 0
+Cumulative negative slack: 0
+
+Constraints cover 655 paths, 155 nets, and 745 connections (100.00% coverage)
+
+--------------------------------------------------------------------------------
+

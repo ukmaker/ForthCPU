@@ -1,0 +1,40 @@
+library verilog;
+use verilog.vl_types.all;
+entity twi_wdat_slave_latch_array is
+    port(
+        twi_resetb      : in     vl_logic;
+        twi_wdat_write_reg: in     vl_logic;
+        twi_wdat_data_from_latch_0: in     vl_logic_vector(7 downto 0);
+        twi_wdat_data_from_latch_1: in     vl_logic_vector(7 downto 0);
+        twi_wdat_data_from_latch_2: in     vl_logic_vector(7 downto 0);
+        twi_wdat_data_from_latch_3: in     vl_logic_vector(7 downto 0);
+        twi_wdat_data_from_latch_4: in     vl_logic_vector(7 downto 0);
+        twi_wdat_data_from_latch_5: in     vl_logic_vector(7 downto 0);
+        twi_wdat_data_from_latch_6: in     vl_logic_vector(7 downto 0);
+        twi_wdat_data_from_latch_7: in     vl_logic_vector(7 downto 0);
+        twi_wdat_data_from_latch_8: in     vl_logic_vector(7 downto 0);
+        twi_wdat_data_from_latch_9: in     vl_logic_vector(7 downto 0);
+        twi_wdat_data_from_latch_10: in     vl_logic_vector(7 downto 0);
+        twi_wdat_data_from_latch_11: in     vl_logic_vector(7 downto 0);
+        twi_wdat_data_from_latch_12: in     vl_logic_vector(7 downto 0);
+        twi_wdat_data_from_latch_13: in     vl_logic_vector(7 downto 0);
+        twi_wdat_data_from_latch_14: in     vl_logic_vector(7 downto 0);
+        twi_wdat_data_from_latch_15: in     vl_logic_vector(7 downto 0);
+        twi_wdat_reg_to_asc_0: out    vl_logic_vector(7 downto 0);
+        twi_wdat_reg_to_asc_1: out    vl_logic_vector(7 downto 0);
+        twi_wdat_reg_to_asc_2: out    vl_logic_vector(7 downto 0);
+        twi_wdat_reg_to_asc_3: out    vl_logic_vector(7 downto 0);
+        twi_wdat_reg_to_asc_4: out    vl_logic_vector(7 downto 0);
+        twi_wdat_reg_to_asc_5: out    vl_logic_vector(7 downto 0);
+        twi_wdat_reg_to_asc_6: out    vl_logic_vector(7 downto 0);
+        twi_wdat_reg_to_asc_7: out    vl_logic_vector(7 downto 0);
+        twi_wdat_reg_to_asc_8: out    vl_logic_vector(7 downto 0);
+        twi_wdat_reg_to_asc_9: out    vl_logic_vector(7 downto 0);
+        twi_wdat_reg_to_asc_10: out    vl_logic_vector(7 downto 0);
+        twi_wdat_reg_to_asc_11: out    vl_logic_vector(7 downto 0);
+        twi_wdat_reg_to_asc_12: out    vl_logic_vector(7 downto 0);
+        twi_wdat_reg_to_asc_13: out    vl_logic_vector(7 downto 0);
+        twi_wdat_reg_to_asc_14: out    vl_logic_vector(7 downto 0);
+        twi_wdat_reg_to_asc_15: out    vl_logic_vector(7 downto 0)
+    );
+end twi_wdat_slave_latch_array;

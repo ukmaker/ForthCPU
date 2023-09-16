@@ -1,0 +1,64 @@
+library verilog;
+use verilog.vl_types.all;
+entity clt_top is
+    generic(
+        CLT_DBW         : integer := 10;
+        DAC_DBW         : integer := 8;
+        SYS_DBW         : integer := 8;
+        XTR_DBW         : integer := 3
+    );
+    port(
+        adc_mux_sel     : out    vl_logic_vector(3 downto 0);
+        adc_atten       : out    vl_logic;
+        adc_socb        : out    vl_logic;
+        sys_iavg_dout   : out    vl_logic_vector;
+        sys_ucp_dout    : out    vl_logic_vector;
+        dac_clt_dout    : out    vl_logic_vector;
+        dac_bpz         : out    vl_logic_vector(1 downto 0);
+        clt_rstb        : in     vl_logic;
+        clt_clk         : in     vl_logic;
+        clt_ena         : in     vl_logic;
+        sd_clt_chn_attn : in     vl_logic_vector;
+        sd_clt_chn_inv  : in     vl_logic_vector;
+        sd_clt_chn_byp  : in     vl_logic_vector;
+        sd_clt_rate_sel : in     vl_logic_vector(1 downto 0);
+        sd_imon_rate_sel: in     vl_logic_vector(1 downto 0);
+        sd_bpz_all      : in     vl_logic_vector(15 downto 0);
+        sd_clt_prof0_0  : in     vl_logic_vector;
+        sd_clt_prof0_1  : in     vl_logic_vector;
+        sd_clt_prof0_2  : in     vl_logic_vector;
+        sd_clt_prof1_0  : in     vl_logic_vector;
+        sd_clt_prof1_1  : in     vl_logic_vector;
+        sd_clt_prof1_2  : in     vl_logic_vector;
+        sd_clt_prof2_0  : in     vl_logic_vector;
+        sd_clt_prof2_1  : in     vl_logic_vector;
+        sd_clt_prof2_2  : in     vl_logic_vector;
+        sd_clt_prof3_0  : in     vl_logic_vector;
+        sd_clt_prof3_1  : in     vl_logic_vector;
+        sd_clt_prof3_2  : in     vl_logic_vector;
+        sys_ucp_lp      : in     vl_logic;
+        sys_ucp_cr      : in     vl_logic_vector;
+        sys_imon_en     : in     vl_logic_vector(3 downto 0);
+        twi_chn_pfsel   : in     vl_logic_vector(15 downto 0);
+        twi_clt_chn_en  : in     vl_logic_vector;
+        hvblock         : in     vl_logic;
+        vmon_odd        : in     vl_logic;
+        adc_done        : in     vl_logic;
+        adc_data        : in     vl_logic_vector;
+        dac_chn_sel     : in     vl_logic_vector(2 downto 0);
+        dac_ready       : in     vl_logic;
+        dac_init        : in     vl_logic;
+        sys_rstb        : in     vl_logic;
+        sys_clk         : in     vl_logic;
+        sys_iavg_dat_cs : in     vl_logic;
+        sys_ucp_dat_cs  : in     vl_logic;
+        sys_addr        : in     vl_logic_vector(3 downto 0);
+        sys_ucp_cr_sel  : in     vl_logic;
+        sys_wt_str      : in     vl_logic;
+        sys_rd_str      : in     vl_logic;
+        value_vdac1     : out    vl_logic_vector(7 downto 0);
+        value_vdac2     : out    vl_logic_vector(7 downto 0);
+        value_vdac3     : out    vl_logic_vector(7 downto 0);
+        value_vdac4     : out    vl_logic_vector(7 downto 0)
+    );
+end clt_top;

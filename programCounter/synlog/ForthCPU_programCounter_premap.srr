@@ -1,0 +1,133 @@
+# Tue Sep 12 18:23:21 2023
+
+
+Copyright (C) 1994-2021 Synopsys, Inc.
+This Synopsys software and all associated documentation are proprietary to Synopsys, Inc.
+and may only be used pursuant to the terms and conditions of a written license agreement
+with Synopsys, Inc. All other use, reproduction, modification, or distribution of the
+Synopsys software or the associated documentation is strictly prohibited.
+Tool: Synplify Pro (R)
+Build: R-2021.03L-SP1
+Install: C:\lscc\diamond\3.12\synpbase
+OS: Windows 6.2
+
+Hostname: EDAWIN
+
+Implementation : programCounter
+Synopsys Lattice Technology Pre-mapping, Version map202103lat, Build 070R, Built Oct  6 2021 11:12:38, @
+
+
+Mapper Startup Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 118MB peak: 118MB)
+
+
+Done reading skeleton netlist (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 121MB peak: 130MB)
+
+@A: MF827 |No constraint file specified.
+@L: C:\Users\Duncan\git\ForthCPU\programCounter\ForthCPU_programCounter_scck.rpt 
+See clock summary report "C:\Users\Duncan\git\ForthCPU\programCounter\ForthCPU_programCounter_scck.rpt"
+@N: MF916 |Option synthesis_strategy=base is enabled. 
+@N: MF248 |Running in 64-bit mode.
+@N: MF666 |Clock conversion enabled. (Command "set_option -fix_gated_and_generated_clocks 1" in the project file.)
+
+Design Input Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 126MB peak: 130MB)
+
+
+Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 126MB peak: 130MB)
+
+
+Start loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 138MB peak: 138MB)
+
+
+Finished loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 138MB peak: 140MB)
+
+
+Starting clock optimization phase (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 170MB peak: 170MB)
+
+
+Finished clock optimization phase (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 170MB peak: 170MB)
+
+
+Starting clock optimization report phase (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 170MB peak: 170MB)
+
+
+Finished clock optimization report phase (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 170MB peak: 170MB)
+
+@N: FX1184 |Applying syn_allowed_resources blockrams=240 on top level netlist pc_test_harness 
+
+Finished netlist restructuring (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 170MB peak: 170MB)
+
+
+
+Clock Summary
+******************
+
+          Start                                 Requested     Requested     Clock                                        Clock                   Clock
+Level     Clock                                 Frequency     Period        Type                                         Group                   Load 
+------------------------------------------------------------------------------------------------------------------------------------------------------
+0 -       System                                1.0 MHz       1000.000      system                                       system_clkgroup         0    
+                                                                                                                                                      
+0 -       pll|CLKOS3_inferred_clock             1.0 MHz       1000.000      inferred                                     Inferred_clkgroup_0     9    
+1 .         prescaler|clk_out_derived_clock     1.0 MHz       1000.000      derived (from pll|CLKOS3_inferred_clock)     Inferred_clkgroup_0     16   
+======================================================================================================================================================
+
+
+
+Clock Load Summary
+***********************
+
+                                    Clock     Source                                 Clock Pin           Non-clock Pin     Non-clock Pin
+Clock                               Load      Pin                                    Seq Example         Seq Example       Comb Example 
+----------------------------------------------------------------------------------------------------------------------------------------
+System                              0         -                                      -                   -                 -            
+                                                                                                                                        
+pll|CLKOS3_inferred_clock           9         pll_inst.PLLInst_0.CLKOS3(EHXPLLJ)     psc.next[7:0].C     -                 -            
+prescaler|clk_out_derived_clock     16        psc.clk_out.Q[0](dff)                  pc.pc_a[15:0].C     -                 -            
+========================================================================================================================================
+
+@W: MT529 :"c:\users\duncan\git\forthcpu\prescaler.v":12:0:12:5|Found inferred clock pll|CLKOS3_inferred_clock which controls 9 sequential elements including psc.clk_out. This clock has no specified timing constraint which may prevent conversion of gated or generated clocks and may adversely impact design performance. 
+
+ICG Latch Removal Summary:
+Number of ICG latches removed: 0
+Number of ICG latches not removed:	0
+For details review file gcc_ICG_report.rpt
+
+
+@S |Clock Optimization Summary
+
+
+
+#### START OF PREMAP CLOCK OPTIMIZATION REPORT #####[
+
+0 non-gated/non-generated clock tree(s) driving 0 clock pin(s) of sequential element(s)
+2 gated/generated clock tree(s) driving 25 clock pin(s) of sequential element(s)
+0 instances converted, 25 sequential instances remain driven by gated/generated clocks
+
+================================================================== Gated/Generated Clocks ==================================================================
+Clock Tree ID     Driving Element               Drive Element Type     Unconverted Fanout     Sample Instance     Explanation                               
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+@KP:ckid0_0       psc.clk_out.Q[0]              dff                    16                     pc.pc_a[15:0]       Derived clock on input (not legal for GCC)
+@KP:ckid0_2       pll_inst.PLLInst_0.CLKOS3     EHXPLLJ                9                      psc.clk_out         Clock source is invalid for GCC           
+============================================================================================================================================================
+
+
+##### END OF CLOCK OPTIMIZATION REPORT ######
+
+@N: FX1143 |Skipping assigning INTERNAL_VREF to iobanks, because the table of mapping from pin to iobank is not initialized.
+Finished Pre Mapping Phase.
+
+Starting constraint checker (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 171MB peak: 171MB)
+
+
+Finished constraint checker preprocessing (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 171MB peak: 171MB)
+
+
+Finished constraint checker (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 172MB peak: 172MB)
+
+Pre-mapping successful!
+
+At Mapper Exit (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 88MB peak: 173MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+# Tue Sep 12 18:23:22 2023
+
+###########################################################]

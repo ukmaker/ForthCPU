@@ -1,0 +1,1 @@
+run_tcl -fg ForthCPU_dataSourcesController_synplify.tcl

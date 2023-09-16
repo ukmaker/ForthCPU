@@ -1,0 +1,541 @@
+<HTML>
+<HEAD><TITLE>Project Summary</TITLE>
+<STYLE TYPE="text/css">
+<!--
+ body,pre{    font-family:'Courier New', monospace;    color: #000000;    font-size:88%;    background-color: #ffffff;}h1 {    font-weight: bold;    margin-top: 24px;    margin-bottom: 10px;    border-bottom: 3px solid #000;    font-size: 1em;}h2 {    font-weight: bold;    margin-top: 18px;    margin-bottom: 5px;    font-size: 0.90em;}h3 {    font-weight: bold;    margin-top: 12px;    margin-bottom: 5px;    font-size: 0.80em;}p {    font-size:78%;}P.Table {    margin-top: 4px;    margin-bottom: 4px;    margin-right: 4px;    margin-left: 4px;}table{    border-width: 1px 1px 1px 1px;    border-style: solid solid solid solid;    border-color: black black black black;    border-collapse: collapse;}th {    font-weight:bold;    padding: 4px;    border-width: 1px 1px 1px 1px;    border-style: solid solid solid solid;    border-color: black black black black;    vertical-align:top;    text-align:left;    font-size:78%;}td {    padding: 4px;    border-width: 1px 1px 1px 1px;    border-style: solid solid solid solid;    border-color: black black black black;    vertical-align:top;    font-size:78%;}a {    color:#013C9A;    text-decoration:none;}a:visited {    color:#013C9A;}a:hover, a:active {    text-decoration:underline;    color:#5BAFD4;}.pass{background-color: #00ff00;}.fail{background-color: #ff0000;}.comment{    font-size: 90%;    font-style: italic;}
+-->
+</STYLE>
+</HEAD>
+<PRE><A name="Mrp"></A>
+         Lattice Mapping Report File for Design Module 'data_sources'
+
+
+
+<A name="mrp_di"></A><B><U><big>Design Information</big></U></B>
+
+Command line:   map -a MachXO3L -p LCMXO3L-6900C -t CABGA256 -s 5 -oc Commercial
+     ForthCPU_dataSourcesController.ngd -o
+     ForthCPU_dataSourcesController_map.ncd -pr
+     ForthCPU_dataSourcesController.prf -mp ForthCPU_dataSourcesController.mrp
+     -lpf C:/Users/Duncan/git/ForthCPU/dataSourcesController/ForthCPU_dataSource
+     sController_synplify.lpf -lpf C:/Users/Duncan/git/ForthCPU/ForthCPU.lpf -c
+     0 -gui -msgset C:/Users/Duncan/git/ForthCPU/promote.xml 
+Target Vendor:  LATTICE
+Target Device:  LCMXO3L-6900CCABGA256
+Target Performance:   5
+Mapper:  xo3c00a,  version:  Diamond (64-bit) 3.12.1.454
+Mapped on:  09/04/23  18:07:03
+
+
+<A name="mrp_ds"></A><B><U><big>Design Summary</big></U></B>
+   Number of registers:      0 out of  7485 (0%)
+      PFU registers:            0 out of  6864 (0%)
+      PIO registers:            0 out of   621 (0%)
+   Number of SLICEs:        85 out of  3432 (2%)
+      SLICEs as Logic/ROM:     85 out of  3432 (2%)
+      SLICEs as RAM:            0 out of  2574 (0%)
+      SLICEs as Carry:          0 out of  3432 (0%)
+   Number of LUT4s:        170 out of  6864 (2%)
+      Number used as logic LUTs:        170
+      Number used as distributed RAM:     0
+      Number used as ripple logic:        0
+      Number used as shift registers:     0
+   Number of PIO sites used: 145 + 4(JTAG) out of 207 (72%)
+   Number of block RAMs:  0 out of 26 (0%)
+   Number of GSRs:        0 out of 1 (0%)
+   EFB used :        No
+   JTAG used :       No
+   Readback used :   No
+   Oscillator used : No
+   Startup used :    No
+   POR :             On
+   Bandgap :         On
+   Number of Power Controller:  0 out of 1 (0%)
+   Number of Dynamic Bank Controller (BCINRD):  0 out of 6 (0%)
+   Number of Dynamic Bank Controller (BCLVDSO):  0 out of 1 (0%)
+   Number of DCCA:  0 out of 8 (0%)
+   Number of DCMA:  0 out of 2 (0%)
+   Number of PLLs:  0 out of 2 (0%)
+   Number of DQSDLLs:  0 out of 2 (0%)
+   Number of CLKDIVC:  0 out of 4 (0%)
+   Number of ECLKSYNCA:  0 out of 4 (0%)
+   Number of ECLKBRIDGECS:  0 out of 2 (0%)
+   Notes:-
+      1. Total number of LUT4s = (Number of logic LUT4s) + 2*(Number of
+     distributed RAMs) + 2*(Number of ripple logic)
+      2. Number of logic LUT4s does not include count of distributed RAM and
+     ripple logic.
+   Number of clocks:  0
+   Number of Clock Enables:  0
+
+   Number of LSRs:  0
+   Number of nets driven by tri-state buffers:  0
+   Top 10 highest fanout non-clock nets:
+     Net ABUS_SOURCEX_c[1]: 33 loads
+     Net ALU_A_SOURCEX_c[1]: 33 loads
+     Net ALU_B_SOURCEX_c[1]: 33 loads
+     Net DBUS_SOURCEX_c[1]: 33 loads
+     Net REG_I_SOURCEX_c[1]: 33 loads
+     Net ABUS_SOURCEX_c[2]: 31 loads
+     Net ALU_A_SOURCEX_c[2]: 31 loads
+     Net ALU_B_SOURCEX_c[2]: 31 loads
+     Net DBUS_SOURCEX_c[2]: 31 loads
+     Net REG_I_SOURCEX_c[2]: 31 loads
+
+
+
+
+   Number of warnings:  6
+   Number of errors:    0
+     
+
+
+
+
+<A name="mrp_dwe"></A><B><U><big>Design Errors/Warnings</big></U></B>
+
+WARNING - map: IO buffer missing for top level port ARG_A[3:0](3)...logic will
+     be discarded.
+WARNING - map: IO buffer missing for top level port ARG_A[3:0](2)...logic will
+     be discarded.
+WARNING - map: IO buffer missing for top level port ARG_A[3:0](1)...logic will
+     be discarded.
+WARNING - map: IO buffer missing for top level port ARG_B[3:0](3)...logic will
+     be discarded.
+WARNING - map: IO buffer missing for top level port ARG_B[3:0](2)...logic will
+     be discarded.
+WARNING - map: IO buffer missing for top level port ARG_B[3:0](1)...logic will
+     be discarded.
+
+
+
+<A name="mrp_ioa"></A><B><U><big>IO (PIO) Attributes</big></U></B>
+
++---------------------+-----------+-----------+------------+
+| IO Name             | Direction | Levelmode | IO         |
+|                     |           |  IO_TYPE  | Register   |
++---------------------+-----------+-----------+------------+
+| ALU_A[0]            | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| ALU_A_SOURCEX[0]    | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| REG_I[15]           | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| REG_I[14]           | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| REG_I[13]           | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| REG_I[12]           | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+
+| REG_I[11]           | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| REG_I[10]           | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| REG_I[9]            | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| REG_I[8]            | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| REG_I[7]            | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| REG_I[6]            | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| REG_I[5]            | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| REG_I[4]            | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| REG_I[3]            | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| REG_I[2]            | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| REG_I[1]            | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| REG_I[0]            | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| AOUT[15]            | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| AOUT[14]            | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| AOUT[13]            | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| AOUT[12]            | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| AOUT[11]            | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| AOUT[10]            | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| AOUT[9]             | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| AOUT[8]             | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| AOUT[7]             | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| AOUT[6]             | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| AOUT[5]             | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| AOUT[4]             | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| AOUT[3]             | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| AOUT[2]             | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| AOUT[1]             | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| AOUT[0]             | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+
+| DOUT[15]            | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| DOUT[14]            | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| DOUT[13]            | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| DOUT[12]            | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| DOUT[11]            | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| DOUT[10]            | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| DOUT[9]             | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| DOUT[8]             | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| DOUT[7]             | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| DOUT[6]             | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| DOUT[5]             | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| DOUT[4]             | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| DOUT[3]             | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| DOUT[2]             | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| DOUT[1]             | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| DOUT[0]             | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| ALU_B[15]           | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| ALU_B[14]           | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| ALU_B[13]           | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| ALU_B[12]           | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| ALU_B[11]           | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| ALU_B[10]           | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| ALU_B[9]            | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| ALU_B[8]            | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| ALU_B[7]            | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| ALU_B[6]            | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| ALU_B[5]            | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| ALU_B[4]            | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+
+| ALU_B[3]            | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| ALU_B[2]            | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| ALU_B[1]            | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| ALU_B[0]            | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| ALU_A[15]           | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| ALU_A[14]           | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| ALU_A[13]           | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| ALU_A[12]           | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| ALU_A[11]           | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| ALU_A[10]           | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| ALU_A[9]            | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| ALU_A[8]            | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| ALU_A[7]            | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| ALU_A[6]            | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| ALU_A[5]            | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| ALU_A[4]            | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| ALU_A[3]            | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| ALU_A[2]            | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| ALU_A[1]            | OUTPUT    | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| ARG_B[0]            | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| ARG_A[0]            | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| DIN[15]             | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| DIN[14]             | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| DIN[13]             | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| DIN[12]             | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| DIN[11]             | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| DIN[10]             | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| DIN[9]              | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+
+| DIN[8]              | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| DIN[7]              | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| DIN[6]              | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| DIN[5]              | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| DIN[4]              | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| DIN[3]              | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| DIN[2]              | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| DIN[1]              | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| DIN[0]              | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| REG_B[15]           | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| REG_B[14]           | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| REG_B[13]           | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| REG_B[12]           | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| REG_B[11]           | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| REG_B[10]           | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| REG_B[9]            | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| REG_B[8]            | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| REG_B[7]            | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| REG_B[6]            | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| REG_B[5]            | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| REG_B[4]            | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| REG_B[3]            | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| REG_B[2]            | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| REG_B[1]            | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| REG_B[0]            | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| REG_A[15]           | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| REG_A[14]           | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| REG_A[13]           | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+
+| REG_A[12]           | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| REG_A[11]           | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| REG_A[10]           | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| REG_A[9]            | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| REG_A[8]            | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| REG_A[7]            | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| REG_A[6]            | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| REG_A[5]            | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| REG_A[4]            | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| REG_A[3]            | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| REG_A[2]            | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| REG_A[1]            | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| REG_A[0]            | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| REG_I_SOURCEX[2]    | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| REG_I_SOURCEX[1]    | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| REG_I_SOURCEX[0]    | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| ABUS_SOURCEX[2]     | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| ABUS_SOURCEX[1]     | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| ABUS_SOURCEX[0]     | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| DBUS_SOURCEX[2]     | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| DBUS_SOURCEX[1]     | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| DBUS_SOURCEX[0]     | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| ALU_B_SOURCEX[2]    | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| ALU_B_SOURCEX[1]    | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| ALU_B_SOURCEX[0]    | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| ALU_A_SOURCEX[2]    | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+| ALU_A_SOURCEX[1]    | INPUT     | LVCMOS25  |            |
++---------------------+-----------+-----------+------------+
+
+
+
+
+
+<A name="mrp_rm"></A><B><U><big>Removed logic</big></U></B>
+
+Block VCC undriven or does not drive anything - clipped.
+Block GSR_INST undriven or does not drive anything - clipped.
+Block GND undriven or does not drive anything - clipped.
+Signal VCC undriven or does not drive anything - clipped.
+
+     
+
+
+
+<A name="mrp_runtime"></A><B><U><big>Run Time and Memory Usage</big></U></B>
+-------------------------
+
+   Total CPU Time: 0 secs  
+   Total REAL Time: 0 secs  
+   Peak Memory Usage: 37 MB
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Copyright (c) 1991-1994 by NeoCAD Inc. All rights reserved.
+     Copyright (c) 1995 AT&T Corp.   All rights reserved.
+     Copyright (c) 1995-2001 Lucent Technologies Inc.  All rights reserved.
+     Copyright (c) 2001 Agere Systems   All rights reserved.
+     Copyright (c) 2002-2020 Lattice Semiconductor Corporation,  All rights
+     reserved.
+
+
+
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+</PRE></FONT>
+</BODY>
+</HTML>

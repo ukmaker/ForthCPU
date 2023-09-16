@@ -1,0 +1,22 @@
+i psc.clk_out_i
+m 0 0
+u 1 16
+n ckid0_0 {t:pc.pc_a[15:0].C} Derived clock on input (not legal for GCC)
+p {t:psc.clk_out.Q[0]}{t:psc.clk_out_derived_clock.I[0]}{t:psc.clk_out_derived_clock.OUT[0]}{p:psc.clk_out}{t:psc.clk_out}{t:pc.clk}{p:pc.clk}{t:pc.pc_a[15:0].C}
+e ckid0_0 {t:pc.pc_a[15:0].C} sdffr
+d ckid0_1 {t:psc.clk_out.Q[0]} dff Derived clock on input (not legal for GCC)
+i pll_inst.CLKOS3_i
+m 0 0
+u 2 9
+n ckid0_2 {t:psc.clk_out.C} Clock source is invalid for GCC
+p {t:pll_inst.PLLInst_0.CLKOS3}{t:pll_inst.CLKOS3_inferred_clock.I[0]}{t:pll_inst.CLKOS3_inferred_clock.OUT[0]}{p:pll_inst.CLKOS3}{t:pll_inst.CLKOS3}{t:psc.clk_in}{p:psc.clk_in}{t:psc.clk_out.C}
+e ckid0_2 {t:psc.clk_out.C} dff
+d ckid0_3 {t:pll_inst.PLLInst_0.CLKOS3} EHXPLLJ Clock source is invalid for GCC
+i pll_inst.CLKOP
+m 0 0
+u 0 0
+i pll_inst.LOCK
+m 0 0
+u 0 0
+l 0 0 0 0 0 0
+r 0 0 0 0 0 0 0 0

@@ -1,0 +1,1 @@
+run_tcl -fg ForthCPU_programCounter_synplify.tcl

@@ -1,0 +1,22 @@
+if {![file exists "C:/Users/Duncan/git/ForthCPU/example_tests/example_tests.mpf"]} { 
+	project new "C:/Users/Duncan/git/ForthCPU/example_tests" example_tests
+	project addfile "C:/Users/Duncan/git/ForthCPU/example.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/example_tests.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/constants.v"
+	vlib  work
+	vdel -lib work -all 
+	vlib work
+	vlog -sv -mfcu \
+	+incdir+C:/Users/Duncan/git/ForthCPU \
+ -work work \
+	"C:/Users/Duncan/git/ForthCPU/example.v" \
+	"C:/Users/Duncan/git/ForthCPU/example_tests.v" \
+	"C:/Users/Duncan/git/ForthCPU/constants.v"
+} else {
+	project open "C:/Users/Duncan/git/ForthCPU/example_tests/example_tests"
+	project compileoutofdate
+}
+vsim -L work -L pmi_work -L ovi_machxo3l  example_testbench
+view wave
+add wave /*
+run 1000ns

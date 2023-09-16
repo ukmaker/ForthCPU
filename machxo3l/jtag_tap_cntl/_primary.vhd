@@ -1,0 +1,56 @@
+library verilog;
+use verilog.vl_types.all;
+entity jtag_tap_cntl is
+    generic(
+        st_tlreset      : integer := 15;
+        st_capir        : integer := 14;
+        st_upir         : integer := 13;
+        st_rti          : integer := 12;
+        st_pauseir      : integer := 11;
+        st_shiftir      : integer := 10;
+        st_exit1ir      : integer := 9;
+        st_exit2ir      : integer := 8;
+        st_seldr        : integer := 7;
+        st_capdr        : integer := 6;
+        st_updr         : integer := 5;
+        st_selir        : integer := 4;
+        st_pausedr      : integer := 3;
+        st_shiftdr      : integer := 2;
+        st_exit1dr      : integer := 1;
+        st_exit2dr      : integer := 0
+    );
+    port(
+        tlreset         : out    vl_logic;
+        rti             : out    vl_logic;
+        jtag_state      : out    vl_logic_vector(3 downto 0);
+        jtag_ir_access  : out    vl_logic;
+        ClockIR         : out    vl_logic;
+        UpdateIR        : out    vl_logic;
+        ClockDR         : out    vl_logic;
+        UpdateDR        : out    vl_logic;
+        ShiftIR         : out    vl_logic;
+        ShiftDR         : out    vl_logic;
+        CaptureIR       : out    vl_logic;
+        CaptureDR       : out    vl_logic;
+        upir_ss         : out    vl_logic;
+        exit1ir_ss      : out    vl_logic;
+        exit2ir_ss      : out    vl_logic;
+        selir_ss        : out    vl_logic;
+        capir_ss        : out    vl_logic;
+        shiftir_ss      : out    vl_logic;
+        capdr_ss        : out    vl_logic;
+        updr_ss         : out    vl_logic;
+        seldr_ss        : out    vl_logic;
+        shiftdr_ss      : out    vl_logic;
+        exit1dr_ss      : out    vl_logic;
+        pausedr_ss      : out    vl_logic;
+        exit2dr_ss      : out    vl_logic;
+        capdr_ss_r      : out    vl_logic;
+        rti_r           : out    vl_logic;
+        upir_ss_r       : out    vl_logic;
+        exit1dr_ss_r    : out    vl_logic;
+        tck             : in     vl_logic;
+        tms             : in     vl_logic;
+        por             : in     vl_logic
+    );
+end jtag_tap_cntl;

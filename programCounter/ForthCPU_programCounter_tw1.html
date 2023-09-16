@@ -1,0 +1,402 @@
+<HTML>
+<HEAD><TITLE>Lattice Map TRACE Report</TITLE>
+<STYLE TYPE="text/css">
+<!--
+ body,pre{    font-family:'Courier New', monospace;    color: #000000;    font-size:88%;    background-color: #ffffff;}h1 {    font-weight: bold;    margin-top: 24px;    margin-bottom: 10px;    border-bottom: 3px solid #000;    font-size: 1em;}h2 {    font-weight: bold;    margin-top: 18px;    margin-bottom: 5px;    font-size: 0.90em;}h3 {    font-weight: bold;    margin-top: 12px;    margin-bottom: 5px;    font-size: 0.80em;}p {    font-size:78%;}P.Table {    margin-top: 4px;    margin-bottom: 4px;    margin-right: 4px;    margin-left: 4px;}table{    border-width: 1px 1px 1px 1px;    border-style: solid solid solid solid;    border-color: black black black black;    border-collapse: collapse;}th {    font-weight:bold;    padding: 4px;    border-width: 1px 1px 1px 1px;    border-style: solid solid solid solid;    border-color: black black black black;    vertical-align:top;    text-align:left;    font-size:78%;}td {    padding: 4px;    border-width: 1px 1px 1px 1px;    border-style: solid solid solid solid;    border-color: black black black black;    vertical-align:top;    font-size:78%;}a {    color:#013C9A;    text-decoration:none;}a:visited {    color:#013C9A;}a:hover, a:active {    text-decoration:underline;    color:#5BAFD4;}.pass{background-color: #00ff00;}.fail{background-color: #ff0000;}.comment{    font-size: 90%;    font-style: italic;}
+-->
+</STYLE>
+</HEAD>
+<PRE><A name="Map_Twr"></A><B><U><big>Map TRACE Report</big></U></B>
+
+Loading design for application trce from file forthcpu_programcounter_map.ncd.
+Design name: pc_test_harness
+NCD version: 3.3
+Vendor:      LATTICE
+Device:      LCMXO3L-6900C
+Package:     CABGA256
+Performance: 5
+Loading device for application trce from file 'xo3c6900.nph' in environment: C:/lscc/diamond/3.12/ispfpga.
+Package Status:                     Final          Version 1.17.
+Performance Hardware Data Status:   Final          Version 37.5.
+Setup and Hold Report
+
+--------------------------------------------------------------------------------
+<A name="Map_Twr_setup"></A><B><U><big>Lattice TRACE Report - Setup, Version Diamond (64-bit) 3.12.1.454</big></U></B>
+Tue Sep 12 18:23:28 2023
+
+Copyright (c) 1991-1994 by NeoCAD Inc. All rights reserved.
+Copyright (c) 1995 AT&T Corp.   All rights reserved.
+Copyright (c) 1995-2001 Lucent Technologies Inc.  All rights reserved.
+Copyright (c) 2001 Agere Systems   All rights reserved.
+Copyright (c) 2002-2020 Lattice Semiconductor Corporation,  All rights reserved.
+
+<A name="mtw1_set_ri"></A><B><U><big>Report Information</big></U></B>
+------------------
+Command line:    trce -v 1 -gt -mapchkpnt 0 -sethld -o ForthCPU_programCounter.tw1 -gui -msgset C:/Users/Duncan/git/ForthCPU/promote.xml ForthCPU_programCounter_map.ncd ForthCPU_programCounter.prf 
+Design file:     forthcpu_programcounter_map.ncd
+Preference file: forthcpu_programcounter.prf
+Device,speed:    LCMXO3L-6900C,5
+Report level:    verbose report, limited to 1 item per preference
+--------------------------------------------------------------------------------
+
+<A name="mtw1_set_ps"></A><B><U><big>Preference Summary</big></U></B>
+
+<LI><A href='#map_twr_pref_0_0' Target='right'>FREQUENCY NET "clk" 20.460000 MHz (0 errors)</A></LI>            0 items scored, 0 timing errors detected.
+
+<LI><A href='#map_twr_pref_0_1' Target='right'>FREQUENCY NET "CLKOS" 0.156250 MHz (0 errors)</A></LI>            37 items scored, 0 timing errors detected.
+Report:  362.845MHz is the maximum frequency for this preference.
+
+<LI><A href='#map_twr_pref_0_2' Target='right'>FREQUENCY NET "pll_inst/CLKOP" 10.000000 MHz (0 errors)</A></LI>            0 items scored, 0 timing errors detected.
+
+<LI><A href='#map_twr_pref_0_3' Target='right'>INPUT_SETUP ALLPORTS 50.000000 ns HOLD 12.000000 ns CLKNET "clk" ; Setup Analysis.(0 errors)</A></LI>            0 items scored, 0 timing errors detected.
+
+<LI><A href='#map_twr_pref_0_4' Target='right'>INPUT_SETUP PORT "reset" 50.000000 ns CLKNET "clk" (0 errors)</A></LI>            0 items scored, 0 timing errors detected.
+
+BLOCK ASYNCPATHS
+BLOCK RESETPATHS
+BLOCK JTAG PATHS
+--------------------------------------------------------------------------------
+
+
+
+================================================================================
+<A name="map_twr_pref_0_0"></A>Preference: FREQUENCY NET "clk" 20.460000 MHz ;
+            0 items scored, 0 timing errors detected.
+--------------------------------------------------------------------------------
+
+
+================================================================================
+<A name="map_twr_pref_0_1"></A>Preference: FREQUENCY NET "CLKOS" 0.156250 MHz ;
+            37 items scored, 0 timing errors detected.
+--------------------------------------------------------------------------------
+
+
+Passed: The following path meets requirements by 6397.244ns
+
+ Logical Details:  Cell type  Pin type       Cell/ASIC name  (clock net +/-)
+
+   Source:         FF         Q              psc/next[0]  (from CLKOS +)
+   Destination:    FF         Data in        psc/next[7]  (to CLKOS +)
+
+   Delay:               2.556ns  (84.1% logic, 15.9% route), 6 logic levels.
+
+ Constraint Details:
+
+      2.556ns physical path delay psc/SLICE_8 to psc/SLICE_9 meets
+    6400.000ns delay constraint less
+      0.050ns total jitter less
+      0.150ns DIN_SET requirement (totaling 6399.800ns) by 6397.244ns
+
+ Physical Path Details:
+
+      Data path psc/SLICE_8 to psc/SLICE_9:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+REG_DEL     ---     0.409 *c/SLICE_8.CLK to psc/SLICE_8.Q1 psc/SLICE_8 (from CLKOS)
+ROUTE         1   e 0.401 psc/SLICE_8.Q1 to psc/SLICE_8.A1 psc/next[0]
+C1TOFCO_DE  ---     0.786 psc/SLICE_8.A1 to *c/SLICE_8.FCO psc/SLICE_8
+ROUTE         1   e 0.001 *c/SLICE_8.FCO to */SLICE_12.FCI psc/next_cry[0]
+FCITOFCO_D  ---     0.146 */SLICE_12.FCI to */SLICE_12.FCO psc/SLICE_12
+ROUTE         1   e 0.001 */SLICE_12.FCO to */SLICE_11.FCI psc/next_cry[2]
+FCITOFCO_D  ---     0.146 */SLICE_11.FCI to */SLICE_11.FCO psc/SLICE_11
+ROUTE         1   e 0.001 */SLICE_11.FCO to */SLICE_10.FCI psc/next_cry[4]
+FCITOFCO_D  ---     0.146 */SLICE_10.FCI to */SLICE_10.FCO psc/SLICE_10
+ROUTE         1   e 0.001 */SLICE_10.FCO to *c/SLICE_9.FCI psc/next_cry[6]
+FCITOF0_DE  ---     0.517 *c/SLICE_9.FCI to psc/SLICE_9.F0 psc/SLICE_9
+ROUTE         1   e 0.001 psc/SLICE_9.F0 to *c/SLICE_9.DI0 psc/next_s[7] (to CLKOS)
+                  --------
+                    2.556   (84.1% logic, 15.9% route), 6 logic levels.
+
+ Total jitter: 0.050ns
+     0.050ns (system jitter)
+
+Report:  362.845MHz is the maximum frequency for this preference.
+
+
+================================================================================
+<A name="map_twr_pref_0_2"></A>Preference: FREQUENCY NET "pll_inst/CLKOP" 10.000000 MHz ;
+            0 items scored, 0 timing errors detected.
+--------------------------------------------------------------------------------
+
+
+================================================================================
+<A name="map_twr_pref_0_3"></A>Preference: INPUT_SETUP ALLPORTS 50.000000 ns HOLD 12.000000 ns CLKNET "clk" ; Setup Analysis.
+            0 items scored, 0 timing errors detected.
+--------------------------------------------------------------------------------
+
+
+================================================================================
+<A name="map_twr_pref_0_4"></A>Preference: INPUT_SETUP PORT "reset" 50.000000 ns CLKNET "clk" ;
+            0 items scored, 0 timing errors detected.
+--------------------------------------------------------------------------------
+
+<A name="mtw1_set_rs"></A><B><U><big>Report Summary</big></U></B>
+--------------
+----------------------------------------------------------------------------
+Preference                              |   Constraint|       Actual|Levels
+----------------------------------------------------------------------------
+                                        |             |             |
+FREQUENCY NET "clk" 20.460000 MHz ;     |            -|            -|   0  
+                                        |             |             |
+FREQUENCY NET "CLKOS" 0.156250 MHz ;    |    0.156 MHz|  362.845 MHz|   6  
+                                        |             |             |
+FREQUENCY NET "pll_inst/CLKOP"          |             |             |
+10.000000 MHz ;                         |            -|            -|   0  
+                                        |             |             |
+INPUT_SETUP ALLPORTS 50.000000 ns HOLD  |             |             |
+12.000000 ns CLKNET "clk" ; Setup       |             |             |
+Analysis.                               |            -|            -|   0  
+                                        |             |             |
+INPUT_SETUP PORT "reset" 50.000000 ns   |             |             |
+CLKNET "clk" ;                          |            -|            -|   0  
+                                        |             |             |
+----------------------------------------------------------------------------
+
+
+All preferences were met.
+
+
+<A name="mtw1_set_clkda"></A><B><U><big>Clock Domains Analysis</big></U></B>
+------------------------
+
+Found 4 clocks:
+
+Clock Domain: pll_inst/CLKOP   Source: pll_inst/PLLInst_0.CLKOP   Loads: 1
+   No transfer within this clock domain is found
+
+Clock Domain: pc_clk   Source: psc/SLICE_8.Q0   Loads: 10
+   No transfer within this clock domain is found
+
+Clock Domain: clk   Source: OSCinst0.OSC   Loads: 1
+   No transfer within this clock domain is found
+
+Clock Domain: CLKOS   Source: pll_inst/PLLInst_0.CLKOS3   Loads: 5
+   Covered under: FREQUENCY NET "CLKOS" 0.156250 MHz ;
+
+
+<A name="mtw1_set_ts"></A><B><U><big>Timing summary (Setup):</big></U></B>
+---------------
+
+Timing errors: 0  Score: 0
+Cumulative negative slack: 0
+
+Constraints cover 37 paths, 3 nets, and 29 connections (24.58% coverage)
+
+--------------------------------------------------------------------------------
+<A name="Map_Twr_hold"></A><B><U><big>Lattice TRACE Report - Hold, Version Diamond (64-bit) 3.12.1.454</big></U></B>
+Tue Sep 12 18:23:29 2023
+
+Copyright (c) 1991-1994 by NeoCAD Inc. All rights reserved.
+Copyright (c) 1995 AT&T Corp.   All rights reserved.
+Copyright (c) 1995-2001 Lucent Technologies Inc.  All rights reserved.
+Copyright (c) 2001 Agere Systems   All rights reserved.
+Copyright (c) 2002-2020 Lattice Semiconductor Corporation,  All rights reserved.
+
+<A name="mtw1_hold_ri"></A><B><U><big>Report Information</big></U></B>
+------------------
+Command line:    trce -v 1 -gt -mapchkpnt 0 -sethld -o ForthCPU_programCounter.tw1 -gui -msgset C:/Users/Duncan/git/ForthCPU/promote.xml ForthCPU_programCounter_map.ncd ForthCPU_programCounter.prf 
+Design file:     forthcpu_programcounter_map.ncd
+Preference file: forthcpu_programcounter.prf
+Device,speed:    LCMXO3L-6900C,M
+Report level:    verbose report, limited to 1 item per preference
+--------------------------------------------------------------------------------
+
+<A name="mtw1_hold_ps"></A><B><U><big>Preference Summary</big></U></B>
+
+<LI><A href='#map_twr_pref_1_0' Target='right'>FREQUENCY NET "clk" 20.460000 MHz (0 errors)</A></LI>            0 items scored, 0 timing errors detected.
+
+<LI><A href='#map_twr_pref_1_1' Target='right'>FREQUENCY NET "CLKOS" 0.156250 MHz (0 errors)</A></LI>            37 items scored, 0 timing errors detected.
+
+<LI><A href='#map_twr_pref_1_2' Target='right'>FREQUENCY NET "pll_inst/CLKOP" 10.000000 MHz (0 errors)</A></LI>            0 items scored, 0 timing errors detected.
+
+<LI><A href='#map_twr_pref_1_3' Target='right'>INPUT_SETUP ALLPORTS 50.000000 ns HOLD 12.000000 ns CLKNET "clk" (0 errors)</A></LI>            0 items scored, 0 timing errors detected.
+
+<LI><A href='#map_twr_pref_1_4' Target='right'>INPUT_SETUP PORT "reset" 50.000000 ns CLKNET "clk" (0 errors)</A></LI>            0 items scored, 0 timing errors detected.
+
+BLOCK ASYNCPATHS
+BLOCK RESETPATHS
+BLOCK JTAG PATHS
+--------------------------------------------------------------------------------
+
+
+
+================================================================================
+<A name="map_twr_pref_1_0"></A>Preference: FREQUENCY NET "clk" 20.460000 MHz ;
+            0 items scored, 0 timing errors detected.
+--------------------------------------------------------------------------------
+
+
+================================================================================
+<A name="map_twr_pref_1_1"></A>Preference: FREQUENCY NET "CLKOS" 0.156250 MHz ;
+            37 items scored, 0 timing errors detected.
+--------------------------------------------------------------------------------
+
+
+Passed: The following path meets requirements by 0.397ns
+
+ Logical Details:  Cell type  Pin type       Cell/ASIC name  (clock net +/-)
+
+   Source:         FF         Q              psc/next[5]  (from CLKOS +)
+   Destination:    FF         Data in        psc/next[5]  (to CLKOS +)
+
+   Delay:               0.434ns  (53.9% logic, 46.1% route), 2 logic levels.
+
+ Constraint Details:
+
+      0.434ns physical path delay psc/SLICE_10 to psc/SLICE_10 meets
+     -0.013ns DIN_HLD and
+      0.000ns delay constraint plus
+      0.050ns total jitter requirement (totaling 0.037ns) by 0.397ns
+
+ Physical Path Details:
+
+      Data path psc/SLICE_10 to psc/SLICE_10:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+REG_DEL     ---     0.133 */SLICE_10.CLK to *c/SLICE_10.Q0 psc/SLICE_10 (from CLKOS)
+ROUTE         1   e 0.199 *c/SLICE_10.Q0 to *c/SLICE_10.A0 psc/next[5]
+CTOF_DEL    ---     0.101 *c/SLICE_10.A0 to *c/SLICE_10.F0 psc/SLICE_10
+ROUTE         1   e 0.001 *c/SLICE_10.F0 to */SLICE_10.DI0 psc/next_s[5] (to CLKOS)
+                  --------
+                    0.434   (53.9% logic, 46.1% route), 2 logic levels.
+
+ Total jitter: 0.050ns
+     0.050ns (system jitter)
+
+
+================================================================================
+<A name="map_twr_pref_1_2"></A>Preference: FREQUENCY NET "pll_inst/CLKOP" 10.000000 MHz ;
+            0 items scored, 0 timing errors detected.
+--------------------------------------------------------------------------------
+
+
+================================================================================
+<A name="map_twr_pref_1_3"></A>Preference: INPUT_SETUP ALLPORTS 50.000000 ns HOLD 12.000000 ns CLKNET "clk" ;
+            0 items scored, 0 timing errors detected.
+--------------------------------------------------------------------------------
+
+
+================================================================================
+<A name="map_twr_pref_1_4"></A>Preference: INPUT_SETUP PORT "reset" 50.000000 ns CLKNET "clk" ;
+            0 items scored, 0 timing errors detected.
+--------------------------------------------------------------------------------
+
+<A name="mtw1_hold_rs"></A><B><U><big>Report Summary</big></U></B>
+--------------
+----------------------------------------------------------------------------
+Preference(MIN Delays)                  |   Constraint|       Actual|Levels
+----------------------------------------------------------------------------
+                                        |             |             |
+FREQUENCY NET "clk" 20.460000 MHz ;     |            -|            -|   0  
+                                        |             |             |
+FREQUENCY NET "CLKOS" 0.156250 MHz ;    |     0.000 ns|     0.397 ns|   2  
+                                        |             |             |
+FREQUENCY NET "pll_inst/CLKOP"          |             |             |
+10.000000 MHz ;                         |            -|            -|   0  
+                                        |             |             |
+INPUT_SETUP ALLPORTS 50.000000 ns HOLD  |             |             |
+12.000000 ns CLKNET "clk" ;             |            -|            -|   0  
+                                        |             |             |
+INPUT_SETUP PORT "reset" 50.000000 ns   |             |             |
+CLKNET "clk" ;                          |            -|            -|   0  
+                                        |             |             |
+----------------------------------------------------------------------------
+
+
+All preferences were met.
+
+
+<A name="mtw1_hold_clkda"></A><B><U><big>Clock Domains Analysis</big></U></B>
+------------------------
+
+Found 4 clocks:
+
+Clock Domain: pll_inst/CLKOP   Source: pll_inst/PLLInst_0.CLKOP   Loads: 1
+   No transfer within this clock domain is found
+
+Clock Domain: pc_clk   Source: psc/SLICE_8.Q0   Loads: 10
+   No transfer within this clock domain is found
+
+Clock Domain: clk   Source: OSCinst0.OSC   Loads: 1
+   No transfer within this clock domain is found
+
+Clock Domain: CLKOS   Source: pll_inst/PLLInst_0.CLKOS3   Loads: 5
+   Covered under: FREQUENCY NET "CLKOS" 0.156250 MHz ;
+
+
+<A name="mtw1_hold_ts"></A><B><U><big>Timing summary (Hold):</big></U></B>
+---------------
+
+Timing errors: 0  Score: 0
+Cumulative negative slack: 0
+
+Constraints cover 37 paths, 3 nets, and 29 connections (24.58% coverage)
+
+
+
+<A name="mtw1_ts"></A><B><U><big>Timing summary (Setup and Hold):</big></U></B>
+---------------
+
+Timing errors: 0 (setup), 0 (hold)
+Score: 0 (setup), 0 (hold)
+Cumulative negative slack: 0 (0+0)
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+
+
+
+
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+</PRE></FONT>
+</BODY>
+</HTML>

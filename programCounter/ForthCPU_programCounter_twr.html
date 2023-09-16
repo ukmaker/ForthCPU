@@ -1,0 +1,1360 @@
+<HTML>
+<HEAD><TITLE>Lattice TRACE Report</TITLE>
+<STYLE TYPE="text/css">
+<!--
+ body,pre{    font-family:'Courier New', monospace;    color: #000000;    font-size:88%;    background-color: #ffffff;}h1 {    font-weight: bold;    margin-top: 24px;    margin-bottom: 10px;    border-bottom: 3px solid #000;    font-size: 1em;}h2 {    font-weight: bold;    margin-top: 18px;    margin-bottom: 5px;    font-size: 0.90em;}h3 {    font-weight: bold;    margin-top: 12px;    margin-bottom: 5px;    font-size: 0.80em;}p {    font-size:78%;}P.Table {    margin-top: 4px;    margin-bottom: 4px;    margin-right: 4px;    margin-left: 4px;}table{    border-width: 1px 1px 1px 1px;    border-style: solid solid solid solid;    border-color: black black black black;    border-collapse: collapse;}th {    font-weight:bold;    padding: 4px;    border-width: 1px 1px 1px 1px;    border-style: solid solid solid solid;    border-color: black black black black;    vertical-align:top;    text-align:left;    font-size:78%;}td {    padding: 4px;    border-width: 1px 1px 1px 1px;    border-style: solid solid solid solid;    border-color: black black black black;    vertical-align:top;    font-size:78%;}a {    color:#013C9A;    text-decoration:none;}a:visited {    color:#013C9A;}a:hover, a:active {    text-decoration:underline;    color:#5BAFD4;}.pass{background-color: #00ff00;}.fail{background-color: #ff0000;}.comment{    font-size: 90%;    font-style: italic;}
+-->
+</STYLE>
+</HEAD>
+<PRE><A name="Par_Twr"></A><B><U><big>Place & Route TRACE Report</big></U></B>
+
+Loading design for application trce from file forthcpu_programcounter.ncd.
+Design name: pc_test_harness
+NCD version: 3.3
+Vendor:      LATTICE
+Device:      LCMXO3L-6900C
+Package:     CABGA256
+Performance: 5
+Loading device for application trce from file 'xo3c6900.nph' in environment: C:/lscc/diamond/3.12/ispfpga.
+Package Status:                     Final          Version 1.17.
+Performance Hardware Data Status:   Final          Version 37.5.
+Setup and Hold Report
+
+--------------------------------------------------------------------------------
+<A name="Par_Twr_setup"></A><B><U><big>Lattice TRACE Report - Setup, Version Diamond (64-bit) 3.12.1.454</big></U></B>
+Tue Sep 12 18:23:36 2023
+
+Copyright (c) 1991-1994 by NeoCAD Inc. All rights reserved.
+Copyright (c) 1995 AT&T Corp.   All rights reserved.
+Copyright (c) 1995-2001 Lucent Technologies Inc.  All rights reserved.
+Copyright (c) 2001 Agere Systems   All rights reserved.
+Copyright (c) 2002-2020 Lattice Semiconductor Corporation,  All rights reserved.
+
+<A name="ptwr_set_ri"></A><B><U><big>Report Information</big></U></B>
+------------------
+Command line:    trce -v 10 -gt -sethld -sp 5 -sphld m -o ForthCPU_programCounter.twr -gui -msgset C:/Users/Duncan/git/ForthCPU/promote.xml ForthCPU_programCounter.ncd ForthCPU_programCounter.prf 
+Design file:     forthcpu_programcounter.ncd
+Preference file: forthcpu_programcounter.prf
+Device,speed:    LCMXO3L-6900C,5
+Report level:    verbose report, limited to 10 items per preference
+--------------------------------------------------------------------------------
+
+<A name="ptwr_set_ps"></A><B><U><big>Preference Summary</big></U></B>
+
+<LI><A href='#par_twr_pref_0_0' Target='right'>FREQUENCY NET "clk" 20.460000 MHz (0 errors)</A></LI>            0 items scored, 0 timing errors detected.
+
+<LI><A href='#par_twr_pref_0_1' Target='right'>FREQUENCY NET "CLKOS" 0.156250 MHz (0 errors)</A></LI>            37 items scored, 0 timing errors detected.
+Report:  341.413MHz is the maximum frequency for this preference.
+
+<LI><A href='#par_twr_pref_0_2' Target='right'>FREQUENCY NET "pll_inst/CLKOP" 10.000000 MHz (0 errors)</A></LI>            0 items scored, 0 timing errors detected.
+
+<LI><A href='#par_twr_pref_0_3' Target='right'>INPUT_SETUP ALLPORTS 50.000000 ns HOLD 12.000000 ns CLKNET "clk" ; Setup Analysis.(0 errors)</A></LI>            0 items scored, 0 timing errors detected.
+
+<LI><A href='#par_twr_pref_0_4' Target='right'>INPUT_SETUP PORT "reset" 50.000000 ns CLKNET "clk" (0 errors)</A></LI>            0 items scored, 0 timing errors detected.
+
+BLOCK ASYNCPATHS
+BLOCK RESETPATHS
+BLOCK JTAG PATHS
+--------------------------------------------------------------------------------
+
+
+
+================================================================================
+<A name="par_twr_pref_0_0"></A>Preference: FREQUENCY NET "clk" 20.460000 MHz ;
+            0 items scored, 0 timing errors detected.
+--------------------------------------------------------------------------------
+
+
+================================================================================
+<A name="par_twr_pref_0_1"></A>Preference: FREQUENCY NET "CLKOS" 0.156250 MHz ;
+            37 items scored, 0 timing errors detected.
+--------------------------------------------------------------------------------
+
+
+Passed: The following path meets requirements by 6397.071ns
+
+ Logical Details:  Cell type  Pin type       Cell/ASIC name  (clock net +/-)
+
+   Source:         FF         Q              psc/next[0]  (from CLKOS +)
+   Destination:    FF         Data in        psc/next[7]  (to CLKOS +)
+
+   Delay:               2.729ns  (78.8% logic, 21.2% route), 6 logic levels.
+
+ Constraint Details:
+
+      2.729ns physical path delay psc/SLICE_8 to psc/SLICE_9 meets
+    6400.000ns delay constraint less
+      0.050ns total jitter less
+      0.000ns skew and
+      0.150ns DIN_SET requirement (totaling 6399.800ns) by 6397.071ns
+
+ Physical Path Details:
+
+      Data path psc/SLICE_8 to psc/SLICE_9:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+REG_DEL     ---     0.409     R2C19A.CLK to      R2C19A.Q1 psc/SLICE_8 (from CLKOS)
+ROUTE         1     0.579      R2C19A.Q1 to      R2C19A.A1 psc/next[0]
+C1TOFCO_DE  ---     0.786      R2C19A.A1 to     R2C19A.FCO psc/SLICE_8
+ROUTE         1     0.000     R2C19A.FCO to     R2C19B.FCI psc/next_cry[0]
+FCITOFCO_D  ---     0.146     R2C19B.FCI to     R2C19B.FCO psc/SLICE_12
+ROUTE         1     0.000     R2C19B.FCO to     R2C19C.FCI psc/next_cry[2]
+FCITOFCO_D  ---     0.146     R2C19C.FCI to     R2C19C.FCO psc/SLICE_11
+ROUTE         1     0.000     R2C19C.FCO to     R2C19D.FCI psc/next_cry[4]
+FCITOFCO_D  ---     0.146     R2C19D.FCI to     R2C19D.FCO psc/SLICE_10
+ROUTE         1     0.000     R2C19D.FCO to     R2C20A.FCI psc/next_cry[6]
+FCITOF0_DE  ---     0.517     R2C20A.FCI to      R2C20A.F0 psc/SLICE_9
+ROUTE         1     0.000      R2C20A.F0 to     R2C20A.DI0 psc/next_s[7] (to CLKOS)
+                  --------
+                    2.729   (78.8% logic, 21.2% route), 6 logic levels.
+
+ Clock Skew Details: 
+
+      Source Clock Path pll_inst/PLLInst_0 to psc/SLICE_8:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE         5     3.441    LPLL.CLKOS3 to     R2C19A.CLK CLKOS
+                  --------
+                    3.441   (0.0% logic, 100.0% route), 0 logic levels.
+
+      Destination Clock Path pll_inst/PLLInst_0 to psc/SLICE_9:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE         5     3.441    LPLL.CLKOS3 to     R2C20A.CLK CLKOS
+                  --------
+                    3.441   (0.0% logic, 100.0% route), 0 logic levels.
+
+ Total jitter: 0.050ns
+     0.050ns (system jitter)
+
+
+Passed: The following path meets requirements by 6397.098ns
+
+ Logical Details:  Cell type  Pin type       Cell/ASIC name  (clock net +/-)
+
+   Source:         FF         Q              psc/next[1]  (from CLKOS +)
+   Destination:    FF         Data in        psc/next[7]  (to CLKOS +)
+
+   Delay:               2.702ns  (78.6% logic, 21.4% route), 5 logic levels.
+
+ Constraint Details:
+
+      2.702ns physical path delay psc/SLICE_12 to psc/SLICE_9 meets
+    6400.000ns delay constraint less
+      0.050ns total jitter less
+      0.000ns skew and
+      0.150ns DIN_SET requirement (totaling 6399.800ns) by 6397.098ns
+
+ Physical Path Details:
+
+      Data path psc/SLICE_12 to psc/SLICE_9:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+REG_DEL     ---     0.409     R2C19B.CLK to      R2C19B.Q0 psc/SLICE_12 (from CLKOS)
+ROUTE         1     0.579      R2C19B.Q0 to      R2C19B.A0 psc/next[1]
+C0TOFCO_DE  ---     0.905      R2C19B.A0 to     R2C19B.FCO psc/SLICE_12
+ROUTE         1     0.000     R2C19B.FCO to     R2C19C.FCI psc/next_cry[2]
+FCITOFCO_D  ---     0.146     R2C19C.FCI to     R2C19C.FCO psc/SLICE_11
+ROUTE         1     0.000     R2C19C.FCO to     R2C19D.FCI psc/next_cry[4]
+FCITOFCO_D  ---     0.146     R2C19D.FCI to     R2C19D.FCO psc/SLICE_10
+ROUTE         1     0.000     R2C19D.FCO to     R2C20A.FCI psc/next_cry[6]
+FCITOF0_DE  ---     0.517     R2C20A.FCI to      R2C20A.F0 psc/SLICE_9
+ROUTE         1     0.000      R2C20A.F0 to     R2C20A.DI0 psc/next_s[7] (to CLKOS)
+                  --------
+                    2.702   (78.6% logic, 21.4% route), 5 logic levels.
+
+ Clock Skew Details: 
+
+      Source Clock Path pll_inst/PLLInst_0 to psc/SLICE_12:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE         5     3.441    LPLL.CLKOS3 to     R2C19B.CLK CLKOS
+                  --------
+                    3.441   (0.0% logic, 100.0% route), 0 logic levels.
+
+      Destination Clock Path pll_inst/PLLInst_0 to psc/SLICE_9:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE         5     3.441    LPLL.CLKOS3 to     R2C20A.CLK CLKOS
+                  --------
+                    3.441   (0.0% logic, 100.0% route), 0 logic levels.
+
+ Total jitter: 0.050ns
+     0.050ns (system jitter)
+
+
+Passed: The following path meets requirements by 6397.165ns
+
+ Logical Details:  Cell type  Pin type       Cell/ASIC name  (clock net +/-)
+
+   Source:         FF         Q              psc/next[0]  (from CLKOS +)
+   Destination:    FF         Data in        psc/next[6]  (to CLKOS +)
+
+   Delay:               2.635ns  (78.0% logic, 22.0% route), 5 logic levels.
+
+ Constraint Details:
+
+      2.635ns physical path delay psc/SLICE_8 to psc/SLICE_10 meets
+    6400.000ns delay constraint less
+      0.050ns total jitter less
+      0.000ns skew and
+      0.150ns DIN_SET requirement (totaling 6399.800ns) by 6397.165ns
+
+ Physical Path Details:
+
+      Data path psc/SLICE_8 to psc/SLICE_10:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+REG_DEL     ---     0.409     R2C19A.CLK to      R2C19A.Q1 psc/SLICE_8 (from CLKOS)
+ROUTE         1     0.579      R2C19A.Q1 to      R2C19A.A1 psc/next[0]
+C1TOFCO_DE  ---     0.786      R2C19A.A1 to     R2C19A.FCO psc/SLICE_8
+ROUTE         1     0.000     R2C19A.FCO to     R2C19B.FCI psc/next_cry[0]
+FCITOFCO_D  ---     0.146     R2C19B.FCI to     R2C19B.FCO psc/SLICE_12
+ROUTE         1     0.000     R2C19B.FCO to     R2C19C.FCI psc/next_cry[2]
+FCITOFCO_D  ---     0.146     R2C19C.FCI to     R2C19C.FCO psc/SLICE_11
+ROUTE         1     0.000     R2C19C.FCO to     R2C19D.FCI psc/next_cry[4]
+FCITOF1_DE  ---     0.569     R2C19D.FCI to      R2C19D.F1 psc/SLICE_10
+ROUTE         1     0.000      R2C19D.F1 to     R2C19D.DI1 psc/next_s[6] (to CLKOS)
+                  --------
+                    2.635   (78.0% logic, 22.0% route), 5 logic levels.
+
+ Clock Skew Details: 
+
+      Source Clock Path pll_inst/PLLInst_0 to psc/SLICE_8:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE         5     3.441    LPLL.CLKOS3 to     R2C19A.CLK CLKOS
+                  --------
+                    3.441   (0.0% logic, 100.0% route), 0 logic levels.
+
+      Destination Clock Path pll_inst/PLLInst_0 to psc/SLICE_10:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE         5     3.441    LPLL.CLKOS3 to     R2C19D.CLK CLKOS
+                  --------
+                    3.441   (0.0% logic, 100.0% route), 0 logic levels.
+
+ Total jitter: 0.050ns
+     0.050ns (system jitter)
+
+
+Passed: The following path meets requirements by 6397.192ns
+
+ Logical Details:  Cell type  Pin type       Cell/ASIC name  (clock net +/-)
+
+   Source:         FF         Q              psc/next[1]  (from CLKOS +)
+   Destination:    FF         Data in        psc/next[6]  (to CLKOS +)
+
+   Delay:               2.608ns  (77.8% logic, 22.2% route), 4 logic levels.
+
+ Constraint Details:
+
+      2.608ns physical path delay psc/SLICE_12 to psc/SLICE_10 meets
+    6400.000ns delay constraint less
+      0.050ns total jitter less
+      0.000ns skew and
+      0.150ns DIN_SET requirement (totaling 6399.800ns) by 6397.192ns
+
+ Physical Path Details:
+
+      Data path psc/SLICE_12 to psc/SLICE_10:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+REG_DEL     ---     0.409     R2C19B.CLK to      R2C19B.Q0 psc/SLICE_12 (from CLKOS)
+ROUTE         1     0.579      R2C19B.Q0 to      R2C19B.A0 psc/next[1]
+C0TOFCO_DE  ---     0.905      R2C19B.A0 to     R2C19B.FCO psc/SLICE_12
+ROUTE         1     0.000     R2C19B.FCO to     R2C19C.FCI psc/next_cry[2]
+FCITOFCO_D  ---     0.146     R2C19C.FCI to     R2C19C.FCO psc/SLICE_11
+ROUTE         1     0.000     R2C19C.FCO to     R2C19D.FCI psc/next_cry[4]
+FCITOF1_DE  ---     0.569     R2C19D.FCI to      R2C19D.F1 psc/SLICE_10
+ROUTE         1     0.000      R2C19D.F1 to     R2C19D.DI1 psc/next_s[6] (to CLKOS)
+                  --------
+                    2.608   (77.8% logic, 22.2% route), 4 logic levels.
+
+ Clock Skew Details: 
+
+      Source Clock Path pll_inst/PLLInst_0 to psc/SLICE_12:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE         5     3.441    LPLL.CLKOS3 to     R2C19B.CLK CLKOS
+                  --------
+                    3.441   (0.0% logic, 100.0% route), 0 logic levels.
+
+      Destination Clock Path pll_inst/PLLInst_0 to psc/SLICE_10:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE         5     3.441    LPLL.CLKOS3 to     R2C19D.CLK CLKOS
+                  --------
+                    3.441   (0.0% logic, 100.0% route), 0 logic levels.
+
+ Total jitter: 0.050ns
+     0.050ns (system jitter)
+
+
+Passed: The following path meets requirements by 6397.217ns
+
+ Logical Details:  Cell type  Pin type       Cell/ASIC name  (clock net +/-)
+
+   Source:         FF         Q              psc/next[2]  (from CLKOS +)
+   Destination:    FF         Data in        psc/next[7]  (to CLKOS +)
+
+   Delay:               2.583ns  (77.6% logic, 22.4% route), 5 logic levels.
+
+ Constraint Details:
+
+      2.583ns physical path delay psc/SLICE_12 to psc/SLICE_9 meets
+    6400.000ns delay constraint less
+      0.050ns total jitter less
+      0.000ns skew and
+      0.150ns DIN_SET requirement (totaling 6399.800ns) by 6397.217ns
+
+ Physical Path Details:
+
+      Data path psc/SLICE_12 to psc/SLICE_9:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+REG_DEL     ---     0.409     R2C19B.CLK to      R2C19B.Q1 psc/SLICE_12 (from CLKOS)
+ROUTE         1     0.579      R2C19B.Q1 to      R2C19B.A1 psc/next[2]
+C1TOFCO_DE  ---     0.786      R2C19B.A1 to     R2C19B.FCO psc/SLICE_12
+ROUTE         1     0.000     R2C19B.FCO to     R2C19C.FCI psc/next_cry[2]
+FCITOFCO_D  ---     0.146     R2C19C.FCI to     R2C19C.FCO psc/SLICE_11
+ROUTE         1     0.000     R2C19C.FCO to     R2C19D.FCI psc/next_cry[4]
+FCITOFCO_D  ---     0.146     R2C19D.FCI to     R2C19D.FCO psc/SLICE_10
+ROUTE         1     0.000     R2C19D.FCO to     R2C20A.FCI psc/next_cry[6]
+FCITOF0_DE  ---     0.517     R2C20A.FCI to      R2C20A.F0 psc/SLICE_9
+ROUTE         1     0.000      R2C20A.F0 to     R2C20A.DI0 psc/next_s[7] (to CLKOS)
+                  --------
+                    2.583   (77.6% logic, 22.4% route), 5 logic levels.
+
+ Clock Skew Details: 
+
+      Source Clock Path pll_inst/PLLInst_0 to psc/SLICE_12:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE         5     3.441    LPLL.CLKOS3 to     R2C19B.CLK CLKOS
+                  --------
+                    3.441   (0.0% logic, 100.0% route), 0 logic levels.
+
+      Destination Clock Path pll_inst/PLLInst_0 to psc/SLICE_9:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE         5     3.441    LPLL.CLKOS3 to     R2C20A.CLK CLKOS
+                  --------
+                    3.441   (0.0% logic, 100.0% route), 0 logic levels.
+
+ Total jitter: 0.050ns
+     0.050ns (system jitter)
+
+
+Passed: The following path meets requirements by 6397.217ns
+
+ Logical Details:  Cell type  Pin type       Cell/ASIC name  (clock net +/-)
+
+   Source:         FF         Q              psc/next[0]  (from CLKOS +)
+   Destination:    FF         Data in        psc/next[5]  (to CLKOS +)
+
+   Delay:               2.583ns  (77.6% logic, 22.4% route), 5 logic levels.
+
+ Constraint Details:
+
+      2.583ns physical path delay psc/SLICE_8 to psc/SLICE_10 meets
+    6400.000ns delay constraint less
+      0.050ns total jitter less
+      0.000ns skew and
+      0.150ns DIN_SET requirement (totaling 6399.800ns) by 6397.217ns
+
+ Physical Path Details:
+
+      Data path psc/SLICE_8 to psc/SLICE_10:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+REG_DEL     ---     0.409     R2C19A.CLK to      R2C19A.Q1 psc/SLICE_8 (from CLKOS)
+ROUTE         1     0.579      R2C19A.Q1 to      R2C19A.A1 psc/next[0]
+C1TOFCO_DE  ---     0.786      R2C19A.A1 to     R2C19A.FCO psc/SLICE_8
+ROUTE         1     0.000     R2C19A.FCO to     R2C19B.FCI psc/next_cry[0]
+FCITOFCO_D  ---     0.146     R2C19B.FCI to     R2C19B.FCO psc/SLICE_12
+ROUTE         1     0.000     R2C19B.FCO to     R2C19C.FCI psc/next_cry[2]
+FCITOFCO_D  ---     0.146     R2C19C.FCI to     R2C19C.FCO psc/SLICE_11
+ROUTE         1     0.000     R2C19C.FCO to     R2C19D.FCI psc/next_cry[4]
+FCITOF0_DE  ---     0.517     R2C19D.FCI to      R2C19D.F0 psc/SLICE_10
+ROUTE         1     0.000      R2C19D.F0 to     R2C19D.DI0 psc/next_s[5] (to CLKOS)
+                  --------
+                    2.583   (77.6% logic, 22.4% route), 5 logic levels.
+
+ Clock Skew Details: 
+
+      Source Clock Path pll_inst/PLLInst_0 to psc/SLICE_8:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE         5     3.441    LPLL.CLKOS3 to     R2C19A.CLK CLKOS
+                  --------
+                    3.441   (0.0% logic, 100.0% route), 0 logic levels.
+
+      Destination Clock Path pll_inst/PLLInst_0 to psc/SLICE_10:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE         5     3.441    LPLL.CLKOS3 to     R2C19D.CLK CLKOS
+                  --------
+                    3.441   (0.0% logic, 100.0% route), 0 logic levels.
+
+ Total jitter: 0.050ns
+     0.050ns (system jitter)
+
+
+Passed: The following path meets requirements by 6397.244ns
+
+ Logical Details:  Cell type  Pin type       Cell/ASIC name  (clock net +/-)
+
+   Source:         FF         Q              psc/next[1]  (from CLKOS +)
+   Destination:    FF         Data in        psc/next[5]  (to CLKOS +)
+
+   Delay:               2.556ns  (77.3% logic, 22.7% route), 4 logic levels.
+
+ Constraint Details:
+
+      2.556ns physical path delay psc/SLICE_12 to psc/SLICE_10 meets
+    6400.000ns delay constraint less
+      0.050ns total jitter less
+      0.000ns skew and
+      0.150ns DIN_SET requirement (totaling 6399.800ns) by 6397.244ns
+
+ Physical Path Details:
+
+      Data path psc/SLICE_12 to psc/SLICE_10:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+REG_DEL     ---     0.409     R2C19B.CLK to      R2C19B.Q0 psc/SLICE_12 (from CLKOS)
+ROUTE         1     0.579      R2C19B.Q0 to      R2C19B.A0 psc/next[1]
+C0TOFCO_DE  ---     0.905      R2C19B.A0 to     R2C19B.FCO psc/SLICE_12
+ROUTE         1     0.000     R2C19B.FCO to     R2C19C.FCI psc/next_cry[2]
+FCITOFCO_D  ---     0.146     R2C19C.FCI to     R2C19C.FCO psc/SLICE_11
+ROUTE         1     0.000     R2C19C.FCO to     R2C19D.FCI psc/next_cry[4]
+FCITOF0_DE  ---     0.517     R2C19D.FCI to      R2C19D.F0 psc/SLICE_10
+ROUTE         1     0.000      R2C19D.F0 to     R2C19D.DI0 psc/next_s[5] (to CLKOS)
+                  --------
+                    2.556   (77.3% logic, 22.7% route), 4 logic levels.
+
+ Clock Skew Details: 
+
+      Source Clock Path pll_inst/PLLInst_0 to psc/SLICE_12:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE         5     3.441    LPLL.CLKOS3 to     R2C19B.CLK CLKOS
+                  --------
+                    3.441   (0.0% logic, 100.0% route), 0 logic levels.
+
+      Destination Clock Path pll_inst/PLLInst_0 to psc/SLICE_10:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE         5     3.441    LPLL.CLKOS3 to     R2C19D.CLK CLKOS
+                  --------
+                    3.441   (0.0% logic, 100.0% route), 0 logic levels.
+
+ Total jitter: 0.050ns
+     0.050ns (system jitter)
+
+
+Passed: The following path meets requirements by 6397.244ns
+
+ Logical Details:  Cell type  Pin type       Cell/ASIC name  (clock net +/-)
+
+   Source:         FF         Q              psc/next[3]  (from CLKOS +)
+   Destination:    FF         Data in        psc/next[7]  (to CLKOS +)
+
+   Delay:               2.556ns  (77.3% logic, 22.7% route), 4 logic levels.
+
+ Constraint Details:
+
+      2.556ns physical path delay psc/SLICE_11 to psc/SLICE_9 meets
+    6400.000ns delay constraint less
+      0.050ns total jitter less
+      0.000ns skew and
+      0.150ns DIN_SET requirement (totaling 6399.800ns) by 6397.244ns
+
+ Physical Path Details:
+
+      Data path psc/SLICE_11 to psc/SLICE_9:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+REG_DEL     ---     0.409     R2C19C.CLK to      R2C19C.Q0 psc/SLICE_11 (from CLKOS)
+ROUTE         1     0.579      R2C19C.Q0 to      R2C19C.A0 psc/next[3]
+C0TOFCO_DE  ---     0.905      R2C19C.A0 to     R2C19C.FCO psc/SLICE_11
+ROUTE         1     0.000     R2C19C.FCO to     R2C19D.FCI psc/next_cry[4]
+FCITOFCO_D  ---     0.146     R2C19D.FCI to     R2C19D.FCO psc/SLICE_10
+ROUTE         1     0.000     R2C19D.FCO to     R2C20A.FCI psc/next_cry[6]
+FCITOF0_DE  ---     0.517     R2C20A.FCI to      R2C20A.F0 psc/SLICE_9
+ROUTE         1     0.000      R2C20A.F0 to     R2C20A.DI0 psc/next_s[7] (to CLKOS)
+                  --------
+                    2.556   (77.3% logic, 22.7% route), 4 logic levels.
+
+ Clock Skew Details: 
+
+      Source Clock Path pll_inst/PLLInst_0 to psc/SLICE_11:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE         5     3.441    LPLL.CLKOS3 to     R2C19C.CLK CLKOS
+                  --------
+                    3.441   (0.0% logic, 100.0% route), 0 logic levels.
+
+      Destination Clock Path pll_inst/PLLInst_0 to psc/SLICE_9:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE         5     3.441    LPLL.CLKOS3 to     R2C20A.CLK CLKOS
+                  --------
+                    3.441   (0.0% logic, 100.0% route), 0 logic levels.
+
+ Total jitter: 0.050ns
+     0.050ns (system jitter)
+
+
+Passed: The following path meets requirements by 6397.311ns
+
+ Logical Details:  Cell type  Pin type       Cell/ASIC name  (clock net +/-)
+
+   Source:         FF         Q              psc/next[2]  (from CLKOS +)
+   Destination:    FF         Data in        psc/next[6]  (to CLKOS +)
+
+   Delay:               2.489ns  (76.7% logic, 23.3% route), 4 logic levels.
+
+ Constraint Details:
+
+      2.489ns physical path delay psc/SLICE_12 to psc/SLICE_10 meets
+    6400.000ns delay constraint less
+      0.050ns total jitter less
+      0.000ns skew and
+      0.150ns DIN_SET requirement (totaling 6399.800ns) by 6397.311ns
+
+ Physical Path Details:
+
+      Data path psc/SLICE_12 to psc/SLICE_10:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+REG_DEL     ---     0.409     R2C19B.CLK to      R2C19B.Q1 psc/SLICE_12 (from CLKOS)
+ROUTE         1     0.579      R2C19B.Q1 to      R2C19B.A1 psc/next[2]
+C1TOFCO_DE  ---     0.786      R2C19B.A1 to     R2C19B.FCO psc/SLICE_12
+ROUTE         1     0.000     R2C19B.FCO to     R2C19C.FCI psc/next_cry[2]
+FCITOFCO_D  ---     0.146     R2C19C.FCI to     R2C19C.FCO psc/SLICE_11
+ROUTE         1     0.000     R2C19C.FCO to     R2C19D.FCI psc/next_cry[4]
+FCITOF1_DE  ---     0.569     R2C19D.FCI to      R2C19D.F1 psc/SLICE_10
+ROUTE         1     0.000      R2C19D.F1 to     R2C19D.DI1 psc/next_s[6] (to CLKOS)
+                  --------
+                    2.489   (76.7% logic, 23.3% route), 4 logic levels.
+
+ Clock Skew Details: 
+
+      Source Clock Path pll_inst/PLLInst_0 to psc/SLICE_12:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE         5     3.441    LPLL.CLKOS3 to     R2C19B.CLK CLKOS
+                  --------
+                    3.441   (0.0% logic, 100.0% route), 0 logic levels.
+
+      Destination Clock Path pll_inst/PLLInst_0 to psc/SLICE_10:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE         5     3.441    LPLL.CLKOS3 to     R2C19D.CLK CLKOS
+                  --------
+                    3.441   (0.0% logic, 100.0% route), 0 logic levels.
+
+ Total jitter: 0.050ns
+     0.050ns (system jitter)
+
+
+Passed: The following path meets requirements by 6397.311ns
+
+ Logical Details:  Cell type  Pin type       Cell/ASIC name  (clock net +/-)
+
+   Source:         FF         Q              psc/next[0]  (from CLKOS +)
+   Destination:    FF         Data in        psc/next[4]  (to CLKOS +)
+
+   Delay:               2.489ns  (76.7% logic, 23.3% route), 4 logic levels.
+
+ Constraint Details:
+
+      2.489ns physical path delay psc/SLICE_8 to psc/SLICE_11 meets
+    6400.000ns delay constraint less
+      0.050ns total jitter less
+      0.000ns skew and
+      0.150ns DIN_SET requirement (totaling 6399.800ns) by 6397.311ns
+
+ Physical Path Details:
+
+      Data path psc/SLICE_8 to psc/SLICE_11:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+REG_DEL     ---     0.409     R2C19A.CLK to      R2C19A.Q1 psc/SLICE_8 (from CLKOS)
+ROUTE         1     0.579      R2C19A.Q1 to      R2C19A.A1 psc/next[0]
+C1TOFCO_DE  ---     0.786      R2C19A.A1 to     R2C19A.FCO psc/SLICE_8
+ROUTE         1     0.000     R2C19A.FCO to     R2C19B.FCI psc/next_cry[0]
+FCITOFCO_D  ---     0.146     R2C19B.FCI to     R2C19B.FCO psc/SLICE_12
+ROUTE         1     0.000     R2C19B.FCO to     R2C19C.FCI psc/next_cry[2]
+FCITOF1_DE  ---     0.569     R2C19C.FCI to      R2C19C.F1 psc/SLICE_11
+ROUTE         1     0.000      R2C19C.F1 to     R2C19C.DI1 psc/next_s[4] (to CLKOS)
+                  --------
+                    2.489   (76.7% logic, 23.3% route), 4 logic levels.
+
+ Clock Skew Details: 
+
+      Source Clock Path pll_inst/PLLInst_0 to psc/SLICE_8:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE         5     3.441    LPLL.CLKOS3 to     R2C19A.CLK CLKOS
+                  --------
+                    3.441   (0.0% logic, 100.0% route), 0 logic levels.
+
+      Destination Clock Path pll_inst/PLLInst_0 to psc/SLICE_11:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE         5     3.441    LPLL.CLKOS3 to     R2C19C.CLK CLKOS
+                  --------
+                    3.441   (0.0% logic, 100.0% route), 0 logic levels.
+
+ Total jitter: 0.050ns
+     0.050ns (system jitter)
+
+Report:  341.413MHz is the maximum frequency for this preference.
+
+
+================================================================================
+<A name="par_twr_pref_0_2"></A>Preference: FREQUENCY NET "pll_inst/CLKOP" 10.000000 MHz ;
+            0 items scored, 0 timing errors detected.
+--------------------------------------------------------------------------------
+
+
+================================================================================
+<A name="par_twr_pref_0_3"></A>Preference: INPUT_SETUP ALLPORTS 50.000000 ns HOLD 12.000000 ns CLKNET "clk" ; Setup Analysis.
+            0 items scored, 0 timing errors detected.
+--------------------------------------------------------------------------------
+
+
+================================================================================
+<A name="par_twr_pref_0_4"></A>Preference: INPUT_SETUP PORT "reset" 50.000000 ns CLKNET "clk" ;
+            0 items scored, 0 timing errors detected.
+--------------------------------------------------------------------------------
+
+<A name="ptwr_set_rs"></A><B><U><big>Report Summary</big></U></B>
+--------------
+----------------------------------------------------------------------------
+Preference                              |   Constraint|       Actual|Levels
+----------------------------------------------------------------------------
+                                        |             |             |
+FREQUENCY NET "clk" 20.460000 MHz ;     |            -|            -|   0  
+                                        |             |             |
+FREQUENCY NET "CLKOS" 0.156250 MHz ;    |    0.156 MHz|  341.413 MHz|   6  
+                                        |             |             |
+FREQUENCY NET "pll_inst/CLKOP"          |             |             |
+10.000000 MHz ;                         |            -|            -|   0  
+                                        |             |             |
+INPUT_SETUP ALLPORTS 50.000000 ns HOLD  |             |             |
+12.000000 ns CLKNET "clk" ; Setup       |             |             |
+Analysis.                               |            -|            -|   0  
+                                        |             |             |
+INPUT_SETUP PORT "reset" 50.000000 ns   |             |             |
+CLKNET "clk" ;                          |            -|            -|   0  
+                                        |             |             |
+----------------------------------------------------------------------------
+
+
+All preferences were met.
+
+
+<A name="ptwr_set_clkda"></A><B><U><big>Clock Domains Analysis</big></U></B>
+------------------------
+
+Found 4 clocks:
+
+Clock Domain: pll_inst/CLKOP   Source: pll_inst/PLLInst_0.CLKOP   Loads: 1
+   No transfer within this clock domain is found
+
+Clock Domain: pc_clk   Source: psc/SLICE_8.Q0   Loads: 10
+   No transfer within this clock domain is found
+
+Clock Domain: clk   Source: OSCinst0.OSC   Loads: 1
+   No transfer within this clock domain is found
+
+Clock Domain: CLKOS   Source: pll_inst/PLLInst_0.CLKOS3   Loads: 5
+   Covered under: FREQUENCY NET "CLKOS" 0.156250 MHz ;
+
+
+<A name="ptwr_set_ts"></A><B><U><big>Timing summary (Setup):</big></U></B>
+---------------
+
+Timing errors: 0  Score: 0
+Cumulative negative slack: 0
+
+Constraints cover 37 paths, 3 nets, and 39 connections (33.05% coverage)
+
+--------------------------------------------------------------------------------
+<A name="Par_Twr_hold"></A><B><U><big>Lattice TRACE Report - Hold, Version Diamond (64-bit) 3.12.1.454</big></U></B>
+Tue Sep 12 18:23:36 2023
+
+Copyright (c) 1991-1994 by NeoCAD Inc. All rights reserved.
+Copyright (c) 1995 AT&T Corp.   All rights reserved.
+Copyright (c) 1995-2001 Lucent Technologies Inc.  All rights reserved.
+Copyright (c) 2001 Agere Systems   All rights reserved.
+Copyright (c) 2002-2020 Lattice Semiconductor Corporation,  All rights reserved.
+
+<A name="ptwr_hold_ri"></A><B><U><big>Report Information</big></U></B>
+------------------
+Command line:    trce -v 10 -gt -sethld -sp 5 -sphld m -o ForthCPU_programCounter.twr -gui -msgset C:/Users/Duncan/git/ForthCPU/promote.xml ForthCPU_programCounter.ncd ForthCPU_programCounter.prf 
+Design file:     forthcpu_programcounter.ncd
+Preference file: forthcpu_programcounter.prf
+Device,speed:    LCMXO3L-6900C,m
+Report level:    verbose report, limited to 10 items per preference
+--------------------------------------------------------------------------------
+
+<A name="ptwr_hold_ps"></A><B><U><big>Preference Summary</big></U></B>
+
+<LI><A href='#par_twr_pref_1_0' Target='right'>FREQUENCY NET "clk" 20.460000 MHz (0 errors)</A></LI>            0 items scored, 0 timing errors detected.
+
+<LI><A href='#par_twr_pref_1_1' Target='right'>FREQUENCY NET "CLKOS" 0.156250 MHz (0 errors)</A></LI>            37 items scored, 0 timing errors detected.
+
+<LI><A href='#par_twr_pref_1_2' Target='right'>FREQUENCY NET "pll_inst/CLKOP" 10.000000 MHz (0 errors)</A></LI>            0 items scored, 0 timing errors detected.
+
+<LI><A href='#par_twr_pref_1_3' Target='right'>INPUT_SETUP ALLPORTS 50.000000 ns HOLD 12.000000 ns CLKNET "clk" (0 errors)</A></LI>            0 items scored, 0 timing errors detected.
+
+<LI><A href='#par_twr_pref_1_4' Target='right'>INPUT_SETUP PORT "reset" 50.000000 ns CLKNET "clk" (0 errors)</A></LI>            0 items scored, 0 timing errors detected.
+
+BLOCK ASYNCPATHS
+BLOCK RESETPATHS
+BLOCK JTAG PATHS
+--------------------------------------------------------------------------------
+
+
+
+================================================================================
+<A name="par_twr_pref_1_0"></A>Preference: FREQUENCY NET "clk" 20.460000 MHz ;
+            0 items scored, 0 timing errors detected.
+--------------------------------------------------------------------------------
+
+
+================================================================================
+<A name="par_twr_pref_1_1"></A>Preference: FREQUENCY NET "CLKOS" 0.156250 MHz ;
+            37 items scored, 0 timing errors detected.
+--------------------------------------------------------------------------------
+
+
+Passed: The following path meets requirements by 0.258ns
+
+ Logical Details:  Cell type  Pin type       Cell/ASIC name  (clock net +/-)
+
+   Source:         FF         Q              psc/next[7]  (from CLKOS +)
+   Destination:    FF         Data in        psc/clk_out  (to CLKOS +)
+
+   Delay:               0.289ns  (46.0% logic, 54.0% route), 1 logic levels.
+
+ Constraint Details:
+
+      0.289ns physical path delay psc/SLICE_9 to psc/SLICE_8 meets
+     -0.019ns M_HLD and
+      0.000ns delay constraint plus
+      0.050ns total jitter less
+      0.000ns skew requirement (totaling 0.031ns) by 0.258ns
+
+ Physical Path Details:
+
+      Data path psc/SLICE_9 to psc/SLICE_8:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+REG_DEL     ---     0.133     R2C20A.CLK to      R2C20A.Q0 psc/SLICE_9 (from CLKOS)
+ROUTE         2     0.156      R2C20A.Q0 to      R2C19A.M0 psc/next[7] (to CLKOS)
+                  --------
+                    0.289   (46.0% logic, 54.0% route), 1 logic levels.
+
+ Clock Skew Details: 
+
+      Source Clock Path pll_inst/PLLInst_0 to psc/SLICE_9:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE         5     1.252    LPLL.CLKOS3 to     R2C20A.CLK CLKOS
+                  --------
+                    1.252   (0.0% logic, 100.0% route), 0 logic levels.
+
+      Destination Clock Path pll_inst/PLLInst_0 to psc/SLICE_8:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE         5     1.252    LPLL.CLKOS3 to     R2C19A.CLK CLKOS
+                  --------
+                    1.252   (0.0% logic, 100.0% route), 0 logic levels.
+
+ Total jitter: 0.050ns
+     0.050ns (system jitter)
+
+
+Passed: The following path meets requirements by 0.327ns
+
+ Logical Details:  Cell type  Pin type       Cell/ASIC name  (clock net +/-)
+
+   Source:         FF         Q              psc/next[0]  (from CLKOS +)
+   Destination:    FF         Data in        psc/next[0]  (to CLKOS +)
+
+   Delay:               0.364ns  (64.3% logic, 35.7% route), 2 logic levels.
+
+ Constraint Details:
+
+      0.364ns physical path delay psc/SLICE_8 to psc/SLICE_8 meets
+     -0.013ns DIN_HLD and
+      0.000ns delay constraint plus
+      0.050ns total jitter less
+      0.000ns skew requirement (totaling 0.037ns) by 0.327ns
+
+ Physical Path Details:
+
+      Data path psc/SLICE_8 to psc/SLICE_8:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+REG_DEL     ---     0.133     R2C19A.CLK to      R2C19A.Q1 psc/SLICE_8 (from CLKOS)
+ROUTE         1     0.130      R2C19A.Q1 to      R2C19A.A1 psc/next[0]
+CTOF_DEL    ---     0.101      R2C19A.A1 to      R2C19A.F1 psc/SLICE_8
+ROUTE         1     0.000      R2C19A.F1 to     R2C19A.DI1 psc/next_s[0] (to CLKOS)
+                  --------
+                    0.364   (64.3% logic, 35.7% route), 2 logic levels.
+
+ Clock Skew Details: 
+
+      Source Clock Path pll_inst/PLLInst_0 to psc/SLICE_8:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE         5     1.252    LPLL.CLKOS3 to     R2C19A.CLK CLKOS
+                  --------
+                    1.252   (0.0% logic, 100.0% route), 0 logic levels.
+
+      Destination Clock Path pll_inst/PLLInst_0 to psc/SLICE_8:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE         5     1.252    LPLL.CLKOS3 to     R2C19A.CLK CLKOS
+                  --------
+                    1.252   (0.0% logic, 100.0% route), 0 logic levels.
+
+ Total jitter: 0.050ns
+     0.050ns (system jitter)
+
+
+Passed: The following path meets requirements by 0.327ns
+
+ Logical Details:  Cell type  Pin type       Cell/ASIC name  (clock net +/-)
+
+   Source:         FF         Q              psc/next[5]  (from CLKOS +)
+   Destination:    FF         Data in        psc/next[5]  (to CLKOS +)
+
+   Delay:               0.364ns  (64.3% logic, 35.7% route), 2 logic levels.
+
+ Constraint Details:
+
+      0.364ns physical path delay psc/SLICE_10 to psc/SLICE_10 meets
+     -0.013ns DIN_HLD and
+      0.000ns delay constraint plus
+      0.050ns total jitter less
+      0.000ns skew requirement (totaling 0.037ns) by 0.327ns
+
+ Physical Path Details:
+
+      Data path psc/SLICE_10 to psc/SLICE_10:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+REG_DEL     ---     0.133     R2C19D.CLK to      R2C19D.Q0 psc/SLICE_10 (from CLKOS)
+ROUTE         1     0.130      R2C19D.Q0 to      R2C19D.A0 psc/next[5]
+CTOF_DEL    ---     0.101      R2C19D.A0 to      R2C19D.F0 psc/SLICE_10
+ROUTE         1     0.000      R2C19D.F0 to     R2C19D.DI0 psc/next_s[5] (to CLKOS)
+                  --------
+                    0.364   (64.3% logic, 35.7% route), 2 logic levels.
+
+ Clock Skew Details: 
+
+      Source Clock Path pll_inst/PLLInst_0 to psc/SLICE_10:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE         5     1.252    LPLL.CLKOS3 to     R2C19D.CLK CLKOS
+                  --------
+                    1.252   (0.0% logic, 100.0% route), 0 logic levels.
+
+      Destination Clock Path pll_inst/PLLInst_0 to psc/SLICE_10:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE         5     1.252    LPLL.CLKOS3 to     R2C19D.CLK CLKOS
+                  --------
+                    1.252   (0.0% logic, 100.0% route), 0 logic levels.
+
+ Total jitter: 0.050ns
+     0.050ns (system jitter)
+
+
+Passed: The following path meets requirements by 0.327ns
+
+ Logical Details:  Cell type  Pin type       Cell/ASIC name  (clock net +/-)
+
+   Source:         FF         Q              psc/next[4]  (from CLKOS +)
+   Destination:    FF         Data in        psc/next[4]  (to CLKOS +)
+
+   Delay:               0.364ns  (64.3% logic, 35.7% route), 2 logic levels.
+
+ Constraint Details:
+
+      0.364ns physical path delay psc/SLICE_11 to psc/SLICE_11 meets
+     -0.013ns DIN_HLD and
+      0.000ns delay constraint plus
+      0.050ns total jitter less
+      0.000ns skew requirement (totaling 0.037ns) by 0.327ns
+
+ Physical Path Details:
+
+      Data path psc/SLICE_11 to psc/SLICE_11:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+REG_DEL     ---     0.133     R2C19C.CLK to      R2C19C.Q1 psc/SLICE_11 (from CLKOS)
+ROUTE         1     0.130      R2C19C.Q1 to      R2C19C.A1 psc/next[4]
+CTOF_DEL    ---     0.101      R2C19C.A1 to      R2C19C.F1 psc/SLICE_11
+ROUTE         1     0.000      R2C19C.F1 to     R2C19C.DI1 psc/next_s[4] (to CLKOS)
+                  --------
+                    0.364   (64.3% logic, 35.7% route), 2 logic levels.
+
+ Clock Skew Details: 
+
+      Source Clock Path pll_inst/PLLInst_0 to psc/SLICE_11:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE         5     1.252    LPLL.CLKOS3 to     R2C19C.CLK CLKOS
+                  --------
+                    1.252   (0.0% logic, 100.0% route), 0 logic levels.
+
+      Destination Clock Path pll_inst/PLLInst_0 to psc/SLICE_11:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE         5     1.252    LPLL.CLKOS3 to     R2C19C.CLK CLKOS
+                  --------
+                    1.252   (0.0% logic, 100.0% route), 0 logic levels.
+
+ Total jitter: 0.050ns
+     0.050ns (system jitter)
+
+
+Passed: The following path meets requirements by 0.327ns
+
+ Logical Details:  Cell type  Pin type       Cell/ASIC name  (clock net +/-)
+
+   Source:         FF         Q              psc/next[1]  (from CLKOS +)
+   Destination:    FF         Data in        psc/next[1]  (to CLKOS +)
+
+   Delay:               0.364ns  (64.3% logic, 35.7% route), 2 logic levels.
+
+ Constraint Details:
+
+      0.364ns physical path delay psc/SLICE_12 to psc/SLICE_12 meets
+     -0.013ns DIN_HLD and
+      0.000ns delay constraint plus
+      0.050ns total jitter less
+      0.000ns skew requirement (totaling 0.037ns) by 0.327ns
+
+ Physical Path Details:
+
+      Data path psc/SLICE_12 to psc/SLICE_12:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+REG_DEL     ---     0.133     R2C19B.CLK to      R2C19B.Q0 psc/SLICE_12 (from CLKOS)
+ROUTE         1     0.130      R2C19B.Q0 to      R2C19B.A0 psc/next[1]
+CTOF_DEL    ---     0.101      R2C19B.A0 to      R2C19B.F0 psc/SLICE_12
+ROUTE         1     0.000      R2C19B.F0 to     R2C19B.DI0 psc/next_s[1] (to CLKOS)
+                  --------
+                    0.364   (64.3% logic, 35.7% route), 2 logic levels.
+
+ Clock Skew Details: 
+
+      Source Clock Path pll_inst/PLLInst_0 to psc/SLICE_12:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE         5     1.252    LPLL.CLKOS3 to     R2C19B.CLK CLKOS
+                  --------
+                    1.252   (0.0% logic, 100.0% route), 0 logic levels.
+
+      Destination Clock Path pll_inst/PLLInst_0 to psc/SLICE_12:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE         5     1.252    LPLL.CLKOS3 to     R2C19B.CLK CLKOS
+                  --------
+                    1.252   (0.0% logic, 100.0% route), 0 logic levels.
+
+ Total jitter: 0.050ns
+     0.050ns (system jitter)
+
+
+Passed: The following path meets requirements by 0.327ns
+
+ Logical Details:  Cell type  Pin type       Cell/ASIC name  (clock net +/-)
+
+   Source:         FF         Q              psc/next[3]  (from CLKOS +)
+   Destination:    FF         Data in        psc/next[3]  (to CLKOS +)
+
+   Delay:               0.364ns  (64.3% logic, 35.7% route), 2 logic levels.
+
+ Constraint Details:
+
+      0.364ns physical path delay psc/SLICE_11 to psc/SLICE_11 meets
+     -0.013ns DIN_HLD and
+      0.000ns delay constraint plus
+      0.050ns total jitter less
+      0.000ns skew requirement (totaling 0.037ns) by 0.327ns
+
+ Physical Path Details:
+
+      Data path psc/SLICE_11 to psc/SLICE_11:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+REG_DEL     ---     0.133     R2C19C.CLK to      R2C19C.Q0 psc/SLICE_11 (from CLKOS)
+ROUTE         1     0.130      R2C19C.Q0 to      R2C19C.A0 psc/next[3]
+CTOF_DEL    ---     0.101      R2C19C.A0 to      R2C19C.F0 psc/SLICE_11
+ROUTE         1     0.000      R2C19C.F0 to     R2C19C.DI0 psc/next_s[3] (to CLKOS)
+                  --------
+                    0.364   (64.3% logic, 35.7% route), 2 logic levels.
+
+ Clock Skew Details: 
+
+      Source Clock Path pll_inst/PLLInst_0 to psc/SLICE_11:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE         5     1.252    LPLL.CLKOS3 to     R2C19C.CLK CLKOS
+                  --------
+                    1.252   (0.0% logic, 100.0% route), 0 logic levels.
+
+      Destination Clock Path pll_inst/PLLInst_0 to psc/SLICE_11:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE         5     1.252    LPLL.CLKOS3 to     R2C19C.CLK CLKOS
+                  --------
+                    1.252   (0.0% logic, 100.0% route), 0 logic levels.
+
+ Total jitter: 0.050ns
+     0.050ns (system jitter)
+
+
+Passed: The following path meets requirements by 0.327ns
+
+ Logical Details:  Cell type  Pin type       Cell/ASIC name  (clock net +/-)
+
+   Source:         FF         Q              psc/next[2]  (from CLKOS +)
+   Destination:    FF         Data in        psc/next[2]  (to CLKOS +)
+
+   Delay:               0.364ns  (64.3% logic, 35.7% route), 2 logic levels.
+
+ Constraint Details:
+
+      0.364ns physical path delay psc/SLICE_12 to psc/SLICE_12 meets
+     -0.013ns DIN_HLD and
+      0.000ns delay constraint plus
+      0.050ns total jitter less
+      0.000ns skew requirement (totaling 0.037ns) by 0.327ns
+
+ Physical Path Details:
+
+      Data path psc/SLICE_12 to psc/SLICE_12:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+REG_DEL     ---     0.133     R2C19B.CLK to      R2C19B.Q1 psc/SLICE_12 (from CLKOS)
+ROUTE         1     0.130      R2C19B.Q1 to      R2C19B.A1 psc/next[2]
+CTOF_DEL    ---     0.101      R2C19B.A1 to      R2C19B.F1 psc/SLICE_12
+ROUTE         1     0.000      R2C19B.F1 to     R2C19B.DI1 psc/next_s[2] (to CLKOS)
+                  --------
+                    0.364   (64.3% logic, 35.7% route), 2 logic levels.
+
+ Clock Skew Details: 
+
+      Source Clock Path pll_inst/PLLInst_0 to psc/SLICE_12:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE         5     1.252    LPLL.CLKOS3 to     R2C19B.CLK CLKOS
+                  --------
+                    1.252   (0.0% logic, 100.0% route), 0 logic levels.
+
+      Destination Clock Path pll_inst/PLLInst_0 to psc/SLICE_12:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE         5     1.252    LPLL.CLKOS3 to     R2C19B.CLK CLKOS
+                  --------
+                    1.252   (0.0% logic, 100.0% route), 0 logic levels.
+
+ Total jitter: 0.050ns
+     0.050ns (system jitter)
+
+
+Passed: The following path meets requirements by 0.327ns
+
+ Logical Details:  Cell type  Pin type       Cell/ASIC name  (clock net +/-)
+
+   Source:         FF         Q              psc/next[6]  (from CLKOS +)
+   Destination:    FF         Data in        psc/next[6]  (to CLKOS +)
+
+   Delay:               0.364ns  (64.3% logic, 35.7% route), 2 logic levels.
+
+ Constraint Details:
+
+      0.364ns physical path delay psc/SLICE_10 to psc/SLICE_10 meets
+     -0.013ns DIN_HLD and
+      0.000ns delay constraint plus
+      0.050ns total jitter less
+      0.000ns skew requirement (totaling 0.037ns) by 0.327ns
+
+ Physical Path Details:
+
+      Data path psc/SLICE_10 to psc/SLICE_10:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+REG_DEL     ---     0.133     R2C19D.CLK to      R2C19D.Q1 psc/SLICE_10 (from CLKOS)
+ROUTE         1     0.130      R2C19D.Q1 to      R2C19D.A1 psc/next[6]
+CTOF_DEL    ---     0.101      R2C19D.A1 to      R2C19D.F1 psc/SLICE_10
+ROUTE         1     0.000      R2C19D.F1 to     R2C19D.DI1 psc/next_s[6] (to CLKOS)
+                  --------
+                    0.364   (64.3% logic, 35.7% route), 2 logic levels.
+
+ Clock Skew Details: 
+
+      Source Clock Path pll_inst/PLLInst_0 to psc/SLICE_10:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE         5     1.252    LPLL.CLKOS3 to     R2C19D.CLK CLKOS
+                  --------
+                    1.252   (0.0% logic, 100.0% route), 0 logic levels.
+
+      Destination Clock Path pll_inst/PLLInst_0 to psc/SLICE_10:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE         5     1.252    LPLL.CLKOS3 to     R2C19D.CLK CLKOS
+                  --------
+                    1.252   (0.0% logic, 100.0% route), 0 logic levels.
+
+ Total jitter: 0.050ns
+     0.050ns (system jitter)
+
+
+Passed: The following path meets requirements by 0.329ns
+
+ Logical Details:  Cell type  Pin type       Cell/ASIC name  (clock net +/-)
+
+   Source:         FF         Q              psc/next[7]  (from CLKOS +)
+   Destination:    FF         Data in        psc/next[7]  (to CLKOS +)
+
+   Delay:               0.366ns  (63.9% logic, 36.1% route), 2 logic levels.
+
+ Constraint Details:
+
+      0.366ns physical path delay psc/SLICE_9 to psc/SLICE_9 meets
+     -0.013ns DIN_HLD and
+      0.000ns delay constraint plus
+      0.050ns total jitter less
+      0.000ns skew requirement (totaling 0.037ns) by 0.329ns
+
+ Physical Path Details:
+
+      Data path psc/SLICE_9 to psc/SLICE_9:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+REG_DEL     ---     0.133     R2C20A.CLK to      R2C20A.Q0 psc/SLICE_9 (from CLKOS)
+ROUTE         2     0.132      R2C20A.Q0 to      R2C20A.A0 psc/next[7]
+CTOF_DEL    ---     0.101      R2C20A.A0 to      R2C20A.F0 psc/SLICE_9
+ROUTE         1     0.000      R2C20A.F0 to     R2C20A.DI0 psc/next_s[7] (to CLKOS)
+                  --------
+                    0.366   (63.9% logic, 36.1% route), 2 logic levels.
+
+ Clock Skew Details: 
+
+      Source Clock Path pll_inst/PLLInst_0 to psc/SLICE_9:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE         5     1.252    LPLL.CLKOS3 to     R2C20A.CLK CLKOS
+                  --------
+                    1.252   (0.0% logic, 100.0% route), 0 logic levels.
+
+      Destination Clock Path pll_inst/PLLInst_0 to psc/SLICE_9:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE         5     1.252    LPLL.CLKOS3 to     R2C20A.CLK CLKOS
+                  --------
+                    1.252   (0.0% logic, 100.0% route), 0 logic levels.
+
+ Total jitter: 0.050ns
+     0.050ns (system jitter)
+
+
+Passed: The following path meets requirements by 0.451ns
+
+ Logical Details:  Cell type  Pin type       Cell/ASIC name  (clock net +/-)
+
+   Source:         FF         Q              psc/next[5]  (from CLKOS +)
+   Destination:    FF         Data in        psc/next[6]  (to CLKOS +)
+
+   Delay:               0.488ns  (73.4% logic, 26.6% route), 2 logic levels.
+
+ Constraint Details:
+
+      0.488ns physical path delay psc/SLICE_10 to psc/SLICE_10 meets
+     -0.013ns DIN_HLD and
+      0.000ns delay constraint plus
+      0.050ns total jitter less
+      0.000ns skew requirement (totaling 0.037ns) by 0.451ns
+
+ Physical Path Details:
+
+      Data path psc/SLICE_10 to psc/SLICE_10:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+REG_DEL     ---     0.133     R2C19D.CLK to      R2C19D.Q0 psc/SLICE_10 (from CLKOS)
+ROUTE         1     0.130      R2C19D.Q0 to      R2C19D.A0 psc/next[5]
+CTOF1_DEL   ---     0.225      R2C19D.A0 to      R2C19D.F1 psc/SLICE_10
+ROUTE         1     0.000      R2C19D.F1 to     R2C19D.DI1 psc/next_s[6] (to CLKOS)
+                  --------
+                    0.488   (73.4% logic, 26.6% route), 2 logic levels.
+
+ Clock Skew Details: 
+
+      Source Clock Path pll_inst/PLLInst_0 to psc/SLICE_10:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE         5     1.252    LPLL.CLKOS3 to     R2C19D.CLK CLKOS
+                  --------
+                    1.252   (0.0% logic, 100.0% route), 0 logic levels.
+
+      Destination Clock Path pll_inst/PLLInst_0 to psc/SLICE_10:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE         5     1.252    LPLL.CLKOS3 to     R2C19D.CLK CLKOS
+                  --------
+                    1.252   (0.0% logic, 100.0% route), 0 logic levels.
+
+ Total jitter: 0.050ns
+     0.050ns (system jitter)
+
+
+================================================================================
+<A name="par_twr_pref_1_2"></A>Preference: FREQUENCY NET "pll_inst/CLKOP" 10.000000 MHz ;
+            0 items scored, 0 timing errors detected.
+--------------------------------------------------------------------------------
+
+
+================================================================================
+<A name="par_twr_pref_1_3"></A>Preference: INPUT_SETUP ALLPORTS 50.000000 ns HOLD 12.000000 ns CLKNET "clk" ;
+            0 items scored, 0 timing errors detected.
+--------------------------------------------------------------------------------
+
+
+================================================================================
+<A name="par_twr_pref_1_4"></A>Preference: INPUT_SETUP PORT "reset" 50.000000 ns CLKNET "clk" ;
+            0 items scored, 0 timing errors detected.
+--------------------------------------------------------------------------------
+
+<A name="ptwr_hold_rs"></A><B><U><big>Report Summary</big></U></B>
+--------------
+----------------------------------------------------------------------------
+Preference(MIN Delays)                  |   Constraint|       Actual|Levels
+----------------------------------------------------------------------------
+                                        |             |             |
+FREQUENCY NET "clk" 20.460000 MHz ;     |            -|            -|   0  
+                                        |             |             |
+FREQUENCY NET "CLKOS" 0.156250 MHz ;    |     0.000 ns|     0.258 ns|   1  
+                                        |             |             |
+FREQUENCY NET "pll_inst/CLKOP"          |             |             |
+10.000000 MHz ;                         |            -|            -|   0  
+                                        |             |             |
+INPUT_SETUP ALLPORTS 50.000000 ns HOLD  |             |             |
+12.000000 ns CLKNET "clk" ;             |            -|            -|   0  
+                                        |             |             |
+INPUT_SETUP PORT "reset" 50.000000 ns   |             |             |
+CLKNET "clk" ;                          |            -|            -|   0  
+                                        |             |             |
+----------------------------------------------------------------------------
+
+
+All preferences were met.
+
+
+<A name="ptwr_hold_clkda"></A><B><U><big>Clock Domains Analysis</big></U></B>
+------------------------
+
+Found 4 clocks:
+
+Clock Domain: pll_inst/CLKOP   Source: pll_inst/PLLInst_0.CLKOP   Loads: 1
+   No transfer within this clock domain is found
+
+Clock Domain: pc_clk   Source: psc/SLICE_8.Q0   Loads: 10
+   No transfer within this clock domain is found
+
+Clock Domain: clk   Source: OSCinst0.OSC   Loads: 1
+   No transfer within this clock domain is found
+
+Clock Domain: CLKOS   Source: pll_inst/PLLInst_0.CLKOS3   Loads: 5
+   Covered under: FREQUENCY NET "CLKOS" 0.156250 MHz ;
+
+
+<A name="ptwr_hold_ts"></A><B><U><big>Timing summary (Hold):</big></U></B>
+---------------
+
+Timing errors: 0  Score: 0
+Cumulative negative slack: 0
+
+Constraints cover 37 paths, 3 nets, and 39 connections (33.05% coverage)
+
+
+
+<A name="ptwr_ts"></A><B><U><big>Timing summary (Setup and Hold):</big></U></B>
+---------------
+
+Timing errors: 0 (setup), 0 (hold)
+Score: 0 (setup), 0 (hold)
+Cumulative negative slack: 0 (0+0)
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+
+
+
+
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+</PRE></FONT>
+</BODY>
+</HTML>

@@ -1,0 +1,63 @@
+library verilog;
+use verilog.vl_types.all;
+entity sram_sed is
+    generic(
+        sedst_idle      : integer := 0;
+        sedst_init      : integer := 1;
+        sedst_read      : integer := 5;
+        sedst_shf       : integer := 4;
+        sedst_bse       : integer := 3;
+        sedst_chk       : integer := 2;
+        sedst_boot      : integer := 6;
+        sedst_fin       : integer := 7
+    );
+    port(
+        sed_init_addr_exec: out    vl_logic;
+        sed_read_incr_exec: out    vl_logic;
+        sed_en          : out    vl_logic;
+        sed_en_adv      : out    vl_logic;
+        sed_err         : out    vl_logic;
+        sed_clk         : out    vl_logic;
+        sed_auto_done   : out    vl_logic;
+        sed_done        : out    vl_logic;
+        sed_busy        : out    vl_logic;
+        sed_start_bse   : out    vl_logic;
+        sed_boot        : out    vl_logic;
+        sed_dsr_loop_en : out    vl_logic;
+        sed_dsr_1byte   : out    vl_logic;
+        sed_active      : out    vl_logic;
+        sed_crc_reg     : out    vl_logic_vector(31 downto 0);
+        DSR_LENGTH      : in     vl_logic_vector(15 downto 0);
+        por             : in     vl_logic;
+        mx_smclk        : in     vl_logic;
+        smclk           : in     vl_logic;
+        dev_sed_exec    : in     vl_logic;
+        sleep_mode      : in     vl_logic;
+        sram_asr_out    : in     vl_logic;
+        nj_frame_end    : in     vl_logic;
+        sed_rst_async   : in     vl_logic;
+        sed_rst_sync    : in     vl_logic;
+        sed_rst_flag    : in     vl_logic;
+        cfg_sed_en      : in     vl_logic;
+        sram_crc        : in     vl_logic_vector(31 downto 0);
+        busy_sram       : in     vl_logic;
+        finish_bse      : in     vl_logic;
+        fail_bse        : in     vl_logic;
+        busy_bse        : in     vl_logic;
+        exit_accessed   : in     vl_logic;
+        sed_adv_shf     : in     vl_logic;
+        sed_adv_mask    : in     vl_logic_vector(7 downto 0);
+        dsr_out         : in     vl_logic_vector(7 downto 0);
+        mc1_sed_enable  : in     vl_logic_vector(1 downto 0);
+        mc1_sed_auto_rboot: in     vl_logic;
+        mc1_sed_always  : in     vl_logic;
+        mc1_sed_sleep   : in     vl_logic;
+        mc1_sed_once    : in     vl_logic;
+        mc1_dsr_fctrl   : in     vl_logic_vector(1 downto 0);
+        cib_sed_en      : in     vl_logic;
+        cib_sed_frcerr  : in     vl_logic;
+        cib_sed_mode    : in     vl_logic;
+        cib_sed_start   : in     vl_logic;
+        cib_auto_reboot : in     vl_logic
+    );
+end sram_sed;
