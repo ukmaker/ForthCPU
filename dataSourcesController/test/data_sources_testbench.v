@@ -1,5 +1,6 @@
 `timescale 1 ns / 1 ns
 `include "C:/Users/Duncan/git/ForthCPU/constants.v"
+`include "C:/Users/Duncan/git/ForthCPU/testSetup.v"
 
 module data_sources_testbench;
 	
@@ -58,15 +59,8 @@ data_sources data_sources_inst(
 	.REG_ADDR_B(REG_ADDR_B)
 );
 
-`define assert(expected, actual) \
-        	#(CLOCK_CYCLE); \
-			if (expected !== actual) begin \
-            $display("[T=%0t] FAILED in %m: expected %b != actual %b", $realtime, expected, actual); \
-			#(CLOCK_CYCLE); \
-        end
-
 initial begin
-	#(CLOCK_CYCLE);
+	`TICKTOCK
 	REG_A = 16'haaaa;
 	REG_B = 16'hbbbb;
 	PC_ADDR   = 16'h1234;
@@ -76,85 +70,127 @@ initial begin
 	ARG_B = 4'h7;
 	
 	/**
-	* ALU_A sources
+	* ALU_A sources 
 	**/
 	ALU_A_SOURCEX = `ALU_A_SOURCEX_REG_A;
-	`assert(16'haaaa, ALU_A)
-	`assert(4'h6, REG_ADDR_A)
+	`TICKTOCK
+	`assert("1. ALU_A", 16'haaaa, ALU_A)
+	`assert("1. REG_ADDR_A", 4'h6, REG_ADDR_A)
 	
 	ALU_A_SOURCEX = `ALU_A_SOURCEX_RA;
-	`assert(4'h8, REG_ADDR_A)
+	`TICKTOCK
+	`assert("2. REG_ADDR_A", `RA, REG_ADDR_A)
+	
+	ALU_A_SOURCEX = `ALU_A_SOURCEX_RB;
+	`TICKTOCK
+	`assert("3. REG_ADDR_A", `RB, REG_ADDR_A)
+	
+	ALU_A_SOURCEX = `ALU_A_SOURCEX_SP;
+	`TICKTOCK
+	`assert("4. REG_ADDR_A", `RSP, REG_ADDR_A)
+	
+	ALU_A_SOURCEX = `ALU_A_SOURCEX_FP;
+	`TICKTOCK
+	`assert("5. REG_ADDR_A", `RFP, REG_ADDR_A)
+	
+	ALU_A_SOURCEX = `ALU_A_SOURCEX_RS;
+	`TICKTOCK
+	`assert("6. REG_ADDR_A", `RRS, REG_ADDR_A)
 	
 	/**
 	* ALU_B sources
 	**/
 	ALU_B_SOURCEX = `ALU_B_SOURCEX_REG_B;
-	`assert(16'hbbbb, ALU_B)
+	`TICKTOCK
+	`assert("ALU_B", 16'hbbbb, ALU_B)
 	
 	ALU_B_SOURCEX = `ALU_B_SOURCEX_ARG_U4;
-	`assert(16'h0007, ALU_B)
+	`TICKTOCK
+	`assert("ALU_B", 16'h0007, ALU_B)
 	
 	ALU_B_SOURCEX = `ALU_B_SOURCEX_ARG_U8;
-	`assert(16'h0067, ALU_B)
+	`TICKTOCK
+	`assert("ALU_B", 16'h0067, ALU_B)
 
 	ALU_B_SOURCEX = `ALU_B_SOURCEX_U8_REG_B;
-	`assert(16'h67bb, ALU_B)
+	`TICKTOCK
+	`assert("ALU_B", 16'h67bb, ALU_B)
 
+	ALU_B_SOURCEX = `ALU_B_SOURCEX_TWO;
+	`TICKTOCK
+	`assert("REG_ADDR_B", 4'h7, REG_ADDR_B)
+	`assert("ALU_B", 16'h0002, ALU_B)
+	
 	/**
 	* DATA_BUS sources
 	**/
 	DATA_BUSX = `DATA_BUSX_REG_A;
-	`assert(16'haaaa, DOUT)
+	`TICKTOCK
+	`assert("DOUT", 16'haaaa, DOUT)
 	DATA_BUSX = `DATA_BUSX_REG_B;
-	`assert(16'hbbbb, DOUT)
+	`TICKTOCK
+	`assert("DOUT", 16'hbbbb, DOUT)
 	DATA_BUSX = `DATA_BUSX_ALU;
-	`assert(16'habcd, DOUT)
+	`TICKTOCK
+	`assert("DOUT", 16'habcd, DOUT)
 	
 	/**
 	* ADDR_BUS sources
 	**/
 	ADDR_BUSX = `ADDR_BUSX_PC;
-	`assert(16'h1234, AOUT)
+	`TICKTOCK
+	`assert("AOUT", 16'h1234, AOUT)
 	
 	ADDR_BUSX = `ADDR_BUSX_REG_A;
-	`assert(16'haaaa, AOUT)
+	`TICKTOCK
+	`assert("AOUT", 16'haaaa, AOUT)
 	
 	ADDR_BUSX = `ADDR_BUSX_REG_B;
-	`assert(16'hbbbb, AOUT)
+	`TICKTOCK
+	`assert("AOUT", 16'hbbbb, AOUT)
 	
 	ADDR_BUSX = `ADDR_BUSX_ALU;
-	`assert(16'habcd, AOUT)
+	`TICKTOCK
+	`assert("AOUT", 16'habcd, AOUT)
 	
 	/**
 	* REGA_SOURCE
 	**/
 	REGA_SOURCEX = `REG_SOURCEX_REGB;
-	`assert(16'hbbbb, REGA_I)
+	`TICKTOCK
+	`assert("REGA_I", 16'hbbbb, REGA_I)
 	
 	REGA_SOURCEX = `REG_SOURCEX_ALU;
-	`assert(16'habcd, REGA_I)
+	`TICKTOCK
+	`assert("REGA_I", 16'habcd, REGA_I)
 	
 	REGA_SOURCEX = `REG_SOURCEX_DIN;
-	`assert(16'hdddd, REGA_I)
+	`TICKTOCK
+	`assert("REGA_I", 16'hdddd, REGA_I)
 	
 	REGA_SOURCEX = `REG_SOURCEX_PC_ADDR;
-	`assert(16'h1234, REGA_I)
+	`TICKTOCK
+	`assert("REGA_I", 16'h1234, REGA_I)
 	
 	
 	/**
 	* REGB_SOURCE
 	**/
 	REGB_SOURCEX = `REG_SOURCEX_REGB;
-	`assert(16'hbbbb, REGB_I)
+	`TICKTOCK
+	`assert("REGB_I", 16'hbbbb, REGB_I)
 	
 	REGB_SOURCEX = `REG_SOURCEX_ALU;
-	`assert(16'habcd, REGB_I)
+	`TICKTOCK
+	`assert("REGB_I", 16'habcd, REGB_I)
 	
 	REGB_SOURCEX = `REG_SOURCEX_DIN;
-	`assert(16'hdddd, REGB_I)
+	`TICKTOCK
+	`assert("REGB_I", 16'hdddd, REGB_I)
 	
 	REGB_SOURCEX = `REG_SOURCEX_PC_ADDR;
-	`assert(16'h1234, REGB_I)
+	`TICKTOCK
+	`assert("REGB_I", 16'h1234, REGB_I)
 	
 end
 

@@ -25,6 +25,7 @@ always @ (*)
 	
 		begin
 			arithmetic = 0;
+			OVFL = 0;
 			
 			case (ALUX[3:0])
 				5'b0000: begin // MOV group. Output copies port B

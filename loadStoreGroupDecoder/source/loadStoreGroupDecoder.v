@@ -114,13 +114,13 @@ always @(*) begin
 	
 	case(INCF) // pre or post inc/dec
 		`LDSF_POST_INC: begin
-			REGA_SOURCEX = `REG_SOURCEX_DIN;
-			REGB_SOURCEX = `REG_SOURCEX_ALU;
-			ADDR_BUSX    = `ADDR_BUSX_REG_B;
-			ALUX = `ALU_ADD;
-			ALU_A_SOURCEX = `ALU_A_SOURCEX_TWO;
-			ALU_B_SOURCEX = `ALU_B_SOURCEX_REG_B;
-			
+			REGA_SOURCEX  = `REG_SOURCEX_DIN;
+			REGB_SOURCEX  = `REG_SOURCEX_ALU;
+			ADDR_BUSX     = `ADDR_BUSX_REG_A;
+			ALUX          = `ALU_ADD;
+			ALU_A_SOURCEX = `ALU_A_SOURCEX_RB;
+			ALU_B_SOURCEX = `ALU_B_SOURCEX_TWO;
+			WR_B = 1;
 		end
 		
 		`LDSF_PRE_DEC: begin

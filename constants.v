@@ -24,38 +24,65 @@
 /**
 * Program counter control
 **/
-// Operation
-`define PC_OP_NOP  2'b00
-`define PC_OP_NEXT 2'b01
-`define PC_OP_SKIP 2'b10
-`define PC_OP_LD   2'b11
+// Operation base value
+`define BC_BASEX_PC   1'b0
+`define BC_BASEX_ZERO 1'b1
+// Operation offset value
+`define PC_OFFSETX_D    2'b00
+`define PC_OFFSETX_TWO  2'b01
+`define PC_OFFSETX_FOUR 2'b10
+
+`define CC_SELECTX_Z 2'b00
+`define CC_SELECTX_C 2'b01
+`define CC_SELECTX_S 2'b10
+`define CC_SELECTX_P 2'b11
 
 /**
 * Data sources
 **/
 // ALU A input
-`define ALU_A_SOURCEX_REG_A 3'b000
-`define ALU_A_SOURCEX_RA    3'b001
-`define ALU_A_SOURCEX_RB    3'b010
-`define ALU_A_SOURCEX_SP    3'b011
-`define ALU_A_SOURCEX_FP    3'b100
-`define ALU_A_SOURCEX_RS    3'b101
-`define ALU_A_SOURCEX_TWO   3'b110
+`define ALU_A_SOURCEX_REG_A 1'b0
+`define ALU_A_SOURCEX_INCREMENTER 1'b1
+
+`define ALU_A_CONSTX_ONE       2'b00
+`define ALU_A_CONSTX_TWO       2'b01
+`define ALU_A_CONSTX_MINUS_ONE 2'b10
+`define ALU_A_CONSTX_MINUS_TWO 2'b11
+
 
 // ALU B input
 `define ALU_B_SOURCEX_REG_B    3'b000
 `define ALU_B_SOURCEX_ARG_U4   3'b001
 `define ALU_B_SOURCEX_ARG_U8   3'b010
 `define ALU_B_SOURCEX_U8_REG_B 3'b011
-`define ALU_B_SOURCEX_TWO      3'b100
+`define ALU_B_SOURCEX_ARG_U4_0 3'b100
+`define ALU_B_SOURCEX_ZERO     3'b101
 
 /**
-* Register load sources
+* Register A load sources
 **/
-`define REG_SOURCEX_REGB     2'b00
-`define REG_SOURCEX_ALU      2'b01
-`define REG_SOURCEX_DIN      2'b10
-`define REG_SOURCEX_PC_ADDR  2'b11
+`define REGA_DINX_ALU_R    2'b00
+`define REGA_DINX_PC_A     2'b01
+`define REGA_DINX_ALUA_PP  2'b10
+
+/**
+* Register A address sources
+**/
+`define REGA_ADDRX_ARGA 3'b000
+`define REGA_ADDRX_RL   3'b001
+`define REGA_ADDRX_RB   3'b010
+`define REGA_ADDRX_RA   3'b011
+`define REGA_ADDRX_RSP  3'b100
+`define REGA_ADDRX_RFP  3'b101
+`define REGA_ADDRX_RRS  3'b110
+
+/**
+* Register B address sources
+**/
+`define REGB_ADDRX_ARGB 2'b00
+`define REGB_ADDRX_ARGA 2'b01
+`define REGB_ADDRX_RB   2'b10
+
 
 /** 
 * Address bus sources

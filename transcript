@@ -1,12 +1,31 @@
 # Reading pref.tcl
-# do {C:/Users/Duncan/git/ForthCPU/dataSourcesController/sim/sim.mdo}
-# Loading project sim
-# Compile of data_sources.v was successful.
-# Compile of data_sources_testbench.v was successful.
-# Compile of constants.v was successful.
-# 3 compiles, 0 failed with no errors.
-# vsim -L work -L pmi_work -L ovi_machxo3l data_sources_testbench 
-# Start time: 17:08:44 on Sep 16,2023
+# do {C:/Users/Duncan/git/ForthCPU/alu/test/incrementerTests/incrementerTests.mdo}
+# Loading project incrementerTests
+# Model Technology ModelSim - Lattice FPGA Edition vlog 2020.3 Compiler 2020.10 Oct 14 2020
+# Start time: 18:43:54 on Sep 20,2023
+# vlog -reportprogress 300 "+incdir+C:/Users/Duncan/git/ForthCPU/alu/source" -work work C:/Users/Duncan/git/ForthCPU/alu/source/incrementer.v 
+# -- Compiling module incrementer
+# 
+# Top level modules:
+# 	incrementer
+# End time: 18:43:54 on Sep 20,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Lattice FPGA Edition vlog 2020.3 Compiler 2020.10 Oct 14 2020
+# Start time: 18:43:54 on Sep 20,2023
+# vlog -reportprogress 300 "+incdir+C:/Users/Duncan/git/ForthCPU/alu/test" -work work C:/Users/Duncan/git/ForthCPU/alu/test/incrementerTests.v 
+# -- Compiling module incrementerTests
+# 
+# Top level modules:
+# 	incrementerTests
+# End time: 18:43:54 on Sep 20,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Lattice FPGA Edition vlog 2020.3 Compiler 2020.10 Oct 14 2020
+# Start time: 18:43:54 on Sep 20,2023
+# vlog -reportprogress 300 "+incdir+C:/Users/Duncan/git/ForthCPU" -work work C:/Users/Duncan/git/ForthCPU/constants.v 
+# End time: 18:43:54 on Sep 20,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -L work -L pmi_work -L ovi_machxo3l incrementerTests 
+# Start time: 18:43:54 on Sep 20,2023
 # //  ModelSim - Lattice FPGA Edition 2020.3 Oct 14 2020
 # //
 # //  Copyright 1991-2020 Mentor Graphics Corporation
@@ -20,18 +39,56 @@
 # //  is prohibited from disclosure under the Trade Secrets Act,
 # //  18 U.S.C. Section 1905.
 # //
-# Loading work.data_sources_testbench
-# Loading work.data_sources
+# Loading work.incrementerTests
+# Loading work.incrementer
 # .main_pane.wave.interior.cs.body.pw.wf
-# [T=200] FAILED in data_sources_testbench: expected 1011101110111011 != actual xxxxxxxxxxxxxxxx
-# Compile of data_sources.v was successful.
-# Compile of data_sources_testbench.v was successful.
+# [T=100] FAILED in incrementerTests: SUM expected 0001001000110101 != actual xxxxxxxxxxxxxxxx
+# [T=300] FAILED in incrementerTests: SUM expected 0001001000110101 != actual xxxxxxxxxxxxxxxx
+# [T=300] FAILED in incrementerTests: SUM expected 0001001000110101 != actual xxxxxxxxxxxxxxxx
+# [T=500] FAILED in incrementerTests: SUM expected 0001001000110110 != actual xxxxxxxxxxxxxxxx
+# [T=500] FAILED in incrementerTests: SUM expected 0001001000110110 != actual xxxxxxxxxxxxxxxx
+# [T=700] FAILED in incrementerTests: SUM expected 0001001000110011 != actual xxxxxxxxxxxxxxxx
+# [T=700] FAILED in incrementerTests: SUM expected 0001001000110011 != actual xxxxxxxxxxxxxxxx
+# [T=900] FAILED in incrementerTests: SUM expected 0001001000110010 != actual xxxxxxxxxxxxxxxx
+# [T=900] FAILED in incrementerTests: SUM expected 0001001000110010 != actual xxxxxxxxxxxxxxxx
+# Compile of incrementer.v was successful.
+# Compile of incrementerTests.v was successful.
 # Compile of constants.v was successful.
 # 3 compiles, 0 failed with no errors.
 restart
 # ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.data_sources_testbench
-# Loading work.data_sources
-run -all
-# End time: 17:11:22 on Sep 16,2023, Elapsed time: 0:02:38
+# Loading work.incrementerTests
+# Loading work.incrementer
+run 2us
+# [T=100] FAILED in incrementerTests: SUM expected 0001001000110101 != actual xxxxxxxxxxxxxxxx
+# [T=300] FAILED in incrementerTests: SUM expected 0001001000110101 != actual xxxxxxxxxxxxxxxx
+# [T=300] FAILED in incrementerTests: SUM expected 0001001000110101 != actual xxxxxxxxxxxxxxxx
+# [T=500] FAILED in incrementerTests: SUM expected 0001001000110110 != actual xxxxxxxxxxxxxxxx
+# [T=500] FAILED in incrementerTests: SUM expected 0001001000110110 != actual xxxxxxxxxxxxxxxx
+# [T=700] FAILED in incrementerTests: SUM expected 0001001000110011 != actual xxxxxxxxxxxxxxxx
+# [T=700] FAILED in incrementerTests: SUM expected 0001001000110011 != actual xxxxxxxxxxxxxxxx
+# [T=900] FAILED in incrementerTests: SUM expected 0001001000110010 != actual xxxxxxxxxxxxxxxx
+# [T=900] FAILED in incrementerTests: SUM expected 0001001000110010 != actual xxxxxxxxxxxxxxxx
+# Compile of incrementer.v was successful.
+# Compile of incrementerTests.v was successful.
+# Compile of constants.v was successful.
+# 3 compiles, 0 failed with no errors.
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.incrementerTests
+# Loading work.incrementer
+run 2us
+# [T=500] FAILED in incrementerTests: SUM expected 0001001000110110 != actual 0001001001000100
+# [T=500] FAILED in incrementerTests: SUM expected 0001001000110110 != actual 0001001001000100
+# Compile of incrementer.v was successful.
+# Compile of incrementerTests.v was successful.
+# Compile of constants.v was successful.
+# 3 compiles, 0 failed with no errors.
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.incrementerTests
+# Loading work.incrementer
+run 2us
+write format wave -window .main_pane.wave.interior.cs.body.pw.wf C:/Users/Duncan/git/ForthCPU/alu/test/incrementerTests/wave.do
+# End time: 18:48:59 on Sep 20,2023, Elapsed time: 0:05:05
 # Errors: 0, Warnings: 1
