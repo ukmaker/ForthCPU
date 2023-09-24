@@ -1,31 +1,40 @@
 # Reading pref.tcl
-# do {C:/Users/Duncan/git/ForthCPU/alu/test/incrementerTests/incrementerTests.mdo}
-# Loading project incrementerTests
+# do {C:/Users/Duncan/git/ForthCPU/loadStoreGroupDecoder/test/loadStoreGroupDecoderTests/loadStoreGroupDecoderTests.mdo}
+# Loading project loadStoreGroupDecoderTests
 # Model Technology ModelSim - Lattice FPGA Edition vlog 2020.3 Compiler 2020.10 Oct 14 2020
-# Start time: 18:43:54 on Sep 20,2023
-# vlog -reportprogress 300 "+incdir+C:/Users/Duncan/git/ForthCPU/alu/source" -work work C:/Users/Duncan/git/ForthCPU/alu/source/incrementer.v 
-# -- Compiling module incrementer
+# Start time: 18:35:26 on Sep 23,2023
+# vlog -reportprogress 300 "+incdir+C:/Users/Duncan/git/ForthCPU/instructionPhaseDecoder/source" -work work C:/Users/Duncan/git/ForthCPU/instructionPhaseDecoder/source/instructionPhaseDecoder.v 
+# -- Compiling module instructionPhaseDecoder
 # 
 # Top level modules:
-# 	incrementer
-# End time: 18:43:54 on Sep 20,2023, Elapsed time: 0:00:00
+# 	instructionPhaseDecoder
+# End time: 18:35:26 on Sep 23,2023, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Lattice FPGA Edition vlog 2020.3 Compiler 2020.10 Oct 14 2020
-# Start time: 18:43:54 on Sep 20,2023
-# vlog -reportprogress 300 "+incdir+C:/Users/Duncan/git/ForthCPU/alu/test" -work work C:/Users/Duncan/git/ForthCPU/alu/test/incrementerTests.v 
-# -- Compiling module incrementerTests
+# Start time: 18:35:26 on Sep 23,2023
+# vlog -reportprogress 300 "+incdir+C:/Users/Duncan/git/ForthCPU/loadStoreGroupDecoder/source" -work work C:/Users/Duncan/git/ForthCPU/loadStoreGroupDecoder/source/loadStoreGroupDecoder.v 
+# -- Compiling module loadStoreGroupDecoder
 # 
 # Top level modules:
-# 	incrementerTests
-# End time: 18:43:54 on Sep 20,2023, Elapsed time: 0:00:00
+# 	loadStoreGroupDecoder
+# End time: 18:35:26 on Sep 23,2023, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Lattice FPGA Edition vlog 2020.3 Compiler 2020.10 Oct 14 2020
-# Start time: 18:43:54 on Sep 20,2023
+# Start time: 18:35:26 on Sep 23,2023
+# vlog -reportprogress 300 "+incdir+C:/Users/Duncan/git/ForthCPU/loadStoreGroupDecoder/test/loadStoreGroupDecoderTests" -work work C:/Users/Duncan/git/ForthCPU/loadStoreGroupDecoder/test/loadStoreGroupDecoderTests/loadStoreGroupDecoderTests.v 
+# -- Compiling module loadStoreGroupDecoderTests
+# 
+# Top level modules:
+# 	loadStoreGroupDecoderTests
+# End time: 18:35:26 on Sep 23,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Lattice FPGA Edition vlog 2020.3 Compiler 2020.10 Oct 14 2020
+# Start time: 18:35:27 on Sep 23,2023
 # vlog -reportprogress 300 "+incdir+C:/Users/Duncan/git/ForthCPU" -work work C:/Users/Duncan/git/ForthCPU/constants.v 
-# End time: 18:43:54 on Sep 20,2023, Elapsed time: 0:00:00
+# End time: 18:35:27 on Sep 23,2023, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-# vsim -L work -L pmi_work -L ovi_machxo3l incrementerTests 
-# Start time: 18:43:54 on Sep 20,2023
+# vsim -L work -L pmi_work -L ovi_machxo3l loadStoreGroupDecoderTests 
+# Start time: 18:35:27 on Sep 23,2023
 # //  ModelSim - Lattice FPGA Edition 2020.3 Oct 14 2020
 # //
 # //  Copyright 1991-2020 Mentor Graphics Corporation
@@ -39,56 +48,391 @@
 # //  is prohibited from disclosure under the Trade Secrets Act,
 # //  18 U.S.C. Section 1905.
 # //
-# Loading work.incrementerTests
-# Loading work.incrementer
+# Loading work.loadStoreGroupDecoderTests
+# Loading work.loadStoreGroupDecoder
+# Loading work.instructionPhaseDecoder
 # .main_pane.wave.interior.cs.body.pw.wf
-# [T=100] FAILED in incrementerTests: SUM expected 0001001000110101 != actual xxxxxxxxxxxxxxxx
-# [T=300] FAILED in incrementerTests: SUM expected 0001001000110101 != actual xxxxxxxxxxxxxxxx
-# [T=300] FAILED in incrementerTests: SUM expected 0001001000110101 != actual xxxxxxxxxxxxxxxx
-# [T=500] FAILED in incrementerTests: SUM expected 0001001000110110 != actual xxxxxxxxxxxxxxxx
-# [T=500] FAILED in incrementerTests: SUM expected 0001001000110110 != actual xxxxxxxxxxxxxxxx
-# [T=700] FAILED in incrementerTests: SUM expected 0001001000110011 != actual xxxxxxxxxxxxxxxx
-# [T=700] FAILED in incrementerTests: SUM expected 0001001000110011 != actual xxxxxxxxxxxxxxxx
-# [T=900] FAILED in incrementerTests: SUM expected 0001001000110010 != actual xxxxxxxxxxxxxxxx
-# [T=900] FAILED in incrementerTests: SUM expected 0001001000110010 != actual xxxxxxxxxxxxxxxx
-# Compile of incrementer.v was successful.
-# Compile of incrementerTests.v was successful.
+# [T=460] FAILED in loadStoreGroupDecoderTests: REGB_EN expected 00000000000000000000000000000001 != actual 0
+# [T=460] FAILED in loadStoreGroupDecoderTests: ALU_OPX expected 0101 != actual 0000
+# [T=560] FAILED in loadStoreGroupDecoderTests: REGA_EN expected 00000000000000000000000000000001 != actual 0
+# [T=560] FAILED in loadStoreGroupDecoderTests: REGB_EN expected 00000000000000000000000000000000 != actual 1
+# [T=560] FAILED in loadStoreGroupDecoderTests: REGA_WEN expected 00000000000000000000000000000001 != actual 0
+# [T=560] FAILED in loadStoreGroupDecoderTests: REG_B_WEN expected 00000000000000000000000000000000 != actual 1
+# Compile of instructionPhaseDecoder.v was successful.
+# Compile of loadStoreGroupDecoder.v was successful.
+# Compile of loadStoreGroupDecoderTests.v was successful.
 # Compile of constants.v was successful.
-# 3 compiles, 0 failed with no errors.
+# 4 compiles, 0 failed with no errors.
 restart
 # ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.incrementerTests
-# Loading work.incrementer
+# Loading work.loadStoreGroupDecoderTests
+# Loading work.loadStoreGroupDecoder
+# Loading work.instructionPhaseDecoder
 run 2us
-# [T=100] FAILED in incrementerTests: SUM expected 0001001000110101 != actual xxxxxxxxxxxxxxxx
-# [T=300] FAILED in incrementerTests: SUM expected 0001001000110101 != actual xxxxxxxxxxxxxxxx
-# [T=300] FAILED in incrementerTests: SUM expected 0001001000110101 != actual xxxxxxxxxxxxxxxx
-# [T=500] FAILED in incrementerTests: SUM expected 0001001000110110 != actual xxxxxxxxxxxxxxxx
-# [T=500] FAILED in incrementerTests: SUM expected 0001001000110110 != actual xxxxxxxxxxxxxxxx
-# [T=700] FAILED in incrementerTests: SUM expected 0001001000110011 != actual xxxxxxxxxxxxxxxx
-# [T=700] FAILED in incrementerTests: SUM expected 0001001000110011 != actual xxxxxxxxxxxxxxxx
-# [T=900] FAILED in incrementerTests: SUM expected 0001001000110010 != actual xxxxxxxxxxxxxxxx
-# [T=900] FAILED in incrementerTests: SUM expected 0001001000110010 != actual xxxxxxxxxxxxxxxx
-# Compile of incrementer.v was successful.
-# Compile of incrementerTests.v was successful.
+# [T=460] FAILED in loadStoreGroupDecoderTests: REGB_EN expected 00000000000000000000000000000001 != actual 0
+# [T=460] FAILED in loadStoreGroupDecoderTests: ALU_OPX expected 0101 != actual 0000
+# [T=560] FAILED in loadStoreGroupDecoderTests: REGA_EN expected 00000000000000000000000000000001 != actual 0
+# [T=560] FAILED in loadStoreGroupDecoderTests: REGB_EN expected 00000000000000000000000000000000 != actual 1
+# [T=560] FAILED in loadStoreGroupDecoderTests: REGA_WEN expected 00000000000000000000000000000001 != actual 0
+# [T=560] FAILED in loadStoreGroupDecoderTests: REG_B_WEN expected 00000000000000000000000000000000 != actual 1
+# Compile of instructionPhaseDecoder.v was successful.
+# Compile of loadStoreGroupDecoder.v was successful.
+# Compile of loadStoreGroupDecoderTests.v was successful.
 # Compile of constants.v was successful.
-# 3 compiles, 0 failed with no errors.
+# 4 compiles, 0 failed with no errors.
 restart
 # ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.incrementerTests
-# Loading work.incrementer
+# Loading work.loadStoreGroupDecoderTests
+# Loading work.loadStoreGroupDecoder
+# Loading work.instructionPhaseDecoder
+# Warning in wave window restart: (vish-4014) No objects found matching '/loadStoreGroupDecoderTests/RESETN'. 
 run 2us
-# [T=500] FAILED in incrementerTests: SUM expected 0001001000110110 != actual 0001001001000100
-# [T=500] FAILED in incrementerTests: SUM expected 0001001000110110 != actual 0001001001000100
-# Compile of incrementer.v was successful.
-# Compile of incrementerTests.v was successful.
+# [T=460] FAILED in loadStoreGroupDecoderTests: REGB_EN expected 00000000000000000000000000000001 != actual 0
+# [T=460] FAILED in loadStoreGroupDecoderTests: ALU_OPX expected 0101 != actual 0000
+# [T=560] FAILED in loadStoreGroupDecoderTests: REGA_EN expected 00000000000000000000000000000001 != actual 0
+# [T=560] FAILED in loadStoreGroupDecoderTests: REGB_EN expected 00000000000000000000000000000000 != actual 1
+# [T=560] FAILED in loadStoreGroupDecoderTests: REGA_WEN expected 00000000000000000000000000000001 != actual 0
+# [T=560] FAILED in loadStoreGroupDecoderTests: REG_B_WEN expected 00000000000000000000000000000000 != actual 1
+# Compile of instructionPhaseDecoder.v was successful.
+# Compile of loadStoreGroupDecoder.v was successful.
+# Compile of loadStoreGroupDecoderTests.v was successful.
 # Compile of constants.v was successful.
-# 3 compiles, 0 failed with no errors.
+# 4 compiles, 0 failed with no errors.
 restart
 # ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.incrementerTests
-# Loading work.incrementer
+# Loading work.loadStoreGroupDecoderTests
+# Loading work.loadStoreGroupDecoder
+# Loading work.instructionPhaseDecoder
 run 2us
-write format wave -window .main_pane.wave.interior.cs.body.pw.wf C:/Users/Duncan/git/ForthCPU/alu/test/incrementerTests/wave.do
-# End time: 18:48:59 on Sep 20,2023, Elapsed time: 0:05:05
+# [T=460] FAILED in loadStoreGroupDecoderTests: REGB_EN expected 00000000000000000000000000000001 != actual 0
+# [T=460] FAILED in loadStoreGroupDecoderTests: ALU_OPX expected 0101 != actual 0000
+# [T=560] FAILED in loadStoreGroupDecoderTests: REGA_EN expected 00000000000000000000000000000001 != actual 0
+# [T=560] FAILED in loadStoreGroupDecoderTests: REGB_EN expected 00000000000000000000000000000000 != actual 1
+# [T=560] FAILED in loadStoreGroupDecoderTests: REGA_WEN expected 00000000000000000000000000000001 != actual 0
+# [T=560] FAILED in loadStoreGroupDecoderTests: REG_B_WEN expected 00000000000000000000000000000000 != actual 1
+# Compile of instructionPhaseDecoder.v was successful.
+# Compile of loadStoreGroupDecoder.v was successful.
+# Compile of loadStoreGroupDecoderTests.v was successful.
+# Compile of constants.v was successful.
+# 4 compiles, 0 failed with no errors.
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.loadStoreGroupDecoderTests
+# Loading work.loadStoreGroupDecoder
+# Loading work.instructionPhaseDecoder
+run 2us
+# [T=460] FAILED in loadStoreGroupDecoderTests: REGB_EN expected 00000000000000000000000000000001 != actual 0
+# [T=460] FAILED in loadStoreGroupDecoderTests: REG_B_WEN expected 00000000000000000000000000000001 != actual 0
+# [T=560] FAILED in loadStoreGroupDecoderTests: REGA_EN expected 00000000000000000000000000000001 != actual 0
+# [T=560] FAILED in loadStoreGroupDecoderTests: REGB_EN expected 00000000000000000000000000000000 != actual 1
+# [T=560] FAILED in loadStoreGroupDecoderTests: REGA_WEN expected 00000000000000000000000000000001 != actual 0
+# [T=560] FAILED in loadStoreGroupDecoderTests: REG_B_WEN expected 00000000000000000000000000000000 != actual 1
+# Compile of instructionPhaseDecoder.v was successful.
+# Compile of loadStoreGroupDecoder.v was successful.
+# Compile of loadStoreGroupDecoderTests.v was successful.
+# Compile of constants.v was successful.
+# 4 compiles, 0 failed with no errors.
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.loadStoreGroupDecoderTests
+# Loading work.loadStoreGroupDecoder
+# Loading work.instructionPhaseDecoder
+run 2us
+# [T=460] FAILED in loadStoreGroupDecoderTests: REGB_EN expected 00000000000000000000000000000001 != actual 0
+# [T=460] FAILED in loadStoreGroupDecoderTests: REG_B_WEN expected 00000000000000000000000000000001 != actual 0
+# [T=560] FAILED in loadStoreGroupDecoderTests: REGA_EN expected 00000000000000000000000000000001 != actual 0
+# [T=560] FAILED in loadStoreGroupDecoderTests: REGB_EN expected 00000000000000000000000000000000 != actual 1
+# [T=560] FAILED in loadStoreGroupDecoderTests: REG_B_WEN expected 00000000000000000000000000000000 != actual 1
+# [T=660] FAILED in loadStoreGroupDecoderTests: REGB_EN expected 00000000000000000000000000000001 != actual 0
+# [T=660] FAILED in loadStoreGroupDecoderTests: REG_B_WEN expected 00000000000000000000000000000001 != actual 0
+# Compile of instructionPhaseDecoder.v was successful.
+# Compile of loadStoreGroupDecoder.v was successful.
+# Compile of loadStoreGroupDecoderTests.v was successful.
+# Compile of constants.v was successful.
+# 4 compiles, 0 failed with no errors.
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.loadStoreGroupDecoderTests
+# Loading work.loadStoreGroupDecoder
+# Loading work.instructionPhaseDecoder
+run 2us
+# [T=560] FAILED in loadStoreGroupDecoderTests: REGA_EN expected 00000000000000000000000000000001 != actual 0
+# [T=660] FAILED in loadStoreGroupDecoderTests: REGA_EN expected 00000000000000000000000000000001 != actual 0
+# [T=760] FAILED in loadStoreGroupDecoderTests: REGB_EN expected 00000000000000000000000000000001 != actual 0
+# [T=760] FAILED in loadStoreGroupDecoderTests: REG_B_WEN expected 00000000000000000000000000000001 != actual 0
+# Compile of instructionPhaseDecoder.v was successful.
+# Compile of loadStoreGroupDecoder.v was successful.
+# Compile of loadStoreGroupDecoderTests.v was successful.
+# Compile of constants.v was successful.
+# 4 compiles, 0 failed with no errors.
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.loadStoreGroupDecoderTests
+# Loading work.loadStoreGroupDecoder
+# Loading work.instructionPhaseDecoder
+run 2us
+# [T=460] FAILED in loadStoreGroupDecoderTests: REGB_EN expected 00000000000000000000000000000001 != actual 0
+# [T=460] FAILED in loadStoreGroupDecoderTests: REG_B_WEN expected 00000000000000000000000000000001 != actual 0
+# [T=560] FAILED in loadStoreGroupDecoderTests: REGA_EN expected 00000000000000000000000000000001 != actual 0
+# [T=560] FAILED in loadStoreGroupDecoderTests: REGB_EN expected 00000000000000000000000000000000 != actual 1
+# [T=560] FAILED in loadStoreGroupDecoderTests: REG_B_WEN expected 00000000000000000000000000000000 != actual 1
+# [T=660] FAILED in loadStoreGroupDecoderTests: REGB_EN expected 00000000000000000000000000000001 != actual 0
+# [T=660] FAILED in loadStoreGroupDecoderTests: REG_B_WEN expected 00000000000000000000000000000001 != actual 0
+# Compile of instructionPhaseDecoder.v was successful.
+# Compile of loadStoreGroupDecoder.v was successful.
+# Compile of loadStoreGroupDecoderTests.v was successful.
+# Compile of constants.v was successful.
+# 4 compiles, 0 failed with no errors.
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.loadStoreGroupDecoderTests
+# Loading work.loadStoreGroupDecoder
+# Loading work.instructionPhaseDecoder
+run 2us
+# [T=560] FAILED in loadStoreGroupDecoderTests: REGA_EN expected 00000000000000000000000000000001 != actual 0
+# [T=560] FAILED in loadStoreGroupDecoderTests: REGB_EN expected 00000000000000000000000000000000 != actual 1
+# [T=560] FAILED in loadStoreGroupDecoderTests: REG_B_WEN expected 00000000000000000000000000000000 != actual 1
+# [T=660] FAILED in loadStoreGroupDecoderTests: REGB_EN expected 00000000000000000000000000000001 != actual 0
+# [T=660] FAILED in loadStoreGroupDecoderTests: REG_B_WEN expected 00000000000000000000000000000001 != actual 0
+# Compile of instructionPhaseDecoder.v was successful.
+# Compile of loadStoreGroupDecoder.v was successful.
+# Compile of loadStoreGroupDecoderTests.v was successful.
+# Compile of constants.v was successful.
+# 4 compiles, 0 failed with no errors.
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.loadStoreGroupDecoderTests
+# Loading work.loadStoreGroupDecoder
+# Loading work.instructionPhaseDecoder
+run 2us
+# [T=560] FAILED in loadStoreGroupDecoderTests: REGA_EN expected 00000000000000000000000000000001 != actual 0
+# [T=560] FAILED in loadStoreGroupDecoderTests: REGB_EN expected 00000000000000000000000000000000 != actual 1
+# [T=560] FAILED in loadStoreGroupDecoderTests: REG_B_WEN expected 00000000000000000000000000000000 != actual 1
+# [T=660] FAILED in loadStoreGroupDecoderTests: REGB_EN expected 00000000000000000000000000000001 != actual 0
+# [T=660] FAILED in loadStoreGroupDecoderTests: REG_B_WEN expected 00000000000000000000000000000001 != actual 0
+# Compile of instructionPhaseDecoder.v was successful.
+# Compile of loadStoreGroupDecoder.v was successful.
+# Compile of loadStoreGroupDecoderTests.v was successful.
+# Compile of constants.v was successful.
+# 4 compiles, 0 failed with no errors.
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.loadStoreGroupDecoderTests
+# Loading work.loadStoreGroupDecoder
+# Loading work.instructionPhaseDecoder
+run 2us
+# Compile of instructionPhaseDecoder.v was successful.
+# Compile of loadStoreGroupDecoder.v was successful.
+# Compile of loadStoreGroupDecoderTests.v was successful.
+# Compile of constants.v was successful.
+# 4 compiles, 0 failed with no errors.
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.loadStoreGroupDecoderTests
+# Loading work.loadStoreGroupDecoder
+# Loading work.instructionPhaseDecoder
+run 2us
+# [T=860] FAILED in loadStoreGroupDecoderTests: REGA_EN expected 00000000000000000000000000000001 != actual 0
+# [T=860] FAILED in loadStoreGroupDecoderTests: ALUA_SRCX expected 0 != actual 01
+# [T=860] FAILED in loadStoreGroupDecoderTests: ALUA_CONSTX expected 01 != actual 11
+# [T=960] FAILED in loadStoreGroupDecoderTests: REGA_EN expected 00000000000000000000000000000000 != actual 1
+# [T=960] FAILED in loadStoreGroupDecoderTests: REGB_EN expected 00000000000000000000000000000001 != actual 0
+# [T=960] FAILED in loadStoreGroupDecoderTests: REG_B_WEN expected 00000000000000000000000000000001 != actual 0
+# Compile of instructionPhaseDecoder.v was successful.
+# Compile of loadStoreGroupDecoder.v was successful.
+# Compile of loadStoreGroupDecoderTests.v was successful.
+# Compile of constants.v was successful.
+# 4 compiles, 0 failed with no errors.
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.loadStoreGroupDecoderTests
+# Loading work.loadStoreGroupDecoder
+# Loading work.instructionPhaseDecoder
+run 2us
+# [T=860] FAILED in loadStoreGroupDecoderTests: REGA_EN expected 00000000000000000000000000000001 != actual 0
+# [T=860] FAILED in loadStoreGroupDecoderTests: ALUA_SRCX expected 0 != actual 01
+# [T=860] FAILED in loadStoreGroupDecoderTests: ALUA_CONSTX expected 01 != actual 11
+# [T=960] FAILED in loadStoreGroupDecoderTests: REGA_EN expected 00000000000000000000000000000000 != actual 1
+# [T=960] FAILED in loadStoreGroupDecoderTests: REGB_EN expected 00000000000000000000000000000001 != actual 0
+# [T=960] FAILED in loadStoreGroupDecoderTests: REG_B_WEN expected 00000000000000000000000000000001 != actual 0
+# Compile of instructionPhaseDecoder.v was successful.
+# Compile of loadStoreGroupDecoder.v was successful.
+# Compile of loadStoreGroupDecoderTests.v was successful.
+# Compile of constants.v was successful.
+# 4 compiles, 0 failed with no errors.
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.loadStoreGroupDecoderTests
+# Loading work.loadStoreGroupDecoder
+# Loading work.instructionPhaseDecoder
+run 2u
+# Invalid time value: 2u
+run 2us
+# [T=860] FAILED in loadStoreGroupDecoderTests: REGA_EN expected 00000000000000000000000000000001 != actual 0
+# [T=860] FAILED in loadStoreGroupDecoderTests: ALUA_SRCX expected 0 != actual 01
+# [T=860] FAILED in loadStoreGroupDecoderTests: ALUA_CONSTX expected 01 != actual 11
+# [T=960] FAILED in loadStoreGroupDecoderTests: REGA_EN expected 00000000000000000000000000000000 != actual 1
+# [T=960] FAILED in loadStoreGroupDecoderTests: REGB_EN expected 00000000000000000000000000000001 != actual 0
+# [T=960] FAILED in loadStoreGroupDecoderTests: REG_B_WEN expected 00000000000000000000000000000001 != actual 0
+# Compile of instructionPhaseDecoder.v was successful.
+# Compile of loadStoreGroupDecoder.v was successful.
+# Compile of loadStoreGroupDecoderTests.v was successful.
+# Compile of constants.v was successful.
+# 4 compiles, 0 failed with no errors.
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.loadStoreGroupDecoderTests
+# Loading work.loadStoreGroupDecoder
+# Loading work.instructionPhaseDecoder
+run 2us
+# [T=960] FAILED in loadStoreGroupDecoderTests: ALUA_SRCX expected 0 != actual 01
+# [T=960] FAILED in loadStoreGroupDecoderTests: ALUA_CONSTX expected 01 != actual 11
+# [T=1060] FAILED in loadStoreGroupDecoderTests: REGA_EN expected 00000000000000000000000000000000 != actual 1
+# [T=1060] FAILED in loadStoreGroupDecoderTests: REGA_WEN expected 00000000000000000000000000000000 != actual 1
+# Compile of instructionPhaseDecoder.v was successful.
+# Compile of loadStoreGroupDecoder.v was successful.
+# Compile of loadStoreGroupDecoderTests.v was successful.
+# Compile of constants.v was successful.
+# 4 compiles, 0 failed with no errors.
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.loadStoreGroupDecoderTests
+# Loading work.loadStoreGroupDecoder
+# Loading work.instructionPhaseDecoder
+run 2us
+# [T=1060] FAILED in loadStoreGroupDecoderTests: REGA_EN expected 00000000000000000000000000000000 != actual 1
+# [T=1060] FAILED in loadStoreGroupDecoderTests: REGA_WEN expected 00000000000000000000000000000000 != actual 1
+# Compile of instructionPhaseDecoder.v was successful.
+# Compile of loadStoreGroupDecoder.v was successful.
+# Compile of loadStoreGroupDecoderTests.v was successful.
+# Compile of constants.v was successful.
+# 4 compiles, 0 failed with no errors.
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.loadStoreGroupDecoderTests
+# Loading work.loadStoreGroupDecoder
+# Loading work.instructionPhaseDecoder
+run 2us
+# Compile of instructionPhaseDecoder.v was successful.
+# Compile of loadStoreGroupDecoder.v was successful.
+# Compile of loadStoreGroupDecoderTests.v was successful.
+# Compile of constants.v was successful.
+# 4 compiles, 0 failed with no errors.
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.loadStoreGroupDecoderTests
+# Loading work.loadStoreGroupDecoder
+# Loading work.instructionPhaseDecoder
+run 2us
+# Compile of instructionPhaseDecoder.v was successful.
+# Compile of loadStoreGroupDecoder.v was successful.
+# Compile of loadStoreGroupDecoderTests.v was successful.
+# Compile of constants.v was successful.
+# 4 compiles, 0 failed with no errors.
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.loadStoreGroupDecoderTests
+# Loading work.loadStoreGroupDecoder
+# Loading work.instructionPhaseDecoder
+run 2us
+run 2us
+# Compile of instructionPhaseDecoder.v was successful.
+# Compile of loadStoreGroupDecoder.v was successful.
+# Compile of loadStoreGroupDecoderTests.v was successful.
+# Compile of constants.v was successful.
+# 4 compiles, 0 failed with no errors.
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.loadStoreGroupDecoderTests
+# Loading work.loadStoreGroupDecoder
+# Loading work.instructionPhaseDecoder
+run 4us
+# Compile of instructionPhaseDecoder.v was successful.
+# Compile of loadStoreGroupDecoder.v was successful.
+# Compile of loadStoreGroupDecoderTests.v was successful.
+# Compile of constants.v was successful.
+# 4 compiles, 0 failed with no errors.
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.loadStoreGroupDecoderTests
+# Loading work.loadStoreGroupDecoder
+# Loading work.instructionPhaseDecoder
+run 4us
+# [T=2160] FAILED in loadStoreGroupDecoderTests: REGB_EN expected 00000000000000000000000000000001 != actual 0
+# [T=2160] FAILED in loadStoreGroupDecoderTests: ALUB_SRCX expected 110 != actual 10
+# Compile of instructionPhaseDecoder.v was successful.
+# Compile of loadStoreGroupDecoder.v was successful.
+# Compile of loadStoreGroupDecoderTests.v was successful.
+# Compile of constants.v was successful.
+# 4 compiles, 0 failed with no errors.
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.loadStoreGroupDecoderTests
+# Loading work.loadStoreGroupDecoder
+# Loading work.instructionPhaseDecoder
+run 4us
+# [T=2160] FAILED in loadStoreGroupDecoderTests: ALUB_SRCX expected 110 != actual 10
+# Compile of instructionPhaseDecoder.v was successful.
+# Compile of loadStoreGroupDecoder.v was successful.
+# Compile of loadStoreGroupDecoderTests.v was successful.
+# Compile of constants.v was successful.
+# 4 compiles, 0 failed with no errors.
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.loadStoreGroupDecoderTests
+# Loading work.loadStoreGroupDecoder
+# Loading work.instructionPhaseDecoder
+run 4us
+# Compile of instructionPhaseDecoder.v was successful.
+# Compile of loadStoreGroupDecoder.v was successful.
+# Compile of loadStoreGroupDecoderTests.v was successful.
+# Compile of constants.v was successful.
+# 4 compiles, 0 failed with no errors.
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.loadStoreGroupDecoderTests
+# Loading work.loadStoreGroupDecoder
+# Loading work.instructionPhaseDecoder
+run 4us
+restart
+run 4us
+run 4uss
+# Invalid time value: 4uss
+run 4us
+# Compile of instructionPhaseDecoder.v was successful.
+# Compile of loadStoreGroupDecoder.v was successful.
+# Compile of loadStoreGroupDecoderTests.v was successful.
+# Compile of constants.v was successful.
+# 4 compiles, 0 failed with no errors.
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.loadStoreGroupDecoderTests
+# Loading work.loadStoreGroupDecoder
+# Loading work.instructionPhaseDecoder
+run 4us
+# Compile of instructionPhaseDecoder.v was successful.
+# Compile of loadStoreGroupDecoder.v was successful.
+# Compile of loadStoreGroupDecoderTests.v was successful.
+# Compile of constants.v was successful.
+# 4 compiles, 0 failed with no errors.
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.loadStoreGroupDecoderTests
+# Loading work.loadStoreGroupDecoder
+# Loading work.instructionPhaseDecoder
+run 4us
+# [T=2160] FAILED in loadStoreGroupDecoderTests: ALU_OPX expected 0010 != actual 0001
+# Compile of instructionPhaseDecoder.v was successful.
+# Compile of loadStoreGroupDecoder.v was successful.
+# Compile of loadStoreGroupDecoderTests.v was successful.
+# Compile of constants.v was successful.
+# 4 compiles, 0 failed with no errors.
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.loadStoreGroupDecoderTests
+# Loading work.loadStoreGroupDecoder
+# Loading work.instructionPhaseDecoder
+run 6us
+write format wave -window .main_pane.wave.interior.cs.body.pw.wf C:/Users/Duncan/git/ForthCPU/loadStoreGroupDecoder/test/loadStoreGroupDecoderTests/wave.do
+# End time: 16:54:27 on Sep 24,2023, Elapsed time: 22:19:00
 # Errors: 0, Warnings: 1

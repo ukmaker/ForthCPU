@@ -46,7 +46,7 @@ initial begin
 	RESET = 1;
 	ARGA = 16'h1234;
 	ARGB = 16'h4321;
-	ALU_OPX = `ALU_ADD;
+	ALU_OPX = `ALU_OPX_ADD;
 	`TICK;
 	`TICK;
 

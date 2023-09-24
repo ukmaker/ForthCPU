@@ -24,13 +24,18 @@
 /**
 * Program counter control
 **/
-// Operation base value
-`define BC_BASEX_PC   1'b0
-`define BC_BASEX_ZERO 1'b1
-// Operation offset value
-`define PC_OFFSETX_D    2'b00
-`define PC_OFFSETX_TWO  2'b01
-`define PC_OFFSETX_FOUR 2'b10
+`define JRX_ABS   1'b0
+`define JRX_REL   1'b1
+
+`define JMPX_NONE 1'b0
+`define JMPX_JMP  1'b1
+
+`define CC_INVERTX_NONE   1'b0
+`define CC_INVERTX_INVERT 1'b1
+
+`define CC_APPLYX_NONE  1'b0
+`define CC_APPLYX_APPLY 1'b1
+
 
 `define CC_SELECTX_Z 2'b00
 `define CC_SELECTX_C 2'b01
@@ -41,27 +46,29 @@
 * Data sources
 **/
 // ALU A input
-`define ALU_A_SOURCEX_REG_A 1'b0
-`define ALU_A_SOURCEX_INCREMENTER 1'b1
+`define ALUA_SRCX_REG_A 1'b0
+`define ALUA_SRCX_INCREMENTER 1'b1
 
-`define ALU_A_CONSTX_ONE       2'b00
-`define ALU_A_CONSTX_TWO       2'b01
-`define ALU_A_CONSTX_MINUS_ONE 2'b10
-`define ALU_A_CONSTX_MINUS_TWO 2'b11
+`define ALUA_CONSTX_ONE       2'b00
+`define ALUA_CONSTX_TWO       2'b01
+`define ALUA_CONSTX_MINUS_ONE 2'b10
+`define ALUA_CONSTX_MINUS_TWO 2'b11
 
 
 // ALU B input
-`define ALU_B_SOURCEX_REG_B    3'b000
-`define ALU_B_SOURCEX_ARG_U4   3'b001
-`define ALU_B_SOURCEX_ARG_U8   3'b010
-`define ALU_B_SOURCEX_U8_REG_B 3'b011
-`define ALU_B_SOURCEX_ARG_U4_0 3'b100
-`define ALU_B_SOURCEX_ZERO     3'b101
+`define ALUB_SRCX_REG_B    3'b000
+`define ALUB_SRCX_ARG_U4   3'b001
+`define ALUB_SRCX_ARG_U8   3'b010
+`define ALUB_SRCX_U8_REG_B 3'b011
+`define ALUB_SRCX_ARG_U4_0 3'b100
+`define ALUB_SRCX_ARG_U6   3'b101
+`define ALUB_SRCX_ARG_U6_0 3'b110
+`define ALUB_SRCX_ZERO     3'b111
 
 /**
 * Register A load sources
 **/
-`define REGA_DINX_ALU_R    2'b00
+`define REGA_DINX_ALU_OPX_R    2'b00
 `define REGA_DINX_PC_A     2'b01
 `define REGA_DINX_ALUA_PP  2'b10
 
@@ -87,10 +94,10 @@
 /** 
 * Address bus sources
 **/
-`define ADDR_BUSX_PC    2'b00
-`define ADDR_BUSX_REG_A 2'b01
-`define ADDR_BUSX_REG_B 2'b10
-`define ADDR_BUSX_ALU   2'b11
+`define ADDR_BUSX_PC       2'b00
+`define ADDR_BUSX_ALU_R    2'b01
+`define ADDR_BUSX_REG_B    2'b10
+`define ADDR_BUSX_ALUA_DIN 2'b11
 
 /**
 * Data bus sources
@@ -137,22 +144,22 @@
 /**
 * ALU operations
 **/
-`define ALU_MOV 4'b0000
-`define ALU_ADD 4'b0001
-`define ALU_SUB 4'b0010
-`define ALU_MUL 4'b0011
-`define ALU_OR  4'b0100
-`define ALU_AND 4'b0101
-`define ALU_XOR 4'b0110
-`define ALU_SL  4'b0111
-`define ALU_SR  4'b1000
-`define ALU_SRA 4'b1001
-`define ALU_ROT 4'b1010
-`define ALU_BIT 4'b1011
-`define ALU_SET 4'b1100
-`define ALU_CLR 4'b1101
-`define ALU_CMP 4'b1110
-`define ALU_SEX 4'b1111
+`define ALU_OPX_MOV 4'b0000
+`define ALU_OPX_ADD 4'b0001
+`define ALU_OPX_SUB 4'b0010
+`define ALU_OPX_MUL 4'b0011
+`define ALU_OPX_OR  4'b0100
+`define ALU_OPX_AND 4'b0101
+`define ALU_OPX_XOR 4'b0110
+`define ALU_OPX_SL  4'b0111
+`define ALU_OPX_SR  4'b1000
+`define ALU_OPX_SRA 4'b1001
+`define ALU_OPX_ROT 4'b1010
+`define ALU_OPX_BIT 4'b1011
+`define ALU_OPX_SET 4'b1100
+`define ALU_OPX_CLR 4'b1101
+`define ALU_OPX_CMP 4'b1110
+`define ALU_OPX_SEX 4'b1111
 
 /**
 * Load/Store

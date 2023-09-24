@@ -1,35 +1,39 @@
 module pcTestHarness (
 
-	input	reset,
-	input	[1:0] pc_opx,
-	output LOCK, 
-	output [7:0] addr
+	input	RESET,
+	input	JMPX,
+	input   JRX,
+	output  LOCK, 
+	output  [7:0] addr
 );
 
-	wire [15:0] pc_dw;
-	wire [15:0] ao;
+	wire [15:0] PC_D;
+	wire [15:0] PC_A;
 
 	wire CLKOP;
 	wire CLKOS;
-	wire pc_clk;
+	wire OSC;
+	wire CLK;
+	wire PC_EN;
 	
-	assign pc_dw = 16'h1234;
+	assign PC_EN = 1'b1;
 	
-	assign addr[7:0] = ao[15:8];
+	assign PC_D = 16'h1234;
 	
-	OSCH OSCinst0 (.STDBY(1'b0), .OSC(clk), .SEDSTDBY());
+	assign addr[7:0] = PC_A[15:8];
+	
+	OSCH OSCinst0 (.STDBY(1'b0), .OSC(OSC), .SEDSTDBY());
 	defparam OSCinst0.NOM_FREQ = "20.46";
 	
-	pll pll_inst (.CLKI(clk), .CLKOP(CLKOP), .CLKOS3(CLKOS), .LOCK(LOCK));
+	pll pll_inst (.CLKI(OSC), .CLKOP(CLKOP), .CLKOS3(CLKOS), .LOCK(LOCK));
 	
-	prescaler psc(.clk_in(CLKOS), .clk_out(pc_clk));
+	prescaler psc(.clk_in(CLKOS), .clk_out(CLK));
 	
-	program_counter pc(
-		.clk(pc_clk),
-		.pc_resetx(reset),
-		.pc_opx(pc_opx),
-		.pc_d(pc_dw),
-		.pc_a(ao)
+	programCounter pc(
+		.CLK(CLK),
+		.RESET(RESET),
+		.PC_EN(PC_EN)
+		
 	);
 	
 	

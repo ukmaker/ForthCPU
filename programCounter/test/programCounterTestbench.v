@@ -1,67 +1,137 @@
+`timescale 1 ns / 1 ns
 `include "C:/Users/Duncan/git/ForthCPU/constants.v"
+`include "C:/Users/Duncan/git/ForthCPU/testSetup.v"
+
 module programCounterTestbench;
+	
+reg CLK;
+reg RESET;
+reg PC_EN;
+reg COMMIT;
+reg [15:0] PC_D;
+reg JRX;
+reg CC_SIGN;
+reg CC_CARRY;
+reg CC_ZERO;
+reg CC_PARITY;
 
-reg clk;
-reg pc_resetx;
-reg [1:0] pc_opx;
-reg [15:0] pc_d;
+reg [1:0] CC_SELECTX;
+reg CC_INVERTX;
+reg CC_APPLYX;
+reg JMPX;
 
-wire [15:0] pc_a;
+wire [15:0] PC_A;
+	
+programCounter testInstance(
 
-programCounter pc(
-	clk, pc_resetx, pc_opx, pc_d, pc_a
+.CLK(CLK),
+.RESET(RESET),
+.PC_EN(PC_EN),
+.COMMIT(COMMIT),
+.PC_D(PC_D),
+.JRX(JRX),
+.CC_SIGN(CC_SIGN),
+.CC_CARRY(CC_CARRY),
+.CC_ZERO(CC_ZERO),
+.CC_PARITY(CC_PARITY),
+.CC_SELECTX(CC_SELECTX),
+.CC_INVERTX(CC_INVERTX),
+.CC_APPLYX(CC_APPLYX),
+.JMPX(JMPX),
+.PC_A(PC_A)
 );
 
-parameter CLOCK_CYCLE = 10;
-parameter INSTRUCTION_CYCLE = 80;
+
+// clk gen
+always begin
+	#50 CLK = ~CLK;
+end
 
 
 initial begin
-	#(CLOCK_CYCLE);
-	clk = 0;
-	pc_resetx = 0;
-	#(CLOCK_CYCLE);
-	pc_resetx = 1;
-	#(CLOCK_CYCLE);
-	clk = 1;
-	#(CLOCK_CYCLE);
-	pc_resetx = 0;
-	clk = 0;
-	#(CLOCK_CYCLE);
-	clk = 1;
-	pc_opx = `PC_OP_NOP;
-	pc_d = 16'h567E;
-	clk = 0;
-	#(CLOCK_CYCLE);
-	clk = 1;
-	#(CLOCK_CYCLE);
-	pc_opx = `PC_OP_NEXT;
-	#(CLOCK_CYCLE);
-	clk = 0;
-	#(CLOCK_CYCLE);
-	clk = 1;
-	#(CLOCK_CYCLE);
-	pc_opx = `PC_OP_SKIP;
-	#(CLOCK_CYCLE);
-	clk = 0;
-	#(CLOCK_CYCLE);
-	clk = 1;
-	#(CLOCK_CYCLE);
-	pc_d = 16'h1234;
-	pc_opx = `PC_OP_LD;
-	#(CLOCK_CYCLE);
-	clk = 0;
-	#(CLOCK_CYCLE);
-	clk = 1;
-	#(CLOCK_CYCLE);
+	#(10) CLK = 0; 
+	`TICK;
+	RESET = 1;
+	CC_SIGN = 0;
+	CC_CARRY = 0;
+	CC_ZERO = 0;
+	CC_PARITY = 0;
+	CC_INVERTX = `CC_INVERTX_NONE;
+	CC_SELECTX = `CC_SELECTX_Z;
+	CC_APPLYX = `CC_APPLYX_NONE;
+	JMPX = `JMPX_NONE;
+	JRX = `JRX_REL;
+	PC_EN = 0;
+	COMMIT = 0;
 	
-	clk = 0;
-	#(CLOCK_CYCLE);
-	clk = 1;
-	#(CLOCK_CYCLE);
-	clk = 0;
-	#(CLOCK_CYCLE);
-	clk = 1;
-	#(CLOCK_CYCLE);
+	PC_D = 16'h1234;
+
+	`TICKTOCK;
+	RESET = 0;  
+	PC_EN = 1;
+	COMMIT = 1;
+	
+	`TICKTOCK;
+	`assert("PC=0", 16'h0002, PC_A)
+	
+	`TICKTOCK;
+	`assert("PC=0", 16'h0004, PC_A)
+	
+	`TICKTOCK;
+	`assert("PC=0", 16'h0006, PC_A)
+	JMPX = `JMPX_JMP;
+	JRX = `JRX_REL;
+	
+	`TICKTOCK;
+	`assert("PC=0", 16'h123a, PC_A)
+	JRX = `JRX_ABS;
+	
+	`TICKTOCK;
+	`assert("PC=0", 16'h1234, PC_A)
+	JMPX = `JMPX_NONE;
+	JRX = `JRX_REL;
+	CC_APPLYX = `CC_APPLYX_APPLY;
+	PC_D = 16'h0010;
+	
+	`TICKTOCK;
+	`assert("PC=0", 16'h1236, PC_A)
+	
+	CC_SELECTX = `CC_SELECTX_Z;
+	CC_ZERO = 1;	
+	`TICKTOCK;
+	`assert("PC=0", 16'h1246, PC_A)
+	CC_ZERO = 0;	
+	`TICKTOCK;
+	`assert("PC=0", 16'h1248, PC_A)
+	
+	
+	CC_SELECTX = `CC_SELECTX_C;
+	CC_CARRY = 1;	
+	`TICKTOCK;
+	`assert("PC=0", 16'h1258, PC_A)
+	CC_CARRY = 0;	
+	`TICKTOCK;
+	`assert("PC=0", 16'h125a, PC_A)
+	
+	
+	CC_SELECTX = `CC_SELECTX_S;
+	CC_SIGN = 1;	
+	`TICKTOCK;
+	`assert("PC=0", 16'h126a, PC_A)
+	CC_SIGN = 0;	
+	`TICKTOCK;
+	`assert("PC=0", 16'h126c, PC_A)
+	
+	
+	CC_SELECTX = `CC_SELECTX_P;
+	CC_PARITY = 1;	
+	`TICKTOCK;
+	`assert("PC=0", 16'h127c, PC_A)
+	CC_PARITY = 0;	
+	`TICKTOCK;
+	`assert("PC=0", 16'h127e, PC_A)
+	
+	
 end
+
 endmodule

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<BaliProject version="3.2" title="ForthCPU" device="LCMXO3L-6900C-5BG256C" default_implementation="programCounter">
+<BaliProject version="3.2" title="ForthCPU" device="LCMXO3L-6900C-5BG256C" default_implementation="loadStoreGroupDecoder">
     <Options/>
     <Implementation title="addressBusController" dir="addressBusController" description="addressBusController" synthesis="synplify" default_strategy="Area">
         <Options def_top="addressBusController"/>
@@ -72,7 +72,13 @@
         <Source name="instructionPhaseDecoder/source/instructionPhaseDecoder.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
+        <Source name="constants.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
         <Source name="aluGroupDecoder/sim/sim.spf" type="Simulation Project File" type_short="SPF">
+            <Options/>
+        </Source>
+        <Source name="aluGroupDecoder/test/aluGroupDecoderTests/aluGroupDecoderTests.spf" type="Simulation Project File" type_short="SPF">
             <Options/>
         </Source>
         <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">
@@ -80,12 +86,12 @@
         </Source>
     </Implementation>
     <Implementation title="dataSourcesController" dir="dataSourcesController" description="dataSourcesController" synthesis="synplify" default_strategy="Area">
-        <Options def_top="data_sources"/>
+        <Options/>
         <Source name="constants.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
         <Source name="dataSourcesController/source/data_sources.v" type="Verilog" type_short="Verilog">
-            <Options top_module="data_sources"/>
+            <Options/>
         </Source>
         <Source name="dataSourcesController/test/data_sources_testbench.v" type="Verilog" type_short="Verilog" syn_sim="SimOnly">
             <Options/>
@@ -98,89 +104,11 @@
         </Source>
     </Implementation>
     <Implementation title="impl1" dir="impl1" description="impl1" synthesis="synplify" default_strategy="Strategy1">
-        <Options VerilogStandard="System Verilog" def_top="register_file"/>
-        <Source name="impl1/source/alu.v" type="Verilog" type_short="Verilog" excluded="TRUE">
-            <Options/>
-        </Source>
-        <Source name="impl1/source/data_sources.v" type="Verilog" type_short="Verilog">
-            <Options/>
-        </Source>
-        <Source name="impl1/source/multiplier.v" type="Verilog" type_short="Verilog" excluded="TRUE">
-            <Options/>
-        </Source>
-        <Source name="impl1/source/forth_cpu.v" type="Verilog" type_short="Verilog" excluded="TRUE">
-            <Options/>
-        </Source>
-        <Source name="impl1/source/instruction_decode.v" type="Verilog" type_short="Verilog" excluded="TRUE">
-            <Options/>
-        </Source>
-        <Source name="impl1/source/register.v" type="Verilog" type_short="Verilog">
-            <Options top_module="register"/>
-        </Source>
-        <Source name="impl1/tests/data_sources_testbench.v" type="Verilog" type_short="Verilog" excluded="TRUE" syn_sim="SimOnly">
-            <Options/>
-        </Source>
-        <Source name="impl1/tests/register_file_testbench.v" type="Verilog" type_short="Verilog" excluded="TRUE" syn_sim="SimOnly">
-            <Options/>
-        </Source>
-        <Source name="impl1/tests/forth_cpu_testbench.v" type="Verilog" type_short="Verilog" excluded="TRUE" syn_sim="SimOnly">
-            <Options/>
-        </Source>
-        <Source name="impl1/tests/instruction_decoder_testbench.v" type="Verilog" type_short="Verilog" excluded="TRUE" syn_sim="SimOnly">
-            <Options/>
-        </Source>
-        <Source name="impl1/tests/register_testbench.v" type="Verilog" type_short="Verilog" excluded="TRUE" syn_sim="SimOnly">
-            <Options/>
-        </Source>
-        <Source name="impl1/tests/regs_testbench.v" type="Verilog" type_short="Verilog" excluded="TRUE" syn_sim="SimOnly">
-            <Options/>
-        </Source>
-        <Source name="impl1/tests/alu_tests.v" type="Verilog" type_short="Verilog" excluded="TRUE">
-            <Options/>
-        </Source>
+        <Options VerilogStandard="System Verilog"/>
         <Source name="constants.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
-        <Source name="example.v" type="Verilog" type_short="Verilog" excluded="TRUE">
-            <Options/>
-        </Source>
-        <Source name="example_tests.v" type="Verilog" type_short="Verilog" excluded="TRUE">
-            <Options/>
-        </Source>
-        <Source name="impl1/source/crossbar.v" type="Verilog" type_short="Verilog">
-            <Options/>
-        </Source>
-        <Source name="impl1/source/instructionPhaseDecoder.v" type="Verilog" type_short="Verilog">
-            <Options top_module="instruction_phase_decoder"/>
-        </Source>
-        <Source name="impl1/source/program_counter.v" type="Verilog" type_short="Verilog">
-            <Options top_module="program_counter"/>
-        </Source>
-        <Source name="aluGroupDecoder.v" type="Verilog" type_short="Verilog">
-            <Options/>
-        </Source>
-        <Source name="impl1/source/register_file.v" type="Verilog" type_short="Verilog">
-            <Options top_module="register_file"/>
-        </Source>
-        <Source name="data_sources_test/data_sources_test.spf" type="Simulation Project File" type_short="SPF">
-            <Options/>
-        </Source>
-        <Source name="data_sources_tests/data_sources_tests.spf" type="Simulation Project File" type_short="SPF">
-            <Options/>
-        </Source>
-        <Source name="example_tests/example_tests.spf" type="Simulation Project File" type_short="SPF">
-            <Options/>
-        </Source>
         <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">
-            <Options/>
-        </Source>
-        <Source name="impl1/tests/data_sources_tests/data_sources_tests.spf" type="Simulation Project File" type_short="SPF">
-            <Options/>
-        </Source>
-        <Source name="impl1/tests/register_file_tests/register_file_tests.spf" type="Simulation Project File" type_short="SPF">
-            <Options/>
-        </Source>
-        <Source name="tests/alu_tests/alu_tests.spf" type="Simulation Project File" type_short="SPF">
             <Options/>
         </Source>
     </Implementation>
@@ -197,16 +125,40 @@
         </Source>
     </Implementation>
     <Implementation title="loadStoreGroupDecoder" dir="loadStoreGroupDecoder" description="loadStoreGroupDecoder" synthesis="synplify" default_strategy="Area">
-        <Options def_top="loadStoreGroupDecoder"/>
+        <Options def_top="loadStoreGroupDecoderTests"/>
         <Source name="loadStoreGroupDecoder/source/loadStoreGroupDecoder.v" type="Verilog" type_short="Verilog">
-            <Options top_module="loadStoreGroupDecoder"/>
+            <Options/>
+        </Source>
+        <Source name="constants.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="loadStoreGroupDecoder/test/loadStoreGroupDecoderTests/loadStoreGroupDecoderTests.v" type="Verilog" type_short="Verilog">
+            <Options top_module="loadStoreGroupDecoderTests"/>
+        </Source>
+        <Source name="instructionPhaseDecoder/source/instructionPhaseDecoder.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">
+            <Options/>
+        </Source>
+        <Source name="loadStoreGroupDecoder/test/loadStoreGroupDecoderTests/loadStoreGroupDecoderTests.spf" type="Simulation Project File" type_short="SPF">
+            <Options/>
+        </Source>
+    </Implementation>
+    <Implementation title="processorCore" dir="processorCore" description="processorCore" synthesis="synplify" default_strategy="Area">
+        <Options/>
+        <Source name="constants.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="processorCore/source/core.v" type="Verilog" type_short="Verilog">
+            <Options/>
         </Source>
         <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">
             <Options/>
         </Source>
     </Implementation>
     <Implementation title="programCounter" dir="programCounter" description="programCounter" synthesis="synplify" default_strategy="Area">
-        <Options def_top="programCounter"/>
+        <Options def_top="programCounterTestbench"/>
         <Source name="constants.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
@@ -220,10 +172,10 @@
             <Options/>
         </Source>
         <Source name="programCounter/test/programCounterTestbench.v" type="Verilog" type_short="Verilog">
-            <Options/>
+            <Options top_module="programCounterTestbench"/>
         </Source>
         <Source name="programCounter/source/programCounter.v" type="Verilog" type_short="Verilog">
-            <Options top_module="programCounter"/>
+            <Options/>
         </Source>
         <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">
             <Options/>
@@ -231,9 +183,12 @@
         <Source name="programCounter/programCounter.xcf" type="Programming Project File" type_short="Programming">
             <Options/>
         </Source>
+        <Source name="programCounter/test/programCounterTests/programCounterTests.spf" type="Simulation Project File" type_short="SPF">
+            <Options/>
+        </Source>
     </Implementation>
     <Implementation title="registerFile" dir="registerFile" description="registerFile" synthesis="synplify" default_strategy="Area">
-        <Options/>
+        <Options def_top="tb"/>
         <Source name="registerFile/source/dpram.ipx" type="IPX_Module" type_short="IPX">
             <Options/>
         </Source>

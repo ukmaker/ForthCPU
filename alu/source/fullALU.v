@@ -22,6 +22,7 @@ module fullALU(
 	input       ALUA_SRCX,
 	input [2:0] ALUB_SRCX,
 	input [1:0] ALUA_CONSTX,
+	input [1:0] LDS_SRCX,
 	input ALU_LD,
 	input CCL_LD,
 	
@@ -39,7 +40,8 @@ aluBMux aluBMuxInst(
 	.ARGA_X(ARGA_X),
 	.ARGB_X(ARGB_X),
 	.ALUB_SRCX(ALUB_SRCX),
-	.ARGB(ALUB_DATA)
+	.ARGB(ALUB_DATA),
+	.LDS_SRCX(LDS_SRCX)
 );
 
 

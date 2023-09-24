@@ -59,56 +59,68 @@ module aluGroupDecoder(
 	/**
 	* ALU
 	**/
-	output [3:0] ALUX,        // ALU operation
+	output wire [3:0] ALU_OPX,        // ALU operation
+	output reg       ALU_CLR,
+	output reg       ALU_LD,
+	output reg       CCL_CLR,
+	output reg       CCL_LD,
 	
 	/**
 	* Data Sources
 	**/
-	output reg [1:0] ALU_A_SOURCEX,
-	output reg [1:0] ALU_B_SOURCEX
+	output reg        ALUA_SRCX,
+	output reg [1:0] ALUA_CONSTX,
+	
+	output reg [2:0] ALUB_SRCX,
+	
+	/**
+	* Arguments
+	**/
+	output wire [3:0] ARGA_X,
+	output wire [3:0] ARGB_X,
+	
+	output reg [2:0] REGA_ADDRX,
+	output reg [1:0] REGB_ADDRX
 
 );
 
 wire [1:0] ARGF;
-wire [3:0] ARGA;
-wire [3:0] ARGB;
 
-assign ALUX = INSTRUCTION[13:10];
+assign ALU_OPX = INSTRUCTION[13:10];
 assign ARGF = INSTRUCTION[9:8];
-assign ARGA = INSTRUCTION[7:4];
-assign ARGB = INSTRUCTION[3:0];
+assign ARGA_X = INSTRUCTION[7:4];
+assign ARGB_X = INSTRUCTION[3:0];
 
 reg RD_A, RD_B, WR_A, WR_B;
 
 // Combinational logic
 // Setup the data sources
-always @(ARGF) begin
-	
-	REGA_CLKEN = 0;
-	REGB_CLKEN = 0;
-	REGA_WEN = 0; 
-	REGB_WEN = 0;
-	ALU_A_SOURCEX = `ALU_A_SOURCEX_REG_A;
-	ALU_B_SOURCEX = `ALU_B_SOURCEX_REG_B;
+always @(*) begin
+
+	ALUA_SRCX = `ALUA_SRCX_REG_A;
+	ALUB_SRCX = `ALUB_SRCX_REG_B;
 	RD_A = 0; RD_B = 0; WR_A = 0; WR_B = 0;
+	REGA_ADDRX = `REGA_ADDRX_ARGA;
+	REGB_ADDRX = `REGB_ADDRX_ARGB;
 	
 	case(ARGF) 
 		`MODE_REG_REG: begin // ALU Ra,Rb
-			ALU_B_SOURCEX = `ALU_B_SOURCEX_REG_B;
+			ALUB_SRCX = `ALUB_SRCX_REG_B;
 			RD_A = 1; RD_B = 1; WR_A = 1;
 		end
 		`MODE_REG_U4: begin // ALU Ra,U4
-			ALU_B_SOURCEX = `ALU_B_SOURCEX_ARG_U4;
+			ALUB_SRCX = `ALUB_SRCX_ARG_U4;
 			RD_A = 1; WR_A = 1;
 		end
 		`MODE_REGB_U8: begin // ALU RB,U8
-			ALU_A_SOURCEX = `ALU_A_SOURCEX_RB; // Sets the port A address to RB
-			ALU_B_SOURCEX = `ALU_B_SOURCEX_ARG_U8;
+			REGA_ADDRX = `REGA_ADDRX_RB;
+			ALUB_SRCX = `ALUB_SRCX_ARG_U8;
 			RD_A = 1; WR_A = 1;
 		end
 		`MODE_REGA_U8RB: begin // ALU RA,U8.RB
-			ALU_A_SOURCEX = `ALU_A_SOURCEX_RA;
-			ALU_B_SOURCEX = `ALU_B_SOURCEX_U8_REG_B;
+			REGA_ADDRX = `REGA_ADDRX_RA;
+			REGB_ADDRX = `REGB_ADDRX_RB;
+			ALUB_SRCX = `ALUB_SRCX_U8_REG_B;
 			RD_A = 1; RD_B = 1; WR_A = 1;
 		end
 	endcase
@@ -116,19 +128,37 @@ end
 
 always @(posedge CLK) begin
 	
-	if(DECODE) begin
+
+	
+	if(FETCH) begin
+		ALU_LD = 0;
+		CCL_LD = 0;
+		REGA_CLKEN = 0;
+		REGB_CLKEN = 0;
+		REGA_WEN = 0; 
+		REGB_WEN = 0;
+		ALUA_CONSTX = `ALUA_CONSTX_ONE;		
+	end else if(DECODE) begin
 		REGA_CLKEN <= RD_A;
 		REGB_CLKEN <= RD_B;
+		REGA_WEN <= 0;
+		REGB_WEN <= 0;
 	end else if(EXECUTE) begin
 		REGA_CLKEN <= WR_A;
 		REGB_CLKEN <= WR_B;
 		REGA_WEN <= WR_A;
 		REGB_WEN <= WR_B;
+		if(ALU_OPX != `ALU_OPX_MOV) begin
+			ALU_LD <= 1;
+			CCL_LD <= 1;
+		end
 	end else if(COMMIT) begin
 		REGA_CLKEN <= 0;
 		REGB_CLKEN <= 0;
 		REGA_WEN <= 0;
 		REGB_WEN <= 0;
+		ALU_LD <= 0;
+		CCL_LD <= 0;
 	end
 	
 end
