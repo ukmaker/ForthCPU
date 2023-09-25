@@ -76,10 +76,10 @@ end
 
 always @(REGA_DINX) begin
 	case(REGA_DINX)
-		`REGA_DINX_ALU_R:   DINA = ALU_R;
-		`REGA_DINX_PC_A:    DINA = PC_A;
-		`REGA_DINX_ALUA_PP: DINA = ALUA_PP;
-		default:            DINA = ALU_R;
+		`REGA_DINX_ALU_R:     DINA = ALU_R;
+		`REGA_DINX_PC_A:      DINA = PC_A;
+		`REGA_DINX_ALUA_PP:   DINA = ALUA_PP;
+		default:              DINA = ALU_R;
 	endcase
 end
 	

@@ -68,9 +68,9 @@
 /**
 * Register A load sources
 **/
-`define REGA_DINX_ALU_OPX_R    2'b00
-`define REGA_DINX_PC_A     2'b01
-`define REGA_DINX_ALUA_PP  2'b10
+`define REGA_DINX_ALU_R     2'b00
+`define REGA_DINX_PC_A      2'b01
+`define REGA_DINX_ALUA_PP   2'b10
 
 /**
 * Register A address sources
@@ -123,6 +123,12 @@
 `define GROUP_ARITHMETIC_LOGIC 2'b11
 
 /**
+* Well-known instructions
+**/
+`define INSTRUCTION_NOP  16'h0000
+`define INSTRUCTION_HALT 16'h0100
+
+/**
 * Instruction mode
 **/
 // ALU operations
@@ -172,5 +178,14 @@
 `define LDSF_NONE     2'b00
 `define LDSF_PRE_DEC  2'b10
 `define LDSF_POST_INC 2'b11
+
+/**
+* Jump
+**/
+`define JPF_ABS_R  2'b00
+`define JPF_ABS_U8 2'b01
+`define JPF_REL_R  2'b10
+`define JPF_REL_U8 2'b11
+
 
 `endif

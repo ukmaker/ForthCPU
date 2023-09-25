@@ -60,7 +60,7 @@ module loadStoreGroupDecoder(
 	
 	input CLK,
 	input RESET,
-	input [15:0] INSTRUCTION,
+	input [13:8] INSTRUCTION,
 	
 	input FETCH,
 	input DECODE,
@@ -91,7 +91,7 @@ module loadStoreGroupDecoder(
 	/**
 	* Data Sources
 	**/
-	output reg [1:0] ALUA_SRCX,
+	output reg        ALUA_SRCX,
 	output reg [2:0] ALUB_SRCX,
 	
 	output reg [1:0] REGA_DINX,
@@ -115,8 +115,6 @@ wire [3:0] ARGB;
 assign INCF = INSTRUCTION[13:12];
 assign LDSF = INSTRUCTION[11:10];
 assign MODEF = INSTRUCTION[9:8];
-assign ARGA = INSTRUCTION[7:4];
-assign ARGB = INSTRUCTION[3:0];
 
 reg RD_A, RD_B, WR_A, WR_B, RD_M, WR_M;
 
@@ -124,10 +122,6 @@ reg RD_A, RD_B, WR_A, WR_B, RD_M, WR_M;
 // Setup the data sources
 always @(*) begin
 	
-	REGA_EN = 0;
-	REGB_EN = 0;
-	REGA_WEN = 0; 
-	REGB_WEN = 0;
 	ALUA_SRCX = `ALUA_SRCX_REG_A;
 	ALUB_SRCX = `ALUB_SRCX_REG_B;
 	RD_A = 0; RD_B = 0; WR_A = 0; WR_B = 0;

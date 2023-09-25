@@ -1,0 +1,17 @@
+if {![file exists "C:/Users/Duncan/git/ForthCPU/instructionPhaseDecoder/test/instructionPhaseDecoderTests/instructionPhaseDecoderTests.mpf"]} { 
+	project new "C:/Users/Duncan/git/ForthCPU/instructionPhaseDecoder/test/instructionPhaseDecoderTests" instructionPhaseDecoderTests
+	project addfile "C:/Users/Duncan/git/ForthCPU/instructionPhaseDecoder/source/instructionPhaseDecoder.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/instructionPhaseDecoder/test/instructionPhaseDecoderTestbench.v"
+	vlib  work
+	vdel -lib work -all 
+	vlib work
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/instructionPhaseDecoder/source  -work work  "C:/Users/Duncan/git/ForthCPU/instructionPhaseDecoder/source/instructionPhaseDecoder.v"
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/instructionPhaseDecoder/test  -work work  "C:/Users/Duncan/git/ForthCPU/instructionPhaseDecoder/test/instructionPhaseDecoderTestbench.v"
+} else {
+	project open "C:/Users/Duncan/git/ForthCPU/instructionPhaseDecoder/test/instructionPhaseDecoderTests/instructionPhaseDecoderTests"
+	project compileoutofdate
+}
+vsim -L work -L pmi_work -L ovi_machxo3l  instruction_phase_decoder_testbench
+view wave
+add wave /*
+run 1000ns

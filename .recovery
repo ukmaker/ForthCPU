@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<BaliProject version="3.2" title="ForthCPU" device="LCMXO3L-6900C-5BG256C" default_implementation="loadStoreGroupDecoder">
+<BaliProject version="3.2" title="ForthCPU" device="LCMXO3L-6900C-5BG256C" default_implementation="instructionPhaseDecoder">
     <Options/>
     <Implementation title="addressBusController" dir="addressBusController" description="addressBusController" synthesis="synplify" default_strategy="Area">
         <Options def_top="addressBusController"/>
@@ -123,6 +123,30 @@
         <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">
             <Options/>
         </Source>
+        <Source name="instructionPhaseDecoder/test/instructionPhaseDecoderTests/instructionPhaseDecoderTests.spf" type="Simulation Project File" type_short="SPF">
+            <Options/>
+        </Source>
+    </Implementation>
+    <Implementation title="jumpGroupDecoder" dir="jumpGroupDecoder" description="jumpGroupDecoder" synthesis="synplify" default_strategy="Area">
+        <Options def_top="jumpGroupDecoderTests"/>
+        <Source name="jumpGroupDecoder/source/programCounterGroupDecoder.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="jumpGroupDecoder/test/jumpGroupDecoderTests.v" type="Verilog" type_short="Verilog">
+            <Options top_module="jumpGroupDecoderTests"/>
+        </Source>
+        <Source name="instructionPhaseDecoder/source/instructionPhaseDecoder.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="constants.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">
+            <Options/>
+        </Source>
+        <Source name="jumpGroupDecoder/test/jumpGroupDecoderTests/jumpGroupDecoderTests.spf" type="Simulation Project File" type_short="SPF">
+            <Options/>
+        </Source>
     </Implementation>
     <Implementation title="loadStoreGroupDecoder" dir="loadStoreGroupDecoder" description="loadStoreGroupDecoder" synthesis="synplify" default_strategy="Area">
         <Options def_top="loadStoreGroupDecoderTests"/>
@@ -146,14 +170,68 @@
         </Source>
     </Implementation>
     <Implementation title="processorCore" dir="processorCore" description="processorCore" synthesis="synplify" default_strategy="Area">
-        <Options/>
+        <Options def_top="processorCoreTests"/>
         <Source name="constants.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
         <Source name="processorCore/source/core.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
+        <Source name="addressBusController/source/addressBusController.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="alu/source/fullALU.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="alu/source/incrementer.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="alu/source/aluBlock.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="alu/source/aluBMux.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="alu/source/alu.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="aluGroupDecoder/source/aluGroupDecoder.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="processorCore/source/opxMultiplexer.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="jumpGroupDecoder/source/programCounterGroupDecoder.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="loadStoreGroupDecoder/source/loadStoreGroupDecoder.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="instructionPhaseDecoder/source/instructionPhaseDecoder.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="programCounter/source/programCounter.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="registerFile/source/register_file.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="registerFile/source/dpram.ipx" type="IPX_Module" type_short="IPX">
+            <Options/>
+        </Source>
+        <Source name="registerFile/source/dpram.lpc" type="LPC_Module" type_short="LPC">
+            <Options/>
+        </Source>
+        <Source name="registerFile/source/dpram.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="processorCore/test/processorCoreTests.v" type="Verilog" type_short="Verilog">
+            <Options top_module="processorCoreTests"/>
+        </Source>
         <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">
+            <Options/>
+        </Source>
+        <Source name="processorCore/test/processorCoreTests/processorCoreTests.spf" type="Simulation Project File" type_short="SPF">
             <Options/>
         </Source>
     </Implementation>

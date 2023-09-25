@@ -12,55 +12,54 @@ module instructionPhaseDecoder(
 // Internal state
 reg [2:0] PHASE;
 
-always @ (posedge RESET)
-begin
-	PHASE = 0;
-end
-
-always @ (posedge CLK)
+always @ (posedge CLK or posedge RESET)
 begin
 	#10
-	case (PHASE)
-		0: begin
-			FETCH = 0;
-			DECODE = 0;
-			EXECUTE = 0;
-			COMMIT = 0;
-			PHASE <= 1;
+	if(RESET) begin
+		PHASE = 0;
+	end else begin
+		case (PHASE)
+			0: begin
+				FETCH = 0;
+				DECODE = 0;
+				EXECUTE = 0;
+				COMMIT = 0;
+				PHASE = 1;
+				end
+
+			1: begin
+				FETCH = 1;
+				DECODE = 0;
+				EXECUTE = 0;
+				COMMIT = 0;
+				PHASE = 2;
+				end
+
+			2: begin
+				FETCH = 0;
+				DECODE = 1;
+				EXECUTE = 0;
+				COMMIT = 0;	
+				PHASE = 3;
 			end
 
-		1: begin
-			FETCH = 1;
-			DECODE = 0;
-			EXECUTE = 0;
-			COMMIT = 0;
-			PHASE <= 2;
+			3: begin
+				FETCH = 0;
+				DECODE = 0;
+				EXECUTE = 1;
+				COMMIT = 0;
+				PHASE = 4;
 			end
 
-		2: begin
-			FETCH = 0;
-			DECODE = 1;
-			EXECUTE = 0;
-			COMMIT = 0;	
-			PHASE <= 3;
-		end
+			4: begin
+				FETCH = 0;
+				DECODE = 0;
+				EXECUTE = 0;
+				COMMIT = 1;
+				PHASE = 1;
+			end
 
-		3: begin
-			FETCH = 0;
-			DECODE = 0;
-			EXECUTE = 1;
-			COMMIT = 0;
-			PHASE <= 4;
-		end
-
-		4: begin
-			FETCH = 0;
-			DECODE = 0;
-			EXECUTE = 0;
-			COMMIT = 1;
-			PHASE <= 1;
-		end
-
-	endcase
+		endcase
+	end
 end
 endmodule

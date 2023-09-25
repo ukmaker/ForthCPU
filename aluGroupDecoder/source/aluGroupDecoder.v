@@ -34,7 +34,7 @@
 module aluGroupDecoder(
 	
 	input CLK,
-	input RESETN,
+	input RESET,
 	input [15:0] INSTRUCTION,
 	
 	input FETCH,
@@ -60,9 +60,7 @@ module aluGroupDecoder(
 	* ALU
 	**/
 	output wire [3:0] ALU_OPX,        // ALU operation
-	output reg       ALU_CLR,
 	output reg       ALU_LD,
-	output reg       CCL_CLR,
 	output reg       CCL_LD,
 	
 	/**
@@ -95,7 +93,8 @@ reg RD_A, RD_B, WR_A, WR_B;
 
 // Combinational logic
 // Setup the data sources
-always @(*) begin
+always @(*) 
+begin
 
 	ALUA_SRCX = `ALUA_SRCX_REG_A;
 	ALUB_SRCX = `ALUB_SRCX_REG_B;

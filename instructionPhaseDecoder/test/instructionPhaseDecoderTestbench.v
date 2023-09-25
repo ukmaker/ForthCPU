@@ -1,36 +1,41 @@
+`timescale 1 ns / 1 ns
+
+`include "C:/Users/Duncan/git/ForthCPU/constants.v"
+
+
 module instruction_phase_decoder_testbench;
 
 parameter CLOCK_CYCLE = 20;
 
-wire fetch, decode, execute, commit;
+wire FETCH, DECODE, EXECUTE, COMMIT;
 
-reg clk, reset;
+reg CLK, RESET;
 
-instruction_phase_decoder ipd(
-	.clk(clk),
-	.reset(reset),
-	.fetch(fetch),
-	.decode(decode),
-	.execute(execute),
-	.commit(commit)
+instructionPhaseDecoder ipd(
+	.CLK(CLK),
+	.RESET(RESET),
+	.FETCH(FETCH),
+	.DECODE(DECODE),
+	.EXECUTE(EXECUTE),
+	.COMMIT(COMMIT)
 );
-
+ 
 initial begin
-	reset = 0;
-	clk = 0;
+	RESET = 0;
+	CLK = 0;
 	
 end
 
 // clk gen
 always
-	#(CLOCK_CYCLE/2.0) clk = ~clk;
+	#(CLOCK_CYCLE/2.0) CLK = ~CLK;
 	
 initial begin
 
 	#(CLOCK_CYCLE * 2);
-	#20 reset = 1;
+	#20 RESET = 1;
 	#(CLOCK_CYCLE);
-	reset = 0;
+	RESET = 0;
 	
 	#(10 * CLOCK_CYCLE);
 end
