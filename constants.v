@@ -47,7 +47,7 @@
 **/
 // ALU A input
 `define ALUA_SRCX_REG_A 1'b0
-`define ALUA_SRCX_INCREMENTER 1'b1
+`define ALUA_SRCX_PP 1'b1
 
 `define ALUA_CONSTX_ONE       2'b00
 `define ALUA_CONSTX_TWO       2'b01
@@ -102,9 +102,9 @@
 /**
 * Data bus sources
 **/
-`define DATA_BUSX_REG_A 2'b01
-`define DATA_BUSX_REG_B 2'b10
-`define DATA_BUSX_ALU   2'b11
+`define DATA_BUSX_PC_A      2'b01
+`define DATA_BUSX_ALU_R     2'b10
+`define DATA_BUSX_REGA_DOUT 2'b11
 
 /**
 * Phase
@@ -182,6 +182,10 @@
 /**
 * Jump
 **/
+`define SKIPF_NONE     2'b00
+`define SKIPF_SKIP     2'b10
+`define SKIPF_NOT_SKIP 2'b11
+
 `define JPF_ABS_R  2'b00
 `define JPF_ABS_U8 2'b01
 `define JPF_REL_R  2'b10

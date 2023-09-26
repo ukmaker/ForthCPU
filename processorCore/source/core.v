@@ -109,7 +109,7 @@ wire [1:0] LDS_ADDR_BUSX;
 * Aliases
 **/
 assign PC_D = ALUB_DATA;
-
+assign INSTRUCTION = DBUS_IN;
 
 instructionPhaseDecoder ipd(
 	.CLK(CLK),
@@ -214,12 +214,20 @@ opxMultiplexer opxMux(
 );
 
 addressBusController abusController(
-	.PC_A(),
-	.ALU_R(),
-	.REG_B(),
-	.ALUA_DIN(),
-	.ADDR_BUSX(),
-	.ADDR(ADDR)
+	.PC_A(PC_A),
+	.ALU_R(ALU_R),
+	.REG_B(REGB_DOUT),
+	.ALUA_DIN(ALUA_DATA),
+	.ADDR_BUSX(ADDR_BUSX),
+	.ADDR(ABUS)
+);
+
+dataBusController dbusController(
+	.DATA_BUSX(DATA_BUSX),
+	.PC_A(PC_A),
+	.ALU_R(ALU_R),
+	.REGA_DOUT(REGA_DOUT),
+	.DOUT(DBUS_OUT)
 );
 
 fullALU alu(
@@ -277,7 +285,6 @@ jumpGroupDecoder pcDecoder(
 	.EXECUTE(EXECUTE),
 	.COMMIT(COMMIT),
 	.PC_EN(PC_EN),
-	.PC_CLR(RESET),
 	.JRX(JRX),
 	.JMP_X(JMP_X),
 	.CC_APPLYX(CC_APPLYX),
@@ -286,6 +293,7 @@ jumpGroupDecoder pcDecoder(
 	.REGB_ADDRX(PCC_REGB_ADDRX),
 	.ALUB_SRCX(PCC_ALUB_SRCX)
 );
+
 programCounter pc(
 	.CLK(CLK),
 	.RESET(RESET),

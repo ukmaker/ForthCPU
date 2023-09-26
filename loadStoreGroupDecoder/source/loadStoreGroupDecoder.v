@@ -134,7 +134,7 @@ always @(*) begin
 	DATA_BUS_OEN = 0;
 	REGA_ADDRX = `REGA_ADDRX_ARGA;
 	REGB_ADDRX = `REGB_ADDRX_ARGB;
-	REGA_DINX = `REGA_DINX_ALUA_PP;
+	REGA_DINX  = `REGA_DINX_ALU_R;
 	
 	// What operation is this?
 	case(LDSF) 
@@ -169,7 +169,7 @@ always @(*) begin
 					// Address from the incrementer
 					ADDR_BUSX = `ADDR_BUSX_ALUA_DIN;
 					// After the adder
-					ALUA_SRCX = `ALUA_SRCX_INCREMENTER;
+					ALUA_SRCX = `ALUA_SRCX_PP;
 					// write the address back to PortA
 					WR_A = 1;
 					REGA_DINX = `REGA_DINX_ALUA_PP;

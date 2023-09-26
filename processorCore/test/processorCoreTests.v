@@ -60,12 +60,13 @@ initial begin
 	 RESET = 0;  
 	 `TICKTOCK;
 	 `TICKTOCK;
+	 `TICKTOCK;
 	 
 	 /************************************************************************
 	 * LD Ra,(Rb)
 	 *************************************************************************/
 	 // Start FETCH
-	 DBUS_IN = {`GROUP_LOAD_STORE,`LDSF_NONE,`LDS_LD,`MODE_REG_MEM,`R5,`RI};	 
+	 DBUS_IN = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_MOV,`MODE_REGB_U8,8'b10101111};	 
 	 `TICKTOCK;  
 	// DECODE
 	`TICKTOCK; 
@@ -83,7 +84,7 @@ initial begin
 	 * LD Ra,(--Rb)
 	 *************************************************************************/
 	// FETCH
-	DBUS_IN = {`GROUP_LOAD_STORE,`LDSF_PRE_DEC,`LDS_LD,`MODE_REG_MEM,`R5,`RI};	 
+	DBUS_IN = {`GROUP_LOAD_STORE,`LDSF_NONE,`LDS_ST,`MODE_REG_MEM,`R0,`RB};	 
 	`TICKTOCK;
 	 
 	// DECODE

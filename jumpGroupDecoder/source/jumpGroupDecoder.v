@@ -49,12 +49,11 @@ module jumpGroupDecoder(
 	* Program counter control
 	**/
 	output reg PC_EN,
-	output wire PC_CLR,
 	output wire JRX,
 	output reg JMP_X,
 	output reg CC_APPLYX,
 	output wire CC_INVERTX,
-	output reg [1:0] CC_SELECTX,
+	output wire [1:0] CC_SELECTX,
 	
 	/**
 	* Register file control
@@ -71,16 +70,14 @@ module jumpGroupDecoder(
 wire [1:0] GROUPF;
 wire [1:0] SKIPF;
 wire [1:0] JPF;
-wire [1:0] CCF;
 
-assign PC_CLR = RESET;
 
 assign GROUPF= INSTRUCTION[15:14];
 assign SKIPF = INSTRUCTION[13:12];
-assign CCF   = INSTRUCTION[11:10];
-assign JPF   = INSTRUCTION[9:8];
+assign JPF   = INSTRUCTION[11:10];
+assign CC_SELECTX   = INSTRUCTION[9:8];
 
-assign CC_INVERTX = CCF[0];
+assign CC_INVERTX = SKIPF[0];
 assign JRX = JPF[1];
 
 always @(*) begin

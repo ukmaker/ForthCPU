@@ -12,7 +12,7 @@
 #OS: Windows 8 6.2
 #Hostname: EDAWIN
 
-# Mon Sep 25 19:19:39 2023
+# Mon Sep 25 22:20:58 2023
 
 #Implementation: processorCore
 
@@ -77,7 +77,7 @@ Synopsys Verilog Compiler, Version comp202103synp2, Build 093R, Built Aug 10 202
 @I::"C:\Users\Duncan\git\ForthCPU\processorCore\test\processorCoreTests.v" (library work)
 @I:"C:\Users\Duncan\git\ForthCPU\processorCore\test\processorCoreTests.v":"C:/Users/Duncan/git/ForthCPU\testSetup.v" (library work)
 Verilog syntax check successful!
-File C:\Users\Duncan\git\ForthCPU\instructionPhaseDecoder\source\instructionPhaseDecoder.v changed - recompiling
+File C:\Users\Duncan\git\ForthCPU\alu\source\aluBlock.v changed - recompiling
 Selecting top level module processorCoreTests
 @W: CG730 :"C:\Users\Duncan\git\ForthCPU\processorCore\test\processorCoreTests.v":5:7:5:24|Top-level module processorCoreTests has no ports
 
@@ -124,7 +124,6 @@ Running optimization stage 1 on alu .......
 Finished optimization stage 1 on alu (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 101MB)
 @N: CG364 :"C:\Users\Duncan\git\ForthCPU\alu\source\aluBlock.v":4:7:4:14|Synthesizing module aluBlock in library work.
 @E: CS153 :"C:\Users\Duncan\git\ForthCPU\alu\source\aluBlock.v":40:6:40:6|Can't mix blocking and non-blocking assignments to a variable
-@E: CS153 :"C:\Users\Duncan\git\ForthCPU\alu\source\aluBlock.v":48:11:48:11|Can't mix blocking and non-blocking assignments to a variable
 Running optimization stage 1 on aluBlock .......
 Finished optimization stage 1 on aluBlock (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 101MB)
 @N: CG364 :"C:\Users\Duncan\git\ForthCPU\alu\source\incrementer.v":3:7:3:17|Synthesizing module incrementer in library work.
@@ -140,22 +139,6 @@ Finished optimization stage 1 on incrementer (CPU Time 0h:00m:00s, Memory Used c
 Running optimization stage 1 on fullALU .......
 Finished optimization stage 1 on fullALU (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 101MB)
 @N: CG364 :"C:\Users\Duncan\git\ForthCPU\aluGroupDecoder\source\aluGroupDecoder.v":34:7:34:21|Synthesizing module aluGroupDecoder in library work.
-@E: CS153 :"C:\Users\Duncan\git\ForthCPU\aluGroupDecoder\source\aluGroupDecoder.v":141:13:141:13|Can't mix blocking and non-blocking assignments to a variable
-@E: CS153 :"C:\Users\Duncan\git\ForthCPU\aluGroupDecoder\source\aluGroupDecoder.v":142:13:142:13|Can't mix blocking and non-blocking assignments to a variable
-@E: CS153 :"C:\Users\Duncan\git\ForthCPU\aluGroupDecoder\source\aluGroupDecoder.v":143:11:143:11|Can't mix blocking and non-blocking assignments to a variable
-@E: CS153 :"C:\Users\Duncan\git\ForthCPU\aluGroupDecoder\source\aluGroupDecoder.v":144:11:144:11|Can't mix blocking and non-blocking assignments to a variable
-@E: CS153 :"C:\Users\Duncan\git\ForthCPU\aluGroupDecoder\source\aluGroupDecoder.v":146:13:146:13|Can't mix blocking and non-blocking assignments to a variable
-@E: CS153 :"C:\Users\Duncan\git\ForthCPU\aluGroupDecoder\source\aluGroupDecoder.v":147:13:147:13|Can't mix blocking and non-blocking assignments to a variable
-@E: CS153 :"C:\Users\Duncan\git\ForthCPU\aluGroupDecoder\source\aluGroupDecoder.v":148:11:148:11|Can't mix blocking and non-blocking assignments to a variable
-@E: CS153 :"C:\Users\Duncan\git\ForthCPU\aluGroupDecoder\source\aluGroupDecoder.v":149:11:149:11|Can't mix blocking and non-blocking assignments to a variable
-@E: CS153 :"C:\Users\Duncan\git\ForthCPU\aluGroupDecoder\source\aluGroupDecoder.v":151:10:151:10|Can't mix blocking and non-blocking assignments to a variable
-@E: CS153 :"C:\Users\Duncan\git\ForthCPU\aluGroupDecoder\source\aluGroupDecoder.v":152:10:152:10|Can't mix blocking and non-blocking assignments to a variable
-@E: CS153 :"C:\Users\Duncan\git\ForthCPU\aluGroupDecoder\source\aluGroupDecoder.v":155:13:155:13|Can't mix blocking and non-blocking assignments to a variable
-@E: CS153 :"C:\Users\Duncan\git\ForthCPU\aluGroupDecoder\source\aluGroupDecoder.v":156:13:156:13|Can't mix blocking and non-blocking assignments to a variable
-@E: CS153 :"C:\Users\Duncan\git\ForthCPU\aluGroupDecoder\source\aluGroupDecoder.v":157:11:157:11|Can't mix blocking and non-blocking assignments to a variable
-@E: CS153 :"C:\Users\Duncan\git\ForthCPU\aluGroupDecoder\source\aluGroupDecoder.v":158:11:158:11|Can't mix blocking and non-blocking assignments to a variable
-@E: CS153 :"C:\Users\Duncan\git\ForthCPU\aluGroupDecoder\source\aluGroupDecoder.v":159:9:159:9|Can't mix blocking and non-blocking assignments to a variable
-@E: CS153 :"C:\Users\Duncan\git\ForthCPU\aluGroupDecoder\source\aluGroupDecoder.v":160:9:160:9|Can't mix blocking and non-blocking assignments to a variable
 Running optimization stage 1 on aluGroupDecoder .......
 @N: CL189 :"C:\Users\Duncan\git\ForthCPU\aluGroupDecoder\source\aluGroupDecoder.v":128:0:128:5|Register bit ALUA_CONSTX[0] is always 0.
 @N: CL189 :"C:\Users\Duncan\git\ForthCPU\aluGroupDecoder\source\aluGroupDecoder.v":128:0:128:5|Register bit ALUA_CONSTX[1] is always 0.
@@ -172,19 +155,19 @@ Finished optimization stage 1 on programCounter (CPU Time 0h:00m:00s, Memory Use
 @W: CG360 :"C:\Users\Duncan\git\ForthCPU\loadStoreGroupDecoder\source\loadStoreGroupDecoder.v":112:11:112:14|Removing wire ARGA, as there is no assignment to it.
 @W: CG360 :"C:\Users\Duncan\git\ForthCPU\loadStoreGroupDecoder\source\loadStoreGroupDecoder.v":113:11:113:14|Removing wire ARGB, as there is no assignment to it.
 Running optimization stage 1 on loadStoreGroupDecoder .......
-Finished optimization stage 1 on loadStoreGroupDecoder (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 101MB)
+Finished optimization stage 1 on loadStoreGroupDecoder (CPU Time 0h:00m:00s, Memory Used current: 101MB peak: 101MB)
 @N: CG364 :"C:\lscc\diamond\3.12\synpbase\lib\lucent\machxo3l.v":1291:7:1291:11|Synthesizing module DP8KC in library work.
 Running optimization stage 1 on DP8KC .......
-Finished optimization stage 1 on DP8KC (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 101MB)
+Finished optimization stage 1 on DP8KC (CPU Time 0h:00m:00s, Memory Used current: 101MB peak: 101MB)
 @N: CG364 :"C:\lscc\diamond\3.12\synpbase\lib\lucent\machxo3l.v":1120:7:1120:9|Synthesizing module VHI in library work.
 Running optimization stage 1 on VHI .......
-Finished optimization stage 1 on VHI (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 101MB)
+Finished optimization stage 1 on VHI (CPU Time 0h:00m:00s, Memory Used current: 101MB peak: 101MB)
 @N: CG364 :"C:\lscc\diamond\3.12\synpbase\lib\lucent\machxo3l.v":1124:7:1124:9|Synthesizing module VLO in library work.
 Running optimization stage 1 on VLO .......
-Finished optimization stage 1 on VLO (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 101MB)
+Finished optimization stage 1 on VLO (CPU Time 0h:00m:00s, Memory Used current: 101MB peak: 101MB)
 @N: CG364 :"C:\Users\Duncan\git\ForthCPU\registerFile\source\dpram.v":8:7:8:11|Synthesizing module dpram in library work.
 Running optimization stage 1 on dpram .......
-Finished optimization stage 1 on dpram (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 101MB)
+Finished optimization stage 1 on dpram (CPU Time 0h:00m:00s, Memory Used current: 101MB peak: 101MB)
 @N: CG364 :"C:\Users\Duncan\git\ForthCPU\registerFile\source\register_file.v":3:7:3:19|Synthesizing module register_file in library work.
 @W: CG296 :"C:\Users\Duncan\git\ForthCPU\registerFile\source\register_file.v":64:9:64:18|Incomplete sensitivity list; assuming completeness. Make sure all referenced variables in message CG290 are included in the sensitivity list.
 @W: CG290 :"C:\Users\Duncan\git\ForthCPU\registerFile\source\register_file.v":66:28:66:33|Referenced variable ARGA_X is not in sensitivity list.
@@ -198,19 +181,14 @@ Finished optimization stage 1 on dpram (CPU Time 0h:00m:00s, Memory Used current
 Running optimization stage 1 on register_file .......
 Finished optimization stage 1 on register_file (CPU Time 0h:00m:00s, Memory Used current: 101MB peak: 101MB)
 @N: CG364 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":6:7:6:10|Synthesizing module core in library work.
-@W: CG781 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":217:6:217:6|Input PC_A on instance abusController is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":218:7:218:7|Input ALU_R on instance abusController is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":219:7:219:7|Input REG_B on instance abusController is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":220:10:220:10|Input ALUA_DIN on instance abusController is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
-@W: CG781 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":221:11:221:11|Input ADDR_BUSX on instance abusController is undriven; assigning to 0.  Simulation mismatch possible. Either assign the input or remove the declaration. 
 @W: CG1273 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":280:9:280:13|An input port (port RESET) is the target of an assignment - please check if this is intentional
-@W: CG360 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":13:15:13:18|Removing wire ABUS, as there is no assignment to it.
 @W: CG360 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":14:15:14:22|Removing wire DBUS_OUT, as there is no assignment to it.
 @W: CG360 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":17:8:17:9|Removing wire RD, as there is no assignment to it.
 @W: CG360 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":18:8:18:9|Removing wire WR, as there is no assignment to it.
 @W: CG360 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":22:12:22:22|Removing wire INSTRUCTION, as there is no assignment to it.
 @W: CG360 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":26:12:26:16|Removing wire REG_B, as there is no assignment to it.
 @W: CG360 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":27:12:27:19|Removing wire ALUA_DIN, as there is no assignment to it.
+@W: CG360 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":30:12:30:15|Removing wire ADDR, as there is no assignment to it.
 @W: CG360 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":39:11:39:18|Removing wire LDS_SRCX, as there is no assignment to it.
 @W: CG360 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":41:5:41:10|Removing wire CCL_LD, as there is no assignment to it.
 @W: CG360 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":62:11:62:21|Removing wire ALU_ALU_OPX, as there is no assignment to it.
@@ -222,17 +200,9 @@ Finished optimization stage 1 on register_file (CPU Time 0h:00m:00s, Memory Used
 @W: CG360 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":104:11:104:23|Removing wire ALU_ADDR_BUSX, as there is no assignment to it.
 @W: CG360 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":105:11:105:23|Removing wire LDS_ADDR_BUSX, as there is no assignment to it.
 Running optimization stage 1 on core .......
-@W: CL318 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":13:15:13:18|*Output ABUS has undriven bits; assigning undriven bits to 'Z'.  Simulation mismatch possible. Assign all bits of the output.
 @W: CL318 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":14:15:14:22|*Output DBUS_OUT has undriven bits; assigning undriven bits to 'Z'.  Simulation mismatch possible. Assign all bits of the output.
 @W: CL318 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":17:8:17:9|*Output RD has undriven bits; assigning undriven bits to 'Z'.  Simulation mismatch possible. Assign all bits of the output.
 @W: CL318 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":18:8:18:9|*Output WR has undriven bits; assigning undriven bits to 'Z'.  Simulation mismatch possible. Assign all bits of the output.
-@W: CL168 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":331:14:331:22|Removing instance registers because it does not drive other instances. To preserve this instance, use the syn_noprune synthesis directive.
-@W: CL168 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":306:22:306:31|Removing instance ldsDecoder because it does not drive other instances. To preserve this instance, use the syn_noprune synthesis directive.
-@W: CL168 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":289:15:289:16|Removing instance pc because it does not drive other instances. To preserve this instance, use the syn_noprune synthesis directive.
-@W: CL168 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":246:16:246:25|Removing instance aluDecoder because it does not drive other instances. To preserve this instance, use the syn_noprune synthesis directive.
-@W: CL168 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":225:8:225:10|Removing instance alu because it does not drive other instances. To preserve this instance, use the syn_noprune synthesis directive.
-@W: CL168 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":216:21:216:34|Removing instance abusController because it does not drive other instances. To preserve this instance, use the syn_noprune synthesis directive.
-@W: CL168 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":123:15:123:20|Removing instance opxMux because it does not drive other instances. To preserve this instance, use the syn_noprune synthesis directive.
 Finished optimization stage 1 on core (CPU Time 0h:00m:00s, Memory Used current: 101MB peak: 101MB)
 @N: CG364 :"C:\Users\Duncan\git\ForthCPU\processorCore\test\processorCoreTests.v":5:7:5:24|Synthesizing module processorCoreTests in library work.
 @W: CG294 :"C:\Users\Duncan\git\ForthCPU\processorCore\test\processorCoreTests.v":47:0:47:5|always block should contain at least one event control
@@ -245,7 +215,23 @@ Running optimization stage 2 on processorCoreTests .......
 Finished optimization stage 2 on processorCoreTests (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 101MB)
 Running optimization stage 2 on core .......
 @W: CL156 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":22:12:22:22|*Input INSTRUCTION[15:0] to expression [instance] has undriven bits; assigning undriven bits to 0.  Simulation mismatch possible. Assign all bits of the input.
-@N: CL159 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":15:15:15:21|Input DBUS_IN is unused.
+@W: CL156 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":62:11:62:21|*Input ALU_ALU_OPX[3:0] to expression [instance] has undriven bits; assigning undriven bits to 0.  Simulation mismatch possible. Assign all bits of the input.
+@W: CL156 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":88:11:88:23|*Input ALU_REGA_DINX[1:0] to expression [instance] has undriven bits; assigning undriven bits to 0.  Simulation mismatch possible. Assign all bits of the input.
+@W: CL156 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":98:11:98:23|*Input ALU_DATA_BUSX[1:0] to expression [instance] has undriven bits; assigning undriven bits to 0.  Simulation mismatch possible. Assign all bits of the input.
+@W: CL156 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":99:11:99:23|*Input LDS_DATA_BUSX[1:0] to expression [instance] has undriven bits; assigning undriven bits to 0.  Simulation mismatch possible. Assign all bits of the input.
+@W: CL156 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":101:12:101:27|*Input ALU_DATA_BUS_OEN to expression [instance] has undriven bits; assigning undriven bits to 0.  Simulation mismatch possible. Assign all bits of the input.
+@W: CL156 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":102:12:102:27|*Input LDS_DATA_BUS_OEN to expression [instance] has undriven bits; assigning undriven bits to 0.  Simulation mismatch possible. Assign all bits of the input.
+@W: CL156 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":104:11:104:23|*Input ALU_ADDR_BUSX[1:0] to expression [instance] has undriven bits; assigning undriven bits to 0.  Simulation mismatch possible. Assign all bits of the input.
+@W: CL156 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":105:11:105:23|*Input LDS_ADDR_BUSX[1:0] to expression [instance] has undriven bits; assigning undriven bits to 0.  Simulation mismatch possible. Assign all bits of the input.
+@W: CL156 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":39:11:39:18|*Input LDS_SRCX[1:0] to expression [instance] has undriven bits; assigning undriven bits to 0.  Simulation mismatch possible. Assign all bits of the input.
+@W: CL156 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":41:5:41:10|*Input CCL_LD to expression [instance] has undriven bits; assigning undriven bits to 0.  Simulation mismatch possible. Assign all bits of the input.
+@W: CL156 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":22:12:22:22|*Input INSTRUCTION[15:0] to expression [instance] has undriven bits; assigning undriven bits to 0.  Simulation mismatch possible. Assign all bits of the input.
+@W: CL156 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":22:12:22:22|*Input INSTRUCTION[15:0] to expression [instance] has undriven bits; assigning undriven bits to 0.  Simulation mismatch possible. Assign all bits of the input.
+@W: CL156 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":297:10:297:16|*Input CC_SIGN to expression [instance] has undriven bits; assigning undriven bits to 0.  Simulation mismatch possible. Assign all bits of the input.
+@W: CL156 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":298:11:298:18|*Input CC_CARRY to expression [instance] has undriven bits; assigning undriven bits to 0.  Simulation mismatch possible. Assign all bits of the input.
+@W: CL156 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":299:10:299:16|*Input CC_ZERO to expression [instance] has undriven bits; assigning undriven bits to 0.  Simulation mismatch possible. Assign all bits of the input.
+@W: CL156 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":300:12:300:20|*Input CC_PARITY to expression [instance] has undriven bits; assigning undriven bits to 0.  Simulation mismatch possible. Assign all bits of the input.
+@W: CL156 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":22:12:22:22|*Input INSTRUCTION[13:8] to expression [instance] has undriven bits; assigning undriven bits to 0.  Simulation mismatch possible. Assign all bits of the input.
 Finished optimization stage 2 on core (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 101MB)
 Running optimization stage 2 on register_file .......
 Finished optimization stage 2 on register_file (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 101MB)
@@ -317,12 +303,12 @@ For a summary of runtime and memory usage per design unit, please see file:
 @L: C:\Users\Duncan\git\ForthCPU\processorCore\synwork\layer0.rt.csv
 
 Process took 0h:00m:04s realtime, 0h:00m:04s cputime
-# Mon Sep 25 19:19:43 2023
+# Mon Sep 25 22:21:02 2023
 
 ###########################################################]
 @END
 Process took 0h:00m:04s realtime, 0h:00m:04s cputime
-# Mon Sep 25 19:19:43 2023
+# Mon Sep 25 22:21:02 2023
 
 ###########################################################]
 

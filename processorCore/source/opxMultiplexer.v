@@ -109,7 +109,7 @@ always @(*) begin
 			ALUA_CONSTX  = `ALUA_CONSTX_ONE;
 			ALUA_SRCX    = `ALUA_SRCX_REG_A;
 			ALUB_SRCX    = `ALUB_SRCX_REG_B;
-			DATA_BUSX    = `DATA_BUSX_ALU;
+			DATA_BUSX    = `DATA_BUSX_ALU_R;
 			DATA_BUS_OEN = 0;
 			REGA_EN      = 0;
 			REGA_WEN     = 0;
@@ -145,7 +145,7 @@ always @(*) begin
 			ALUA_CONSTX  = `ALUA_CONSTX_ONE;
 			ALUA_SRCX    = `ALUA_SRCX_REG_A;
 			ALUB_SRCX    = PCC_ALUB_SRCX;
-			DATA_BUSX    = `DATA_BUSX_ALU;
+			DATA_BUSX    = `DATA_BUSX_ALU_R;
 			DATA_BUS_OEN = 0;
 			REGA_EN      = 0;
 			REGA_WEN     = 0;

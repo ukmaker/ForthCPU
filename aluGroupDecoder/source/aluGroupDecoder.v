@@ -130,13 +130,13 @@ always @(posedge CLK) begin
 
 	
 	if(FETCH) begin
-		ALU_LD = 0;
-		CCL_LD = 0;
-		REGA_CLKEN = 0;
-		REGB_CLKEN = 0;
-		REGA_WEN = 0; 
-		REGB_WEN = 0;
-		ALUA_CONSTX = `ALUA_CONSTX_ONE;		
+		ALU_LD <= 0;
+		CCL_LD <= 0;
+		REGA_CLKEN <= 0;
+		REGB_CLKEN <= 0;
+		REGA_WEN <= 0; 
+		REGB_WEN <= 0;
+		ALUA_CONSTX <= `ALUA_CONSTX_ONE;		
 	end else if(DECODE) begin
 		REGA_CLKEN <= RD_A;
 		REGB_CLKEN <= RD_B;

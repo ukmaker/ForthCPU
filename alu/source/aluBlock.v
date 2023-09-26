@@ -35,7 +35,7 @@ alu alu_fn(
 
 always @(posedge CLK or posedge RESET) begin
 	if(RESET) begin
-		CCD = 4'b0000;
+		CCD <= 4'b0000;
 	end else if(CCL_LD == 1'b1) begin
 		CCD <= CC;
 	end
@@ -43,7 +43,7 @@ end
 
 always @(posedge CLK or posedge RESET) begin
 	if(RESET) begin
-		RESULT_D = 16'h0000;
+		RESULT_D <= 16'h0000;
 	end else if(ALU_LD == 1'b1) begin
 		RESULT_D <= RESULT;
 	end
