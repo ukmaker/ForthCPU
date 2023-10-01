@@ -33,7 +33,7 @@ assign U6   = {10'b0000000000, LDS_SRCX,ARGB_X};
 assign U6_0 = { 9'b000000000,  LDS_SRCX,ARGB_X,1'b0};
 assign ZERO  = 16'h0000;
 
-always @(ALUB_SRCX) begin
+always @(*) begin
 	case(ALUB_SRCX)
 		`ALUB_SRCX_REG_B:    ARGB = REGB_DOUT;
 		`ALUB_SRCX_ARG_U4:   ARGB = U4;
@@ -43,7 +43,7 @@ always @(ALUB_SRCX) begin
 		`ALUB_SRCX_ARG_U6:   ARGB = U6;
 		`ALUB_SRCX_ARG_U6_0: ARGB = U6_0;
 		`ALUB_SRCX_ZERO:     ARGB = ZERO;
-		default:                 ARGB = REGB_DOUT;
+		default:             ARGB = REGB_DOUT;
 	endcase
 end
 

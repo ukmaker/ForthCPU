@@ -16,8 +16,8 @@ CoreRevision=7.5
 ModuleName=dpram
 SourceFormat=Verilog HDL
 ParameterFileVersion=1.0
-Date=09/04/2023
-Time=15:17:45
+Date=09/30/2023
+Time=12:58:30
 
 [Parameters]
 Verilog=1
@@ -45,8 +45,8 @@ MemFile=
 MemFormat=bin
 EnECC=0
 Pipeline=0
-WriteA=ReadBeforeWrite
-WriteB=ReadBeforeWrite
+WriteA=WriteThrough
+WriteB=WriteThrough
 init_data=0
 no_init=0
 
@@ -54,4 +54,4 @@ no_init=0
 =mem
 
 [Command]
-cmd_line= -w -n dpram -lang verilog -synth synplify -bus_exp 7 -bb -arch xo3c00a -type ramdp -device LCMXO3L-6900C -aaddr_width 4 -widtha 16 -baddr_width 4 -widthb 16 -anum_words 16 -bnum_words 16 -cascade -1 -mem_init0 -writemodeA READBEFOREWRITE -writemodeB READBEFOREWRITE
+cmd_line= -w -n dpram -lang verilog -synth synplify -bus_exp 7 -bb -arch xo3c00a -type ramdp -device LCMXO3L-6900C -aaddr_width 4 -widtha 16 -baddr_width 4 -widthb 16 -anum_words 16 -bnum_words 16 -cascade -1 -mem_init0 -writemodeA WRITETHROUGH -writemodeB WRITETHROUGH

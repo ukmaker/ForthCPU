@@ -103,7 +103,6 @@ always @(*) begin
 	
 	case(GROUPF)
 		`GROUP_SYSTEM: begin
-			ADDR_BUSX    = LDS_ADDR_BUSX;
 			ALU_LD       = 0;
 			ALU_OPX      = `ALU_OPX_MOV;
 			ALUA_CONSTX  = `ALUA_CONSTX_ONE;
@@ -121,7 +120,6 @@ always @(*) begin
 		end
 			
 		`GROUP_LOAD_STORE: begin
-			ADDR_BUSX    = LDS_ADDR_BUSX;
 			ALU_LD       = 0;
 			ALU_OPX      = LDS_ALU_OPX;
 			ALUA_CONSTX  = LDS_ALUA_CONSTX;
@@ -139,7 +137,6 @@ always @(*) begin
 		end
 			
 		`GROUP_JUMP:begin
-			ADDR_BUSX    = LDS_ADDR_BUSX;
 			ALU_LD       = 0;
 			ALU_OPX      = `ALU_OPX_MOV;
 			ALUA_CONSTX  = `ALUA_CONSTX_ONE;
@@ -157,7 +154,6 @@ always @(*) begin
 		end
 			
 		`GROUP_ARITHMETIC_LOGIC: begin
-			ADDR_BUSX    = ALU_ADDR_BUSX;
 			ALU_LD       = ALU_ALU_LD;
 			ALU_OPX      = ALU_ALU_OPX;
 			ALUA_CONSTX  = ALU_ALUA_CONSTX;
@@ -172,11 +168,33 @@ always @(*) begin
 			REGB_EN      = ALU_REGB_EN;
 			REGB_WEN     = ALU_REGB_WEN;
 			REGB_ADDRX   = ALU_REGB_ADDRX;
-		end
-			
+		end	
 	endcase
-	
-	
 end
 
+
+always @(posedge CLK) begin
+	
+	if(FETCH) begin
+		ADDR_BUSX <= `ADDR_BUSX_PC;
+	end else begin
+		case(GROUPF)
+			`GROUP_SYSTEM: begin
+				ADDR_BUSX    <= LDS_ADDR_BUSX;
+			end
+				
+			`GROUP_LOAD_STORE: begin
+				ADDR_BUSX    <= LDS_ADDR_BUSX;
+			end
+				
+			`GROUP_JUMP:begin
+				ADDR_BUSX    <= LDS_ADDR_BUSX;
+			end
+				
+			`GROUP_ARITHMETIC_LOGIC: begin
+				ADDR_BUSX    <= ALU_ADDR_BUSX;
+			end	
+		endcase
+	end
+end
 endmodule

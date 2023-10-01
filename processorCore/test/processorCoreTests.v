@@ -63,10 +63,10 @@ initial begin
 	 `TICKTOCK;
 	 
 	 /************************************************************************
-	 * LD Ra,(Rb)
+	 * MOV RB,0x00af
 	 *************************************************************************/
 	 // Start FETCH
-	 DBUS_IN = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_MOV,`MODE_REGB_U8,8'b10101111};	 
+	 DBUS_IN = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_MOV,`MODE_REGB_U8,8'haf};	 
 	 `TICKTOCK;  
 	// DECODE
 	`TICKTOCK; 
@@ -81,10 +81,46 @@ initial begin
 	`TICKTOCK
 	
 	 /************************************************************************
-	 * LD Ra,(--Rb)
+	 * MOV RA,U8.RBL
+	 *************************************************************************/
+	 // Start FETCH
+	 DBUS_IN = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_MOV,`MODE_REGA_U8RB,8'hfa};	 
+	 `TICKTOCK;  
+	// DECODE
+	`TICKTOCK; 
+	// EXECUTE 
+	// Control outputs become valid here
+
+	
+	// COMMIT
+	`TICKTOCK;
+
+	
+	`TICKTOCK
+	
+	 /************************************************************************
+	 * MOV RB,0x0055
+	 *************************************************************************/
+	 // Start FETCH
+	 DBUS_IN = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_MOV,`MODE_REGB_U8,8'h55};	 
+	 `TICKTOCK;  
+	// DECODE
+	`TICKTOCK; 
+	// EXECUTE 
+	// Control outputs become valid here
+
+	
+	// COMMIT
+	`TICKTOCK;
+
+	
+	`TICKTOCK
+	
+	 /************************************************************************
+	 * ST (RA),RB
 	 *************************************************************************/
 	// FETCH
-	DBUS_IN = {`GROUP_LOAD_STORE,`LDSF_NONE,`LDS_ST,`MODE_REG_MEM,`R0,`RB};	 
+	DBUS_IN = {`GROUP_LOAD_STORE,`LDSF_NONE,`LDS_ST,`MODE_REG_MEM,`RB,`RA};	 
 	`TICKTOCK;
 	 
 	// DECODE
@@ -92,7 +128,7 @@ initial begin
 
 	// EXECUTE 
 	// Control outputs become valid here
-
+	`assert("DBUS_OUT", 16'hfaaf, DBUS_OUT)
 	
 	// COMMIT
 	`TICKTOCK;

@@ -12,7 +12,7 @@ module addressBusController(
 	output reg [15:0] ADDR
 );
 	
-always @(ADDR_BUSX) begin
+always @(*) begin
 	case(ADDR_BUSX)
 		`ADDR_BUSX_PC:       ADDR = PC_A;
 		`ADDR_BUSX_ALU_R:    ADDR = ALU_R;

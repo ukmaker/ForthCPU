@@ -61,7 +61,7 @@ dpram registers(
 	.QB( REGB_DOUT )
 );
 
-always @(REGA_ADDRX) begin
+always @(*) begin
 	case(REGA_ADDRX)
 		`REGA_ADDRX_ARGA: ADDRA = ARGA_X;
 		`REGA_ADDRX_RL:   ADDRA = `RLN;
@@ -72,18 +72,14 @@ always @(REGA_ADDRX) begin
 		`REGA_ADDRX_RRS:  ADDRA = `RRS;
 		default:          ADDRA = ARGA_X;
 	endcase
-end
 
-always @(REGA_DINX) begin
 	case(REGA_DINX)
 		`REGA_DINX_ALU_R:     DINA = ALU_R;
 		`REGA_DINX_PC_A:      DINA = PC_A;
 		`REGA_DINX_ALUA_PP:   DINA = ALUA_PP;
 		default:              DINA = ALU_R;
 	endcase
-end
-	
-always @(REGB_ADDRX) begin
+
 	case(REGB_ADDRX)
 		`REGB_ADDRX_ARGA: ADDRB = ARGA_X;
 		`REGB_ADDRX_ARGB: ADDRB = ARGB_X;

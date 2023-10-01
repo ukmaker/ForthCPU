@@ -152,16 +152,18 @@ always @(*) begin
 			RD_A = 1;
 			RD_B = 1;
 			WR_M = 1;
+			DATA_BUSX = `DATA_BUSX_REGB_DOUT;
 		end
 		`LDS_STB: begin // ST_B (x),y : NB x is ARGA, y is ARGB
 			RD_A = 1;
 			RD_B = 1;
 			WR_M = 1;
+			DATA_BUSX = `DATA_BUSX_REGB_DOUT;
 		end
 	endcase
 			
 	case(MODEF)
-		`MODE_REG_REG: begin // LD x,(y) ; LD_B ; ST ; ST_B
+		`MODE_REG_MEM: begin // LD x,(y) ; LD_B ; ST ; ST_B
 
 			// Do we need the incrementer?
 			case(INCF)

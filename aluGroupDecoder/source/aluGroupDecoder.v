@@ -143,21 +143,16 @@ always @(posedge CLK) begin
 		REGA_WEN <= 0;
 		REGB_WEN <= 0;
 	end else if(EXECUTE) begin
+
+		ALU_LD <= 1;
+		if(ALU_OPX != `ALU_OPX_MOV) begin
+			CCL_LD <= 1;
+		end
+	end else if(COMMIT) begin
 		REGA_CLKEN <= WR_A;
 		REGB_CLKEN <= WR_B;
 		REGA_WEN <= WR_A;
 		REGB_WEN <= WR_B;
-		if(ALU_OPX != `ALU_OPX_MOV) begin
-			ALU_LD <= 1;
-			CCL_LD <= 1;
-		end
-	end else if(COMMIT) begin
-		REGA_CLKEN <= 0;
-		REGB_CLKEN <= 0;
-		REGA_WEN <= 0;
-		REGB_WEN <= 0;
-		ALU_LD <= 0;
-		CCL_LD <= 0;
 	end
 	
 end

@@ -102,9 +102,10 @@
 /**
 * Data bus sources
 **/
-`define DATA_BUSX_PC_A      2'b01
-`define DATA_BUSX_ALU_R     2'b10
-`define DATA_BUSX_REGA_DOUT 2'b11
+`define DATA_BUSX_PC_A      2'b00
+`define DATA_BUSX_ALU_R     2'b01
+`define DATA_BUSX_REGA_DOUT 2'b10
+`define DATA_BUSX_REGB_DOUT 2'b11
 
 /**
 * Phase

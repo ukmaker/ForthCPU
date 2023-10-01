@@ -22,7 +22,7 @@ assign TWO       = 16'h0002;
 assign MINUS_ONE = 16'hffff;
 assign MINUS_TWO = 16'hfffe;
 	
-always @(ALUA_CONSTX) begin
+always @(*) begin
 	case(ALUA_CONSTX)
 		`ALUA_CONSTX_ONE:       CONST = ONE;
 		`ALUA_CONSTX_TWO:       CONST = TWO;
