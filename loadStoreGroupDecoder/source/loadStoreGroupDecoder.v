@@ -85,8 +85,6 @@ module loadStoreGroupDecoder(
 	* ALU
 	**/
 	output reg [3:0] ALU_OPX,        // ALU operation
-	output reg       ALU_LD,
-	output reg [1:0] ALUA_CONSTX,
 
 	/**
 	* Data Sources
@@ -94,9 +92,11 @@ module loadStoreGroupDecoder(
 	output reg        ALUA_SRCX,
 	output reg [2:0] ALUB_SRCX,
 	
-	output reg [1:0] REGA_DINX,
+	output reg [1:0] REGB_DINX,
 	output reg [2:0] REGA_ADDRX,
 	output reg [1:0] REGB_ADDRX,
+	output reg [1:0] REGA_BYTE_ENX,
+	output reg [1:0] REGB_BYTE_ENX,
 	
 	/**
 	* Bus control
@@ -127,78 +127,74 @@ always @(*) begin
 	RD_A = 0; RD_B = 0; WR_A = 0; WR_B = 0;
 	RD_M = 0; WR_M = 0;
 	ALU_OPX = `ALU_OPX_MOV;
-	ALU_LD = 0;
-	ALUA_CONSTX = `ALUA_CONSTX_TWO;
 	ADDR_BUSX = 0;
 	DATA_BUSX = 0;
 	DATA_BUS_OEN = 0;
 	REGA_ADDRX = `REGA_ADDRX_ARGA;
 	REGB_ADDRX = `REGB_ADDRX_ARGB;
-	REGA_DINX  = `REGA_DINX_ALU_R;
+	REGB_DINX  = `REGB_DINX_DIN;
 	
 	// What operation is this?
 	case(LDSF) 
-		`LDS_LD: begin // LD x,(y) : NB x is ARGB, y is ARGA
+		`LDSOPF_LD: begin // LD x,(y) : NB x is ARGB, y is ARGA
 			WR_B = 1;
 			RD_A = 1;
 			RD_M = 1;
 		end
-		`LDS_LDB: begin // LD x,(y) : NB x is ARGB, y is ARGA
+		`LDSOPF_LDB: begin // LD x,(y) : NB x is ARGB, y is ARGA
 			WR_B = 1;
 			RD_A = 1;
 			RD_M = 1;
 		end
-		`LDS_ST: begin // ST (x),y : NB x is ARGA, y is ARGB
+		`LDSOPF_ST: begin // ST (x),y : NB x is ARGA, y is ARGB
 			RD_A = 1;
 			RD_B = 1;
 			WR_M = 1;
-			DATA_BUSX = `DATA_BUSX_REGB_DOUT;
+			DATA_BUSX = `DATA_BUSX_ALUB_DATA;
 		end
-		`LDS_STB: begin // ST_B (x),y : NB x is ARGA, y is ARGB
+		`LDSOPF_STB: begin // ST_B (x),y : NB x is ARGA, y is ARGB
 			RD_A = 1;
 			RD_B = 1;
 			WR_M = 1;
-			DATA_BUSX = `DATA_BUSX_REGB_DOUT;
+			DATA_BUSX = `DATA_BUSX_ALUB_DATA;
 		end
 	endcase
 			
 	case(MODEF)
-		`MODE_REG_MEM: begin // LD x,(y) ; LD_B ; ST ; ST_B
+		`MODE_LDS_REG_MEM: begin // LD x,(y) ; LD_B ; ST ; ST_B
 
 			// Do we need the incrementer?
 			case(INCF)
-				`LDSF_PRE_DEC: begin
-					// Address from the incrementer
-					ADDR_BUSX = `ADDR_BUSX_ALUA_DIN;
+				`LDSINCF_PRE_DEC: begin
+					// Address from the ALU
+					ADDR_BUSX = `ADDR_BUSX_ALU_R;
 					// After the adder
-					ALUA_SRCX = `ALUA_SRCX_PP;
+					ALUA_SRCX = `ALUA_SRCX_TWO;
 					// write the address back to PortA
 					WR_A = 1;
-					REGA_DINX = `REGA_DINX_ALUA_PP;
 					// Operation is -2
-					ALUA_CONSTX = `ALUA_CONSTX_MINUS_TWO;
+					ALU_OPX = `ALU_OPX_SUB;
 				end
-				`LDSF_POST_INC: begin
-					// Address from the incrementer
+				`LDSINCF_POST_INC: begin
+					// Address from the register
 					ADDR_BUSX = `ADDR_BUSX_ALUA_DIN;
 					// Before the adder
-					ALUA_SRCX = `ALUA_SRCX_REG_A;
+					ALUA_SRCX = `ALUA_SRCX_TWO;
 					// write the address back to PortA
 					WR_A = 1;
-					REGA_DINX = `REGA_DINX_ALUA_PP;
-					// Operation is -2
-					ALUA_CONSTX = `ALUA_CONSTX_TWO;
+					// Operation is +2
+					ALU_OPX = `ALU_OPX_ADD;
 				end
 				default: begin
 					// Address from the incrementer
 					ADDR_BUSX = `ADDR_BUSX_ALUA_DIN;
 					// Before the adder
-					ALUA_SRCX = `ALUA_SRCX_REG_A;
+					ALUA_SRCX = `ALUA_SRCX_TWO;
 					// No writeback
 				end
 			endcase
 		end
-		`MODE_REG_FRAME: begin // LD x,(FP - U6)
+		`MODE_LDS_REG_FRAME: begin // LD x,(FP - U6)
 			// No inc/dec in this mode.
 			// Those bits are used for U6[5:4]
 			REGA_ADDRX = `REGA_ADDRX_RFP;
@@ -206,19 +202,18 @@ always @(*) begin
 			ADDR_BUSX = `ADDR_BUSX_ALU_R;
 			// ALU adds
 			ALU_OPX = `ALU_OPX_SUB;
-			ALU_LD = 1;
 			// U6
-			if(LDSF == `LDS_LD || LDSF == `LDS_ST) begin
+			if(LDSF == `LDSOPF_LD || LDSF == `LDSOPF_ST) begin
 				// word address
-				ALUB_SRCX = `ALUB_SRCX_ARG_U6_0;
+				ALUB_SRCX = `ALUB_SRCX_U6_0;
 			end else begin
 				// byte address
-				ALUB_SRCX = `ALUB_SRCX_ARG_U6;
+				ALUB_SRCX = `ALUB_SRCX_U6;
 			end
 			// To REGA
 			ALUA_SRCX = `ALUA_SRCX_REG_A;		
 		end
-		`MODE_REG_STACK: begin // LD x,(FP - U6)
+		`MODE_LDS_REG_STACK: begin // LD x,(FP - U6)
 			// No inc/dec in this mode.
 			// Those bits are used for U6[5:4]
 			REGA_ADDRX = `REGA_ADDRX_RSP;
@@ -226,19 +221,18 @@ always @(*) begin
 			ADDR_BUSX = `ADDR_BUSX_ALU_R;
 			// ALU adds
 			ALU_OPX = `ALU_OPX_ADD;
-			ALU_LD = 1;
 			// U6
-			if(LDSF == `LDS_LD || LDSF == `LDS_ST) begin
+			if(LDSF == `LDSOPF_LD || LDSF == `LDSOPF_ST) begin
 				// word address
-				ALUB_SRCX = `ALUB_SRCX_ARG_U6_0;
+				ALUB_SRCX = `ALUB_SRCX_U6_0;
 			end else begin
 				// byte address
-				ALUB_SRCX = `ALUB_SRCX_ARG_U6;
+				ALUB_SRCX = `ALUB_SRCX_U6;
 			end
 			// To REGA
 			ALUA_SRCX = `ALUA_SRCX_REG_A;		
 		end
-		`MODE_REG_RETSTACK: begin // LD x,(FP - U6)
+		`MODE_LDS_REG_RETSTACK: begin // LD x,(FP - U6)
 			// No inc/dec in this mode.
 			// Those bits are used for U6[5:4]
 			REGA_ADDRX = `REGA_ADDRX_RRS;
@@ -246,14 +240,13 @@ always @(*) begin
 			ADDR_BUSX = `ADDR_BUSX_ALU_R;
 			// ALU adds
 			ALU_OPX = `ALU_OPX_ADD;
-			ALU_LD = 1;
 			// U6
-			if(LDSF == `LDS_LD || LDSF == `LDS_ST) begin
+			if(LDSF == `LDSOPF_LD || LDSF == `LDSOPF_ST) begin
 				// word address
-				ALUB_SRCX = `ALUB_SRCX_ARG_U6_0;
+				ALUB_SRCX = `ALUB_SRCX_U6_0;
 			end else begin
 				// byte address
-				ALUB_SRCX = `ALUB_SRCX_ARG_U6;
+				ALUB_SRCX = `ALUB_SRCX_U6;
 			end
 			// To REGA
 			ALUA_SRCX = `ALUA_SRCX_REG_A;		
@@ -270,10 +263,10 @@ always @(posedge CLK or posedge RESET) begin
 		REGB_WEN <= 0;	
 	end else begin
 		
-		if(EXECUTE) begin
+		if(DECODE) begin
 			REGA_EN <= RD_A;
 			REGB_EN <= RD_B;
-		end else if(COMMIT) begin
+		end else if(EXECUTE) begin
 			REGA_EN <= WR_A;
 			REGB_EN <= WR_B;
 			REGA_WEN <= WR_A;

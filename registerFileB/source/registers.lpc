@@ -1,0 +1,57 @@
+[Device]
+Family=machxo3l
+PartType=LCMXO3L-6900C
+PartName=LCMXO3L-6900C-5BG256C
+SpeedGrade=5
+Package=CABGA256
+OperatingCondition=COM
+Status=S
+
+[IP]
+VendorName=Lattice Semiconductor Corporation
+CoreType=LPM
+CoreStatus=Demo
+CoreName=RAM_DP_TRUE
+CoreRevision=7.5
+ModuleName=registers
+SourceFormat=Verilog HDL
+ParameterFileVersion=1.0
+Date=10/01/2023
+Time=14:09:42
+
+[Parameters]
+Verilog=1
+VHDL=0
+EDIF=1
+Destination=Synplicity
+Expression=BusA(0 to 7)
+Order=Big Endian [MSB:LSB]
+IO=0
+RAddress=16
+RData=16
+WAddress=16
+WData=16
+ROutputEn=0
+RClockEn=0
+WOutputEn=0
+WClockEn=0
+enByte=1
+ByteSize=8
+Optimization=Speed
+Reset=Sync
+Reset1=Sync
+Init=0
+MemFile=
+MemFormat=bin
+EnECC=0
+Pipeline=0
+WriteA=WriteThrough
+WriteB=WriteThrough
+init_data=0
+no_init=0
+
+[FilesGenerated]
+=mem
+
+[Command]
+cmd_line= -w -n registers -lang verilog -synth synplify -bus_exp 7 -bb -arch xo3c00a -type ramdp -device LCMXO3L-6900C -aaddr_width 4 -widtha 16 -baddr_width 4 -widthb 16 -anum_words 16 -bnum_words 16 -byte 8 -cascade -1 -mem_init0 -writemodeA WRITETHROUGH -writemodeB WRITETHROUGH

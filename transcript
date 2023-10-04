@@ -1,11 +1,9 @@
 # Reading pref.tcl
-# do {C:/Users/Duncan/git/ForthCPU/processorCore/test/processorCoreTests/processorCoreTests.mdo}
-# Loading project processorCoreTests
-# Compile of register_file.v was successful.
-# Compile of dpram.v was successful.
-# 2 compiles, 0 failed with no errors.
-# vsim -L work -L pmi_work -L ovi_machxo3l processorCoreTests 
-# Start time: 15:03:13 on Sep 30,2023
+# do {C:/Users/Duncan/git/ForthCPU/loadStoreGroupDecoder/test/loadStoreGroupDecoderTests/loadStoreGroupDecoderTests.mdo}
+# Loading project loadStoreGroupDecoderTests
+# Compile of loadStoreGroupDecoderTests.v was successful.
+# vsim -L work -L pmi_work -L ovi_machxo3l loadStoreGroupDecoderTests 
+# Start time: 19:22:59 on Oct 04,2023
 # //  ModelSim - Lattice FPGA Edition 2020.3 Oct 14 2020
 # //
 # //  Copyright 1991-2020 Mentor Graphics Corporation
@@ -19,648 +17,120 @@
 # //  is prohibited from disclosure under the Trade Secrets Act,
 # //  18 U.S.C. Section 1905.
 # //
-# Loading work.processorCoreTests
-# Loading ovi_machxo3l.PUR
-# Loading ovi_machxo3l.GSR
-# Loading work.core
-# Loading work.instructionPhaseDecoder
-# Loading work.opxMultiplexer
-# Loading work.addressBusController
-# Loading work.dataBusController
-# Loading work.fullALU
-# Loading work.aluBMux
-# Loading work.aluBlock
-# Loading work.alu
-# Loading work.incrementer
-# Loading work.aluGroupDecoder
-# Loading work.jumpGroupDecoder
-# Loading work.programCounter
+# Loading work.loadStoreGroupDecoderTests
 # Loading work.loadStoreGroupDecoder
-# Loading work.register_file
-# Loading work.dpram
-# Loading ovi_machxo3l.DP8KC
-# Loading ovi_machxo3l.VHI
-# Loading ovi_machxo3l.VLO
+# Loading work.instructionPhaseDecoder
 # .main_pane.wave.interior.cs.body.pw.wf
-run 4us
-# Compile of register_file.v was successful.
-# Compile of loadStoreGroupDecoder.v was successful.
-# Compile of programCounter.v was successful.
-# Compile of jumpGroupDecoder.v was successful.
-# Compile of aluGroupDecoder.v was successful.
-# Compile of incrementer.v was successful.
-# Compile of alu.v was successful.
-# Compile of aluBlock.v was successful.
-# Compile of aluBMux.v was successful.
-# Compile of fullALU.v was successful.
-# Compile of dataBusController.v was successful.
-# Compile of addressBusController.v was successful.
-# Compile of opxMultiplexer.v was successful.
+# [T=560] FAILED in loadStoreGroupDecoderTests: REGA_EN expected 00000000000000000000000000000001 != actual 0
+# [T=560] FAILED in loadStoreGroupDecoderTests: ALUA_SRCX expected 00 != actual 1
+# [T=660] FAILED in loadStoreGroupDecoderTests: REGA_EN expected 00000000000000000000000000000000 != actual 1
+# [T=660] FAILED in loadStoreGroupDecoderTests: REGB_EN expected 00000000000000000000000000000001 != actual 0
+# [T=660] FAILED in loadStoreGroupDecoderTests: REG_B_WEN expected 00000000000000000000000000000001 != actual 0
+# [T=960] FAILED in loadStoreGroupDecoderTests: REGA_EN expected 00000000000000000000000000000001 != actual 0
+# [T=960] FAILED in loadStoreGroupDecoderTests: ALUA_SRCX expected 11 != actual 1
+# [T=960] FAILED in loadStoreGroupDecoderTests: ALU_OPX expected 0000 != actual 0010
+# [T=960] FAILED in loadStoreGroupDecoderTests: ADDR_BUSX expected 10 != actual 01
 # Compile of instructionPhaseDecoder.v was successful.
-# Compile of core.v was successful.
-# Compile of processorCoreTests.v was successful.
+# Compile of loadStoreGroupDecoder.v was successful.
+# Compile of loadStoreGroupDecoderTests.v was successful.
 # Compile of constants.v was successful.
-# Compile of dpram.v was successful.
-# 18 compiles, 0 failed with no errors.
+# 4 compiles, 0 failed with no errors.
 restart
 # ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.processorCoreTests
-# Loading work.core
-# Loading work.instructionPhaseDecoder
-# Loading work.opxMultiplexer
-# Loading work.addressBusController
-# Loading work.dataBusController
-# Loading work.fullALU
-# Loading work.aluBMux
-# Loading work.aluBlock
-# Loading work.alu
-# Loading work.incrementer
-# Loading work.aluGroupDecoder
-# Loading work.jumpGroupDecoder
-# Loading work.programCounter
+# Loading work.loadStoreGroupDecoderTests
 # Loading work.loadStoreGroupDecoder
-# Loading work.register_file
-# Loading work.dpram
+# Loading work.instructionPhaseDecoder
 run 4us
-# GetModuleFileName: The specified module could not be found.
-# 
-# 
-# [T=1860000] FAILED in processorCoreTests: DBUS_OUT expected 1111101010101111 != actual 0000000000000110
-add wave -position end  sim:/processorCoreTests/testInstance/registers/registers/ClockEnA
-add wave -position end  sim:/processorCoreTests/testInstance/registers/registers/ClockEnB
-add wave -position end  sim:/processorCoreTests/testInstance/registers/registers/WrA
-add wave -position end  sim:/processorCoreTests/testInstance/registers/registers/WrB
-add wave -position end  sim:/processorCoreTests/testInstance/registers/registers/DataInA
-add wave -position end  sim:/processorCoreTests/testInstance/registers/registers/DataInB
-add wave -position end  sim:/processorCoreTests/testInstance/registers/registers/QA
-add wave -position end  sim:/processorCoreTests/testInstance/registers/registers/QB
-restart
-run 4us
-# GetModuleFileName: The specified module could not be found.
-# 
-# 
-# [T=1860000] FAILED in processorCoreTests: DBUS_OUT expected 1111101010101111 != actual 0000000000000110
-add wave -position 15  sim:/processorCoreTests/testInstance/registers/registers/AddressA
-add wave -position 16  sim:/processorCoreTests/testInstance/registers/registers/AddressB
-restart
-run 4us
-# GetModuleFileName: The specified module could not be found.
-# 
-# 
-# [T=1860000] FAILED in processorCoreTests: DBUS_OUT expected 1111101010101111 != actual 0000000000000110
-add wave -position 17  sim:/processorCoreTests/testInstance/registers/REGA_DINX
-restart
-run 4us
-# GetModuleFileName: The specified module could not be found.
-# 
-# 
-# [T=1860000] FAILED in processorCoreTests: DBUS_OUT expected 1111101010101111 != actual 0000000000000110
-# Compile of register_file.v was successful.
-# Compile of loadStoreGroupDecoder.v was successful.
-# Compile of programCounter.v was successful.
-# Compile of jumpGroupDecoder.v was successful.
-# Compile of aluGroupDecoder.v was successful.
-# Compile of incrementer.v was successful.
-# Compile of alu.v was successful.
-# Compile of aluBlock.v was successful.
-# Compile of aluBMux.v was successful.
-# Compile of fullALU.v was successful.
-# Compile of dataBusController.v was successful.
-# Compile of addressBusController.v was successful.
-# Compile of opxMultiplexer.v was successful.
+# [T=560] FAILED in loadStoreGroupDecoderTests: REGA_EN expected 00000000000000000000000000000001 != actual 0
+# [T=560] FAILED in loadStoreGroupDecoderTests: ALUA_SRCX expected 00 != actual 1
+# [T=660] FAILED in loadStoreGroupDecoderTests: REGA_EN expected 00000000000000000000000000000000 != actual 1
+# [T=660] FAILED in loadStoreGroupDecoderTests: REGB_EN expected 00000000000000000000000000000001 != actual 0
+# [T=660] FAILED in loadStoreGroupDecoderTests: REG_B_WEN expected 00000000000000000000000000000001 != actual 0
+# [T=960] FAILED in loadStoreGroupDecoderTests: REGA_EN expected 00000000000000000000000000000001 != actual 0
+# [T=960] FAILED in loadStoreGroupDecoderTests: ALUA_SRCX expected 11 != actual 1
+# [T=960] FAILED in loadStoreGroupDecoderTests: ALU_OPX expected 0000 != actual 0010
+# [T=960] FAILED in loadStoreGroupDecoderTests: ADDR_BUSX expected 10 != actual 01
+# [T=1060] FAILED in loadStoreGroupDecoderTests: REGB_EN expected 00000000000000000000000000000001 != actual 0
+# [T=1060] FAILED in loadStoreGroupDecoderTests: REGA_WEN expected 00000000000000000000000000000001 != actual 0
+# [T=1060] FAILED in loadStoreGroupDecoderTests: REG_B_WEN expected 00000000000000000000000000000001 != actual 0
+# [T=1360] FAILED in loadStoreGroupDecoderTests: REGA_EN expected 00000000000000000000000000000001 != actual 0
+# [T=1360] FAILED in loadStoreGroupDecoderTests: ALUA_SRCX expected 11 != actual 1
+# [T=1360] FAILED in loadStoreGroupDecoderTests: ALU_OPX expected 0000 != actual 0001
+# [T=1460] FAILED in loadStoreGroupDecoderTests: REGB_EN expected 00000000000000000000000000000001 != actual 0
+# [T=1460] FAILED in loadStoreGroupDecoderTests: REGA_WEN expected 00000000000000000000000000000001 != actual 0
+# [T=1460] FAILED in loadStoreGroupDecoderTests: REG_B_WEN expected 00000000000000000000000000000001 != actual 0
+# [T=1760] FAILED in loadStoreGroupDecoderTests: REGA_EN expected 00000000000000000000000000000001 != actual 0
+# [T=1760] FAILED in loadStoreGroupDecoderTests: REGB_EN expected 00000000000000000000000000000001 != actual 0
+# [T=1760] FAILED in loadStoreGroupDecoderTests: ALUA_SRCX expected 00 != actual 1
+# [T=1860] FAILED in loadStoreGroupDecoderTests: REGA_EN expected 00000000000000000000000000000000 != actual 1
+# [T=1860] FAILED in loadStoreGroupDecoderTests: REGB_EN expected 00000000000000000000000000000000 != actual 1
+# [T=2160] FAILED in loadStoreGroupDecoderTests: REGA_EN expected 00000000000000000000000000000001 != actual 0
+# [T=2260] FAILED in loadStoreGroupDecoderTests: REGA_EN expected 00000000000000000000000000000000 != actual 1
+# [T=2260] FAILED in loadStoreGroupDecoderTests: REGB_EN expected 00000000000000000000000000000001 != actual 0
+# [T=2260] FAILED in loadStoreGroupDecoderTests: REG_B_WEN expected 00000000000000000000000000000001 != actual 0
+# [T=2560] FAILED in loadStoreGroupDecoderTests: REGA_EN expected 00000000000000000000000000000001 != actual 0
+# [T=2660] FAILED in loadStoreGroupDecoderTests: REGA_EN expected 00000000000000000000000000000000 != actual 1
+# [T=2660] FAILED in loadStoreGroupDecoderTests: REGB_EN expected 00000000000000000000000000000001 != actual 0
+# [T=2660] FAILED in loadStoreGroupDecoderTests: REG_B_WEN expected 00000000000000000000000000000001 != actual 0
+# [T=2960] FAILED in loadStoreGroupDecoderTests: REGA_EN expected 00000000000000000000000000000001 != actual 0
+# [T=3060] FAILED in loadStoreGroupDecoderTests: REGA_EN expected 00000000000000000000000000000000 != actual 1
+# [T=3060] FAILED in loadStoreGroupDecoderTests: REGB_EN expected 00000000000000000000000000000001 != actual 0
+# [T=3060] FAILED in loadStoreGroupDecoderTests: REG_B_WEN expected 00000000000000000000000000000001 != actual 0
 # Compile of instructionPhaseDecoder.v was successful.
-# Compile of core.v was successful.
-# Compile of processorCoreTests.v was successful with warnings.
+# Compile of loadStoreGroupDecoder.v was successful.
+# Compile of loadStoreGroupDecoderTests.v was successful.
 # Compile of constants.v was successful.
-# Compile of dpram.v was successful.
-# 18 compiles, 0 failed with no errors.
+# 4 compiles, 0 failed with no errors.
 restart
 # ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.processorCoreTests
-# Loading work.core
-# Loading work.instructionPhaseDecoder
-# Loading work.opxMultiplexer
-# Loading work.addressBusController
-# Loading work.dataBusController
-# Loading work.fullALU
-# Loading work.aluBMux
-# Loading work.aluBlock
-# Loading work.alu
-# Loading work.incrementer
-# Loading work.aluGroupDecoder
-# Loading work.jumpGroupDecoder
-# Loading work.programCounter
+# Loading work.loadStoreGroupDecoderTests
 # Loading work.loadStoreGroupDecoder
-# Loading work.register_file
-# Loading work.dpram
+# Loading work.instructionPhaseDecoder
 run 4us
-# GetModuleFileName: The specified module could not be found.
-# 
-# 
-# [T=1860000] FAILED in processorCoreTests: DBUS_OUT expected 1111101010101111 != actual 0000000000000110
-add wave -position 6  sim:/processorCoreTests/testInstance/aluDecoder/ALU_OPX
+# [T=660] FAILED in loadStoreGroupDecoderTests: ALUA_SRCX expected 00 != actual 1
+# [T=1060] FAILED in loadStoreGroupDecoderTests: ALUA_SRCX expected 11 != actual 1
+# [T=1060] FAILED in loadStoreGroupDecoderTests: ALU_OPX expected 0000 != actual 0010
+# [T=1060] FAILED in loadStoreGroupDecoderTests: ADDR_BUSX expected 10 != actual 01
+# [T=1460] FAILED in loadStoreGroupDecoderTests: ALUA_SRCX expected 11 != actual 1
+# [T=1460] FAILED in loadStoreGroupDecoderTests: ALU_OPX expected 0000 != actual 0001
+# [T=1860] FAILED in loadStoreGroupDecoderTests: ALUA_SRCX expected 00 != actual 1
+# Compile of instructionPhaseDecoder.v was successful.
+# Compile of loadStoreGroupDecoder.v was successful.
+# Compile of loadStoreGroupDecoderTests.v was successful.
+# Compile of constants.v was successful.
+# 4 compiles, 0 failed with no errors.
 restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.loadStoreGroupDecoderTests
+# Loading work.loadStoreGroupDecoder
+# Loading work.instructionPhaseDecoder
 run 2us
-# GetModuleFileName: The specified module could not be found.
-# 
-# 
-# [T=1860000] FAILED in processorCoreTests: DBUS_OUT expected 1111101010101111 != actual 0000000000000110
-add wave -position 6  sim:/processorCoreTests/testInstance/aluDecoder/INSTRUCTION
-restart
-run 2us
-# GetModuleFileName: The specified module could not be found.
-# 
-# 
-# [T=1860000] FAILED in processorCoreTests: DBUS_OUT expected 1111101010101111 != actual 0000000000000110
-# WARNING: No extended dataflow license exists
-add wave -position 8  sim:/processorCoreTests/testInstance/opxMux/ALU_ALU_OPX
-add wave -position 9  sim:/processorCoreTests/testInstance/opxMux/LDS_ALU_OPX
-restart
-run 2us
-# GetModuleFileName: The specified module could not be found.
-# 
-# 
-# [T=1860000] FAILED in processorCoreTests: DBUS_OUT expected 1111101010101111 != actual 0000000000000110
-# Compile of register_file.v was successful.
-# Compile of loadStoreGroupDecoder.v was successful.
-# Compile of programCounter.v was successful.
-# Compile of jumpGroupDecoder.v was successful.
-# Compile of aluGroupDecoder.v was successful.
-# Compile of incrementer.v was successful.
-# Compile of alu.v was successful.
-# Compile of aluBlock.v was successful.
-# Compile of aluBMux.v was successful.
-# Compile of fullALU.v was successful.
-# Compile of dataBusController.v was successful.
-# Compile of addressBusController.v was successful.
-# Compile of opxMultiplexer.v was successful.
-# Compile of instructionPhaseDecoder.v was successful.
-# Compile of core.v was successful.
-# Compile of processorCoreTests.v was successful with warnings.
-# Compile of constants.v was successful.
-# Compile of dpram.v was successful.
-# 18 compiles, 0 failed with no errors.
-restart
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.processorCoreTests
-# Loading work.core
-# Loading work.instructionPhaseDecoder
-# Loading work.opxMultiplexer
-# Loading work.addressBusController
-# Loading work.dataBusController
-# Loading work.fullALU
-# Loading work.aluBMux
-# Loading work.aluBlock
-# Loading work.alu
-# Loading work.incrementer
-# Loading work.aluGroupDecoder
-# Loading work.jumpGroupDecoder
-# Loading work.programCounter
-# Loading work.loadStoreGroupDecoder
-# Loading work.register_file
-# Loading work.dpram
-run 2us
-# GetModuleFileName: The specified module could not be found.
-# 
-# 
-# [T=1860000] FAILED in processorCoreTests: DBUS_OUT expected 1111101010101111 != actual 0000000000000110
-# Compile of register_file.v was successful.
-# Compile of loadStoreGroupDecoder.v was successful.
-# Compile of programCounter.v was successful.
-# Compile of jumpGroupDecoder.v was successful.
-# Compile of aluGroupDecoder.v was successful.
-# Compile of incrementer.v was successful.
-# Compile of alu.v was successful.
-# Compile of aluBlock.v was successful.
-# Compile of aluBMux.v was successful.
-# Compile of fullALU.v was successful.
-# Compile of dataBusController.v was successful.
-# Compile of addressBusController.v was successful.
-# Compile of opxMultiplexer.v was successful.
-# Compile of instructionPhaseDecoder.v was successful.
-# Compile of core.v was successful.
-# Compile of processorCoreTests.v was successful with warnings.
-# Compile of constants.v was successful.
-# Compile of dpram.v was successful.
-# 18 compiles, 0 failed with no errors.
-restart
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.processorCoreTests
-# Loading work.core
-# Loading work.instructionPhaseDecoder
-# Loading work.opxMultiplexer
-# Loading work.addressBusController
-# Loading work.dataBusController
-# Loading work.fullALU
-# Loading work.aluBMux
-# Loading work.aluBlock
-# Loading work.alu
-# Loading work.incrementer
-# Loading work.aluGroupDecoder
-# Loading work.jumpGroupDecoder
-# Loading work.programCounter
-# Loading work.loadStoreGroupDecoder
-# Loading work.register_file
-# Loading work.dpram
-run 2us
-# GetModuleFileName: The specified module could not be found.
-# 
-# 
-# [T=1860000] FAILED in processorCoreTests: DBUS_OUT expected 1111101010101111 != actual 0000000000000110
-run 2us
-add wave -position 11  sim:/processorCoreTests/testInstance/dbusController/DATA_BUSX
-add wave -position 13  sim:/processorCoreTests/testInstance/dbusController/PC_A
-add wave -position 14  sim:/processorCoreTests/testInstance/dbusController/ALU_R
-add wave -position 15  sim:/processorCoreTests/testInstance/dbusController/REGA_DOUT
-rstart
-# invalid command name "rstart"
-restart
-run 4us
-# GetModuleFileName: The specified module could not be found.
-# 
-# 
-# [T=1860000] FAILED in processorCoreTests: DBUS_OUT expected 1111101010101111 != actual 0000000000000110
-# Compile of register_file.v was successful.
-# Compile of loadStoreGroupDecoder.v was successful.
-# Compile of programCounter.v was successful.
-# Compile of jumpGroupDecoder.v was successful.
-# Compile of aluGroupDecoder.v was successful.
-# Compile of incrementer.v was successful.
-# Compile of alu.v was successful.
-# Compile of aluBlock.v was successful.
-# Compile of aluBMux.v was successful.
-# Compile of fullALU.v was successful.
-# Compile of dataBusController.v was successful.
-# Compile of addressBusController.v was successful.
-# Compile of opxMultiplexer.v was successful.
-# Compile of instructionPhaseDecoder.v was successful.
-# Compile of core.v was successful.
-# Compile of processorCoreTests.v was successful with warnings.
-# Compile of constants.v was successful.
-# Compile of dpram.v was successful.
-# 18 compiles, 0 failed with no errors.
-restart
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.processorCoreTests
-# Loading work.core
-# Loading work.instructionPhaseDecoder
-# Loading work.opxMultiplexer
-# Loading work.addressBusController
-# Loading work.dataBusController
-# Loading work.fullALU
-# Loading work.aluBMux
-# Loading work.aluBlock
-# Loading work.alu
-# Loading work.incrementer
-# Loading work.aluGroupDecoder
-# Loading work.jumpGroupDecoder
-# Loading work.programCounter
-# Loading work.loadStoreGroupDecoder
-# Loading work.register_file
-# Loading work.dpram
-run 4us
-# GetModuleFileName: The specified module could not be found.
-# 
-# 
-# [T=1860000] FAILED in processorCoreTests: DBUS_OUT expected 1111101010101111 != actual 0000000011111010
-# Compile of register_file.v was successful.
-# Compile of loadStoreGroupDecoder.v was successful.
-# Compile of programCounter.v was successful.
-# Compile of jumpGroupDecoder.v was successful.
-# Compile of aluGroupDecoder.v was successful.
-# Compile of incrementer.v was successful.
-# Compile of alu.v was successful.
-# Compile of aluBlock.v was successful.
-# Compile of aluBMux.v was successful.
-# Compile of fullALU.v was successful.
-# Compile of dataBusController.v was successful.
-# Compile of addressBusController.v was successful.
-# Compile of opxMultiplexer.v was successful.
-# Compile of instructionPhaseDecoder.v was successful.
-# Compile of core.v was successful.
-# Compile of processorCoreTests.v was successful with warnings.
-# Compile of constants.v was successful.
-# Compile of dpram.v was successful.
-# 18 compiles, 0 failed with no errors.
-restart
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.processorCoreTests
-# Loading work.core
-# Loading work.instructionPhaseDecoder
-# Loading work.opxMultiplexer
-# Loading work.addressBusController
-# Loading work.dataBusController
-# Loading work.fullALU
-# Loading work.aluBMux
-# Loading work.aluBlock
-# Loading work.alu
-# Loading work.incrementer
-# Loading work.aluGroupDecoder
-# Loading work.jumpGroupDecoder
-# Loading work.programCounter
-# Loading work.loadStoreGroupDecoder
-# Loading work.register_file
-# Loading work.dpram
-run 4us
-# GetModuleFileName: The specified module could not be found.
-# 
-# 
-# [T=1860000] FAILED in processorCoreTests: DBUS_OUT expected 1111101010101111 != actual 0000000001010101
-# Compile of register_file.v was successful.
-# Compile of loadStoreGroupDecoder.v was successful.
-# Compile of programCounter.v was successful.
-# Compile of jumpGroupDecoder.v was successful.
-# Compile of aluGroupDecoder.v was successful.
-# Compile of incrementer.v was successful.
-# Compile of alu.v was successful.
-# Compile of aluBlock.v was successful.
-# Compile of aluBMux.v was successful.
-# Compile of fullALU.v was successful.
-# Compile of dataBusController.v was successful.
-# Compile of addressBusController.v was successful.
-# Compile of opxMultiplexer.v was successful.
-# Compile of instructionPhaseDecoder.v was successful.
-# Compile of core.v was successful.
-# Compile of processorCoreTests.v was successful with warnings.
-# Compile of constants.v was successful.
-# Compile of dpram.v was successful.
-# 18 compiles, 0 failed with no errors.
-restart
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.processorCoreTests
-# Loading work.core
-# Loading work.instructionPhaseDecoder
-# Loading work.opxMultiplexer
-# Loading work.addressBusController
-# Loading work.dataBusController
-# Loading work.fullALU
-# Loading work.aluBMux
-# Loading work.aluBlock
-# Loading work.alu
-# Loading work.incrementer
-# Loading work.aluGroupDecoder
-# Loading work.jumpGroupDecoder
-# Loading work.programCounter
-# Loading work.loadStoreGroupDecoder
-# Loading work.register_file
-# Loading work.dpram
-run 4us
-# GetModuleFileName: The specified module could not be found.
-# 
-# 
-# [T=1860000] FAILED in processorCoreTests: DBUS_OUT expected 1111101010101111 != actual 0000000001010101
-# Compile of register_file.v was successful.
-# Compile of loadStoreGroupDecoder.v was successful.
-# Compile of programCounter.v was successful.
-# Compile of jumpGroupDecoder.v was successful.
-# Compile of aluGroupDecoder.v was successful.
-# Compile of incrementer.v was successful.
-# Compile of alu.v was successful.
-# Compile of aluBlock.v was successful.
-# Compile of aluBMux.v was successful.
-# Compile of fullALU.v was successful.
-# Compile of dataBusController.v was successful.
-# Compile of addressBusController.v was successful.
-# Compile of opxMultiplexer.v was successful.
-# Compile of instructionPhaseDecoder.v was successful.
-# Compile of core.v was successful.
-# Compile of processorCoreTests.v was successful with warnings.
-# Compile of constants.v was successful.
-# Compile of dpram.v was successful.
-# 18 compiles, 0 failed with no errors.
-restart
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.processorCoreTests
-# Loading work.core
-# Loading work.instructionPhaseDecoder
-# Loading work.opxMultiplexer
-# Loading work.addressBusController
-# Loading work.dataBusController
-# Loading work.fullALU
-# Loading work.aluBMux
-# Loading work.aluBlock
-# Loading work.alu
-# Loading work.incrementer
-# Loading work.aluGroupDecoder
-# Loading work.jumpGroupDecoder
-# Loading work.programCounter
-# Loading work.loadStoreGroupDecoder
-# Loading work.register_file
-# Loading work.dpram
-run 4us
-# GetModuleFileName: The specified module could not be found.
-# 
-# 
-# [T=1860000] FAILED in processorCoreTests: DBUS_OUT expected 1111101010101111 != actual 0000000001010101
-add wave -position 15  sim:/processorCoreTests/testInstance/alu/ALUA_DATA
-add wave -position 16  sim:/processorCoreTests/testInstance/alu/ALUB_DATA
-restart
-run 4us
-# GetModuleFileName: The specified module could not be found.
-# 
-# 
-# [T=1860000] FAILED in processorCoreTests: DBUS_OUT expected 1111101010101111 != actual 0000000001010101
-# Compile of register_file.v was successful.
-# Compile of loadStoreGroupDecoder.v was successful.
-# Compile of programCounter.v was successful.
-# Compile of jumpGroupDecoder.v was successful.
-# Compile of aluGroupDecoder.v was successful.
-# Compile of incrementer.v was successful.
-# Compile of alu.v was successful.
-# Compile of aluBlock.v was successful.
-# Compile of aluBMux.v was successful.
-# Compile of fullALU.v was successful.
-# Compile of dataBusController.v was successful.
-# Compile of addressBusController.v was successful.
-# Compile of opxMultiplexer.v was successful.
-# Compile of instructionPhaseDecoder.v was successful.
-# Compile of core.v was successful.
-# Compile of processorCoreTests.v was successful.
-# Compile of constants.v was successful.
-# Compile of dpram.v was successful.
-# 18 compiles, 0 failed with no errors.
-restart
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.processorCoreTests
-# Loading work.core
-# Loading work.instructionPhaseDecoder
-# Loading work.opxMultiplexer
-# Loading work.addressBusController
-# Loading work.dataBusController
-# Loading work.fullALU
-# Loading work.aluBMux
-# Loading work.aluBlock
-# Loading work.alu
-# Loading work.incrementer
-# Loading work.aluGroupDecoder
-# Loading work.jumpGroupDecoder
-# Loading work.programCounter
-# Loading work.loadStoreGroupDecoder
-# Loading work.register_file
-# Loading work.dpram
-run 4us
-# GetModuleFileName: The specified module could not be found.
-# 
-# 
-# [T=1860000] FAILED in processorCoreTests: DBUS_OUT expected 1111101010101111 != actual 0000000001010101
-add wave -position 7  sim:/processorCoreTests/testInstance/alu/ALUA_SRCX
-add wave -position 8  sim:/processorCoreTests/testInstance/alu/ALUB_SRCX
-add wave -position 9  sim:/processorCoreTests/testInstance/alu/ALUA_CONSTX
-restart
-run 4us
-# GetModuleFileName: The specified module could not be found.
-# 
-# 
-# [T=1860000] FAILED in processorCoreTests: DBUS_OUT expected 1111101010101111 != actual 0000000001010101
-add wave -position 9  sim:/processorCoreTests/testInstance/alu/aluBMuxInst/U8H
-restart
-run 4us
-# GetModuleFileName: The specified module could not be found.
-# 
-# 
-# [T=1860000] FAILED in processorCoreTests: DBUS_OUT expected 1111101010101111 != actual 0000000001010101
-add wave -position 10  sim:/processorCoreTests/testInstance/alu/aluBMuxInst/ARGB
-restart
-run 4us
-# GetModuleFileName: The specified module could not be found.
-# 
-# 
-# [T=1860000] FAILED in processorCoreTests: DBUS_OUT expected 1111101010101111 != actual 0000000001010101
-# Compile of register_file.v was successful.
-# Compile of loadStoreGroupDecoder.v was successful.
-# Compile of programCounter.v was successful.
-# Compile of jumpGroupDecoder.v was successful.
-# Compile of aluGroupDecoder.v was successful.
-# Compile of incrementer.v was successful.
-# Compile of alu.v was successful.
-# Compile of aluBlock.v was successful.
-# Compile of aluBMux.v was successful.
-# Compile of fullALU.v was successful.
-# Compile of dataBusController.v was successful.
-# Compile of addressBusController.v was successful.
-# Compile of opxMultiplexer.v was successful.
-# Compile of instructionPhaseDecoder.v was successful.
-# Compile of core.v was successful.
-# Compile of processorCoreTests.v was successful.
-# Compile of constants.v was successful.
-# Compile of dpram.v was successful.
-# 18 compiles, 0 failed with no errors.
-restart
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.processorCoreTests
-# Loading work.core
-# Loading work.instructionPhaseDecoder
-# Loading work.opxMultiplexer
-# Loading work.addressBusController
-# Loading work.dataBusController
-# Loading work.fullALU
-# Loading work.aluBMux
-# Loading work.aluBlock
-# Loading work.alu
-# Loading work.incrementer
-# Loading work.aluGroupDecoder
-# Loading work.jumpGroupDecoder
-# Loading work.programCounter
-# Loading work.loadStoreGroupDecoder
-# Loading work.register_file
-# Loading work.dpram
-run 4us
-# GetModuleFileName: The specified module could not be found.
-# 
-# 
-# [T=1860000] FAILED in processorCoreTests: DBUS_OUT expected 1111101010101111 != actual 0000000001010101
-# Compile of register_file.v was successful.
-# Compile of loadStoreGroupDecoder.v was successful.
-# Compile of programCounter.v was successful.
-# Compile of jumpGroupDecoder.v was successful.
-# Compile of aluGroupDecoder.v was successful.
-# Compile of incrementer.v was successful.
-# Compile of alu.v was successful.
-# Compile of aluBlock.v was successful.
-# Compile of aluBMux.v was successful.
-# Compile of fullALU.v was successful.
-# Compile of dataBusController.v was successful.
-# Compile of addressBusController.v was successful.
-# Compile of opxMultiplexer.v was successful.
-# Compile of instructionPhaseDecoder.v was successful.
-# Compile of core.v was successful.
-# Compile of processorCoreTests.v was successful.
-# Compile of constants.v was successful.
-# Compile of dpram.v was successful.
-# 18 compiles, 0 failed with no errors.
-restart
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.processorCoreTests
-# Loading work.core
-# Loading work.instructionPhaseDecoder
-# Loading work.opxMultiplexer
-# Loading work.addressBusController
-# Loading work.dataBusController
-# Loading work.fullALU
-# Loading work.aluBMux
-# Loading work.aluBlock
-# Loading work.alu
-# Loading work.incrementer
-# Loading work.aluGroupDecoder
-# Loading work.jumpGroupDecoder
-# Loading work.programCounter
-# Loading work.loadStoreGroupDecoder
-# Loading work.register_file
-# Loading work.dpram
-run 4us
-# GetModuleFileName: The specified module could not be found.
-# 
-# 
-# [T=1860000] FAILED in processorCoreTests: DBUS_OUT expected 1111101010101111 != actual 0000000001010101
-# Compile of register_file.v was successful.
-# Compile of loadStoreGroupDecoder.v was successful.
-# Compile of programCounter.v was successful.
-# Compile of jumpGroupDecoder.v was successful.
-# Compile of aluGroupDecoder.v was successful.
-# Compile of incrementer.v was successful.
-# Compile of alu.v was successful.
-# Compile of aluBlock.v was successful.
-# Compile of aluBMux.v was successful.
-# Compile of fullALU.v was successful.
-# Compile of dataBusController.v was successful.
-# Compile of addressBusController.v was successful.
-# Compile of opxMultiplexer.v was successful.
-# Compile of instructionPhaseDecoder.v was successful.
-# Compile of core.v was successful.
-# Compile of processorCoreTests.v was successful.
-# Compile of constants.v was successful.
-# Compile of dpram.v was successful.
-# 18 compiles, 0 failed with no errors.
-restart
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.processorCoreTests
-# Loading work.core
-# Loading work.instructionPhaseDecoder
-# Loading work.opxMultiplexer
-# Loading work.addressBusController
-# Loading work.dataBusController
-# Loading work.fullALU
-# Loading work.aluBMux
-# Loading work.aluBlock
-# Loading work.alu
-# Loading work.incrementer
-# Loading work.aluGroupDecoder
-# Loading work.jumpGroupDecoder
-# Loading work.programCounter
-# Loading work.loadStoreGroupDecoder
-# Loading work.register_file
-# Loading work.dpram
-run 4us
-# GetModuleFileName: The specified module could not be found.
-# 
-# 
-# [T=1860000] FAILED in processorCoreTests: DBUS_OUT expected 1111101010101111 != actual 0000000010101111
-add wave -position 20  sim:/processorCoreTests/testInstance/dbusController/REGB_DOUT
-restart
-run 4us
-# GetModuleFileName: The specified module could not be found.
-# 
-# 
-# [T=1860000] FAILED in processorCoreTests: DBUS_OUT expected 1111101010101111 != actual 0000000010101111
-# A time value could not be extracted from the current line
-# A time value could not be extracted from the current line
+# [T=660] FAILED in loadStoreGroupDecoderTests: REGA_EN expected 00000000000000000000000000000001 != actual 0
+# [T=660] FAILED in loadStoreGroupDecoderTests: REGB_EN expected 00000000000000000000000000000000 != actual 1
+# [T=660] FAILED in loadStoreGroupDecoderTests: REG_B_WEN expected 00000000000000000000000000000000 != actual 1
+# [T=660] FAILED in loadStoreGroupDecoderTests: ALUA_SRCX expected 00 != actual 1
+# [T=760] FAILED in loadStoreGroupDecoderTests: REGB_EN expected 00000000000000000000000000000001 != actual 0
+# [T=760] FAILED in loadStoreGroupDecoderTests: REG_B_WEN expected 00000000000000000000000000000001 != actual 0
+# [T=1060] FAILED in loadStoreGroupDecoderTests: REGB_EN expected 00000000000000000000000000000000 != actual 1
+# [T=1060] FAILED in loadStoreGroupDecoderTests: REGA_WEN expected 00000000000000000000000000000000 != actual 1
+# [T=1060] FAILED in loadStoreGroupDecoderTests: REG_B_WEN expected 00000000000000000000000000000000 != actual 1
+# [T=1060] FAILED in loadStoreGroupDecoderTests: ALUA_SRCX expected 11 != actual 1
+# [T=1060] FAILED in loadStoreGroupDecoderTests: ALU_OPX expected 0000 != actual 0010
+# [T=1060] FAILED in loadStoreGroupDecoderTests: ADDR_BUSX expected 10 != actual 01
+# [T=1160] FAILED in loadStoreGroupDecoderTests: REGA_EN expected 00000000000000000000000000000001 != actual 0
+# [T=1160] FAILED in loadStoreGroupDecoderTests: REGB_EN expected 00000000000000000000000000000001 != actual 0
+# [T=1160] FAILED in loadStoreGroupDecoderTests: REGA_WEN expected 00000000000000000000000000000001 != actual 0
+# [T=1160] FAILED in loadStoreGroupDecoderTests: REG_B_WEN expected 00000000000000000000000000000001 != actual 0
+# [T=1460] FAILED in loadStoreGroupDecoderTests: REGB_EN expected 00000000000000000000000000000000 != actual 1
+# [T=1460] FAILED in loadStoreGroupDecoderTests: REGA_WEN expected 00000000000000000000000000000000 != actual 1
+# [T=1460] FAILED in loadStoreGroupDecoderTests: REG_B_WEN expected 00000000000000000000000000000000 != actual 1
+# [T=1460] FAILED in loadStoreGroupDecoderTests: ALUA_SRCX expected 11 != actual 1
+# [T=1460] FAILED in loadStoreGroupDecoderTests: ALU_OPX expected 0000 != actual 0001
+# [T=1560] FAILED in loadStoreGroupDecoderTests: REGA_EN expected 00000000000000000000000000000001 != actual 0
+# [T=1560] FAILED in loadStoreGroupDecoderTests: REGB_EN expected 00000000000000000000000000000001 != actual 0
+# [T=1560] FAILED in loadStoreGroupDecoderTests: REGA_WEN expected 00000000000000000000000000000001 != actual 0
+# [T=1560] FAILED in loadStoreGroupDecoderTests: REG_B_WEN expected 00000000000000000000000000000001 != actual 0
+# [T=1860] FAILED in loadStoreGroupDecoderTests: REGA_EN expected 00000000000000000000000000000001 != actual 0
+# [T=1860] FAILED in loadStoreGroupDecoderTests: REGB_EN expected 00000000000000000000000000000001 != actual 0
+# [T=1860] FAILED in loadStoreGroupDecoderTests: ALUA_SRCX expected 00 != actual 1
+write format wave -window .main_pane.wave.interior.cs.body.pw.wf C:/Users/Duncan/git/ForthCPU/loadStoreGroupDecoder/test/loadStoreGroupDecoderTests/wave.do

@@ -32,19 +32,18 @@ module loadStoreGroupDecoderTests;
 	* ALU
 	**/
 	wire [3:0] ALU_OPX;        // ALU operation
-	wire       ALU_LD;
-	wire [1:0] ALUA_CONSTX;
 
 	/**
 	* Data Sources
 	**/
-	wire [1:0] ALUA_SRCX;
+	wire        ALUA_SRCX;
 	wire [2:0] ALUB_SRCX;
 	
-	wire [1:0] REGA_DINX;
+	wire [1:0] REGB_DINX;
 	wire [2:0] REGA_ADDRX;
 	wire [1:0] REGB_ADDRX;
-	
+	wire [1:0] REGA_BYTE_ENX;
+	wire [1:0] REGB_BYTE_ENX;
 	/**
 	* Bus control
 	**/
@@ -55,7 +54,7 @@ module loadStoreGroupDecoderTests;
 loadStoreGroupDecoder testInstance(
 	.CLK(CLK),
 	.RESET(RESET),
-	.INSTRUCTION(INSTRUCTION),
+	.INSTRUCTION(INSTRUCTION[13:8]),
 	.FETCH(FETCH),
 	.DECODE(DECODE),
 	.EXECUTE(EXECUTE),
@@ -65,13 +64,13 @@ loadStoreGroupDecoder testInstance(
 	.REGA_WEN(REGA_WEN),
 	.REGB_WEN(REGB_WEN),
 	.ALU_OPX(ALU_OPX),
-	.ALU_LD(ALU_LD),
-	.ALUA_CONSTX(ALUA_CONSTX),
 	.ALUA_SRCX(ALUA_SRCX),
 	.ALUB_SRCX(ALUB_SRCX),
-	.REGA_DINX(REGA_DINX),
+	.REGB_DINX(REGB_DINX),
 	.REGA_ADDRX(REGA_ADDRX),
 	.REGB_ADDRX(REGB_ADDRX),
+	.REGA_BYTE_ENX(REGA_BYTE_ENX),
+	.REGB_BYTE_ENX(REGB_BYTE_ENX),
 	.DATA_BUSX(DATA_BUSX),
 	.DATA_BUS_OEN(DATA_BUS_OEN),
 	.ADDR_BUSX(ADDR_BUSX)
@@ -103,13 +102,15 @@ initial begin
 	 RESET = 0;  
 	 `TICKTOCK;
 	 `TICKTOCK;
+	 `TICKTOCK;
 	 
 	 /************************************************************************
 	 * LD Ra,(Rb)
 	 *************************************************************************/
 	 // Start FETCH
-	 INSTRUCTION = {`GROUP_LOAD_STORE,`LDSF_NONE,`LDS_LD,`MODE_REG_MEM,`R5,`RI};	 
-	 `TICKTOCK;  
+	 `TICK;
+	 INSTRUCTION = {`GROUP_LOAD_STORE,`LDSINCF_NONE,`LDSOPF_LD,`MODE_LDS_REG_MEM,`R5,`RI};	 
+	 `TICK;  
 	// DECODE
 	`TICKTOCK; 
 	// EXECUTE 
@@ -122,9 +123,6 @@ initial begin
 	`assert("ALUB_SRCX", `ALUB_SRCX_REG_B, ALUB_SRCX)
 	`assert("ALU_OPX",   `ALU_OPX_MOV, ALU_OPX)
 	`assert("ADDR_BUSX",   `ADDR_BUSX_ALUA_DIN, ADDR_BUSX)
-	`assert("REGA_DINX",   `REGA_DINX_ALUA_PP, REGA_DINX)
-	`assert("ALUA_CONSTX",   `ALUA_CONSTX_TWO, ALUA_CONSTX)
-	`assert("ALU_LD",      0,                   ALU_LD)
 	`assert("REGA_ADDRX",  `REGA_ADDRX_ARGA,     REGA_ADDRX)
 	
 	// COMMIT
@@ -140,8 +138,9 @@ initial begin
 	 * LD Ra,(--Rb)
 	 *************************************************************************/
 	// FETCH
-	INSTRUCTION = {`GROUP_LOAD_STORE,`LDSF_PRE_DEC,`LDS_LD,`MODE_REG_MEM,`R5,`RI};	 
-	`TICKTOCK;
+	`TICK;
+	INSTRUCTION = {`GROUP_LOAD_STORE,`LDSINCF_PRE_DEC,`LDSOPF_LD,`MODE_LDS_REG_MEM,`R5,`RI};	 
+	`TICK;
 	 
 	// DECODE
 	`TICKTOCK; 
@@ -152,13 +151,10 @@ initial begin
 	`assert("REGB_EN",      0, REGB_EN)
 	`assert("REGA_WEN",     0, REGA_WEN)
 	`assert("REG_B_WEN",    0, REGB_WEN)
-	`assert("ALUA_SRCX",   `ALUA_SRCX_INCREMENTER, ALUA_SRCX)
+	`assert("ALUA_SRCX",   `ALUA_SRCX_TWO, ALUA_SRCX)
 	`assert("ALUB_SRCX",   `ALUB_SRCX_REG_B, ALUB_SRCX)
 	`assert("ALU_OPX",     `ALU_OPX_MOV, ALU_OPX)
 	`assert("ADDR_BUSX",   `ADDR_BUSX_ALUA_DIN, ADDR_BUSX)
-	`assert("REGA_DINX",   `REGA_DINX_ALUA_PP, REGA_DINX)
-	`assert("ALUA_CONSTX", `ALUA_CONSTX_MINUS_TWO, ALUA_CONSTX)
-	`assert("ALU_LD",      0,                   ALU_LD)
 	`assert("REGA_ADDRX",  `REGA_ADDRX_ARGA,     REGA_ADDRX)
 	
 	// COMMIT
@@ -175,9 +171,9 @@ initial begin
 	 * LD Ra,(Rb++)
 	 *************************************************************************/
 	// FETCH
-	INSTRUCTION = {`GROUP_LOAD_STORE,`LDSF_POST_INC,`LDS_LD,`MODE_REG_MEM,`R5,`RI};	 
-	 `TICKTOCK;
-	 
+	 `TICK;
+	 INSTRUCTION = {`GROUP_LOAD_STORE,`LDSINCF_POST_INC,`LDSOPF_LD,`MODE_LDS_REG_MEM,`R5,`RI};	 
+	 `TICK;	 
 	// DECODE
 	`TICKTOCK; 
 
@@ -187,13 +183,10 @@ initial begin
 	`assert("REGB_EN",      0, REGB_EN)
 	`assert("REGA_WEN",     0, REGA_WEN)
 	`assert("REG_B_WEN",    0, REGB_WEN)
-	`assert("ALUA_SRCX",   `ALUA_SRCX_REG_A, ALUA_SRCX)
+	`assert("ALUA_SRCX",   `ALUA_SRCX_TWO, ALUA_SRCX)
 	`assert("ALUB_SRCX",   `ALUB_SRCX_REG_B, ALUB_SRCX)
 	`assert("ALU_OPX",     `ALU_OPX_MOV, ALU_OPX)
 	`assert("ADDR_BUSX",   `ADDR_BUSX_ALUA_DIN, ADDR_BUSX)
-	`assert("REGA_DINX",   `REGA_DINX_ALUA_PP, REGA_DINX)
-	`assert("ALUA_CONSTX", `ALUA_CONSTX_TWO, ALUA_CONSTX)
-	`assert("ALU_LD",      0,                   ALU_LD)
 	`assert("REGA_ADDRX",  `REGA_ADDRX_ARGA,     REGA_ADDRX)
 	
 	// COMMIT
@@ -208,9 +201,10 @@ initial begin
 	 * ST (Rb),Ra
 	 *************************************************************************/
 	 // Start FETCH
-	 INSTRUCTION = {`GROUP_LOAD_STORE,`LDSF_NONE,`LDS_ST,`MODE_REG_MEM,`R5,`RI};	 
-	 `TICKTOCK;  
-	// DECODE
+	 `TICK;
+	 INSTRUCTION = {`GROUP_LOAD_STORE,`LDSINCF_NONE,`LDSOPF_ST,`MODE_LDS_REG_MEM,`R5,`RI};	 
+	 `TICK;
+	 // DECODE
 	`TICKTOCK; 
 	// EXECUTE 
 	// Control outputs become valid here
@@ -222,9 +216,6 @@ initial begin
 	`assert("ALUB_SRCX",   `ALUB_SRCX_REG_B, ALUB_SRCX)
 	`assert("ALU_OPX",     `ALU_OPX_MOV, ALU_OPX)
 	`assert("ADDR_BUSX",   `ADDR_BUSX_ALUA_DIN, ADDR_BUSX)
-	`assert("REGA_DINX",   `REGA_DINX_ALUA_PP, REGA_DINX)
-	`assert("ALUA_CONSTX", `ALUA_CONSTX_TWO, ALUA_CONSTX)
-	`assert("ALU_LD",      0,                   ALU_LD)
 	`assert("REGA_ADDRX",  `REGA_ADDRX_ARGA,     REGA_ADDRX)
 	
 	// COMMIT
@@ -241,9 +232,10 @@ initial begin
 	 * LD Ra,(FP - U6)
 	 *************************************************************************/
 	 // Start FETCH
-	 INSTRUCTION = {`GROUP_LOAD_STORE,2'b10,`LDS_LD,`MODE_REG_FRAME,`R5,4'b0101};	 
-	 `TICKTOCK;  
-	// DECODE
+	 `TICK;
+	 INSTRUCTION = {`GROUP_LOAD_STORE,2'b10,`LDSOPF_LD,`MODE_LDS_REG_FRAME,`R5,4'b0101};	 
+	 `TICK;
+	 // DECODE
 	`TICKTOCK; 
 	// EXECUTE 
 	// Control outputs become valid here
@@ -252,12 +244,9 @@ initial begin
 	`assert("REGA_WEN",     0, REGA_WEN)
 	`assert("REG_B_WEN",    0, REGB_WEN)
 	`assert("ALUA_SRCX",   `ALUA_SRCX_REG_A,    ALUA_SRCX)
-	`assert("ALUB_SRCX",   `ALUB_SRCX_ARG_U6_0, ALUB_SRCX)
+	`assert("ALUB_SRCX",   `ALUB_SRCX_U6_0, ALUB_SRCX)
 	`assert("ALU_OPX",     `ALU_OPX_SUB,        ALU_OPX)
 	`assert("ADDR_BUSX",   `ADDR_BUSX_ALU_R,    ADDR_BUSX)
-	`assert("REGA_DINX",   `REGA_DINX_ALUA_PP,  REGA_DINX)
-	`assert("ALUA_CONSTX", `ALUA_CONSTX_TWO,    ALUA_CONSTX)
-	`assert("ALU_LD",      1,                   ALU_LD)
 	`assert("REGA_ADDRX",  `REGA_ADDRX_RFP,     REGA_ADDRX)
 			
 	// COMMIT
@@ -272,9 +261,10 @@ initial begin
 	 * LD Ra,(SP + U6)
 	 *************************************************************************/
 	 // Start FETCH
-	 INSTRUCTION = {`GROUP_LOAD_STORE,2'b10,`LDS_LD,`MODE_REG_STACK,`R5,4'b0101};	 
-	 `TICKTOCK;  
-	// DECODE
+	 `TICK;
+	 INSTRUCTION = {`GROUP_LOAD_STORE,2'b10,`LDSOPF_LD,`MODE_LDS_REG_STACK,`R5,4'b0101};	 
+	 `TICK;
+	 // DECODE
 	`TICKTOCK; 
 	// EXECUTE 
 	// Control outputs become valid here
@@ -283,12 +273,9 @@ initial begin
 	`assert("REGA_WEN",     0, REGA_WEN)
 	`assert("REG_B_WEN",    0, REGB_WEN)
 	`assert("ALUA_SRCX",   `ALUA_SRCX_REG_A,    ALUA_SRCX)
-	`assert("ALUB_SRCX",   `ALUB_SRCX_ARG_U6_0, ALUB_SRCX)
+	`assert("ALUB_SRCX",   `ALUB_SRCX_U6_0, ALUB_SRCX)
 	`assert("ALU_OPX",     `ALU_OPX_ADD,        ALU_OPX)
 	`assert("ADDR_BUSX",   `ADDR_BUSX_ALU_R,    ADDR_BUSX)
-	`assert("REGA_DINX",   `REGA_DINX_ALUA_PP,  REGA_DINX)
-	`assert("ALUA_CONSTX", `ALUA_CONSTX_TWO,    ALUA_CONSTX)
-	`assert("ALU_LD",      1,                   ALU_LD)
 	`assert("REGA_ADDRX",  `REGA_ADDRX_RSP,     REGA_ADDRX)
 			
 	// COMMIT
@@ -303,9 +290,10 @@ initial begin
 	 * LD Ra,(RS + U6)
 	 *************************************************************************/
 	 // Start FETCH
-	 INSTRUCTION = {`GROUP_LOAD_STORE,2'b10,`LDS_LD,`MODE_REG_RETSTACK,`R5,4'b0101};	 
-	 `TICKTOCK;  
-	// DECODE
+	 `TICK;
+	 INSTRUCTION = {`GROUP_LOAD_STORE,2'b10,`LDSOPF_LD,`MODE_LDS_REG_RETSTACK,`R5,4'b0101};	 
+	 `TICK;
+	 // DECODE
 	`TICKTOCK; 
 	// EXECUTE 
 	// Control outputs become valid here
@@ -314,12 +302,9 @@ initial begin
 	`assert("REGA_WEN",     0, REGA_WEN)
 	`assert("REG_B_WEN",    0, REGB_WEN)
 	`assert("ALUA_SRCX",   `ALUA_SRCX_REG_A,    ALUA_SRCX)
-	`assert("ALUB_SRCX",   `ALUB_SRCX_ARG_U6_0, ALUB_SRCX)
+	`assert("ALUB_SRCX",   `ALUB_SRCX_U6_0, ALUB_SRCX)
 	`assert("ALU_OPX",     `ALU_OPX_ADD,        ALU_OPX)
 	`assert("ADDR_BUSX",   `ADDR_BUSX_ALU_R,    ADDR_BUSX)
-	`assert("REGA_DINX",   `REGA_DINX_ALUA_PP,  REGA_DINX)
-	`assert("ALUA_CONSTX", `ALUA_CONSTX_TWO,    ALUA_CONSTX)
-	`assert("ALU_LD",      1,                   ALU_LD)
 	`assert("REGA_ADDRX",  `REGA_ADDRX_RRS,     REGA_ADDRX)
 			
 	// COMMIT

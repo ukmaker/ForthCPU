@@ -19,7 +19,7 @@
 `define RWA  4'b1100 
 `define RSP  4'b1101 
 `define RRS  4'b1110 
-`define RLN  4'b1111 
+`define RL   4'b1111 
 
 /**
 * Program counter control
@@ -42,43 +42,20 @@
 `define CC_SELECTX_S 2'b10
 `define CC_SELECTX_P 2'b11
 
-/**
-* Data sources
-**/
-// ALU A input
-`define ALUA_SRCX_REG_A 1'b0
-`define ALUA_SRCX_PP 1'b1
-
-`define ALUA_CONSTX_ONE       2'b00
-`define ALUA_CONSTX_TWO       2'b01
-`define ALUA_CONSTX_MINUS_ONE 2'b10
-`define ALUA_CONSTX_MINUS_TWO 2'b11
-
-
-// ALU B input
-`define ALUB_SRCX_REG_B    3'b000
-`define ALUB_SRCX_ARG_U4   3'b001
-`define ALUB_SRCX_ARG_U8   3'b010
-`define ALUB_SRCX_U8_REG_B 3'b011
-`define ALUB_SRCX_ARG_U4_0 3'b100
-`define ALUB_SRCX_ARG_U6   3'b101
-`define ALUB_SRCX_ARG_U6_0 3'b110
-`define ALUB_SRCX_ZERO     3'b111
 
 /**
-* Register A load sources
+* Register B load sources
 **/
-`define REGA_DINX_ALU_R     2'b00
-`define REGA_DINX_PC_A      2'b01
-`define REGA_DINX_ALUA_PP   2'b10
+`define REGB_DINX_DIN    2'b00
+`define REGB_DINX_DINH   2'b01
+`define REGB_DINX_PC_A   2'b10
 
 /**
 * Register A address sources
 **/
 `define REGA_ADDRX_ARGA 3'b000
-`define REGA_ADDRX_RL   3'b001
-`define REGA_ADDRX_RB   3'b010
-`define REGA_ADDRX_RA   3'b011
+`define REGA_ADDRX_RA   3'b010
+`define REGA_ADDRX_RB   3'b011
 `define REGA_ADDRX_RSP  3'b100
 `define REGA_ADDRX_RFP  3'b101
 `define REGA_ADDRX_RRS  3'b110
@@ -87,25 +64,42 @@
 * Register B address sources
 **/
 `define REGB_ADDRX_ARGB 2'b00
-`define REGB_ADDRX_ARGA 2'b01
-`define REGB_ADDRX_RB   2'b10
+`define REGB_ADDRX_RB   2'b01
+`define REGB_ADDRX_RL   2'b10
+
+/**
+* Data sources
+**/
+// ALU A input
+`define ALUA_SRCX_REG_A 2'b00
+`define ALUA_SRCX_ZERO  2'b01
+`define ALUA_SRCX_ONE   2'b10
+`define ALUA_SRCX_TWO   2'b11
+
+// ALU B input
+`define ALUB_SRCX_REG_B  3'b000
+`define ALUB_SRCX_U8H    3'b001
+`define ALUB_SRCX_U8     3'b010
+`define ALUB_SRCX_U4     3'b011
+`define ALUB_SRCX_U4_0   3'b100
+`define ALUB_SRCX_U6     3'b101
+`define ALUB_SRCX_U6_0   3'b110
+
 
 
 /** 
 * Address bus sources
 **/
-`define ADDR_BUSX_PC       2'b00
+`define ADDR_BUSX_PC_A     2'b00
 `define ADDR_BUSX_ALU_R    2'b01
-`define ADDR_BUSX_REG_B    2'b10
-`define ADDR_BUSX_ALUA_DIN 2'b11
+`define ADDR_BUSX_ALUA_DIN 2'b10
 
 /**
 * Data bus sources
 **/
-`define DATA_BUSX_PC_A      2'b00
-`define DATA_BUSX_ALU_R     2'b01
-`define DATA_BUSX_REGA_DOUT 2'b10
-`define DATA_BUSX_REGB_DOUT 2'b11
+`define DATA_BUSX_ALUB_DATA 1'b0
+`define DATA_BUSX_ALU_R     1'b1
+
 
 /**
 * Phase
@@ -133,20 +127,20 @@
 * Instruction mode
 **/
 // ALU operations
-`define MODE_REG_REG 2'b00
-`define MODE_REG_U4 2'b01
-`define MODE_REGB_U8 2'b10
-`define MODE_REGA_U8RB 2'b11
+`define MODE_ALU_REG_REG   2'b00
+`define MODE_ALU_REG_U4    2'b01
+`define MODE_ALU_REGB_U8   2'b10
+`define MODE_ALU_REGA_U8RB 2'b11
 // Load/Store operations
-`define MODE_REG_MEM 2'b00
-`define MODE_REG_FRAME 2'b01
-`define MODE_REG_STACK 2'b10
-`define MODE_REG_RETSTACK 2'b11
+`define MODE_LDS_REG_MEM      2'b00
+`define MODE_LDS_REG_FRAME    2'b01
+`define MODE_LDS_REG_STACK    2'b10
+`define MODE_LDS_REG_RETSTACK 2'b11
 // Jumps
-`define MODE_ABS_REG 2'b00
-`define MODE_ABS_U8RB 2'b01
-`define MODE_REL_REG 2'b10
-`define MODE_REL_U8RB 2'b11
+`define MODE_JMP_ABS_REG  2'b00
+`define MODE_JMP_ABS_U8RB 2'b01
+`define MODE_JMP_REL_REG  2'b10
+`define MODE_JMP_REL_U8RB 2'b11
 
 /**
 * ALU operations
@@ -171,14 +165,14 @@
 /**
 * Load/Store
 **/
-`define LDS_LD  2'b00
-`define LDS_LDB 2'b01
-`define LDS_ST  2'b10
-`define LDS_STB 2'b11
+`define LDSOPF_LD  2'b00
+`define LDSOPF_LDB 2'b01
+`define LDSOPF_ST  2'b10
+`define LDSOPF_STB 2'b11
 
-`define LDSF_NONE     2'b00
-`define LDSF_PRE_DEC  2'b10
-`define LDSF_POST_INC 2'b11
+`define LDSINCF_NONE     2'b00
+`define LDSINCF_PRE_DEC  2'b10
+`define LDSINCF_POST_INC 2'b11
 
 /**
 * Jump

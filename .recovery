@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<BaliProject version="3.2" title="ForthCPU" device="LCMXO3L-6900C-5BG256C" default_implementation="processorCore">
+<BaliProject version="3.2" title="ForthCPU" device="LCMXO3L-6900C-5BG256C" default_implementation="loadStoreGroupDecoder">
     <Options/>
     <Implementation title="addressBusController" dir="addressBusController" description="addressBusController" synthesis="synplify" default_strategy="Area">
         <Options def_top="addressBusController"/>
         <Source name="addressBusController/source/addressBusController.v" type="Verilog" type_short="Verilog">
             <Options top_module="addressBusController"/>
+        </Source>
+        <Source name="constants.v" type="Verilog" type_short="Verilog">
+            <Options/>
         </Source>
         <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">
             <Options/>
@@ -55,6 +58,42 @@
             <Options/>
         </Source>
         <Source name="alu/test/incrementerTests/incrementerTests.spf" type="Simulation Project File" type_short="SPF">
+            <Options/>
+        </Source>
+        <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">
+            <Options/>
+        </Source>
+    </Implementation>
+    <Implementation title="aluB" dir="aluB" description="aluB" synthesis="synplify" default_strategy="Area">
+        <Options def_top="fullALUTests"/>
+        <Source name="aluB/source/alu.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="aluB/source/fullALU.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="alu/source/aluBlock.v" type="Verilog" type_short="Verilog">
+            <Options top_module="aluBlock"/>
+        </Source>
+        <Source name="aluB/source/aluAMux.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="constants.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="aluB/source/aluBMux.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="aluB/test/aluBMuxTests.v" type="Verilog" type_short="Verilog">
+            <Options top_module="aluBMuxTests"/>
+        </Source>
+        <Source name="aluB/test/fullALUTests.v" type="Verilog" type_short="Verilog">
+            <Options top_module="fullALUTests"/>
+        </Source>
+        <Source name="aluB/test/aluBMuxTests/aluBMuxTests.spf" type="Simulation Project File" type_short="SPF">
+            <Options/>
+        </Source>
+        <Source name="aluB/test/fullALUTests/fullALUTests.spf" type="Simulation Project File" type_short="SPF">
             <Options/>
         </Source>
         <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">
@@ -331,6 +370,39 @@
             <Options/>
         </Source>
         <Source name="registerFile/test/registerFileTests/registerFileTests.spf" type="Simulation Project File" type_short="SPF">
+            <Options/>
+        </Source>
+    </Implementation>
+    <Implementation title="registerFileB" dir="registerFileB" description="registerFileB" synthesis="synplify" default_strategy="Area">
+        <Options def_top="registerFileTests"/>
+        <Source name="registerFileB/source/registers.ipx" type="IPX_Module" type_short="IPX">
+            <Options/>
+        </Source>
+        <Source name="registerFileB/source/registers.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="registerFileB/source/registerFile.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="registerFileB/source/tb_registers_tmpl.v" type="Verilog" type_short="Verilog">
+            <Options top_module="tb"/>
+        </Source>
+        <Source name="registerFileB/source/registers_tmpl.v" type="Verilog" type_short="Verilog" excluded="TRUE">
+            <Options/>
+        </Source>
+        <Source name="constants.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="registerFileB/test/registerFileTests.v" type="Verilog" type_short="Verilog">
+            <Options top_module="registerFileTests"/>
+        </Source>
+        <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">
+            <Options/>
+        </Source>
+        <Source name="registerFileB/test/registerFileTests/registerFileTests.spf" type="Simulation Project File" type_short="SPF">
+            <Options/>
+        </Source>
+        <Source name="registerFileB/test/registerFileTmplTests/registerFileTmplTests.spf" type="Simulation Project File" type_short="SPF">
             <Options/>
         </Source>
     </Implementation>

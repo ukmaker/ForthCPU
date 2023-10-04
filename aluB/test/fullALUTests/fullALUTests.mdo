@@ -1,0 +1,27 @@
+if {![file exists "C:/Users/Duncan/git/ForthCPU/aluB/test/fullALUTests/fullALUTests.mpf"]} { 
+	project new "C:/Users/Duncan/git/ForthCPU/aluB/test/fullALUTests" fullALUTests
+	project addfile "C:/Users/Duncan/git/ForthCPU/aluB/source/aluBMux.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/aluB/source/aluAMux.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/aluB/source/alu.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/aluB/source/fullALU.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/aluB/test/fullALUTests.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/alu/source/aluBlock.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/constants.v"
+	vlib  work
+	vdel -lib work -all 
+	vlib work
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/aluB/source  -work work  "C:/Users/Duncan/git/ForthCPU/aluB/source/aluBMux.v"
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/aluB/source  -work work  "C:/Users/Duncan/git/ForthCPU/aluB/source/aluAMux.v"
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/aluB/source  -work work  "C:/Users/Duncan/git/ForthCPU/aluB/source/alu.v"
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/aluB/source  -work work  "C:/Users/Duncan/git/ForthCPU/aluB/source/fullALU.v"
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/aluB/test  -work work  "C:/Users/Duncan/git/ForthCPU/aluB/test/fullALUTests.v"
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/alu/source  -work work  "C:/Users/Duncan/git/ForthCPU/alu/source/aluBlock.v"
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU  -work work  "C:/Users/Duncan/git/ForthCPU/constants.v"
+} else {
+	project open "C:/Users/Duncan/git/ForthCPU/aluB/test/fullALUTests/fullALUTests"
+	project compileoutofdate
+}
+vsim -L work -L pmi_work -L ovi_machxo3l  fullALUTests
+view wave
+add wave /*
+run 1000ns

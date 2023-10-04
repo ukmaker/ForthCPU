@@ -1,0 +1,25 @@
+if {![file exists "C:/Users/Duncan/git/ForthCPU/registerFileB/test/registerFileTests/registerFileTests.mpf"]} { 
+	project new "C:/Users/Duncan/git/ForthCPU/registerFileB/test/registerFileTests" registerFileTests
+	project addfile "C:/Users/Duncan/git/ForthCPU/registerFileB/source/registers.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/registerFileB/source/registerFile.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/registerFileB/test/registerFileTests.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/registerFileB/source/tb_registers_tmpl.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/constants.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/registerFileB/source/registers.v"
+	vlib  work
+	vdel -lib work -all 
+	vlib work
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/registerFileB/source  -work work  "C:/Users/Duncan/git/ForthCPU/registerFileB/source/registers.v"
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/registerFileB/source  -work work  "C:/Users/Duncan/git/ForthCPU/registerFileB/source/registerFile.v"
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/registerFileB/test  -work work  "C:/Users/Duncan/git/ForthCPU/registerFileB/test/registerFileTests.v"
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/registerFileB/source  -work work  "C:/Users/Duncan/git/ForthCPU/registerFileB/source/tb_registers_tmpl.v"
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU  -work work  "C:/Users/Duncan/git/ForthCPU/constants.v"
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/registerFileB/source  -work work  "C:/Users/Duncan/git/ForthCPU/registerFileB/source/registers.v"
+} else {
+	project open "C:/Users/Duncan/git/ForthCPU/registerFileB/test/registerFileTests/registerFileTests"
+	project compileoutofdate
+}
+vsim -L work -L pmi_work -L ovi_machxo3l  registerFileTests
+view wave
+add wave /*
+run 1000ns

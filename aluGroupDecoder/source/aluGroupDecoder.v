@@ -51,24 +51,23 @@ module aluGroupDecoder(
 	/**
 	* Register file
 	**/
-	output reg REGA_CLKEN,
-	output reg REGB_CLKEN,
+	output reg REGA_EN,
+	output reg REGB_EN,
 	output reg REGA_WEN,
 	output reg REGB_WEN,
+	output reg [2:0] REGA_ADDRX,
+	output reg [1:0] REGB_ADDRX,
 	
 	/**
 	* ALU
 	**/
 	output wire [3:0] ALU_OPX,        // ALU operation
-	output reg       ALU_LD,
-	output reg       CCL_LD,
+	output reg         CCL_LD,
 	
 	/**
 	* Data Sources
 	**/
-	output reg        ALUA_SRCX,
-	output reg [1:0] ALUA_CONSTX,
-	
+	output reg [1:0] ALUA_SRCX,
 	output reg [2:0] ALUB_SRCX,
 	
 	/**
@@ -76,18 +75,19 @@ module aluGroupDecoder(
 	**/
 	output wire [3:0] ARGA_X,
 	output wire [3:0] ARGB_X,
+	output wire [1:0] LDSINCF
 	
-	output reg [2:0] REGA_ADDRX,
-	output reg [1:0] REGB_ADDRX
+
 
 );
 
 wire [1:0] ARGF;
 
 assign ALU_OPX = INSTRUCTION[13:10];
-assign ARGF = INSTRUCTION[9:8];
-assign ARGA_X = INSTRUCTION[7:4];
-assign ARGB_X = INSTRUCTION[3:0];
+assign ARGF    = INSTRUCTION[9:8];
+assign ARGA_X  = INSTRUCTION[7:4];
+assign ARGB_X  = INSTRUCTION[3:0];
+assign LDSINCF = INSTRUCTION[13:12];
 
 reg RD_A, RD_B, WR_A, WR_B;
 
@@ -103,23 +103,23 @@ begin
 	REGB_ADDRX = `REGB_ADDRX_ARGB;
 	
 	case(ARGF) 
-		`MODE_REG_REG: begin // ALU Ra,Rb
+		`MODE_ALU_REG_REG: begin // ALU Ra,Rb
 			ALUB_SRCX = `ALUB_SRCX_REG_B;
 			RD_A = 1; RD_B = 1; WR_A = 1;
 		end
-		`MODE_REG_U4: begin // ALU Ra,U4
-			ALUB_SRCX = `ALUB_SRCX_ARG_U4;
+		`MODE_ALU_REG_U4: begin // ALU Ra,U4
+			ALUB_SRCX = `ALUB_SRCX_U4;
 			RD_A = 1; WR_A = 1;
 		end
-		`MODE_REGB_U8: begin // ALU RB,U8
+		`MODE_ALU_REGB_U8: begin // ALU RB,U8
 			REGA_ADDRX = `REGA_ADDRX_RB;
-			ALUB_SRCX = `ALUB_SRCX_ARG_U8;
+			ALUB_SRCX = `ALUB_SRCX_U8;
 			RD_A = 1; WR_A = 1;
 		end
-		`MODE_REGA_U8RB: begin // ALU RA,U8.RB
+		`MODE_ALU_REGA_U8RB: begin // ALU RA,U8.RB
 			REGA_ADDRX = `REGA_ADDRX_RA;
 			REGB_ADDRX = `REGB_ADDRX_RB;
-			ALUB_SRCX = `ALUB_SRCX_U8_REG_B;
+			ALUB_SRCX = `ALUB_SRCX_U8H;
 			RD_A = 1; RD_B = 1; WR_A = 1;
 		end
 	endcase
@@ -130,27 +130,24 @@ always @(posedge CLK) begin
 
 	
 	if(FETCH) begin
-		ALU_LD <= 0;
 		CCL_LD <= 0;
-		REGA_CLKEN <= 0;
-		REGB_CLKEN <= 0;
+		REGA_EN <= 0;
+		REGB_EN <= 0;
 		REGA_WEN <= 0; 
-		REGB_WEN <= 0;
-		ALUA_CONSTX <= `ALUA_CONSTX_ONE;		
+		REGB_WEN <= 0;		
 	end else if(DECODE) begin
-		REGA_CLKEN <= RD_A;
-		REGB_CLKEN <= RD_B;
+		REGA_EN <= RD_A;
+		REGB_EN <= RD_B;
 		REGA_WEN <= 0;
 		REGB_WEN <= 0;
 	end else if(EXECUTE) begin
 
-		ALU_LD <= 1;
 		if(ALU_OPX != `ALU_OPX_MOV) begin
 			CCL_LD <= 1;
 		end
 	end else if(COMMIT) begin
-		REGA_CLKEN <= WR_A;
-		REGB_CLKEN <= WR_B;
+		REGA_EN <= WR_A;
+		REGB_EN <= WR_B;
 		REGA_WEN <= WR_A;
 		REGB_WEN <= WR_B;
 	end

@@ -3,12 +3,10 @@
 
 module dataBusController(
 
-	input [1:0] DATA_BUSX,
-	
-	input [15:0] PC_A,
+	input DATA_BUSX,
+
 	input [15:0] ALU_R,
-	input [15:0] REGA_DOUT,
-	input [15:0] REGB_DOUT,
+	input [15:0] ALUB_DATA,
 
 	output reg[15:0]DOUT
 	
@@ -16,11 +14,8 @@ module dataBusController(
 	
 always @(*) begin
 	case(DATA_BUSX)
-		`DATA_BUSX_PC_A: DOUT = PC_A;
-		`DATA_BUSX_ALU_R: DOUT = ALU_R;
-		`DATA_BUSX_REGA_DOUT: DOUT = REGA_DOUT;
-		`DATA_BUSX_REGB_DOUT: DOUT = REGB_DOUT;
-		default: DOUT = PC_A;
+		`DATA_BUSX_ALU_R:     DOUT = ALU_R;
+		`DATA_BUSX_ALUB_DATA: DOUT = ALUB_DATA;
 	endcase
 end
 
