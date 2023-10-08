@@ -1,0 +1,60 @@
+library verilog;
+use verilog.vl_types.all;
+entity i2c_port is
+    generic(
+        TR_IDLE         : integer := 0;
+        TR_ADDR         : integer := 1;
+        TR_ACKA         : integer := 3;
+        TR_INFO         : integer := 2;
+        TR_ACKB         : integer := 6;
+        TR_RDAT         : integer := 7;
+        TR_ACKD         : integer := 5;
+        MC_IDLE         : integer := 0;
+        MC_STAP         : integer := 2;
+        MC_STAA         : integer := 8;
+        MC_STAB         : integer := 9;
+        MC_STAC         : integer := 11;
+        MC_STAD         : integer := 10;
+        MC_TRCA         : integer := 14;
+        MC_TRCB         : integer := 15;
+        MC_TRCC         : integer := 13;
+        MC_TRCD         : integer := 12;
+        MC_STRP         : integer := 3;
+        MC_STOP         : integer := 1;
+        MC_STOA         : integer := 4;
+        MC_STOB         : integer := 6;
+        MC_STOC         : integer := 7;
+        MC_STOD         : integer := 5
+    );
+    port(
+        sda_out         : out    vl_logic;
+        sda_oe          : out    vl_logic;
+        scl_out         : out    vl_logic;
+        scl_oe          : out    vl_logic;
+        i2crxdr         : out    vl_logic_vector(7 downto 0);
+        i2cgcdr         : out    vl_logic_vector(7 downto 0);
+        i2csr           : out    vl_logic_vector(7 downto 0);
+        i2c_hsmode      : out    vl_logic;
+        i2c_wkup        : out    vl_logic;
+        ADDR_LSB_USR    : in     vl_logic_vector(1 downto 0);
+        i2c_rst_async   : in     vl_logic;
+        sda_in          : in     vl_logic;
+        scl_in          : in     vl_logic;
+        del_clk         : in     vl_logic;
+        sb_clk_i        : in     vl_logic;
+        i2ccr1          : in     vl_logic_vector(7 downto 0);
+        i2ccmdr         : in     vl_logic_vector(7 downto 0);
+        i2ctxdr         : in     vl_logic_vector(7 downto 0);
+        i2cbr           : in     vl_logic_vector(9 downto 0);
+        i2csaddr        : in     vl_logic_vector(7 downto 0);
+        i2ccr1_wt       : in     vl_logic;
+        i2ccmdr_wt      : in     vl_logic;
+        i2cbr_wt        : in     vl_logic;
+        i2ctxdr_wt      : in     vl_logic;
+        i2csaddr_wt     : in     vl_logic;
+        i2crxdr_rd      : in     vl_logic;
+        i2cgcdr_rd      : in     vl_logic;
+        trim_sda_del    : in     vl_logic_vector(3 downto 0);
+        scan_test_mode  : in     vl_logic
+    );
+end i2c_port;

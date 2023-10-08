@@ -1,0 +1,65 @@
+library verilog;
+use verilog.vl_types.all;
+entity ASC is
+    generic(
+        CFG_EEPROM      : string  := "cfg_eeprom.hex";
+        TRIM_EEPROM     : string  := "trim_eeprom.hex";
+        FLUT_EEPROM     : string  := "flut_eeprom.hex";
+        I2CADDRESS      : string  := "i2caddress.hex"
+    );
+    port(
+        VMON1L          : in     vl_logic;
+        VMON1H          : in     vl_logic;
+        VMON2L          : in     vl_logic;
+        VMON2H          : in     vl_logic;
+        VMON3L          : in     vl_logic;
+        VMON3H          : in     vl_logic;
+        VMON4L          : in     vl_logic;
+        VMON4H          : in     vl_logic;
+        VMON5L          : in     vl_logic;
+        VMON5H          : in     vl_logic;
+        VMON6L          : in     vl_logic;
+        VMON6H          : in     vl_logic;
+        VMON7L          : in     vl_logic;
+        VMON7H          : in     vl_logic;
+        VMON8L          : in     vl_logic;
+        VMON8H          : in     vl_logic;
+        VMON9L          : in     vl_logic;
+        VMON9H          : in     vl_logic;
+        HVMON1H         : in     vl_logic;
+        HVMON1L         : in     vl_logic;
+        HIMONL          : in     vl_logic;
+        HIMONH          : in     vl_logic;
+        IMONL           : in     vl_logic;
+        IMONH           : in     vl_logic;
+        HIMONF          : in     vl_logic;
+        IMONF           : in     vl_logic;
+        TMON1L          : in     vl_logic;
+        TMON1H          : in     vl_logic;
+        TMON2L          : in     vl_logic;
+        TMON2H          : in     vl_logic;
+        ITMONL          : in     vl_logic;
+        ITMONH          : in     vl_logic;
+        HVOUT1          : out    vl_logic;
+        HVOUT2          : out    vl_logic;
+        HVOUT3          : out    vl_logic;
+        HVOUT4          : out    vl_logic;
+        GPIO10          : inout  vl_logic;
+        GPIO1           : inout  vl_logic;
+        GPIO2           : inout  vl_logic;
+        GPIO3           : inout  vl_logic;
+        GPIO4           : inout  vl_logic;
+        GPIO5           : inout  vl_logic;
+        GPIO6           : inout  vl_logic;
+        GPIO7           : inout  vl_logic;
+        GPIO8           : inout  vl_logic;
+        GPIO9           : inout  vl_logic;
+        SYSCLOCK        : out    vl_logic;
+        RESETB          : out    vl_logic;
+        SCL             : in     vl_logic;
+        SDA             : inout  vl_logic;
+        RDAT            : out    vl_logic;
+        WRCLK           : in     vl_logic;
+        WDAT            : in     vl_logic
+    );
+end ASC;

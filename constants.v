@@ -22,10 +22,10 @@
 `define RL   4'b1111 
 
 /**
-* Program counter control
+* Branch logic control fields
 **/
-`define JRX_ABS   1'b0
-`define JRX_REL   1'b1
+`define JRX_REL  1'b0
+`define JRX_ABS  1'b1
 
 `define JMPX_NONE 1'b0
 `define JMPX_JMP  1'b1
@@ -36,11 +36,56 @@
 `define CC_APPLYX_NONE  1'b0
 `define CC_APPLYX_APPLY 1'b1
 
-
 `define CC_SELECTX_Z 2'b00
 `define CC_SELECTX_C 2'b01
 `define CC_SELECTX_S 2'b10
 `define CC_SELECTX_P 2'b11
+
+// The outputs
+`define PC_OFFSETX_2    1'b0
+`define PC_OFFSETX_PC_D 1'b1
+
+`define PC_BASEX_PC_A   1'b0
+`define PC_BASEX_0      1'b1
+
+/**
+* Program counter control inputs
+**/
+`define PC_LD_INT0X_NONE 1'b0
+`define PC_LD_INT0X_LD   1'b1
+
+`define PC_LD_INT1X_NONE 1'b0
+`define PC_LD_INT1X_LD   1'b1
+
+`define PC_ENX_NONE      1'b0
+`define PC_ENX_EN        1'b1
+
+`define PC_NEXTX_NEXT  3'b000
+`define PC_NEXTX_INTV0 3'b001
+`define PC_NEXTX_INTV1 3'b010
+`define PC_NEXTX_INTR0 3'b011
+`define PC_NEXTX_INTR1 3'b100
+
+/**
+* Interrupt logic control inputs
+**/
+`define RETIX_NONE 1'b0
+`define RETIX_RETI 1'b1
+
+`define EIX_NONE 1'b0
+`define EIX_EI   1'b1
+
+`define DIX_NONE 1'b0
+`define DIX_DI   1'b1
+
+`define INTV0 16'h0004
+`define INTV1 16'h0008
+
+`define INT_STATE_RUN   2'b00
+`define INT_STATE_RI1   2'b01
+`define INT_STATE_RI0   2'b10
+`define INT_STATE_RI1_0 2'b11
+
 
 
 /**

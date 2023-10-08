@@ -1,0 +1,19 @@
+if {![file exists "C:/Users/Duncan/git/ForthCPU/branchLogic/test/branchLogicTestbench/branchLogicTestbench.mpf"]} { 
+	project new "C:/Users/Duncan/git/ForthCPU/branchLogic/test/branchLogicTestbench" branchLogicTestbench
+	project addfile "C:/Users/Duncan/git/ForthCPU/branchLogic/source/branchLogic.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/branchLogic/test/branchLogicTests.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/constants.v"
+	vlib  work
+	vdel -lib work -all 
+	vlib work
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/branchLogic/source  -work work  "C:/Users/Duncan/git/ForthCPU/branchLogic/source/branchLogic.v"
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/branchLogic/test  -work work  "C:/Users/Duncan/git/ForthCPU/branchLogic/test/branchLogicTests.v"
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU  -work work  "C:/Users/Duncan/git/ForthCPU/constants.v"
+} else {
+	project open "C:/Users/Duncan/git/ForthCPU/branchLogic/test/branchLogicTestbench/branchLogicTestbench"
+	project compileoutofdate
+}
+vsim -L work -L pmi_work -L ovi_machxo3l  branchLogicTests
+view wave
+add wave /*
+run 1000ns

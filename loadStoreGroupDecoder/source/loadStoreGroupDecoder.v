@@ -136,23 +136,23 @@ always @(*) begin
 	
 	// What operation is this?
 	case(LDSF) 
-		`LDSOPF_LD: begin // LD x,(y) : NB x is ARGB, y is ARGA
-			WR_B = 1;
-			RD_A = 1;
+		`LDSOPF_LD: begin // LD Ra,(Rb) 
+			WR_A = 1;
+			RD_B = 1;
 			RD_M = 1;
 		end
-		`LDSOPF_LDB: begin // LD x,(y) : NB x is ARGB, y is ARGA
-			WR_B = 1;
-			RD_A = 1;
+		`LDSOPF_LDB: begin // LD_B x,(y)
+			WR_A = 1;
+			RD_B = 1;
 			RD_M = 1;
 		end
-		`LDSOPF_ST: begin // ST (x),y : NB x is ARGA, y is ARGB
+		`LDSOPF_ST: begin // ST (Ra),Rb
 			RD_A = 1;
 			RD_B = 1;
 			WR_M = 1;
 			DATA_BUSX = `DATA_BUSX_ALUB_DATA;
 		end
-		`LDSOPF_STB: begin // ST_B (x),y : NB x is ARGA, y is ARGB
+		`LDSOPF_STB: begin // ST_B (Ra),Rb
 			RD_A = 1;
 			RD_B = 1;
 			WR_M = 1;

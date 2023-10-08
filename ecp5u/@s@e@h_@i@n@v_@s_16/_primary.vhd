@@ -1,0 +1,8 @@
+library verilog;
+use verilog.vl_types.all;
+entity SEH_INV_S_16 is
+    port(
+        X               : out    vl_logic;
+        A               : in     vl_logic
+    );
+end SEH_INV_S_16;

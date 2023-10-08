@@ -1,0 +1,43 @@
+library verilog;
+use verilog.vl_types.all;
+entity ser_tx_drv_top is
+    port(
+        hdoutn          : out    vl_logic;
+        hdoutp          : out    vl_logic;
+        pcie_connect    : out    vl_logic;
+        pcie_det_done   : out    vl_logic;
+        vcctx           : inout  vl_logic;
+        vsstx           : inout  vl_logic;
+        vcchtx          : inout  vl_logic;
+        vsstxs          : inout  vl_logic;
+        tx_cm_set       : in     vl_logic_vector(1 downto 0);
+        rterm_tx        : in     vl_logic_vector(3 downto 0);
+        tpwdnb          : in     vl_logic;
+        tx_slice4_cur   : in     vl_logic;
+        pci_det_ct      : in     vl_logic;
+        pci_det_en      : in     vl_logic;
+        i50ures         : in     vl_logic;
+        in_pre_p        : in     vl_logic;
+        in_pre_n        : in     vl_logic;
+        in_dat_p        : in     vl_logic;
+        in_dat_n        : in     vl_logic;
+        i50ucons        : in     vl_logic_vector(2 downto 0);
+        pci_ei_en       : in     vl_logic;
+        in_post_n       : in     vl_logic;
+        tx_slice3_sel   : in     vl_logic_vector(1 downto 0);
+        tx_slice1_cur   : in     vl_logic_vector(2 downto 0);
+        tx_slice5_cur   : in     vl_logic;
+        tx_slice2_sel   : in     vl_logic_vector(1 downto 0);
+        tx_slice1_sel   : in     vl_logic_vector(1 downto 0);
+        tx_slice0_cur   : in     vl_logic_vector(2 downto 0);
+        in_post_p       : in     vl_logic;
+        tx_slice4_sel   : in     vl_logic_vector(1 downto 0);
+        tx_slice2_cur   : in     vl_logic_vector(1 downto 0);
+        tx_slice3_cur   : in     vl_logic_vector(1 downto 0);
+        tx_slice0_sel   : in     vl_logic_vector(1 downto 0);
+        tx_slice5_sel   : in     vl_logic_vector(1 downto 0);
+        pcie_mode       : in     vl_logic;
+        vcca25          : inout  vl_logic;
+        txbitck         : in     vl_logic
+    );
+end ser_tx_drv_top;

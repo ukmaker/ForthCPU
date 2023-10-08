@@ -1,0 +1,66 @@
+library verilog;
+use verilog.vl_types.all;
+entity chif is
+    generic(
+        max_value       : integer := 255
+    );
+    port(
+        scirdata_01     : out    vl_logic_vector(7 downto 0);
+        sciint_10       : out    vl_logic;
+        ser_mem         : out    vl_logic_vector(87 downto 0);
+        pcs_ctl_1_ch_00 : out    vl_logic_vector(7 downto 0);
+        pcs_ctl_2_ch_01 : out    vl_logic_vector(7 downto 0);
+        pcs_ctl_3_ch_02 : out    vl_logic_vector(7 downto 0);
+        pcs_ctl_4_ch_03 : out    vl_logic_vector(7 downto 0);
+        pcs_ctl_5_ch_04 : out    vl_logic_vector(7 downto 0);
+        pcs_ctl_6_ch_05 : out    vl_logic_vector(7 downto 0);
+        pcs_ctl_7_ch_06 : out    vl_logic_vector(7 downto 0);
+        pcs_ctl_8_ch_07 : out    vl_logic_vector(7 downto 0);
+        pcs_ctl_9_ch_08 : out    vl_logic_vector(7 downto 0);
+        pcs_ctl_10_ch_09: out    vl_logic_vector(7 downto 0);
+        pcs_ctl_11_ch_0a: out    vl_logic_vector(7 downto 0);
+        pcs_ctl_12_ch_0b: out    vl_logic_vector(7 downto 0);
+        pcs_ctl_13_ch_0c: out    vl_logic_vector(7 downto 0);
+        pcs_ctl_14_ch_0d: out    vl_logic_vector(7 downto 0);
+        pcs_ctl_15_ch_0e: out    vl_logic_vector(7 downto 0);
+        ser_ctl_1_ch_10 : out    vl_logic_vector(7 downto 0);
+        ser_ctl_2_ch_11 : out    vl_logic_vector(7 downto 0);
+        ser_ctl_3_ch_12 : out    vl_logic_vector(7 downto 0);
+        ser_ctl_4_ch_13 : out    vl_logic_vector(7 downto 0);
+        ser_ctl_5_ch_14 : out    vl_logic_vector(7 downto 0);
+        ser_ctl_6_ch_15 : out    vl_logic_vector(7 downto 0);
+        ser_ctl_7_ch_16 : out    vl_logic_vector(7 downto 0);
+        ser_ctl_8_ch_17 : out    vl_logic_vector(7 downto 0);
+        ser_ctl_9_ch_18 : out    vl_logic_vector(7 downto 0);
+        ser_ctl_10_ch_19: out    vl_logic_vector(7 downto 0);
+        ser_ctl_11_ch_1a: out    vl_logic_vector(7 downto 0);
+        ser_ctl_12_ch_1b: out    vl_logic_vector(7 downto 0);
+        ser_ctl_13_ch_1c: out    vl_logic_vector(7 downto 0);
+        ser_ctl_14_ch_1d: out    vl_logic_vector(7 downto 0);
+        rst_ctl_1_ch_1f : out    vl_logic_vector(7 downto 0);
+        rst_ctl_2_ch_20 : out    vl_logic_vector(7 downto 0);
+        force_int       : in     vl_logic;
+        done_cfg        : in     vl_logic;
+        reg_load        : in     vl_logic;
+        goe_r2          : in     vl_logic;
+        goe_load        : in     vl_logic;
+        sciaddr         : in     vl_logic_vector(5 downto 0);
+        sciwdata        : in     vl_logic_vector(7 downto 0);
+        scird           : in     vl_logic;
+        cyawstn         : in     vl_logic;
+        sciench         : in     vl_logic;
+        sciselch        : in     vl_logic;
+        mc1_chif_ctl    : in     vl_logic_vector(263 downto 0);
+        mc1_ser_ctl     : in     vl_logic_vector(87 downto 0);
+        rxr_clk         : in     vl_logic;
+        prbs_error      : in     vl_logic;
+        pcs_sts_1_ch_20 : in     vl_logic_vector(7 downto 0);
+        pcs_sts_3_ch_22 : in     vl_logic_vector(7 downto 0);
+        pcs_sts_5_ch_24 : in     vl_logic_vector(7 downto 0);
+        pcs_sts_6_ch_25 : in     vl_logic_vector(7 downto 0);
+        ser_sts_1_ch_26 : in     vl_logic_vector(7 downto 0);
+        ser_sts_2_ch_27 : in     vl_logic_vector(7 downto 0);
+        ser_sts_3_ch_28 : in     vl_logic_vector(7 downto 0);
+        ser_sts_4_ch_29 : in     vl_logic_vector(7 downto 0)
+    );
+end chif;
