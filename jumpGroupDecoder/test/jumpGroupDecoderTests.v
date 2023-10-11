@@ -72,7 +72,7 @@ initial begin
 	 * LD Ra,(Rb)
 	 *************************************************************************/
 	 // Start FETCH
-	 INSTRUCTION = {`GROUP_LOAD_STORE,`LDSF_NONE,`LDS_LD,`MODE_REG_MEM,`R5,`RI};	 
+	 INSTRUCTION = {`GROUP_LOAD_STORE,`LDSINCF_NONE,`LDSOPF_LD,`MODE_LDS_REG_MEM,`R5,`RI};	 
 	 `TICKTOCK;  
 	 `TICKTOCK;  
 	 `TICKTOCK;  
@@ -109,7 +109,7 @@ initial begin
 	 `TICKTOCK;  
 	 `assert("JRX",   1, JRX)
 	 `assert("JMP_X", 0, JMP_X)
-	 `assert("ALUB_SRCX",  `ALUB_SRCX_U8_REG_B, ALUB_SRCX)
+	 `assert("ALUB_SRCX",  `ALUB_SRCX_U8H, ALUB_SRCX)
 	 `assert("REGB_ADDRX", `REGB_ADDRX_RB,      REGB_ADDRX)
 	 `TICKTOCK; 
 	 `TICKTOCK;  

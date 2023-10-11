@@ -23,6 +23,9 @@ module programCounterTestbench;
 	wire [1:0] REGB_ADDRX;
 	wire [2:0] ALUB_SRCX;
 	wire [15:0] PC_A;
+	wire [15:0] PC_A_NEXT;
+	
+	wire [2:0] PC_NEXTX;
 	
 	reg [15:0] PC_D;
 
@@ -30,16 +33,30 @@ module programCounterTestbench;
 	reg CC_CARRY;
 	reg CC_ZERO;
 	reg CC_PARITY;
+	
+	reg EIX, DIX, INT0, INT1;
+	wire PC_LD_INT0X;
+	wire PC_LD_INT1X;
 
 
 programCounter counter(
 
 	.CLK(CLK),
 	.RESET(RESET),
-	.PC_EN(PC_EN),
-	.COMMIT(COMMIT),
+	.FETCH(FETCH),
+	.PC_ENX(PC_EN),
+	.PC_LD_INT0X(PC_LD_INT0X),
+	.PC_LD_INT1X(PC_LD_INT1X),
+	.PC_BASEX(PC_BASEX),
+	.PC_OFFSETX(PC_OFFSETX),
 	.PC_D(PC_D),
-	.JRX(JRX),
+	.PC_NEXTX(PC_NEXTX),
+	.PC_A_NEXT(PC_A_NEXT),
+	.PC_A(PC_A)
+);
+
+branchLogic branchLogicInst(
+
 	.CC_SIGN(CC_SIGN),
 	.CC_CARRY(CC_CARRY),
 	.CC_ZERO(CC_ZERO),
@@ -47,8 +64,12 @@ programCounter counter(
 	.CC_SELECTX(CC_SELECTX),
 	.CC_INVERTX(CC_INVERTX),
 	.CC_APPLYX(CC_APPLYX),
+	
+	.JRX(JRX),
 	.JMPX(JMP_X),
-	.PC_A(PC_A)
+	
+	.PC_OFFSETX(PC_OFFSETX),
+	.PC_BASEX(PC_BASEX)
 );
 
 jumpGroupDecoder jumpDecoder(
@@ -68,6 +89,20 @@ jumpGroupDecoder jumpDecoder(
 	.CC_SELECTX(CC_SELECTX),
 	.REGB_ADDRX(REGB_ADDRX),
 	.ALUB_SRCX(ALUB_SRCX)
+);
+
+interruptStateMachine interruptStateMachineInst(
+	.CLK(CLK),
+	.RESET(RESET),
+	.COMMIT(COMMIT),
+	.RETIX(RETIX),
+	.EIX(EIX),
+	.DIX(DIX),
+	.INT0(INT0),
+	.INT1(INT1),
+	.PC_NEXTX(PC_NEXTX),
+	.PC_LD_INT0(PC_LD_INT0X),
+	.PC_LD_INT1(PC_LD_INT1X)
 );
 
 
@@ -92,6 +127,10 @@ initial begin
 	 RESET = 1;
 	 INSTRUCTION = 16'h0000;
 	 PC_D = 16'habcd;
+	 EIX = 0;
+	 DIX = 0;
+	 INT0 = 0;
+	 INT1 = 0;
 	 
 	 `TICK;
 	 `TICK;
@@ -108,12 +147,13 @@ initial begin
 	 /************************************************************************
 	 * Test program
 	 * NOP
-	 * JR          R0 PC_D=0x1234
-	 * JR     0xbc.RB PC_D=0xbcde
-	 * JR[C]       R1 PC_D=0x3456 C=0
-	 * JR[C]       R1 PC_D=0x3458 C=1
-	 * JR[NC]      R2 PC_D=0x567a C=0
-	 * JR[NC]      R2 PC_D=0x567c C=1
+	 * NOP
+	 * JR        0x34
+	 * JR        0xbc.RB PC_D=0xbcde
+	 * JR[C]     0x56 C=0
+	 * JR[C]     0x58 C=1
+	 * JR[NC]    0x7a C=0
+	 * JR[NC]    0x7c C=1
 	 * JP          R3 PC_D=0x245e
 	 * JP     0x23.RB PC_D=0x2460
 	 * JP[Z]       R4 PC_D=0x1002 Z=0
@@ -121,137 +161,125 @@ initial begin
 	 * JP[NZ]      R5 PC_D=0x2006 Z=0
 	 * JP[NZ]      R5 PC_D=0x2008 Z=1
 	 *************************************************************************/
-	 // Start FETCH
-	 INSTRUCTION = `INSTRUCTION_NOP;	 
-	 `TICKTOCK;  
-	 `assert("PC_A", 16'h0000, PC_A)
-	 `TICKTOCK;   
-	 `assert("JRX",       0, JRX)
-	 `assert("JMP_X",     0, JMP_X)
-	 `assert("CC_APPLYX", 0, CC_APPLYX)
-	 `assert("CC_INVERTX", 0, CC_INVERTX)
-	 `assert("ALUB_SRCX",  `ALUB_SRCX_REG_B, ALUB_SRCX)
-	 `assert("REGB_ADDRX", `REGB_ADDRX_ARGB, REGB_ADDRX)
-	 `TICKTOCK; 
-	 `TICKTOCK;  
+	// Start FETCH
+	`TICKTOCK;  
+	`mark(1)
+	`assert("PC_A", 16'h0000, PC_A)
+	/************************************************************************************
+	* NOP
+	*************************************************************************************/
+	INSTRUCTION = `INSTRUCTION_NOP;
+	`TICKTOCK;   
+	`mark(2)
+	`assert("JRX",       0, JRX)
+	`assert("JMP_X",     0, JMP_X)
+	`assert("CC_APPLYX", 0, CC_APPLYX)
+	`assert("CC_INVERTX", 0, CC_INVERTX)
+	`assert("ALUB_SRCX",  `ALUB_SRCX_REG_B, ALUB_SRCX)
+	`assert("REGB_ADDRX", `REGB_ADDRX_ARGB, REGB_ADDRX)
+	`TICKTOCK; 
+	`TICKTOCK;  
+	`TICKTOCK;  
+	`mark(3)
+	`assert("PC_A", 16'h0002, PC_A)	
+	
+	/************************************************************************************
+	* NOP
+	*************************************************************************************/
+	INSTRUCTION = `INSTRUCTION_NOP;
+	`TICKTOCK;   
+	`mark(4)
+	`assert("JRX",       0, JRX)
+	`assert("JMP_X",     0, JMP_X)
+	`assert("CC_APPLYX", 0, CC_APPLYX)
+	`assert("CC_INVERTX", 0, CC_INVERTX)
+	`assert("ALUB_SRCX",  `ALUB_SRCX_REG_B, ALUB_SRCX)
+	`assert("REGB_ADDRX", `REGB_ADDRX_ARGB, REGB_ADDRX)
+	`TICKTOCK; 
+	`TICKTOCK;  
+	`TICKTOCK;  
+	`mark(5)
+	`assert("PC_A", 16'h0004, PC_A)
+	 
+	/************************************************************************************
+	* JR        0x34
+	*************************************************************************************/
+	INSTRUCTION = {`GROUP_JUMP,`SKIPF_NONE,`JPF_REL_S8,`CC_SELECTX_Z,8'h34};	 
+	`TICKTOCK;   
+	`mark(6)
+	`assert("JRX",   1, JRX)
+	`assert("JMP_X", 1, JMP_X)
+	`assert("CC_APPLYX", 0, CC_APPLYX)
+	`assert("CC_INVERTX", 0, CC_INVERTX)
+	`assert("ALUB_SRCX",  `ALUB_SRCX_S8, ALUB_SRCX)
+	`assert("REGB_ADDRX", `REGB_ADDRX_ARGB, REGB_ADDRX)
+	`TICKTOCK; 
+	 PC_D = 16'h0034;
+	`TICKTOCK;  
+	`TICKTOCK;  
+	`mark(7)
+	`assert("PC_A", 16'h0038, PC_A)
 
-	 INSTRUCTION = {`GROUP_JUMP,`SKIPF_NONE,`JPF_REL_R,`CC_SELECTX_Z,`R0,`R1};	 
-	 `TICKTOCK;  
-	 `assert("PC_A", 16'h0002, PC_A)
+	/************************************************************************************
+	* JR     0xbc.RB PC_D=0xbcde -> PC_A = 0038+bcde = bd16
+	*************************************************************************************/
+	 INSTRUCTION = {`GROUP_JUMP,`SKIPF_NONE,`JPF_REL_U8H,`CC_SELECTX_Z,8'hbc};	 
 	 `TICKTOCK;   
+	`mark(8)
 	 `assert("JRX",   1, JRX)
 	 `assert("JMP_X", 1, JMP_X)
 	 `assert("CC_APPLYX", 0, CC_APPLYX)
 	 `assert("CC_INVERTX", 0, CC_INVERTX)
-	 `assert("ALUB_SRCX",  `ALUB_SRCX_REG_B, ALUB_SRCX)
-	 `assert("REGB_ADDRX", `REGB_ADDRX_ARGB, REGB_ADDRX)
-	 `TICKTOCK; 
-	 PC_D = 16'h1234;
-	 `TICKTOCK;  
-
-	 INSTRUCTION = {`GROUP_JUMP,`SKIPF_NONE,`JPF_REL_U8,`CC_SELECTX_Z,8'hbc};	 
-	 `TICKTOCK;  
-	 `assert("PC_A", 16'h1236, PC_A)
-	 `TICKTOCK;   
-	 `assert("JRX",   1, JRX)
-	 `assert("JMP_X", 1, JMP_X)
-	 `assert("CC_APPLYX", 0, CC_APPLYX)
-	 `assert("CC_INVERTX", 0, CC_INVERTX)
-	 `assert("ALUB_SRCX",  `ALUB_SRCX_U8_REG_B, ALUB_SRCX)
+	 `assert("ALUB_SRCX",  `ALUB_SRCX_U8H, ALUB_SRCX)
 	 `assert("REGB_ADDRX", `REGB_ADDRX_RB,      REGB_ADDRX)
 	 `TICKTOCK; 
 	 PC_D = 16'hbcde;
 	 `TICKTOCK;  
+	 `TICKTOCK;  
+	`mark(9)
+	 `assert("PC_A", 16'hbd16, PC_A)
+	 
+	/************************************************************************************
+	* JR[C]     0x56 C=0
+	*************************************************************************************/
+	INSTRUCTION = {`GROUP_JUMP,`SKIPF_SKIP,`JPF_REL_S8,`CC_SELECTX_C, 8'h56};	 
+	CC_CARRY = 0;
+	`TICKTOCK;   
+	`mark(10)
+	`assert("JRX",   1, JRX)
+	`assert("JMP_X", 0, JMP_X)
+	`assert("CC_APPLYX", 1, CC_APPLYX)
+	`assert("CC_INVERTX", 0, CC_INVERTX)
+	`assert("ALUB_SRCX",  `ALUB_SRCX_S8, ALUB_SRCX)
+	`assert("REGB_ADDRX", `REGB_ADDRX_ARGB, REGB_ADDRX)
+	`TICKTOCK; 
+	PC_D = 16'h0056;
+	`TICKTOCK;  
+	`TICKTOCK;  
+	`mark(11)
+	`assert("PC_A", 16'hbd18, PC_A)
 
-	 INSTRUCTION = {`GROUP_JUMP,`SKIPF_SKIP,`JPF_REL_R,`CC_SELECTX_C,`R0,`R1};	 
-	 CC_CARRY = 0;
-	 `TICKTOCK;  
-	 `assert("PC_A", 16'hcf14, PC_A)
-	 `TICKTOCK;   
-	 `assert("JRX",   1, JRX)
-	 `assert("JMP_X", 0, JMP_X)
-	 `assert("CC_APPLYX", 1, CC_APPLYX)
-	 `assert("CC_INVERTX", 0, CC_INVERTX)
-	 `assert("ALUB_SRCX",  `ALUB_SRCX_REG_B, ALUB_SRCX)
-	 `assert("REGB_ADDRX", `REGB_ADDRX_ARGB, REGB_ADDRX)
-	 `TICKTOCK; 
-	 PC_D = 16'h3456;
-	 `TICKTOCK;  
+	 
+	/************************************************************************************
+	* JR[C]     0x58 C=1
+	*************************************************************************************/
+	INSTRUCTION = {`GROUP_JUMP,`SKIPF_SKIP,`JPF_REL_S8,`CC_SELECTX_C, 8'h58};	 
+	CC_CARRY = 1;
+	`TICKTOCK;   
+	`mark(10)
+	`assert("JRX",   1, JRX)
+	`assert("JMP_X", 0, JMP_X)
+	`assert("CC_APPLYX", 1, CC_APPLYX)
+	`assert("CC_INVERTX", 0, CC_INVERTX)
+	`assert("ALUB_SRCX",  `ALUB_SRCX_S8, ALUB_SRCX)
+	`assert("REGB_ADDRX", `REGB_ADDRX_ARGB, REGB_ADDRX)
+	`TICKTOCK; 
+	PC_D = 16'h0058;
+	`TICKTOCK;  
+	`TICKTOCK;  
+	`mark(11)
+	`assert("PC_A", 16'hbd70, PC_A)
 
-	 INSTRUCTION = {`GROUP_JUMP,`SKIPF_SKIP,`JPF_REL_R,`CC_SELECTX_C,`R0,`R1};	 
-	 CC_CARRY = 1;
-	 `TICKTOCK;  
-	 `assert("PC_A", 16'hcf16, PC_A)
-	 `TICKTOCK;   
-	 `assert("JRX",   1, JRX)
-	 `assert("JMP_X", 0, JMP_X)
-	 `assert("CC_APPLYX", 1, CC_APPLYX)
-	 `assert("CC_INVERTX", 0, CC_INVERTX)
-	 `assert("ALUB_SRCX",  `ALUB_SRCX_REG_B, ALUB_SRCX)
-	 `assert("REGB_ADDRX", `REGB_ADDRX_ARGB, REGB_ADDRX)
-	 `TICKTOCK; 
-	 PC_D = 16'h3458;
-	 `TICKTOCK;  
-
-
-	 INSTRUCTION = {`GROUP_JUMP,`SKIPF_NOT_SKIP,`JPF_REL_R,`CC_SELECTX_C,`R0,`R1};	 
-	 CC_CARRY = 1;
-	 `TICKTOCK;  
-	 `assert("PC_A", 16'h036e, PC_A)
-	 `TICKTOCK;   
-	 `assert("JRX",   1, JRX)
-	 `assert("JMP_X", 0, JMP_X)
-	 `assert("CC_APPLYX", 1, CC_APPLYX)
-	 `assert("CC_INVERTX", 1, CC_INVERTX)
-	 `assert("ALUB_SRCX",  `ALUB_SRCX_REG_B, ALUB_SRCX)
-	 `assert("REGB_ADDRX", `REGB_ADDRX_ARGB, REGB_ADDRX)
-	 `TICKTOCK; 
-	 PC_D = 16'h567a;
-	 `TICKTOCK;  
-
-	 INSTRUCTION = {`GROUP_JUMP,`SKIPF_NOT_SKIP,`JPF_REL_R,`CC_SELECTX_C,`R0,`R1};	 
-	 CC_CARRY = 0;
-	 `TICKTOCK;  
-	 `assert("PC_A", 16'h0370, PC_A)
-	 `TICKTOCK;   
-	 `assert("JRX",   1, JRX)
-	 `assert("JMP_X", 0, JMP_X)
-	 `assert("CC_APPLYX", 1, CC_APPLYX)
-	 `assert("CC_INVERTX", 1, CC_INVERTX)
-	 `assert("ALUB_SRCX",  `ALUB_SRCX_REG_B, ALUB_SRCX)
-	 `assert("REGB_ADDRX", `REGB_ADDRX_ARGB, REGB_ADDRX)
-	 `TICKTOCK; 
-	 PC_D = 16'h567c;
-	 `TICKTOCK;  
-
-	 INSTRUCTION = {`GROUP_JUMP,`SKIPF_NONE,`JPF_ABS_R,`CC_SELECTX_C,`R0,`R1};	 
-	 CC_CARRY = 0;
-	 `TICKTOCK;  
-	 `assert("PC_A", 16'h59ec, PC_A)
-	 `TICKTOCK;   
-	 `assert("JRX",   0, JRX)
-	 `assert("JMP_X", 1, JMP_X)
-	 `assert("CC_APPLYX", 0, CC_APPLYX)
-	 `assert("CC_INVERTX", 0, CC_INVERTX)
-	 `assert("ALUB_SRCX",  `ALUB_SRCX_REG_B, ALUB_SRCX)
-	 `assert("REGB_ADDRX", `REGB_ADDRX_ARGB, REGB_ADDRX)
-	 `TICKTOCK; 
-	 PC_D = 16'h245e;
-	 `TICKTOCK;  
-
-
- 	 INSTRUCTION = `INSTRUCTION_NOP;	 
-	 `TICKTOCK;  
-	 `assert("PC_A", 16'h245e, PC_A)
-	 `TICKTOCK;   
-	 `assert("JRX",   0, JRX)
-	 `assert("JMP_X", 0, JMP_X)
-	 `assert("CC_APPLYX", 0, CC_APPLYX)
-	 `assert("CC_INVERTX", 0, CC_INVERTX)
-	 `assert("ALUB_SRCX",  `ALUB_SRCX_REG_B, ALUB_SRCX)
-	 `assert("REGB_ADDRX", `REGB_ADDRX_ARGB, REGB_ADDRX)
-	 `TICKTOCK; 
-	 `TICKTOCK;  
 
 
 end

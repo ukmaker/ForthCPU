@@ -5,10 +5,10 @@
 **/
 module branchLogic(
 	
-	input CCZ,
-	input CCC,
-	input CCP,
-	input CCS,
+	input CC_ZERO,
+	input CC_CARRY,
+	input CC_PARITY,
+	input CC_SIGN,
 	
 	input [1:0] CC_SELECTX,
 	input CC_INVERTX,
@@ -27,15 +27,15 @@ reg CC_APPLY;
 always @(*) begin
 	
 	case(CC_SELECTX)
-		`CC_SELECTX_Z: CC = CCZ;
-		`CC_SELECTX_C: CC = CCC;
-		`CC_SELECTX_P: CC = CCP;
-		`CC_SELECTX_S: CC = CCS;
+		`CC_SELECTX_Z: CC = CC_ZERO;
+		`CC_SELECTX_C: CC = CC_CARRY;
+		`CC_SELECTX_P: CC = CC_PARITY;
+		`CC_SELECTX_S: CC = CC_SIGN;
 	endcase
 	
 	CC_APPLY = ~CC_APPLYX | (CC_INVERTX ? ~CC : CC);
 	PC_OFFSETX = JMPX & CC_APPLY;
-	PC_BASEX   = JMPX & JRX & CC_APPLY;	
+	PC_BASEX   = JMPX & ~JRX & CC_APPLY;	
 	
 end
 	

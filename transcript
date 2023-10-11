@@ -1,31 +1,11 @@
 # Reading pref.tcl
-# do {C:/Users/Duncan/git/ForthCPU/interruptLogic/test/interruptStateMachineTestbench/interruptStateMachineTestbench.mdo}
-# Loading project interruptStateMachineTestbench
-# Model Technology ModelSim - Lattice FPGA Edition vlog 2020.3 Compiler 2020.10 Oct 14 2020
-# Start time: 19:10:42 on Oct 08,2023
-# vlog -reportprogress 300 "+incdir+C:/Users/Duncan/git/ForthCPU/interruptLogic/source" -work work C:/Users/Duncan/git/ForthCPU/interruptLogic/source/interruptStateMachine.v 
-# -- Compiling module interruptStateMachine
-# 
-# Top level modules:
-# 	interruptStateMachine
-# End time: 19:10:42 on Oct 08,2023, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Lattice FPGA Edition vlog 2020.3 Compiler 2020.10 Oct 14 2020
-# Start time: 19:10:42 on Oct 08,2023
-# vlog -reportprogress 300 "+incdir+C:/Users/Duncan/git/ForthCPU/interruptLogic/test" -work work C:/Users/Duncan/git/ForthCPU/interruptLogic/test/interruptStateMachineTests.v 
-# -- Compiling module interruptStateMachineTests
-# 
-# Top level modules:
-# 	interruptStateMachineTests
-# End time: 19:10:42 on Oct 08,2023, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Lattice FPGA Edition vlog 2020.3 Compiler 2020.10 Oct 14 2020
-# Start time: 19:10:42 on Oct 08,2023
-# vlog -reportprogress 300 "+incdir+C:/Users/Duncan/git/ForthCPU" -work work C:/Users/Duncan/git/ForthCPU/constants.v 
-# End time: 19:10:42 on Oct 08,2023, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# vsim -L work -L pmi_work -L ovi_machxo3l interruptStateMachineTests 
-# Start time: 19:10:43 on Oct 08,2023
+# do {C:/Users/Duncan/git/ForthCPU/programCounterTestbench/test/programCounterTestbench/programCounterTestbench.mdo}
+# Loading project programCounterTestbench
+# Compile of programCounterTestench.v was successful.
+# Compile of testSetup.v was successful.
+# 2 compiles, 0 failed with no errors.
+# vsim -L work -L pmi_work -L ovi_machxo3l programCounterTestbench 
+# Start time: 22:10:01 on Oct 11,2023
 # //  ModelSim - Lattice FPGA Edition 2020.3 Oct 14 2020
 # //
 # //  Copyright 1991-2020 Mentor Graphics Corporation
@@ -39,216 +19,441 @@
 # //  is prohibited from disclosure under the Trade Secrets Act,
 # //  18 U.S.C. Section 1905.
 # //
-# Loading work.interruptStateMachineTests
+# Loading work.programCounterTestbench
+# Loading work.programCounter
+# Loading work.branchLogic
+# Loading work.jumpGroupDecoder
 # Loading work.interruptStateMachine
+# Loading work.instructionPhaseDecoder
 # .main_pane.wave.interior.cs.body.pw.wf
-# [T=310] FAILED in interruptStateMachineTests: PC_NEXTX expected 000 != actual zzz
-# [T=310] FAILED in interruptStateMachineTests: PC_LD_INT0 expected 00000000000000000000000000000000 != actual x
-# [T=310] FAILED in interruptStateMachineTests: PC_LD_INT1 expected 00000000000000000000000000000000 != actual x
-# [T=410] FAILED in interruptStateMachineTests: PC_NEXTX expected 000 != actual zzz
-# [T=410] FAILED in interruptStateMachineTests: PC_LD_INT0 expected 00000000000000000000000000000000 != actual x
-# [T=410] FAILED in interruptStateMachineTests: PC_LD_INT1 expected 00000000000000000000000000000000 != actual x
-# [T=510] FAILED in interruptStateMachineTests: PC_NEXTX expected 000 != actual zzz
-# [T=510] FAILED in interruptStateMachineTests: PC_LD_INT0 expected 00000000000000000000000000000000 != actual x
-# [T=510] FAILED in interruptStateMachineTests: PC_LD_INT1 expected 00000000000000000000000000000000 != actual x
-# [T=610] FAILED in interruptStateMachineTests: PC_NEXTX expected 000 != actual zzz
-# [T=610] FAILED in interruptStateMachineTests: PC_LD_INT0 expected 00000000000000000000000000000000 != actual x
-# [T=610] FAILED in interruptStateMachineTests: PC_LD_INT1 expected 00000000000000000000000000000000 != actual x
-# [T=710] FAILED in interruptStateMachineTests: PC_NEXTX expected 000 != actual zzz
-# [T=710] FAILED in interruptStateMachineTests: PC_LD_INT0 expected 00000000000000000000000000000000 != actual x
-# [T=710] FAILED in interruptStateMachineTests: PC_LD_INT1 expected 00000000000000000000000000000000 != actual x
-# [T=810] FAILED in interruptStateMachineTests: PC_NEXTX expected 000 != actual zzz
-# [T=810] FAILED in interruptStateMachineTests: PC_LD_INT0 expected 00000000000000000000000000000000 != actual x
-# [T=810] FAILED in interruptStateMachineTests: PC_LD_INT1 expected 00000000000000000000000000000000 != actual x
-# [T=910] FAILED in interruptStateMachineTests: PC_NEXTX expected 000 != actual zzz
-# [T=910] FAILED in interruptStateMachineTests: PC_LD_INT0 expected 00000000000000000000000000000000 != actual x
-# [T=910] FAILED in interruptStateMachineTests: PC_LD_INT1 expected 00000000000000000000000000000000 != actual x
-runn 2us
-# invalid command name "runn"
-run 2us
-# [T=1010] FAILED in interruptStateMachineTests: PC_NEXTX expected 000 != actual zzz
-# [T=1010] FAILED in interruptStateMachineTests: PC_LD_INT0 expected 00000000000000000000000000000000 != actual x
-# [T=1010] FAILED in interruptStateMachineTests: PC_LD_INT1 expected 00000000000000000000000000000000 != actual x
-# [T=1110] FAILED in interruptStateMachineTests: PC_NEXTX expected 010 != actual zzz
-# [T=1110] FAILED in interruptStateMachineTests: PC_LD_INT0 expected 00000000000000000000000000000000 != actual x
-# [T=1110] FAILED in interruptStateMachineTests: PC_LD_INT1 expected 00000000000000000000000000000001 != actual x
-# [T=1210] FAILED in interruptStateMachineTests: PC_NEXTX expected 010 != actual zzz
-# [T=1210] FAILED in interruptStateMachineTests: PC_LD_INT0 expected 00000000000000000000000000000000 != actual x
-# [T=1210] FAILED in interruptStateMachineTests: PC_LD_INT1 expected 00000000000000000000000000000001 != actual x
-# [T=1310] FAILED in interruptStateMachineTests: PC_NEXTX expected 100 != actual zzz
-# [T=1310] FAILED in interruptStateMachineTests: PC_LD_INT0 expected 00000000000000000000000000000000 != actual x
-# [T=1310] FAILED in interruptStateMachineTests: PC_LD_INT1 expected 00000000000000000000000000000000 != actual x
-# [T=1410] FAILED in interruptStateMachineTests: PC_NEXTX expected 100 != actual zzz
-# [T=1410] FAILED in interruptStateMachineTests: PC_LD_INT0 expected 00000000000000000000000000000000 != actual x
-# [T=1410] FAILED in interruptStateMachineTests: PC_LD_INT1 expected 00000000000000000000000000000000 != actual x
-# [T=1510] FAILED in interruptStateMachineTests: PC_NEXTX expected 001 != actual zzz
-# [T=1510] FAILED in interruptStateMachineTests: PC_LD_INT0 expected 00000000000000000000000000000001 != actual x
-# [T=1510] FAILED in interruptStateMachineTests: PC_LD_INT1 expected 00000000000000000000000000000000 != actual x
-# [T=1610] FAILED in interruptStateMachineTests: PC_NEXTX expected 001 != actual zzz
-# [T=1610] FAILED in interruptStateMachineTests: PC_LD_INT0 expected 00000000000000000000000000000001 != actual x
-# [T=1610] FAILED in interruptStateMachineTests: PC_LD_INT1 expected 00000000000000000000000000000000 != actual x
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: Duncan  Hostname: EDAWIN  ProcessID: 17676
+#           Attempting to use alternate WLF file "./wlftw8x0ia".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftw8x0ia
+# [T=460]           1
+# [T=560]           2
+# [T=860]           3
+# [T=960]           4
+# Compile of instructionPhaseDecoder.v was successful.
 # Compile of interruptStateMachine.v was successful.
-# Compile of interruptStateMachineTests.v was successful.
+# Compile of jumpGroupDecoder.v was successful.
+# Compile of branchLogic.v was successful.
+# Compile of programCounter.v was successful.
+# Compile of programCounterTestench.v was successful.
 # Compile of constants.v was successful.
-# 3 compiles, 0 failed with no errors.
+# Compile of testSetup.v was successful.
+# 8 compiles, 0 failed with no errors.
 restart
 # ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.interruptStateMachineTests
+# Loading work.programCounterTestbench
+# Loading work.programCounter
+# Loading work.branchLogic
+# Loading work.jumpGroupDecoder
 # Loading work.interruptStateMachine
-run 2us
-# GetModuleFileName: The specified module could not be found.
-# 
-# 
-# [T=310] FAILED in interruptStateMachineTests: PC_NEXTX expected 000 != actual 001
-# [T=310] FAILED in interruptStateMachineTests: PC_LD_INT0 expected 00000000000000000000000000000000 != actual x
-# [T=310] FAILED in interruptStateMachineTests: PC_LD_INT1 expected 00000000000000000000000000000000 != actual x
-# [T=410] FAILED in interruptStateMachineTests: PC_NEXTX expected 000 != actual 001
-# [T=410] FAILED in interruptStateMachineTests: PC_LD_INT0 expected 00000000000000000000000000000000 != actual x
-# [T=410] FAILED in interruptStateMachineTests: PC_LD_INT1 expected 00000000000000000000000000000000 != actual x
-# [T=510] FAILED in interruptStateMachineTests: PC_NEXTX expected 000 != actual 001
-# [T=510] FAILED in interruptStateMachineTests: PC_LD_INT0 expected 00000000000000000000000000000000 != actual x
-# [T=510] FAILED in interruptStateMachineTests: PC_LD_INT1 expected 00000000000000000000000000000000 != actual x
-# [T=610] FAILED in interruptStateMachineTests: PC_NEXTX expected 000 != actual 001
-# [T=610] FAILED in interruptStateMachineTests: PC_LD_INT0 expected 00000000000000000000000000000000 != actual x
-# [T=610] FAILED in interruptStateMachineTests: PC_LD_INT1 expected 00000000000000000000000000000000 != actual x
-# [T=710] FAILED in interruptStateMachineTests: PC_NEXTX expected 000 != actual 001
-# [T=710] FAILED in interruptStateMachineTests: PC_LD_INT0 expected 00000000000000000000000000000000 != actual x
-# [T=710] FAILED in interruptStateMachineTests: PC_LD_INT1 expected 00000000000000000000000000000000 != actual x
-# [T=810] FAILED in interruptStateMachineTests: PC_NEXTX expected 000 != actual 001
-# [T=810] FAILED in interruptStateMachineTests: PC_LD_INT0 expected 00000000000000000000000000000000 != actual x
-# [T=810] FAILED in interruptStateMachineTests: PC_LD_INT1 expected 00000000000000000000000000000000 != actual x
-# [T=910] FAILED in interruptStateMachineTests: PC_NEXTX expected 000 != actual 001
-# [T=910] FAILED in interruptStateMachineTests: PC_LD_INT0 expected 00000000000000000000000000000000 != actual x
-# [T=910] FAILED in interruptStateMachineTests: PC_LD_INT1 expected 00000000000000000000000000000000 != actual x
-# [T=1010] FAILED in interruptStateMachineTests: PC_NEXTX expected 000 != actual 001
-# [T=1010] FAILED in interruptStateMachineTests: PC_LD_INT0 expected 00000000000000000000000000000000 != actual x
-# [T=1010] FAILED in interruptStateMachineTests: PC_LD_INT1 expected 00000000000000000000000000000000 != actual x
-# [T=1110] FAILED in interruptStateMachineTests: PC_NEXTX expected 010 != actual 001
-# [T=1110] FAILED in interruptStateMachineTests: PC_LD_INT0 expected 00000000000000000000000000000000 != actual x
-# [T=1110] FAILED in interruptStateMachineTests: PC_LD_INT1 expected 00000000000000000000000000000001 != actual x
-# [T=1210] FAILED in interruptStateMachineTests: PC_NEXTX expected 010 != actual 001
-# [T=1210] FAILED in interruptStateMachineTests: PC_LD_INT0 expected 00000000000000000000000000000000 != actual x
-# [T=1210] FAILED in interruptStateMachineTests: PC_LD_INT1 expected 00000000000000000000000000000001 != actual x
-# [T=1310] FAILED in interruptStateMachineTests: PC_NEXTX expected 100 != actual 011
-# [T=1310] FAILED in interruptStateMachineTests: PC_LD_INT0 expected 00000000000000000000000000000000 != actual x
-# [T=1310] FAILED in interruptStateMachineTests: PC_LD_INT1 expected 00000000000000000000000000000000 != actual x
-# [T=1410] FAILED in interruptStateMachineTests: PC_NEXTX expected 100 != actual 011
-# [T=1410] FAILED in interruptStateMachineTests: PC_LD_INT0 expected 00000000000000000000000000000000 != actual x
-# [T=1410] FAILED in interruptStateMachineTests: PC_LD_INT1 expected 00000000000000000000000000000000 != actual x
-# [T=1510] FAILED in interruptStateMachineTests: PC_LD_INT0 expected 00000000000000000000000000000001 != actual x
-# [T=1510] FAILED in interruptStateMachineTests: PC_LD_INT1 expected 00000000000000000000000000000000 != actual x
-# [T=1610] FAILED in interruptStateMachineTests: PC_LD_INT0 expected 00000000000000000000000000000001 != actual x
-# [T=1610] FAILED in interruptStateMachineTests: PC_LD_INT1 expected 00000000000000000000000000000000 != actual x
+# Loading work.instructionPhaseDecoder
+run 4us
+# [T=460]           1
+# [T=560]           2
+# [T=860]           3
+# [T=960]           4
+# [T=1260]           5
+# [T=1360]           5
+# [T=1660]           5
+# [T=1660] FAILED in programCounterTestbench: PC_A expected 0001001000111000 != actual 0001001000110100
+# [T=1760]           5
+# [T=2060]           5
+# [T=2060] FAILED in programCounterTestbench: PC_A expected 1100111100010100 != actual 1011110011011110
+# [T=2160]           5
+# [T=2460]           5
+# [T=2460] FAILED in programCounterTestbench: PC_A expected 1100111100010110 != actual 1011110011100000
+# [T=2560]           5
+# [T=2860]           5
+# [T=2860] FAILED in programCounterTestbench: PC_A expected 0000001101101110 != actual 1011110011100010
+# [T=2960]           5
+# [T=3260]           5
+# [T=3260] FAILED in programCounterTestbench: PC_A expected 0000001101110000 != actual 1011110011100100
+# [T=3360]           5
+# [T=3660]           5
+# [T=3660] FAILED in programCounterTestbench: PC_A expected 0101100111101100 != actual 1011110011100110
+# [T=3760]           5
+# Compile of instructionPhaseDecoder.v was successful.
 # Compile of interruptStateMachine.v was successful.
-# Compile of interruptStateMachineTests.v was successful.
+# Compile of jumpGroupDecoder.v was successful.
+# Compile of branchLogic.v was successful.
+# Compile of programCounter.v was successful.
+# Compile of programCounterTestench.v was successful.
 # Compile of constants.v was successful.
-# 3 compiles, 0 failed with no errors.
+# Compile of testSetup.v was successful.
+# 8 compiles, 0 failed with no errors.
 restart
 # ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.interruptStateMachineTests
+# Loading work.programCounterTestbench
+# Loading work.programCounter
+# Loading work.branchLogic
+# Loading work.jumpGroupDecoder
 # Loading work.interruptStateMachine
-run 2us
-# GetModuleFileName: The specified module could not be found.
-# 
-# 
-# [T=310] FAILED in interruptStateMachineTests: PC_NEXTX expected 000 != actual 001
-# [T=410] FAILED in interruptStateMachineTests: PC_NEXTX expected 000 != actual 001
-# [T=510] FAILED in interruptStateMachineTests: PC_NEXTX expected 000 != actual 001
-# [T=610] FAILED in interruptStateMachineTests: PC_NEXTX expected 000 != actual 001
-# [T=710] FAILED in interruptStateMachineTests: PC_NEXTX expected 000 != actual 001
-# [T=810] FAILED in interruptStateMachineTests: PC_NEXTX expected 000 != actual 001
-# [T=910] FAILED in interruptStateMachineTests: PC_NEXTX expected 000 != actual 001
-# [T=1010] FAILED in interruptStateMachineTests: PC_NEXTX expected 000 != actual 001
-# [T=1110] FAILED in interruptStateMachineTests: PC_NEXTX expected 010 != actual 001
-# [T=1110] FAILED in interruptStateMachineTests: PC_LD_INT1 expected 00000000000000000000000000000001 != actual 0
-# [T=1210] FAILED in interruptStateMachineTests: PC_NEXTX expected 010 != actual 001
-# [T=1210] FAILED in interruptStateMachineTests: PC_LD_INT1 expected 00000000000000000000000000000001 != actual 0
-# [T=1310] FAILED in interruptStateMachineTests: PC_NEXTX expected 100 != actual 011
-# [T=1410] FAILED in interruptStateMachineTests: PC_NEXTX expected 100 != actual 011
-# [T=1510] FAILED in interruptStateMachineTests: PC_LD_INT0 expected 00000000000000000000000000000001 != actual 0
-# [T=1610] FAILED in interruptStateMachineTests: PC_LD_INT0 expected 00000000000000000000000000000001 != actual 0
+# Loading work.instructionPhaseDecoder
+run 4us
+# [T=460]           1
+# [T=560]           2
+# [T=860]           3
+# [T=960]           4
+# [T=1260]           5
+# [T=1360]           6
+# [T=1660]           7
+# [T=1660] FAILED in programCounterTestbench: PC_A expected 0001001000111000 != actual 0001001000110100
+# [T=1760]           8
+# [T=2060]           9
+# [T=2060] FAILED in programCounterTestbench: PC_A expected 1100111100010100 != actual 1011110011011110
+# [T=2160]          10
+# [T=2460]          11
+# [T=2460] FAILED in programCounterTestbench: PC_A expected 1100111100010110 != actual 1011110011100000
+# [T=2560]          12
+# [T=2860]          13
+# [T=2860] FAILED in programCounterTestbench: PC_A expected 0000001101101110 != actual 1011110011100010
+# [T=2960]          14
+# [T=3260]          15
+# [T=3260] FAILED in programCounterTestbench: PC_A expected 0000001101110000 != actual 1011110011100100
+# [T=3360]          16
+# [T=3660]          17
+# [T=3660] FAILED in programCounterTestbench: PC_A expected 0101100111101100 != actual 1011110011100110
+# [T=3760]          18
+# Compile of instructionPhaseDecoder.v was successful.
 # Compile of interruptStateMachine.v was successful.
-# Compile of interruptStateMachineTests.v was successful.
+# Compile of jumpGroupDecoder.v was successful.
+# Compile of branchLogic.v was successful.
+# Compile of programCounter.v was successful.
+# Compile of programCounterTestench.v was successful.
 # Compile of constants.v was successful.
-# 3 compiles, 0 failed with no errors.
+# Compile of testSetup.v was successful.
+# 8 compiles, 0 failed with no errors.
 restart
 # ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.interruptStateMachineTests
+# Loading work.programCounterTestbench
+# Loading work.programCounter
+# Loading work.branchLogic
+# Loading work.jumpGroupDecoder
 # Loading work.interruptStateMachine
-run 2us
-# GetModuleFileName: The specified module could not be found.
-# 
-# 
-# [T=310] FAILED in interruptStateMachineTests: PC_NEXTX expected 000 != actual 001
-# [T=410] FAILED in interruptStateMachineTests: PC_NEXTX expected 000 != actual 001
-# [T=510] FAILED in interruptStateMachineTests: PC_NEXTX expected 000 != actual 001
-# [T=610] FAILED in interruptStateMachineTests: PC_NEXTX expected 000 != actual 001
-# [T=710] FAILED in interruptStateMachineTests: PC_NEXTX expected 000 != actual 001
-# [T=810] FAILED in interruptStateMachineTests: PC_NEXTX expected 000 != actual 001
-# [T=910] FAILED in interruptStateMachineTests: PC_NEXTX expected 000 != actual 001
-# [T=1010] FAILED in interruptStateMachineTests: PC_NEXTX expected 000 != actual 001
-# [T=1110] FAILED in interruptStateMachineTests: PC_NEXTX expected 010 != actual 001
-# [T=1110] FAILED in interruptStateMachineTests: PC_LD_INT1 expected 00000000000000000000000000000001 != actual 0
-# [T=1210] FAILED in interruptStateMachineTests: PC_NEXTX expected 010 != actual 001
-# [T=1210] FAILED in interruptStateMachineTests: PC_LD_INT1 expected 00000000000000000000000000000001 != actual 0
-# [T=1310] FAILED in interruptStateMachineTests: PC_NEXTX expected 100 != actual 011
-# [T=1410] FAILED in interruptStateMachineTests: PC_NEXTX expected 100 != actual 011
-# [T=1510] FAILED in interruptStateMachineTests: PC_LD_INT0 expected 00000000000000000000000000000001 != actual 0
-# [T=1610] FAILED in interruptStateMachineTests: PC_LD_INT0 expected 00000000000000000000000000000001 != actual 0
+# Loading work.instructionPhaseDecoder
+run 4us
+# [T=460]           1
+# [T=560]           2
+# [T=860]           3
+# [T=960]           4
+# [T=1260]           5
+# [T=1360]           6
+# [T=1660]           7
+# [T=1660] FAILED in programCounterTestbench: PC_A expected 0001001000111000 != actual 0001001000110100
+# [T=1760]           8
+# [T=2060]           9
+# [T=2060] FAILED in programCounterTestbench: PC_A expected 1100111100010100 != actual 1011110011011110
+# [T=2160]          10
+# [T=2460]          11
+# [T=2460] FAILED in programCounterTestbench: PC_A expected 1100111100010110 != actual 1011110011100000
+# [T=2560]          12
+# [T=2860]          13
+# [T=2860] FAILED in programCounterTestbench: PC_A expected 0000001101101110 != actual 1011110011100010
+# [T=2960]          14
+# [T=3260]          15
+# [T=3260] FAILED in programCounterTestbench: PC_A expected 0000001101110000 != actual 1011110011100100
+# [T=3360]          16
+# [T=3660]          17
+# [T=3660] FAILED in programCounterTestbench: PC_A expected 0101100111101100 != actual 1011110011100110
+# [T=3760]          18
+# Compile of instructionPhaseDecoder.v was successful.
 # Compile of interruptStateMachine.v was successful.
-# Compile of interruptStateMachineTests.v was successful.
+# Compile of jumpGroupDecoder.v was successful.
+# Compile of branchLogic.v was successful.
+# Compile of programCounter.v was successful.
+# Compile of programCounterTestench.v was successful.
 # Compile of constants.v was successful.
-# 3 compiles, 0 failed with no errors.
+# Compile of testSetup.v was successful.
+# 8 compiles, 0 failed with no errors.
 restart
 # ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.interruptStateMachineTests
+# Loading work.programCounterTestbench
+# Loading work.programCounter
+# Loading work.branchLogic
+# Loading work.jumpGroupDecoder
 # Loading work.interruptStateMachine
-
-run 2us
-# GetModuleFileName: The specified module could not be found.
-# 
-# 
-# [T=310] FAILED in interruptStateMachineTests: PC_NEXTX expected 000 != actual 001
-# [T=410] FAILED in interruptStateMachineTests: PC_NEXTX expected 000 != actual 001
-# [T=510] FAILED in interruptStateMachineTests: PC_NEXTX expected 000 != actual 001
-# [T=610] FAILED in interruptStateMachineTests: PC_NEXTX expected 000 != actual 001
-# [T=710] FAILED in interruptStateMachineTests: PC_NEXTX expected 000 != actual 001
-# [T=810] FAILED in interruptStateMachineTests: PC_NEXTX expected 000 != actual 001
-# [T=910] FAILED in interruptStateMachineTests: PC_NEXTX expected 000 != actual 001
-# [T=1010] FAILED in interruptStateMachineTests: PC_NEXTX expected 000 != actual 001
-# [T=1110] FAILED in interruptStateMachineTests: PC_NEXTX expected 010 != actual 001
-# [T=1110] FAILED in interruptStateMachineTests: PC_LD_INT1 expected 00000000000000000000000000000001 != actual 0
-# [T=1210] FAILED in interruptStateMachineTests: PC_NEXTX expected 010 != actual 001
-# [T=1210] FAILED in interruptStateMachineTests: PC_LD_INT1 expected 00000000000000000000000000000001 != actual 0
-# [T=1310] FAILED in interruptStateMachineTests: PC_NEXTX expected 100 != actual 011
-# [T=1410] FAILED in interruptStateMachineTests: PC_NEXTX expected 100 != actual 011
-# [T=1510] FAILED in interruptStateMachineTests: PC_LD_INT0 expected 00000000000000000000000000000001 != actual 0
-# [T=1610] FAILED in interruptStateMachineTests: PC_LD_INT0 expected 00000000000000000000000000000001 != actual 0
+# Loading work.instructionPhaseDecoder
+run 4us
+# [T=460]           1
+# [T=560]           2
+# [T=860]           3
+# [T=960]           4
+# [T=1260]           5
+# [T=1360]           6
+# [T=1660]           7
+# [T=1760]           8
+# [T=2060]           9
+# [T=2060] FAILED in programCounterTestbench: PC_A expected 1100111100010100 != actual 1100111100010110
+# [T=2160]          10
+# [T=2460]          11
+# [T=2460] FAILED in programCounterTestbench: PC_A expected 1100111100010110 != actual 1100111100011000
+# [T=2560]          12
+# [T=2860]          13
+# [T=2860] FAILED in programCounterTestbench: PC_A expected 0000001101101110 != actual 1100111100011010
+# [T=2960]          14
+# [T=3260]          15
+# [T=3260] FAILED in programCounterTestbench: PC_A expected 0000001101110000 != actual 1100111100011100
+# [T=3360]          16
+# [T=3660]          17
+# [T=3660] FAILED in programCounterTestbench: PC_A expected 0101100111101100 != actual 1100111100011110
+# [T=3760]          18
+# Compile of instructionPhaseDecoder.v was successful.
 # Compile of interruptStateMachine.v was successful.
-# Compile of interruptStateMachineTests.v was successful.
+# Compile of jumpGroupDecoder.v was successful.
+# Compile of branchLogic.v was successful.
+# Compile of programCounter.v was successful.
+# Compile of programCounterTestench.v was successful.
 # Compile of constants.v was successful.
-# 3 compiles, 0 failed with no errors.
+# Compile of testSetup.v was successful.
+# 8 compiles, 0 failed with no errors.
 restart
 # ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.interruptStateMachineTests
+# Loading work.programCounterTestbench
+# Loading work.programCounter
+# Loading work.branchLogic
+# Loading work.jumpGroupDecoder
 # Loading work.interruptStateMachine
-run 2us
-# GetModuleFileName: The specified module could not be found.
-# 
-# 
-# [T=310] FAILED in interruptStateMachineTests: PC_NEXTX expected 000 != actual 001
-# [T=410] FAILED in interruptStateMachineTests: PC_NEXTX expected 000 != actual 001
-# [T=510] FAILED in interruptStateMachineTests: PC_NEXTX expected 000 != actual 001
-# [T=610] FAILED in interruptStateMachineTests: PC_NEXTX expected 000 != actual 001
-# [T=710] FAILED in interruptStateMachineTests: PC_NEXTX expected 000 != actual 001
-# [T=810] FAILED in interruptStateMachineTests: PC_NEXTX expected 000 != actual 001
-# [T=910] FAILED in interruptStateMachineTests: PC_NEXTX expected 000 != actual 001
-# [T=1010] FAILED in interruptStateMachineTests: PC_NEXTX expected 000 != actual 001
-# [T=1110] FAILED in interruptStateMachineTests: PC_NEXTX expected 010 != actual 001
-# [T=1110] FAILED in interruptStateMachineTests: PC_LD_INT1 expected 00000000000000000000000000000001 != actual 0
-# [T=1210] FAILED in interruptStateMachineTests: PC_NEXTX expected 010 != actual 001
-# [T=1210] FAILED in interruptStateMachineTests: PC_LD_INT1 expected 00000000000000000000000000000001 != actual 0
-# [T=1310] FAILED in interruptStateMachineTests: PC_NEXTX expected 100 != actual 011
-# [T=1410] FAILED in interruptStateMachineTests: PC_NEXTX expected 100 != actual 011
-# [T=1510] FAILED in interruptStateMachineTests: PC_LD_INT0 expected 00000000000000000000000000000001 != actual 0
-# [T=1610] FAILED in interruptStateMachineTests: PC_LD_INT0 expected 00000000000000000000000000000001 != actual 0
+# Loading work.instructionPhaseDecoder
+run 4us
+# [T=460]           1
+# [T=560]           2
+# [T=860]           3
+# [T=960]           4
+# [T=1260]           5
+# [T=1360]           6
+# [T=1660]           7
+# [T=1760]           8
+# [T=2060]           9
+# [T=2060] FAILED in programCounterTestbench: PC_A expected 1100111100010110 != actual 0010010000010110
+# [T=2160]          10
+# [T=2460]          11
+# [T=2460] FAILED in programCounterTestbench: PC_A expected 1100111100010110 != actual 0010010000011000
+# [T=2560]          12
+# [T=2860]          13
+# [T=2860] FAILED in programCounterTestbench: PC_A expected 0000001101101110 != actual 0010010000011010
+# [T=2960]          14
+# [T=3260]          15
+# [T=3260] FAILED in programCounterTestbench: PC_A expected 0000001101110000 != actual 0010010000011100
+# [T=3360]          16
+# [T=3660]          17
+# [T=3660] FAILED in programCounterTestbench: PC_A expected 0101100111101100 != actual 0010010000011110
+# [T=3760]          18
+# Compile of instructionPhaseDecoder.v was successful.
+# Compile of interruptStateMachine.v was successful.
+# Compile of jumpGroupDecoder.v was successful.
+# Compile of branchLogic.v was successful.
+# Compile of programCounter.v was successful.
+# Compile of programCounterTestench.v was successful.
+# Compile of constants.v was successful.
+# Compile of testSetup.v was successful.
+# 8 compiles, 0 failed with no errors.
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.programCounterTestbench
+# Loading work.programCounter
+# Loading work.branchLogic
+# Loading work.jumpGroupDecoder
+# Loading work.interruptStateMachine
+# Loading work.instructionPhaseDecoder
+run 4us
+# [T=460]           1
+# [T=560]           2
+# [T=860]           3
+# [T=960]           4
+# [T=1260]           5
+# [T=1360]           6
+# [T=1360] FAILED in programCounterTestbench: ALUB_SRCX expected 010 != actual 011
+# [T=1360] FAILED in programCounterTestbench: REGB_ADDRX expected 00 != actual 01
+# [T=1660]           7
+# [T=1660] FAILED in programCounterTestbench: PC_A expected 0001001000111000 != actual 1010101111010001
+# [T=1760]           8
+# [T=2060]           9
+# [T=2060] FAILED in programCounterTestbench: PC_A expected 1100111100010110 != actual 0110100010101111
+# [T=2160]          10
+# [T=2160] FAILED in programCounterTestbench: ALUB_SRCX expected 000 != actual 011
+# [T=2160] FAILED in programCounterTestbench: REGB_ADDRX expected 00 != actual 01
+# [T=2460]          11
+# [T=2460] FAILED in programCounterTestbench: PC_A expected 1100111100010110 != actual 0110100010110001
+# [T=2560]          12
+# [T=2560] FAILED in programCounterTestbench: ALUB_SRCX expected 000 != actual 011
+# [T=2560] FAILED in programCounterTestbench: REGB_ADDRX expected 00 != actual 01
+# [T=2860]          13
+# [T=2860] FAILED in programCounterTestbench: PC_A expected 0000001101101110 != actual 0110100010110011
+# [T=2960]          14
+# [T=2960] FAILED in programCounterTestbench: ALUB_SRCX expected 000 != actual 011
+# [T=2960] FAILED in programCounterTestbench: REGB_ADDRX expected 00 != actual 01
+# [T=3260]          15
+# [T=3260] FAILED in programCounterTestbench: PC_A expected 0000001101110000 != actual 0110100010110101
+# [T=3360]          16
+# [T=3360] FAILED in programCounterTestbench: ALUB_SRCX expected 000 != actual 011
+# [T=3360] FAILED in programCounterTestbench: REGB_ADDRX expected 00 != actual 01
+# [T=3660]          17
+# [T=3660] FAILED in programCounterTestbench: PC_A expected 0101100111101100 != actual 0110100010110111
+# [T=3760]          18
+# Compile of instructionPhaseDecoder.v was successful.
+# Compile of interruptStateMachine.v was successful.
+# Compile of jumpGroupDecoder.v was successful.
+# Compile of branchLogic.v was successful.
+# Compile of programCounter.v was successful.
+# Compile of programCounterTestench.v was successful.
+# Compile of constants.v was successful.
+# Compile of testSetup.v was successful.
+# 8 compiles, 0 failed with no errors.
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.programCounterTestbench
+# Loading work.programCounter
+# Loading work.branchLogic
+# Loading work.jumpGroupDecoder
+# Loading work.interruptStateMachine
+# Loading work.instructionPhaseDecoder
+run 4us
+# [T=460]           1
+# [T=560]           2
+# [T=860]           3
+# [T=960]           4
+# [T=1260]           5
+# [T=1360]           6
+# [T=1360] FAILED in programCounterTestbench: REGB_ADDRX expected 00 != actual 01
+# [T=1660]           7
+# [T=1660] FAILED in programCounterTestbench: PC_A expected 0000000000111000 != actual 1010101111010001
+# [T=1760]           8
+# [T=2060]           9
+# [T=2060] FAILED in programCounterTestbench: PC_A expected 1011110100010110 != actual 0110100010101111
+# [T=2160]          10
+# [T=2160] FAILED in programCounterTestbench: ALUB_SRCX expected 001 != actual 011
+# [T=2160] FAILED in programCounterTestbench: REGB_ADDRX expected 00 != actual 01
+# [T=2460]          11
+# [T=2460] FAILED in programCounterTestbench: PC_A expected 1011110100011000 != actual 0110100010110001
+# Compile of instructionPhaseDecoder.v was successful.
+# Compile of interruptStateMachine.v was successful.
+# Compile of jumpGroupDecoder.v was successful.
+# Compile of branchLogic.v was successful.
+# Compile of programCounter.v was successful.
+# Compile of programCounterTestench.v was successful.
+# Compile of constants.v was successful.
+# Compile of testSetup.v was successful.
+# 8 compiles, 0 failed with no errors.
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.programCounterTestbench
+# Loading work.programCounter
+# Loading work.branchLogic
+# Loading work.jumpGroupDecoder
+# Loading work.interruptStateMachine
+# Loading work.instructionPhaseDecoder
+run 4us
+# [T=460]           1
+# [T=560]           2
+# [T=860]           3
+# [T=960]           4
+# [T=1260]           5
+# [T=1360]           6
+# [T=1660]           7
+# [T=1660] FAILED in programCounterTestbench: PC_A expected 0000000000111000 != actual 1010101111010001
+# [T=1760]           8
+# [T=2060]           9
+# [T=2060] FAILED in programCounterTestbench: PC_A expected 1011110100010110 != actual 0110100010101111
+# [T=2160]          10
+# [T=2160] FAILED in programCounterTestbench: ALUB_SRCX expected 001 != actual 011
+# [T=2460]          11
+# [T=2460] FAILED in programCounterTestbench: PC_A expected 1011110100011000 != actual 0110100010110001
+# Compile of instructionPhaseDecoder.v was successful.
+# Compile of interruptStateMachine.v was successful.
+# Compile of jumpGroupDecoder.v was successful.
+# Compile of branchLogic.v was successful.
+# Compile of programCounter.v was successful.
+# Compile of programCounterTestench.v was successful.
+# Compile of constants.v was successful.
+# Compile of testSetup.v was successful.
+# 8 compiles, 0 failed with no errors.
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.programCounterTestbench
+# Loading work.programCounter
+# Loading work.branchLogic
+# Loading work.jumpGroupDecoder
+# Loading work.interruptStateMachine
+# Loading work.instructionPhaseDecoder
+run 4us
+# [T=460]           1
+# [T=560]           2
+# [T=860]           3
+# [T=960]           4
+# [T=1260]           5
+# [T=1360]           6
+# [T=1660]           7
+# [T=1760]           8
+# [T=2060]           9
+# [T=2160]          10
+# [T=2160] FAILED in programCounterTestbench: ALUB_SRCX expected 001 != actual 011
+# [T=2460]          11
+# Compile of instructionPhaseDecoder.v was successful.
+# Compile of interruptStateMachine.v was successful.
+# Compile of jumpGroupDecoder.v was successful.
+# Compile of branchLogic.v was successful.
+# Compile of programCounter.v was successful.
+# Compile of programCounterTestench.v was successful.
+# Compile of constants.v was successful.
+# Compile of testSetup.v was successful.
+# 8 compiles, 0 failed with no errors.
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.programCounterTestbench
+# Loading work.programCounter
+# Loading work.branchLogic
+# Loading work.jumpGroupDecoder
+# Loading work.interruptStateMachine
+# Loading work.instructionPhaseDecoder
+run 4us
+# [T=460]           1
+# [T=560]           2
+# [T=860]           3
+# [T=960]           4
+# [T=1260]           5
+# [T=1360]           6
+# [T=1660]           7
+# [T=1760]           8
+# [T=2060]           9
+# [T=2160]          10
+# [T=2460]          11
+# [T=2560]          10
+# [T=2860]          11
+# [T=2860] FAILED in programCounterTestbench: PC_A expected 1011110101110000 != actual 1011110100011010
+# Compile of instructionPhaseDecoder.v was successful.
+# Compile of interruptStateMachine.v was successful.
+# Compile of jumpGroupDecoder.v was successful.
+# Compile of branchLogic.v was successful.
+# Compile of programCounter.v was successful.
+# Compile of programCounterTestench.v was successful.
+# Compile of constants.v was successful.
+# Compile of testSetup.v was successful.
+# 8 compiles, 0 failed with no errors.
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.programCounterTestbench
+# Loading work.programCounter
+# Loading work.branchLogic
+# Loading work.jumpGroupDecoder
+# Loading work.interruptStateMachine
+# Loading work.instructionPhaseDecoder
+run 4us
+# [T=460]           1
+# [T=560]           2
+# [T=860]           3
+# [T=960]           4
+# [T=1260]           5
+# [T=1360]           6
+# [T=1660]           7
+# [T=1760]           8
+# [T=2060]           9
+# [T=2160]          10
+# [T=2460]          11
+# [T=2560]          10
+# [T=2860]          11
+# [T=2860] FAILED in programCounterTestbench: PC_A expected 1011110101110000 != actual 1011110100011010

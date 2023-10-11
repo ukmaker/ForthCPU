@@ -8,7 +8,3 @@
     if (expected !== actual) begin \
         $display("[T=%0t] FAILED in %m: %s expected %b != actual %b", $realtime, what, expected, actual); \
     end
-
-`define mark(n)  \
-	$display("[T=%0t] %d", $realtime, n);
-	

@@ -49,7 +49,7 @@ module jumpGroupDecoder(
 	* Program counter control
 	**/
 	output reg PC_EN,
-	output wire JRX,
+	output reg JRX,
 	output reg JMP_X,
 	output reg CC_APPLYX,
 	output wire CC_INVERTX,
@@ -64,7 +64,6 @@ module jumpGroupDecoder(
 	**/
 	output reg [2:0] ALUB_SRCX
 	
-	
 );
 
 wire [1:0] GROUPF;
@@ -78,7 +77,6 @@ assign JPF   = INSTRUCTION[11:10];
 assign CC_SELECTX   = INSTRUCTION[9:8];
 
 assign CC_INVERTX = SKIPF[0];
-assign JRX = JPF[1];
 
 always @(*) begin
 	if(GROUPF == `GROUP_JUMP) begin
@@ -95,13 +93,31 @@ always @(*) begin
 		PC_EN = 1;
 	end
 	
-	if(JPF[0]) begin
-		ALUB_SRCX = `ALUB_SRCX_U8_REG_B;
-		REGB_ADDRX = `REGB_ADDRX_RB;
-	end else begin
-		ALUB_SRCX = `ALUB_SRCX_REG_B;
-		REGB_ADDRX = `REGB_ADDRX_ARGB;
-	end
+	case(JPF)
+		`JPF_ABS_R: begin
+			ALUB_SRCX = `ALUB_SRCX_REG_B;
+			REGB_ADDRX = `REGB_ADDRX_ARGB;
+			JRX = 0;
+		end
+		
+		`JPF_ABS_U8H: begin
+			ALUB_SRCX = `ALUB_SRCX_U8H;
+			REGB_ADDRX = `REGB_ADDRX_RB;
+			JRX = 0;
+		end
+
+		`JPF_REL_S8: begin
+			ALUB_SRCX = `ALUB_SRCX_S8;
+			REGB_ADDRX = `REGB_ADDRX_ARGB;
+			JRX = 1; 
+		end
+
+		`JPF_REL_U8H: begin
+			ALUB_SRCX = `ALUB_SRCX_U8H;
+			REGB_ADDRX = `REGB_ADDRX_RB;
+			JRX = 1;
+		end
+	endcase
 end
 	
 endmodule

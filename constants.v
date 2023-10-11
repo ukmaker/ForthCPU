@@ -24,8 +24,8 @@
 /**
 * Branch logic control fields
 **/
-`define JRX_REL  1'b0
-`define JRX_ABS  1'b1
+`define JRX_ABS  1'b0
+`define JRX_REL  1'b1
 
 `define JMPX_NONE 1'b0
 `define JMPX_JMP  1'b1
@@ -81,10 +81,17 @@
 `define INTV0 16'h0004
 `define INTV1 16'h0008
 
-`define INT_STATE_RUN   2'b00
-`define INT_STATE_RI1   2'b01
-`define INT_STATE_RI0   2'b10
-`define INT_STATE_RI1_0 2'b11
+`define INT_STATE_RUN     4'b0000
+`define INT_STATE_RUN_E   4'b0001
+`define INT_STATE_VEC1     4'b0010
+`define INT_STATE_VEC0     4'b0011
+`define INT_STATE_VEC1_0   4'b0100
+`define INT_STATE_RUN1     4'b0101
+`define INT_STATE_RUN0     4'b0110
+`define INT_STATE_RUN1_0   4'b0111
+`define INT_STATE_RETI1   4'b1000
+`define INT_STATE_RETI0   4'b1001
+`define INT_STATE_RETI1_0 4'b1010
 
 
 
@@ -125,10 +132,11 @@
 `define ALUB_SRCX_REG_B  3'b000
 `define ALUB_SRCX_U8H    3'b001
 `define ALUB_SRCX_U8     3'b010
-`define ALUB_SRCX_U4     3'b011
-`define ALUB_SRCX_U4_0   3'b100
-`define ALUB_SRCX_U6     3'b101
-`define ALUB_SRCX_U6_0   3'b110
+`define ALUB_SRCX_S8     3'b011
+`define ALUB_SRCX_U4     3'b100
+`define ALUB_SRCX_U4_0   3'b101
+`define ALUB_SRCX_U6     3'b110
+`define ALUB_SRCX_U6_0   3'b111
 
 
 
@@ -226,10 +234,10 @@
 `define SKIPF_SKIP     2'b10
 `define SKIPF_NOT_SKIP 2'b11
 
-`define JPF_ABS_R  2'b00
-`define JPF_ABS_U8 2'b01
-`define JPF_REL_R  2'b10
-`define JPF_REL_U8 2'b11
+`define JPF_ABS_R   2'b00
+`define JPF_ABS_U8H 2'b01
+`define JPF_REL_S8  2'b10
+`define JPF_REL_U8H 2'b11
 
 
 `endif
