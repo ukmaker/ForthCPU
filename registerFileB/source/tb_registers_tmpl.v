@@ -3,8 +3,8 @@
 module tb;
     reg [15:0] DataInA = 16'b0;
     reg [15:0] DataInB = 16'b0;
-    reg [1:0] ByteEnA = 2'b01;
-    reg [1:0] ByteEnB = 2'b11;
+    reg [1:0] ByteEnA = 2'b0;
+    reg [1:0] ByteEnB = 2'b0;
     reg [3:0] AddressA = 4'b0;
     reg [3:0] AddressB = 4'b0;
     reg ClockA = 0;
@@ -36,7 +36,7 @@ module tb;
       @(ResetA == 1'b0);
       for (i1 = 0; i1 < 19; i1 = i1 + 1) begin
         @(posedge ClockA);
-        #1  DataInA <= DataInA + 7'b1000000;
+        #1  DataInA <= DataInA + 1'b1;
       end
     end
     initial

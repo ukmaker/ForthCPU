@@ -10,312 +10,279 @@ module core(
 	
 	output wire FETCH, DECODE, EXECUTE, COMMIT,
 	
-	output [15:0] ABUS,
-	output [15:0] DBUS_OUT,
-	input  [15:0] DBUS_IN,
+	output [15:0] ADDR_BUF,
+	output [15:0] DOUT_BUF,
+	input  [15:0] DIN,
 	
-	output RD,
-	output WR
+	output RDN_BUF, 
+	output ABUS_OEN,
+	output DBUS_OEN,
+	output WRN0_BUF, 
+	output WRN1_BUF
 	
 );
 
-wire [15:0] INSTRUCTION;
-
-wire [15:0] PC_A;
-wire [15:0] PC_D;
-wire [15:0] REG_B;
-wire [15:0] ALUA_DIN;
-wire [1:0] ADDR_BUSX;
-wire [1:0] DATA_BUSX;
-wire [15:0] ADDR;
-wire [15:0] REGA_DOUT;
-wire [15:0] REGB_DOUT;
-wire [3:0] ARGA_X;
-wire [3:0] ARGB_X;
-wire       ALUA_SRCX;
-wire [2:0] ALUB_SRCX;
-wire [1:0] ALUA_CONSTX;
-wire [3:0] ALU_OPX;
-wire [1:0] LDS_SRCX;
-wire ALU_LD;
-wire CCL_LD;
-wire [15:0] ALUA_DATA;
-wire [15:0] ALUB_DATA;
+/***************************************
+* Wiring
+****************************************/
+wire [1:0]  ADDR_BUSX;
+wire [3:0]  ALU_OPX;
 wire [15:0] ALU_R;
-wire [15:0] ALUA_PP;
-wire [3:0]  CCN;
-wire [2:0] REGA_ADDRX;
-wire [1:0] REGB_ADDRX;
-wire [1:0] REGA_DINX;
-
-wire PC_EN;
-wire JRX;
-wire JMP_X;
-wire CC_APPLYX;
-wire CC_INVERTX;
-wire [1:0]CC_SELECTX;
-
-
-/**
-* Wires from decoders to opx multiplexer
-**/
-wire [3:0] ALU_ALU_OPX;
-wire [3:0] LDS_ALU_OPX;
-
-wire ALU_ALU_LD;
-wire LDS_ALU_LD;
-
-wire ALU_REGA_EN;
-wire ALU_REGB_EN;
-wire ALU_REGA_WEN;
-wire ALU_REGB_WEN;
-
-wire LDS_REGA_EN;
-wire LDS_REGB_EN;
-wire LDS_REGA_WEN;
-wire LDS_REGB_WEN;
-
-wire [1:0] ALU_ALUA_CONSTX;
-wire [1:0] LDS_ALUA_CONSTX;
-
-wire ALU_ALUA_SRCX;
-wire LDS_ALUA_SRCX;
-
-wire [2:0] ALU_ALUB_SRCX;
-wire [2:0] LDS_ALUB_SRCX;
-wire [2:0] PCC_ALUB_SRCX;
-
-wire [1:0] ALU_REGA_DINX;
-wire [1:0] LDS_REGA_DINX;
-
-wire [2:0] ALU_REGA_ADDRX;
-wire [2:0] LDS_REGA_ADDRX;
-
-wire [1:0] ALU_REGB_ADDRX;
-wire [1:0] LDS_REGB_ADDRX;
-wire [1:0] PCC_REGB_ADDRX;
-
-wire [1:0] ALU_DATA_BUSX;
-wire [1:0] LDS_DATA_BUSX;
-
-wire        ALU_DATA_BUS_OEN;
-wire        LDS_DATA_BUS_OEN;
-
-wire [1:0] ALU_ADDR_BUSX;
-wire [1:0] LDS_ADDR_BUSX;	
+wire [15:0] ALUA_DATA;
+wire [15:0] ALUA_DIN;
+wire [2:0]  ALUA_SRCX;
+wire [15:0] ALUB_DATA;
+wire [15:0] ALUB_DIN;
+wire [2:0]  ALUB_SRCX;
+wire [3:0]  ARGA_X;
+wire [3:0]  ARGB_X;
+wire         CCL_LD;
+wire         CC_ZERO;
+wire         CC_CARRY;
+wire         CC_PARITY;
+wire         CC_SIGN;
+wire         CC_APPLYX;
+wire         CC_INVERTX;
+wire [1:0]  CC_SELECTX;
+wire [1:0]  DATA_BUSX;
+wire         DIX;
+wire         EIX;
+wire [15:0] INSTRUCTION;
+wire         INT0;
+wire         INT1;
+wire         JMPX;
+wire         JRX;
+wire [1:0]  LDSINCF;
+wire [15:0] PC_A;
+wire [15:0] PC_A_NEXT;
+wire         PC_BASEX;
+wire [15:0] PC_D;
+wire         PC_LD_INT0;
+wire         PC_LD_INT1;
+wire [2:0]  PC_NEXTX;
+wire         PC_OFFSETX;
+wire         PC_EN;
+wire [1:0]  REGA_ADDRX;
+wire [1:0]  REGA_BYTE_ENX;
+wire [1:0]  REGA_DINX;
+wire [15:0] REGA_DOUT;
+wire         REGA_EN;
+wire         REGA_WEN;
+wire [2:0]  REGB_ADDRX;
+wire [1:0]  REGB_BYTE_ENX;
+wire [15:0] REGB_DOUT;
+wire         REGB_EN;
+wire         REGB_WEN;
+wire         RETIX;
 
 
-/**
-* Aliases
-**/
-assign PC_D = ALUB_DATA;
-assign INSTRUCTION = DBUS_IN;
-assign ALU_DATA_BUSX = `DATA_BUSX_ALU_R;
-assign ALU_ADDR_BUSX = `ADDR_BUSX_PC;
-assign ALU_REGA_DINX = `REGA_DINX_ALU_R;
+/***************************************
+* Wiring from decoders
+****************************************/
+	wire [3:0]  ALU_ALU_OPX;
+	wire [2:0]  ALU_ALUA_SRCX;
+	wire [2:0]  ALU_ALUB_SRCX;
+	wire         ALU_REGA_EN,
+	wire         ALU_REGB_EN,
+	wire         ALU_REGA_WEN,
+	wire         ALU_REGB_WEN,
+	
+	wire [1:0]  LDS_ADDR_BUSX;
+	wire [2:0]  LDS_ALUA_SRCX;
+	wire [2:0]  LDS_ALUB_SRCX;
+	wire [3:0]  LDS_ALU_OPX;
+	wire         LDS_BYTEX;
+	wire [1:0]  LDS_DATA_BUSX;
+	wire         LDS_RDX;
+	wire         LDS_REGA_EN;
+	wire         LDS_REGA_WEN;
+	wire         LDS_REGB_EN;
+	wire         LDS_REGB_WEN;
+	wire [1:0]  LDS_REGA_ADDRX;
+	wire [1:0]  LDS_REGA_BYTE_ENX;
+	wire [1:0]  LDS_REGA_DINX;
+	wire [2:0]  LDS_REGB_ADDRX;
+	wire [1:0]  LDS_REGB_BYTE_ENX;
+	wire         LDS_WRX;
+	
+	wire [1:0]  JMP_REGA_ADDRX;
+	wire [2:0]  JMP_REGB_ADDRX;
+	wire         JMP_REGA_EN;
+	wire         JMP_REGA_WEN;
+	wire         JMP_REGB_EN;
+	wire [2:0]  JMP_ALUB_SRCX;
 
-instructionPhaseDecoder ipd(
+/***************************************
+* Instruction Phase Decoder
+****************************************/
+instructionPhaseDecoder instructionPhaseDecoderInst(
 	.CLK(CLK),
 	.RESET(RESET),
-	.FETCH(FETCH),
-	.DECODE(DECODE),
-	.EXECUTE(EXECUTE),
-	.COMMIT(COMMIT)
-);
-
-opxMultiplexer opxMux(
-
-	
-	.CLK(CLK),
-	.RESET(RESET),
-	.INSTRUCTION(INSTRUCTION),
-	
 	.FETCH(FETCH),
 	.DECODE(DECODE),
 	.EXECUTE(EXECUTE),
 	.COMMIT(COMMIT),
-	
-	.ALU_ALU_OPX(ALU_ALU_OPX),
-	.LDS_ALU_OPX(LDS_ALU_OPX),
-	
-	.ALU_ALU_LD(ALU_ALU_LD),
-	.LDS_ALU_LD(LDS_ALU_LD),
-	
-	.ALU_REGA_EN(ALU_REGA_EN),
-	.ALU_REGB_EN(ALU_REGB_EN),
-	.ALU_REGA_WEN(ALU_REGA_WEN),
-	.ALU_REGB_WEN(ALU_REGB_WEN),
-	
-	.LDS_REGA_EN(LDS_REGA_EN),
-	.LDS_REGB_EN(LDS_REGB_EN),
-	.LDS_REGA_WEN(LDS_REGA_WEN),
-	.LDS_REGB_WEN(LDS_REGB_WEN),
-	
-	.ALU_ALUA_CONSTX(ALU_ALUA_CONSTX),
-	.LDS_ALUA_CONSTX(LDS_ALUA_CONSTX),
-	
-	.ALU_ALUA_SRCX(ALU_ALUA_SRCX),
-	.LDS_ALUA_SRCX(LDS_ALUA_SRCX),
-
-	.ALU_ALUB_SRCX(ALU_ALUB_SRCX),
-	.LDS_ALUB_SRCX(LDS_ALUB_SRCX),
-	.PCC_ALUB_SRCX(PCC_ALUB_SRCX),
-
-	.ALU_REGA_DINX(ALU_REGA_DINX),
-	.LDS_REGA_DINX(LDS_REGA_DINX),
-	
-	.ALU_REGA_ADDRX(ALU_REGA_ADDRX),
-	.LDS_REGA_ADDRX(LDS_REGA_ADDRX),
-	
-	.ALU_REGB_ADDRX(ALU_REGB_ADDRX),
-	.LDS_REGB_ADDRX(LDS_REGB_ADDRX),
-	.PCC_REGB_ADDRX(PCC_REGB_ADDRX),
-	
-	.ALU_DATA_BUSX(ALU_DATA_BUSX),
-	.LDS_DATA_BUSX(LDS_DATA_BUSX),
-	
-	.ALU_DATA_BUS_OEN(ALU_DATA_BUS_OEN),
-	.LDS_DATA_BUS_OEN(LDS_DATA_BUS_OEN),
-	
-	.ALU_ADDR_BUSX(ALU_ADDR_BUSX),	
-	.LDS_ADDR_BUSX(LDS_ADDR_BUSX),	
-	
-	/**
-	* OUTPUTS
-	**/
-	/**
-	* Register file
-	**/
-	.REGA_EN(REGA_EN),
-	.REGB_EN(REGB_EN),
-	.REGA_WEN(REGA_WEN),
-	.REGB_WEN(REGB_WEN),
-	
-	/**
-	* ALU
-	**/
-	.ALU_OPX(ALU_OPX),        // ALU operation
-	.ALU_LD(ALU_LD),
-	.ALUA_CONSTX(ALUA_CONSTX),
-
-	/**
-	* Data Sources
-	**/
-	.ALUA_SRCX(ALUA_SRCX),
-	.ALUB_SRCX(ALUB_SRCX),	
-	.REGA_DINX(REGA_DINX),
-	.REGA_ADDRX(REGA_ADDRX),
-	.REGB_ADDRX(REGB_ADDRX),
-		
-	/**
-	* Bus control
-	**/
-	.DATA_BUSX(DATA_BUSX),
-	.DATA_BUS_OEN(DATA_BUS_OEN),
-	.ADDR_BUSX(ADDR_BUSX)
-	
+	.DIN(DIN),
+	.INSTRUCTION(INSTRUCTION)
 );
 
-addressBusController abusController(
-	.PC_A(PC_A),
-	.ALU_R(ALU_R),
-	.REG_B(REGB_DOUT),
-	.ALUA_DIN(ALUA_DATA),
-	.ADDR_BUSX(ADDR_BUSX),
-	.ADDR(ABUS)
-);
-
-dataBusController dbusController(
-	.DATA_BUSX(DATA_BUSX),
-	.PC_A(PC_A),
-	.ALU_R(ALU_R),
-	.REGA_DOUT(REGA_DOUT),
-	.REGB_DOUT(REGB_DOUT),
-	.DOUT(DBUS_OUT)
-);
-
-fullALU alu(
+/***************************************
+* ALU
+****************************************/
+fullALU fullALUInst(
 	.CLK(CLK),
 	.RESET(RESET),
-	.REGA_DOUT(REGA_DOUT),
-	.REGB_DOUT(REGB_DOUT),
+	.ALUA_DIN(ALUA_DIN),
+	.ALUB_DIN(ALUB_DIN),
+	
 	.ALU_OPX(ALU_OPX),
-	.ARGA_X(ARGA_X),
-	.ARGB_X(ARGB_X),
 	.ALUA_SRCX(ALUA_SRCX),
-	.ALUA_CONSTX(ALUA_CONSTX),
 	.ALUB_SRCX(ALUB_SRCX),
-	.LDS_SRCX(LDS_SRCX),
-	.ALU_LD(ALU_LD),
-	.CCL_LD(CCL_LD),
-	.ALUA_DATA(ALUA_DATA),
-	.ALUB_DATA(ALUB_DATA),
-	.ALU_R(ALU_R),
-	.ALUA_PP(ALUA_PP),
-	.CCN(CCN)
-);
-
-aluGroupDecoder aluDecoder(
-	.CLK(CLK),
-	.RESET(RESET),
-	.INSTRUCTION(INSTRUCTION),
-	.FETCH(FETCH),
-	.DECODE(DECODE),
-	.EXECUTE(EXECUTE),
-	.COMMIT(COMMIT),
-	.REGA_CLKEN(ALU_REGA_EN),
-	.REGB_CLKEN(ALU_REGB_EN),
-	.REGA_WEN(ALU_REGA_WEN),
-	.REGB_WEN(ALU_REGB_WEN),
-	.ALU_OPX(ALU_ALU_OPX),
-	.ALU_LD(ALU_ALU_LD),
-	.CCL_LD(ALU_CCL_LD),
-	.ALUA_SRCX(ALU_ALUA_SRCX),
-	.ALUB_SRCX(ALU_ALUB_SRCX),
-	.ALUA_CONSTX(ALU_ALUA_CONSTX),
+	
 	.ARGA_X(ARGA_X),
 	.ARGB_X(ARGB_X),
-	.REGA_ADDRX(ALU_REGA_ADDRX),
-	.REGB_ADDRX(ALU_REGB_ADDRX)
+	.LDSINCF(LDSINCF),
 	
-);
-
-jumpGroupDecoder pcDecoder(
-	.CLK(CLK),
-	.RESET(RESET),
-	.INSTRUCTION(INSTRUCTION),
-	.FETCH(FETCH),
-	.DECODE(DECODE),
-	.EXECUTE(EXECUTE),
-	.COMMIT(COMMIT),
-	.PC_EN(PC_EN),
-	.JRX(JRX),
-	.JMP_X(JMP_X),
-	.CC_APPLYX(CC_APPLYX),
-	.CC_INVERTX(CC_INVERTX),
-	.CC_SELECTX(CC_SELECTX),
-	.REGB_ADDRX(PCC_REGB_ADDRX),
-	.ALUB_SRCX(PCC_ALUB_SRCX)
-);
-
-programCounter pc(
-	.CLK(CLK),
-	.RESET(RESET),
-	.PC_EN(PC_EN),
-	.COMMIT(COMMIT),
-	.PC_D(PC_D),
-	.JRX(JRX),
-	.JMPX(JMP_X),
+	.CCL_LD(CCL_LD),
+	.ALU_R(ALU_R),
+	.CC_ZERO(CC_ZERO),
 	.CC_SIGN(CC_SIGN),
 	.CC_CARRY(CC_CARRY),
+	.CC_PARITY(CC_PARITY),
+	.ALUA_DATA(ALUA_DATA),
+	.ALUB_DATA(ALUB_DATA)
+);
+
+/***************************************
+* Register File
+****************************************/
+registerFile registerFileInst(
+	.CLK(CLK),
+	.RESET(RESET),
+	.ALU_R(ALU_R),
+	.DIN(DIN),
+	.PC_A_NEXT(PC_A_NEXT),
+	.REGA_EN(REGA_EN),
+	.REGA_WEN(REGA_WEN),
+	.REGB_EN(REGB_EN),
+	.REGB_WEN(REBA_WEN),
+	.REGA_BYTE_EN(REGA_BYTE_ENX),
+	.REGB_BYTE_EN(REGB_BYTE_ENX),
+	.ARGA_X(ARGA_X),
+	.ARGB_X(ARGB_X),
+	.REGA_ADDRX(REGA_ADDRX),
+	.REGB_ADDRX(REGB_ADDRX),
+	.REGA_DINX(REGA_DINX),
+	.REGA_DOUT(REGA_DOUT),
+	.REGB_DOUT(REGB_DOUT)
+);
+
+/***************************************
+* Bus Controller
+****************************************/
+busController busControllerInst(
+	.CLK(CLK),
+	.RESET(RESET),
+	.PC_A(PC_A),
+	.ALU_R(ALU_R),
+	.ALUB_DATA(ALUB_DATA),
+	.ADDR_BUSX(ADDR_BUSX),
+	.ADDR_BUF(ADDR_BUF),
+	.ALUA_DATA(ALUA_DATA),
+	.DATA_BUSX(DATA_BUSX),
+	.BYTEX(BYTEX),
+	.WRX(WRX),
+	.RDX(RDX),
+	.DOUT_BUF(DOUT_BUF),
+	.HIGH_BYTEX(HIGH_BYTEX),
+	.DBUS_OEN(DBUS_OEN),
+	.RDN_BUF(RDN_BUF),
+	.WRN0_BUF(WRN0_BUF),
+	.WRN1_BUF(WRN1_BUF)
+);
+
+/***************************************
+* Program Counter
+****************************************/
+programCounter programCounterInst(
+	.CLK(CLK),
+	.RESET(RESET),
+	.FETCH(FETCH),
+	.PC_ENX(PC_ENX),
+	.PC_LD_INT0X(PC_LD_INT0X),
+	.PC_LD_INT1X(PC_LD_INT1X),
+	.PC_BASEX(PC_BASEX),
+	.PC_OFFSETX(PC_OFFSETX),
+	.PC_D(PC_D),
+	.PC_NEXTX(PC_NEXTX),
+	.PC_A_NEXT(PC_A_NEXT),
+	.PC_A(PC_A)
+);
+
+/***************************************
+* Branch Logic
+****************************************/
+branchLogic branchLogicInst(
 	.CC_ZERO(CC_ZERO),
+	.CC_SIGN(CC_SIGN),
+	.CC_CARRY(CC_CARRY),
 	.CC_PARITY(CC_PARITY),
 	.CC_SELECTX(CC_SELECTX),
 	.CC_INVERTX(CC_INVERTX),
 	.CC_APPLYX(CC_APPLYX),
-	.PC_A(PC_A)
+	.JMPX(JMPX),
+	.JRX(JRX),
+	.PC_OFFSETX(PC_OFFSETX),
+	.PC_BASEX(PC_BASEX)
 );
-loadStoreGroupDecoder ldsDecoder(
+
+/***************************************
+* Interrupt Logic
+****************************************/
+interruptStateMachine interruptStateMachineInst(
+	.CLK(CLK),
+	.RESET(RESET),
+	.COMMIT(COMMIT),
+	.RETIX(RETIX),
+	.EIX(EIX),
+	.DIX(DIX),
+	.INT0(INT0),
+	.INT1(INT1),
+	.PC_NEXTX(PC_NEXTX),
+	.PC_LD_INT0(PC_LD_INT0),
+	.PC_LD_INT1(PC_LD_INT1)
+);
+
+/***************************************
+* ALU Group Decoder
+****************************************/
+aluGroupDecoder aluGroupDecoderInst(
+	.CLK(CLK),
+	.RESET(RESET),
+	.INSTRUCTION(INSTRUCTION),
+	.FETCH(FETCH),
+	.DECODE(DECODE),
+	.EXECUTE(EXECUTE),
+	.COMMIT(COMMIT),
+	.REGA_EN(REGA_EN),
+	.REGB_EN(REGB_EN),
+	.REGA_WEN(REGA_WEN),
+	.REGB_WEN(REGB_WEN),
+	.REGA_ADDRX(REGA_ADDRX),
+	.REGB_ADDRX(REGB_ADDRX),
+	.ALU_OPX(ALU_OPX),
+	.CCL_LD(CCL_LD),
+	.ALUA_SRCX(ALUA_SRCX),
+	.ALUB_SRCX(ALUB_SRCX),
+	.ARGA_X(ARGA_X),
+	.ARGB_X(ARGB_X),
+	.LDSINCF(LDSINCF)
+);
+
+/***************************************
+* Load/Store Group Decoder
+****************************************/
+loadStoreGroupDecoder loadStoreGroupDecoderInst(
 	.CLK(CLK),
 	.RESET(RESET),
 	.INSTRUCTION(INSTRUCTION[13:8]),
@@ -323,42 +290,57 @@ loadStoreGroupDecoder ldsDecoder(
 	.DECODE(DECODE),
 	.EXECUTE(EXECUTE),
 	.COMMIT(COMMIT),
-	
-	.REGA_EN(LDS_REGA_EN),
-	.REGB_EN(LDS_REGB_EN),
-	.REGA_WEN(LDS_REGA_WEN),
-	.REGB_WEN(LDS_REGB_WEN),
-	.ALU_OPX(LDS_ALU_OPX),
-	.ALU_LD(LDS_ALU_LD),
-	.ALUA_CONSTX(LDS_ALUA_CONSTX),
-	.ALUA_SRCX(LDS_ALUA_SRCX),
-	.ALUB_SRCX(LDS_ALUB_SRCX),
-	.REGA_DINX(LDS_REGA_DINX),
-	.REGA_ADDRX(LDS_REGA_ADDRX),
-	.REGB_ADDRX(LDS_REGB_ADDRX),
-	.DATA_BUSX(LDS_DATA_BUSX),
-	.DATA_BUS_OEN(LDS_DATA_BUS_OEN),
-	.ADDR_BUSX(LDS_ADDR_BUSX)
+	.REGA_EN(REGA_EN),
+	.REGB_EN(REGB_EN),
+	.REGA_WEN(REGA_WEN),
+	.REGB_WEN(REGB_WEN),
+	.ALUA_SRCX(ALUA_SRCX),
+	.ALUB_SRCX(ALUB_SRCX),
+	.ALU_OPX(ALU_OPX),
+	.REGA_DINX(REGA_DINX),
+	.REGA_ADDRX(REGA_ADDRX),
+	.REGB_ADDRX(REGB_ADDRX),
+	.REGA_BYTE_ENX(REGA_BYTE_ENX),
+	.REGB_BYTE_ENX(REGB_BYTE_ENX),
+	.DATA_BUSX(DATA_BUSX),
+	.BYTEX(BYTEX),
+	.WRX(WRX),
+	.RDX(RDX),
+	.ADDR_BUSX(ADDR_BUSX)
 );
-register_file registers(
+
+/***************************************
+* Jump Group Decoder
+****************************************/
+jumpGroupDecoder jumpGroupDecoderInst(
 	.CLK(CLK),
 	.RESET(RESET),
-	.ALU_R(ALU_R),
-	.PC_A(PC_A),
-	.ALUA_PP(ALUA_PP),
-	.DIN(DBUS_IN),
-	.REGA_EN(REGA_EN),
-	.REGA_WEN(REGA_WEN),
-	.ARGA_X(ARGA_X),
+	.INSTRUCTION(INSTRUCTION),
+	.FETCH(FETCH),
+	.DECODE(DECODE),
+	.EXECUTE(EXECUTE),
+	.COMMIT(COMMIT),
+	.PC_EN(PC_EN),
+	.JRX(JRX),
+	.JMPX(JMPX),
+	.CC_APPLYX(CC_APPLYX),
+	.CC_INVERTX(CC_INVERTX),
+	.CC_SELECTX(CC_SELECTX),
 	.REGA_ADDRX(REGA_ADDRX),
-	.REGA_DINX(REGA_DINX),
-
-	.REGB_EN(REGB_EN),
-	.REGB_WEN(REGB_WEN),
-	.ARGB_X(ARGB_X),
 	.REGB_ADDRX(REGB_ADDRX),
-	
-	.REGA_DOUT(REGA_DOUT),
-	.REGB_DOUT(REGB_DOUT)
+	.REGA_EN(REGA_EN),
+	.REGB_EN(REGB_EN),
+	.REGA_WEN(REGA_WEN),
+	.ALUB_SRCX(ALUB_SRCX)
 );
+
+/***************************************
+* Control Signal Multiplexer
+****************************************/
+
+
+
+
+
+
 endmodule

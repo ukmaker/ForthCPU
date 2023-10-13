@@ -15,7 +15,7 @@ module fullALU(
 	input [15:0] ALUB_DIN,
 	input [3:0]  ALU_OPX,
 	
-	input [1:0] ALUA_SRCX,
+	input [2:0] ALUA_SRCX,
 	input [2:0] ALUB_SRCX,
 	
 	input [3:0] ARGA_X,
@@ -25,27 +25,32 @@ module fullALU(
 	input CCL_LD,
 	
 	output wire [15:0] ALU_R,
-	output wire [3:0] CCN,
+	output reg CC_ZERO,
+	output reg CC_CARRY,
+	output reg CC_SIGN,
+	output reg CC_PARITY,
 	output wire [15:0] ALUA_DATA,
 	output wire [15:0] ALUB_DATA
 );
 
-wire [3:0] CC;
-reg [3:0] CCD;
-
+wire CC_Z;
+wire CC_S;
+wire CC_P;
+wire CC_C;
 
 alu aluInst(
 	.ALUX(ALU_OPX),
 	.ARGA(ALUA_DATA),
 	.ARGB(ALUB_DATA),
 	.RESULT(ALU_R),
-	.SIGN(CC[0]),
-	.CARRY(CC[1]),
-	.ZERO(CC[2]),
-	.PARITY(CC[3])
+	.SIGN(CC_S),
+	.CARRY(CC_C),
+	.ZERO(CC_Z),
+	.PARITY(CC_P)
 );
 
 aluAMux muxA(
+	.U6({LDSINCF,ARGB_X}),
 	.ALUA_DIN(ALUA_DIN),
 	.ALUA_SRCX(ALUA_SRCX),
 	.ALUA_DATA(ALUA_DATA)
@@ -63,12 +68,16 @@ aluBMux muxB(
 
 always @(posedge CLK or posedge RESET) begin
 	if(RESET) begin
-		CCD <= 4'b0000;
+		CC_ZERO = 0;
+		CC_CARRY = 0;
+		CC_SIGN = 0;
+		CC_PARITY = 0;
 	end else if(CCL_LD == 1'b1) begin
-		CCD <= CC;
+		CC_ZERO   <= CC_Z;
+		CC_CARRY  <= CC_C;
+		CC_SIGN   <= CC_S;
+		CC_PARITY <= CC_P;
 	end
 end
-
-assign CCN = CCD;
 
 endmodule

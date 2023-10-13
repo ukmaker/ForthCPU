@@ -12,9 +12,9 @@ wire DECODE;
 wire EXECUTE;
 wire COMMIT;
 
-wire [15:0] ABUS;
-wire [15:0] DBUS_OUT;
-reg [15:0] DBUS_IN;
+wire [15:0] ADDR_BUF;
+wire [15:0] DOUT_BUF;
+reg  [15:0] DIN;
 
 wire RD;
 wire WR;
@@ -33,12 +33,16 @@ core testInstance(
 	.EXECUTE(EXECUTE),
 	.COMMIT(COMMIT),
 	
-	.ABUS(ABUS),
-	.DBUS_OUT(DBUS_OUT),
-	.DBUS_IN(DBUS_IN),
+	.ADDR_BUF(ADDR_BUF),
+	.DOUT_BUF(DOUT_BUF),
+	.DIN(DIN),
 	
-	.RD(RD),
-	.WR(WR)
+	.RDN_BUF(RDN_BUF),
+	.WRN0_BUF(WRN0_BUF),
+	.WRN1_BUF(WRN1_BUF),
+	
+	.ABUS_OEN(ABUS_OEN),
+	.DBUS_OEN(DBUS_OEN)
 
 );
 
@@ -53,7 +57,7 @@ initial begin
 	CLK = 0; 
 	`TICK;
 	 RESET = 1;
-	 DBUS_IN = 16'h0000;
+	 DIN = 16'h0000;
 	 `TICK;
 	 `TICK;
 	 
@@ -66,7 +70,7 @@ initial begin
 	 * MOV RB,0x00af
 	 *************************************************************************/
 	 // Start FETCH
-	 DBUS_IN = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_MOV,`MODE_REGB_U8,8'haf};	 
+	 DIN = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_MOV,`MODE_ALU_REGB_U8,8'haf};	 
 	 `TICKTOCK;  
 	// DECODE
 	`TICKTOCK; 
@@ -84,7 +88,7 @@ initial begin
 	 * MOV RA,U8.RBL
 	 *************************************************************************/
 	 // Start FETCH
-	 DBUS_IN = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_MOV,`MODE_REGA_U8RB,8'hfa};	 
+	 DIN = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_MOV,`MODE_ALU_REGA_U8RB,8'hfa};	 
 	 `TICKTOCK;  
 	// DECODE
 	`TICKTOCK; 
@@ -102,7 +106,7 @@ initial begin
 	 * MOV RB,0x0055
 	 *************************************************************************/
 	 // Start FETCH
-	 DBUS_IN = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_MOV,`MODE_REGB_U8,8'h55};	 
+	 DIN = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_MOV,`MODE_ALU_REGB_U8,8'h55};	 
 	 `TICKTOCK;  
 	// DECODE
 	`TICKTOCK; 
@@ -120,7 +124,7 @@ initial begin
 	 * ST (RA),RB
 	 *************************************************************************/
 	// FETCH
-	DBUS_IN = {`GROUP_LOAD_STORE,`LDSF_NONE,`LDS_ST,`MODE_REG_MEM,`RB,`RA};	 
+	DIN = {`GROUP_LOAD_STORE,`LDSINCF_NONE,`LDSOPF_ST,`MODE_LDS_REG_MEM,`RB,`RA};	 
 	`TICKTOCK;
 	 
 	// DECODE
@@ -128,7 +132,7 @@ initial begin
 
 	// EXECUTE 
 	// Control outputs become valid here
-	`assert("DBUS_OUT", 16'hfaaf, DBUS_OUT)
+	`assert("DOUT_BUF", 16'hfaaf, DOUT_BUF)
 	
 	// COMMIT
 	`TICKTOCK;
@@ -141,7 +145,7 @@ initial begin
 	 * LD Ra,(Rb++)
 	 *************************************************************************/
 	// FETCH
-	DBUS_IN = {`GROUP_LOAD_STORE,`LDSF_POST_INC,`LDS_LD,`MODE_REG_MEM,`R5,`RI};	 
+	DIN = {`GROUP_LOAD_STORE,`LDSINCF_POST_INC,`LDSOPF_LD,`MODE_LDS_REG_MEM,`R5,`RI};	 
 	 `TICKTOCK;
 	 
 	// DECODE

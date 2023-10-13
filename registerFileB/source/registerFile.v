@@ -6,15 +6,11 @@ module registerFile(
 	input RESET,
 
 	/**
-	* Port A input
+	* Data inputs
 	**/
 	input [15:0] ALU_R,
-
-	/**
-	* Port B inputs
-	**/
 	input [15:0] DIN,
-	input [15:0] PC_A,
+	input [15:0] PC_A_NEXT,
 	
 	/**
 	* Port A controls
@@ -23,7 +19,8 @@ module registerFile(
 	input REGA_WEN,
 	input [1:0] REGA_BYTE_EN,
 	input [3:0] ARGA_X,
-	input [2:0] REGA_ADDRX,
+	input [1:0] REGA_ADDRX,
+	input [1:0] REGA_DINX,
 	
 	/**
 	* Port B controls
@@ -32,8 +29,7 @@ module registerFile(
 	input REGB_WEN,
 	input [1:0] REGB_BYTE_EN,
 	input [3:0] ARGB_X,
-	input [1:0] REGB_DINX,
-	input [1:0] REGB_ADDRX,
+	input [2:0] REGB_ADDRX,
 	
 	output wire [15:0] REGA_DOUT,
 	output wire [15:0] REGB_DOUT
@@ -42,14 +38,14 @@ module registerFile(
 /**
 * internal wires
 **/
-reg [15:0] DINB;
+reg [15:0] DINA;
 wire [15:0] DINH;
 reg [3:0] ADDRA;
 reg [3:0] ADDRB;
 
 registers regs(
-	.DataInA( ALU_R ), 
-	.DataInB( DINB ), 
+	.DataInA( DINA ), 
+	.DataInB( ALU_R ), 
 	.AddressA( ADDRA ), 
 	.AddressB( ADDRB ), 
     .ClockA( CLK ), 
@@ -70,29 +66,29 @@ assign DINH = {8'h00,DIN[15:8]};
 
 always @(*) begin
 		
-	case(REGB_DINX)
-		`REGB_DINX_DIN:     DINB = ALU_R;
-		`REGB_DINX_DINH:    DINB = DINH;
-		`REGB_DINX_PC_A:    DINB = PC_A;
-		default:            DINB = ALU_R;
+	case(REGA_DINX)
+		`REGA_DINX_DIN:          DINA = DIN;
+		`REGA_DINX_DINH:         DINA = DINH;
+		`REGA_DINX_PC_A_NEXT:    DINA = PC_A_NEXT;
+		default:                 DINA = ALU_R;
 	endcase
 	
 	case(REGA_ADDRX)
-		`REGA_ADDRX_ARGA: ADDRA = ARGA_X;
 		`REGA_ADDRX_RA:   ADDRA = `RA;
 		`REGA_ADDRX_RB:   ADDRA = `RB;
-		`REGA_ADDRX_RSP:  ADDRA = `RSP;
-		`REGA_ADDRX_RFP:  ADDRA = `RFP;
-		`REGA_ADDRX_RRS:  ADDRA = `RRS;
+		`REGA_ADDRX_RL:   ADDRA = `RL;
 		default:          ADDRA = ARGA_X;
-	endcase
-
+	endcase	
+	
 	case(REGB_ADDRX)
-		`REGB_ADDRX_ARGB: ADDRB = ARGB_X;
 		`REGB_ADDRX_RB:   ADDRB = `RB;
-		`REGB_ADDRX_RL:   ADDRB = `RL;
+		`REGB_ADDRX_RSP:  ADDRB = `RSP;
+		`REGB_ADDRX_RFP:  ADDRB = `RFP;
+		`REGB_ADDRX_RRS:  ADDRB = `RRS;
 		default:          ADDRB = ARGB_X;
 	endcase
+
+
 end
 
 

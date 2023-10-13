@@ -96,37 +96,42 @@
 
 
 /**
-* Register B load sources
+* Register A load sources
 **/
-`define REGB_DINX_DIN    2'b00
-`define REGB_DINX_DINH   2'b01
-`define REGB_DINX_PC_A   2'b10
+`define REGA_DINX_DIN       2'b00
+`define REGA_DINX_DINH      2'b01
+`define REGA_DINX_PC_A_NEXT 2'b10
+`define REGA_DINX_ALU_R     2'b11
 
 /**
 * Register A address sources
 **/
-`define REGA_ADDRX_ARGA 3'b000
-`define REGA_ADDRX_RA   3'b010
-`define REGA_ADDRX_RB   3'b011
-`define REGA_ADDRX_RSP  3'b100
-`define REGA_ADDRX_RFP  3'b101
-`define REGA_ADDRX_RRS  3'b110
+`define REGA_ADDRX_ARGA 2'b00
+`define REGA_ADDRX_RA   2'b01
+`define REGA_ADDRX_RB   2'b10
+`define REGA_ADDRX_RL   2'b11
 
 /**
 * Register B address sources
 **/
-`define REGB_ADDRX_ARGB 2'b00
-`define REGB_ADDRX_RB   2'b01
-`define REGB_ADDRX_RL   2'b10
+`define REGB_ADDRX_ARGB 3'b000
+`define REGB_ADDRX_RB   3'b001
+`define REGB_ADDRX_RSP  3'b010
+`define REGB_ADDRX_RFP  3'b011
+`define REGB_ADDRX_RRS  3'b100
+
+
 
 /**
 * Data sources
 **/
 // ALU A input
-`define ALUA_SRCX_REG_A 2'b00
-`define ALUA_SRCX_ZERO  2'b01
-`define ALUA_SRCX_ONE   2'b10
-`define ALUA_SRCX_TWO   2'b11
+`define ALUA_SRCX_REG_A 2'b000
+`define ALUA_SRCX_ZERO  2'b001
+`define ALUA_SRCX_ONE   2'b010
+`define ALUA_SRCX_TWO   2'b011
+`define ALUA_SRCX_U6    3'b100
+`define ALUA_SRCX_U6_0  3'b101
 
 // ALU B input
 `define ALUB_SRCX_REG_B  3'b000
@@ -135,23 +140,22 @@
 `define ALUB_SRCX_S8     3'b011
 `define ALUB_SRCX_U4     3'b100
 `define ALUB_SRCX_U4_0   3'b101
-`define ALUB_SRCX_U6     3'b110
-`define ALUB_SRCX_U6_0   3'b111
+
 
 
 
 /** 
 * Address bus sources
 **/
-`define ADDR_BUSX_PC_A     2'b00
-`define ADDR_BUSX_ALU_R    2'b01
-`define ADDR_BUSX_ALUA_DIN 2'b10
+`define ADDR_BUSX_PC_A      2'b00
+`define ADDR_BUSX_ALU_R     2'b01
+`define ADDR_BUSX_ALUB_DATA 2'b10
 
 /**
 * Data bus sources
 **/
-`define DATA_BUSX_ALUB_DATA 1'b0
-`define DATA_BUSX_ALU_R     1'b1
+`define DATA_BUSX_ALUA_DATA  1'b0
+`define DATA_BUSX_ALU_R      1'b1
 
 
 /**

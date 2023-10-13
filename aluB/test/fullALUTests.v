@@ -20,6 +20,8 @@ module fullALUTests;
 
 	reg CCL_LD;
 	
+	wire [15:0] ALUA_DATA;
+	wire [15:0] ALUB_DATA;
 	wire [15:0] ALU_R;
 	wire [3:0] CCN;
 
@@ -36,7 +38,9 @@ fullALU testInstance(
 	.LDSINCF(LDSINCF),
 	.CCL_LD(CCL_LD),
 	.ALU_R(ALU_R),
-	.CCN(CCN)
+	.CCN(CCN),
+	.ALUA_DATA(ALUA_DATA),
+	.ALUB_DATA(ALUB_DATA)
 );
 
 

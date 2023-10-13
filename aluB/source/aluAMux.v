@@ -5,8 +5,9 @@
 **/
 module aluAMux(
 	
+	input [5:0] U6,
 	input [15:0] ALUA_DIN,
-	input [1:0] ALUA_SRCX,
+	input [2:0] ALUA_SRCX,
 	output reg [15:0] ALUA_DATA
 	
 );
@@ -17,6 +18,8 @@ always @(*) begin
 		`ALUA_SRCX_ZERO:  ALUA_DATA = 16'h0000;
 		`ALUA_SRCX_ONE:   ALUA_DATA = 16'h0001;
 		`ALUA_SRCX_TWO:   ALUA_DATA = 16'h0002;
+		`ALUA_SRCX_U6:    ALUA_DATA = {10'b0000000000,U6};
+		`ALUA_SRCX_U6_0:  ALUA_DATA = {9'b000000000,U6,1'b0};
 	endcase
 end
 

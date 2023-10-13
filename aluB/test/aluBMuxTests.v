@@ -58,6 +58,18 @@ initial begin
 	`TICKTOCK;
 	`assert("ALUB_DATA", 16'h0081, ALUB_DATA)
 
+	ALUB_SRCX = `ALUB_SRCX_S8;
+	ARGA_X = 4'b1000;
+	ARGB_X = 4'b0001;
+	`TICKTOCK;
+	`assert("ALUB_DATA", 16'hff81, ALUB_DATA)
+
+	ALUB_SRCX = `ALUB_SRCX_S8;
+	ARGA_X = 4'b0100;
+	ARGB_X = 4'b0001;
+	`TICKTOCK;
+	`assert("ALUB_DATA", 16'h0041, ALUB_DATA)
+
 
 	ALUB_SRCX = `ALUB_SRCX_U4;
 	ARGA_X = 4'b1000;

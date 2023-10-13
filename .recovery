@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<BaliProject version="3.2" title="ForthCPU" device="LCMXO3L-6900C-5BG256C" default_implementation="programCounterTestbench">
+<BaliProject version="3.2" title="ForthCPU" device="LCMXO3L-6900C-5BG256C" default_implementation="processorCore">
     <Options/>
     <Implementation title="addressBusController" dir="addressBusController" description="addressBusController" synthesis="synplify" default_strategy="Area">
         <Options def_top="addressBusController"/>
@@ -142,6 +142,27 @@
             <Options/>
         </Source>
     </Implementation>
+    <Implementation title="busController" dir="busController" description="busController" synthesis="synplify" default_strategy="Area">
+        <Options def_top="busControllerTests"/>
+        <Source name="busController/source/busController.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="constants.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="busController/test/busControllerTests.v" type="Verilog" type_short="Verilog">
+            <Options top_module="busControllerTests"/>
+        </Source>
+        <Source name="instructionPhaseDecoder/source/instructionPhaseDecoder.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="busController/test/busControllerTestbench/busControllerTestbench.spf" type="Simulation Project File" type_short="SPF">
+            <Options/>
+        </Source>
+        <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">
+            <Options/>
+        </Source>
+    </Implementation>
     <Implementation title="dataBusController" dir="dataBusController" description="dataBusController" synthesis="synplify" default_strategy="Area">
         <Options def_top="dataBusController"/>
         <Source name="constants.v" type="Verilog" type_short="Verilog">
@@ -236,7 +257,7 @@
         </Source>
     </Implementation>
     <Implementation title="loadStoreGroupDecoder" dir="loadStoreGroupDecoder" description="loadStoreGroupDecoder" synthesis="synplify" default_strategy="Area">
-        <Options/>
+        <Options def_top="loadStoreGroupDecoderTests"/>
         <Source name="loadStoreGroupDecoder/source/loadStoreGroupDecoder.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
@@ -256,67 +277,82 @@
             <Options/>
         </Source>
     </Implementation>
+    <Implementation title="opxMultiplexer" dir="opxMultiplexer" description="opxMultiplexer" synthesis="synplify" default_strategy="Area">
+        <Options def_top="opxMultiplexer"/>
+        <Source name="opxMultiplexer/source/opxMultiplexer.v" type="Verilog" type_short="Verilog">
+            <Options top_module="opxMultiplexer"/>
+        </Source>
+        <Source name="constants.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">
+            <Options/>
+        </Source>
+    </Implementation>
     <Implementation title="processorCore" dir="processorCore" description="processorCore" synthesis="synplify" default_strategy="Area">
-        <Options def_top="processorCoreTests"/>
+        <Options def_top="busController"/>
         <Source name="constants.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
         <Source name="processorCore/source/core.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
-        <Source name="addressBusController/source/addressBusController.v" type="Verilog" type_short="Verilog">
-            <Options/>
-        </Source>
-        <Source name="alu/source/fullALU.v" type="Verilog" type_short="Verilog">
-            <Options/>
-        </Source>
-        <Source name="alu/source/incrementer.v" type="Verilog" type_short="Verilog">
-            <Options/>
-        </Source>
-        <Source name="alu/source/aluBlock.v" type="Verilog" type_short="Verilog">
-            <Options/>
-        </Source>
-        <Source name="alu/source/aluBMux.v" type="Verilog" type_short="Verilog">
-            <Options/>
-        </Source>
-        <Source name="alu/source/alu.v" type="Verilog" type_short="Verilog">
-            <Options/>
-        </Source>
         <Source name="aluGroupDecoder/source/aluGroupDecoder.v" type="Verilog" type_short="Verilog">
-            <Options/>
-        </Source>
-        <Source name="processorCore/source/opxMultiplexer.v" type="Verilog" type_short="Verilog">
-            <Options/>
+            <Options top_module="aluGroupDecoder"/>
         </Source>
         <Source name="loadStoreGroupDecoder/source/loadStoreGroupDecoder.v" type="Verilog" type_short="Verilog">
-            <Options/>
+            <Options top_module="loadStoreGroupDecoder"/>
         </Source>
         <Source name="instructionPhaseDecoder/source/instructionPhaseDecoder.v" type="Verilog" type_short="Verilog">
-            <Options/>
+            <Options top_module="instructionPhaseDecoder"/>
         </Source>
         <Source name="programCounter/source/programCounter.v" type="Verilog" type_short="Verilog">
-            <Options/>
-        </Source>
-        <Source name="registerFile/source/register_file.v" type="Verilog" type_short="Verilog">
-            <Options/>
-        </Source>
-        <Source name="registerFile/source/dpram.ipx" type="IPX_Module" type_short="IPX">
-            <Options/>
-        </Source>
-        <Source name="registerFile/source/dpram.lpc" type="LPC_Module" type_short="LPC">
-            <Options/>
-        </Source>
-        <Source name="registerFile/source/dpram.v" type="Verilog" type_short="Verilog">
-            <Options/>
+            <Options top_module="programCounter"/>
         </Source>
         <Source name="processorCore/test/processorCoreTests.v" type="Verilog" type_short="Verilog">
             <Options top_module="processorCoreTests"/>
         </Source>
         <Source name="jumpGroupDecoder/source/jumpGroupDecoder.v" type="Verilog" type_short="Verilog">
+            <Options top_module="jumpGroupDecoder"/>
+        </Source>
+        <Source name="registerFileB/source/registers.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
-        <Source name="dataBusController/source/dataBusController.v" type="Verilog" type_short="Verilog">
+        <Source name="registerFileB/source/registerFile.v" type="Verilog" type_short="Verilog">
+            <Options top_module="registerFile"/>
+        </Source>
+        <Source name="registerFileB/source/registers.ipx" type="IPX_Module" type_short="IPX">
             <Options/>
+        </Source>
+        <Source name="registerFileB/source/registers.lpc" type="LPC_Module" type_short="LPC">
+            <Options/>
+        </Source>
+        <Source name="registerFileB/source/registers.edn" type="EDIF" type_short="EDIF">
+            <Options/>
+        </Source>
+        <Source name="aluB/source/alu.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="aluB/source/aluAMux.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="aluB/source/aluBMux.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="aluB/source/fullALU.v" type="Verilog" type_short="Verilog">
+            <Options top_module="fullALU"/>
+        </Source>
+        <Source name="opxMultiplexer/source/opxMultiplexer.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="interruptLogic/source/interruptStateMachine.v" type="Verilog" type_short="Verilog">
+            <Options top_module="interruptStateMachine"/>
+        </Source>
+        <Source name="branchLogic/source/branchLogic.v" type="Verilog" type_short="Verilog">
+            <Options top_module="branchLogic"/>
+        </Source>
+        <Source name="busController/source/busController.v" type="Verilog" type_short="Verilog">
+            <Options top_module="busController"/>
         </Source>
         <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">
             <Options/>
@@ -447,7 +483,19 @@
         <Source name="registerFileB/test/registerFileTests/registerFileTests.spf" type="Simulation Project File" type_short="SPF">
             <Options/>
         </Source>
-        <Source name="registerFileB/test/registerFileTmplTests/registerFileTmplTests.spf" type="Simulation Project File" type_short="SPF">
+    </Implementation>
+    <Implementation title="timingModel" dir="timingModel" description="timingModel" synthesis="synplify" default_strategy="Area">
+        <Options def_top="timingModel"/>
+        <Source name="timingModel/source/timingModel.v" type="Verilog" type_short="Verilog">
+            <Options top_module="timingModel"/>
+        </Source>
+        <Source name="testSetup.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">
+            <Options/>
+        </Source>
+        <Source name="timingModel/test/timingModelTestbench/timingModelTestbench.spf" type="Simulation Project File" type_short="SPF">
             <Options/>
         </Source>
     </Implementation>

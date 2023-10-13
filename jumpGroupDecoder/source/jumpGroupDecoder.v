@@ -50,15 +50,20 @@ module jumpGroupDecoder(
 	**/
 	output reg PC_EN,
 	output reg JRX,
-	output reg JMP_X,
-	output reg CC_APPLYX,
+	output reg JMPX,
+	output wire CC_APPLYX,
 	output wire CC_INVERTX,
 	output wire [1:0] CC_SELECTX,
 	
 	/**
 	* Register file control
 	**/
-	output reg[1:0] REGB_ADDRX,
+	output reg[1:0] REGA_ADDRX,
+	output reg[2:0] REGB_ADDRX,
+	output reg REGA_EN,
+	output reg REGA_WEN,
+	output reg REGB_EN,
+	
 	/**
 	* ALU control
 	**/
@@ -77,14 +82,13 @@ assign JPF   = INSTRUCTION[11:10];
 assign CC_SELECTX   = INSTRUCTION[9:8];
 
 assign CC_INVERTX = SKIPF[0];
+assign CC_APPLYX  = SKIPF[1];
 
 always @(*) begin
 	if(GROUPF == `GROUP_JUMP) begin
-		JMP_X = ~SKIPF[1];
-		CC_APPLYX = ~JMP_X;
+		JMPX = 1;
 	end else begin
-		CC_APPLYX = 0;
-		JMP_X = 0;
+		JMPX = 0;
 	end
 	
 	if(INSTRUCTION == `INSTRUCTION_HALT) begin
@@ -96,26 +100,42 @@ always @(*) begin
 	case(JPF)
 		`JPF_ABS_R: begin
 			ALUB_SRCX = `ALUB_SRCX_REG_B;
+			REGA_ADDRX = `REGA_ADDRX_RL;
 			REGB_ADDRX = `REGB_ADDRX_ARGB;
-			JRX = 0;
+			JRX      = 0;
+			REGA_EN  = 1;
+			REGA_WEN = 1;
+			REGB_EN  = 1;
 		end
 		
 		`JPF_ABS_U8H: begin
 			ALUB_SRCX = `ALUB_SRCX_U8H;
+			REGA_ADDRX = `REGA_ADDRX_RL;
 			REGB_ADDRX = `REGB_ADDRX_RB;
-			JRX = 0;
+			JRX      = 0;
+			REGA_EN  = 1;
+			REGA_WEN = 1;
+			REGB_EN  = 1;		
 		end
 
 		`JPF_REL_S8: begin
 			ALUB_SRCX = `ALUB_SRCX_S8;
+			REGA_ADDRX = `REGA_ADDRX_RL;
 			REGB_ADDRX = `REGB_ADDRX_ARGB;
-			JRX = 1; 
+			JRX      = 1; 
+			REGA_EN  = 0;
+			REGA_WEN = 0;
+			REGB_EN  = 1;
 		end
 
 		`JPF_REL_U8H: begin
 			ALUB_SRCX = `ALUB_SRCX_U8H;
+			REGA_ADDRX = `REGA_ADDRX_RL;
 			REGB_ADDRX = `REGB_ADDRX_RB;
-			JRX = 1;
+			JRX      = 1;
+			REGA_EN  = 0;
+			REGA_WEN = 0;
+			REGB_EN  = 1;
 		end
 	endcase
 end

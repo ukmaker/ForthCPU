@@ -55,8 +55,8 @@ module aluGroupDecoder(
 	output reg REGB_EN,
 	output reg REGA_WEN,
 	output reg REGB_WEN,
-	output reg [2:0] REGA_ADDRX,
-	output reg [1:0] REGB_ADDRX,
+	output reg [1:0] REGA_ADDRX,
+	output reg [2:0] REGB_ADDRX,
 	
 	/**
 	* ALU
@@ -67,7 +67,7 @@ module aluGroupDecoder(
 	/**
 	* Data Sources
 	**/
-	output reg [1:0] ALUA_SRCX,
+	output reg [2:0] ALUA_SRCX,
 	output reg [2:0] ALUB_SRCX,
 	
 	/**

@@ -36,19 +36,21 @@ module loadStoreGroupDecoderTests;
 	/**
 	* Data Sources
 	**/
-	wire        ALUA_SRCX;
+	wire [2:0] ALUA_SRCX;
 	wire [2:0] ALUB_SRCX;
 	
-	wire [1:0] REGB_DINX;
-	wire [2:0] REGA_ADDRX;
-	wire [1:0] REGB_ADDRX;
+	wire [1:0] REGA_DINX;
+	wire [1:0] REGA_ADDRX;
+	wire [2:0] REGB_ADDRX;
 	wire [1:0] REGA_BYTE_ENX;
 	wire [1:0] REGB_BYTE_ENX;
 	/**
 	* Bus control
 	**/
 	wire [1:0] DATA_BUSX;
-	wire       DATA_BUS_OEN;
+	wire       RDX;
+	wire       WRX;
+	wire       BYTEX;
 	wire [1:0] ADDR_BUSX;
 	
 loadStoreGroupDecoder testInstance(
@@ -66,13 +68,15 @@ loadStoreGroupDecoder testInstance(
 	.ALU_OPX(ALU_OPX),
 	.ALUA_SRCX(ALUA_SRCX),
 	.ALUB_SRCX(ALUB_SRCX),
-	.REGB_DINX(REGB_DINX),
+	.REGA_DINX(REGA_DINX),
 	.REGA_ADDRX(REGA_ADDRX),
 	.REGB_ADDRX(REGB_ADDRX),
 	.REGA_BYTE_ENX(REGA_BYTE_ENX),
 	.REGB_BYTE_ENX(REGB_BYTE_ENX),
 	.DATA_BUSX(DATA_BUSX),
-	.DATA_BUS_OEN(DATA_BUS_OEN),
+	.RDX(RDX),
+	.WRX(WRX),
+	.BYTEX(BYTEX),
 	.ADDR_BUSX(ADDR_BUSX)
 );
 
@@ -115,22 +119,26 @@ initial begin
 	`TICKTOCK; 
 	// EXECUTE 
 	// Control outputs become valid here
-	`assert("REGA_EN",    1, REGA_EN)
-	`assert("REGB_EN",    0, REGB_EN)
-	`assert("REGA_WEN",   0, REGA_WEN)
-	`assert("REG_B_WEN",  0, REGB_WEN)
-	`assert("ALUA_SRCX", `ALUA_SRCX_REG_A, ALUA_SRCX)
-	`assert("ALUB_SRCX", `ALUB_SRCX_REG_B, ALUB_SRCX)
-	`assert("ALU_OPX",   `ALU_OPX_MOV, ALU_OPX)
-	`assert("ADDR_BUSX",   `ADDR_BUSX_ALUA_DIN, ADDR_BUSX)
+	#10
+	`mark(1)
+	`assert("REGA_EN",      1,                   REGA_EN)
+	`assert("REGB_EN",      1,                   REGB_EN)
+	`assert("REGA_WEN",     0,                   REGA_WEN)
+	`assert("REG_B_WEN",    0,                   REGB_WEN)
+	`assert("ALUA_SRCX",   `ALUA_SRCX_ZERO,      ALUA_SRCX)
+	`assert("ALUB_SRCX",   `ALUB_SRCX_REG_B,     ALUB_SRCX)
+	`assert("ALU_OPX",     `ALU_OPX_ADD,         ALU_OPX)
+	`assert("ADDR_BUSX",   `ADDR_BUSX_ALUB_DATA, ADDR_BUSX)
 	`assert("REGA_ADDRX",  `REGA_ADDRX_ARGA,     REGA_ADDRX)
+	`assert("REGB_ADDRX",  `REGB_ADDRX_ARGB,     REGB_ADDRX)
 	
 	// COMMIT
 	`TICKTOCK;
-	`assert("REGA_EN", 0, REGA_EN)
+	`mark(2)
+	`assert("REGA_EN", 1, REGA_EN)
 	`assert("REGB_EN", 1, REGB_EN)
-	`assert("REGA_WEN",   0, REGA_WEN)
-	`assert("REG_B_WEN",  1, REGB_WEN)
+	`assert("REGA_WEN",   1, REGA_WEN)
+	`assert("REG_B_WEN",  0, REGB_WEN)
 	
 	`TICKTOCK
 	
@@ -147,20 +155,22 @@ initial begin
 
 	// EXECUTE 
 	// Control outputs become valid here
-	`assert("REGA_EN",      1, REGA_EN)
-	`assert("REGB_EN",      0, REGB_EN)
-	`assert("REGA_WEN",     0, REGA_WEN)
-	`assert("REG_B_WEN",    0, REGB_WEN)
-	`assert("ALUA_SRCX",   `ALUA_SRCX_TWO, ALUA_SRCX)
-	`assert("ALUB_SRCX",   `ALUB_SRCX_REG_B, ALUB_SRCX)
-	`assert("ALU_OPX",     `ALU_OPX_MOV, ALU_OPX)
-	`assert("ADDR_BUSX",   `ADDR_BUSX_ALUA_DIN, ADDR_BUSX)
+	`mark(3)
+	`assert("REGA_EN",      1,                   REGA_EN)
+	`assert("REGB_EN",      1,                   REGB_EN)
+	`assert("REGA_WEN",     0,                   REGA_WEN)
+	`assert("REG_B_WEN",    0,                   REGB_WEN)
+	`assert("ALUA_SRCX",   `ALUA_SRCX_TWO,       ALUA_SRCX)
+	`assert("ALUB_SRCX",   `ALUB_SRCX_REG_B,     ALUB_SRCX)
+	`assert("ALU_OPX",     `ALU_OPX_SUB,         ALU_OPX)
+	`assert("ADDR_BUSX",   `ADDR_BUSX_ALU_R,     ADDR_BUSX)
 	`assert("REGA_ADDRX",  `REGA_ADDRX_ARGA,     REGA_ADDRX)
 	
 	// COMMIT
 	`TICKTOCK;
-	`assert("REGA_EN", 1, REGA_EN)
-	`assert("REGB_EN", 1, REGB_EN)
+	`mark(4)
+	`assert("REGA_EN",    1, REGA_EN)
+	`assert("REGB_EN",    1, REGB_EN)
 	`assert("REGA_WEN",   1, REGA_WEN)
 	`assert("REG_B_WEN",  1, REGB_WEN)
 		
@@ -179,20 +189,22 @@ initial begin
 
 	// EXECUTE 
 	// Control outputs become valid here
-	`assert("REGA_EN",      1, REGA_EN)
-	`assert("REGB_EN",      0, REGB_EN)
-	`assert("REGA_WEN",     0, REGA_WEN)
-	`assert("REG_B_WEN",    0, REGB_WEN)
-	`assert("ALUA_SRCX",   `ALUA_SRCX_TWO, ALUA_SRCX)
-	`assert("ALUB_SRCX",   `ALUB_SRCX_REG_B, ALUB_SRCX)
-	`assert("ALU_OPX",     `ALU_OPX_MOV, ALU_OPX)
-	`assert("ADDR_BUSX",   `ADDR_BUSX_ALUA_DIN, ADDR_BUSX)
+	`mark(5)
+	`assert("REGA_EN",      1,                   REGA_EN)
+	`assert("REGB_EN",      1,                   REGB_EN)
+	`assert("REGA_WEN",     0,                   REGA_WEN)
+	`assert("REG_B_WEN",    0,                   REGB_WEN)
+	`assert("ALUA_SRCX",   `ALUA_SRCX_TWO,       ALUA_SRCX)
+	`assert("ALUB_SRCX",   `ALUB_SRCX_REG_B,     ALUB_SRCX)
+	`assert("ALU_OPX",     `ALU_OPX_ADD,         ALU_OPX)
+	`assert("ADDR_BUSX",   `ADDR_BUSX_ALUB_DATA, ADDR_BUSX)
 	`assert("REGA_ADDRX",  `REGA_ADDRX_ARGA,     REGA_ADDRX)
 	
 	// COMMIT
 	`TICKTOCK;
-	`assert("REGA_EN", 1, REGA_EN)
-	`assert("REGB_EN", 1, REGB_EN)
+	`mark(6)
+	`assert("REGA_EN",    1, REGA_EN)
+	`assert("REGB_EN",    1, REGB_EN)
 	`assert("REGA_WEN",   1, REGA_WEN)
 	`assert("REG_B_WEN",  1, REGB_WEN)
 	`TICKTOCK;
@@ -208,20 +220,22 @@ initial begin
 	`TICKTOCK; 
 	// EXECUTE 
 	// Control outputs become valid here
-	`assert("REGA_EN",      1, REGA_EN)
-	`assert("REGB_EN",      1, REGB_EN)
-	`assert("REGA_WEN",     0, REGA_WEN)
-	`assert("REG_B_WEN",    0, REGB_WEN)
-	`assert("ALUA_SRCX",   `ALUA_SRCX_REG_A, ALUA_SRCX)
-	`assert("ALUB_SRCX",   `ALUB_SRCX_REG_B, ALUB_SRCX)
-	`assert("ALU_OPX",     `ALU_OPX_MOV, ALU_OPX)
-	`assert("ADDR_BUSX",   `ADDR_BUSX_ALUA_DIN, ADDR_BUSX)
+	`mark(7)
+	`assert("REGA_EN",      1,                   REGA_EN)
+	`assert("REGB_EN",      1,                   REGB_EN)
+	`assert("REGA_WEN",     0,                   REGA_WEN)
+	`assert("REG_B_WEN",    0,                   REGB_WEN)
+	`assert("ALUA_SRCX",   `ALUA_SRCX_ZERO,      ALUA_SRCX)
+	`assert("ALUB_SRCX",   `ALUB_SRCX_REG_B,     ALUB_SRCX)
+	`assert("ALU_OPX",     `ALU_OPX_ADD,         ALU_OPX)
+	`assert("ADDR_BUSX",   `ADDR_BUSX_ALUB_DATA, ADDR_BUSX)
 	`assert("REGA_ADDRX",  `REGA_ADDRX_ARGA,     REGA_ADDRX)
-	
+	`assert("DATA_BUSX",   `DATA_BUSX_ALUA_DATA, DATA_BUSX)
 	// COMMIT
 	`TICKTOCK;
-	`assert("REGA_EN", 0, REGA_EN)
-	`assert("REGB_EN", 0, REGB_EN)
+	`mark(8)
+	`assert("REGA_EN",    1, REGA_EN)
+	`assert("REGB_EN",    1, REGB_EN)
 	`assert("REGA_WEN",   0, REGA_WEN)
 	`assert("REG_B_WEN",  0, REGB_WEN)
 	`TICKTOCK;
@@ -239,22 +253,24 @@ initial begin
 	`TICKTOCK; 
 	// EXECUTE 
 	// Control outputs become valid here
-	`assert("REGA_EN",      1, REGA_EN)
-	`assert("REGB_EN",      0, REGB_EN)
-	`assert("REGA_WEN",     0, REGA_WEN)
-	`assert("REG_B_WEN",    0, REGB_WEN)
-	`assert("ALUA_SRCX",   `ALUA_SRCX_REG_A,    ALUA_SRCX)
-	`assert("ALUB_SRCX",   `ALUB_SRCX_U6_0, ALUB_SRCX)
+	`mark(9)
+	`assert("REGA_EN",      1,                  REGA_EN)
+	`assert("REGB_EN",      1,                  REGB_EN)
+	`assert("REGA_WEN",     0,                  REGA_WEN)
+	`assert("REG_B_WEN",    0,                  REGB_WEN)
+	`assert("ALUA_SRCX",   `ALUA_SRCX_U6_0,     ALUA_SRCX)
+	`assert("ALUB_SRCX",   `ALUB_SRCX_REG_B,    ALUB_SRCX)
 	`assert("ALU_OPX",     `ALU_OPX_SUB,        ALU_OPX)
 	`assert("ADDR_BUSX",   `ADDR_BUSX_ALU_R,    ADDR_BUSX)
-	`assert("REGA_ADDRX",  `REGA_ADDRX_RFP,     REGA_ADDRX)
+	`assert("REGB_ADDRX",  `REGB_ADDRX_RFP,     REGB_ADDRX)
 			
 	// COMMIT
 	`TICKTOCK;
-	`assert("REGA_EN", 0, REGA_EN)
-	`assert("REGB_EN", 1, REGB_EN)
-	`assert("REGA_WEN",   0, REGA_WEN)
-	`assert("REG_B_WEN",  1, REGB_WEN)
+	`mark(10)
+	`assert("REGA_EN",    1, REGA_EN)
+	`assert("REGB_EN",    1, REGB_EN)
+	`assert("REGA_WEN",   1, REGA_WEN)
+	`assert("REG_B_WEN",  0, REGB_WEN)
 	`TICKTOCK;
 	
 	/************************************************************************
@@ -268,22 +284,24 @@ initial begin
 	`TICKTOCK; 
 	// EXECUTE 
 	// Control outputs become valid here
-	`assert("REGA_EN",      1, REGA_EN)
-	`assert("REGB_EN",      0, REGB_EN)
-	`assert("REGA_WEN",     0, REGA_WEN)
-	`assert("REG_B_WEN",    0, REGB_WEN)
-	`assert("ALUA_SRCX",   `ALUA_SRCX_REG_A,    ALUA_SRCX)
-	`assert("ALUB_SRCX",   `ALUB_SRCX_U6_0, ALUB_SRCX)
+	`mark(11)
+	`assert("REGA_EN",      1,                  REGA_EN)
+	`assert("REGB_EN",      1,                  REGB_EN)
+	`assert("REGA_WEN",     0,                  REGA_WEN)
+	`assert("REG_B_WEN",    0,                  REGB_WEN)
+	`assert("ALUA_SRCX",   `ALUA_SRCX_U6_0,     ALUA_SRCX)
+	`assert("ALUB_SRCX",   `ALUB_SRCX_REG_B,    ALUB_SRCX)
 	`assert("ALU_OPX",     `ALU_OPX_ADD,        ALU_OPX)
 	`assert("ADDR_BUSX",   `ADDR_BUSX_ALU_R,    ADDR_BUSX)
-	`assert("REGA_ADDRX",  `REGA_ADDRX_RSP,     REGA_ADDRX)
+	`assert("REGB_ADDRX",  `REGB_ADDRX_RSP,     REGB_ADDRX)
 			
 	// COMMIT
 	`TICKTOCK;
-	`assert("REGA_EN", 0, REGA_EN)
-	`assert("REGB_EN", 1, REGB_EN)
-	`assert("REGA_WEN",   0, REGA_WEN)
-	`assert("REG_B_WEN",  1, REGB_WEN)
+	`mark(12)
+	`assert("REGA_EN",    1, REGA_EN)
+	`assert("REGB_EN",    1, REGB_EN)
+	`assert("REGA_WEN",   1, REGA_WEN)
+	`assert("REG_B_WEN",  0, REGB_WEN)
 	`TICKTOCK;
 	
 	/************************************************************************
@@ -297,22 +315,24 @@ initial begin
 	`TICKTOCK; 
 	// EXECUTE 
 	// Control outputs become valid here
-	`assert("REGA_EN",      1, REGA_EN)
-	`assert("REGB_EN",      0, REGB_EN)
-	`assert("REGA_WEN",     0, REGA_WEN)
-	`assert("REG_B_WEN",    0, REGB_WEN)
-	`assert("ALUA_SRCX",   `ALUA_SRCX_REG_A,    ALUA_SRCX)
-	`assert("ALUB_SRCX",   `ALUB_SRCX_U6_0, ALUB_SRCX)
+	`mark(13)
+	`assert("REGA_EN",      1,                  REGA_EN)
+	`assert("REGB_EN",      1,                  REGB_EN)
+	`assert("REGA_WEN",     0,                  REGA_WEN)
+	`assert("REG_B_WEN",    0,                  REGB_WEN)
+	`assert("ALUA_SRCX",   `ALUA_SRCX_U6_0,     ALUA_SRCX)
+	`assert("ALUB_SRCX",   `ALUB_SRCX_REG_B,    ALUB_SRCX)
 	`assert("ALU_OPX",     `ALU_OPX_ADD,        ALU_OPX)
 	`assert("ADDR_BUSX",   `ADDR_BUSX_ALU_R,    ADDR_BUSX)
-	`assert("REGA_ADDRX",  `REGA_ADDRX_RRS,     REGA_ADDRX)
+	`assert("REGB_ADDRX",  `REGB_ADDRX_RRS,     REGB_ADDRX)
 			
 	// COMMIT
 	`TICKTOCK;
-	`assert("REGA_EN", 0, REGA_EN)
-	`assert("REGB_EN", 1, REGB_EN)
-	`assert("REGA_WEN",   0, REGA_WEN)
-	`assert("REG_B_WEN",  1, REGB_WEN)
+	`mark(14)
+	`assert("REGA_EN",    1, REGA_EN)
+	`assert("REGB_EN",    1, REGB_EN)
+	`assert("REGA_WEN",   1, REGA_WEN)
+	`assert("REG_B_WEN",  0, REGB_WEN)
 	`TICKTOCK;
 	
 
