@@ -61,7 +61,7 @@ wire         PC_LD_INT0;
 wire         PC_LD_INT1;
 wire [2:0]  PC_NEXTX;
 wire         PC_OFFSETX;
-wire         PC_EN;
+wire         PC_ENX;
 wire [1:0]  REGA_ADDRX;
 wire [1:0]  REGA_BYTE_ENX;
 wire [1:0]  REGA_DINX;
@@ -79,38 +79,44 @@ wire         RETIX;
 /***************************************
 * Wiring from decoders
 ****************************************/
-	wire [3:0]  ALU_ALU_OPX;
-	wire [2:0]  ALU_ALUA_SRCX;
-	wire [2:0]  ALU_ALUB_SRCX;
-	wire         ALU_REGA_EN,
-	wire         ALU_REGB_EN,
-	wire         ALU_REGA_WEN,
-	wire         ALU_REGB_WEN,
+wire [3:0]  ALU_ALU_OPX;
+wire [2:0]  ALU_ALUA_SRCX;
+wire [2:0]  ALU_ALUB_SRCX;
+wire [1:0]  ALU_DATA_BUSX;
+wire [1:0]  ALU_REGA_ADDRX;
+wire [1:0]  ALU_REGA_DINX;
+wire         ALU_REGA_EN;
+wire [2:0]  ALU_REGB_ADDRX;
+wire         ALU_REGB_EN;
+wire         ALU_REGA_WEN;
+wire         ALU_REGB_WEN;
+
+wire [1:0]  LDS_ADDR_BUSX;
+wire [2:0]  LDS_ALUA_SRCX;
+wire [2:0]  LDS_ALUB_SRCX;
+wire [3:0]  LDS_ALU_OPX;
+wire         LDS_BYTEX;
+wire [1:0]  LDS_DATA_BUSX;
+wire         LDS_RDX;
+wire         LDS_REGA_EN;
+wire         LDS_REGA_WEN;
+wire         LDS_REGB_EN;
+wire         LDS_REGB_WEN;
+wire [1:0]  LDS_REGA_ADDRX;
+wire [1:0]  LDS_REGA_BYTE_ENX;
+wire [1:0]  LDS_REGA_DINX;
+wire [2:0]  LDS_REGB_ADDRX;
+wire [1:0]  LDS_REGB_BYTE_ENX;
+wire         LDS_WRX;
+
+wire [1:0]  JMP_REGA_ADDRX;
+wire [2:0]  JMP_REGB_ADDRX;
+wire         JMP_REGA_EN;
+wire         JMP_REGA_WEN;
+wire         JMP_REGB_EN;
+wire [2:0]  JMP_ALUB_SRCX;
 	
-	wire [1:0]  LDS_ADDR_BUSX;
-	wire [2:0]  LDS_ALUA_SRCX;
-	wire [2:0]  LDS_ALUB_SRCX;
-	wire [3:0]  LDS_ALU_OPX;
-	wire         LDS_BYTEX;
-	wire [1:0]  LDS_DATA_BUSX;
-	wire         LDS_RDX;
-	wire         LDS_REGA_EN;
-	wire         LDS_REGA_WEN;
-	wire         LDS_REGB_EN;
-	wire         LDS_REGB_WEN;
-	wire [1:0]  LDS_REGA_ADDRX;
-	wire [1:0]  LDS_REGA_BYTE_ENX;
-	wire [1:0]  LDS_REGA_DINX;
-	wire [2:0]  LDS_REGB_ADDRX;
-	wire [1:0]  LDS_REGB_BYTE_ENX;
-	wire         LDS_WRX;
-	
-	wire [1:0]  JMP_REGA_ADDRX;
-	wire [2:0]  JMP_REGB_ADDRX;
-	wire         JMP_REGA_EN;
-	wire         JMP_REGA_WEN;
-	wire         JMP_REGB_EN;
-	wire [2:0]  JMP_ALUB_SRCX;
+assign PC_ENX = 1;
 
 /***************************************
 * Instruction Phase Decoder
@@ -165,7 +171,7 @@ registerFile registerFileInst(
 	.REGA_EN(REGA_EN),
 	.REGA_WEN(REGA_WEN),
 	.REGB_EN(REGB_EN),
-	.REGB_WEN(REBA_WEN),
+	.REGB_WEN(REGB_WEN),
 	.REGA_BYTE_EN(REGA_BYTE_ENX),
 	.REGB_BYTE_EN(REGB_BYTE_ENX),
 	.ARGA_X(ARGA_X),
@@ -188,7 +194,7 @@ busController busControllerInst(
 	.ALUB_DATA(ALUB_DATA),
 	.ADDR_BUSX(ADDR_BUSX),
 	.ADDR_BUF(ADDR_BUF),
-	.ALUA_DATA(ALUA_DATA),
+	.REGA_DOUT(REGA_DOUT),
 	.DATA_BUSX(DATA_BUSX),
 	.BYTEX(BYTEX),
 	.WRX(WRX),
@@ -264,16 +270,16 @@ aluGroupDecoder aluGroupDecoderInst(
 	.DECODE(DECODE),
 	.EXECUTE(EXECUTE),
 	.COMMIT(COMMIT),
-	.REGA_EN(REGA_EN),
-	.REGB_EN(REGB_EN),
-	.REGA_WEN(REGA_WEN),
-	.REGB_WEN(REGB_WEN),
-	.REGA_ADDRX(REGA_ADDRX),
-	.REGB_ADDRX(REGB_ADDRX),
-	.ALU_OPX(ALU_OPX),
+	.REGA_EN(ALU_REGA_EN),
+	.REGB_EN(ALU_REGB_EN),
+	.REGA_WEN(ALU_REGA_WEN),
+	.REGB_WEN(ALU_REGB_WEN),
+	.REGA_ADDRX(ALU_REGA_ADDRX),
+	.REGB_ADDRX(ALU_REGB_ADDRX),
+	.ALU_OPX(ALU_ALU_OPX),
 	.CCL_LD(CCL_LD),
-	.ALUA_SRCX(ALUA_SRCX),
-	.ALUB_SRCX(ALUB_SRCX),
+	.ALUA_SRCX(ALU_ALUA_SRCX),
+	.ALUB_SRCX(ALU_ALUB_SRCX),
 	.ARGA_X(ARGA_X),
 	.ARGB_X(ARGB_X),
 	.LDSINCF(LDSINCF)
@@ -290,23 +296,23 @@ loadStoreGroupDecoder loadStoreGroupDecoderInst(
 	.DECODE(DECODE),
 	.EXECUTE(EXECUTE),
 	.COMMIT(COMMIT),
-	.REGA_EN(REGA_EN),
-	.REGB_EN(REGB_EN),
-	.REGA_WEN(REGA_WEN),
-	.REGB_WEN(REGB_WEN),
-	.ALUA_SRCX(ALUA_SRCX),
-	.ALUB_SRCX(ALUB_SRCX),
-	.ALU_OPX(ALU_OPX),
-	.REGA_DINX(REGA_DINX),
-	.REGA_ADDRX(REGA_ADDRX),
-	.REGB_ADDRX(REGB_ADDRX),
-	.REGA_BYTE_ENX(REGA_BYTE_ENX),
-	.REGB_BYTE_ENX(REGB_BYTE_ENX),
-	.DATA_BUSX(DATA_BUSX),
-	.BYTEX(BYTEX),
-	.WRX(WRX),
-	.RDX(RDX),
-	.ADDR_BUSX(ADDR_BUSX)
+	.REGA_EN(LDS_REGA_EN),
+	.REGB_EN(LDS_REGB_EN),
+	.REGA_WEN(LDS_REGA_WEN),
+	.REGB_WEN(LDS_REGB_WEN),
+	.ALUA_SRCX(LDS_ALUA_SRCX),
+	.ALUB_SRCX(LDS_ALUB_SRCX),
+	.ALU_OPX(LDS_ALU_OPX),
+	.REGA_DINX(LDS_REGA_DINX),
+	.REGA_ADDRX(LDS_REGA_ADDRX),
+	.REGB_ADDRX(LDS_REGB_ADDRX),
+	.REGA_BYTE_ENX(LDS_REGA_BYTE_ENX),
+	.REGB_BYTE_ENX(LDS_REGB_BYTE_ENX),
+	.DATA_BUSX(LDS_DATA_BUSX),
+	.BYTEX(LDS_BYTEX),
+	.WRX(LDS_WRX),
+	.RDX(LDS_RDX),
+	.ADDR_BUSX(LDS_ADDR_BUSX)
 );
 
 /***************************************
@@ -326,18 +332,87 @@ jumpGroupDecoder jumpGroupDecoderInst(
 	.CC_APPLYX(CC_APPLYX),
 	.CC_INVERTX(CC_INVERTX),
 	.CC_SELECTX(CC_SELECTX),
-	.REGA_ADDRX(REGA_ADDRX),
-	.REGB_ADDRX(REGB_ADDRX),
-	.REGA_EN(REGA_EN),
-	.REGB_EN(REGB_EN),
-	.REGA_WEN(REGA_WEN),
-	.ALUB_SRCX(ALUB_SRCX)
+	.REGA_ADDRX(JMP_REGA_ADDRX),
+	.REGB_ADDRX(JMP_REGB_ADDRX),
+	.REGA_EN(JMP_REGA_EN),
+	.REGB_EN(JMP_REGB_EN),
+	.REGA_WEN(JMP_REGA_WEN),
+	.ALUB_SRCX(JMP_ALUB_SRCX)
 );
 
 /***************************************
 * Control Signal Multiplexer
 ****************************************/
+opxMultiplexer opxMultiplexerInst(
 
+	.CLK(CLK),
+	.RESET(RESET),
+	.INSTRUCTION(INSTRUCTION),
+
+	.FETCH(FETCH),
+	.DECODE(DECODE),
+	.EXECUTE(EXECUTE),
+	.COMMIT(COMMIT),
+
+	.ALU_ALU_OPX(ALU_ALU_OPX),
+	.ALU_ALUA_SRCX(ALU_ALUA_SRCX),
+	.ALU_ALUB_SRCX(ALU_ALUB_SRCX),
+	.ALU_DATA_BUSX(ALU_DATA_BUSX),
+	.ALU_REGA_ADDRX(ALU_REGA_ADDRX),
+	.ALU_REGA_DINX(ALU_REGA_DINX),
+	.ALU_REGA_EN(ALU_REGA_EN),
+	.ALU_REGB_ADDRX(ALU_REGB_ADDRX),
+	.ALU_REGB_EN(ALU_REGB_EN),
+	.ALU_REGA_WEN(ALU_REGA_WEN),
+	.ALU_REGB_WEN(ALU_REGB_WEN),
+
+	.LDS_ADDR_BUSX(LDS_ADDR_BUSX),
+	.LDS_ALU_OPX(LDS_ALU_OPX),
+	.LDS_ALUA_SRCX(LDS_ALUA_SRCX),
+	.LDS_ALUB_SRCX(LDS_ALUB_SRCX),
+	.LDS_BYTEX(LDS_BYTEX),	
+	.LDS_DATA_BUSX(LDS_DATA_BUSX),	
+	.LDS_RDX(LDS_RDX),
+	.LDS_REGA_EN(LDS_REGA_EN),
+	.LDS_REGA_WEN(LDS_REGA_WEN),
+	.LDS_REGA_ADDRX(LDS_REGA_ADDRX),
+	.LDS_REGA_BYTE_ENX(LDS_REGA_BYTE_ENX),
+	.LDS_REGA_DINX(LDS_REGA_DINX),
+	.LDS_REGB_EN(LDS_REGB_EN),
+	.LDS_REGB_WEN(LDS_REGB_WEN),
+	.LDS_REGB_ADDRX(LDS_REGB_ADDRX),
+	.LDS_REGB_BYTE_ENX(LDS_REGB_BYTE_ENX),
+	.LDS_WRX(LDS_WRX),
+
+	.JMP_ALUB_SRCX(JMP_ALUB_SRCX),
+	.JMP_REGA_ADDRX(JMP_REGA_ADDRX),
+	.JMP_REGB_ADDRX(JMP_REGB_ADDRX),
+	.JMP_REGA_EN(JMP_REGA_EN),
+	.JMP_REGA_WEN(JMP_REGA_WEN),
+	.JMP_REGB_EN(JMP_REGB_EN),
+
+	/*********************************************
+	* Combined outputs
+	**********************************************/
+	.ADDR_BUSX(ADDR_BUSX),
+	.ALU_OPX(ALU_OPX),
+	.ALUA_SRCX(ALUA_SRCX),
+	.ALUB_SRCX(ALUB_SRCX),
+	.BYTEX(BYTEX),
+	.DATA_BUSX(DATA_BUSX),
+	.RDX(RDX),
+	.REGA_EN(REGA_EN),
+	.REGA_WEN(REGA_WEN),
+	.REGA_ADDRX(REGA_ADDRX),
+	.REGA_BYTE_ENX(REGA_BYTE_ENX),
+	.REGA_DINX(REGA_DINX),
+	.REGB_EN(REGB_EN),
+	.REGB_WEN(REGB_WEN),
+	.REGB_ADDRX(REGB_ADDRX),
+	.REGB_BYTE_ENX(REGB_BYTE_ENX),
+	.WRX(WRX)
+
+);
 
 
 

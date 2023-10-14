@@ -56,107 +56,45 @@ initial begin
 	#10
 	CLK = 0; 
 	`TICK;
-	 RESET = 1;
-	 DIN = 16'h0000;
-	 `TICK;
-	 `TICK;
-	 
-	 RESET = 0;  
-	 `TICKTOCK;
-	 `TICKTOCK;
-	 `TICKTOCK;
-	 
-	 /************************************************************************
-	 * MOV RB,0x00af
-	 *************************************************************************/
-	 // Start FETCH
-	 DIN = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_MOV,`MODE_ALU_REGB_U8,8'haf};	 
-	 `TICKTOCK;  
-	// DECODE
-	`TICKTOCK; 
-	// EXECUTE 
-	// Control outputs become valid here
+	RESET = 1;
+	DIN = 16'h0000;
+	`TICK;
+	`TICK;
 
-	
-	// COMMIT
+	RESET = 0;  
+	`TICKTOCK;
+	`TICKTOCK;
 	`TICKTOCK;
 
-	
-	`TICKTOCK
-	
-	 /************************************************************************
-	 * MOV RA,U8.RBL
-	 *************************************************************************/
-	 // Start FETCH
-	 DIN = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_MOV,`MODE_ALU_REGA_U8RB,8'hfa};	 
-	 `TICKTOCK;  
-	// DECODE
-	`TICKTOCK; 
-	// EXECUTE 
-	// Control outputs become valid here
+	DIN = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_MOV,`MODE_ALU_REGB_U8,8'haf};	
+	`FETCH(   1, DIN, "MOV RB,0x00af")
+	`DECODE(  2, "")  
+	`EXECUTE( 3, "")
+	`COMMIT(  4, "")
 
-	
-	// COMMIT
-	`TICKTOCK;
+	DIN = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_MOV,`MODE_ALU_REGA_U8RB,8'hfa};	 
+	`FETCH(   5, DIN, "MOV RA,U8.RBL")
+	`DECODE(  6, "")  
+	`EXECUTE( 7, "")
+	`COMMIT(  8, "")
 
-	
-	`TICKTOCK
-	
-	 /************************************************************************
-	 * MOV RB,0x0055
-	 *************************************************************************/
-	 // Start FETCH
-	 DIN = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_MOV,`MODE_ALU_REGB_U8,8'h55};	 
-	 `TICKTOCK;  
-	// DECODE
-	`TICKTOCK; 
-	// EXECUTE 
-	// Control outputs become valid here
+	DIN = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_MOV,`MODE_ALU_REGB_U8,8'h55};	 
+	`FETCH(   9, DIN, "MOV RB,0x0055")
+	`DECODE( 10, "")  
+	`EXECUTE(11, "")
+	`COMMIT( 12, "")
 
-	
-	// COMMIT
-	`TICKTOCK;
-
-	
-	`TICKTOCK
-	
-	 /************************************************************************
-	 * ST (RA),RB
-	 *************************************************************************/
-	// FETCH
 	DIN = {`GROUP_LOAD_STORE,`LDSINCF_NONE,`LDSOPF_ST,`MODE_LDS_REG_MEM,`RB,`RA};	 
-	`TICKTOCK;
-	 
-	// DECODE
-	`TICKTOCK; 
+	`FETCH(  13, DIN, "ST (RA),RB")
+	`DECODE( 14, "")  
+	`EXECUTE(15, "")
+	`COMMIT( 16, "")
 
-	// EXECUTE 
-	// Control outputs become valid here
-	`assert("DOUT_BUF", 16'hfaaf, DOUT_BUF)
-	
-	// COMMIT
-	`TICKTOCK;
-
-		
-	
-	`TICKTOCK
-	
-	 /************************************************************************
-	 * LD Ra,(Rb++)
-	 *************************************************************************/
-	// FETCH
 	DIN = {`GROUP_LOAD_STORE,`LDSINCF_POST_INC,`LDSOPF_LD,`MODE_LDS_REG_MEM,`R5,`RI};	 
-	 `TICKTOCK;
-	 
-	// DECODE
-	`TICKTOCK; 
-
-	// EXECUTE 
-	// Control outputs become valid here
-
-	
-	// COMMIT
-	`TICKTOCK;
+	`FETCH(  17, DIN, "LD Ra,(Rb++)")
+	`DECODE( 18, "")  
+	`EXECUTE(19, "")
+	`COMMIT( 20, "")
 
 	`TICKTOCK;
 	

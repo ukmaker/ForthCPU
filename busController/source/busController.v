@@ -26,7 +26,7 @@ module busController(
 	/**
 	* Data
 	**/
-	input [15:0] ALUA_DATA,
+	input [15:0] REGA_DOUT,
 	input [1:0] DATA_BUSX,
 	input BYTEX,
 	input WRX,
@@ -43,13 +43,13 @@ module busController(
 );
 
 reg  [15:0] DOUT_W;
-wire [15:0] ALUA_DATAL;
+wire [15:0] REGA_DOUT_L;
 
-assign ALUA_DATAL = {ALUA_DATA[7:0],8'h00};
+assign REGA_DOUT_L = {REGA_DOUT[7:0],8'h00};
 
 always @(*) begin
 	HIGH_BYTEX = BYTEX & ADDR_BUF[0];
-	DOUT_W = HIGH_BYTEX ? ALUA_DATAL : ALUA_DATA;
+	DOUT_W = HIGH_BYTEX ? REGA_DOUT_L : REGA_DOUT;
 end
 
 always @(*) begin
@@ -63,7 +63,7 @@ end
 	
 always @(*) begin
 	case(DATA_BUSX)
-		`DATA_BUSX_ALUA_DATA:  DOUT_BUF = DOUT_W;
+		`DATA_BUSX_REGA_DOUT:  DOUT_BUF = DOUT_W;
 		default:               DOUT_BUF = ALU_R;
 	endcase
 end

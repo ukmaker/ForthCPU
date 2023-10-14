@@ -93,7 +93,27 @@
 `define INT_STATE_RETI0   4'b1001
 `define INT_STATE_RETI1_0 4'b1010
 
+/**************************************
+* Bus interface
+***************************************/
+`define BYTEX_WORD 1'b0
+`define BYTEX_BYTE 1'b1
+`define RDX_NONE   1'b0
+`define RX_RD      1'b1
+`define WRX_NONE   1'b0
+`define WRX_WR     1'b1
 
+/**************************************
+* Register control
+***************************************/
+`define REG_EN_NONE       1'b0
+`define REG_EN_EN         1'b1
+`define REG_WEN_NONE      1'b0
+`define REG_WEN_EN        1'b1
+`define REG_BYTE_ENX_NONE 2'b00
+`define REG_BYTE_ENX_LOW  2'b01
+`define REG_BYTE_ENX_HIGH 2'b10
+`define REG_BYTE_ENX_BOTH 2'b11
 
 /**
 * Register A load sources
@@ -120,8 +140,6 @@
 `define REGB_ADDRX_RFP  3'b011
 `define REGB_ADDRX_RRS  3'b100
 
-
-
 /**
 * Data sources
 **/
@@ -141,9 +159,6 @@
 `define ALUB_SRCX_U4     3'b100
 `define ALUB_SRCX_U4_0   3'b101
 
-
-
-
 /** 
 * Address bus sources
 **/
@@ -154,17 +169,16 @@
 /**
 * Data bus sources
 **/
-`define DATA_BUSX_ALUA_DATA  1'b0
+`define DATA_BUSX_REGA_DOUT  1'b0
 `define DATA_BUSX_ALU_R      1'b1
-
 
 /**
 * Phase
 **/
-`define FETCH   4'b0001
-`define DECODE  4'b0010
-`define EXECUTE 4'b0100
-`define COMMIT  4'b1000
+`define PHI_FETCH   4'b0001
+`define PHI_DECODE  4'b0010
+`define PHI_EXECUTE 4'b0100
+`define PHI_COMMIT  4'b1000
 
 /**
 * Instruction group

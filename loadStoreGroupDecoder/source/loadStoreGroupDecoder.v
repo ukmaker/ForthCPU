@@ -157,13 +157,13 @@ always @(*) begin
 			RD_A = 1;
 			RD_B = 1;
 			WR_M = 1;
-			DATA_BUSX = `DATA_BUSX_ALUA_DATA;
+			DATA_BUSX = `DATA_BUSX_REGA_DOUT;
 		end
 		`LDSOPF_STB: begin // ST_B (Ra),Rb
 			RD_A = 1;
 			RD_B = 1;
 			WR_M = 1;
-			DATA_BUSX = `DATA_BUSX_ALUA_DATA;
+			DATA_BUSX = `DATA_BUSX_REGA_DOUT;
 			BYTE_OP = 1;
 		end
 	endcase
