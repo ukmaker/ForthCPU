@@ -13,6 +13,8 @@ module core(
 	output [15:0] ADDR_BUF,
 	output [15:0] DOUT_BUF,
 	input  [15:0] DIN,
+	input INT0,
+	input INT1,
 	
 	output RDN_BUF, 
 	output ABUS_OEN,
@@ -48,8 +50,6 @@ wire [1:0]  DATA_BUSX;
 wire         DIX;
 wire         EIX;
 wire [15:0] INSTRUCTION;
-wire         INT0;
-wire         INT1;
 wire         JMPX;
 wire         JRX;
 wire [1:0]  LDSINCF;
@@ -115,8 +115,6 @@ wire         JMP_REGA_EN;
 wire         JMP_REGA_WEN;
 wire         JMP_REGB_EN;
 wire [2:0]  JMP_ALUB_SRCX;
-	
-assign PC_ENX = 1;
 
 /***************************************
 * Instruction Phase Decoder
@@ -129,7 +127,8 @@ instructionPhaseDecoder instructionPhaseDecoderInst(
 	.EXECUTE(EXECUTE),
 	.COMMIT(COMMIT),
 	.DIN(DIN),
-	.INSTRUCTION(INSTRUCTION)
+	.INSTRUCTION(INSTRUCTION),
+	.PC_ENX(PC_ENX)
 );
 
 /***************************************
@@ -138,8 +137,8 @@ instructionPhaseDecoder instructionPhaseDecoderInst(
 fullALU fullALUInst(
 	.CLK(CLK),
 	.RESET(RESET),
-	.ALUA_DIN(ALUA_DIN),
-	.ALUB_DIN(ALUB_DIN),
+	.REGA_DOUT(REGA_DOUT),
+	.REGB_DOUT(REGB_DOUT),
 	
 	.ALU_OPX(ALU_OPX),
 	.ALUA_SRCX(ALUA_SRCX),
@@ -189,6 +188,10 @@ registerFile registerFileInst(
 busController busControllerInst(
 	.CLK(CLK),
 	.RESET(RESET),
+	.FETCH(FETCH),
+	.DECODE(DECODE),
+	.EXECUTE(EXECUTE),
+	.COMMIT(COMMIT),
 	.PC_A(PC_A),
 	.ALU_R(ALU_R),
 	.ALUB_DATA(ALUB_DATA),
@@ -255,8 +258,8 @@ interruptStateMachine interruptStateMachineInst(
 	.INT0(INT0),
 	.INT1(INT1),
 	.PC_NEXTX(PC_NEXTX),
-	.PC_LD_INT0(PC_LD_INT0),
-	.PC_LD_INT1(PC_LD_INT1)
+	.PC_LD_INT0(PC_LD_INT0X),
+	.PC_LD_INT1(PC_LD_INT1X)
 );
 
 /***************************************
@@ -326,7 +329,6 @@ jumpGroupDecoder jumpGroupDecoderInst(
 	.DECODE(DECODE),
 	.EXECUTE(EXECUTE),
 	.COMMIT(COMMIT),
-	.PC_EN(PC_EN),
 	.JRX(JRX),
 	.JMPX(JMPX),
 	.CC_APPLYX(CC_APPLYX),
@@ -338,6 +340,25 @@ jumpGroupDecoder jumpGroupDecoderInst(
 	.REGB_EN(JMP_REGB_EN),
 	.REGA_WEN(JMP_REGA_WEN),
 	.ALUB_SRCX(JMP_ALUB_SRCX)
+);
+
+/***************************************
+* General Group Decoder
+****************************************/
+generalGroupDecoder generalGroupDecoderInst(
+	
+	.CLK(CLK),
+	.RESET(RESET),
+	.FETCH(FETCH), 
+	.DECODE(DECODE), 
+	.EXECUTE(EXECUTE), 
+	.COMMIT(COMMIT),
+	.INSTRUCTION(INSTRUCTION),
+	
+	.EIX(EIX),
+	.DIX(DIX),
+	.RETIX(RETIX),
+	.PC_ENX(PC_ENX)
 );
 
 /***************************************

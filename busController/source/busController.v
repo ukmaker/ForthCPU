@@ -10,7 +10,10 @@ module busController(
 	
 	input CLK,
 	input RESET,
-	
+	input FETCH,
+	input DECODE,
+	input EXECUTE,
+	input COMMIT,	
 	
 	/**
 	* Address
@@ -75,7 +78,13 @@ always @(posedge CLK) begin
 end
 
 always @(negedge CLK) begin
-	RDN_BUF  <= ~RDX;
+	if(DECODE) begin
+		RDN_BUF <= 0;
+	end else if(COMMIT) begin 
+		RDN_BUF  <= ~RDX;
+	end else begin
+		RDN_BUF <= 1;
+	end
 end
 
 endmodule

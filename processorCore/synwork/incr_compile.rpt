@@ -16,35 +16,41 @@ Synopsys HDL compiler and linker, Version comp202103synp2, Build 093R, Built Aug
 
 Modified Files: 1
 FID:  path (prevtimestamp, timestamp)
-6        C:\Users\Duncan\git\ForthCPU\alu\source\aluBlock.v (2023-09-20 17:46:30, 2023-09-25 22:20:53)
+10       C:\Users\Duncan\git\ForthCPU\instructionPhaseDecoder\source\instructionPhaseDecoder.v (2023-10-15 13:46:39, 2023-10-15 15:16:43)
 
 *******************************************************************
 Modules that may have changed as a result of file changes: 1
 MID:  lib.cell.view
-8        work.incrementer.verilog may have changed because the following files changed:
-                        C:\Users\Duncan\git\ForthCPU\alu\source\aluBlock.v (2023-09-20 17:46:30, 2023-09-25 22:20:53) <-- (module definition)
+11       work.loadStoreGroupDecoder.verilog may have changed because the following files changed:
+                        C:\Users\Duncan\git\ForthCPU\instructionPhaseDecoder\source\instructionPhaseDecoder.v (2023-10-15 13:46:39, 2023-10-15 15:16:43) <-- (module definition)
 
 *******************************************************************
-Unmodified files: 24
+Unmodified files: 30
 FID:  path (timestamp)
-0        C:/Users/Duncan/git/ForthCPU/constants.v (2023-09-25 18:24:55)
-1        C:/Users/Duncan/git/ForthCPU/testSetup.v (2023-09-16 15:06:23)
-2        C:\Users\Duncan\git\ForthCPU\addressBusController\source\addressBusController.v (2023-09-25 17:07:03)
-3        C:\Users\Duncan\git\ForthCPU\aluGroupDecoder\source\aluGroupDecoder.v (2023-09-25 22:20:11)
-4        C:\Users\Duncan\git\ForthCPU\alu\source\alu.v (2023-09-20 17:49:57)
-5        C:\Users\Duncan\git\ForthCPU\alu\source\aluBMux.v (2023-09-23 16:51:09)
-7        C:\Users\Duncan\git\ForthCPU\alu\source\fullALU.v (2023-09-23 16:52:53)
-8        C:\Users\Duncan\git\ForthCPU\alu\source\incrementer.v (2023-09-23 16:51:39)
-9        C:\Users\Duncan\git\ForthCPU\constants.v (2023-09-25 18:24:55)
-10       C:\Users\Duncan\git\ForthCPU\instructionPhaseDecoder\source\instructionPhaseDecoder.v (2023-09-25 19:19:35)
-11       C:\Users\Duncan\git\ForthCPU\jumpGroupDecoder\source\programCounterGroupDecoder.v (2023-09-25 16:56:47)
-12       C:\Users\Duncan\git\ForthCPU\loadStoreGroupDecoder\source\loadStoreGroupDecoder.v (2023-09-25 19:17:27)
-13       C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v (2023-09-25 22:17:49)
-14       C:\Users\Duncan\git\ForthCPU\processorCore\source\opxMultiplexer.v (2023-09-25 18:49:41)
-15       C:\Users\Duncan\git\ForthCPU\processorCore\test\processorCoreTests.v (2023-09-25 19:02:27)
-16       C:\Users\Duncan\git\ForthCPU\programCounter\source\programCounter.v (2023-09-22 17:29:42)
-17       C:\Users\Duncan\git\ForthCPU\registerFile\source\dpram.v (2023-09-04 15:17:45)
-18       C:\Users\Duncan\git\ForthCPU\registerFile\source\register_file.v (2023-09-25 18:25:04)
+0        C:/Users/Duncan/git/ForthCPU/constants.v (2023-10-15 13:12:35)
+1        C:/Users/Duncan/git/ForthCPU/testSetup.v (2023-10-15 13:22:43)
+25       C:\Users\Duncan\git\ForthCPU\aluB\source\alu.v (2023-10-04 16:44:59)
+26       C:\Users\Duncan\git\ForthCPU\aluB\source\aluAMux.v (2023-10-14 22:25:57)
+27       C:\Users\Duncan\git\ForthCPU\aluB\source\aluBMux.v (2023-10-14 22:26:23)
+28       C:\Users\Duncan\git\ForthCPU\aluB\source\fullALU.v (2023-10-15 00:41:21)
+3        C:\Users\Duncan\git\ForthCPU\aluGroupDecoder\source\aluGroupDecoder.v (2023-10-14 22:43:44)
+29       C:\Users\Duncan\git\ForthCPU\branchLogic\source\branchLogic.v (2023-10-11 22:33:49)
+30       C:\Users\Duncan\git\ForthCPU\busController\source\../../constants.v (2023-10-15 13:12:35)
+31       C:\Users\Duncan\git\ForthCPU\busController\source\busController.v (2023-10-15 00:40:37)
+9        C:\Users\Duncan\git\ForthCPU\constants.v (2023-10-15 13:12:35)
+40       C:\Users\Duncan\git\ForthCPU\generalGroupDecoder\source\generalGroupDecoder.v (2023-10-15 13:44:38)
+32       C:\Users\Duncan\git\ForthCPU\interruptLogic\source\../../constants.v (2023-10-15 13:12:35)
+33       C:\Users\Duncan\git\ForthCPU\interruptLogic\source\interruptStateMachine.v (2023-10-11 17:24:34)
+34       C:\Users\Duncan\git\ForthCPU\jumpGroupDecoder\source\jumpGroupDecoder.v (2023-10-15 13:57:23)
+12       C:\Users\Duncan\git\ForthCPU\loadStoreGroupDecoder\source\loadStoreGroupDecoder.v (2023-10-15 15:15:06)
+35       C:\Users\Duncan\git\ForthCPU\opxMultiplexer\source\../../constants.v (2023-10-15 13:12:35)
+36       C:\Users\Duncan\git\ForthCPU\opxMultiplexer\source\opxMultiplexer.v (2023-10-15 14:41:16)
+13       C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v (2023-10-15 13:58:16)
+15       C:\Users\Duncan\git\ForthCPU\processorCore\test\processorCoreTests.v (2023-10-15 12:50:35)
+16       C:\Users\Duncan\git\ForthCPU\programCounter\source\programCounter.v (2023-10-15 10:20:53)
+37       C:\Users\Duncan\git\ForthCPU\registerFileB\source\registerFile.v (2023-10-12 17:29:36)
+38       C:\Users\Duncan\git\ForthCPU\registerFileB\source\registers.v (2023-10-15 14:57:12)
+39       C:\Users\Duncan\git\ForthCPU\testSetup.v (2023-10-15 13:22:43)
 19       C:\lscc\diamond\3.12\synpbase\lib\lucent\machxo3l.v (2021-08-10 09:11:08)
 20       C:\lscc\diamond\3.12\synpbase\lib\lucent\pmi_def.v (2021-08-10 09:11:08)
 21       C:\lscc\diamond\3.12\synpbase\lib\vlog\hypermods.v (2021-08-10 09:07:02)
@@ -53,20 +59,22 @@ FID:  path (timestamp)
 24       C:\lscc\diamond\3.12\synpbase\lib\vlog\umr_capim.v (2021-08-10 09:07:02)
 
 *******************************************************************
-Unchanged modules: 15
+Unchanged modules: 17
 MID:  lib.cell.view
-0        work.addressBusController.verilog
 1        work.alu.verilog
+16       work.aluAMux.verilog
 2        work.aluBMux.verilog
-3        work.aluBlock.verilog
 4        work.aluGroupDecoder.verilog
+17       work.branchLogic.verilog
+18       work.busController.verilog
 5        work.core.verilog
-6        work.dpram.verilog
 7        work.fullALU.verilog
+22       work.generalGroupDecoder.verilog
 9        work.instructionPhaseDecoder.verilog
+19       work.interruptStateMachine.verilog
 10       work.jumpGroupDecoder.verilog
-11       work.loadStoreGroupDecoder.verilog
 12       work.opxMultiplexer.verilog
 13       work.processorCoreTests.verilog
 14       work.programCounter.verilog
-15       work.register_file.verilog
+20       work.registerFile.verilog
+21       work.registers.verilog

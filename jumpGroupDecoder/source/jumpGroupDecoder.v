@@ -48,7 +48,6 @@ module jumpGroupDecoder(
 	/**
 	* Program counter control
 	**/
-	output reg PC_EN,
 	output reg JRX,
 	output reg JMPX,
 	output wire CC_APPLYX,
@@ -89,12 +88,6 @@ always @(*) begin
 		JMPX = 1;
 	end else begin
 		JMPX = 0;
-	end
-	
-	if(INSTRUCTION == `INSTRUCTION_HALT) begin
-		PC_EN = 0;
-	end else begin
-		PC_EN = 1;
 	end
 	
 	case(JPF)

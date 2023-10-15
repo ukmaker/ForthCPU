@@ -44,7 +44,7 @@ end
 
 
 initial begin
-	#(10) CLK = 0; 
+	CLK = 0; 
 	`TICK;
 	RESET = 1;
 	PC_ENX = 0;
@@ -52,7 +52,9 @@ initial begin
 	PC_D = 16'h1234;
 
 	`TICKTOCK;
-	RESET = 0;  
+	`TICK;
+	RESET = 0; 
+
 	PC_ENX = 1;
 	FETCH = 1;
 	PC_LD_INT0X = `PC_LD_INT0X_NONE;
@@ -60,6 +62,9 @@ initial begin
 	PC_NEXTX    = `PC_NEXTX_NEXT;
 	PC_BASEX    = `PC_BASEX_PC_A;
 	PC_OFFSETX  = `PC_OFFSETX_2;
+	`TOCK;	
+	#10
+	`assert("PC=0", 16'h0000, PC_A)
 	
 	`TICKTOCK;
 	`assert("PC=2", 16'h0002, PC_A)

@@ -144,12 +144,14 @@
 * Data sources
 **/
 // ALU A input
-`define ALUA_SRCX_REG_A 2'b000
-`define ALUA_SRCX_ZERO  2'b001
-`define ALUA_SRCX_ONE   2'b010
-`define ALUA_SRCX_TWO   2'b011
-`define ALUA_SRCX_U6    3'b100
-`define ALUA_SRCX_U6_0  3'b101
+`define ALUA_SRCX_REG_A     3'b000
+`define ALUA_SRCX_ZERO      3'b001
+`define ALUA_SRCX_ONE       3'b010
+`define ALUA_SRCX_TWO       3'b011
+`define ALUA_SRCX_MINUS_ONE 3'b100
+`define ALUA_SRCX_MINUS_TWO 3'b101
+`define ALUA_SRCX_S6        3'b110
+`define ALUA_SRCX_S6_0      3'b111
 
 // ALU B input
 `define ALUB_SRCX_REG_B  3'b000
@@ -189,10 +191,13 @@
 `define GROUP_ARITHMETIC_LOGIC 2'b11
 
 /**
-* Well-known instructions
+* General instructions
 **/
-`define INSTRUCTION_NOP  16'h0000
-`define INSTRUCTION_HALT 16'h0100
+`define GEN_OP_NOP  3'b000
+`define GEN_OP_HALT 3'b001
+`define GEN_OP_EI   3'b010
+`define GEN_OP_DI   3'b011
+`define GEN_OP_RETI 3'b100
 
 /**
 * Instruction mode

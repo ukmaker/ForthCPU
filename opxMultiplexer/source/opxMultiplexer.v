@@ -163,7 +163,7 @@ always @(posedge CLK) begin
 	
 	if(FETCH) begin
 		ADDR_BUSX <= `ADDR_BUSX_PC_A;
-	end else begin
+	end else if(EXECUTE) begin
 		case(GROUPF)
 			`GROUP_SYSTEM: begin
 				ADDR_BUSX    <= `ADDR_BUSX_PC_A;

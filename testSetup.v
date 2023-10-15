@@ -14,20 +14,28 @@
 `define mark(n)  \
 	$display("[T=%09t] %d", $realtime, n);
 	
-`define FETCH(n, din, m) \
-	$display("FETCH   [T=%09t] %04d {%04x} %s", $realtime, n, din, m); \
-	`TICKTOCK
+`define FETCH(n, addr, instruction, m) \
+	$display("FETCH   [T=%09t] %04d {%04x} :: {%04x} %s", $realtime, n, addr, instruction, m); \
+	#1 \
+	`assert("ADDR", addr, ADDR_BUF) \
+	#49 DIN = instruction; \
+	#50
 	
-`define DECODE(n,m) \
+`define NFETCH(n, addr, instruction, m) \
+	$display("FETCH   [T=%09t] %04d {%04x} :: {%04x} %s", $realtime, n, addr, instruction, m); \
+	#50 DIN = instruction; \
+	#50
+	
+`define DECODE(n, m) \
 	$display("DECODE  [T=%09t] %04d %s", $realtime, n, m); \
-	`TICKTOCK
+	`TICK; \
+	DIN = 16'hzzzz; \
+	`TOCK;
 	
 `define EXECUTE(n,m) \
-	$display("EXECUTE [T=%09t] %04d %s", $realtime, n, m); \
-	`TICKTOCK
+	$display("EXECUTE [T=%09t] %04d %s", $realtime, n, m); 
 	
 `define COMMIT(n,m) \
-	$display("COMMIT  [T=%09t] %04d %s", $realtime, n, m); \
-	`TICKTOCK
+	$display("COMMIT  [T=%09t] %04d %s", $realtime, n, m); 
 	
 	

@@ -193,6 +193,30 @@
             <Options/>
         </Source>
     </Implementation>
+    <Implementation title="generalGroupDecoder" dir="generalGroupDecoder" description="generalGroupDecoder" synthesis="synplify" default_strategy="Area">
+        <Options def_top="generalGroupDecoderTests"/>
+        <Source name="generalGroupDecoder/source/generalGroupDecoder.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="constants.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="generalGroupDecoder/test/generalGroupDecoderTests.v" type="Verilog" type_short="Verilog">
+            <Options top_module="generalGroupDecoderTests"/>
+        </Source>
+        <Source name="instructionPhaseDecoder/source/instructionPhaseDecoder.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="testSetup.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">
+            <Options/>
+        </Source>
+        <Source name="generalGroupDecoder/test/generalGroupDecoderTestbench/generalGroupDecoderTestbench.spf" type="Simulation Project File" type_short="SPF">
+            <Options/>
+        </Source>
+    </Implementation>
     <Implementation title="impl1" dir="impl1" description="impl1" synthesis="synplify" default_strategy="Strategy1">
         <Options VerilogStandard="System Verilog"/>
         <Source name="constants.v" type="Verilog" type_short="Verilog">
@@ -290,7 +314,7 @@
         </Source>
     </Implementation>
     <Implementation title="processorCore" dir="processorCore" description="processorCore" synthesis="synplify" default_strategy="Area">
-        <Options def_top="processorCoreTests"/>
+        <Options def_top="processorCoreInstructionTests"/>
         <Source name="constants.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
@@ -357,7 +381,22 @@
         <Source name="testSetup.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
+        <Source name="generalGroupDecoder/source/generalGroupDecoder.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="core_tf.v" type="Verilog" type_short="Verilog" syn_sim="SimOnly">
+            <Options/>
+        </Source>
+        <Source name="processorCore/test/processorCoreInstructionTests.v" type="Verilog" type_short="Verilog">
+            <Options top_module="processorCoreInstructionTests"/>
+        </Source>
+        <Source name="instructionTestSetup.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
         <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">
+            <Options/>
+        </Source>
+        <Source name="processorCore/test/processorCoreInstructionTestbench/processorCoreInstructionTestbench.spf" type="Simulation Project File" type_short="SPF">
             <Options/>
         </Source>
         <Source name="processorCore/test/processorCoreTests/processorCoreTests.spf" type="Simulation Project File" type_short="SPF">

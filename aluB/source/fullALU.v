@@ -11,8 +11,8 @@ module fullALU(
 	input CLK,
 	input RESET,
 	
-	input [15:0] ALUA_DIN,
-	input [15:0] ALUB_DIN,
+	input [15:0] REGA_DOUT,
+	input [15:0] REGB_DOUT,
 	input [3:0]  ALU_OPX,
 	
 	input [2:0] ALUA_SRCX,
@@ -51,13 +51,13 @@ alu aluInst(
 
 aluAMux muxA(
 	.U6({LDSINCF,ARGB_X}),
-	.ALUA_DIN(ALUA_DIN),
+	.REGA_DOUT(REGA_DOUT),
 	.ALUA_SRCX(ALUA_SRCX),
 	.ALUA_DATA(ALUA_DATA)
 );
 
 aluBMux muxB(
-	.ALUB_DIN(ALUB_DIN),
+	.REGB_DOUT(REGB_DOUT),
 	.ALUB_SRCX(ALUB_SRCX),
 	.ARGA_X(ARGA_X),
 	.ARGB_X(ARGB_X),
@@ -68,10 +68,10 @@ aluBMux muxB(
 
 always @(posedge CLK or posedge RESET) begin
 	if(RESET) begin
-		CC_ZERO = 0;
-		CC_CARRY = 0;
-		CC_SIGN = 0;
-		CC_PARITY = 0;
+		CC_ZERO <= 0;
+		CC_CARRY <= 0;
+		CC_SIGN <= 0;
+		CC_PARITY <= 0;
 	end else if(CCL_LD == 1'b1) begin
 		CC_ZERO   <= CC_Z;
 		CC_CARRY  <= CC_C;

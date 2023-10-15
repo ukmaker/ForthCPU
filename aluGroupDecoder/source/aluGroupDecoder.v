@@ -82,7 +82,9 @@ module aluGroupDecoder(
 );
 
 wire [1:0] ARGF;
+wire [1:0] GROUPX;
 
+assign GROUPX  = INSTRUCTION[15:14];
 assign ALU_OPX = INSTRUCTION[13:10];
 assign ARGF    = INSTRUCTION[9:8];
 assign ARGA_X  = INSTRUCTION[7:4];
@@ -102,29 +104,31 @@ begin
 	REGA_ADDRX = `REGA_ADDRX_ARGA;
 	REGB_ADDRX = `REGB_ADDRX_ARGB;
 	
-	case(ARGF) 
-		`MODE_ALU_REG_REG: begin // ALU Ra,Rb
-			ALUB_SRCX = `ALUB_SRCX_REG_B;
-			RD_A = 1; RD_B = 1; WR_A = 1;
-		end
-		`MODE_ALU_REG_U4: begin // ALU Ra,U4
-			ALUB_SRCX = `ALUB_SRCX_U4;
-			RD_A = 1; WR_A = 1;
-		end
-		`MODE_ALU_REGB_U8: begin // ALU RB,U8
-			REGA_ADDRX = `REGA_ADDRX_RB;
-			ALUA_SRCX = `ALUA_SRCX_ZERO;
-			ALUB_SRCX = `ALUB_SRCX_U8;
-			RD_A = 1; WR_A = 1;
-		end
-		`MODE_ALU_REGA_U8RB: begin // ALU RA,U8.RB
-			REGA_ADDRX = `REGA_ADDRX_RA;
-			REGB_ADDRX = `REGB_ADDRX_RB;
-			ALUA_SRCX = `ALUA_SRCX_ZERO;
-			ALUB_SRCX = `ALUB_SRCX_U8H;
-			RD_A = 1; RD_B = 1; WR_A = 1;
-		end
-	endcase
+	if(GROUPX == `GROUP_ARITHMETIC_LOGIC) begin
+		case(ARGF) 
+			`MODE_ALU_REG_REG: begin // ALU Ra,Rb
+				ALUB_SRCX = `ALUB_SRCX_REG_B;
+				RD_A = 1; RD_B = 1; WR_A = 1;
+			end
+			`MODE_ALU_REG_U4: begin // ALU Ra,U4
+				ALUB_SRCX = `ALUB_SRCX_U4;
+				RD_A = 1; WR_A = 1;
+			end
+			`MODE_ALU_REGB_U8: begin // ALU RB,U8
+				REGA_ADDRX = `REGA_ADDRX_RB;
+				ALUA_SRCX = `ALUA_SRCX_ZERO;
+				ALUB_SRCX = `ALUB_SRCX_U8;
+				RD_A = 1; WR_A = 1; RD_B = 1;
+			end
+			`MODE_ALU_REGA_U8RB: begin // ALU RA,U8.RB
+				REGA_ADDRX = `REGA_ADDRX_RA;
+				REGB_ADDRX = `REGB_ADDRX_RB;
+				ALUA_SRCX = `ALUA_SRCX_ZERO;
+				ALUB_SRCX = `ALUB_SRCX_U8H;
+				RD_A = 1; RD_B = 1; WR_A = 1;
+			end
+		endcase
+	end
 end
 
 always @(posedge CLK) begin
@@ -143,7 +147,10 @@ always @(posedge CLK) begin
 		REGA_WEN <= 0;
 		REGB_WEN <= 0;
 	end else if(EXECUTE) begin
-
+		REGA_EN <= RD_A;
+		REGB_EN <= RD_B;
+		REGA_WEN <= 0;
+		REGB_WEN <= 0;
 		if(ALU_OPX != `ALU_OPX_MOV) begin
 			CCL_LD <= 1;
 		end

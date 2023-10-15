@@ -13,7 +13,7 @@ Running in Lattice mode
 Starting:    C:\lscc\diamond\3.12\synpbase\bin64\mbin\synbatch.exe
 Install:     C:\lscc\diamond\3.12\synpbase
 Hostname:    EDAWIN
-Date:        Mon Sep 25 22:20:57 2023
+Date:        Sun Oct 15 15:17:07 2023
 Version:     R-2021.03L-SP1
 
 Arguments:   -product synplify_pro -batch ForthCPU_processorCore_synplify.tcl
@@ -22,40 +22,70 @@ ProductType: synplify_pro
 
 
 
-@W: UI147 |File already exists in project: "C:\Users\Duncan\git\ForthCPU\registerFile\source\dpram.v"
-@W: UI147 |File already exists in project: "C:\Users\Duncan\git\ForthCPU\registerFile\source\dpram.v"
+@W: UI147 |File already exists in project: "C:\Users\Duncan\git\ForthCPU\registerFileB\source\registers.v"
+@W: UI147 |File already exists in project: "C:\Users\Duncan\git\ForthCPU\registerFileB\source\registers.v"
 log file: "C:\Users\Duncan\git\ForthCPU\processorCore\ForthCPU_processorCore.srr"
 Running: processorCore in foreground
 
 Running proj_1|processorCore
 
 Running Flow: compile (Compile) on proj_1|processorCore
-# Mon Sep 25 22:20:58 2023
+# Sun Oct 15 15:17:08 2023
 
 Running Flow: compile_flow (Compile Process) on proj_1|processorCore
-# Mon Sep 25 22:20:58 2023
+# Sun Oct 15 15:17:08 2023
 
 Running: compiler (Compile Input) on proj_1|processorCore
-# Mon Sep 25 22:20:58 2023
-compiler exited with errors
-Job failed on: proj_1|processorCore
+# Sun Oct 15 15:17:08 2023
+Copied C:\Users\Duncan\git\ForthCPU\processorCore\synwork\ForthCPU_processorCore_comp.srs to C:\Users\Duncan\git\ForthCPU\processorCore\ForthCPU_processorCore.srs
 
-Job: "compiler" terminated with error status: 2
-See log file: "C:\Users\Duncan\git\ForthCPU\processorCore\synlog\ForthCPU_processorCore_compiler.srr"
-# Mon Sep 25 22:21:02 2023
+compiler completed
+# Sun Oct 15 15:17:15 2023
 
-Return Code: 2
-Run Time:00h:00m:04s
-Complete: Compile Process on proj_1|processorCore
-Complete: Compile on proj_1|processorCore
-Complete: Logic Synthesis on proj_1|processorCore
+Return Code: 0
+Run Time:00h:00m:07s
+
+Running: multi_srs_gen (Multi-srs Generator) on proj_1|processorCore
+# Sun Oct 15 15:17:15 2023
+
+multi_srs_gen completed
+# Sun Oct 15 15:17:15 2023
+
+Return Code: 0
+Run Time:00h:00m:00s
+Copied C:\Users\Duncan\git\ForthCPU\processorCore\synwork\ForthCPU_processorCore_mult.srs to C:\Users\Duncan\git\ForthCPU\processorCore\ForthCPU_processorCore.srs
 Copied C:\Users\Duncan\git\ForthCPU\processorCore\ForthCPU_processorCore.srr to C:\Users\Duncan\git\ForthCPU\processorCore\ForthCPU_processorCore.srf
-Error: At line 82 while processing "ForthCPU_processorCore_synplify.tcl"
-2
+Complete: Compile Process on proj_1|processorCore
+
+Running: premap (Premap) on proj_1|processorCore
+# Sun Oct 15 15:17:15 2023
+
+premap completed
+# Sun Oct 15 15:17:18 2023
+
+Return Code: 0
+Run Time:00h:00m:03s
+Complete: Compile on proj_1|processorCore
+
+Running Flow: map (Map) on proj_1|processorCore
+# Sun Oct 15 15:17:18 2023
+License granted for 4 parallel jobs
+
+Running: fpga_mapper (Map & Optimize) on proj_1|processorCore
+# Sun Oct 15 15:17:18 2023
+Copied C:\Users\Duncan\git\ForthCPU\processorCore\synwork\ForthCPU_processorCore_m.srm to C:\Users\Duncan\git\ForthCPU\processorCore\ForthCPU_processorCore.srm
+
+fpga_mapper completed
+# Sun Oct 15 15:17:21 2023
+
+Return Code: 0
+Run Time:00h:00m:03s
+Complete: Map on proj_1|processorCore
+Copied C:\Users\Duncan\git\ForthCPU\processorCore\ForthCPU_processorCore.srr to C:\Users\Duncan\git\ForthCPU\processorCore\ForthCPU_processorCore.srf
+Complete: Logic Synthesis on proj_1|processorCore
 TCL script complete: "ForthCPU_processorCore_synplify.tcl"
-TCL script had errors: "ForthCPU_processorCore_synplify.tcl"
-exit status=9
-exit status=9
+exit status=0
+exit status=0
 Save changes for project:
 C:\Users\Duncan\git\ForthCPU\processorCore\proj_1.prj
 batch mode default:no
