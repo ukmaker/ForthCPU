@@ -233,6 +233,63 @@ initial begin
 	`mark(18)
 	`assert("QB", 16'h6666, REGB_DOUT)
 
+	/**********************************************************
+	* Read through A and B together
+	***********************************************************/
+	REGB_EN = 1;
+	REGB_WEN = 0;
+	REGA_EN = 1;
+	REGA_WEN = 0;
+	REGA_DINX = `REGA_DINX_DIN;
+	
+	REGA_ADDRX = `REGA_ADDRX_ARGA;
+	REGB_ADDRX = `REGB_ADDRX_ARGB;
+	ARGA_X = 4'b0000;
+	ARGB_X = 4'b0000;
+	
+	`TICKTOCK;
+	`mark(19)
+	`assert("QA", 16'h5678, REGA_DOUT)
+	`assert("QB", 16'h5678, REGB_DOUT)
+	
+	/**********************************************************
+	* Write back through B
+	***********************************************************/
+	REGB_EN    = 1;
+	REGB_WEN   = 1;
+	REGA_EN    = 0;
+	REGA_WEN   = 0;
+	REGA_DINX  = `REGA_DINX_DIN;
+	
+	REGA_ADDRX = `REGA_ADDRX_ARGA;
+	REGB_ADDRX = `REGB_ADDRX_ARGB;
+	ARGA_X     = 4'b0000;
+	ARGB_X     = 4'b0000;
+	ALU_R      = 16'h8765;	
+	`TICKTOCK;
+	`mark(20)
+	`assert("QA", 16'h5678, REGA_DOUT)
+	`assert("QB", 16'h8765, REGB_DOUT)	
+	
+	/**********************************************************
+	* Read through A and B together
+	***********************************************************/
+	REGB_EN = 1;
+	REGB_WEN = 0;
+	REGA_EN = 1;
+	REGA_WEN = 0;
+	REGA_DINX = `REGA_DINX_DIN;
+	
+	REGA_ADDRX = `REGA_ADDRX_ARGA;
+	REGB_ADDRX = `REGB_ADDRX_ARGB;
+	ARGA_X = 4'b0000;
+	ARGB_X = 4'b0000;
+	
+	`TICKTOCK;
+	`mark(21)
+	`assert("QA", 16'h8765, REGA_DOUT)
+	`assert("QB", 16'h8765, REGB_DOUT)
+
 end
 	
 endmodule
