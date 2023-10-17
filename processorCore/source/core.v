@@ -222,7 +222,7 @@ programCounter programCounterInst(
 	.PC_LD_INT1X(PC_LD_INT1X),
 	.PC_BASEX(PC_BASEX),
 	.PC_OFFSETX(PC_OFFSETX),
-	.PC_D(PC_D),
+	.PC_D(ALUB_DATA),
 	.PC_NEXTX(PC_NEXTX),
 	.PC_A_NEXT(PC_A_NEXT),
 	.PC_A(PC_A)

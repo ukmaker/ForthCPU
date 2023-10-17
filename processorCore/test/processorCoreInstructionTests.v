@@ -72,6 +72,9 @@ initial begin
 	`TICKTOCK;
 	`TICKTOCK;
 	
+	/**************************************************************************
+	* ALU Group - Operations
+	***************************************************************************/
 	INSTR = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_MOV,`MODE_ALU_REGB_U8,8'haf};
 	`ALU_STEP(  1, 16'h0000,   INSTR, "MOV RB,0xaf")
 	INSTR = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_MOV,`MODE_ALU_REGA_U8RB,8'hfa};	 
@@ -187,7 +190,6 @@ initial begin
 	INSTR = {`GROUP_LOAD_STORE,`LDSINCF_NONE,`LDSOPF_ST,`MODE_LDS_REG_MEM,`R6,`R0};	 
 	`ST_STEP(  51, 16'h0068,   INSTR, 16'h0000, 16'he48d, "ST (R0),R6")	
 
-
 	// ROT
 	`LOAD(     52, 16'h006a,   `RA, 16'h8235) // 1000 0010 0011 0101 -> 0110 0000 1000 1101
 	`LOAD(     54, 16'h006e,   `RB, 16'h0002)
@@ -195,6 +197,123 @@ initial begin
 	`ALU_STEP( 56, 16'h0072,   INSTR, "ROT RA,RB")	
 	INSTR = {`GROUP_LOAD_STORE,`LDSINCF_NONE,`LDSOPF_ST,`MODE_LDS_REG_MEM,`RA,`R0};	 
 	`ST_STEP(  57, 16'h0074,   INSTR, 16'h0000, 16'h608d, "ST (R0),RA")	
+
+	// BIT
+	`LOAD(     58, 16'h0076,   `RI,  16'h5555)
+	`LOAD(     60, 16'h007a,   `RFP, 16'h0002)
+	INSTR = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_BIT,`MODE_ALU_REG_REG,`RI,`RFP};
+	`ALU_STEP( 62, 16'h007e,   INSTR, "BIT RI,RFP")	
+	`TICK;
+	DIN = {`GROUP_JUMP,      `SKIPF_SKIP,`CC_SELECTX_Z,`JPF_REL_S8,8'h0e};	 
+	`assert("63 ADDR_BUF", 16'h0080, ADDR_BUF)
+	`TOCK;
+	`TICKTOCK;
+	`TICKTOCK;
+	`TICKTOCK;
+	
+	`TICK;
+	DIN = {`GROUP_JUMP,      `SKIPF_NOT_SKIP,`CC_SELECTX_Z,`JPF_REL_S8,8'h0e};	 
+	`assert("64 ADDR_BUF", 16'h0082, ADDR_BUF)
+	`TOCK;
+	`TICKTOCK;
+	`TICKTOCK;
+	`TICKTOCK;
+
+	// SET
+	`LOAD(     65, 16'h0090,   `RWA, 16'h0000)
+	`LOAD(     67, 16'h0094,   `RSP, 16'h0002)
+	INSTR = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_SET,`MODE_ALU_REG_REG,`RWA,`RSP};
+	`ALU_STEP( 69, 16'h0098,   INSTR, "SET RWA,RSP")	
+	INSTR = {`GROUP_LOAD_STORE,`LDSINCF_NONE,`LDSOPF_ST,`MODE_LDS_REG_MEM,`RWA,`R0};	 
+	`ST_STEP(  70, 16'h009a,   INSTR, 16'h0000, 16'h0004, "ST (R0),RWA")	
+
+	// CLR
+	`LOAD(     71, 16'h009c,   `RRS, 16'h0004)
+	`LOAD(     73, 16'h00a0,   `RL, 16'h0002)
+	INSTR = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_CLR,`MODE_ALU_REG_REG,`RRS,`RL};
+	`ALU_STEP( 75, 16'h00a4,   INSTR, "CLR RRS,RL")	
+	INSTR = {`GROUP_LOAD_STORE,`LDSINCF_NONE,`LDSOPF_ST,`MODE_LDS_REG_MEM,`RRS,`R0};	 
+	`ST_STEP(  76, 16'h00a6,   INSTR, 16'h0000, 16'h0000, "ST (R0),RRS")	
+
+	// SEX
+	`LOAD(     77, 16'h00a8,   `RRS, 16'h0004)
+	`LOAD(     79, 16'h00ac,   `RL, 16'h0002)
+	INSTR = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_CLR,`MODE_ALU_REG_REG,`RRS,`RL};
+	`ALU_STEP( 81, 16'h00b0,   INSTR, "CLR RRS,RL")	
+	INSTR = {`GROUP_LOAD_STORE,`LDSINCF_NONE,`LDSOPF_ST,`MODE_LDS_REG_MEM,`RRS,`R0};	 
+	`ST_STEP(  82, 16'h00b2,   INSTR, 16'h0000, 16'h0000, "ST (R0),RRS")	
+
+	/**************************************************************************
+	* ALU Group - Data sources
+	* Most of these were tested above, but here they are systematically
+	***************************************************************************/
+	// Use Add to test the result
+	// ADD R1,R2
+	`LOAD(     83, 16'h00b4,   `R1, 16'h1234)
+	`LOAD(     85, 16'h00b8,   `R2, 16'h4321)
+	INSTR = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_ADD,`MODE_ALU_REG_REG,`R1,`R2};
+	`ALU_STEP( 87, 16'h00bc,   INSTR, "ADD R1,R1")	
+	INSTR = {`GROUP_LOAD_STORE,`LDSINCF_NONE,`LDSOPF_ST,`MODE_LDS_REG_MEM,`R1,`R0};	 
+	`ST_STEP(  88, 16'h00be,   INSTR, 16'h0000, 16'h5555, "ST (R0),R1")	
+
+	// ADD R1,U4
+	`LOAD(     89, 16'h00c0,   `R1, 16'h1234)
+	INSTR = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_ADD,`MODE_ALU_REG_U4,`R1,4'b0110};
+	`ALU_STEP( 91, 16'h00c4,   INSTR, "ADD R1,6")	
+	INSTR = {`GROUP_LOAD_STORE,`LDSINCF_NONE,`LDSOPF_ST,`MODE_LDS_REG_MEM,`R1,`R0};	 
+	`ST_STEP(  92, 16'h00c6,   INSTR, 16'h0000, 16'h123a, "ST (R0),R1")	
+
+	// ADD RB,U8L
+	`LOAD(     93, 16'h00c8,   `RB, 16'h1234)
+	INSTR = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_ADD,`MODE_ALU_REGB_U8,8'b01100110};
+	`ALU_STEP( 95, 16'h00cc,   INSTR, "ADD RB,0x66")	
+	INSTR = {`GROUP_LOAD_STORE,`LDSINCF_NONE,`LDSOPF_ST,`MODE_LDS_REG_MEM,`RB,`R0};	 
+	`ST_STEP(  96, 16'h00ce,   INSTR, 16'h0000, 16'h129a, "ST (R0),RB")	
+
+	// ADD RA,U8H.RBL
+	`LOAD(     97, 16'h00d0,   `RA, 16'h1234)
+	`LOAD(     99, 16'h00d4,   `RB, 16'h0033)
+	INSTR = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_ADD,`MODE_ALU_REGA_U8RB,8'h44};
+	`ALU_STEP(101, 16'h00d8,   INSTR, "ADD RA,0x66")	
+	INSTR = {`GROUP_LOAD_STORE,`LDSINCF_NONE,`LDSOPF_ST,`MODE_LDS_REG_MEM,`RA,`R0};	 
+	`ST_STEP( 102, 16'h00da,   INSTR, 16'h0000, 16'h5667, "ST (R0),RA")	
+
+	/**************************************************************************
+	* Jump Group
+	***************************************************************************/
+	// Use Add to generate a result to test
+	// ADD R1,R2 ; JMP[Z] R3 - No jump
+	`LOAD(    103, 16'h00dc,   `R1, 16'h1234)
+	`LOAD(    107, 16'h00e0,   `R2, 16'h4321)
+	`LOAD(    109, 16'h00e4,   `R3, 16'h8888)
+	INSTR = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_ADD,`MODE_ALU_REG_REG,`R1,`R2};
+	`ALU_STEP(111, 16'h00e8,   INSTR, "ADD R1,R2")	
+	`TICK;
+	DIN = {`GROUP_JUMP,      `SKIPF_SKIP,`CC_SELECTX_Z,`MODE_JMP_ABS_REG,`R3,`R3};	 
+	`assert("112 ADDR_BUF", 16'h00ea, ADDR_BUF)
+	`TOCK;
+	`TICKTOCK;
+	`TICKTOCK;
+	`TICKTOCK;
+	
+	// JMP[NZ] R3
+	`TICK;
+	DIN = {`GROUP_JUMP,      `SKIPF_NOT_SKIP,`CC_SELECTX_Z,`MODE_JMP_ABS_REG,`R3,`R3};	 
+	`assert("114 ADDR_BUF", 16'h00ec, ADDR_BUF)
+	`TOCK;
+	`TICKTOCK;
+	`TICKTOCK;
+	`TICKTOCK;
+
+	// NOP
+	`TICK;
+	DIN = {`GROUP_SYSTEM,    3'b000, `GEN_OP_NOP, 8'h00};	 
+	`assert("115 ADDR_BUF", 16'h8888, ADDR_BUF)
+	`TOCK;
+	`TICKTOCK;
+	`TICKTOCK;
+	`TICKTOCK;
+
 
 
 end

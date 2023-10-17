@@ -75,10 +75,10 @@ wire [1:0] SKIPF;
 wire [1:0] JPF;
 
 
-assign GROUPF= INSTRUCTION[15:14];
-assign SKIPF = INSTRUCTION[13:12];
-assign JPF   = INSTRUCTION[11:10];
-assign CC_SELECTX   = INSTRUCTION[9:8];
+assign GROUPF     = INSTRUCTION[15:14];
+assign SKIPF      = INSTRUCTION[13:12];
+assign CC_SELECTX = INSTRUCTION[11:10];
+assign JPF        = INSTRUCTION[9:8];
 
 assign CC_INVERTX = SKIPF[0];
 assign CC_APPLYX  = SKIPF[1];
