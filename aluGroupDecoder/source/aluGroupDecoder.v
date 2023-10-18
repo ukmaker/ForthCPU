@@ -104,7 +104,7 @@ begin
 	REGA_ADDRX = `REGA_ADDRX_ARGA;
 	REGB_ADDRX = `REGB_ADDRX_ARGB;
 	
-	if(GROUPX == `GROUP_ARITHMETIC_LOGIC) begin
+	//if(GROUPX == `GROUP_ARITHMETIC_LOGIC) begin
 		case(ARGF) 
 			`MODE_ALU_REG_REG: begin // ALU Ra,Rb
 				ALUB_SRCX = `ALUB_SRCX_REG_B;
@@ -128,12 +128,10 @@ begin
 				RD_A = 1; RD_B = 1; WR_A = 1;
 			end
 		endcase
-	end
+	//end
 end
 
 always @(posedge CLK) begin
-	
-
 	
 	if(FETCH) begin
 		CCL_LD <= 0;
@@ -141,26 +139,28 @@ always @(posedge CLK) begin
 		REGB_EN <= 0;
 		REGA_WEN <= 0; 
 		REGB_WEN <= 0;		
-	end else if(DECODE) begin
-		REGA_EN <= RD_A;
-		REGB_EN <= RD_B;
-		REGA_WEN <= 0;
-		REGB_WEN <= 0;
-	end else if(EXECUTE) begin
-		REGA_EN <= RD_A;
-		REGB_EN <= RD_B;
-		REGA_WEN <= 0;
-		REGB_WEN <= 0;
-		if(ALU_OPX != `ALU_OPX_MOV) begin
-			CCL_LD <= 1;
+	end 
+	if(GROUPX == `GROUP_ARITHMETIC_LOGIC) begin
+		if(DECODE) begin
+			REGA_EN <= RD_A;
+			REGB_EN <= RD_B;
+			REGA_WEN <= 0;
+			REGB_WEN <= 0;
+		end else if(EXECUTE) begin
+			REGA_EN <= RD_A;
+			REGB_EN <= RD_B;
+			REGA_WEN <= 0;
+			REGB_WEN <= 0;
+		end else if(COMMIT) begin
+			if(ALU_OPX != `ALU_OPX_MOV) begin
+				CCL_LD <= 1;
+			end
+			REGA_EN <= WR_A;
+			REGB_EN <= WR_B;
+			REGA_WEN <= WR_A;
+			REGB_WEN <= WR_B;
 		end
-	end else if(COMMIT) begin
-		REGA_EN <= WR_A;
-		REGB_EN <= WR_B;
-		REGA_WEN <= WR_A;
-		REGB_WEN <= WR_B;
 	end
-	
 end
 
 

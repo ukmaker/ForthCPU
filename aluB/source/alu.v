@@ -15,6 +15,7 @@ module alu(
 
 );
 
+reg mul;
 reg arithmetic;
 reg sex;
 
@@ -26,6 +27,7 @@ reg [15:0] tmp;
 always @ (*)
 	
 		begin
+			mul = 0;
 			arithmetic = 0;
 			OVFL = 0;
 			
@@ -45,9 +47,8 @@ always @ (*)
 					end
 					
 				`ALU_OPX_MUL: begin // MUL
-					arithmetic = 1;
+					mul = 1;
 					{tmp,RESULT} = ARGA * ARGB;
-					OVFL = | tmp;
 					end
 					
 				`ALU_OPX_OR: begin // OR
@@ -114,12 +115,14 @@ always @ (*)
 				
 				ZERO = (RESULT == 0);
 				SIGN = RESULT[15];
-				if(arithmetic) begin
+				OVFL = ARGA[15] & ARGB[15] & ~RESULT[15] | ~ARGA[15] & ~ARGB[15] & RESULT[15];
+				if(mul) begin
+					PARITY = | tmp;
+				end else if(arithmetic) begin
 					PARITY = OVFL;
 				end else begin
 					PARITY = RESULT[0];
-				end
-				
+				end			
 			end
 				
 endmodule

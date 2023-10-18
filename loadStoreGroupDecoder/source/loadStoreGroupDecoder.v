@@ -199,7 +199,7 @@ always @(*) begin
 				end
 			endcase
 		end
-		`MODE_LDS_REG_FRAME: begin // LD x,(FP + S6)
+		`MODE_LDS_REG_FP: begin // LD x,(FP + S6)
 			// No inc/dec in this mode.
 			// Those bits are used for S6[5:4]
 			REGB_ADDRX = `REGB_ADDRX_RFP;
@@ -218,7 +218,7 @@ always @(*) begin
 			// To REGB
 			ALUB_SRCX = `ALUB_SRCX_REG_B;		
 		end
-		`MODE_LDS_REG_STACK: begin // LD x,(SP + U6)
+		`MODE_LDS_REG_SP: begin // LD x,(SP + U6)
 			// No inc/dec in this mode.
 			// Those bits are used for S6[5:4]
 			REGB_ADDRX = `REGB_ADDRX_RSP;
@@ -237,7 +237,7 @@ always @(*) begin
 			// To REGB
 			ALUB_SRCX = `ALUB_SRCX_REG_B;		
 		end
-		`MODE_LDS_REG_RETSTACK: begin // LD x,(RS + S6)
+		`MODE_LDS_REG_RS: begin // LD x,(RS + S6)
 			// No inc/dec in this mode.
 			// Those bits are used for S6[5:4]
 			REGB_ADDRX = `REGB_ADDRX_RRS;

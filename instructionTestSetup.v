@@ -30,7 +30,7 @@
 	`TICKTOCK; \
 	$display("COMMIT  [T=%09t]", $realtime); \
 	`TICKTOCK;
-	
+
 `define ST_STEP(n, addr, instruction, st_addr, st_data, m) \
 	$display("FETCH   [T=%09t] %04d {%04x} :: {%04x} %s", $realtime, n, addr, instruction, m); \
 	#1 \

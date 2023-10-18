@@ -52,7 +52,9 @@ core testInstance(
 );
 
 reg [15:0] INSTR;
-
+reg [5:0] U6;
+reg [1:0] U2;
+reg [3:0] U4;
 
 // clk gen
 always begin
@@ -315,7 +317,160 @@ initial begin
 	`TICKTOCK;
 
 
+	// ADD R1,R2 ; JMP[NC] R3 - No jump
+	`LOAD(    116, 16'h888a,   `R1, 16'h8888)
+	`LOAD(    118, 16'h888e,   `R2, 16'h8888)
+	`LOAD(    120, 16'h8892,   `R3, 16'h8888)
+	INSTR = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_ADD,`MODE_ALU_REG_REG,`R1,`R2};
+	`ALU_STEP(122, 16'h8896,   INSTR, "ADD R1,R2")	
+	`TICK;
+	DIN = {`GROUP_JUMP,      `SKIPF_NOT_SKIP,`CC_SELECTX_C,`MODE_JMP_ABS_REG,`R3,`R3};	 
+	`assert("123 ADDR_BUF", 16'h8898, ADDR_BUF)
+	`TOCK;
+	`TICKTOCK;
+	`TICKTOCK;
+	`TICKTOCK;
+	
+	// JMP[C] R3
+	`TICK;
+	DIN = {`GROUP_JUMP,      `SKIPF_SKIP,`CC_SELECTX_C,`MODE_JMP_ABS_REG,`R3,`R3};	 
+	`assert("124 ADDR_BUF", 16'h889a, ADDR_BUF)
+	`TOCK;
+	`TICKTOCK;
+	`TICKTOCK;
+	`TICKTOCK;
 
+	// NOP
+	`TICK;
+	DIN = {`GROUP_SYSTEM,    3'b000, `GEN_OP_NOP, 8'h00};	 
+	`assert("125 ADDR_BUF", 16'h8888, ADDR_BUF)
+	`TOCK;
+	`TICKTOCK;
+	`TICKTOCK;
+	`TICKTOCK;
+
+
+	// ADD R1,R2 ; JMP[NS] R3 - No jump
+	`LOAD(    126, 16'h888a,   `R1, 16'h8888)
+	`LOAD(    128, 16'h888e,   `R2, 16'h0000)
+	`LOAD(    130, 16'h8892,   `R3, 16'h8888)
+	INSTR = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_ADD,`MODE_ALU_REG_REG,`R1,`R2};
+	`ALU_STEP(132, 16'h8896,   INSTR, "ADD R1,R2")	
+	`TICK;
+	DIN = {`GROUP_JUMP,      `SKIPF_NOT_SKIP,`CC_SELECTX_S,`MODE_JMP_ABS_REG,`R3,`R3};	 
+	`assert("133 ADDR_BUF", 16'h8898, ADDR_BUF)
+	`TOCK;
+	`TICKTOCK;
+	`TICKTOCK;
+	`TICKTOCK;
+	
+	// JMP[S] R3
+	`TICK;
+	DIN = {`GROUP_JUMP,      `SKIPF_SKIP,`CC_SELECTX_S,`MODE_JMP_ABS_REG,`R3,`R3};	 
+	`assert("134 ADDR_BUF", 16'h889a, ADDR_BUF)
+	`TOCK;
+	`TICKTOCK;
+	`TICKTOCK;
+	`TICKTOCK;
+
+	// NOP
+	`TICK;
+	DIN = {`GROUP_SYSTEM,    3'b000, `GEN_OP_NOP, 8'h00};	 
+	`assert("135 ADDR_BUF", 16'h8888, ADDR_BUF)
+	`TOCK;
+	`TICKTOCK;
+	`TICKTOCK;
+	`TICKTOCK;
+
+	// Parity is overflow for MUL
+	// ADD R1,R2 ; JMP[NP] R3 - No jump
+	`LOAD(    136, 16'h888a,   `R1, 16'h8888)
+	`LOAD(    138, 16'h888e,   `R2, 16'h8888)
+	`LOAD(    140, 16'h8892,   `R3, 16'h8888)
+	INSTR = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_MUL,`MODE_ALU_REG_REG,`R1,`R2};
+	`ALU_STEP(142, 16'h8896,   INSTR, "MUL R1,R2")	
+	`TICK;
+	DIN = {`GROUP_JUMP,      `SKIPF_NOT_SKIP,`CC_SELECTX_P,`MODE_JMP_ABS_REG,`R3,`R3};	 
+	`assert("143 ADDR_BUF", 16'h8898, ADDR_BUF)
+	`TOCK;
+	`TICKTOCK;
+	`TICKTOCK;
+	`TICKTOCK;
+	
+	// JMP[P] R3
+	`TICK;
+	DIN = {`GROUP_JUMP,      `SKIPF_SKIP,`CC_SELECTX_P,`MODE_JMP_ABS_REG,`R3,`R3};	 
+	`assert("144 ADDR_BUF", 16'h889a, ADDR_BUF)
+	`TOCK;
+	`TICKTOCK;
+	`TICKTOCK;
+	`TICKTOCK;
+
+	// NOP
+	`TICK;
+	DIN = {`GROUP_SYSTEM,    3'b000, `GEN_OP_NOP, 8'h00};	 
+	`assert("145 ADDR_BUF", 16'h8888, ADDR_BUF)
+	`TOCK;
+	`TICKTOCK;
+	`TICKTOCK;
+	`TICKTOCK;
+
+	/**************************************************************************
+	* Load with offsets
+	***************************************************************************/
+	// LD Ra,(FP+S6.0)
+	// FP = 0x5678
+	// S6 = 1010100 = 1111 1111 1101 0100 = 0xffd4
+	// ADDR = 0x564c
+	U6 = 6'b101010;
+	U2 = U6[5:4]; U4 = U6[3:0];
+	`LOAD(   146, 16'h888a,   `RFP, 16'h5678)
+	INSTR = {`GROUP_LOAD_STORE,U2,`LDSOPF_LD,`MODE_LDS_REG_FP, `R1, U4};
+	`LD_STEP(148, 16'h888e, INSTR, 16'h564c, 16'habcd, "LD R1,0x2a")
+	INSTR = {`GROUP_LOAD_STORE,`LDSINCF_NONE,`LDSOPF_ST,`MODE_LDS_REG_MEM,`R1,`R0};	 
+	`ST_STEP(149, 16'h8890, INSTR, 16'h0000, 16'habcd, "ST (R0),R1")	
+	
+	// LD Ra,(SP+S6.0)
+	// SP = 0x6678
+	// S6 = 1010100 = 1111 1111 1101 0100 = 0xffd4
+	// ADDR = 0x664c
+	U6 = 6'b101010;
+	U2 = U6[5:4]; U4 = U6[3:0];
+	`LOAD(   150, 16'h8892,   `RSP, 16'h6678)
+	INSTR = {`GROUP_LOAD_STORE,U2,`LDSOPF_LD,`MODE_LDS_REG_SP, `R1, U4};
+	`LD_STEP(151, 16'h8896, INSTR, 16'h664c, 16'hbbcd, "LD R1,0x2a")
+	INSTR = {`GROUP_LOAD_STORE,`LDSINCF_NONE,`LDSOPF_ST,`MODE_LDS_REG_MEM,`R1,`R0};	 
+	`ST_STEP(152, 16'h8898, INSTR, 16'h0000, 16'hbbcd, "ST (R0),R1")	
+	
+	// LD Ra,(RS+S6.0)
+	// RS = 0x7678
+	// S6 = 1010100 = 1111 1111 1101 0100 = 0xffd4
+	// ADDR = 0x764c
+	U6 = 6'b101010;
+	U2 = U6[5:4]; U4 = U6[3:0];
+	`LOAD(   153, 16'h889a,   `RRS, 16'h7678)
+	INSTR = {`GROUP_LOAD_STORE,U2,`LDSOPF_LD,`MODE_LDS_REG_RS, `R1, U4};
+	`LD_STEP(155, 16'h889e, INSTR, 16'h764c, 16'habcd, "LD R1,0x2a")
+	INSTR = {`GROUP_LOAD_STORE,`LDSINCF_NONE,`LDSOPF_ST,`MODE_LDS_REG_MEM,`R1,`R0};	 
+	`ST_STEP(156, 16'h88a0, INSTR, 16'h0000, 16'habcd, "ST (R0),R1")	
+	
+	/**************************************************************************
+	* Load bytes with offsets
+	***************************************************************************/
+	// LD_B Ra,(FP+S6)
+	// FP = 0x5678
+	// S6 = 101010 = 1111 1111 1110  1010 = 0xffea = -22 = -0x16
+	// ADDR = 0x564c
+	U6 = 6'b101010;
+	U2 = U6[5:4]; U4 = U6[3:0];
+	`LOAD(   157, 16'h88a2,   `RFP, 16'h5678)
+	INSTR = {`GROUP_LOAD_STORE,U2,`LDSOPF_LDB,`MODE_LDS_REG_FP, `R1, U4};
+	`LD_STEP(159, 16'h88a6, INSTR, 16'h5662, 16'habcd, "LD_B R1,FP - 22")
+	INSTR = {`GROUP_LOAD_STORE,`LDSINCF_NONE,`LDSOPF_ST,`MODE_LDS_REG_MEM,`R1,`R0};	 
+	`ST_STEP(160, 16'h88a8, INSTR, 16'h0000, 16'h00cd, "ST (R0),R1")	
+		
+	
+	
 end
 
 endmodule

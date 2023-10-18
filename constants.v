@@ -15,11 +15,11 @@
 `define RA  4'b1000 
 `define RB  4'b1001 
 `define RI  4'b1010 
-`define RFP  4'b1011 
-`define RWA  4'b1100 
-`define RSP  4'b1101 
-`define RRS  4'b1110 
-`define RL   4'b1111 
+`define RFP 4'b1011 
+`define RWA 4'b1100 
+`define RSP 4'b1101 
+`define RRS 4'b1110 
+`define RL  4'b1111 
 
 /**
 * Branch logic control fields
@@ -208,10 +208,10 @@
 `define MODE_ALU_REGB_U8   2'b10
 `define MODE_ALU_REGA_U8RB 2'b11
 // Load/Store operations
-`define MODE_LDS_REG_MEM      2'b00
-`define MODE_LDS_REG_FRAME    2'b01
-`define MODE_LDS_REG_STACK    2'b10
-`define MODE_LDS_REG_RETSTACK 2'b11
+`define MODE_LDS_REG_MEM  2'b00
+`define MODE_LDS_REG_FP   2'b01
+`define MODE_LDS_REG_SP   2'b10
+`define MODE_LDS_REG_RS   2'b11
 // Jumps
 `define MODE_JMP_ABS_REG  2'b00
 `define MODE_JMP_ABS_U8RB 2'b01
