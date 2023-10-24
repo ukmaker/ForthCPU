@@ -114,12 +114,21 @@
         <Source name="constants.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
+        <Source name="testSetup.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
         <Source name="aluGroupDecoder/sim/sim.spf" type="Simulation Project File" type_short="SPF">
             <Options/>
         </Source>
         <Source name="aluGroupDecoder/test/aluGroupDecoderTests/aluGroupDecoderTests.spf" type="Simulation Project File" type_short="SPF">
             <Options/>
         </Source>
+        <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">
+            <Options/>
+        </Source>
+    </Implementation>
+    <Implementation title="bootROM" dir="bootROM" description="bootROM" synthesis="synplify" default_strategy="Area">
+        <Options/>
         <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">
             <Options/>
         </Source>
@@ -314,7 +323,7 @@
         </Source>
     </Implementation>
     <Implementation title="processorCore" dir="processorCore" description="processorCore" synthesis="synplify" default_strategy="Area">
-        <Options def_top="processorCoreInstructionTests"/>
+        <Options def_top="processorCoreInterruptTests"/>
         <Source name="constants.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
@@ -393,6 +402,9 @@
         <Source name="instructionTestSetup.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
+        <Source name="processorCore/test/processorCoreInterruptTests.v" type="Verilog" type_short="Verilog">
+            <Options top_module="processorCoreInterruptTests"/>
+        </Source>
         <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">
             <Options/>
         </Source>
@@ -400,6 +412,9 @@
             <Options/>
         </Source>
         <Source name="processorCore/test/processorCoreTests/processorCoreTests.spf" type="Simulation Project File" type_short="SPF">
+            <Options/>
+        </Source>
+        <Source name="processorCore/test/processorInterruptTestbench/processorInterruptTestbench.spf" type="Simulation Project File" type_short="SPF">
             <Options/>
         </Source>
     </Implementation>

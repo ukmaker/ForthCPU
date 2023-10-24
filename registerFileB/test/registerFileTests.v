@@ -23,6 +23,7 @@ module registerFileTests;
 	reg [1:0] REGA_ADDRX;
 	reg [1:0] REGA_BYTE_EN;
 	reg [1:0] REGA_DINX;
+	reg REGA_BYTEX;
 	
 	/**
 	* Port B controls
@@ -52,6 +53,7 @@ module registerFileTests;
 		.ARGB_X(ARGB_X),
 		
 		.REGA_DINX(REGA_DINX),
+		.REGA_BYTEX(REGA_BYTEX),
 		.REGB_ADDRX(REGB_ADDRX),
 		.REGB_BYTE_EN(REGB_BYTE_EN),
 		.REGA_DOUT(REGA_DOUT),
@@ -85,6 +87,7 @@ initial begin
 	REGA_ADDRX   = `REGA_ADDRX_ARGA;
 	REGB_ADDRX   = `REGB_ADDRX_ARGB;
 	REGA_DINX    = `REGA_DINX_DIN;
+	REGA_BYTEX   = 0;
 	REGA_EN      = 0;
 	REGB_EN      = 0;
 	REGA_WEN     = 0;
@@ -108,8 +111,16 @@ initial begin
 	`assert("QA", 16'h5678, REGA_DOUT)
 	`assert("QB", 16'h0000, REGB_DOUT)
 	
-	REGA_DINX = `REGA_DINX_DINH;
-	ARGA_X    = `RA;
+	REGA_DINX  = `REGA_DINX_BYTE;
+	REGA_BYTEX = `REGA_BYTEX_LOW;
+	ARGA_X     = `R1;
+	`TICKTOCK;
+	`mark(2)
+	`assert("QA", 16'h0078, REGA_DOUT)
+	
+	REGA_DINX  = `REGA_DINX_BYTE;
+	REGA_BYTEX = `REGA_BYTEX_HIGH;
+	ARGA_X     = `RA;
 	`TICKTOCK;
 	`mark(2)
 	`assert("QA", 16'h0056, REGA_DOUT)
@@ -142,6 +153,12 @@ initial begin
 	`TICKTOCK;
 	`mark(5)
 	`assert("QA", 16'h5678, REGA_DOUT)
+	`assert("QB", 16'h0000, REGB_DOUT)
+	
+	ARGA_X = `R1;
+	`TICKTOCK;
+	`mark(6)
+	`assert("QA", 16'h0078, REGA_DOUT)
 	`assert("QB", 16'h0000, REGB_DOUT)
 	
 	REGA_ADDRX = `REGA_ADDRX_RA;

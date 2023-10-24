@@ -21,6 +21,7 @@ module registerFile(
 	input [3:0] ARGA_X,
 	input [1:0] REGA_ADDRX,
 	input [1:0] REGA_DINX,
+	input        REGA_BYTEX,
 	
 	/**
 	* Port B controls
@@ -39,7 +40,9 @@ module registerFile(
 * internal wires
 **/
 reg [15:0] DINA;
-wire [15:0] DINH;
+wire [15:0] DIN_BYTE_LOW;
+wire [15:0] DIN_BYTE_HIGH;
+reg [15:0] DIN_BYTE;
 reg [3:0] ADDRA;
 reg [3:0] ADDRB;
 
@@ -62,13 +65,19 @@ registers regs(
 	.QB( REGB_DOUT )
 );
 
-assign DINH = {8'h00,DIN[15:8]};
+assign DIN_BYTE_LOW  = {8'h00,DIN[7:0]};
+assign DIN_BYTE_HIGH = {8'h00,DIN[15:8]};
 
 always @(*) begin
 		
+	case(REGA_BYTEX)
+		`REGA_BYTEX_HIGH:   DIN_BYTE = DIN_BYTE_HIGH;
+		default:                 DIN_BYTE = DIN_BYTE_LOW;
+	endcase
+	
 	case(REGA_DINX)
 		`REGA_DINX_DIN:          DINA = DIN;
-		`REGA_DINX_DINH:         DINA = DINH;
+		`REGA_DINX_BYTE:         DINA = DIN_BYTE;
 		`REGA_DINX_PC_A_NEXT:    DINA = PC_A_NEXT;
 		default:                 DINA = ALU_R;
 	endcase

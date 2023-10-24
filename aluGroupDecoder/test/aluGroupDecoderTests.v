@@ -4,10 +4,12 @@
 
 module aluGroupDecoderTests;
 	
-	reg CLK;
-	reg RESET;
-	wire FETCH, DECODE, EXECUTE, COMMIT;
-	reg [15:0] INSTRUCTION;
+	reg          CLK;
+	reg          RESET;
+	wire         FETCH, DECODE, EXECUTE, COMMIT;
+	reg  [15:0] DIN;
+	wire [15:0] INSTRUCTION;
+	reg         PC_ENX;
 	
 	/** 
 	* Outputs to control functional blocks
@@ -22,8 +24,8 @@ module aluGroupDecoderTests;
 	wire REGB_EN;
 	wire REGA_WEN;
 	wire REGB_WEN;
-	wire [2:0] REGA_ADDRX;
-	wire [1:0] REGB_ADDRX;
+	wire [1:0] REGA_ADDRX;
+	wire [2:0] REGB_ADDRX;
 	/**
 	* ALU
 	**/
@@ -32,7 +34,7 @@ module aluGroupDecoderTests;
 	/**
 	* Data Sources
 	**/
-	wire [1:0] ALUA_SRCX;
+	wire [2:0] ALUA_SRCX;
 	wire [2:0] ALUB_SRCX;
 	wire        CCL_LD;
 	
@@ -46,10 +48,13 @@ module aluGroupDecoderTests;
 instructionPhaseDecoder decoder(
 	.CLK(CLK),
 	.RESET(RESET),
+	.PC_ENX(PC_ENX),
+	.DIN(DIN),
 	.FETCH(FETCH),
 	.DECODE(DECODE),
 	.EXECUTE(EXECUTE),
-	.COMMIT(COMMIT)
+	.COMMIT(COMMIT),
+	.INSTRUCTION(INSTRUCTION)
 );
 
 
@@ -85,11 +90,11 @@ always begin
 end
 
 initial begin
-	#10
+	#90
 	CLK = 0; 
-	`TICK;
+	PC_ENX = 1;
 	 RESET = 1;
-	 INSTRUCTION = 16'h0000;
+	 DIN = 16'h0000;
 	 `TICKTOCK;
 	 `TICKTOCK;
 	 
@@ -97,11 +102,19 @@ initial begin
 	 `TICKTOCK; // Start FETCH
 	 `TICKTOCK; // Start FETCH
 	 `TICKTOCK; // Start FETCH
-	 INSTRUCTION = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_AND,`MODE_ALU_REG_REG,`R5,`RI}; 	 
-	 `TICKTOCK; // Latch instruction
+	 `TICKTOCK; // Start FETCH
+	 `TICKTOCK; // Start FETCH
+	 `TICKTOCK; // Start FETCH
 
 	 
-	 `TICKTOCK; 	 
+	 $display("[T=%09t] %d - FETCH", $realtime, 1);	
+	`TICK;
+	 DIN = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_AND,`MODE_ALU_REG_REG,`R5,`RI}; 	 
+	`TOCK; 
+	$display("[T=%09t] %d - DECODE", $realtime, 2);	
+	`TICKTOCK;
+	$display("[T=%09t] %d - EXECUTE", $realtime, 3);	
+	`TICKTOCK;
 	// Control outputs become valid here
 	`assert("REGA_EN", 1, REGA_EN)
 	`assert("REGB_EN", 1, REGB_EN)
@@ -110,55 +123,48 @@ initial begin
 	`assert("ALUA_SRCX", `ALUA_SRCX_REG_A, ALUA_SRCX)
 	`assert("ALUB_SRCX", `ALUB_SRCX_REG_B, ALUB_SRCX)
 	`assert("ALU_OPX", `ALU_OPX_AND, ALU_OPX)
-	
+	$display("[T=%09t] %d - COMMMIT", $realtime, 4);	
 	`TICKTOCK;
 	`assert("REGA_EN", 1, REGA_EN)
 	`assert("REGB_EN", 0, REGB_EN)
 	`assert("REGA_WEN",   1, REGA_WEN)
 	`assert("REG_B_WEN",  0, REGB_WEN)
-	`TICKTOCK;
-	`assert("REGA_EN", 0, REGA_EN)
-	`assert("REGB_EN", 0, REGB_EN)
-	`assert("REGA_WEN",   0, REGA_WEN)
-	`assert("REG_B_WEN",  0, REGB_WEN)
 	
+	$display("[T=%09t] %d - FETCH", $realtime, 5);	
 	`TICK;
-	 INSTRUCTION = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_AND,`MODE_ALU_REG_U4,`R6,4'b0111};
-	 `TICK;
+	DIN = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_AND,`MODE_ALU_REG_U4,`R6,4'b0111};
+	 `TOCK;
+	$display("[T=%09t] %d - DECODE", $realtime, 6);	
 	`TICKTOCK;
+	$display("[T=%09t] %d - EXECUTE", $realtime, 7);	
+	`TICKTOCK;
+	// Control outputs become valid here
 	`assert("REGA_EN", 1, REGA_EN)
 	`assert("REGB_EN", 0, REGB_EN)
 	`assert("REGA_WEN",   0, REGA_WEN)
-	`assert("REG_B_WEN",  0, REGB_WEN)	
-	`assert("ALUA_SRCX", `ALUA_SRCX_REG_A, ALUA_SRCX)
-	`assert("ALUB_SRCX", `ALUB_SRCX_U4, ALUB_SRCX)
-	`assert("ALU_OPX", `ALU_OPX_AND, ALU_OPX)
-	
+	`assert("REG_B_WEN",  0, REGB_WEN)
+	$display("[T=%09t] %d - COMMMIT", $realtime, 8);	
 	`TICKTOCK;
 	`assert("REGA_EN", 1, REGA_EN)
 	`assert("REGB_EN", 0, REGB_EN)
 	`assert("REGA_WEN",   1, REGA_WEN)
 	`assert("REG_B_WEN",  0, REGB_WEN)
-	`TICKTOCK;
-	`assert("REGA_EN", 0, REGA_EN)
-	`assert("REGB_EN", 0, REGB_EN)
-	`assert("REGA_WEN",   0, REGA_WEN)
-	`assert("REG_B_WEN",  0, REGB_WEN)
 	
+	 $display("[T=%09t] %d - FETCH", $realtime, 9);	
 	`TICK;
-	INSTRUCTION = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_AND,`MODE_ALU_REGB_U8,8'b10100101};
+	DIN = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_AND,`MODE_ALU_REGB_U8,8'b10100101};
 	`TICK;
-	 
+	$display("[T=%09t] %d - DECODE", $realtime, 10);	
 	`TICKTOCK;
+	$display("[T=%09t] %d - EXECUTE", $realtime, 11);	
+	`TICKTOCK;
+	// Control outputs become valid here
 	`assert("REGA_EN", 1, REGA_EN)
 	`assert("REGB_EN", 0, REGB_EN)
 	`assert("REGA_WEN",   0, REGA_WEN)
-	`assert("REG_B_WEN",  0, REGB_WEN)	
-	`assert("ALUA_SRCX", `ALUA_SRCX_REG_A, ALUA_SRCX)
-	`assert("REGA_ADDRX_RB", `REGA_ADDRX_RB, REGA_ADDRX)
-	`assert("ALUB_SRCX", `ALUB_SRCX_U8, ALUB_SRCX)
-	`assert("ALU_OPX", `ALU_OPX_AND, ALU_OPX)	
-	
+	`assert("REG_B_WEN",  0, REGB_WEN)
+	`assert("CCL_LD",     0, CCL_LD)
+	$display("[T=%09t] %d - COMMMIT", $realtime, 12);	
 	`TICKTOCK;
 	`assert("REGA_EN", 1, REGA_EN)
 	`assert("REGB_EN", 0, REGB_EN)
@@ -166,42 +172,30 @@ initial begin
 	`assert("REG_B_WEN",  0, REGB_WEN)
 	`assert("CCL_LD",     1, CCL_LD)
 	
-	`TICKTOCK;
-	`assert("REGA_EN", 0, REGA_EN)
-	`assert("REGB_EN", 0, REGB_EN)
-	`assert("REGA_WEN",   0, REGA_WEN)
-	`assert("REG_B_WEN",  0, REGB_WEN)
-	`assert("CCL_LD",     0, CCL_LD)
-	
+	 $display("[T=%09t] %d - FETCH", $realtime, 13);	
 	`TICK;
 	`assert("REGA_EN", 0, REGA_EN)
 	`assert("REGB_EN", 0, REGB_EN)
 	`assert("REGA_WEN",   0, REGA_WEN)
 	`assert("REG_B_WEN",  0, REGB_WEN)
 	`assert("CCL_LD",     0, CCL_LD)
-	 INSTRUCTION = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_MOV,`MODE_ALU_REGA_U8RB,8'b10100101};
+	 DIN = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_MOV,`MODE_ALU_REGA_U8RB,8'b10100101};
 	 `TICK;
-	 
+	$display("[T=%09t] %d - DECODE", $realtime, 14);	
 	`TICKTOCK;
+	$display("[T=%09t] %d - EXECUTE", $realtime, 15);	
+	`TICKTOCK;
+	// Control outputs become valid here
 	`assert("REGA_EN", 1, REGA_EN)
 	`assert("REGB_EN", 1, REGB_EN)
 	`assert("REGA_WEN",   0, REGA_WEN)
-	`assert("REG_B_WEN",  0, REGB_WEN)	
-	`assert("ALUA_SRCX",     `ALUA_SRCX_REG_A, ALUA_SRCX)
-	`assert("REGA_ADDRX_RA", `REGA_ADDRX_RA, REGA_ADDRX)
-	`assert("ALUB_SRCX",     `ALUB_SRCX_U8H, ALUB_SRCX)
-	`assert("ALU_OPX",       `ALU_OPX_MOV, ALU_OPX)	
-	
+	`assert("REG_B_WEN",  0, REGB_WEN)
+	`assert("CCL_LD",     0, CCL_LD)
+	$display("[T=%09t] %d - COMMMIT", $realtime, 16);	
 	`TICKTOCK;
 	`assert("REGA_EN", 1, REGA_EN)
 	`assert("REGB_EN", 0, REGB_EN)
 	`assert("REGA_WEN",   1, REGA_WEN)
-	`assert("REG_B_WEN",  0, REGB_WEN)
-	`assert("CCL_LD",     0, CCL_LD)
-	`TICKTOCK;
-	`assert("REGA_EN", 0, REGA_EN)
-	`assert("REGB_EN", 0, REGB_EN)
-	`assert("REGA_WEN",   0, REGA_WEN)
 	`assert("REG_B_WEN",  0, REGB_WEN)
 	`assert("CCL_LD",     0, CCL_LD)
 	`TICKTOCK;

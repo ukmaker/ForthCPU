@@ -116,6 +116,11 @@ wire         JMP_REGA_WEN;
 wire         JMP_REGB_EN;
 wire [2:0]  JMP_ALUB_SRCX;
 
+/**
+* No ABUS tristate control yet
+**/
+assign ABUS_OEN = 0;
+
 /***************************************
 * Instruction Phase Decoder
 ****************************************/
@@ -178,6 +183,7 @@ registerFile registerFileInst(
 	.REGA_ADDRX(REGA_ADDRX),
 	.REGB_ADDRX(REGB_ADDRX),
 	.REGA_DINX(REGA_DINX),
+	.REGA_BYTEX(HIGH_BYTEX),
 	.REGA_DOUT(REGA_DOUT),
 	.REGB_DOUT(REGB_DOUT)
 );

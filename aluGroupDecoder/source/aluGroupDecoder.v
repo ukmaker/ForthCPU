@@ -118,7 +118,7 @@ begin
 				REGA_ADDRX = `REGA_ADDRX_RB;
 				ALUA_SRCX = `ALUA_SRCX_REG_A;
 				ALUB_SRCX = `ALUB_SRCX_U8;
-				RD_A = 1; WR_A = 1; RD_B = 1;
+				RD_A = 1; WR_A = 1; RD_B = 0;
 			end
 			`MODE_ALU_REGA_U8RB: begin // ALU RA,U8.RB
 				REGA_ADDRX = `REGA_ADDRX_RA;

@@ -119,9 +119,12 @@
 * Register A load sources
 **/
 `define REGA_DINX_DIN       2'b00
-`define REGA_DINX_DINH      2'b01
+`define REGA_DINX_BYTE      2'b01
 `define REGA_DINX_PC_A_NEXT 2'b10
 `define REGA_DINX_ALU_R     2'b11
+
+`define REGA_BYTEX_LOW      1'b0
+`define REGA_BYTEX_HIGH     1'b1
 
 /**
 * Register A address sources

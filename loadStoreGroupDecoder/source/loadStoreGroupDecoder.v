@@ -149,6 +149,7 @@ always @(*) begin
 			RD_B = 1;
 			RD_M = 1;
 			BYTE_OP = 1;
+			REGA_DINX  = `REGA_DINX_BYTE;
 		end
 		`LDSOPF_ST: begin // ST (Ra),Rb
 			RD_A = 1;

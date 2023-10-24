@@ -455,19 +455,37 @@ initial begin
 	`ST_STEP(156, 16'h88a0, INSTR, 16'h0000, 16'habcd, "ST (R0),R1")	
 	
 	/**************************************************************************
-	* Load bytes with offsets
+	* Load and store bytes with offsets
 	***************************************************************************/
 	// LD_B Ra,(FP+S6)
 	// FP = 0x5678
 	// S6 = 101010 = 1111 1111 1110  1010 = 0xffea = -22 = -0x16
-	// ADDR = 0x564c
+	// ADDR = 0x5562
 	U6 = 6'b101010;
 	U2 = U6[5:4]; U4 = U6[3:0];
 	`LOAD(   157, 16'h88a2,   `RFP, 16'h5678)
 	INSTR = {`GROUP_LOAD_STORE,U2,`LDSOPF_LDB,`MODE_LDS_REG_FP, `R1, U4};
 	`LD_STEP(159, 16'h88a6, INSTR, 16'h5662, 16'habcd, "LD_B R1,FP - 22")
 	INSTR = {`GROUP_LOAD_STORE,`LDSINCF_NONE,`LDSOPF_ST,`MODE_LDS_REG_MEM,`R1,`R0};	 
-	`ST_STEP(160, 16'h88a8, INSTR, 16'h0000, 16'h00cd, "ST (R0),R1")	
+	`ST_STEP(160, 16'h88a8, INSTR, 16'h0000, 16'h00cd, "ST (R0),R1")		
+	INSTR = {`GROUP_LOAD_STORE,`LDSINCF_NONE,`LDSOPF_STB,`MODE_LDS_REG_MEM,`R1,`R0};	 
+	`ST_LOW_STEP(161, 16'h88aa, INSTR, 16'h0000, 16'h00cd, "ST_B (R0),R1")	
+		
+	
+	// LD_B Ra,(FP+S6)
+	// FP = 0x5679
+	// S6 = 101010 = 1111 1111 1110  1010 = 0xffea = -22 = -0x16
+	// ADDR = 0x5563
+	U6 = 6'b101010;
+	U2 = U6[5:4]; U4 = U6[3:0];
+	`LOAD(   162, 16'h88ac,   `RFP, 16'h5679)
+	`LOAD(   164, 16'h88b0,   `R3,  16'h7777)
+	INSTR = {`GROUP_LOAD_STORE,U2,`LDSOPF_LDB,`MODE_LDS_REG_FP, `R1, U4};
+	`LD_STEP(165, 16'h88b4, INSTR, 16'h5663, 16'habcd, "LD_B R1,FP - 22")
+	INSTR = {`GROUP_LOAD_STORE,`LDSINCF_NONE,`LDSOPF_ST,`MODE_LDS_REG_MEM,`R1,`R0};	 
+	`ST_STEP(166, 16'h88b6, INSTR, 16'h0000, 16'h00ab, "ST (R0),R1")	
+	INSTR = {`GROUP_LOAD_STORE,`LDSINCF_NONE,`LDSOPF_STB,`MODE_LDS_REG_MEM,`R1,`R3};	 
+	`ST_HIGH_STEP(166, 16'h88b8, INSTR, 16'h7777, 16'hab00, "ST_B (R3),R1")	
 		
 	
 	
