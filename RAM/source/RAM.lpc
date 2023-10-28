@@ -1,0 +1,52 @@
+[Device]
+Family=machxo3l
+PartType=LCMXO3L-6900C
+PartName=LCMXO3L-6900C-5BG256C
+SpeedGrade=5
+Package=CABGA256
+OperatingCondition=COM
+Status=S
+
+[IP]
+VendorName=Lattice Semiconductor Corporation
+CoreType=LPM
+CoreStatus=Demo
+CoreName=RAM_DQ
+CoreRevision=7.5
+ModuleName=RAM
+SourceFormat=Verilog HDL
+ParameterFileVersion=1.0
+Date=10/25/2023
+Time=16:18:23
+
+[Parameters]
+Verilog=1
+VHDL=0
+EDIF=1
+Destination=Synplicity
+Expression=BusA(0 to 7)
+Order=Big Endian [MSB:LSB]
+IO=0
+Address=8192
+Data=16
+enByte=1
+ByteSize=8
+OutputEn=1
+ClockEn=0
+Optimization=Speed
+Reset=Sync
+Reset1=Sync
+Init=0
+MemFile=
+MemFormat=bin
+EnECC=0
+Pipeline=0
+Write=Normal
+init_data=0
+no_init=0
+
+[FilesGenerated]
+=mem
+
+[Command]
+cmd_line= -w -n RAM -lang verilog -synth synplify -bus_exp 7 -bb -arch xo3c00a -type ramdq -device LCMXO3L-6900C -addr_width 13 -data_width 16 -num_words 8192 -byte 8 -outdata REGISTERED -cascade -1 -resetmode SYNC -sync_reset -mem_init0 -writemode NORMAL

@@ -1,0 +1,47 @@
+[ActiveSupport MAP]
+Device = LCMXO3L-6900C;
+Package = CABGA256;
+Performance = 5;
+LUTS_avail = 6864;
+LUTS_used = 1416;
+FF_avail = 7071;
+FF_used = 189;
+INPUT_LVCMOS33 = 10;
+OUTPUT_LVCMOS33 = 24;
+BIDI_LVCMOS33 = 16;
+IO_avail = 207;
+IO_used = 50;
+EBR_avail = 26;
+EBR_used = 2;
+; Begin EBR Section
+Instance_Name = coreInst/registerFileInst/regs/registers_0_1_0;
+Type = DP8KC;
+Width_A = 8;
+Width_B = 8;
+Depth_A = 32;
+Depth_B = 32;
+REGMODE_A = NOREG;
+REGMODE_B = NOREG;
+RESETMODE = ASYNC;
+ASYNC_RESET_RELEASE = SYNC;
+WRITEMODE_A = WRITETHROUGH;
+WRITEMODE_B = WRITETHROUGH;
+GSR = DISABLED;
+MEM_INIT_FILE = INIT_ALL_0s;
+MEM_LPC_FILE = registers.lpc;
+Instance_Name = coreInst/registerFileInst/regs/registers_0_0_1;
+Type = DP8KC;
+Width_A = 8;
+Width_B = 8;
+Depth_A = 32;
+Depth_B = 32;
+REGMODE_A = NOREG;
+REGMODE_B = NOREG;
+RESETMODE = ASYNC;
+ASYNC_RESET_RELEASE = SYNC;
+WRITEMODE_A = WRITETHROUGH;
+WRITEMODE_B = WRITETHROUGH;
+GSR = DISABLED;
+MEM_INIT_FILE = INIT_ALL_0s;
+MEM_LPC_FILE = registers.lpc;
+; End EBR Section

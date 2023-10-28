@@ -68,9 +68,12 @@ add_file -verilog -vlog_std v2001 {C:/Users/Duncan/git/ForthCPU/branchLogic/sour
 add_file -verilog -vlog_std v2001 {C:/Users/Duncan/git/ForthCPU/busController/source/busController.v}
 add_file -verilog -vlog_std v2001 {C:/Users/Duncan/git/ForthCPU/testSetup.v}
 add_file -verilog -vlog_std v2001 {C:/Users/Duncan/git/ForthCPU/generalGroupDecoder/source/generalGroupDecoder.v}
+add_file -verilog -vlog_std v2001 {C:/Users/Duncan/git/ForthCPU/processorCore/test/processorCoreInstructionTests.v}
+add_file -verilog -vlog_std v2001 {C:/Users/Duncan/git/ForthCPU/instructionTestSetup.v}
+add_file -verilog -vlog_std v2001 {C:/Users/Duncan/git/ForthCPU/processorCore/test/processorCoreInterruptTests.v}
 
 #-- top module name
-set_option -top_module processorCoreTests
+set_option -top_module processorCoreInterruptTests
 
 #-- set result format/file last
 project -result_file {C:/Users/Duncan/git/ForthCPU/processorCore/ForthCPU_processorCore.edi}

@@ -1,0 +1,21 @@
+if {![file exists "C:/Users/Duncan/git/ForthCPU/memory/test/memoryTestbench/memoryTestbench.mpf"]} { 
+	project new "C:/Users/Duncan/git/ForthCPU/memory/test/memoryTestbench" memoryTestbench
+	project addfile "C:/Users/Duncan/git/ForthCPU/bootROM/source/rom.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/RAM/source/RAM.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/memory/source/memory.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/memory/test/memoryTests.v"
+	vlib  work
+	vdel -lib work -all 
+	vlib work
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/bootROM/source  -work work  "C:/Users/Duncan/git/ForthCPU/bootROM/source/rom.v"
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/RAM/source  -work work  "C:/Users/Duncan/git/ForthCPU/RAM/source/RAM.v"
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/memory/source  -work work  "C:/Users/Duncan/git/ForthCPU/memory/source/memory.v"
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/memory/test  -work work  "C:/Users/Duncan/git/ForthCPU/memory/test/memoryTests.v"
+} else {
+	project open "C:/Users/Duncan/git/ForthCPU/memory/test/memoryTestbench/memoryTestbench"
+	project compileoutofdate
+}
+vsim -L work -L pmi_work -L ovi_machxo3l  memoryTests
+view wave
+add wave /*
+run 1000ns

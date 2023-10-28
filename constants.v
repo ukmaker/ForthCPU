@@ -265,5 +265,23 @@
 `define JPF_REL_S8  2'b10
 `define JPF_REL_U8H 2'b11
 
+/*******************************************
+* UART definitions
+********************************************/
+`define UART_STATUS_DATA_AVAILABLE 0
+`define UART_STATUS_TX_ACTIVE      1
+`define UART_STATUS_TX_COMPLETE    2
+
+`define UART_REG_STATUS      2'b00
+`define UART_REG_DATA        2'b01
+`define UART_REG_RX_CLK_DIV  2'b10
+`define UART_REG_TX_CLLK_DIV 2'b11
+
+/*******************************************
+* Interrupt mask registers
+********************************************/
+`define INT_MASK 2'b00
+`define INT_INTS 2'b01
+`define INT_PRI  2'b10
 
 `endif

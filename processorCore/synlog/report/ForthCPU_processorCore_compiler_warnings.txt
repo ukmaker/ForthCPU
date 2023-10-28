@@ -1,7 +1,7 @@
-@W: CG730 :"C:\Users\Duncan\git\ForthCPU\processorCore\test\processorCoreTests.v":5:7:5:24|Top-level module processorCoreTests has no ports
-@W: CG360 :"C:\Users\Duncan\git\ForthCPU\aluB\source\alu.v":23:12:23:19|Removing wire w_result, as there is no assignment to it.
-@W: CL118 :"C:\Users\Duncan\git\ForthCPU\aluB\source\alu.v":32:3:32:6|Latch generated from always block for signal CARRY; possible missing assignment in an if or case statement.
-@W: CL118 :"C:\Users\Duncan\git\ForthCPU\aluB\source\aluAMux.v":16:1:16:4|Latch generated from always block for signal ALUA_DATA[15:0]; possible missing assignment in an if or case statement.
+@W: CG730 :"C:\Users\Duncan\git\ForthCPU\processorCore\test\processorCoreInterruptTests.v":5:7:5:33|Top-level module processorCoreInterruptTests has no ports
+@W: CG360 :"C:\Users\Duncan\git\ForthCPU\aluB\source\alu.v":24:12:24:19|Removing wire w_result, as there is no assignment to it.
+@W: CL118 :"C:\Users\Duncan\git\ForthCPU\aluB\source\alu.v":34:3:34:6|Latch generated from always block for signal CARRY; possible missing assignment in an if or case statement.
+@W: CL118 :"C:\Users\Duncan\git\ForthCPU\aluB\source\alu.v":34:3:34:6|Latch generated from always block for signal tmp[15:0]; possible missing assignment in an if or case statement.
 @W: CL168 :"C:\Users\Duncan\git\ForthCPU\registerFileB\source\registers.v":30:8:30:21|Removing instance scuba_vhi_inst because it does not drive other instances. To preserve this instance, use the syn_noprune synthesis directive.
 @W: CG133 :"C:\Users\Duncan\git\ForthCPU\interruptLogic\source\interruptStateMachine.v":21:4:21:10|Object EI_NEXT is declared but not assigned. Either assign a value or remove the declaration.
 @W: CG360 :"C:\Users\Duncan\git\ForthCPU\loadStoreGroupDecoder\source\loadStoreGroupDecoder.v":114:11:114:14|Removing wire ARGA, as there is no assignment to it.
@@ -10,7 +10,6 @@
 @W: CL169 :"C:\Users\Duncan\git\ForthCPU\generalGroupDecoder\source\generalGroupDecoder.v":33:0:33:5|Pruning unused register DI. Make sure that there are no unused intermediate registers.
 @W: CL169 :"C:\Users\Duncan\git\ForthCPU\generalGroupDecoder\source\generalGroupDecoder.v":33:0:33:5|Pruning unused register RETI. Make sure that there are no unused intermediate registers.
 @W: CL169 :"C:\Users\Duncan\git\ForthCPU\generalGroupDecoder\source\generalGroupDecoder.v":33:0:33:5|Pruning unused register HALT. Make sure that there are no unused intermediate registers.
-@W: CG360 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":20:8:20:15|Removing wire ABUS_OEN, as there is no assignment to it.
 @W: CG360 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":34:12:34:19|Removing wire ALUA_DIN, as there is no assignment to it.
 @W: CG360 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":37:12:37:19|Removing wire ALUB_DIN, as there is no assignment to it.
 @W: CG360 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":59:12:59:15|Removing wire PC_D, as there is no assignment to it.
@@ -18,19 +17,20 @@
 @W: CG360 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":61:13:61:22|Removing wire PC_LD_INT1, as there is no assignment to it.
 @W: CG360 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":85:12:85:24|Removing wire ALU_DATA_BUSX, as there is no assignment to it.
 @W: CG360 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":87:12:87:24|Removing wire ALU_REGA_DINX, as there is no assignment to it.
-@W: CL318 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":20:8:20:15|*Output ABUS_OEN has undriven bits; assigning undriven bits to 'Z'.  Simulation mismatch possible. Assign all bits of the output.
-@W: CG294 :"C:\Users\Duncan\git\ForthCPU\processorCore\test\processorCoreTests.v":58:0:58:5|always block should contain at least one event control
-@W: CG532 :"C:\Users\Duncan\git\ForthCPU\processorCore\test\processorCoreTests.v":62:0:62:6|Within an initial block, only Verilog force statements and memory initialization statements and initialization of entire variable are recognized, and all other content is ignored. Simulation mismatch may occur
-@W: CG204 :"C:\Users\Duncan\git\ForthCPU\processorCore\test\processorCoreTests.v":62:0:62:6|Within an initial block, memory initialization statements of entire variable and nested loops are not recognized. Simulation mismatch may occur
-@W: CG360 :"C:\Users\Duncan\git\ForthCPU\processorCore\test\processorCoreTests.v":22:5:22:6|Removing wire RD, as there is no assignment to it.
-@W: CG360 :"C:\Users\Duncan\git\ForthCPU\processorCore\test\processorCoreTests.v":23:5:23:6|Removing wire WR, as there is no assignment to it.
-@W: CL168 :"C:\Users\Duncan\git\ForthCPU\processorCore\test\processorCoreTests.v":29:5:29:16|Removing instance testInstance because it does not drive other instances. To preserve this instance, use the syn_noprune synthesis directive.
-@W: CL156 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":59:12:59:15|*Input PC_D[15:0] to expression [instance] has undriven bits; assigning undriven bits to 0.  Simulation mismatch possible. Assign all bits of the input.
+@W: CG294 :"C:\Users\Duncan\git\ForthCPU\processorCore\test\processorCoreInterruptTests.v":60:0:60:5|always block should contain at least one event control
+@W: CG294 :"C:\Users\Duncan\git\ForthCPU\processorCore\test\processorCoreInterruptTests.v":65:0:65:5|always block should contain at least one event control
+@W: CG294 :"C:\Users\Duncan\git\ForthCPU\processorCore\test\processorCoreInterruptTests.v":70:0:70:5|always block should contain at least one event control
+@W: CG532 :"C:\Users\Duncan\git\ForthCPU\processorCore\test\processorCoreInterruptTests.v":76:0:76:6|Within an initial block, only Verilog force statements and memory initialization statements and initialization of entire variable are recognized, and all other content is ignored. Simulation mismatch may occur
+@W: CG204 :"C:\Users\Duncan\git\ForthCPU\processorCore\test\processorCoreInterruptTests.v":76:0:76:6|Within an initial block, memory initialization statements of entire variable and nested loops are not recognized. Simulation mismatch may occur
+@W: CG133 :"C:\Users\Duncan\git\ForthCPU\processorCore\test\processorCoreInterruptTests.v":51:10:51:11|Object U6 is declared but not assigned. Either assign a value or remove the declaration.
+@W: CG133 :"C:\Users\Duncan\git\ForthCPU\processorCore\test\processorCoreInterruptTests.v":52:10:52:11|Object U2 is declared but not assigned. Either assign a value or remove the declaration.
+@W: CG133 :"C:\Users\Duncan\git\ForthCPU\processorCore\test\processorCoreInterruptTests.v":53:10:53:11|Object U4 is declared but not assigned. Either assign a value or remove the declaration.
+@W: CL168 :"C:\Users\Duncan\git\ForthCPU\processorCore\test\processorCoreInterruptTests.v":25:5:25:16|Removing instance testInstance because it does not drive other instances. To preserve this instance, use the syn_noprune synthesis directive.
 @W: CL156 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":85:12:85:24|*Input ALU_DATA_BUSX[1:0] to expression [instance] has undriven bits; assigning undriven bits to 0.  Simulation mismatch possible. Assign all bits of the input.
 @W: CL156 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":87:12:87:24|*Input ALU_REGA_DINX[1:0] to expression [instance] has undriven bits; assigning undriven bits to 0.  Simulation mismatch possible. Assign all bits of the input.
 @W: CL246 :"C:\Users\Duncan\git\ForthCPU\opxMultiplexer\source\opxMultiplexer.v":11:14:11:24|Input port bits 13 to 0 of INSTRUCTION[15:0] are unused. Assign logic for all port bits or change the input port size.
 @W: CL246 :"C:\Users\Duncan\git\ForthCPU\generalGroupDecoder\source\generalGroupDecoder.v":17:14:17:24|Input port bits 13 to 11 of INSTRUCTION[15:0] are unused. Assign logic for all port bits or change the input port size.
 @W: CL246 :"C:\Users\Duncan\git\ForthCPU\generalGroupDecoder\source\generalGroupDecoder.v":17:14:17:24|Input port bits 7 to 0 of INSTRUCTION[15:0] are unused. Assign logic for all port bits or change the input port size.
 @W: CL246 :"C:\Users\Duncan\git\ForthCPU\jumpGroupDecoder\source\jumpGroupDecoder.v":41:14:41:24|Input port bits 7 to 0 of INSTRUCTION[15:0] are unused. Assign logic for all port bits or change the input port size.
-@W: CL177 :"C:\Users\Duncan\git\ForthCPU\loadStoreGroupDecoder\source\loadStoreGroupDecoder.v":262:0:262:5|Sharing sequential element REGB_EN and merging REGA_EN. Add a syn_preserve attribute to the element to prevent sharing.
+@W: CL177 :"C:\Users\Duncan\git\ForthCPU\loadStoreGroupDecoder\source\loadStoreGroupDecoder.v":263:0:263:5|Sharing sequential element REGB_EN and merging REGA_EN. Add a syn_preserve attribute to the element to prevent sharing.
 

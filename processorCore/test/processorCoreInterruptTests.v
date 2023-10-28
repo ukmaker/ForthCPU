@@ -170,6 +170,7 @@ initial begin
 	INSTR = {`GROUP_LOAD_STORE,`LDSINCF_NONE,`LDSOPF_ST,`MODE_LDS_REG_MEM,`RA,`R0};	 
 	`ST_STEP(  25, 16'h0124,   INSTR, 16'h000a, 16'h0009, "ST (R0),RA")
 	
+	// 
 
 end
 

@@ -1,6 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<BaliProject version="3.2" title="ForthCPU" device="LCMXO3L-6900C-5BG256C" default_implementation="processorCore">
+<BaliProject version="3.2" title="ForthCPU" device="LCMXO3L-6900C-5BG256C" default_implementation="impl1">
     <Options/>
+    <Implementation title="RAM" dir="RAM" description="RAM" synthesis="synplify" default_strategy="Area">
+        <Options def_top="RAM"/>
+        <Source name="RAM/source/RAM.ipx" type="IPX_Module" type_short="IPX">
+            <Options top_module="RAM"/>
+        </Source>
+        <Source name="RAM/source/RAM.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">
+            <Options/>
+        </Source>
+    </Implementation>
+    <Implementation title="UART" dir="UART" description="UART" synthesis="synplify" default_strategy="Area">
+        <Options def_top="UARTTests"/>
+        <Source name="UART/source/receiver.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="UART/source/transmitter.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="UART/source/UART.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="UART/test/UARTComponentTests.v" type="Verilog" type_short="Verilog">
+            <Options top_module="UARTComponentTests"/>
+        </Source>
+        <Source name="UART/test/UARTTests.v" type="Verilog" type_short="Verilog">
+            <Options top_module="UARTTests"/>
+        </Source>
+        <Source name="constants.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">
+            <Options/>
+        </Source>
+        <Source name="UART/test/UARTComponentsTestbench/UARTComponentsTestbench.spf" type="Simulation Project File" type_short="SPF">
+            <Options/>
+        </Source>
+        <Source name="UART/test/UARTTestbench/UARTTestbench.spf" type="Simulation Project File" type_short="SPF">
+            <Options/>
+        </Source>
+    </Implementation>
     <Implementation title="addressBusController" dir="addressBusController" description="addressBusController" synthesis="synplify" default_strategy="Area">
         <Options def_top="addressBusController"/>
         <Source name="addressBusController/source/addressBusController.v" type="Verilog" type_short="Verilog">
@@ -128,7 +170,25 @@
         </Source>
     </Implementation>
     <Implementation title="bootROM" dir="bootROM" description="bootROM" synthesis="synplify" default_strategy="Area">
-        <Options/>
+        <Options def_top="tb"/>
+        <Source name="bootROM/source/tb_rom_tmpl.v" type="Verilog" type_short="Verilog">
+            <Options top_module="tb"/>
+        </Source>
+        <Source name="bootROM/source/_math_real.vhd" type="VHDL" type_short="VHDL">
+            <Options/>
+        </Source>
+        <Source name="bootROM/source/rom.edn" type="EDIF" type_short="EDIF">
+            <Options/>
+        </Source>
+        <Source name="bootROM/source/rom.ipx" type="IPX_Module" type_short="IPX">
+            <Options/>
+        </Source>
+        <Source name="bootROM/source/rom.lpc" type="LPC_Module" type_short="LPC">
+            <Options/>
+        </Source>
+        <Source name="bootROM/source/rom.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
         <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">
             <Options/>
         </Source>
@@ -227,8 +287,104 @@
         </Source>
     </Implementation>
     <Implementation title="impl1" dir="impl1" description="impl1" synthesis="synplify" default_strategy="Strategy1">
-        <Options VerilogStandard="System Verilog"/>
+        <Options VerilogStandard="System Verilog" def_top="mcu"/>
         <Source name="constants.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="processorCore/source/core.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="aluGroupDecoder/source/aluGroupDecoder.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="loadStoreGroupDecoder/source/loadStoreGroupDecoder.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="instructionPhaseDecoder/source/instructionPhaseDecoder.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="programCounter/source/programCounter.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="jumpGroupDecoder/source/jumpGroupDecoder.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="registerFileB/source/registerFile.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="registerFileB/source/registers.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="registerFileB/source/registers.ipx" type="IPX_Module" type_short="IPX">
+            <Options/>
+        </Source>
+        <Source name="registerFileB/source/registers.edn" type="EDIF" type_short="EDIF">
+            <Options/>
+        </Source>
+        <Source name="registerFileB/source/registers.lpc" type="LPC_Module" type_short="LPC">
+            <Options/>
+        </Source>
+        <Source name="aluB/source/alu.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="aluB/source/aluAMux.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="aluB/source/aluBMux.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="aluB/source/fullALU.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="opxMultiplexer/source/opxMultiplexer.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="interruptLogic/source/interruptStateMachine.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="branchLogic/source/branchLogic.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="busController/source/busController.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="generalGroupDecoder/source/generalGroupDecoder.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="core_tf.v" type="Verilog" type_short="Verilog">
+            <Options top_module="core_tf"/>
+        </Source>
+        <Source name="pll.v" type="Verilog" type_short="Verilog">
+            <Options top_module="pll"/>
+        </Source>
+        <Source name="impl1/source/mcu.v" type="Verilog" type_short="Verilog">
+            <Options top_module="mcu"/>
+        </Source>
+        <Source name="bootROM/source/rom.ipx" type="IPX_Module" type_short="IPX">
+            <Options/>
+        </Source>
+        <Source name="bootROM/source/rom.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="memoryMapper/source/memoryMapper.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="mcuResources/source/mcuResources.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="RAM/source/RAM.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="interruptLogic/source/interruptMaskRegister.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="UART/source/receiver.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="UART/source/transmitter.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="UART/source/UART.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
         <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">
@@ -251,7 +407,7 @@
         </Source>
     </Implementation>
     <Implementation title="interruptLogic" dir="interruptLogic" description="interruptLogic" synthesis="synplify" default_strategy="Area">
-        <Options def_top="interruptStateMachineTests"/>
+        <Options def_top="interruptMaskRegisterTests"/>
         <Source name="constants.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
@@ -261,7 +417,16 @@
         <Source name="interruptLogic/test/interruptStateMachineTests.v" type="Verilog" type_short="Verilog">
             <Options top_module="interruptStateMachineTests"/>
         </Source>
+        <Source name="interruptLogic/source/interruptMaskRegister.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="interruptLogic/test/interruptMaskRegisterTests.v" type="Verilog" type_short="Verilog">
+            <Options top_module="interruptMaskRegisterTests"/>
+        </Source>
         <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">
+            <Options/>
+        </Source>
+        <Source name="interruptLogic/test/interruptMaskRegisterTestbench/interruptMaskRegisterTestbench.spf" type="Simulation Project File" type_short="SPF">
             <Options/>
         </Source>
         <Source name="interruptLogic/test/interruptStateMachineTestbench/interruptStateMachineTestbench.spf" type="Simulation Project File" type_short="SPF">
@@ -307,6 +472,81 @@
             <Options/>
         </Source>
         <Source name="loadStoreGroupDecoder/test/loadStoreGroupDecoderTests/loadStoreGroupDecoderTests.spf" type="Simulation Project File" type_short="SPF">
+            <Options/>
+        </Source>
+    </Implementation>
+    <Implementation title="mcuResources" dir="mcuResources" description="mcuResources" synthesis="synplify" default_strategy="Area">
+        <Options def_top="interruptStateMachine"/>
+        <Source name="mcuResources/source/mcuResources.v" type="Verilog" type_short="Verilog">
+            <Options top_module="mcuResources"/>
+        </Source>
+        <Source name="memoryMapper/source/memoryMapper.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="interruptLogic/source/interruptMaskRegister.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="interruptLogic/source/interruptStateMachine.v" type="Verilog" type_short="Verilog">
+            <Options top_module="interruptStateMachine"/>
+        </Source>
+        <Source name="UART/source/receiver.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="UART/source/transmitter.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="UART/source/UART.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="bootROM/source/rom.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="RAM/source/RAM.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">
+            <Options/>
+        </Source>
+    </Implementation>
+    <Implementation title="memory" dir="memory" description="memory" synthesis="synplify" default_strategy="Area">
+        <Options def_top="processorCoreTests"/>
+        <Source name="memory/source/memory.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="RAM/source/RAM.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="bootROM/source/rom.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="memory/test/memoryTests.v" type="Verilog" type_short="Verilog">
+            <Options top_module="memoryTests"/>
+        </Source>
+        <Source name="processorCore/test/processorCoreTests.v" type="Verilog" type_short="Verilog">
+            <Options top_module="processorCoreTests"/>
+        </Source>
+        <Source name="bootROM/source/bootRom.mem" type="Unknown Type" type_short="Unknown">
+            <Options/>
+        </Source>
+        <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">
+            <Options/>
+        </Source>
+        <Source name="memory/test/memoryTestbench/memoryTestbench.spf" type="Simulation Project File" type_short="SPF">
+            <Options/>
+        </Source>
+    </Implementation>
+    <Implementation title="memoryMapper" dir="memoryMapper" description="memoryMapper" synthesis="synplify" default_strategy="Area">
+        <Options def_top="memoryMapperTests"/>
+        <Source name="memoryMapper/source/memoryMapper.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="memoryMapper/test/memoryMapperTests.v" type="Verilog" type_short="Verilog">
+            <Options top_module="memoryMapperTests"/>
+        </Source>
+        <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">
+            <Options/>
+        </Source>
+        <Source name="memoryMapper/test/memoryMapperTestbench/memoryMapperTestbench.spf" type="Simulation Project File" type_short="SPF">
             <Options/>
         </Source>
     </Implementation>

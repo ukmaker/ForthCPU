@@ -1,0 +1,21 @@
+if {![file exists "C:/Users/Duncan/git/ForthCPU/UART/test/UARTTestbench/UARTTestbench.mpf"]} { 
+	project new "C:/Users/Duncan/git/ForthCPU/UART/test/UARTTestbench" UARTTestbench
+	project addfile "C:/Users/Duncan/git/ForthCPU/UART/source/transmitter.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/UART/source/receiver.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/UART/source/UART.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/UART/test/UARTTests.v"
+	vlib  work
+	vdel -lib work -all 
+	vlib work
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/UART/source  -work work  "C:/Users/Duncan/git/ForthCPU/UART/source/transmitter.v"
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/UART/source  -work work  "C:/Users/Duncan/git/ForthCPU/UART/source/receiver.v"
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/UART/source  -work work  "C:/Users/Duncan/git/ForthCPU/UART/source/UART.v"
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/UART/test  -work work  "C:/Users/Duncan/git/ForthCPU/UART/test/UARTTests.v"
+} else {
+	project open "C:/Users/Duncan/git/ForthCPU/UART/test/UARTTestbench/UARTTestbench"
+	project compileoutofdate
+}
+vsim -L work -L pmi_work -L ovi_machxo3l  UARTTests
+view wave
+add wave /*
+run 1000ns

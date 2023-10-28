@@ -12,7 +12,7 @@
 #OS: Windows 8 6.2
 #Hostname: EDAWIN
 
-# Sun Oct 15 15:17:08 2023
+# Tue Oct 24 19:59:14 2023
 
 #Implementation: processorCore
 
@@ -82,92 +82,95 @@ Synopsys Verilog Compiler, Version comp202103synp2, Build 093R, Built Aug 10 202
 @I:"C:\Users\Duncan\git\ForthCPU\busController\source\busController.v":"C:\Users\Duncan\git\ForthCPU\busController\source\../..\constants.v" (library work)
 @I::"C:\Users\Duncan\git\ForthCPU\testSetup.v" (library work)
 @I::"C:\Users\Duncan\git\ForthCPU\generalGroupDecoder\source\generalGroupDecoder.v" (library work)
+@I::"C:\Users\Duncan\git\ForthCPU\processorCore\test\processorCoreInstructionTests.v" (library work)
+@I:"C:\Users\Duncan\git\ForthCPU\processorCore\test\processorCoreInstructionTests.v":"C:/Users/Duncan/git/ForthCPU\instructionTestSetup.v" (library work)
+@I::"C:\Users\Duncan\git\ForthCPU\instructionTestSetup.v" (library work)
+@I::"C:\Users\Duncan\git\ForthCPU\processorCore\test\processorCoreInterruptTests.v" (library work)
 Verilog syntax check successful!
-File C:\Users\Duncan\git\ForthCPU\instructionPhaseDecoder\source\instructionPhaseDecoder.v changed - recompiling
-Selecting top level module processorCoreTests
-@W: CG730 :"C:\Users\Duncan\git\ForthCPU\processorCore\test\processorCoreTests.v":5:7:5:24|Top-level module processorCoreTests has no ports
+Options changed - recompiling
+Selecting top level module processorCoreInterruptTests
+@W: CG730 :"C:\Users\Duncan\git\ForthCPU\processorCore\test\processorCoreInterruptTests.v":5:7:5:33|Top-level module processorCoreInterruptTests has no ports
 
 @N: CG364 :"C:\lscc\diamond\3.12\synpbase\lib\lucent\machxo3l.v":1032:7:1032:9|Synthesizing module PUR in library work.
 Running optimization stage 1 on PUR .......
-Finished optimization stage 1 on PUR (CPU Time 0h:00m:00s, Memory Used current: 92MB peak: 93MB)
+Finished optimization stage 1 on PUR (CPU Time 0h:00m:00s, Memory Used current: 97MB peak: 97MB)
 @N: CG364 :"C:\lscc\diamond\3.12\synpbase\lib\lucent\machxo3l.v":494:7:494:9|Synthesizing module GSR in library work.
 Running optimization stage 1 on GSR .......
-Finished optimization stage 1 on GSR (CPU Time 0h:00m:00s, Memory Used current: 92MB peak: 93MB)
+Finished optimization stage 1 on GSR (CPU Time 0h:00m:00s, Memory Used current: 97MB peak: 97MB)
 @N: CG364 :"C:\Users\Duncan\git\ForthCPU\instructionPhaseDecoder\source\instructionPhaseDecoder.v":3:7:3:29|Synthesizing module instructionPhaseDecoder in library work.
 Running optimization stage 1 on instructionPhaseDecoder .......
 @A: CL282 :"C:\Users\Duncan\git\ForthCPU\instructionPhaseDecoder\source\instructionPhaseDecoder.v":18:0:18:5|Feedback mux created for signal FETCH. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
 @A: CL282 :"C:\Users\Duncan\git\ForthCPU\instructionPhaseDecoder\source\instructionPhaseDecoder.v":18:0:18:5|Feedback mux created for signal EXECUTE. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
 @A: CL282 :"C:\Users\Duncan\git\ForthCPU\instructionPhaseDecoder\source\instructionPhaseDecoder.v":18:0:18:5|Feedback mux created for signal DECODE. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
 @A: CL282 :"C:\Users\Duncan\git\ForthCPU\instructionPhaseDecoder\source\instructionPhaseDecoder.v":18:0:18:5|Feedback mux created for signal COMMIT. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
-Finished optimization stage 1 on instructionPhaseDecoder (CPU Time 0h:00m:00s, Memory Used current: 93MB peak: 93MB)
+Finished optimization stage 1 on instructionPhaseDecoder (CPU Time 0h:00m:00s, Memory Used current: 98MB peak: 98MB)
 @N: CG364 :"C:\Users\Duncan\git\ForthCPU\aluB\source\alu.v":3:7:3:9|Synthesizing module alu in library work.
-@W: CG360 :"C:\Users\Duncan\git\ForthCPU\aluB\source\alu.v":23:12:23:19|Removing wire w_result, as there is no assignment to it.
+@W: CG360 :"C:\Users\Duncan\git\ForthCPU\aluB\source\alu.v":24:12:24:19|Removing wire w_result, as there is no assignment to it.
 Running optimization stage 1 on alu .......
-@W: CL118 :"C:\Users\Duncan\git\ForthCPU\aluB\source\alu.v":32:3:32:6|Latch generated from always block for signal CARRY; possible missing assignment in an if or case statement.
-Finished optimization stage 1 on alu (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 101MB)
+@W: CL118 :"C:\Users\Duncan\git\ForthCPU\aluB\source\alu.v":34:3:34:6|Latch generated from always block for signal CARRY; possible missing assignment in an if or case statement.
+@W: CL118 :"C:\Users\Duncan\git\ForthCPU\aluB\source\alu.v":34:3:34:6|Latch generated from always block for signal tmp[15:0]; possible missing assignment in an if or case statement.
+Finished optimization stage 1 on alu (CPU Time 0h:00m:00s, Memory Used current: 102MB peak: 103MB)
 @N: CG364 :"C:\Users\Duncan\git\ForthCPU\aluB\source\aluAMux.v":6:7:6:13|Synthesizing module aluAMux in library work.
 Running optimization stage 1 on aluAMux .......
-@W: CL118 :"C:\Users\Duncan\git\ForthCPU\aluB\source\aluAMux.v":16:1:16:4|Latch generated from always block for signal ALUA_DATA[15:0]; possible missing assignment in an if or case statement.
-Finished optimization stage 1 on aluAMux (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 101MB)
+Finished optimization stage 1 on aluAMux (CPU Time 0h:00m:00s, Memory Used current: 102MB peak: 103MB)
 @N: CG364 :"C:\Users\Duncan\git\ForthCPU\aluB\source\aluBMux.v":6:7:6:13|Synthesizing module aluBMux in library work.
 Running optimization stage 1 on aluBMux .......
-Finished optimization stage 1 on aluBMux (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 101MB)
+Finished optimization stage 1 on aluBMux (CPU Time 0h:00m:00s, Memory Used current: 102MB peak: 103MB)
 @N: CG364 :"C:\Users\Duncan\git\ForthCPU\aluB\source\fullALU.v":9:7:9:13|Synthesizing module fullALU in library work.
 Running optimization stage 1 on fullALU .......
-Finished optimization stage 1 on fullALU (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 101MB)
+Finished optimization stage 1 on fullALU (CPU Time 0h:00m:00s, Memory Used current: 102MB peak: 103MB)
 @N: CG364 :"C:\lscc\diamond\3.12\synpbase\lib\lucent\machxo3l.v":1120:7:1120:9|Synthesizing module VHI in library work.
 Running optimization stage 1 on VHI .......
-Finished optimization stage 1 on VHI (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 101MB)
+Finished optimization stage 1 on VHI (CPU Time 0h:00m:00s, Memory Used current: 102MB peak: 103MB)
 @N: CG364 :"C:\lscc\diamond\3.12\synpbase\lib\lucent\machxo3l.v":1291:7:1291:11|Synthesizing module DP8KC in library work.
 Running optimization stage 1 on DP8KC .......
-Finished optimization stage 1 on DP8KC (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 101MB)
+Finished optimization stage 1 on DP8KC (CPU Time 0h:00m:00s, Memory Used current: 103MB peak: 103MB)
 @N: CG364 :"C:\lscc\diamond\3.12\synpbase\lib\lucent\machxo3l.v":1124:7:1124:9|Synthesizing module VLO in library work.
 Running optimization stage 1 on VLO .......
-Finished optimization stage 1 on VLO (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 101MB)
+Finished optimization stage 1 on VLO (CPU Time 0h:00m:00s, Memory Used current: 103MB peak: 103MB)
 @N: CG364 :"C:\Users\Duncan\git\ForthCPU\registerFileB\source\registers.v":8:7:8:15|Synthesizing module registers in library work.
 Running optimization stage 1 on registers .......
 @W: CL168 :"C:\Users\Duncan\git\ForthCPU\registerFileB\source\registers.v":30:8:30:21|Removing instance scuba_vhi_inst because it does not drive other instances. To preserve this instance, use the syn_noprune synthesis directive.
-Finished optimization stage 1 on registers (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 101MB)
+Finished optimization stage 1 on registers (CPU Time 0h:00m:00s, Memory Used current: 103MB peak: 103MB)
 @N: CG364 :"C:\Users\Duncan\git\ForthCPU\registerFileB\source\registerFile.v":3:7:3:18|Synthesizing module registerFile in library work.
 Running optimization stage 1 on registerFile .......
-Finished optimization stage 1 on registerFile (CPU Time 0h:00m:00s, Memory Used current: 101MB peak: 101MB)
+Finished optimization stage 1 on registerFile (CPU Time 0h:00m:00s, Memory Used current: 105MB peak: 105MB)
 @N: CG364 :"C:\Users\Duncan\git\ForthCPU\busController\source\busController.v":9:7:9:19|Synthesizing module busController in library work.
 Running optimization stage 1 on busController .......
-Finished optimization stage 1 on busController (CPU Time 0h:00m:00s, Memory Used current: 101MB peak: 101MB)
+Finished optimization stage 1 on busController (CPU Time 0h:00m:00s, Memory Used current: 106MB peak: 107MB)
 @N: CG364 :"C:\Users\Duncan\git\ForthCPU\programCounter\source\programCounter.v":16:7:16:20|Synthesizing module programCounter in library work.
 Running optimization stage 1 on programCounter .......
-Finished optimization stage 1 on programCounter (CPU Time 0h:00m:00s, Memory Used current: 101MB peak: 101MB)
+Finished optimization stage 1 on programCounter (CPU Time 0h:00m:00s, Memory Used current: 106MB peak: 107MB)
 @N: CG364 :"C:\Users\Duncan\git\ForthCPU\branchLogic\source\branchLogic.v":6:7:6:17|Synthesizing module branchLogic in library work.
 Running optimization stage 1 on branchLogic .......
-Finished optimization stage 1 on branchLogic (CPU Time 0h:00m:00s, Memory Used current: 101MB peak: 101MB)
+Finished optimization stage 1 on branchLogic (CPU Time 0h:00m:00s, Memory Used current: 106MB peak: 107MB)
 @N: CG364 :"C:\Users\Duncan\git\ForthCPU\interruptLogic\source\interruptStateMachine.v":3:7:3:27|Synthesizing module interruptStateMachine in library work.
 @W: CG133 :"C:\Users\Duncan\git\ForthCPU\interruptLogic\source\interruptStateMachine.v":21:4:21:10|Object EI_NEXT is declared but not assigned. Either assign a value or remove the declaration.
 Running optimization stage 1 on interruptStateMachine .......
-Finished optimization stage 1 on interruptStateMachine (CPU Time 0h:00m:00s, Memory Used current: 101MB peak: 102MB)
+Finished optimization stage 1 on interruptStateMachine (CPU Time 0h:00m:00s, Memory Used current: 106MB peak: 107MB)
 @N: CG364 :"C:\Users\Duncan\git\ForthCPU\aluGroupDecoder\source\aluGroupDecoder.v":34:7:34:21|Synthesizing module aluGroupDecoder in library work.
 Running optimization stage 1 on aluGroupDecoder .......
 @N: CL189 :"C:\Users\Duncan\git\ForthCPU\aluGroupDecoder\source\aluGroupDecoder.v":134:0:134:5|Register bit REGB_WEN is always 0.
-Finished optimization stage 1 on aluGroupDecoder (CPU Time 0h:00m:00s, Memory Used current: 101MB peak: 102MB)
+Finished optimization stage 1 on aluGroupDecoder (CPU Time 0h:00m:00s, Memory Used current: 106MB peak: 107MB)
 @N: CG364 :"C:\Users\Duncan\git\ForthCPU\loadStoreGroupDecoder\source\loadStoreGroupDecoder.v":59:7:59:27|Synthesizing module loadStoreGroupDecoder in library work.
 @W: CG360 :"C:\Users\Duncan\git\ForthCPU\loadStoreGroupDecoder\source\loadStoreGroupDecoder.v":114:11:114:14|Removing wire ARGA, as there is no assignment to it.
 @W: CG360 :"C:\Users\Duncan\git\ForthCPU\loadStoreGroupDecoder\source\loadStoreGroupDecoder.v":115:11:115:14|Removing wire ARGB, as there is no assignment to it.
 Running optimization stage 1 on loadStoreGroupDecoder .......
-Finished optimization stage 1 on loadStoreGroupDecoder (CPU Time 0h:00m:00s, Memory Used current: 101MB peak: 102MB)
+Finished optimization stage 1 on loadStoreGroupDecoder (CPU Time 0h:00m:00s, Memory Used current: 107MB peak: 107MB)
 @N: CG364 :"C:\Users\Duncan\git\ForthCPU\jumpGroupDecoder\source\jumpGroupDecoder.v":37:7:37:22|Synthesizing module jumpGroupDecoder in library work.
 Running optimization stage 1 on jumpGroupDecoder .......
-Finished optimization stage 1 on jumpGroupDecoder (CPU Time 0h:00m:00s, Memory Used current: 101MB peak: 102MB)
+Finished optimization stage 1 on jumpGroupDecoder (CPU Time 0h:00m:00s, Memory Used current: 107MB peak: 107MB)
 @N: CG364 :"C:\Users\Duncan\git\ForthCPU\generalGroupDecoder\source\generalGroupDecoder.v":12:7:12:25|Synthesizing module generalGroupDecoder in library work.
 Running optimization stage 1 on generalGroupDecoder .......
 @W: CL169 :"C:\Users\Duncan\git\ForthCPU\generalGroupDecoder\source\generalGroupDecoder.v":33:0:33:5|Pruning unused register EI. Make sure that there are no unused intermediate registers.
 @W: CL169 :"C:\Users\Duncan\git\ForthCPU\generalGroupDecoder\source\generalGroupDecoder.v":33:0:33:5|Pruning unused register DI. Make sure that there are no unused intermediate registers.
 @W: CL169 :"C:\Users\Duncan\git\ForthCPU\generalGroupDecoder\source\generalGroupDecoder.v":33:0:33:5|Pruning unused register RETI. Make sure that there are no unused intermediate registers.
 @W: CL169 :"C:\Users\Duncan\git\ForthCPU\generalGroupDecoder\source\generalGroupDecoder.v":33:0:33:5|Pruning unused register HALT. Make sure that there are no unused intermediate registers.
-Finished optimization stage 1 on generalGroupDecoder (CPU Time 0h:00m:00s, Memory Used current: 101MB peak: 102MB)
+Finished optimization stage 1 on generalGroupDecoder (CPU Time 0h:00m:00s, Memory Used current: 107MB peak: 107MB)
 @N: CG364 :"C:\Users\Duncan\git\ForthCPU\opxMultiplexer\source\opxMultiplexer.v":7:7:7:20|Synthesizing module opxMultiplexer in library work.
 Running optimization stage 1 on opxMultiplexer .......
-Finished optimization stage 1 on opxMultiplexer (CPU Time 0h:00m:00s, Memory Used current: 101MB peak: 102MB)
+Finished optimization stage 1 on opxMultiplexer (CPU Time 0h:00m:00s, Memory Used current: 107MB peak: 107MB)
 @N: CG364 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":6:7:6:10|Synthesizing module core in library work.
-@W: CG360 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":20:8:20:15|Removing wire ABUS_OEN, as there is no assignment to it.
 @W: CG360 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":34:12:34:19|Removing wire ALUA_DIN, as there is no assignment to it.
 @W: CG360 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":37:12:37:19|Removing wire ALUB_DIN, as there is no assignment to it.
 @W: CG360 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":59:12:59:15|Removing wire PC_D, as there is no assignment to it.
@@ -176,37 +179,38 @@ Finished optimization stage 1 on opxMultiplexer (CPU Time 0h:00m:00s, Memory Use
 @W: CG360 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":85:12:85:24|Removing wire ALU_DATA_BUSX, as there is no assignment to it.
 @W: CG360 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":87:12:87:24|Removing wire ALU_REGA_DINX, as there is no assignment to it.
 Running optimization stage 1 on core .......
-@W: CL318 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":20:8:20:15|*Output ABUS_OEN has undriven bits; assigning undriven bits to 'Z'.  Simulation mismatch possible. Assign all bits of the output.
-Finished optimization stage 1 on core (CPU Time 0h:00m:00s, Memory Used current: 101MB peak: 102MB)
-@N: CG364 :"C:\Users\Duncan\git\ForthCPU\processorCore\test\processorCoreTests.v":5:7:5:24|Synthesizing module processorCoreTests in library work.
-@W: CG294 :"C:\Users\Duncan\git\ForthCPU\processorCore\test\processorCoreTests.v":58:0:58:5|always block should contain at least one event control
-@W: CG532 :"C:\Users\Duncan\git\ForthCPU\processorCore\test\processorCoreTests.v":62:0:62:6|Within an initial block, only Verilog force statements and memory initialization statements and initialization of entire variable are recognized, and all other content is ignored. Simulation mismatch may occur
-@W: CG204 :"C:\Users\Duncan\git\ForthCPU\processorCore\test\processorCoreTests.v":62:0:62:6|Within an initial block, memory initialization statements of entire variable and nested loops are not recognized. Simulation mismatch may occur
-@W: CG360 :"C:\Users\Duncan\git\ForthCPU\processorCore\test\processorCoreTests.v":22:5:22:6|Removing wire RD, as there is no assignment to it.
-@W: CG360 :"C:\Users\Duncan\git\ForthCPU\processorCore\test\processorCoreTests.v":23:5:23:6|Removing wire WR, as there is no assignment to it.
-Running optimization stage 1 on processorCoreTests .......
-@W: CL168 :"C:\Users\Duncan\git\ForthCPU\processorCore\test\processorCoreTests.v":29:5:29:16|Removing instance testInstance because it does not drive other instances. To preserve this instance, use the syn_noprune synthesis directive.
-Finished optimization stage 1 on processorCoreTests (CPU Time 0h:00m:00s, Memory Used current: 101MB peak: 102MB)
-Running optimization stage 2 on processorCoreTests .......
-Finished optimization stage 2 on processorCoreTests (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 102MB)
+Finished optimization stage 1 on core (CPU Time 0h:00m:00s, Memory Used current: 107MB peak: 107MB)
+@N: CG364 :"C:\Users\Duncan\git\ForthCPU\processorCore\test\processorCoreInterruptTests.v":5:7:5:33|Synthesizing module processorCoreInterruptTests in library work.
+@W: CG294 :"C:\Users\Duncan\git\ForthCPU\processorCore\test\processorCoreInterruptTests.v":60:0:60:5|always block should contain at least one event control
+@W: CG294 :"C:\Users\Duncan\git\ForthCPU\processorCore\test\processorCoreInterruptTests.v":65:0:65:5|always block should contain at least one event control
+@W: CG294 :"C:\Users\Duncan\git\ForthCPU\processorCore\test\processorCoreInterruptTests.v":70:0:70:5|always block should contain at least one event control
+@W: CG532 :"C:\Users\Duncan\git\ForthCPU\processorCore\test\processorCoreInterruptTests.v":76:0:76:6|Within an initial block, only Verilog force statements and memory initialization statements and initialization of entire variable are recognized, and all other content is ignored. Simulation mismatch may occur
+@W: CG204 :"C:\Users\Duncan\git\ForthCPU\processorCore\test\processorCoreInterruptTests.v":76:0:76:6|Within an initial block, memory initialization statements of entire variable and nested loops are not recognized. Simulation mismatch may occur
+@W: CG133 :"C:\Users\Duncan\git\ForthCPU\processorCore\test\processorCoreInterruptTests.v":51:10:51:11|Object U6 is declared but not assigned. Either assign a value or remove the declaration.
+@W: CG133 :"C:\Users\Duncan\git\ForthCPU\processorCore\test\processorCoreInterruptTests.v":52:10:52:11|Object U2 is declared but not assigned. Either assign a value or remove the declaration.
+@W: CG133 :"C:\Users\Duncan\git\ForthCPU\processorCore\test\processorCoreInterruptTests.v":53:10:53:11|Object U4 is declared but not assigned. Either assign a value or remove the declaration.
+Running optimization stage 1 on processorCoreInterruptTests .......
+@W: CL168 :"C:\Users\Duncan\git\ForthCPU\processorCore\test\processorCoreInterruptTests.v":25:5:25:16|Removing instance testInstance because it does not drive other instances. To preserve this instance, use the syn_noprune synthesis directive.
+Finished optimization stage 1 on processorCoreInterruptTests (CPU Time 0h:00m:00s, Memory Used current: 107MB peak: 107MB)
+Running optimization stage 2 on processorCoreInterruptTests .......
+Finished optimization stage 2 on processorCoreInterruptTests (CPU Time 0h:00m:00s, Memory Used current: 105MB peak: 107MB)
 Running optimization stage 2 on core .......
-@W: CL156 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":59:12:59:15|*Input PC_D[15:0] to expression [instance] has undriven bits; assigning undriven bits to 0.  Simulation mismatch possible. Assign all bits of the input.
 @W: CL156 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":85:12:85:24|*Input ALU_DATA_BUSX[1:0] to expression [instance] has undriven bits; assigning undriven bits to 0.  Simulation mismatch possible. Assign all bits of the input.
 @W: CL156 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":87:12:87:24|*Input ALU_REGA_DINX[1:0] to expression [instance] has undriven bits; assigning undriven bits to 0.  Simulation mismatch possible. Assign all bits of the input.
-Finished optimization stage 2 on core (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 102MB)
+Finished optimization stage 2 on core (CPU Time 0h:00m:00s, Memory Used current: 105MB peak: 107MB)
 Running optimization stage 2 on opxMultiplexer .......
 @W: CL246 :"C:\Users\Duncan\git\ForthCPU\opxMultiplexer\source\opxMultiplexer.v":11:14:11:24|Input port bits 13 to 0 of INSTRUCTION[15:0] are unused. Assign logic for all port bits or change the input port size.
 @N: CL159 :"C:\Users\Duncan\git\ForthCPU\opxMultiplexer\source\opxMultiplexer.v":10:7:10:11|Input RESET is unused.
 @N: CL159 :"C:\Users\Duncan\git\ForthCPU\opxMultiplexer\source\opxMultiplexer.v":14:7:14:12|Input DECODE is unused.
 @N: CL159 :"C:\Users\Duncan\git\ForthCPU\opxMultiplexer\source\opxMultiplexer.v":16:7:16:12|Input COMMIT is unused.
-Finished optimization stage 2 on opxMultiplexer (CPU Time 0h:00m:00s, Memory Used current: 101MB peak: 102MB)
+Finished optimization stage 2 on opxMultiplexer (CPU Time 0h:00m:00s, Memory Used current: 106MB peak: 107MB)
 Running optimization stage 2 on generalGroupDecoder .......
 @W: CL246 :"C:\Users\Duncan\git\ForthCPU\generalGroupDecoder\source\generalGroupDecoder.v":17:14:17:24|Input port bits 13 to 11 of INSTRUCTION[15:0] are unused. Assign logic for all port bits or change the input port size.
 @W: CL246 :"C:\Users\Duncan\git\ForthCPU\generalGroupDecoder\source\generalGroupDecoder.v":17:14:17:24|Input port bits 7 to 0 of INSTRUCTION[15:0] are unused. Assign logic for all port bits or change the input port size.
 @N: CL159 :"C:\Users\Duncan\git\ForthCPU\generalGroupDecoder\source\generalGroupDecoder.v":16:7:16:11|Input FETCH is unused.
 @N: CL159 :"C:\Users\Duncan\git\ForthCPU\generalGroupDecoder\source\generalGroupDecoder.v":16:14:16:19|Input DECODE is unused.
 @N: CL159 :"C:\Users\Duncan\git\ForthCPU\generalGroupDecoder\source\generalGroupDecoder.v":16:22:16:28|Input EXECUTE is unused.
-Finished optimization stage 2 on generalGroupDecoder (CPU Time 0h:00m:00s, Memory Used current: 101MB peak: 102MB)
+Finished optimization stage 2 on generalGroupDecoder (CPU Time 0h:00m:00s, Memory Used current: 106MB peak: 107MB)
 Running optimization stage 2 on jumpGroupDecoder .......
 @W: CL246 :"C:\Users\Duncan\git\ForthCPU\jumpGroupDecoder\source\jumpGroupDecoder.v":41:14:41:24|Input port bits 7 to 0 of INSTRUCTION[15:0] are unused. Assign logic for all port bits or change the input port size.
 @N: CL159 :"C:\Users\Duncan\git\ForthCPU\jumpGroupDecoder\source\jumpGroupDecoder.v":39:7:39:9|Input CLK is unused.
@@ -215,14 +219,14 @@ Running optimization stage 2 on jumpGroupDecoder .......
 @N: CL159 :"C:\Users\Duncan\git\ForthCPU\jumpGroupDecoder\source\jumpGroupDecoder.v":44:7:44:12|Input DECODE is unused.
 @N: CL159 :"C:\Users\Duncan\git\ForthCPU\jumpGroupDecoder\source\jumpGroupDecoder.v":45:7:45:13|Input EXECUTE is unused.
 @N: CL159 :"C:\Users\Duncan\git\ForthCPU\jumpGroupDecoder\source\jumpGroupDecoder.v":46:7:46:12|Input COMMIT is unused.
-Finished optimization stage 2 on jumpGroupDecoder (CPU Time 0h:00m:00s, Memory Used current: 101MB peak: 102MB)
+Finished optimization stage 2 on jumpGroupDecoder (CPU Time 0h:00m:00s, Memory Used current: 106MB peak: 107MB)
 Running optimization stage 2 on loadStoreGroupDecoder .......
-@W: CL177 :"C:\Users\Duncan\git\ForthCPU\loadStoreGroupDecoder\source\loadStoreGroupDecoder.v":262:0:262:5|Sharing sequential element REGB_EN and merging REGA_EN. Add a syn_preserve attribute to the element to prevent sharing.
+@W: CL177 :"C:\Users\Duncan\git\ForthCPU\loadStoreGroupDecoder\source\loadStoreGroupDecoder.v":263:0:263:5|Sharing sequential element REGB_EN and merging REGA_EN. Add a syn_preserve attribute to the element to prevent sharing.
 @N: CL159 :"C:\Users\Duncan\git\ForthCPU\loadStoreGroupDecoder\source\loadStoreGroupDecoder.v":65:7:65:11|Input FETCH is unused.
-Finished optimization stage 2 on loadStoreGroupDecoder (CPU Time 0h:00m:00s, Memory Used current: 101MB peak: 102MB)
+Finished optimization stage 2 on loadStoreGroupDecoder (CPU Time 0h:00m:00s, Memory Used current: 106MB peak: 107MB)
 Running optimization stage 2 on aluGroupDecoder .......
 @N: CL159 :"C:\Users\Duncan\git\ForthCPU\aluGroupDecoder\source\aluGroupDecoder.v":37:7:37:11|Input RESET is unused.
-Finished optimization stage 2 on aluGroupDecoder (CPU Time 0h:00m:00s, Memory Used current: 101MB peak: 102MB)
+Finished optimization stage 2 on aluGroupDecoder (CPU Time 0h:00m:00s, Memory Used current: 106MB peak: 107MB)
 Running optimization stage 2 on interruptStateMachine .......
 @N: CL201 :"C:\Users\Duncan\git\ForthCPU\interruptLogic\source\interruptStateMachine.v":175:0:175:5|Trying to extract state machine for register STATE.
 Extracted state machine for register STATE
@@ -237,35 +241,35 @@ State machine has 10 reachable states with original encodings of:
    1000
    1001
    1010
-Finished optimization stage 2 on interruptStateMachine (CPU Time 0h:00m:00s, Memory Used current: 101MB peak: 102MB)
+Finished optimization stage 2 on interruptStateMachine (CPU Time 0h:00m:00s, Memory Used current: 106MB peak: 107MB)
 Running optimization stage 2 on branchLogic .......
-Finished optimization stage 2 on branchLogic (CPU Time 0h:00m:00s, Memory Used current: 101MB peak: 102MB)
+Finished optimization stage 2 on branchLogic (CPU Time 0h:00m:00s, Memory Used current: 106MB peak: 107MB)
 Running optimization stage 2 on programCounter .......
-Finished optimization stage 2 on programCounter (CPU Time 0h:00m:00s, Memory Used current: 102MB peak: 102MB)
+Finished optimization stage 2 on programCounter (CPU Time 0h:00m:00s, Memory Used current: 107MB peak: 107MB)
 Running optimization stage 2 on busController .......
 @N: CL159 :"C:\Users\Duncan\git\ForthCPU\busController\source\busController.v":12:7:12:11|Input RESET is unused.
 @N: CL159 :"C:\Users\Duncan\git\ForthCPU\busController\source\busController.v":13:7:13:11|Input FETCH is unused.
 @N: CL159 :"C:\Users\Duncan\git\ForthCPU\busController\source\busController.v":15:7:15:13|Input EXECUTE is unused.
-Finished optimization stage 2 on busController (CPU Time 0h:00m:00s, Memory Used current: 102MB peak: 102MB)
+Finished optimization stage 2 on busController (CPU Time 0h:00m:00s, Memory Used current: 107MB peak: 107MB)
 Running optimization stage 2 on registerFile .......
-Finished optimization stage 2 on registerFile (CPU Time 0h:00m:00s, Memory Used current: 102MB peak: 102MB)
+Finished optimization stage 2 on registerFile (CPU Time 0h:00m:00s, Memory Used current: 107MB peak: 107MB)
 Running optimization stage 2 on registers .......
-Finished optimization stage 2 on registers (CPU Time 0h:00m:00s, Memory Used current: 102MB peak: 102MB)
+Finished optimization stage 2 on registers (CPU Time 0h:00m:00s, Memory Used current: 107MB peak: 107MB)
 Running optimization stage 2 on VLO .......
-Finished optimization stage 2 on VLO (CPU Time 0h:00m:00s, Memory Used current: 102MB peak: 102MB)
+Finished optimization stage 2 on VLO (CPU Time 0h:00m:00s, Memory Used current: 107MB peak: 107MB)
 Running optimization stage 2 on DP8KC .......
-Finished optimization stage 2 on DP8KC (CPU Time 0h:00m:00s, Memory Used current: 102MB peak: 102MB)
+Finished optimization stage 2 on DP8KC (CPU Time 0h:00m:00s, Memory Used current: 107MB peak: 107MB)
 Running optimization stage 2 on VHI .......
-Finished optimization stage 2 on VHI (CPU Time 0h:00m:00s, Memory Used current: 102MB peak: 102MB)
+Finished optimization stage 2 on VHI (CPU Time 0h:00m:00s, Memory Used current: 107MB peak: 107MB)
 Running optimization stage 2 on fullALU .......
-Finished optimization stage 2 on fullALU (CPU Time 0h:00m:00s, Memory Used current: 102MB peak: 102MB)
+Finished optimization stage 2 on fullALU (CPU Time 0h:00m:00s, Memory Used current: 107MB peak: 107MB)
 Running optimization stage 2 on aluBMux .......
 @N: CL159 :"C:\Users\Duncan\git\ForthCPU\aluB\source\aluBMux.v":13:13:13:19|Input LDSINCF is unused.
-Finished optimization stage 2 on aluBMux (CPU Time 0h:00m:00s, Memory Used current: 102MB peak: 102MB)
+Finished optimization stage 2 on aluBMux (CPU Time 0h:00m:00s, Memory Used current: 107MB peak: 107MB)
 Running optimization stage 2 on aluAMux .......
-Finished optimization stage 2 on aluAMux (CPU Time 0h:00m:00s, Memory Used current: 102MB peak: 102MB)
+Finished optimization stage 2 on aluAMux (CPU Time 0h:00m:00s, Memory Used current: 107MB peak: 107MB)
 Running optimization stage 2 on alu .......
-Finished optimization stage 2 on alu (CPU Time 0h:00m:00s, Memory Used current: 103MB peak: 104MB)
+Finished optimization stage 2 on alu (CPU Time 0h:00m:00s, Memory Used current: 111MB peak: 112MB)
 Running optimization stage 2 on instructionPhaseDecoder .......
 @N: CL201 :"C:\Users\Duncan\git\ForthCPU\instructionPhaseDecoder\source\instructionPhaseDecoder.v":18:0:18:5|Trying to extract state machine for register PHASE.
 Extracted state machine for register PHASE
@@ -275,23 +279,23 @@ State machine has 5 reachable states with original encodings of:
    010
    011
    100
-Finished optimization stage 2 on instructionPhaseDecoder (CPU Time 0h:00m:00s, Memory Used current: 103MB peak: 104MB)
+Finished optimization stage 2 on instructionPhaseDecoder (CPU Time 0h:00m:00s, Memory Used current: 111MB peak: 112MB)
 Running optimization stage 2 on GSR .......
-Finished optimization stage 2 on GSR (CPU Time 0h:00m:00s, Memory Used current: 103MB peak: 104MB)
+Finished optimization stage 2 on GSR (CPU Time 0h:00m:00s, Memory Used current: 111MB peak: 112MB)
 Running optimization stage 2 on PUR .......
-Finished optimization stage 2 on PUR (CPU Time 0h:00m:00s, Memory Used current: 103MB peak: 104MB)
+Finished optimization stage 2 on PUR (CPU Time 0h:00m:00s, Memory Used current: 111MB peak: 112MB)
 
 For a summary of runtime and memory usage per design unit, please see file:
 ==========================================================
 @L: C:\Users\Duncan\git\ForthCPU\processorCore\synwork\layer0.rt.csv
 
 
-At c_ver Exit (Real Time elapsed 0h:00m:05s; CPU Time elapsed 0h:00m:05s; Memory used current: 103MB peak: 104MB)
+At c_ver Exit (Real Time elapsed 0h:00m:06s; CPU Time elapsed 0h:00m:05s; Memory used current: 112MB peak: 112MB)
 
-Process took 0h:00m:05s realtime, 0h:00m:05s cputime
+Process took 0h:00m:06s realtime, 0h:00m:05s cputime
 
 Process completed successfully.
-# Sun Oct 15 15:17:14 2023
+# Tue Oct 24 19:59:20 2023
 
 ###########################################################]
 ###########################################################[
@@ -319,7 +323,7 @@ At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Sun Oct 15 15:17:14 2023
+# Tue Oct 24 19:59:20 2023
 
 ###########################################################]
 
@@ -329,12 +333,12 @@ For a summary of runtime and memory usage for all design units, please see file:
 
 @END
 
-At c_hdl Exit (Real Time elapsed 0h:00m:06s; CPU Time elapsed 0h:00m:05s; Memory used current: 23MB peak: 23MB)
+At c_hdl Exit (Real Time elapsed 0h:00m:06s; CPU Time elapsed 0h:00m:06s; Memory used current: 29MB peak: 29MB)
 
-Process took 0h:00m:06s realtime, 0h:00m:05s cputime
+Process took 0h:00m:06s realtime, 0h:00m:06s cputime
 
 Process completed successfully.
-# Sun Oct 15 15:17:14 2023
+# Tue Oct 24 19:59:20 2023
 
 ###########################################################]
 ###########################################################[
@@ -362,10 +366,12 @@ At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Sun Oct 15 15:17:15 2023
+# Tue Oct 24 19:59:22 2023
 
 ###########################################################]
-# Sun Oct 15 15:17:15 2023
+Premap Report
+
+# Tue Oct 24 19:59:22 2023
 
 
 Copyright (C) 1994-2021 Synopsys, Inc.
@@ -402,24 +408,24 @@ Design Input Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s
 Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 126MB peak: 130MB)
 
 
-Start loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 138MB peak: 138MB)
+Start loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 137MB peak: 138MB)
 
 
 Finished loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 138MB peak: 140MB)
 
 
-Starting clock optimization phase (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 169MB peak: 169MB)
+Starting clock optimization phase (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 169MB peak: 169MB)
 
 
-Finished clock optimization phase (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 169MB peak: 169MB)
+Finished clock optimization phase (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 169MB peak: 169MB)
 
 
-Starting clock optimization report phase (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 169MB peak: 169MB)
+Starting clock optimization report phase (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 169MB peak: 169MB)
 
 
-Finished clock optimization report phase (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 169MB peak: 169MB)
+Finished clock optimization report phase (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 169MB peak: 169MB)
 
-@N: FX1184 |Applying syn_allowed_resources blockrams=240 on top level netlist processorCoreTests 
+@N: FX1184 |Applying syn_allowed_resources blockrams=240 on top level netlist processorCoreInterruptTests 
 
 Finished netlist restructuring (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 169MB peak: 170MB)
 
@@ -466,23 +472,25 @@ For details review file gcc_ICG_report.rpt
 @N: FX1143 |Skipping assigning INTERNAL_VREF to iobanks, because the table of mapping from pin to iobank is not initialized.
 Finished Pre Mapping Phase.
 
-Starting constraint checker (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:01s; Memory used current: 170MB peak: 170MB)
+Starting constraint checker (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 170MB peak: 170MB)
 
 
-Finished constraint checker preprocessing (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:01s; Memory used current: 170MB peak: 170MB)
+Finished constraint checker preprocessing (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 170MB peak: 170MB)
 
 
-Finished constraint checker (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:01s; Memory used current: 170MB peak: 170MB)
+Finished constraint checker (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 170MB peak: 170MB)
 
 Pre-mapping successful!
 
-At Mapper Exit (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:01s; Memory used current: 90MB peak: 172MB)
+At Mapper Exit (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 90MB peak: 172MB)
 
-Process took 0h:00m:02s realtime, 0h:00m:01s cputime
-# Sun Oct 15 15:17:18 2023
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+# Tue Oct 24 19:59:24 2023
 
 ###########################################################]
-# Sun Oct 15 15:17:18 2023
+Map & Optimize Report
+
+# Tue Oct 24 19:59:24 2023
 
 
 Copyright (C) 1994-2021 Synopsys, Inc.
@@ -564,7 +572,7 @@ Finished technology timing optimizations and critical path resynthesis (Real Tim
 Finished restoring hierarchy (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 172MB peak: 172MB)
 
 
-Start Writing Netlists (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 137MB peak: 172MB)
+Start Writing Netlists (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 136MB peak: 172MB)
 
 Writing Analyst data base C:\Users\Duncan\git\ForthCPU\processorCore\synwork\ForthCPU_processorCore_m.srm
 
@@ -585,11 +593,11 @@ Start final timing analysis (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:0
 
 
 ##### START OF TIMING REPORT #####[
-# Timing report written on Sun Oct 15 15:17:21 2023
+# Timing report written on Tue Oct 24 19:59:27 2023
 #
 
 
-Top view:               processorCoreTests
+Top view:               processorCoreInterruptTests
 Requested Frequency:    1.0 MHz
 Wire load mode:         top
 Paths requested:        5
@@ -657,8 +665,8 @@ Mapper successful!
 
 At Mapper Exit (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:02s; Memory used current: 61MB peak: 178MB)
 
-Process took 0h:00m:02s realtime, 0h:00m:02s cputime
-# Sun Oct 15 15:17:21 2023
+Process took 0h:00m:03s realtime, 0h:00m:03s cputime
+# Tue Oct 24 19:59:27 2023
 
 ###########################################################]
 

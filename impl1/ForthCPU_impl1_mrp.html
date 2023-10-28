@@ -1,0 +1,829 @@
+<HTML>
+<HEAD><TITLE>Project Summary</TITLE>
+<STYLE TYPE="text/css">
+<!--
+ body,pre{    font-family:'Courier New', monospace;    color: #000000;    font-size:88%;    background-color: #ffffff;}h1 {    font-weight: bold;    margin-top: 24px;    margin-bottom: 10px;    border-bottom: 3px solid #000;    font-size: 1em;}h2 {    font-weight: bold;    margin-top: 18px;    margin-bottom: 5px;    font-size: 0.90em;}h3 {    font-weight: bold;    margin-top: 12px;    margin-bottom: 5px;    font-size: 0.80em;}p {    font-size:78%;}P.Table {    margin-top: 4px;    margin-bottom: 4px;    margin-right: 4px;    margin-left: 4px;}table{    border-width: 1px 1px 1px 1px;    border-style: solid solid solid solid;    border-color: black black black black;    border-collapse: collapse;}th {    font-weight:bold;    padding: 4px;    border-width: 1px 1px 1px 1px;    border-style: solid solid solid solid;    border-color: black black black black;    vertical-align:top;    text-align:left;    font-size:78%;}td {    padding: 4px;    border-width: 1px 1px 1px 1px;    border-style: solid solid solid solid;    border-color: black black black black;    vertical-align:top;    font-size:78%;}a {    color:#013C9A;    text-decoration:none;}a:visited {    color:#013C9A;}a:hover, a:active {    text-decoration:underline;    color:#5BAFD4;}.pass{background-color: #00ff00;}.fail{background-color: #ff0000;}.comment{    font-size: 90%;    font-style: italic;}
+-->
+</STYLE>
+</HEAD>
+<PRE><A name="Mrp"></A>
+             Lattice Mapping Report File for Design Module 'mcu'
+
+
+
+<A name="mrp_di"></A><B><U><big>Design Information</big></U></B>
+
+Command line:   map -a MachXO3L -p LCMXO3L-6900C -t CABGA256 -s 5 -oc Commercial
+     ForthCPU_impl1.ngd -o ForthCPU_impl1_map.ncd -pr ForthCPU_impl1.prf -mp
+     ForthCPU_impl1.mrp -lpf
+     C:/Users/Duncan/git/ForthCPU/impl1/ForthCPU_impl1_synplify.lpf -lpf
+     C:/Users/Duncan/git/ForthCPU/ForthCPU.lpf -c 0 -gui -msgset
+     C:/Users/Duncan/git/ForthCPU/promote.xml 
+Target Vendor:  LATTICE
+Target Device:  LCMXO3L-6900CCABGA256
+Target Performance:   5
+Mapper:  xo3c00a,  version:  Diamond (64-bit) 3.12.1.454
+Mapped on:  10/28/23  16:03:25
+
+
+<A name="mrp_ds"></A><B><U><big>Design Summary</big></U></B>
+   Number of registers:    189 out of  7485 (3%)
+      PFU registers:          172 out of  6864 (3%)
+      PIO registers:           17 out of   621 (3%)
+   Number of SLICEs:       711 out of  3432 (21%)
+      SLICEs as Logic/ROM:    711 out of  3432 (21%)
+      SLICEs as RAM:            0 out of  2574 (0%)
+      SLICEs as Carry:        229 out of  3432 (7%)
+   Number of LUT4s:        1416 out of  6864 (21%)
+      Number used as logic LUTs:        958
+      Number used as distributed RAM:     0
+      Number used as ripple logic:      458
+      Number used as shift registers:     0
+   Number of PIO sites used: 50 + 4(JTAG) out of 207 (26%)
+   Number of block RAMs:  2 out of 26 (8%)
+   Number of GSRs:        1 out of 1 (100%)
+   EFB used :        No
+   JTAG used :       No
+   Readback used :   No
+   Oscillator used : No
+   Startup used :    No
+   POR :             On
+   Bandgap :         On
+   Number of Power Controller:  0 out of 1 (0%)
+   Number of Dynamic Bank Controller (BCINRD):  0 out of 6 (0%)
+   Number of Dynamic Bank Controller (BCLVDSO):  0 out of 1 (0%)
+   Number of DCCA:  0 out of 8 (0%)
+   Number of DCMA:  0 out of 2 (0%)
+   Number of PLLs:  0 out of 2 (0%)
+   Number of DQSDLLs:  0 out of 2 (0%)
+   Number of CLKDIVC:  0 out of 4 (0%)
+   Number of ECLKSYNCA:  0 out of 4 (0%)
+   Number of ECLKBRIDGECS:  0 out of 2 (0%)
+   Notes:-
+      1. Total number of LUT4s = (Number of logic LUT4s) + 2*(Number of
+     distributed RAMs) + 2*(Number of ripple logic)
+      2. Number of logic LUT4s does not include count of distributed RAM and
+     ripple logic.
+   Number of clocks:  3
+     Net CLK_c: 114 loads, 113 rising, 1 falling (Driver: PIO CLK )
+     Net coreInst/fullALUInst/aluInst/un1_ALUX_1_buf: 1 loads, 1 rising, 0
+
+     falling (Driver: coreInst/fullALUInst/aluInst/un1_ALUX_1 )
+     Net coreInst/fullALUInst/aluInst/un1_ALUX_2_buf: 8 loads, 8 rising, 0
+     falling (Driver: coreInst/fullALUInst/aluInst/un1_ALUX_2 )
+   Number of Clock Enables:  18
+     Net RESET_c: 3 loads, 3 LSLICEs
+     Net N_198_i: 20 loads, 4 LSLICEs
+     Net mcuResourcesInst/interruptMaskRegisterInst/MASK_REG_0_sqmuxa: 4 loads,
+     4 LSLICEs
+     Net mcuResourcesInst/UARTInst/uartTxInst/r_TX_Data_0_sqmuxa_1: 4 loads, 4
+     LSLICEs
+     Net mcuResourcesInst/UARTInst/uartTxInst/N_43_i: 1 loads, 1 LSLICEs
+     Net mcuResourcesInst/UARTInst/TX_CLK_DIV_1_sqmuxa: 8 loads, 8 LSLICEs
+     Net mcuResourcesInst/UARTInst/START_TX_1_sqmuxa_i: 1 loads, 1 LSLICEs
+     Net coreInst/REGB_EN: 4 loads, 0 LSLICEs
+     Net EXECUTE_c: 1 loads, 1 LSLICEs
+     Net coreInst/REGA_EN: 4 loads, 0 LSLICEs
+     Net COMMIT_c: 10 loads, 10 LSLICEs
+     Net coreInst/N_301_i: 2 loads, 2 LSLICEs
+     Net coreInst/aluGroupDecoderInst/REGA_EN_1_sqmuxa_i: 2 loads, 2 LSLICEs
+     Net DECODE_c: 1 loads, 1 LSLICEs
+     Net coreInst/CCL_LD: 3 loads, 3 LSLICEs
+     Net coreInst/programCounterInst/N_200_i: 8 loads, 8 LSLICEs
+     Net coreInst/programCounterInst/INTR15: 8 loads, 8 LSLICEs
+     Net coreInst/programCounterInst/INTR05: 8 loads, 8 LSLICEs
+   Number of local set/reset loads for net RESET_c merged into GSR:  132
+   Number of LSRs:  10
+     Net RESET_c: 4 loads, 0 LSLICEs
+     Net FETCH_c: 1 loads, 1 LSLICEs
+     Net coreInst.INSTRUCTION[15]: 2 loads, 2 LSLICEs
+     Net mcuResourcesInst/UARTInst/uartTxInst/r_Clock_Count15_cry_16_0_RNINU4S:
+     9 loads, 9 LSLICEs
+     Net mcuResourcesInst/UARTInst/uartTxInst/un1_r_TX_Data_0_sqmuxa_1: 2 loads,
+     2 LSLICEs
+     Net coreInst/aluGroupDecoderInst/N_227_i: 1 loads, 1 LSLICEs
+     Net coreInst/aluGroupDecoderInst/N_15_i: 1 loads, 1 LSLICEs
+     Net DECODE_c: 1 loads, 1 LSLICEs
+     Net coreInst/aluGroupDecoderInst/fb: 1 loads, 1 LSLICEs
+     Net coreInst/aluGroupDecoderInst/CCL_LD_0_sqmuxa: 1 loads, 1 LSLICEs
+   Number of nets driven by tri-state buffers:  0
+   Top 10 highest fanout non-clock nets:
+     Net coreInst/ALUX_i_1[3]: 131 loads
+     Net coreInst/N_233: 85 loads
+     Net coreInst/N_229: 78 loads
+     Net coreInst/N_231: 77 loads
+     Net coreInst/ARGB_i_1[0]: 69 loads
+     Net coreInst/ALUX_i_1[2]: 65 loads
+     Net coreInst/fullALUInst/N_344: 61 loads
+     Net coreInst/fullALUInst/aluInst/OVER_0: 45 loads
+     Net coreInst/N_388: 41 loads
+     Net coreInst/N_389: 41 loads
+
+
+
+
+   Number of warnings:  16
+   Number of errors:    0
+
+
+     
+
+
+
+<A name="mrp_dwe"></A><B><U><big>Design Errors/Warnings</big></U></B>
+
+WARNING - map: C:/Users/Duncan/git/ForthCPU/ForthCPU.lpf(18): Semantic error in
+     "FREQUENCY NET "CLKOP" 80.000000 MHz ;": CLKOP matches no clock nets in the
+     design.  This preference has been disabled.
+WARNING - map: C:/Users/Duncan/git/ForthCPU/ForthCPU.lpf(19): Semantic error in
+     "INPUT_SETUP ALLPORTS 50.000000 ns HOLD 12.000000 ns CLKNET "clk" ;": "clk"
+     matches no clknets in the design.  This preference has been disabled.
+WARNING - map: C:/Users/Duncan/git/ForthCPU/ForthCPU.lpf(20): Semantic error in
+     "INPUT_SETUP PORT "reset" 50.000000 ns CLKNET "clk" ;": reset matches no
+     ports in the design. "clk" matches no clknets in the design.  This
+     preference has been disabled.
+WARNING - map: C:/Users/Duncan/git/ForthCPU/ForthCPU.lpf(5): Semantic error in
+     "LOCATE COMP "addr[0]" SITE "P16" ;": COMP "addr[0]" cannot be found in
+     design. This preference has been disabled.
+WARNING - map: C:/Users/Duncan/git/ForthCPU/ForthCPU.lpf(6): Semantic error in
+     "LOCATE COMP "addr[1]" SITE "N15" ;": COMP "addr[1]" cannot be found in
+     design. This preference has been disabled.
+WARNING - map: C:/Users/Duncan/git/ForthCPU/ForthCPU.lpf(7): Semantic error in
+     "LOCATE COMP "addr[2]" SITE "L13" ;": COMP "addr[2]" cannot be found in
+     design. This preference has been disabled.
+WARNING - map: C:/Users/Duncan/git/ForthCPU/ForthCPU.lpf(8): Semantic error in
+     "LOCATE COMP "addr[3]" SITE "K11" ;": COMP "addr[3]" cannot be found in
+     design. This preference has been disabled.
+WARNING - map: C:/Users/Duncan/git/ForthCPU/ForthCPU.lpf(9): Semantic error in
+     "LOCATE COMP "addr[4]" SITE "L12" ;": COMP "addr[4]" cannot be found in
+     design. This preference has been disabled.
+WARNING - map: C:/Users/Duncan/git/ForthCPU/ForthCPU.lpf(10): Semantic error in
+     "LOCATE COMP "addr[5]" SITE "J11" ;": COMP "addr[5]" cannot be found in
+     design. This preference has been disabled.
+WARNING - map: C:/Users/Duncan/git/ForthCPU/ForthCPU.lpf(11): Semantic error in
+     "LOCATE COMP "addr[6]" SITE "J13" ;": COMP "addr[6]" cannot be found in
+     design. This preference has been disabled.
+WARNING - map: C:/Users/Duncan/git/ForthCPU/ForthCPU.lpf(12): Semantic error in
+     "LOCATE COMP "addr[7]" SITE "H11" ;": COMP "addr[7]" cannot be found in
+     design. This preference has been disabled.
+WARNING - map: C:/Users/Duncan/git/ForthCPU/ForthCPU.lpf(13): Semantic error in
+     "IOBUF PORT "reset" IO_TYPE=LVCMOS33 ;": Port "reset" does not exist in the
+     design. This preference has been disabled.
+WARNING - map: C:/Users/Duncan/git/ForthCPU/ForthCPU.lpf(15): Semantic error in
+     "LOCATE COMP "pc_opx[0]" SITE "N2" ;": COMP "pc_opx[0]" cannot be found in
+     design. This preference has been disabled.
+WARNING - map: C:/Users/Duncan/git/ForthCPU/ForthCPU.lpf(16): Semantic error in
+     "LOCATE COMP "pc_opx[1]" SITE "P1" ;": COMP "pc_opx[1]" cannot be found in
+     design. This preference has been disabled.
+WARNING - map: Using local reset signal 'RESET_c' to infer global GSR net.
+WARNING - map: IO buffer missing for top level port RXD...logic will be
+     discarded.
+
+
+
+<A name="mrp_ioa"></A><B><U><big>IO (PIO) Attributes</big></U></B>
+
++---------------------+-----------+-----------+------------+
+
+| IO Name             | Direction | Levelmode | IO         |
+|                     |           |  IO_TYPE  | Register   |
++---------------------+-----------+-----------+------------+
+| DATA_BUS[0]         | BIDIR     | LVCMOS33  | IN         |
++---------------------+-----------+-----------+------------+
+| ADDR_BUS[0]         | OUTPUT    | LVCMOS33  |            |
++---------------------+-----------+-----------+------------+
+| FETCH               | OUTPUT    | LVCMOS33  |            |
++---------------------+-----------+-----------+------------+
+| CLK                 | INPUT     | LVCMOS33  |            |
++---------------------+-----------+-----------+------------+
+| TXD                 | OUTPUT    | LVCMOS33  | OUT        |
++---------------------+-----------+-----------+------------+
+| WRN1                | OUTPUT    | LVCMOS33  |            |
++---------------------+-----------+-----------+------------+
+| WRN0                | OUTPUT    | LVCMOS33  |            |
++---------------------+-----------+-----------+------------+
+| RDN                 | OUTPUT    | LVCMOS33  |            |
++---------------------+-----------+-----------+------------+
+| INTS7               | INPUT     | LVCMOS33  |            |
++---------------------+-----------+-----------+------------+
+| INTS6               | INPUT     | LVCMOS33  |            |
++---------------------+-----------+-----------+------------+
+| INTS5               | INPUT     | LVCMOS33  |            |
++---------------------+-----------+-----------+------------+
+| INTS4               | INPUT     | LVCMOS33  |            |
++---------------------+-----------+-----------+------------+
+| INTS3               | INPUT     | LVCMOS33  |            |
++---------------------+-----------+-----------+------------+
+| INTS2               | INPUT     | LVCMOS33  |            |
++---------------------+-----------+-----------+------------+
+| INTS1               | INPUT     | LVCMOS33  |            |
++---------------------+-----------+-----------+------------+
+| INTS0               | INPUT     | LVCMOS33  |            |
++---------------------+-----------+-----------+------------+
+| DATA_BUS[15]        | BIDIR     | LVCMOS33  | IN         |
++---------------------+-----------+-----------+------------+
+| DATA_BUS[14]        | BIDIR     | LVCMOS33  | IN         |
++---------------------+-----------+-----------+------------+
+| DATA_BUS[13]        | BIDIR     | LVCMOS33  | IN         |
++---------------------+-----------+-----------+------------+
+| DATA_BUS[12]        | BIDIR     | LVCMOS33  | IN         |
++---------------------+-----------+-----------+------------+
+| DATA_BUS[11]        | BIDIR     | LVCMOS33  | IN         |
++---------------------+-----------+-----------+------------+
+| DATA_BUS[10]        | BIDIR     | LVCMOS33  | IN         |
++---------------------+-----------+-----------+------------+
+| DATA_BUS[9]         | BIDIR     | LVCMOS33  | IN         |
++---------------------+-----------+-----------+------------+
+| DATA_BUS[8]         | BIDIR     | LVCMOS33  | IN         |
++---------------------+-----------+-----------+------------+
+| DATA_BUS[7]         | BIDIR     | LVCMOS33  | IN         |
++---------------------+-----------+-----------+------------+
+| DATA_BUS[6]         | BIDIR     | LVCMOS33  | IN         |
++---------------------+-----------+-----------+------------+
+| DATA_BUS[5]         | BIDIR     | LVCMOS33  | IN         |
+
++---------------------+-----------+-----------+------------+
+| DATA_BUS[4]         | BIDIR     | LVCMOS33  | IN         |
++---------------------+-----------+-----------+------------+
+| DATA_BUS[3]         | BIDIR     | LVCMOS33  | IN         |
++---------------------+-----------+-----------+------------+
+| DATA_BUS[2]         | BIDIR     | LVCMOS33  | IN         |
++---------------------+-----------+-----------+------------+
+| DATA_BUS[1]         | BIDIR     | LVCMOS33  | IN         |
++---------------------+-----------+-----------+------------+
+| ADDR_BUS[15]        | OUTPUT    | LVCMOS33  |            |
++---------------------+-----------+-----------+------------+
+| ADDR_BUS[14]        | OUTPUT    | LVCMOS33  |            |
++---------------------+-----------+-----------+------------+
+| ADDR_BUS[13]        | OUTPUT    | LVCMOS33  |            |
++---------------------+-----------+-----------+------------+
+| ADDR_BUS[12]        | OUTPUT    | LVCMOS33  |            |
++---------------------+-----------+-----------+------------+
+| ADDR_BUS[11]        | OUTPUT    | LVCMOS33  |            |
++---------------------+-----------+-----------+------------+
+| ADDR_BUS[10]        | OUTPUT    | LVCMOS33  |            |
++---------------------+-----------+-----------+------------+
+| ADDR_BUS[9]         | OUTPUT    | LVCMOS33  |            |
++---------------------+-----------+-----------+------------+
+| ADDR_BUS[8]         | OUTPUT    | LVCMOS33  |            |
++---------------------+-----------+-----------+------------+
+| ADDR_BUS[7]         | OUTPUT    | LVCMOS33  |            |
++---------------------+-----------+-----------+------------+
+| ADDR_BUS[6]         | OUTPUT    | LVCMOS33  |            |
++---------------------+-----------+-----------+------------+
+| ADDR_BUS[5]         | OUTPUT    | LVCMOS33  |            |
++---------------------+-----------+-----------+------------+
+| ADDR_BUS[4]         | OUTPUT    | LVCMOS33  |            |
++---------------------+-----------+-----------+------------+
+| ADDR_BUS[3]         | OUTPUT    | LVCMOS33  |            |
++---------------------+-----------+-----------+------------+
+| ADDR_BUS[2]         | OUTPUT    | LVCMOS33  |            |
++---------------------+-----------+-----------+------------+
+| ADDR_BUS[1]         | OUTPUT    | LVCMOS33  |            |
++---------------------+-----------+-----------+------------+
+| COMMIT              | OUTPUT    | LVCMOS33  |            |
++---------------------+-----------+-----------+------------+
+| EXECUTE             | OUTPUT    | LVCMOS33  |            |
++---------------------+-----------+-----------+------------+
+| DECODE              | OUTPUT    | LVCMOS33  |            |
++---------------------+-----------+-----------+------------+
+| RESET               | INPUT     | LVCMOS33  |            |
++---------------------+-----------+-----------+------------+
+
+
+
+<A name="mrp_rm"></A><B><U><big>Removed logic</big></U></B>
+
+Block VCC undriven or does not drive anything - clipped.
+Block GND undriven or does not drive anything - clipped.
+Block coreInst/GND undriven or does not drive anything - clipped.
+Block coreInst/VCC undriven or does not drive anything - clipped.
+Block coreInst/instructionPhaseDecoderInst/GND undriven or does not drive
+
+     anything - clipped.
+Block coreInst/instructionPhaseDecoderInst/VCC undriven or does not drive
+     anything - clipped.
+Block coreInst/fullALUInst/GND undriven or does not drive anything - clipped.
+Block coreInst/fullALUInst/VCC undriven or does not drive anything - clipped.
+Block coreInst/fullALUInst/muxA/VCC undriven or does not drive anything -
+     clipped.
+Block coreInst/fullALUInst/muxA/GND undriven or does not drive anything -
+     clipped.
+Block coreInst/fullALUInst/muxB/VCC undriven or does not drive anything -
+     clipped.
+Block coreInst/fullALUInst/muxB/GND undriven or does not drive anything -
+     clipped.
+Block coreInst/registerFileInst/VCC undriven or does not drive anything -
+     clipped.
+Block coreInst/registerFileInst/GND undriven or does not drive anything -
+     clipped.
+Block coreInst/registerFileInst/regs/VCC undriven or does not drive anything -
+     clipped.
+Block coreInst/busControllerInst/GND undriven or does not drive anything -
+     clipped.
+Block coreInst/busControllerInst/VCC undriven or does not drive anything -
+     clipped.
+Block coreInst/programCounterInst/VCC undriven or does not drive anything -
+     clipped.
+Block coreInst/branchLogicInst/VCC undriven or does not drive anything -
+     clipped.
+Block coreInst/branchLogicInst/GND undriven or does not drive anything -
+     clipped.
+Block coreInst/interruptStateMachineInst/GND undriven or does not drive anything
+     - clipped.
+Block coreInst/interruptStateMachineInst/VCC undriven or does not drive anything
+     - clipped.
+Block coreInst/aluGroupDecoderInst/VCC undriven or does not drive anything -
+     clipped.
+Block coreInst/aluGroupDecoderInst/GND undriven or does not drive anything -
+     clipped.
+Block coreInst/loadStoreGroupDecoderInst/VCC undriven or does not drive anything
+     - clipped.
+Block coreInst/loadStoreGroupDecoderInst/GND undriven or does not drive anything
+     - clipped.
+Block coreInst/generalGroupDecoderInst/GND undriven or does not drive anything -
+     clipped.
+Block coreInst/generalGroupDecoderInst/VCC undriven or does not drive anything -
+     clipped.
+Block coreInst/opxMultiplexerInst/VCC undriven or does not drive anything -
+     clipped.
+Block coreInst/opxMultiplexerInst/GND undriven or does not drive anything -
+     clipped.
+Block mcuResourcesInst/GND undriven or does not drive anything - clipped.
+Block mcuResourcesInst/VCC undriven or does not drive anything - clipped.
+Block mcuResourcesInst/memoryMapperInst/VCC undriven or does not drive anything
+     - clipped.
+Block mcuResourcesInst/memoryMapperInst/GND undriven or does not drive anything
+     - clipped.
+Block mcuResourcesInst/UARTInst/GND undriven or does not drive anything -
+
+     clipped.
+Block mcuResourcesInst/UARTInst/VCC undriven or does not drive anything -
+     clipped.
+Block mcuResourcesInst/interruptMaskRegisterInst/GND undriven or does not drive
+     anything - clipped.
+Block mcuResourcesInst/interruptMaskRegisterInst/VCC undriven or does not drive
+     anything - clipped.
+Signal coreInst/DECODE_c_i was merged into signal DECODE_c
+Signal coreInst/busControllerInst/CN was merged into signal CLK_c
+Signal coreInst/fullALUInst/aluInst/GND undriven or does not drive anything -
+     clipped.
+Signal coreInst/registerFileInst/regs/GND undriven or does not drive anything -
+     clipped.
+Signal coreInst/programCounterInst/GND undriven or does not drive anything -
+     clipped.
+Signal mcuResourcesInst/UARTInst/uartTxInst/GND undriven or does not drive
+     anything - clipped.
+Signal VCC undriven or does not drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/RESULT_5_0_cry_0_0_S1 undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/RESULT_5_0_cry_0_0_S0 undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/N_5 undriven or does not drive anything -
+     clipped.
+Signal coreInst/fullALUInst/aluInst/RESULT_5_0_s_15_0_S1 undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/RESULT_5_0_s_15_0_COUT undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_2_cry_1_0_S1 undriven or does not drive
+     anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_2_cry_1_0_S0 undriven or does not drive
+     anything - clipped.
+Signal coreInst/fullALUInst/aluInst/N_17 undriven or does not drive anything -
+     clipped.
+Signal coreInst/fullALUInst/aluInst/madd_2_cry_15_0_S1 undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_2_cry_15_0_COUT undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_3_cry_1_0_S1 undriven or does not drive
+     anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_3_cry_1_0_S0 undriven or does not drive
+     anything - clipped.
+Signal coreInst/fullALUInst/aluInst/N_30 undriven or does not drive anything -
+     clipped.
+Signal coreInst/fullALUInst/aluInst/madd_3_cry_15_0_S1 undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_3_cry_15_0_COUT undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_1_cry_1_0_S1 undriven or does not drive
+     anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_1_cry_1_0_S0 undriven or does not drive
+     anything - clipped.
+Signal coreInst/fullALUInst/aluInst/N_34 undriven or does not drive anything -
+     clipped.
+Signal coreInst/fullALUInst/aluInst/madd_1_cry_15_0_S1 undriven or does not
+     drive anything - clipped.
+
+Signal coreInst/fullALUInst/aluInst/madd_1_cry_15_0_COUT undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_8_cry_0_0_S1 undriven or does not drive
+     anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_8_cry_0_0_S0 undriven or does not drive
+     anything - clipped.
+Signal coreInst/fullALUInst/aluInst/N_35 undriven or does not drive anything -
+     clipped.
+Signal coreInst/fullALUInst/aluInst/madd_8_cry_16_0_S1 undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_8_cry_16_0_COUT undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_10_cry_2_0_S1 undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_10_cry_2_0_S0 undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/N_39 undriven or does not drive anything -
+     clipped.
+Signal coreInst/fullALUInst/aluInst/madd_10_cry_18_0_S1 undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_10_cry_18_0_COUT undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_7_cry_1_0_S1 undriven or does not drive
+     anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_7_cry_1_0_S0 undriven or does not drive
+     anything - clipped.
+Signal coreInst/fullALUInst/aluInst/N_47 undriven or does not drive anything -
+     clipped.
+Signal coreInst/fullALUInst/aluInst/madd_7_cry_16_0_COUT undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_9_cry_2_0_S1 undriven or does not drive
+     anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_9_cry_2_0_S0 undriven or does not drive
+     anything - clipped.
+Signal coreInst/fullALUInst/aluInst/N_49 undriven or does not drive anything -
+     clipped.
+Signal coreInst/fullALUInst/aluInst/madd_9_cry_18_0_S1 undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_9_cry_18_0_COUT undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_4_cry_1_0_S1 undriven or does not drive
+     anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_4_cry_1_0_S0 undriven or does not drive
+     anything - clipped.
+Signal coreInst/fullALUInst/aluInst/N_50 undriven or does not drive anything -
+     clipped.
+Signal coreInst/fullALUInst/aluInst/madd_4_cry_15_0_S1 undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_4_cry_15_0_COUT undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_5_cry_1_0_S1 undriven or does not drive
+     anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_5_cry_1_0_S0 undriven or does not drive
+     anything - clipped.
+Signal coreInst/fullALUInst/aluInst/N_51 undriven or does not drive anything -
+     clipped.
+
+Signal coreInst/fullALUInst/aluInst/madd_5_cry_15_0_S1 undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_5_cry_15_0_COUT undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_6_cry_1_0_S1 undriven or does not drive
+     anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_6_cry_1_0_S0 undriven or does not drive
+     anything - clipped.
+Signal coreInst/fullALUInst/aluInst/N_52 undriven or does not drive anything -
+     clipped.
+Signal coreInst/fullALUInst/aluInst/madd_6_cry_15_0_S1 undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_6_cry_15_0_COUT undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_0_cry_0_0_S1 undriven or does not drive
+     anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_0_cry_0_0_S0 undriven or does not drive
+     anything - clipped.
+Signal coreInst/fullALUInst/aluInst/N_53 undriven or does not drive anything -
+     clipped.
+Signal coreInst/fullALUInst/aluInst/madd_0_cry_15_0_COUT undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/un1_RESULT_cry_0_0_S1 undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/un1_RESULT_cry_0_0_S0 undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/N_54 undriven or does not drive anything -
+     clipped.
+Signal coreInst/fullALUInst/aluInst/un1_RESULT_cry_15_0_COUT undriven or does
+     not drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/un10_RESULT_cry_0_0_S1 undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/un10_RESULT_cry_0_0_S0 undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/N_55 undriven or does not drive anything -
+     clipped.
+Signal coreInst/fullALUInst/aluInst/un10_RESULT_cry_15_0_COUT undriven or does
+     not drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/un47_RESULT_cry_0_0_S1 undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/un47_RESULT_cry_0_0_S0 undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/N_56 undriven or does not drive anything -
+     clipped.
+Signal coreInst/fullALUInst/aluInst/un47_RESULT_cry_15_0_COUT undriven or does
+     not drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_13_cry_4_0_S1 undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_13_cry_4_0_S0 undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/N_57 undriven or does not drive anything -
+     clipped.
+Signal coreInst/fullALUInst/aluInst/madd_13_s_23_0_S1 undriven or does not drive
+     anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_13_s_23_0_COUT undriven or does not
+     drive anything - clipped.
+
+Signal coreInst/fullALUInst/aluInst/madd_11_cry_2_0_S1 undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_11_cry_2_0_S0 undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/N_60 undriven or does not drive anything -
+     clipped.
+Signal coreInst/fullALUInst/aluInst/madd_11_cry_18_0_S1 undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_11_cry_18_0_COUT undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_12_cry_0_0_S1 undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_12_cry_0_0_S0 undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/N_61 undriven or does not drive anything -
+     clipped.
+Signal coreInst/fullALUInst/aluInst/madd_12_cry_19_0_COUT undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_14_cry_0_0_S1 undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_14_cry_0_0_S0 undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/N_62 undriven or does not drive anything -
+     clipped.
+Signal coreInst/fullALUInst/aluInst/madd_14_s_23_0_S1 undriven or does not drive
+     anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_14_s_23_0_COUT undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_cry_0_0_S1 undriven or does not drive
+     anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_cry_0_0_S0 undriven or does not drive
+     anything - clipped.
+Signal coreInst/fullALUInst/aluInst/N_63 undriven or does not drive anything -
+     clipped.
+Signal coreInst/fullALUInst/aluInst/madd_cry_15_0_COUT undriven or does not
+     drive anything - clipped.
+Signal coreInst/registerFileInst/regs/registers_0_0_1_DOB8 undriven or does not
+     drive anything - clipped.
+Signal coreInst/registerFileInst/regs/registers_0_0_1_DOA8 undriven or does not
+     drive anything - clipped.
+Signal coreInst/registerFileInst/regs/registers_0_1_0_DOB8 undriven or does not
+     drive anything - clipped.
+Signal coreInst/registerFileInst/regs/registers_0_1_0_DOA8 undriven or does not
+     drive anything - clipped.
+Signal coreInst/programCounterInst/PC_A_NEXT_s_15_0_S1 undriven or does not
+     drive anything - clipped.
+Signal coreInst/programCounterInst/PC_A_NEXT_s_15_0_COUT undriven or does not
+     drive anything - clipped.
+Signal coreInst/programCounterInst/PC_A_NEXT_cry_0_0_S1 undriven or does not
+     drive anything - clipped.
+Signal coreInst/programCounterInst/PC_A_NEXT_cry_0_0_S0 undriven or does not
+     drive anything - clipped.
+Signal coreInst/programCounterInst/N_1 undriven or does not drive anything -
+     clipped.
+Signal mcuResourcesInst/UARTInst/uartTxInst/un1_r_Clock_Count_cry_0_0_S0
+     undriven or does not drive anything - clipped.
+
+Signal mcuResourcesInst/UARTInst/uartTxInst/N_5 undriven or does not drive
+     anything - clipped.
+Signal mcuResourcesInst/UARTInst/uartTxInst/un1_r_Clock_Count_s_15_0_S1 undriven
+     or does not drive anything - clipped.
+Signal mcuResourcesInst/UARTInst/uartTxInst/un1_r_Clock_Count_s_15_0_COUT
+     undriven or does not drive anything - clipped.
+Signal mcuResourcesInst/UARTInst/uartTxInst/un1_CLKS_PER_BIT_cry_0_0_S0 undriven
+     or does not drive anything - clipped.
+Signal mcuResourcesInst/UARTInst/uartTxInst/N_6 undriven or does not drive
+     anything - clipped.
+Signal mcuResourcesInst/UARTInst/uartTxInst/un1_CLKS_PER_BIT_cry_15_0_COUT
+     undriven or does not drive anything - clipped.
+Signal mcuResourcesInst/UARTInst/uartTxInst/r_Clock_Count15_cry_0_0_S1 undriven
+     or does not drive anything - clipped.
+Signal mcuResourcesInst/UARTInst/uartTxInst/r_Clock_Count15_cry_0_0_S0 undriven
+     or does not drive anything - clipped.
+Signal mcuResourcesInst/UARTInst/uartTxInst/N_8 undriven or does not drive
+     anything - clipped.
+Signal mcuResourcesInst/UARTInst/uartTxInst/r_Clock_Count15_cry_1_0_S1 undriven
+     or does not drive anything - clipped.
+Signal mcuResourcesInst/UARTInst/uartTxInst/r_Clock_Count15_cry_1_0_S0 undriven
+     or does not drive anything - clipped.
+Signal mcuResourcesInst/UARTInst/uartTxInst/r_Clock_Count15_cry_3_0_S1 undriven
+     or does not drive anything - clipped.
+Signal mcuResourcesInst/UARTInst/uartTxInst/r_Clock_Count15_cry_3_0_S0 undriven
+     or does not drive anything - clipped.
+Signal mcuResourcesInst/UARTInst/uartTxInst/r_Clock_Count15_cry_5_0_S1 undriven
+     or does not drive anything - clipped.
+Signal mcuResourcesInst/UARTInst/uartTxInst/r_Clock_Count15_cry_5_0_S0 undriven
+     or does not drive anything - clipped.
+Signal mcuResourcesInst/UARTInst/uartTxInst/r_Clock_Count15_cry_7_0_S1 undriven
+     or does not drive anything - clipped.
+Signal mcuResourcesInst/UARTInst/uartTxInst/r_Clock_Count15_cry_7_0_S0 undriven
+     or does not drive anything - clipped.
+Signal mcuResourcesInst/UARTInst/uartTxInst/r_Clock_Count15_cry_9_0_S1 undriven
+     or does not drive anything - clipped.
+Signal mcuResourcesInst/UARTInst/uartTxInst/r_Clock_Count15_cry_9_0_S0 undriven
+     or does not drive anything - clipped.
+Signal mcuResourcesInst/UARTInst/uartTxInst/r_Clock_Count15_cry_11_0_S1 undriven
+     or does not drive anything - clipped.
+Signal mcuResourcesInst/UARTInst/uartTxInst/r_Clock_Count15_cry_11_0_S0 undriven
+     or does not drive anything - clipped.
+Signal mcuResourcesInst/UARTInst/uartTxInst/r_Clock_Count15_cry_13_0_S1 undriven
+     or does not drive anything - clipped.
+Signal mcuResourcesInst/UARTInst/uartTxInst/r_Clock_Count15_cry_13_0_S0 undriven
+     or does not drive anything - clipped.
+Signal mcuResourcesInst/UARTInst/uartTxInst/r_Clock_Count15_cry_15_0_S1 undriven
+     or does not drive anything - clipped.
+Signal mcuResourcesInst/UARTInst/uartTxInst/r_Clock_Count15_cry_15_0_S0 undriven
+     or does not drive anything - clipped.
+Signal mcuResourcesInst/UARTInst/uartTxInst/r_Clock_Count15_cry_16_0_S1 undriven
+     or does not drive anything - clipped.
+Signal mcuResourcesInst/UARTInst/uartTxInst/r_Clock_Count15_cry_16_0_COUT
+     undriven or does not drive anything - clipped.
+Block coreInst/instructionPhaseDecoderInst/DECODE_RNIEDS4 was optimized away.
+Block coreInst/busControllerInst/RDN_BUF.CN was optimized away.
+
+Block coreInst/fullALUInst/aluInst/GND was optimized away.
+Block coreInst/registerFileInst/regs/GND was optimized away.
+Block coreInst/programCounterInst/GND was optimized away.
+Block mcuResourcesInst/UARTInst/uartTxInst/GND was optimized away.
+
+
+
+<A name="mrp_mem"></A><B><U><big>Memory Usage</big></U></B>
+
+/coreInst/registerFileInst/regs:
+    EBRs: 2
+    RAM SLICEs: 0
+    Logic SLICEs: 4
+    PFU Registers: 0
+    -Contains EBR registers_0_1_0:  TYPE= DP8KC,  Width_A= 8,  Width_B= 8,
+         Depth_A= 32,  Depth_B= 32,  REGMODE_A= NOREG,  REGMODE_B= NOREG,
+         RESETMODE= ASYNC,  ASYNC_RESET_RELEASE= SYNC,  WRITEMODE_A=
+         WRITETHROUGH,  WRITEMODE_B= WRITETHROUGH,  GSR= DISABLED,
+         MEM_INIT_FILE= INIT_ALL_0s,  MEM_LPC_FILE= registers.lpc
+    -Contains EBR registers_0_0_1:  TYPE= DP8KC,  Width_A= 8,  Width_B= 8,
+         Depth_A= 32,  Depth_B= 32,  REGMODE_A= NOREG,  REGMODE_B= NOREG,
+         RESETMODE= ASYNC,  ASYNC_RESET_RELEASE= SYNC,  WRITEMODE_A=
+         WRITETHROUGH,  WRITEMODE_B= WRITETHROUGH,  GSR= DISABLED,
+         MEM_INIT_FILE= INIT_ALL_0s,  MEM_LPC_FILE= registers.lpc
+
+     
+
+
+
+<A name="mrp_asic"></A><B><U><big>ASIC Components</big></U></B>
+---------------
+
+Instance Name: coreInst/registerFileInst/regs/registers_0_1_0
+         Type: DP8KC
+Instance Name: coreInst/registerFileInst/regs/registers_0_0_1
+         Type: DP8KC
+
+
+
+<A name="mrp_gsr"></A><B><U><big>GSR Usage</big></U></B>
+---------
+
+GSR Component:
+   The local reset signal 'RESET_c' of the design has been inferred as Global
+        Set Reset (GSR). The reset signal used for GSR control is 'RESET_c'.
+        
+
+     GSR Property:
+   The design components with GSR property set to ENABLED will respond to global
+        set reset while the components with GSR property set to DISABLED will
+        not.
+        
+
+     Components on inferred reset domain with GSR Property disabled
+--------------------------------------------------------------
+
+     These components have the GSR property set to DISABLED and are on the
+     inferred reset domain. The components will respond to the reset signal
+     'RESET_c' via the local reset on the component and not the GSR component.
+
+     Type and number of components of the type: 
+
+   Register = 4 
+   DP8KC = 4
+
+     Type and instance name of component: 
+   Register : coreInst/instructionPhaseDecoderInst/COMMIT
+   Register : coreInst/instructionPhaseDecoderInst/FETCH
+   Register : coreInst/instructionPhaseDecoderInst/EXECUTE
+   Register : coreInst/instructionPhaseDecoderInst/DECODE
+   DP8KC : coreInst/registerFileInst/regs/registers_0_0_1
+   DP8KC : coreInst/registerFileInst/regs/registers_0_0_1
+   DP8KC : coreInst/registerFileInst/regs/registers_0_1_0
+   DP8KC : coreInst/registerFileInst/regs/registers_0_1_0
+
+
+
+<A name="mrp_runtime"></A><B><U><big>Run Time and Memory Usage</big></U></B>
+-------------------------
+
+   Total CPU Time: 1 secs  
+   Total REAL Time: 2 secs  
+   Peak Memory Usage: 49 MB
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Copyright (c) 1991-1994 by NeoCAD Inc. All rights reserved.
+     Copyright (c) 1995 AT&T Corp.   All rights reserved.
+     Copyright (c) 1995-2001 Lucent Technologies Inc.  All rights reserved.
+     Copyright (c) 2001 Agere Systems   All rights reserved.
+     Copyright (c) 2002-2020 Lattice Semiconductor Corporation,  All rights
+     reserved.
+
+
+
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+<BR>
+</PRE></FONT>
+</BODY>
+</HTML>

@@ -23,6 +23,9 @@ add_file -verilog -vlog_std v2001 "C:/Users/Duncan/git/ForthCPU/branchLogic/sour
 add_file -verilog -vlog_std v2001 "C:/Users/Duncan/git/ForthCPU/busController/source/busController.v"
 add_file -verilog -vlog_std v2001 "C:/Users/Duncan/git/ForthCPU/testSetup.v"
 add_file -verilog -vlog_std v2001 "C:/Users/Duncan/git/ForthCPU/generalGroupDecoder/source/generalGroupDecoder.v"
+add_file -verilog -vlog_std v2001 "C:/Users/Duncan/git/ForthCPU/processorCore/test/processorCoreInstructionTests.v"
+add_file -verilog -vlog_std v2001 "C:/Users/Duncan/git/ForthCPU/instructionTestSetup.v"
+add_file -verilog -vlog_std v2001 "C:/Users/Duncan/git/ForthCPU/processorCore/test/processorCoreInterruptTests.v"
 
 
 #implementation: "processorCore"
@@ -44,7 +47,7 @@ set_option -speed_grade -5
 set_option -part_companion ""
 
 #compilation/mapping options
-set_option -top_module "processorCoreTests"
+set_option -top_module "processorCoreInterruptTests"
 
 # hdl_compiler_options
 set_option -distributed_compile 0
