@@ -18,7 +18,6 @@ module opxMultiplexer(
 	input [3:0]  ALU_ALU_OPX,
 	input [2:0]  ALU_ALUA_SRCX,
 	input [1:0]  ALU_REGA_ADDRX,
-	input [1:0]  ALU_REGA_DINX,
 	input         ALU_REGA_EN,
 	input [2:0]  ALU_REGB_ADDRX,
 	input         ALU_REGB_EN,
@@ -147,7 +146,7 @@ always @(*) begin
 			REGA_WEN      = ALU_REGA_WEN;
 			REGA_ADDRX    = ALU_REGA_ADDRX;
 			REGA_BYTE_ENX = `REG_BYTE_ENX_BOTH;
-			REGA_DINX     = ALU_REGA_DINX;
+			REGA_DINX     = `REGA_DINX_DIN;
 			REGB_EN       = ALU_REGB_EN;
 			REGB_WEN      = ALU_REGB_WEN;
 			REGB_ADDRX    = ALU_REGB_ADDRX;

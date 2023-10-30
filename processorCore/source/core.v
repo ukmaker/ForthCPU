@@ -18,7 +18,6 @@ module core(
 	
 	output RDN_BUF, 
 	output ABUS_OEN,
-	output DBUS_OEN,
 	output WRN0_BUF, 
 	output WRN1_BUF
 	
@@ -31,10 +30,8 @@ wire [1:0]  ADDR_BUSX;
 wire [3:0]  ALU_OPX;
 wire [15:0] ALU_R;
 wire [15:0] ALUA_DATA;
-wire [15:0] ALUA_DIN;
 wire [2:0]  ALUA_SRCX;
 wire [15:0] ALUB_DATA;
-wire [15:0] ALUB_DIN;
 wire [2:0]  ALUB_SRCX;
 wire [3:0]  ARGA_X;
 wire [3:0]  ARGB_X;
@@ -56,9 +53,8 @@ wire [1:0]  LDSINCF;
 wire [15:0] PC_A;
 wire [15:0] PC_A_NEXT;
 wire         PC_BASEX;
-wire [15:0] PC_D;
-wire         PC_LD_INT0;
-wire         PC_LD_INT1;
+wire         PC_LD_INT0X;
+wire         PC_LD_INT1X;
 wire [2:0]  PC_NEXTX;
 wire         PC_OFFSETX;
 wire         PC_ENX;
@@ -83,7 +79,6 @@ wire [3:0]  ALU_ALU_OPX;
 wire [2:0]  ALU_ALUA_SRCX;
 wire [2:0]  ALU_ALUB_SRCX;
 wire [1:0]  ALU_REGA_ADDRX;
-wire [1:0]  ALU_REGA_DINX;
 wire         ALU_REGA_EN;
 wire [2:0]  ALU_REGB_ADDRX;
 wire         ALU_REGB_EN;
@@ -209,7 +204,6 @@ busController busControllerInst(
 	.RDX(RDX),
 	.DOUT_BUF(DOUT_BUF),
 	.HIGH_BYTEX(HIGH_BYTEX),
-	.DBUS_OEN(DBUS_OEN),
 	.RDN_BUF(RDN_BUF),
 	.WRN0_BUF(WRN0_BUF),
 	.WRN1_BUF(WRN1_BUF)
@@ -383,7 +377,6 @@ opxMultiplexer opxMultiplexerInst(
 	.ALU_ALU_OPX(ALU_ALU_OPX),
 	.ALU_ALUA_SRCX(ALU_ALUA_SRCX),
 	.ALU_REGA_ADDRX(ALU_REGA_ADDRX),
-	.ALU_REGA_DINX(ALU_REGA_DINX),
 	.ALU_REGA_EN(ALU_REGA_EN),
 	.ALU_REGB_ADDRX(ALU_REGB_ADDRX),
 	.ALU_REGB_EN(ALU_REGB_EN),

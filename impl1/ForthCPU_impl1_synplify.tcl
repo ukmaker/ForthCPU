@@ -76,7 +76,7 @@ add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/interruptLogic/so
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/UART/source/receiver.v}
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/UART/source/transmitter.v}
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/UART/source/UART.v}
-add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/GPIO/source/devBoard.v}
+add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/devBoard/source/devBoard.v}
 
 #-- top module name
 set_option -top_module mcu

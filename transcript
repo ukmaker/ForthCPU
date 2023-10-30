@@ -1,37 +1,12 @@
 # Reading pref.tcl
-# do {C:/Users/Duncan/git/ForthCPU/GPIO/test/GPIOTestbench/GPIOTestbench.mdo}
-# Loading project GPIOTestbench
-# Model Technology ModelSim - Lattice FPGA Edition vlog 2020.3 Compiler 2020.10 Oct 14 2020
-# Start time: 14:40:23 on Oct 30,2023
-# vlog -reportprogress 300 "+incdir+C:/Users/Duncan/git/ForthCPU/GPIO/source" -work work C:/Users/Duncan/git/ForthCPU/GPIO/source/devBoard.v 
-# -- Compiling module devBoard
-# 
-# Top level modules:
-# 	devBoard
-# End time: 14:40:23 on Oct 30,2023, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Lattice FPGA Edition vlog 2020.3 Compiler 2020.10 Oct 14 2020
-# Start time: 14:40:23 on Oct 30,2023
-# vlog -reportprogress 300 "+incdir+C:/Users/Duncan/git/ForthCPU/GPIO/test" -work work C:/Users/Duncan/git/ForthCPU/GPIO/test/GPIOTests.v 
-# -- Compiling module GPIOTests
-# ** Warning: C:/Users/Duncan/git/ForthCPU/GPIO/test/GPIOTests.v(66): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
-# 
-# Top level modules:
-# 	GPIOTests
-# End time: 14:40:23 on Oct 30,2023, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 1
-# Model Technology ModelSim - Lattice FPGA Edition vlog 2020.3 Compiler 2020.10 Oct 14 2020
-# Start time: 14:40:23 on Oct 30,2023
-# vlog -reportprogress 300 "+incdir+C:/Users/Duncan/git/ForthCPU" -work work C:/Users/Duncan/git/ForthCPU/constants.v 
-# End time: 14:40:23 on Oct 30,2023, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# Model Technology ModelSim - Lattice FPGA Edition vlog 2020.3 Compiler 2020.10 Oct 14 2020
-# Start time: 14:40:23 on Oct 30,2023
-# vlog -reportprogress 300 "+incdir+C:/Users/Duncan/git/ForthCPU" -work work C:/Users/Duncan/git/ForthCPU/testSetup.v 
-# End time: 14:40:23 on Oct 30,2023, Elapsed time: 0:00:00
-# Errors: 0, Warnings: 0
-# vsim -L work -L pmi_work -L ovi_machxo3l GPIOTests 
-# Start time: 14:40:23 on Oct 30,2023
+# do {C:/Users/Duncan/git/ForthCPU/generalGroupDecoder/test/generalGroupDecoderTestbench/generalGroupDecoderTestbench.mdo}
+# Loading project generalGroupDecoderTestbench
+# Compile of generalGroupDecoder.v was successful.
+# Compile of instructionPhaseDecoder.v was successful.
+# Compile of constants.v was successful.
+# 3 compiles, 0 failed with no errors.
+# vsim -L work -L pmi_work -L ovi_machxo3l generalGroupDecoderTests 
+# Start time: 18:43:07 on Oct 30,2023
 # //  ModelSim - Lattice FPGA Edition 2020.3 Oct 14 2020
 # //
 # //  Copyright 1991-2020 Mentor Graphics Corporation
@@ -45,23 +20,35 @@
 # //  is prohibited from disclosure under the Trade Secrets Act,
 # //  18 U.S.C. Section 1905.
 # //
-# Loading work.GPIOTests
-# Loading work.devBoard
+# Loading work.generalGroupDecoderTests
+# Loading work.instructionPhaseDecoder
+# Loading work.generalGroupDecoder
 # .main_pane.wave.interior.cs.body.pw.wf
-# [T=200] FAILED in GPIOTests: GPI expected 0000 != actual xxxx
-# [T=400] FAILED in GPIOTests: LEDs expected 00000001 != actual 00000000
-# [T=400] FAILED in GPIOTests: GPI expected 0000 != actual xxxx
-# Compile of devBoard.v was successful.
-# Compile of GPIOTests.v was successful with warnings.
-# Compile of constants.v was successful.
-# Compile of testSetup.v was successful.
-# 4 compiles, 0 failed with no errors.
-
-restart
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.GPIOTests
-# Loading work.devBoard
-run 4us
-write format wave -window .main_pane.wave.interior.cs.body.pw.wf C:/Users/Duncan/git/ForthCPU/GPIO/test/GPIOTestbench/wave.do
-# End time: 14:42:38 on Oct 30,2023, Elapsed time: 0:02:15
-# Errors: 0, Warnings: 1
+# FETCH   [T=      455]    1 {0000} :: {c2af} MOV RB,0x00af
+# DECODE  [T=      555]    2 
+# EXECUTE [T=      655]    3 
+# COMMIT  [T=      755]    4 
+# FETCH   [T=      855]    5 {0000} :: {0000} NOP
+# DECODE  [T=      955]    6 
+run 10us
+# EXECUTE [T=     1055]    7 
+# COMMIT  [T=     1155]    8 
+# FETCH   [T=     1255]    9 {0000} :: {0200} EI
+# DECODE  [T=     1355]   10 
+# EXECUTE [T=     1455]   11 
+# COMMIT  [T=     1555]   12 
+# FETCH   [T=     1655]   13 {0000} :: {0300} DI
+# DECODE  [T=     1755]   14 
+# EXECUTE [T=     1855]   15 
+# COMMIT  [T=     1955]   16 
+# FETCH   [T=     2055]   17 {0000} :: {0400} RETI
+# DECODE  [T=     2155]   18 
+# EXECUTE [T=     2255]   19 
+# COMMIT  [T=     2355]   20 
+# FETCH   [T=     2455]   21 {0000} :: {0100} HALT
+# DECODE  [T=     2555]   22 
+# EXECUTE [T=     2655]   23 
+# COMMIT  [T=     2755]   24 
+write format wave -window .main_pane.wave.interior.cs.body.pw.wf C:/Users/Duncan/git/ForthCPU/generalGroupDecoder/test/generalGroupDecoderTestbench/wave.do
+# End time: 18:43:39 on Oct 30,2023, Elapsed time: 0:00:32
+# Errors: 0, Warnings: 2

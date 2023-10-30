@@ -18,7 +18,6 @@ module alu(
 reg mul;
 reg arithmetic;
 reg sex;
-
 reg OVFL;
 
 reg [15:0] tmp;
@@ -29,6 +28,8 @@ always @ (*)
 			mul = 0;
 			arithmetic = 0;
 			OVFL = 0;
+			CARRY = 0;
+			tmp = 16'h0000;
 			
 			case (ALUX[3:0])
 				`ALU_OPX_MOV: begin // MOV group. Output copies port B

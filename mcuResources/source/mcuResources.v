@@ -16,7 +16,7 @@ module mcuResources(
 	input  [15:0] DIN_BUS,
 	
 	// GPIO
-	input [15:0] GPIO_IN,
+	input [15:0] DIN_GPIO,
 	wire          RD_GPIO,
 	wire          WR_GPIO,
 	wire          ADDR_GPIO,
@@ -86,7 +86,7 @@ memoryMapper memoryMapperInst(
 	.ADDR_INT(ADDR_INT),
 	
 	// GPIO
-	.DIN_GPIO(GPIO_IN),
+	.DIN_GPIO(DIN_GPIO),
 	.RD_GPIO(RD_GPIO),
 	.WR_GPIO(WR_GPIO),
 	.ADDR_GPIO(ADDR_GPIO)

@@ -38,7 +38,6 @@ module busController(
 	output reg[15:0]DOUT_BUF,
 	
 	output reg HIGH_BYTEX,
-	output reg DBUS_OEN,
 	output reg RDN_BUF,
 	output reg WRN0_BUF,
 	output reg WRN1_BUF
@@ -74,7 +73,6 @@ end
 always @(posedge CLK) begin
 	WRN0_BUF <= ~WRX | (BYTEX &  ADDR_BUF[0]);
 	WRN1_BUF <= ~WRX | (BYTEX & ~ADDR_BUF[0]);
-	DBUS_OEN <= ~RDX & WRX;
 end
 
 always @(negedge CLK) begin

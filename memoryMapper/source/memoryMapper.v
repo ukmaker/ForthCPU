@@ -55,12 +55,6 @@ module memoryMapper(
 
 wire READ;
 wire WRITE;
-wire CLKEN;
-reg WE;
-
-wire [15:0] RAM_DATA;
-wire [15:0] ROM_DATA;
-
 wire RAM_MAP;
 wire ROM_MAP;
 wire UART_MAP;
