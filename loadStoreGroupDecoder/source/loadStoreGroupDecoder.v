@@ -111,8 +111,6 @@ module loadStoreGroupDecoder(
 wire [1:0] INCF;
 wire [1:0] LDSF;
 wire [1:0] MODEF;
-wire [3:0] ARGA;
-wire [3:0] ARGB;
 
 assign INCF = INSTRUCTION[13:12];
 assign LDSF = INSTRUCTION[11:10];

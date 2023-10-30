@@ -13,7 +13,7 @@ Hostname: EDAWIN
 
 Implementation : impl1
 
-# Written on Sat Oct 28 16:00:10 2023
+# Written on Mon Oct 30 15:59:33 2023
 
 ##### FILES SYNTAX CHECKED ##############################################
 Constraint File(s):      (none)
@@ -25,27 +25,3 @@ Constraint File(s):      (none)
 
 No issues found in constraint syntax.
 
-
-
-Clock Summary
-*************
-
-          Start       Requested     Requested     Clock        Clock                   Clock
-Level     Clock       Frequency     Period        Type         Group                   Load 
---------------------------------------------------------------------------------------------
-0 -       System      100.0 MHz     10.000        system       system_clkgroup         17   
-                                                                                            
-0 -       mcu|CLK     100.0 MHz     10.000        inferred     Inferred_clkgroup_0     171  
-============================================================================================
-
-
-Clock Load Summary
-******************
-
-            Clock     Source        Clock Pin                                                      Non-clock Pin     Non-clock Pin                               
-Clock       Load      Pin           Seq Example                                                    Seq Example       Comb Example                                
------------------------------------------------------------------------------------------------------------------------------------------------------------------
-System      17        -             coreInst.fullALUInst.aluInst.CARRY.C                           -                 -                                           
-                                                                                                                                                                 
-mcu|CLK     171       CLK(port)     mcuResourcesInst.interruptMaskRegisterInst.MASK_REG[7:0].C     -                 coreInst.busControllerInst.un1_CLK.I[0](inv)
-=================================================================================================================================================================

@@ -27,8 +27,6 @@ module registers (DataInA, DataInB, ByteEnA, ByteEnB, AddressA, AddressB,
     wire scuba_vhi;
     wire scuba_vlo;
 
-    VHI scuba_vhi_inst (.Z(scuba_vhi));
-
     defparam registers_0_0_1.INIT_DATA = "STATIC" ;
     defparam registers_0_0_1.ASYNC_RESET_RELEASE = "SYNC" ;
     defparam registers_0_0_1.INITVAL_1F = "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000" ;

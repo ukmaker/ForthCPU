@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<BaliProject version="3.2" title="ForthCPU" device="LCMXO3L-6900C-5BG256C" default_implementation="UART">
+<BaliProject version="3.2" title="ForthCPU" device="LCMXO3L-6900C-5BG256C" default_implementation="impl1">
     <Options/>
+    <Implementation title="GPIO" dir="GPIO" description="GPIO" synthesis="synplify" default_strategy="Area">
+        <Options def_top="GPIOTests"/>
+        <Source name="GPIO/source/devBoard.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="GPIO/test/GPIOTests.v" type="Verilog" type_short="Verilog">
+            <Options top_module="GPIOTests"/>
+        </Source>
+        <Source name="constants.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="testSetup.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">
+            <Options/>
+        </Source>
+        <Source name="GPIO/test/GPIOTestbench/GPIOTestbench.spf" type="Simulation Project File" type_short="SPF">
+            <Options/>
+        </Source>
+    </Implementation>
     <Implementation title="RAM" dir="RAM" description="RAM" synthesis="synplify" default_strategy="Area">
         <Options def_top="RAM"/>
         <Source name="RAM/source/RAM.ipx" type="IPX_Module" type_short="IPX">
@@ -287,12 +308,12 @@
         </Source>
     </Implementation>
     <Implementation title="impl1" dir="impl1" description="impl1" synthesis="synplify" default_strategy="Strategy1">
-        <Options VerilogStandard="System Verilog" def_top="mcu"/>
+        <Options VerilogStandard="System Verilog" def_top="mcuResources"/>
         <Source name="constants.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
         <Source name="processorCore/source/core.v" type="Verilog" type_short="Verilog">
-            <Options/>
+            <Options top_module="core"/>
         </Source>
         <Source name="aluGroupDecoder/source/aluGroupDecoder.v" type="Verilog" type_short="Verilog">
             <Options/>
@@ -351,14 +372,8 @@
         <Source name="generalGroupDecoder/source/generalGroupDecoder.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
-        <Source name="core_tf.v" type="Verilog" type_short="Verilog">
-            <Options top_module="core_tf"/>
-        </Source>
-        <Source name="pll.v" type="Verilog" type_short="Verilog">
-            <Options top_module="pll"/>
-        </Source>
         <Source name="impl1/source/mcu.v" type="Verilog" type_short="Verilog">
-            <Options top_module="mcu"/>
+            <Options/>
         </Source>
         <Source name="bootROM/source/rom.ipx" type="IPX_Module" type_short="IPX">
             <Options/>
@@ -370,7 +385,7 @@
             <Options/>
         </Source>
         <Source name="mcuResources/source/mcuResources.v" type="Verilog" type_short="Verilog">
-            <Options/>
+            <Options top_module="mcuResources"/>
         </Source>
         <Source name="RAM/source/RAM.v" type="Verilog" type_short="Verilog">
             <Options/>
@@ -385,6 +400,9 @@
             <Options/>
         </Source>
         <Source name="UART/source/UART.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="GPIO/source/devBoard.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
         <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">

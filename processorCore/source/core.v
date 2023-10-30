@@ -82,7 +82,6 @@ wire         RETIX;
 wire [3:0]  ALU_ALU_OPX;
 wire [2:0]  ALU_ALUA_SRCX;
 wire [2:0]  ALU_ALUB_SRCX;
-wire [1:0]  ALU_DATA_BUSX;
 wire [1:0]  ALU_REGA_ADDRX;
 wire [1:0]  ALU_REGA_DINX;
 wire         ALU_REGA_EN;
@@ -383,8 +382,6 @@ opxMultiplexer opxMultiplexerInst(
 
 	.ALU_ALU_OPX(ALU_ALU_OPX),
 	.ALU_ALUA_SRCX(ALU_ALUA_SRCX),
-	.ALU_ALUB_SRCX(ALU_ALUB_SRCX),
-	.ALU_DATA_BUSX(ALU_DATA_BUSX),
 	.ALU_REGA_ADDRX(ALU_REGA_ADDRX),
 	.ALU_REGA_DINX(ALU_REGA_DINX),
 	.ALU_REGA_EN(ALU_REGA_EN),

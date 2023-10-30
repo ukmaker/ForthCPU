@@ -15,6 +15,12 @@ module mcuResources(
 	// Bus interface
 	input  [15:0] DIN_BUS,
 	
+	// GPIO
+	input [15:0] GPIO_IN,
+	wire          RD_GPIO,
+	wire          WR_GPIO,
+	wire          ADDR_GPIO,
+	
 	// UART signals
 	input UART_RXD,
 	output UART_TXD,
@@ -77,7 +83,13 @@ memoryMapper memoryMapperInst(
 	.DIN_INT(DIN_INT),
 	.WR_INT(WR_INT),
 	.RD_INT(RD_INT),
-	.ADDR_INT(ADDR_INT)
+	.ADDR_INT(ADDR_INT),
+	
+	// GPIO
+	.DIN_GPIO(GPIO_IN),
+	.RD_GPIO(RD_GPIO),
+	.WR_GPIO(WR_GPIO),
+	.ADDR_GPIO(ADDR_GPIO)
 );
 
 rom ROMInst(

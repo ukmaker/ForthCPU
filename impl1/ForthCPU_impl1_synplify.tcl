@@ -66,8 +66,6 @@ add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/interruptLogic/so
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/branchLogic/source/branchLogic.v}
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/busController/source/busController.v}
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/generalGroupDecoder/source/generalGroupDecoder.v}
-add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/core_tf.v}
-add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/pll.v}
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/impl1/source/mcu.v}
 add_file -verilog -vlog_std v2001 {C:/Users/Duncan/git/ForthCPU/bootROM/source/rom.v}
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/bootROM/source/rom.v}
@@ -78,6 +76,7 @@ add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/interruptLogic/so
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/UART/source/receiver.v}
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/UART/source/transmitter.v}
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/UART/source/UART.v}
+add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/GPIO/source/devBoard.v}
 
 #-- top module name
 set_option -top_module mcu

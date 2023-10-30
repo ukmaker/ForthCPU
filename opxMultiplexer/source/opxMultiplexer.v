@@ -17,7 +17,6 @@ module opxMultiplexer(
 	
 	input [3:0]  ALU_ALU_OPX,
 	input [2:0]  ALU_ALUA_SRCX,
-	input [2:0]  ALU_ALUB_SRCX,	input [1:0]  ALU_DATA_BUSX,
 	input [1:0]  ALU_REGA_ADDRX,
 	input [1:0]  ALU_REGA_DINX,
 	input         ALU_REGA_EN,
@@ -140,9 +139,9 @@ always @(*) begin
 		`GROUP_ARITHMETIC_LOGIC: begin
 			ALU_OPX       = ALU_ALU_OPX;
 			ALUA_SRCX     = ALU_ALUA_SRCX;
-			ALUB_SRCX     = ALU_ALUB_SRCX;
+			ALUB_SRCX     = `ALUB_SRCX_REG_B;
 			BYTEX         = `BYTEX_WORD;
-			DATA_BUSX     = ALU_DATA_BUSX;
+			DATA_BUSX     = `DATA_BUSX_ALU_R;
 			RDX           = `RDX_NONE;
 			REGA_EN       = ALU_REGA_EN;
 			REGA_WEN      = ALU_REGA_WEN;

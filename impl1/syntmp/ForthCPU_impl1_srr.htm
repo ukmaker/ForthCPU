@@ -1,11 +1,11 @@
 <html><body><samp><pre>
-<!@TC:1698505198>
+<!@TC:1698681564>
 #Build: Synplify Pro (R) R-2021.03L-SP1, Build 093R, Aug 10 2021
 #install: C:\lscc\diamond\3.12\synpbase
 #OS: Windows 8 6.2
 #Hostname: EDAWIN
 
-# Sat Oct 28 15:59:58 2023
+# Mon Oct 30 15:59:24 2023
 
 #Implementation: impl1
 
@@ -25,7 +25,7 @@ Hostname: EDAWIN
 Implementation : impl1
 <a name=compilerReport1></a>Synopsys HDL Compiler, Version comp202103synp2, Build 093R, Built Aug 10 2021 09:15:36, @</a>
 
-@N: : <!@TM:1698505209> | Running in 64-bit mode 
+@N: : <!@TM:1698681571> | Running in 64-bit mode 
 ###########################################################[
 
 Copyright (C) 1994-2021 Synopsys, Inc.
@@ -43,10 +43,10 @@ Hostname: EDAWIN
 Implementation : impl1
 <a name=compilerReport2></a>Synopsys Verilog Compiler, Version comp202103synp2, Build 093R, Built Aug 10 2021 09:15:36, @</a>
 
-@N: : <!@TM:1698505209> | Running in 64-bit mode 
-@N:<a href="@N:CG1349:@XP_HELP">CG1349</a> : <!@TM:1698505209> | Running Verilog Compiler in System Verilog mode 
+@N: : <!@TM:1698681571> | Running in 64-bit mode 
+@N:<a href="@N:CG1349:@XP_HELP">CG1349</a> : <!@TM:1698681571> | Running Verilog Compiler in System Verilog mode 
 
-@N:<a href="@N:CG1350:@XP_HELP">CG1350</a> : <!@TM:1698505209> | Running Verilog Compiler in Multiple File Compilation Unit mode 
+@N:<a href="@N:CG1350:@XP_HELP">CG1350</a> : <!@TM:1698681571> | Running Verilog Compiler in Multiple File Compilation Unit mode 
 
 @I::"C:\lscc\diamond\3.12\synpbase\lib\lucent\machxo3l.v" (library work)
 @I::"C:\lscc\diamond\3.12\synpbase\lib\lucent\pmi_def.v" (library work)
@@ -76,8 +76,6 @@ Implementation : impl1
 @I::"C:\Users\Duncan\git\ForthCPU\busController\source\busController.v" (library work)
 @I:"C:\Users\Duncan\git\ForthCPU\busController\source\busController.v":"C:\Users\Duncan\git\ForthCPU\busController\source\../..\constants.v" (library work)
 @I::"C:\Users\Duncan\git\ForthCPU\generalGroupDecoder\source\generalGroupDecoder.v" (library work)
-@I::"C:\Users\Duncan\git\ForthCPU\core_tf.v" (library work)
-@I::"C:\Users\Duncan\git\ForthCPU\pll.v" (library work)
 @I::"C:\Users\Duncan\git\ForthCPU\impl1\source\mcu.v" (library work)
 @I::"C:\Users\Duncan\git\ForthCPU\bootROM\source\rom.v" (library work)
 @I::"C:\Users\Duncan\git\ForthCPU\memoryMapper\source\memoryMapper.v" (library work)
@@ -90,162 +88,183 @@ Implementation : impl1
 @I::"C:\Users\Duncan\git\ForthCPU\UART\source\transmitter.v" (library work)
 @I::"C:\Users\Duncan\git\ForthCPU\UART\source\UART.v" (library work)
 @I:"C:\Users\Duncan\git\ForthCPU\UART\source\UART.v":"C:\Users\Duncan\git\ForthCPU\UART\source\../..\constants.v" (library work)
+@I::"C:\Users\Duncan\git\ForthCPU\GPIO\source\devBoard.v" (library work)
 Verilog syntax check successful!
-File C:\Users\Duncan\git\ForthCPU\impl1\source\mcu.v changed - recompiling
+File C:\Users\Duncan\git\ForthCPU\loadStoreGroupDecoder\source\loadStoreGroupDecoder.v changed - recompiling
+File C:\Users\Duncan\git\ForthCPU\interruptLogic\source\interruptStateMachine.v changed - recompiling
 Selecting top level module mcu
-@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\Users\Duncan\git\ForthCPU\instructionPhaseDecoder\source\instructionPhaseDecoder.v:3:7:3:30:@N:CG364:@XP_MSG">instructionPhaseDecoder.v(3)</a><!@TM:1698505209> | Synthesizing module instructionPhaseDecoder in library work.
+@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\Users\Duncan\git\ForthCPU\GPIO\source\devBoard.v:7:7:7:15:@N:CG364:@XP_MSG">devBoard.v(7)</a><!@TM:1698681571> | Synthesizing module devBoard in library work.
+Running optimization stage 1 on devBoard .......
+@N:<a href="@N:CL189:@XP_HELP">CL189</a> : <a href="C:\Users\Duncan\git\ForthCPU\GPIO\source\devBoard.v:28:0:28:6:@N:CL189:@XP_MSG">devBoard.v(28)</a><!@TM:1698681571> | Register bit GPI[15] is always 0.
+@N:<a href="@N:CL189:@XP_HELP">CL189</a> : <a href="C:\Users\Duncan\git\ForthCPU\GPIO\source\devBoard.v:28:0:28:6:@N:CL189:@XP_MSG">devBoard.v(28)</a><!@TM:1698681571> | Register bit GPI[14] is always 0.
+@N:<a href="@N:CL189:@XP_HELP">CL189</a> : <a href="C:\Users\Duncan\git\ForthCPU\GPIO\source\devBoard.v:28:0:28:6:@N:CL189:@XP_MSG">devBoard.v(28)</a><!@TM:1698681571> | Register bit GPI[13] is always 0.
+@N:<a href="@N:CL189:@XP_HELP">CL189</a> : <a href="C:\Users\Duncan\git\ForthCPU\GPIO\source\devBoard.v:28:0:28:6:@N:CL189:@XP_MSG">devBoard.v(28)</a><!@TM:1698681571> | Register bit GPI[12] is always 0.
+@N:<a href="@N:CL189:@XP_HELP">CL189</a> : <a href="C:\Users\Duncan\git\ForthCPU\GPIO\source\devBoard.v:28:0:28:6:@N:CL189:@XP_MSG">devBoard.v(28)</a><!@TM:1698681571> | Register bit GPI[11] is always 0.
+@N:<a href="@N:CL189:@XP_HELP">CL189</a> : <a href="C:\Users\Duncan\git\ForthCPU\GPIO\source\devBoard.v:28:0:28:6:@N:CL189:@XP_MSG">devBoard.v(28)</a><!@TM:1698681571> | Register bit GPI[10] is always 0.
+@N:<a href="@N:CL189:@XP_HELP">CL189</a> : <a href="C:\Users\Duncan\git\ForthCPU\GPIO\source\devBoard.v:28:0:28:6:@N:CL189:@XP_MSG">devBoard.v(28)</a><!@TM:1698681571> | Register bit GPI[9] is always 0.
+@N:<a href="@N:CL189:@XP_HELP">CL189</a> : <a href="C:\Users\Duncan\git\ForthCPU\GPIO\source\devBoard.v:28:0:28:6:@N:CL189:@XP_MSG">devBoard.v(28)</a><!@TM:1698681571> | Register bit GPI[8] is always 0.
+<font color=#A52A2A>@W:<a href="@W:CL279:@XP_HELP">CL279</a> : <a href="C:\Users\Duncan\git\ForthCPU\GPIO\source\devBoard.v:28:0:28:6:@W:CL279:@XP_MSG">devBoard.v(28)</a><!@TM:1698681571> | Pruning register bits 15 to 8 of GPI[15:0]. If this is not the intended behavior, drive the inputs with valid values, or inputs from the top level.</font>
+Finished optimization stage 1 on devBoard (CPU Time 0h:00m:00s, Memory Used current: 94MB peak: 94MB)
+@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\Users\Duncan\git\ForthCPU\instructionPhaseDecoder\source\instructionPhaseDecoder.v:3:7:3:30:@N:CG364:@XP_MSG">instructionPhaseDecoder.v(3)</a><!@TM:1698681571> | Synthesizing module instructionPhaseDecoder in library work.
 Running optimization stage 1 on instructionPhaseDecoder .......
-@A:<a href="@A:CL282:@XP_HELP">CL282</a> : <a href="C:\Users\Duncan\git\ForthCPU\instructionPhaseDecoder\source\instructionPhaseDecoder.v:18:0:18:6:@A:CL282:@XP_MSG">instructionPhaseDecoder.v(18)</a><!@TM:1698505209> | Feedback mux created for signal FETCH. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
-@A:<a href="@A:CL282:@XP_HELP">CL282</a> : <a href="C:\Users\Duncan\git\ForthCPU\instructionPhaseDecoder\source\instructionPhaseDecoder.v:18:0:18:6:@A:CL282:@XP_MSG">instructionPhaseDecoder.v(18)</a><!@TM:1698505209> | Feedback mux created for signal EXECUTE. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
-@A:<a href="@A:CL282:@XP_HELP">CL282</a> : <a href="C:\Users\Duncan\git\ForthCPU\instructionPhaseDecoder\source\instructionPhaseDecoder.v:18:0:18:6:@A:CL282:@XP_MSG">instructionPhaseDecoder.v(18)</a><!@TM:1698505209> | Feedback mux created for signal DECODE. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
-@A:<a href="@A:CL282:@XP_HELP">CL282</a> : <a href="C:\Users\Duncan\git\ForthCPU\instructionPhaseDecoder\source\instructionPhaseDecoder.v:18:0:18:6:@A:CL282:@XP_MSG">instructionPhaseDecoder.v(18)</a><!@TM:1698505209> | Feedback mux created for signal COMMIT. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
+@A:<a href="@A:CL282:@XP_HELP">CL282</a> : <a href="C:\Users\Duncan\git\ForthCPU\instructionPhaseDecoder\source\instructionPhaseDecoder.v:18:0:18:6:@A:CL282:@XP_MSG">instructionPhaseDecoder.v(18)</a><!@TM:1698681571> | Feedback mux created for signal FETCH. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
+@A:<a href="@A:CL282:@XP_HELP">CL282</a> : <a href="C:\Users\Duncan\git\ForthCPU\instructionPhaseDecoder\source\instructionPhaseDecoder.v:18:0:18:6:@A:CL282:@XP_MSG">instructionPhaseDecoder.v(18)</a><!@TM:1698681571> | Feedback mux created for signal EXECUTE. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
+@A:<a href="@A:CL282:@XP_HELP">CL282</a> : <a href="C:\Users\Duncan\git\ForthCPU\instructionPhaseDecoder\source\instructionPhaseDecoder.v:18:0:18:6:@A:CL282:@XP_MSG">instructionPhaseDecoder.v(18)</a><!@TM:1698681571> | Feedback mux created for signal DECODE. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
+@A:<a href="@A:CL282:@XP_HELP">CL282</a> : <a href="C:\Users\Duncan\git\ForthCPU\instructionPhaseDecoder\source\instructionPhaseDecoder.v:18:0:18:6:@A:CL282:@XP_MSG">instructionPhaseDecoder.v(18)</a><!@TM:1698681571> | Feedback mux created for signal COMMIT. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
 Finished optimization stage 1 on instructionPhaseDecoder (CPU Time 0h:00m:00s, Memory Used current: 94MB peak: 94MB)
-@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\Users\Duncan\git\ForthCPU\aluB\source\alu.v:3:7:3:10:@N:CG364:@XP_MSG">alu.v(3)</a><!@TM:1698505209> | Synthesizing module alu in library work.
-<font color=#A52A2A>@W:<a href="@W:CG360:@XP_HELP">CG360</a> : <a href="C:\Users\Duncan\git\ForthCPU\aluB\source\alu.v:24:12:24:20:@W:CG360:@XP_MSG">alu.v(24)</a><!@TM:1698505209> | Removing wire w_result, as there is no assignment to it.</font>
+@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\Users\Duncan\git\ForthCPU\aluB\source\alu.v:3:7:3:10:@N:CG364:@XP_MSG">alu.v(3)</a><!@TM:1698681571> | Synthesizing module alu in library work.
 Running optimization stage 1 on alu .......
-<font color=#A52A2A>@W:<a href="@W:CL118:@XP_HELP">CL118</a> : <a href="C:\Users\Duncan\git\ForthCPU\aluB\source\alu.v:34:3:34:7:@W:CL118:@XP_MSG">alu.v(34)</a><!@TM:1698505209> | Latch generated from always block for signal CARRY; possible missing assignment in an if or case statement.</font>
-<font color=#A52A2A>@W:<a href="@W:CL118:@XP_HELP">CL118</a> : <a href="C:\Users\Duncan\git\ForthCPU\aluB\source\alu.v:34:3:34:7:@W:CL118:@XP_MSG">alu.v(34)</a><!@TM:1698505209> | Latch generated from always block for signal tmp[15:0]; possible missing assignment in an if or case statement.</font>
+<font color=#A52A2A>@W:<a href="@W:CL118:@XP_HELP">CL118</a> : <a href="C:\Users\Duncan\git\ForthCPU\aluB\source\alu.v:33:3:33:7:@W:CL118:@XP_MSG">alu.v(33)</a><!@TM:1698681571> | Latch generated from always block for signal CARRY; possible missing assignment in an if or case statement.</font>
+<font color=#A52A2A>@W:<a href="@W:CL118:@XP_HELP">CL118</a> : <a href="C:\Users\Duncan\git\ForthCPU\aluB\source\alu.v:33:3:33:7:@W:CL118:@XP_MSG">alu.v(33)</a><!@TM:1698681571> | Latch generated from always block for signal tmp[15:0]; possible missing assignment in an if or case statement.</font>
 Finished optimization stage 1 on alu (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 99MB)
-@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\Users\Duncan\git\ForthCPU\aluB\source\aluAMux.v:6:7:6:14:@N:CG364:@XP_MSG">aluAMux.v(6)</a><!@TM:1698505209> | Synthesizing module aluAMux in library work.
+@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\Users\Duncan\git\ForthCPU\aluB\source\aluAMux.v:6:7:6:14:@N:CG364:@XP_MSG">aluAMux.v(6)</a><!@TM:1698681571> | Synthesizing module aluAMux in library work.
 Running optimization stage 1 on aluAMux .......
 Finished optimization stage 1 on aluAMux (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 99MB)
-@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\Users\Duncan\git\ForthCPU\aluB\source\aluBMux.v:6:7:6:14:@N:CG364:@XP_MSG">aluBMux.v(6)</a><!@TM:1698505209> | Synthesizing module aluBMux in library work.
+@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\Users\Duncan\git\ForthCPU\aluB\source\aluBMux.v:6:7:6:14:@N:CG364:@XP_MSG">aluBMux.v(6)</a><!@TM:1698681571> | Synthesizing module aluBMux in library work.
 Running optimization stage 1 on aluBMux .......
-Finished optimization stage 1 on aluBMux (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 100MB)
-@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\Users\Duncan\git\ForthCPU\aluB\source\fullALU.v:9:7:9:14:@N:CG364:@XP_MSG">fullALU.v(9)</a><!@TM:1698505209> | Synthesizing module fullALU in library work.
+Finished optimization stage 1 on aluBMux (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 99MB)
+@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\Users\Duncan\git\ForthCPU\aluB\source\fullALU.v:9:7:9:14:@N:CG364:@XP_MSG">fullALU.v(9)</a><!@TM:1698681571> | Synthesizing module fullALU in library work.
 Running optimization stage 1 on fullALU .......
-Finished optimization stage 1 on fullALU (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 100MB)
-@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\lscc\diamond\3.12\synpbase\lib\lucent\machxo3l.v:1120:7:1120:10:@N:CG364:@XP_MSG">machxo3l.v(1120)</a><!@TM:1698505209> | Synthesizing module VHI in library work.
-Running optimization stage 1 on VHI .......
-Finished optimization stage 1 on VHI (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 100MB)
-@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\lscc\diamond\3.12\synpbase\lib\lucent\machxo3l.v:1291:7:1291:12:@N:CG364:@XP_MSG">machxo3l.v(1291)</a><!@TM:1698505209> | Synthesizing module DP8KC in library work.
+Finished optimization stage 1 on fullALU (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 99MB)
+@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\lscc\diamond\3.12\synpbase\lib\lucent\machxo3l.v:1291:7:1291:12:@N:CG364:@XP_MSG">machxo3l.v(1291)</a><!@TM:1698681571> | Synthesizing module DP8KC in library work.
 Running optimization stage 1 on DP8KC .......
-Finished optimization stage 1 on DP8KC (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 100MB)
-@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\lscc\diamond\3.12\synpbase\lib\lucent\machxo3l.v:1124:7:1124:10:@N:CG364:@XP_MSG">machxo3l.v(1124)</a><!@TM:1698505209> | Synthesizing module VLO in library work.
+Finished optimization stage 1 on DP8KC (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 99MB)
+@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\lscc\diamond\3.12\synpbase\lib\lucent\machxo3l.v:1124:7:1124:10:@N:CG364:@XP_MSG">machxo3l.v(1124)</a><!@TM:1698681571> | Synthesizing module VLO in library work.
 Running optimization stage 1 on VLO .......
-Finished optimization stage 1 on VLO (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 100MB)
-@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\Users\Duncan\git\ForthCPU\registerFileB\source\registers.v:8:7:8:16:@N:CG364:@XP_MSG">registers.v(8)</a><!@TM:1698505209> | Synthesizing module registers in library work.
+Finished optimization stage 1 on VLO (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 99MB)
+@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\Users\Duncan\git\ForthCPU\registerFileB\source\registers.v:8:7:8:16:@N:CG364:@XP_MSG">registers.v(8)</a><!@TM:1698681571> | Synthesizing module registers in library work.
+<font color=#A52A2A>@W:<a href="@W:CG360:@XP_HELP">CG360</a> : <a href="C:\Users\Duncan\git\ForthCPU\registerFileB\source\registers.v:27:9:27:18:@W:CG360:@XP_MSG">registers.v(27)</a><!@TM:1698681571> | Removing wire scuba_vhi, as there is no assignment to it.</font>
 Running optimization stage 1 on registers .......
-<font color=#A52A2A>@W:<a href="@W:CL168:@XP_HELP">CL168</a> : <a href="C:\Users\Duncan\git\ForthCPU\registerFileB\source\registers.v:30:8:30:22:@W:CL168:@XP_MSG">registers.v(30)</a><!@TM:1698505209> | Removing instance scuba_vhi_inst because it does not drive other instances. To preserve this instance, use the syn_noprune synthesis directive.</font>
-Finished optimization stage 1 on registers (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 100MB)
-@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\Users\Duncan\git\ForthCPU\registerFileB\source\registerFile.v:3:7:3:19:@N:CG364:@XP_MSG">registerFile.v(3)</a><!@TM:1698505209> | Synthesizing module registerFile in library work.
+Finished optimization stage 1 on registers (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 99MB)
+@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\Users\Duncan\git\ForthCPU\registerFileB\source\registerFile.v:3:7:3:19:@N:CG364:@XP_MSG">registerFile.v(3)</a><!@TM:1698681571> | Synthesizing module registerFile in library work.
 Running optimization stage 1 on registerFile .......
 Finished optimization stage 1 on registerFile (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 100MB)
-@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\Users\Duncan\git\ForthCPU\busController\source\busController.v:9:7:9:20:@N:CG364:@XP_MSG">busController.v(9)</a><!@TM:1698505209> | Synthesizing module busController in library work.
+@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\Users\Duncan\git\ForthCPU\busController\source\busController.v:9:7:9:20:@N:CG364:@XP_MSG">busController.v(9)</a><!@TM:1698681571> | Synthesizing module busController in library work.
 Running optimization stage 1 on busController .......
 Finished optimization stage 1 on busController (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 100MB)
-@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\Users\Duncan\git\ForthCPU\programCounter\source\programCounter.v:16:7:16:21:@N:CG364:@XP_MSG">programCounter.v(16)</a><!@TM:1698505209> | Synthesizing module programCounter in library work.
+@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\Users\Duncan\git\ForthCPU\programCounter\source\programCounter.v:16:7:16:21:@N:CG364:@XP_MSG">programCounter.v(16)</a><!@TM:1698681571> | Synthesizing module programCounter in library work.
 Running optimization stage 1 on programCounter .......
 Finished optimization stage 1 on programCounter (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 100MB)
-@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\Users\Duncan\git\ForthCPU\branchLogic\source\branchLogic.v:6:7:6:18:@N:CG364:@XP_MSG">branchLogic.v(6)</a><!@TM:1698505209> | Synthesizing module branchLogic in library work.
+@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\Users\Duncan\git\ForthCPU\branchLogic\source\branchLogic.v:6:7:6:18:@N:CG364:@XP_MSG">branchLogic.v(6)</a><!@TM:1698681571> | Synthesizing module branchLogic in library work.
 Running optimization stage 1 on branchLogic .......
 Finished optimization stage 1 on branchLogic (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 100MB)
-@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\Users\Duncan\git\ForthCPU\interruptLogic\source\interruptStateMachine.v:3:7:3:28:@N:CG364:@XP_MSG">interruptStateMachine.v(3)</a><!@TM:1698505209> | Synthesizing module interruptStateMachine in library work.
-<font color=#A52A2A>@W:<a href="@W:CG133:@XP_HELP">CG133</a> : <a href="C:\Users\Duncan\git\ForthCPU\interruptLogic\source\interruptStateMachine.v:21:4:21:11:@W:CG133:@XP_MSG">interruptStateMachine.v(21)</a><!@TM:1698505209> | Object EI_NEXT is declared but not assigned. Either assign a value or remove the declaration.</font>
+@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\Users\Duncan\git\ForthCPU\interruptLogic\source\interruptStateMachine.v:3:7:3:28:@N:CG364:@XP_MSG">interruptStateMachine.v(3)</a><!@TM:1698681571> | Synthesizing module interruptStateMachine in library work.
 Running optimization stage 1 on interruptStateMachine .......
 Finished optimization stage 1 on interruptStateMachine (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 100MB)
-@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\Users\Duncan\git\ForthCPU\aluGroupDecoder\source\aluGroupDecoder.v:34:7:34:22:@N:CG364:@XP_MSG">aluGroupDecoder.v(34)</a><!@TM:1698505209> | Synthesizing module aluGroupDecoder in library work.
+@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\Users\Duncan\git\ForthCPU\aluGroupDecoder\source\aluGroupDecoder.v:34:7:34:22:@N:CG364:@XP_MSG">aluGroupDecoder.v(34)</a><!@TM:1698681571> | Synthesizing module aluGroupDecoder in library work.
 Running optimization stage 1 on aluGroupDecoder .......
-@N:<a href="@N:CL189:@XP_HELP">CL189</a> : <a href="C:\Users\Duncan\git\ForthCPU\aluGroupDecoder\source\aluGroupDecoder.v:134:0:134:6:@N:CL189:@XP_MSG">aluGroupDecoder.v(134)</a><!@TM:1698505209> | Register bit REGB_WEN is always 0.
+@N:<a href="@N:CL189:@XP_HELP">CL189</a> : <a href="C:\Users\Duncan\git\ForthCPU\aluGroupDecoder\source\aluGroupDecoder.v:134:0:134:6:@N:CL189:@XP_MSG">aluGroupDecoder.v(134)</a><!@TM:1698681571> | Register bit REGB_WEN is always 0.
 Finished optimization stage 1 on aluGroupDecoder (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 100MB)
-@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\Users\Duncan\git\ForthCPU\loadStoreGroupDecoder\source\loadStoreGroupDecoder.v:59:7:59:28:@N:CG364:@XP_MSG">loadStoreGroupDecoder.v(59)</a><!@TM:1698505209> | Synthesizing module loadStoreGroupDecoder in library work.
-<font color=#A52A2A>@W:<a href="@W:CG360:@XP_HELP">CG360</a> : <a href="C:\Users\Duncan\git\ForthCPU\loadStoreGroupDecoder\source\loadStoreGroupDecoder.v:114:11:114:15:@W:CG360:@XP_MSG">loadStoreGroupDecoder.v(114)</a><!@TM:1698505209> | Removing wire ARGA, as there is no assignment to it.</font>
-<font color=#A52A2A>@W:<a href="@W:CG360:@XP_HELP">CG360</a> : <a href="C:\Users\Duncan\git\ForthCPU\loadStoreGroupDecoder\source\loadStoreGroupDecoder.v:115:11:115:15:@W:CG360:@XP_MSG">loadStoreGroupDecoder.v(115)</a><!@TM:1698505209> | Removing wire ARGB, as there is no assignment to it.</font>
+@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\Users\Duncan\git\ForthCPU\loadStoreGroupDecoder\source\loadStoreGroupDecoder.v:59:7:59:28:@N:CG364:@XP_MSG">loadStoreGroupDecoder.v(59)</a><!@TM:1698681571> | Synthesizing module loadStoreGroupDecoder in library work.
 Running optimization stage 1 on loadStoreGroupDecoder .......
 Finished optimization stage 1 on loadStoreGroupDecoder (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 100MB)
-@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\Users\Duncan\git\ForthCPU\jumpGroupDecoder\source\jumpGroupDecoder.v:37:7:37:23:@N:CG364:@XP_MSG">jumpGroupDecoder.v(37)</a><!@TM:1698505209> | Synthesizing module jumpGroupDecoder in library work.
+@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\Users\Duncan\git\ForthCPU\jumpGroupDecoder\source\jumpGroupDecoder.v:37:7:37:23:@N:CG364:@XP_MSG">jumpGroupDecoder.v(37)</a><!@TM:1698681571> | Synthesizing module jumpGroupDecoder in library work.
 Running optimization stage 1 on jumpGroupDecoder .......
 Finished optimization stage 1 on jumpGroupDecoder (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 100MB)
-@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\Users\Duncan\git\ForthCPU\generalGroupDecoder\source\generalGroupDecoder.v:12:7:12:26:@N:CG364:@XP_MSG">generalGroupDecoder.v(12)</a><!@TM:1698505209> | Synthesizing module generalGroupDecoder in library work.
+@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\Users\Duncan\git\ForthCPU\generalGroupDecoder\source\generalGroupDecoder.v:12:7:12:26:@N:CG364:@XP_MSG">generalGroupDecoder.v(12)</a><!@TM:1698681571> | Synthesizing module generalGroupDecoder in library work.
 Running optimization stage 1 on generalGroupDecoder .......
-<font color=#A52A2A>@W:<a href="@W:CL169:@XP_HELP">CL169</a> : <a href="C:\Users\Duncan\git\ForthCPU\generalGroupDecoder\source\generalGroupDecoder.v:33:0:33:6:@W:CL169:@XP_MSG">generalGroupDecoder.v(33)</a><!@TM:1698505209> | Pruning unused register EI. Make sure that there are no unused intermediate registers.</font>
-<font color=#A52A2A>@W:<a href="@W:CL169:@XP_HELP">CL169</a> : <a href="C:\Users\Duncan\git\ForthCPU\generalGroupDecoder\source\generalGroupDecoder.v:33:0:33:6:@W:CL169:@XP_MSG">generalGroupDecoder.v(33)</a><!@TM:1698505209> | Pruning unused register DI. Make sure that there are no unused intermediate registers.</font>
-<font color=#A52A2A>@W:<a href="@W:CL169:@XP_HELP">CL169</a> : <a href="C:\Users\Duncan\git\ForthCPU\generalGroupDecoder\source\generalGroupDecoder.v:33:0:33:6:@W:CL169:@XP_MSG">generalGroupDecoder.v(33)</a><!@TM:1698505209> | Pruning unused register RETI. Make sure that there are no unused intermediate registers.</font>
-<font color=#A52A2A>@W:<a href="@W:CL169:@XP_HELP">CL169</a> : <a href="C:\Users\Duncan\git\ForthCPU\generalGroupDecoder\source\generalGroupDecoder.v:33:0:33:6:@W:CL169:@XP_MSG">generalGroupDecoder.v(33)</a><!@TM:1698505209> | Pruning unused register HALT. Make sure that there are no unused intermediate registers.</font>
+<font color=#A52A2A>@W:<a href="@W:CL169:@XP_HELP">CL169</a> : <a href="C:\Users\Duncan\git\ForthCPU\generalGroupDecoder\source\generalGroupDecoder.v:33:0:33:6:@W:CL169:@XP_MSG">generalGroupDecoder.v(33)</a><!@TM:1698681571> | Pruning unused register EI. Make sure that there are no unused intermediate registers.</font>
+<font color=#A52A2A>@W:<a href="@W:CL169:@XP_HELP">CL169</a> : <a href="C:\Users\Duncan\git\ForthCPU\generalGroupDecoder\source\generalGroupDecoder.v:33:0:33:6:@W:CL169:@XP_MSG">generalGroupDecoder.v(33)</a><!@TM:1698681571> | Pruning unused register DI. Make sure that there are no unused intermediate registers.</font>
+<font color=#A52A2A>@W:<a href="@W:CL169:@XP_HELP">CL169</a> : <a href="C:\Users\Duncan\git\ForthCPU\generalGroupDecoder\source\generalGroupDecoder.v:33:0:33:6:@W:CL169:@XP_MSG">generalGroupDecoder.v(33)</a><!@TM:1698681571> | Pruning unused register RETI. Make sure that there are no unused intermediate registers.</font>
+<font color=#A52A2A>@W:<a href="@W:CL169:@XP_HELP">CL169</a> : <a href="C:\Users\Duncan\git\ForthCPU\generalGroupDecoder\source\generalGroupDecoder.v:33:0:33:6:@W:CL169:@XP_MSG">generalGroupDecoder.v(33)</a><!@TM:1698681571> | Pruning unused register HALT. Make sure that there are no unused intermediate registers.</font>
 Finished optimization stage 1 on generalGroupDecoder (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 100MB)
-@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\Users\Duncan\git\ForthCPU\opxMultiplexer\source\opxMultiplexer.v:7:7:7:21:@N:CG364:@XP_MSG">opxMultiplexer.v(7)</a><!@TM:1698505209> | Synthesizing module opxMultiplexer in library work.
+@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\Users\Duncan\git\ForthCPU\opxMultiplexer\source\opxMultiplexer.v:7:7:7:21:@N:CG364:@XP_MSG">opxMultiplexer.v(7)</a><!@TM:1698681571> | Synthesizing module opxMultiplexer in library work.
 Running optimization stage 1 on opxMultiplexer .......
-Finished optimization stage 1 on opxMultiplexer (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 100MB)
-@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v:6:7:6:11:@N:CG364:@XP_MSG">core.v(6)</a><!@TM:1698505209> | Synthesizing module core in library work.
-<font color=#A52A2A>@W:<a href="@W:CG360:@XP_HELP">CG360</a> : <a href="C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v:34:12:34:20:@W:CG360:@XP_MSG">core.v(34)</a><!@TM:1698505209> | Removing wire ALUA_DIN, as there is no assignment to it.</font>
-<font color=#A52A2A>@W:<a href="@W:CG360:@XP_HELP">CG360</a> : <a href="C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v:37:12:37:20:@W:CG360:@XP_MSG">core.v(37)</a><!@TM:1698505209> | Removing wire ALUB_DIN, as there is no assignment to it.</font>
-<font color=#A52A2A>@W:<a href="@W:CG360:@XP_HELP">CG360</a> : <a href="C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v:59:12:59:16:@W:CG360:@XP_MSG">core.v(59)</a><!@TM:1698505209> | Removing wire PC_D, as there is no assignment to it.</font>
-<font color=#A52A2A>@W:<a href="@W:CG360:@XP_HELP">CG360</a> : <a href="C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v:60:13:60:23:@W:CG360:@XP_MSG">core.v(60)</a><!@TM:1698505209> | Removing wire PC_LD_INT0, as there is no assignment to it.</font>
-<font color=#A52A2A>@W:<a href="@W:CG360:@XP_HELP">CG360</a> : <a href="C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v:61:13:61:23:@W:CG360:@XP_MSG">core.v(61)</a><!@TM:1698505209> | Removing wire PC_LD_INT1, as there is no assignment to it.</font>
-<font color=#A52A2A>@W:<a href="@W:CG360:@XP_HELP">CG360</a> : <a href="C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v:85:12:85:25:@W:CG360:@XP_MSG">core.v(85)</a><!@TM:1698505209> | Removing wire ALU_DATA_BUSX, as there is no assignment to it.</font>
-<font color=#A52A2A>@W:<a href="@W:CG360:@XP_HELP">CG360</a> : <a href="C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v:87:12:87:25:@W:CG360:@XP_MSG">core.v(87)</a><!@TM:1698505209> | Removing wire ALU_REGA_DINX, as there is no assignment to it.</font>
+Finished optimization stage 1 on opxMultiplexer (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 100MB)
+@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v:6:7:6:11:@N:CG364:@XP_MSG">core.v(6)</a><!@TM:1698681571> | Synthesizing module core in library work.
+<font color=#A52A2A>@W:<a href="@W:CG360:@XP_HELP">CG360</a> : <a href="C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v:34:12:34:20:@W:CG360:@XP_MSG">core.v(34)</a><!@TM:1698681571> | Removing wire ALUA_DIN, as there is no assignment to it.</font>
+<font color=#A52A2A>@W:<a href="@W:CG360:@XP_HELP">CG360</a> : <a href="C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v:37:12:37:20:@W:CG360:@XP_MSG">core.v(37)</a><!@TM:1698681571> | Removing wire ALUB_DIN, as there is no assignment to it.</font>
+<font color=#A52A2A>@W:<a href="@W:CG360:@XP_HELP">CG360</a> : <a href="C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v:59:12:59:16:@W:CG360:@XP_MSG">core.v(59)</a><!@TM:1698681571> | Removing wire PC_D, as there is no assignment to it.</font>
+<font color=#A52A2A>@W:<a href="@W:CG360:@XP_HELP">CG360</a> : <a href="C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v:60:13:60:23:@W:CG360:@XP_MSG">core.v(60)</a><!@TM:1698681571> | Removing wire PC_LD_INT0, as there is no assignment to it.</font>
+<font color=#A52A2A>@W:<a href="@W:CG360:@XP_HELP">CG360</a> : <a href="C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v:61:13:61:23:@W:CG360:@XP_MSG">core.v(61)</a><!@TM:1698681571> | Removing wire PC_LD_INT1, as there is no assignment to it.</font>
+<font color=#A52A2A>@W:<a href="@W:CG360:@XP_HELP">CG360</a> : <a href="C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v:86:12:86:25:@W:CG360:@XP_MSG">core.v(86)</a><!@TM:1698681571> | Removing wire ALU_REGA_DINX, as there is no assignment to it.</font>
 Running optimization stage 1 on core .......
-Finished optimization stage 1 on core (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 100MB)
-@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\Users\Duncan\git\ForthCPU\memoryMapper\source\memoryMapper.v:11:7:11:19:@N:CG364:@XP_MSG">memoryMapper.v(11)</a><!@TM:1698505209> | Synthesizing module memoryMapper in library work.
-<font color=#A52A2A>@W:<a href="@W:CG360:@XP_HELP">CG360</a> : <a href="C:\Users\Duncan\git\ForthCPU\memoryMapper\source\memoryMapper.v:52:5:52:10:@W:CG360:@XP_MSG">memoryMapper.v(52)</a><!@TM:1698505209> | Removing wire CLKEN, as there is no assignment to it.</font>
-<font color=#A52A2A>@W:<a href="@W:CG133:@XP_HELP">CG133</a> : <a href="C:\Users\Duncan\git\ForthCPU\memoryMapper\source\memoryMapper.v:53:4:53:6:@W:CG133:@XP_MSG">memoryMapper.v(53)</a><!@TM:1698505209> | Object WE is declared but not assigned. Either assign a value or remove the declaration.</font>
-<font color=#A52A2A>@W:<a href="@W:CG360:@XP_HELP">CG360</a> : <a href="C:\Users\Duncan\git\ForthCPU\memoryMapper\source\memoryMapper.v:55:12:55:20:@W:CG360:@XP_MSG">memoryMapper.v(55)</a><!@TM:1698505209> | Removing wire RAM_DATA, as there is no assignment to it.</font>
-<font color=#A52A2A>@W:<a href="@W:CG360:@XP_HELP">CG360</a> : <a href="C:\Users\Duncan\git\ForthCPU\memoryMapper\source\memoryMapper.v:56:12:56:20:@W:CG360:@XP_MSG">memoryMapper.v(56)</a><!@TM:1698505209> | Removing wire ROM_DATA, as there is no assignment to it.</font>
+Finished optimization stage 1 on core (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 100MB)
+@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\Users\Duncan\git\ForthCPU\memoryMapper\source\memoryMapper.v:11:7:11:19:@N:CG364:@XP_MSG">memoryMapper.v(11)</a><!@TM:1698681571> | Synthesizing module memoryMapper in library work.
+<font color=#A52A2A>@W:<a href="@W:CG360:@XP_HELP">CG360</a> : <a href="C:\Users\Duncan\git\ForthCPU\memoryMapper\source\memoryMapper.v:58:5:58:10:@W:CG360:@XP_MSG">memoryMapper.v(58)</a><!@TM:1698681571> | Removing wire CLKEN, as there is no assignment to it.</font>
+<font color=#A52A2A>@W:<a href="@W:CG133:@XP_HELP">CG133</a> : <a href="C:\Users\Duncan\git\ForthCPU\memoryMapper\source\memoryMapper.v:59:4:59:6:@W:CG133:@XP_MSG">memoryMapper.v(59)</a><!@TM:1698681571> | Object WE is declared but not assigned. Either assign a value or remove the declaration.</font>
+<font color=#A52A2A>@W:<a href="@W:CG360:@XP_HELP">CG360</a> : <a href="C:\Users\Duncan\git\ForthCPU\memoryMapper\source\memoryMapper.v:61:12:61:20:@W:CG360:@XP_MSG">memoryMapper.v(61)</a><!@TM:1698681571> | Removing wire RAM_DATA, as there is no assignment to it.</font>
+<font color=#A52A2A>@W:<a href="@W:CG360:@XP_HELP">CG360</a> : <a href="C:\Users\Duncan\git\ForthCPU\memoryMapper\source\memoryMapper.v:62:12:62:20:@W:CG360:@XP_MSG">memoryMapper.v(62)</a><!@TM:1698681571> | Removing wire ROM_DATA, as there is no assignment to it.</font>
 Running optimization stage 1 on memoryMapper .......
-Finished optimization stage 1 on memoryMapper (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 100MB)
-@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\lscc\diamond\3.12\synpbase\lib\lucent\machxo3l.v:1077:7:1077:15:@N:CG364:@XP_MSG">machxo3l.v(1077)</a><!@TM:1698505209> | Synthesizing module ROM32X1A in library work.
+Finished optimization stage 1 on memoryMapper (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 100MB)
+@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\lscc\diamond\3.12\synpbase\lib\lucent\machxo3l.v:1077:7:1077:15:@N:CG364:@XP_MSG">machxo3l.v(1077)</a><!@TM:1698681571> | Synthesizing module ROM32X1A in library work.
 Running optimization stage 1 on ROM32X1A .......
-Finished optimization stage 1 on ROM32X1A (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 100MB)
-@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\Users\Duncan\git\ForthCPU\bootROM\source\rom.v:8:7:8:10:@N:CG364:@XP_MSG">rom.v(8)</a><!@TM:1698505209> | Synthesizing module rom in library work.
+Finished optimization stage 1 on ROM32X1A (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 100MB)
+@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\Users\Duncan\git\ForthCPU\bootROM\source\rom.v:8:7:8:10:@N:CG364:@XP_MSG">rom.v(8)</a><!@TM:1698681571> | Synthesizing module rom in library work.
 Running optimization stage 1 on rom .......
-Finished optimization stage 1 on rom (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 100MB)
-@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\lscc\diamond\3.12\synpbase\lib\lucent\machxo3l.v:563:7:563:10:@N:CG364:@XP_MSG">machxo3l.v(563)</a><!@TM:1698505209> | Synthesizing module INV in library work.
+Finished optimization stage 1 on rom (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 100MB)
+@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\lscc\diamond\3.12\synpbase\lib\lucent\machxo3l.v:563:7:563:10:@N:CG364:@XP_MSG">machxo3l.v(563)</a><!@TM:1698681571> | Synthesizing module INV in library work.
 Running optimization stage 1 on INV .......
-Finished optimization stage 1 on INV (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 100MB)
-@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\lscc\diamond\3.12\synpbase\lib\lucent\machxo3l.v:43:7:43:11:@N:CG364:@XP_MSG">machxo3l.v(43)</a><!@TM:1698505209> | Synthesizing module AND2 in library work.
+Finished optimization stage 1 on INV (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 100MB)
+@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\lscc\diamond\3.12\synpbase\lib\lucent\machxo3l.v:43:7:43:11:@N:CG364:@XP_MSG">machxo3l.v(43)</a><!@TM:1698681571> | Synthesizing module AND2 in library work.
 Running optimization stage 1 on AND2 .......
-Finished optimization stage 1 on AND2 (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 100MB)
-@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\lscc\diamond\3.12\synpbase\lib\lucent\machxo3l.v:187:7:187:14:@N:CG364:@XP_MSG">machxo3l.v(187)</a><!@TM:1698505209> | Synthesizing module FD1P3DX in library work.
+Finished optimization stage 1 on AND2 (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 100MB)
+@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\lscc\diamond\3.12\synpbase\lib\lucent\machxo3l.v:1120:7:1120:10:@N:CG364:@XP_MSG">machxo3l.v(1120)</a><!@TM:1698681571> | Synthesizing module VHI in library work.
+Running optimization stage 1 on VHI .......
+Finished optimization stage 1 on VHI (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 100MB)
+@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\lscc\diamond\3.12\synpbase\lib\lucent\machxo3l.v:187:7:187:14:@N:CG364:@XP_MSG">machxo3l.v(187)</a><!@TM:1698681571> | Synthesizing module FD1P3DX in library work.
 Running optimization stage 1 on FD1P3DX .......
 Finished optimization stage 1 on FD1P3DX (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 100MB)
-@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\lscc\diamond\3.12\synpbase\lib\lucent\machxo3l.v:782:7:782:12:@N:CG364:@XP_MSG">machxo3l.v(782)</a><!@TM:1698505209> | Synthesizing module MUX81 in library work.
+@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\lscc\diamond\3.12\synpbase\lib\lucent\machxo3l.v:782:7:782:12:@N:CG364:@XP_MSG">machxo3l.v(782)</a><!@TM:1698681571> | Synthesizing module MUX81 in library work.
 Running optimization stage 1 on MUX81 .......
 Finished optimization stage 1 on MUX81 (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 100MB)
-@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\Users\Duncan\git\ForthCPU\RAM\source\RAM.v:8:7:8:10:@N:CG364:@XP_MSG">RAM.v(8)</a><!@TM:1698505209> | Synthesizing module RAM in library work.
+@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\Users\Duncan\git\ForthCPU\RAM\source\RAM.v:8:7:8:10:@N:CG364:@XP_MSG">RAM.v(8)</a><!@TM:1698681571> | Synthesizing module RAM in library work.
 Running optimization stage 1 on RAM .......
-Finished optimization stage 1 on RAM (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 101MB)
-@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\Users\Duncan\git\ForthCPU\UART\source\receiver.v:14:7:14:14:@N:CG364:@XP_MSG">receiver.v(14)</a><!@TM:1698505209> | Synthesizing module UART_RX in library work.
+Finished optimization stage 1 on RAM (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 100MB)
+@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\Users\Duncan\git\ForthCPU\UART\source\receiver.v:14:7:14:14:@N:CG364:@XP_MSG">receiver.v(14)</a><!@TM:1698681571> | Synthesizing module UART_RX in library work.
 Running optimization stage 1 on UART_RX .......
 Finished optimization stage 1 on UART_RX (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 101MB)
-@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\Users\Duncan\git\ForthCPU\UART\source\transmitter.v:14:7:14:14:@N:CG364:@XP_MSG">transmitter.v(14)</a><!@TM:1698505209> | Synthesizing module UART_TX in library work.
+@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\Users\Duncan\git\ForthCPU\UART\source\transmitter.v:14:7:14:14:@N:CG364:@XP_MSG">transmitter.v(14)</a><!@TM:1698681571> | Synthesizing module UART_TX in library work.
 Running optimization stage 1 on UART_TX .......
-@A:<a href="@A:CL282:@XP_HELP">CL282</a> : <a href="C:\Users\Duncan\git\ForthCPU\UART\source\transmitter.v:38:2:38:8:@A:CL282:@XP_MSG">transmitter.v(38)</a><!@TM:1698505209> | Feedback mux created for signal r_TX_Data[7:0]. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
-@A:<a href="@A:CL282:@XP_HELP">CL282</a> : <a href="C:\Users\Duncan\git\ForthCPU\UART\source\transmitter.v:38:2:38:8:@A:CL282:@XP_MSG">transmitter.v(38)</a><!@TM:1698505209> | Feedback mux created for signal r_Clock_Count[15:0]. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
-@A:<a href="@A:CL282:@XP_HELP">CL282</a> : <a href="C:\Users\Duncan\git\ForthCPU\UART\source\transmitter.v:38:2:38:8:@A:CL282:@XP_MSG">transmitter.v(38)</a><!@TM:1698505209> | Feedback mux created for signal r_Bit_Index[2:0]. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
+@A:<a href="@A:CL282:@XP_HELP">CL282</a> : <a href="C:\Users\Duncan\git\ForthCPU\UART\source\transmitter.v:38:2:38:8:@A:CL282:@XP_MSG">transmitter.v(38)</a><!@TM:1698681571> | Feedback mux created for signal r_TX_Data[7:0]. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
+@A:<a href="@A:CL282:@XP_HELP">CL282</a> : <a href="C:\Users\Duncan\git\ForthCPU\UART\source\transmitter.v:38:2:38:8:@A:CL282:@XP_MSG">transmitter.v(38)</a><!@TM:1698681571> | Feedback mux created for signal r_Clock_Count[15:0]. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
+@A:<a href="@A:CL282:@XP_HELP">CL282</a> : <a href="C:\Users\Duncan\git\ForthCPU\UART\source\transmitter.v:38:2:38:8:@A:CL282:@XP_MSG">transmitter.v(38)</a><!@TM:1698681571> | Feedback mux created for signal r_Bit_Index[2:0]. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
 Finished optimization stage 1 on UART_TX (CPU Time 0h:00m:00s, Memory Used current: 101MB peak: 102MB)
-@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\Users\Duncan\git\ForthCPU\UART\source\UART.v:17:7:17:11:@N:CG364:@XP_MSG">UART.v(17)</a><!@TM:1698505209> | Synthesizing module UART in library work.
+@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\Users\Duncan\git\ForthCPU\UART\source\UART.v:17:7:17:11:@N:CG364:@XP_MSG">UART.v(17)</a><!@TM:1698681571> | Synthesizing module UART in library work.
 Running optimization stage 1 on UART .......
-<font color=#A52A2A>@W:<a href="@W:CL113:@XP_HELP">CL113</a> : <a href="C:\Users\Duncan\git\ForthCPU\UART\source\UART.v:74:0:74:6:@W:CL113:@XP_MSG">UART.v(74)</a><!@TM:1698505209> | Feedback mux created for signal STATUS[15:3]. To avoid the feedback mux, assign values explicitly under all conditions of conditional assignment statements.</font>
-@A:<a href="@A:CL282:@XP_HELP">CL282</a> : <a href="C:\Users\Duncan\git\ForthCPU\UART\source\UART.v:74:0:74:6:@A:CL282:@XP_MSG">UART.v(74)</a><!@TM:1698505209> | Feedback mux created for signal DOUT[15:0]. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
-<font color=#A52A2A>@W:<a href="@W:CL250:@XP_HELP">CL250</a> : <a href="C:\Users\Duncan\git\ForthCPU\UART\source\UART.v:74:0:74:6:@W:CL250:@XP_MSG">UART.v(74)</a><!@TM:1698505209> | All reachable assignments to STATUS[15:3] assign 0, register removed by optimization</font>
+<font color=#A52A2A>@W:<a href="@W:CL113:@XP_HELP">CL113</a> : <a href="C:\Users\Duncan\git\ForthCPU\UART\source\UART.v:74:0:74:6:@W:CL113:@XP_MSG">UART.v(74)</a><!@TM:1698681571> | Feedback mux created for signal STATUS[15:3]. To avoid the feedback mux, assign values explicitly under all conditions of conditional assignment statements.</font>
+@A:<a href="@A:CL282:@XP_HELP">CL282</a> : <a href="C:\Users\Duncan\git\ForthCPU\UART\source\UART.v:74:0:74:6:@A:CL282:@XP_MSG">UART.v(74)</a><!@TM:1698681571> | Feedback mux created for signal DOUT[15:0]. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
+<font color=#A52A2A>@W:<a href="@W:CL250:@XP_HELP">CL250</a> : <a href="C:\Users\Duncan\git\ForthCPU\UART\source\UART.v:74:0:74:6:@W:CL250:@XP_MSG">UART.v(74)</a><!@TM:1698681571> | All reachable assignments to STATUS[15:3] assign 0, register removed by optimization</font>
 Finished optimization stage 1 on UART (CPU Time 0h:00m:00s, Memory Used current: 101MB peak: 102MB)
-@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\Users\Duncan\git\ForthCPU\interruptLogic\source\interruptMaskRegister.v:7:7:7:28:@N:CG364:@XP_MSG">interruptMaskRegister.v(7)</a><!@TM:1698505209> | Synthesizing module interruptMaskRegister in library work.
+@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\Users\Duncan\git\ForthCPU\interruptLogic\source\interruptMaskRegister.v:7:7:7:28:@N:CG364:@XP_MSG">interruptMaskRegister.v(7)</a><!@TM:1698681571> | Synthesizing module interruptMaskRegister in library work.
 Running optimization stage 1 on interruptMaskRegister .......
-<font color=#A52A2A>@W:<a href="@W:CL118:@XP_HELP">CL118</a> : <a href="C:\Users\Duncan\git\ForthCPU\interruptLogic\source\interruptMaskRegister.v:49:2:49:4:@W:CL118:@XP_MSG">interruptMaskRegister.v(49)</a><!@TM:1698505209> | Latch generated from always block for signal DOUT[15:0]; possible missing assignment in an if or case statement.</font>
-<font color=#A52A2A>@W:<a href="@W:CL208:@XP_HELP">CL208</a> : <a href="C:\Users\Duncan\git\ForthCPU\interruptLogic\source\interruptMaskRegister.v:59:0:59:6:@W:CL208:@XP_MSG">interruptMaskRegister.v(59)</a><!@TM:1698505209> | All reachable assignments to bit 0 of INTS_REG[7:0] assign 0, register removed by optimization.</font>
+<font color=#A52A2A>@W:<a href="@W:CL118:@XP_HELP">CL118</a> : <a href="C:\Users\Duncan\git\ForthCPU\interruptLogic\source\interruptMaskRegister.v:49:2:49:4:@W:CL118:@XP_MSG">interruptMaskRegister.v(49)</a><!@TM:1698681571> | Latch generated from always block for signal DOUT[15:0]; possible missing assignment in an if or case statement.</font>
+<font color=#A52A2A>@W:<a href="@W:CL208:@XP_HELP">CL208</a> : <a href="C:\Users\Duncan\git\ForthCPU\interruptLogic\source\interruptMaskRegister.v:59:0:59:6:@W:CL208:@XP_MSG">interruptMaskRegister.v(59)</a><!@TM:1698681571> | All reachable assignments to bit 0 of INTS_REG[7:0] assign 0, register removed by optimization.</font>
 Finished optimization stage 1 on interruptMaskRegister (CPU Time 0h:00m:00s, Memory Used current: 101MB peak: 102MB)
-@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\Users\Duncan\git\ForthCPU\mcuResources\source\mcuResources.v:3:7:3:19:@N:CG364:@XP_MSG">mcuResources.v(3)</a><!@TM:1698505209> | Synthesizing module mcuResources in library work.
-<font color=#A52A2A>@W:<a href="@W:CG1273:@XP_HELP">CG1273</a> : <a href="C:\Users\Duncan\git\ForthCPU\mcuResources\source\mcuResources.v:52:10:52:17:@W:CG1273:@XP_MSG">mcuResources.v(52)</a><!@TM:1698505209> | An input port (port CPU_DIN) is the target of an assignment - please check if this is intentional</font>
+@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\Users\Duncan\git\ForthCPU\mcuResources\source\mcuResources.v:3:7:3:19:@N:CG364:@XP_MSG">mcuResources.v(3)</a><!@TM:1698681571> | Synthesizing module mcuResources in library work.
+<font color=#A52A2A>@W:<a href="@W:CG1273:@XP_HELP">CG1273</a> : <a href="C:\Users\Duncan\git\ForthCPU\mcuResources\source\mcuResources.v:58:10:58:17:@W:CG1273:@XP_MSG">mcuResources.v(58)</a><!@TM:1698681571> | An input port (port CPU_DIN) is the target of an assignment - please check if this is intentional</font>
+<font color=#A52A2A>@W:<a href="@W:CG1273:@XP_HELP">CG1273</a> : <a href="C:\Users\Duncan\git\ForthCPU\mcuResources\source\mcuResources.v:91:10:91:17:@W:CG1273:@XP_MSG">mcuResources.v(91)</a><!@TM:1698681571> | An input port (port WR_GPIO) is the target of an assignment - please check if this is intentional</font>
+<font color=#A52A2A>@W:<a href="@W:CG1273:@XP_HELP">CG1273</a> : <a href="C:\Users\Duncan\git\ForthCPU\mcuResources\source\mcuResources.v:90:10:90:17:@W:CG1273:@XP_MSG">mcuResources.v(90)</a><!@TM:1698681571> | An input port (port RD_GPIO) is the target of an assignment - please check if this is intentional</font>
+<font color=#A52A2A>@W:<a href="@W:CG1273:@XP_HELP">CG1273</a> : <a href="C:\Users\Duncan\git\ForthCPU\mcuResources\source\mcuResources.v:92:12:92:21:@W:CG1273:@XP_MSG">mcuResources.v(92)</a><!@TM:1698681571> | An input port (port ADDR_GPIO) is the target of an assignment - please check if this is intentional</font>
 Running optimization stage 1 on mcuResources .......
 Finished optimization stage 1 on mcuResources (CPU Time 0h:00m:00s, Memory Used current: 101MB peak: 102MB)
-@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\Users\Duncan\git\ForthCPU\impl1\source\mcu.v:8:7:8:10:@N:CG364:@XP_MSG">mcu.v(8)</a><!@TM:1698505209> | Synthesizing module mcu in library work.
+@N:<a href="@N:CG364:@XP_HELP">CG364</a> : <a href="C:\Users\Duncan\git\ForthCPU\impl1\source\mcu.v:7:7:7:10:@N:CG364:@XP_MSG">mcu.v(7)</a><!@TM:1698681571> | Synthesizing module mcu in library work.
 Running optimization stage 1 on mcu .......
 Finished optimization stage 1 on mcu (CPU Time 0h:00m:00s, Memory Used current: 101MB peak: 102MB)
 Running optimization stage 2 on mcu .......
-<font color=#A52A2A>@W:<a href="@W:CL156:@XP_HELP">CL156</a> : <a href="C:\Users\Duncan\git\ForthCPU\impl1\source\mcu.v:68:7:68:15:@W:CL156:@XP_MSG">mcu.v(68)</a><!@TM:1698505209> | *Input WR0N_BUF to expression [instance] has undriven bits; assigning undriven bits to 0.  Simulation mismatch possible. Assign all bits of the input.</font>
-<font color=#A52A2A>@W:<a href="@W:CL156:@XP_HELP">CL156</a> : <a href="C:\Users\Duncan\git\ForthCPU\impl1\source\mcu.v:69:7:69:15:@W:CL156:@XP_MSG">mcu.v(69)</a><!@TM:1698505209> | *Input WR1N_BUF to expression [instance] has undriven bits; assigning undriven bits to 0.  Simulation mismatch possible. Assign all bits of the input.</font>
+<font color=#A52A2A>@W:<a href="@W:CL156:@XP_HELP">CL156</a> : <a href="C:\Users\Duncan\git\ForthCPU\impl1\source\mcu.v:55:10:55:17:@W:CL156:@XP_MSG">mcu.v(55)</a><!@TM:1698681571> | *Input RD_GPIO to expression [instance] has undriven bits; assigning undriven bits to 0.  Simulation mismatch possible. Assign all bits of the input.</font>
+<font color=#A52A2A>@W:<a href="@W:CL156:@XP_HELP">CL156</a> : <a href="C:\Users\Duncan\git\ForthCPU\impl1\source\mcu.v:56:10:56:17:@W:CL156:@XP_MSG">mcu.v(56)</a><!@TM:1698681571> | *Input WR_GPIO to expression [instance] has undriven bits; assigning undriven bits to 0.  Simulation mismatch possible. Assign all bits of the input.</font>
+<font color=#A52A2A>@W:<a href="@W:CL156:@XP_HELP">CL156</a> : <a href="C:\Users\Duncan\git\ForthCPU\impl1\source\mcu.v:57:12:57:21:@W:CL156:@XP_MSG">mcu.v(57)</a><!@TM:1698681571> | *Input ADDR_GPIO to expression [instance] has undriven bits; assigning undriven bits to 0.  Simulation mismatch possible. Assign all bits of the input.</font>
+<font color=#A52A2A>@W:<a href="@W:CL156:@XP_HELP">CL156</a> : <a href="C:\Users\Duncan\git\ForthCPU\impl1\source\mcu.v:97:7:97:15:@W:CL156:@XP_MSG">mcu.v(97)</a><!@TM:1698681571> | *Input WR0N_BUF to expression [instance] has undriven bits; assigning undriven bits to 0.  Simulation mismatch possible. Assign all bits of the input.</font>
+<font color=#A52A2A>@W:<a href="@W:CL156:@XP_HELP">CL156</a> : <a href="C:\Users\Duncan\git\ForthCPU\impl1\source\mcu.v:98:7:98:15:@W:CL156:@XP_MSG">mcu.v(98)</a><!@TM:1698681571> | *Input WR1N_BUF to expression [instance] has undriven bits; assigning undriven bits to 0.  Simulation mismatch possible. Assign all bits of the input.</font>
+<font color=#A52A2A>@W:<a href="@W:CL156:@XP_HELP">CL156</a> : <a href="C:\Users\Duncan\git\ForthCPU\impl1\source\mcu.v:55:10:55:17:@W:CL156:@XP_MSG">mcu.v(55)</a><!@TM:1698681571> | *Input RD_GPIO to expression [instance] has undriven bits; assigning undriven bits to 0.  Simulation mismatch possible. Assign all bits of the input.</font>
+<font color=#A52A2A>@W:<a href="@W:CL156:@XP_HELP">CL156</a> : <a href="C:\Users\Duncan\git\ForthCPU\impl1\source\mcu.v:56:10:56:17:@W:CL156:@XP_MSG">mcu.v(56)</a><!@TM:1698681571> | *Input WR_GPIO to expression [instance] has undriven bits; assigning undriven bits to 0.  Simulation mismatch possible. Assign all bits of the input.</font>
+<font color=#A52A2A>@W:<a href="@W:CL156:@XP_HELP">CL156</a> : <a href="C:\Users\Duncan\git\ForthCPU\impl1\source\mcu.v:57:12:57:21:@W:CL156:@XP_MSG">mcu.v(57)</a><!@TM:1698681571> | *Input ADDR_GPIO to expression [instance] has undriven bits; assigning undriven bits to 0.  Simulation mismatch possible. Assign all bits of the input.</font>
 Finished optimization stage 2 on mcu (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 102MB)
 Running optimization stage 2 on mcuResources .......
-@N:<a href="@N:CL159:@XP_HELP">CL159</a> : <a href="C:\Users\Duncan\git\ForthCPU\mcuResources\source\mcuResources.v:9:20:9:27:@N:CL159:@XP_MSG">mcuResources.v(9)</a><!@TM:1698505209> | Input CPU_DIN is unused.
+@N:<a href="@N:CL159:@XP_HELP">CL159</a> : <a href="C:\Users\Duncan\git\ForthCPU\mcuResources\source\mcuResources.v:9:20:9:27:@N:CL159:@XP_MSG">mcuResources.v(9)</a><!@TM:1698681571> | Input CPU_DIN is unused.
+@N:<a href="@N:CL159:@XP_HELP">CL159</a> : <a href="C:\Users\Duncan\git\ForthCPU\mcuResources\source\mcuResources.v:20:15:20:22:@N:CL159:@XP_MSG">mcuResources.v(20)</a><!@TM:1698681571> | Input RD_GPIO is unused.
+@N:<a href="@N:CL159:@XP_HELP">CL159</a> : <a href="C:\Users\Duncan\git\ForthCPU\mcuResources\source\mcuResources.v:21:15:21:22:@N:CL159:@XP_MSG">mcuResources.v(21)</a><!@TM:1698681571> | Input WR_GPIO is unused.
+@N:<a href="@N:CL159:@XP_HELP">CL159</a> : <a href="C:\Users\Duncan\git\ForthCPU\mcuResources\source\mcuResources.v:22:15:22:24:@N:CL159:@XP_MSG">mcuResources.v(22)</a><!@TM:1698681571> | Input ADDR_GPIO is unused.
 Finished optimization stage 2 on mcuResources (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 102MB)
 Running optimization stage 2 on interruptMaskRegister .......
-<font color=#A52A2A>@W:<a href="@W:CL279:@XP_HELP">CL279</a> : <a href="C:\Users\Duncan\git\ForthCPU\interruptLogic\source\interruptMaskRegister.v:49:2:49:4:@W:CL279:@XP_MSG">interruptMaskRegister.v(49)</a><!@TM:1698505209> | Pruning register bits 15 to 9 of DOUT[15:0]. If this is not the intended behavior, drive the inputs with valid values, or inputs from the top level.</font>
-<font color=#A52A2A>@W:<a href="@W:CL246:@XP_HELP">CL246</a> : <a href="C:\Users\Duncan\git\ForthCPU\interruptLogic\source\interruptMaskRegister.v:11:14:11:17:@W:CL246:@XP_MSG">interruptMaskRegister.v(11)</a><!@TM:1698505209> | Input port bits 15 to 8 of DIN[15:0] are unused. Assign logic for all port bits or change the input port size.</font>
+<font color=#A52A2A>@W:<a href="@W:CL279:@XP_HELP">CL279</a> : <a href="C:\Users\Duncan\git\ForthCPU\interruptLogic\source\interruptMaskRegister.v:49:2:49:4:@W:CL279:@XP_MSG">interruptMaskRegister.v(49)</a><!@TM:1698681571> | Pruning register bits 15 to 9 of DOUT[15:0]. If this is not the intended behavior, drive the inputs with valid values, or inputs from the top level.</font>
+<font color=#A52A2A>@W:<a href="@W:CL246:@XP_HELP">CL246</a> : <a href="C:\Users\Duncan\git\ForthCPU\interruptLogic\source\interruptMaskRegister.v:11:14:11:17:@W:CL246:@XP_MSG">interruptMaskRegister.v(11)</a><!@TM:1698681571> | Input port bits 15 to 8 of DIN[15:0] are unused. Assign logic for all port bits or change the input port size.</font>
 Finished optimization stage 2 on interruptMaskRegister (CPU Time 0h:00m:00s, Memory Used current: 101MB peak: 103MB)
 Running optimization stage 2 on UART .......
 Finished optimization stage 2 on UART (CPU Time 0h:00m:00s, Memory Used current: 101MB peak: 103MB)
 Running optimization stage 2 on UART_TX .......
-@N:<a href="@N:CL201:@XP_HELP">CL201</a> : <a href="C:\Users\Duncan\git\ForthCPU\UART\source\transmitter.v:38:2:38:8:@N:CL201:@XP_MSG">transmitter.v(38)</a><!@TM:1698505209> | Trying to extract state machine for register r_SM_Main.
+@N:<a href="@N:CL201:@XP_HELP">CL201</a> : <a href="C:\Users\Duncan\git\ForthCPU\UART\source\transmitter.v:38:2:38:8:@N:CL201:@XP_MSG">transmitter.v(38)</a><!@TM:1698681571> | Trying to extract state machine for register r_SM_Main.
 Extracted state machine for register r_SM_Main
 State machine has 4 reachable states with original encodings of:
    000
@@ -254,7 +273,7 @@ State machine has 4 reachable states with original encodings of:
    011
 Finished optimization stage 2 on UART_TX (CPU Time 0h:00m:00s, Memory Used current: 98MB peak: 103MB)
 Running optimization stage 2 on UART_RX .......
-@N:<a href="@N:CL201:@XP_HELP">CL201</a> : <a href="C:\Users\Duncan\git\ForthCPU\UART\source\receiver.v:37:2:37:8:@N:CL201:@XP_MSG">receiver.v(37)</a><!@TM:1698505209> | Trying to extract state machine for register r_SM_Main.
+@N:<a href="@N:CL201:@XP_HELP">CL201</a> : <a href="C:\Users\Duncan\git\ForthCPU\UART\source\receiver.v:37:2:37:8:@N:CL201:@XP_MSG">receiver.v(37)</a><!@TM:1698681571> | Trying to extract state machine for register r_SM_Main.
 Finished optimization stage 2 on UART_RX (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 103MB)
 Running optimization stage 2 on RAM .......
 Finished optimization stage 2 on RAM (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 103MB)
@@ -262,6 +281,8 @@ Running optimization stage 2 on MUX81 .......
 Finished optimization stage 2 on MUX81 (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 103MB)
 Running optimization stage 2 on FD1P3DX .......
 Finished optimization stage 2 on FD1P3DX (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 103MB)
+Running optimization stage 2 on VHI .......
+Finished optimization stage 2 on VHI (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 103MB)
 Running optimization stage 2 on AND2 .......
 Finished optimization stage 2 on AND2 (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 103MB)
 Running optimization stage 2 on INV .......
@@ -271,44 +292,43 @@ Finished optimization stage 2 on rom (CPU Time 0h:00m:00s, Memory Used current: 
 Running optimization stage 2 on ROM32X1A .......
 Finished optimization stage 2 on ROM32X1A (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 103MB)
 Running optimization stage 2 on memoryMapper .......
-@N:<a href="@N:CL159:@XP_HELP">CL159</a> : <a href="C:\Users\Duncan\git\ForthCPU\memoryMapper\source\memoryMapper.v:13:7:13:10:@N:CL159:@XP_MSG">memoryMapper.v(13)</a><!@TM:1698505209> | Input CLK is unused.
-@N:<a href="@N:CL159:@XP_HELP">CL159</a> : <a href="C:\Users\Duncan\git\ForthCPU\memoryMapper\source\memoryMapper.v:14:7:14:12:@N:CL159:@XP_MSG">memoryMapper.v(14)</a><!@TM:1698505209> | Input RESET is unused.
+@N:<a href="@N:CL159:@XP_HELP">CL159</a> : <a href="C:\Users\Duncan\git\ForthCPU\memoryMapper\source\memoryMapper.v:13:7:13:10:@N:CL159:@XP_MSG">memoryMapper.v(13)</a><!@TM:1698681571> | Input CLK is unused.
+@N:<a href="@N:CL159:@XP_HELP">CL159</a> : <a href="C:\Users\Duncan\git\ForthCPU\memoryMapper\source\memoryMapper.v:14:7:14:12:@N:CL159:@XP_MSG">memoryMapper.v(14)</a><!@TM:1698681571> | Input RESET is unused.
 Finished optimization stage 2 on memoryMapper (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 103MB)
 Running optimization stage 2 on core .......
-<font color=#A52A2A>@W:<a href="@W:CL156:@XP_HELP">CL156</a> : <a href="C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v:85:12:85:25:@W:CL156:@XP_MSG">core.v(85)</a><!@TM:1698505209> | *Input ALU_DATA_BUSX[1:0] to expression [instance] has undriven bits; assigning undriven bits to 0.  Simulation mismatch possible. Assign all bits of the input.</font>
-<font color=#A52A2A>@W:<a href="@W:CL156:@XP_HELP">CL156</a> : <a href="C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v:87:12:87:25:@W:CL156:@XP_MSG">core.v(87)</a><!@TM:1698505209> | *Input ALU_REGA_DINX[1:0] to expression [instance] has undriven bits; assigning undriven bits to 0.  Simulation mismatch possible. Assign all bits of the input.</font>
+<font color=#A52A2A>@W:<a href="@W:CL156:@XP_HELP">CL156</a> : <a href="C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v:86:12:86:25:@W:CL156:@XP_MSG">core.v(86)</a><!@TM:1698681571> | *Input ALU_REGA_DINX[1:0] to expression [instance] has undriven bits; assigning undriven bits to 0.  Simulation mismatch possible. Assign all bits of the input.</font>
 Finished optimization stage 2 on core (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 103MB)
 Running optimization stage 2 on opxMultiplexer .......
-<font color=#A52A2A>@W:<a href="@W:CL246:@XP_HELP">CL246</a> : <a href="C:\Users\Duncan\git\ForthCPU\opxMultiplexer\source\opxMultiplexer.v:11:14:11:25:@W:CL246:@XP_MSG">opxMultiplexer.v(11)</a><!@TM:1698505209> | Input port bits 13 to 0 of INSTRUCTION[15:0] are unused. Assign logic for all port bits or change the input port size.</font>
-@N:<a href="@N:CL159:@XP_HELP">CL159</a> : <a href="C:\Users\Duncan\git\ForthCPU\opxMultiplexer\source\opxMultiplexer.v:10:7:10:12:@N:CL159:@XP_MSG">opxMultiplexer.v(10)</a><!@TM:1698505209> | Input RESET is unused.
-@N:<a href="@N:CL159:@XP_HELP">CL159</a> : <a href="C:\Users\Duncan\git\ForthCPU\opxMultiplexer\source\opxMultiplexer.v:14:7:14:13:@N:CL159:@XP_MSG">opxMultiplexer.v(14)</a><!@TM:1698505209> | Input DECODE is unused.
-@N:<a href="@N:CL159:@XP_HELP">CL159</a> : <a href="C:\Users\Duncan\git\ForthCPU\opxMultiplexer\source\opxMultiplexer.v:16:7:16:13:@N:CL159:@XP_MSG">opxMultiplexer.v(16)</a><!@TM:1698505209> | Input COMMIT is unused.
+<font color=#A52A2A>@W:<a href="@W:CL246:@XP_HELP">CL246</a> : <a href="C:\Users\Duncan\git\ForthCPU\opxMultiplexer\source\opxMultiplexer.v:11:14:11:25:@W:CL246:@XP_MSG">opxMultiplexer.v(11)</a><!@TM:1698681571> | Input port bits 13 to 0 of INSTRUCTION[15:0] are unused. Assign logic for all port bits or change the input port size.</font>
+@N:<a href="@N:CL159:@XP_HELP">CL159</a> : <a href="C:\Users\Duncan\git\ForthCPU\opxMultiplexer\source\opxMultiplexer.v:10:7:10:12:@N:CL159:@XP_MSG">opxMultiplexer.v(10)</a><!@TM:1698681571> | Input RESET is unused.
+@N:<a href="@N:CL159:@XP_HELP">CL159</a> : <a href="C:\Users\Duncan\git\ForthCPU\opxMultiplexer\source\opxMultiplexer.v:14:7:14:13:@N:CL159:@XP_MSG">opxMultiplexer.v(14)</a><!@TM:1698681571> | Input DECODE is unused.
+@N:<a href="@N:CL159:@XP_HELP">CL159</a> : <a href="C:\Users\Duncan\git\ForthCPU\opxMultiplexer\source\opxMultiplexer.v:16:7:16:13:@N:CL159:@XP_MSG">opxMultiplexer.v(16)</a><!@TM:1698681571> | Input COMMIT is unused.
 Finished optimization stage 2 on opxMultiplexer (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 103MB)
 Running optimization stage 2 on generalGroupDecoder .......
-<font color=#A52A2A>@W:<a href="@W:CL246:@XP_HELP">CL246</a> : <a href="C:\Users\Duncan\git\ForthCPU\generalGroupDecoder\source\generalGroupDecoder.v:17:14:17:25:@W:CL246:@XP_MSG">generalGroupDecoder.v(17)</a><!@TM:1698505209> | Input port bits 13 to 11 of INSTRUCTION[15:0] are unused. Assign logic for all port bits or change the input port size.</font>
-<font color=#A52A2A>@W:<a href="@W:CL246:@XP_HELP">CL246</a> : <a href="C:\Users\Duncan\git\ForthCPU\generalGroupDecoder\source\generalGroupDecoder.v:17:14:17:25:@W:CL246:@XP_MSG">generalGroupDecoder.v(17)</a><!@TM:1698505209> | Input port bits 7 to 0 of INSTRUCTION[15:0] are unused. Assign logic for all port bits or change the input port size.</font>
-@N:<a href="@N:CL159:@XP_HELP">CL159</a> : <a href="C:\Users\Duncan\git\ForthCPU\generalGroupDecoder\source\generalGroupDecoder.v:16:7:16:12:@N:CL159:@XP_MSG">generalGroupDecoder.v(16)</a><!@TM:1698505209> | Input FETCH is unused.
-@N:<a href="@N:CL159:@XP_HELP">CL159</a> : <a href="C:\Users\Duncan\git\ForthCPU\generalGroupDecoder\source\generalGroupDecoder.v:16:14:16:20:@N:CL159:@XP_MSG">generalGroupDecoder.v(16)</a><!@TM:1698505209> | Input DECODE is unused.
-@N:<a href="@N:CL159:@XP_HELP">CL159</a> : <a href="C:\Users\Duncan\git\ForthCPU\generalGroupDecoder\source\generalGroupDecoder.v:16:22:16:29:@N:CL159:@XP_MSG">generalGroupDecoder.v(16)</a><!@TM:1698505209> | Input EXECUTE is unused.
+<font color=#A52A2A>@W:<a href="@W:CL246:@XP_HELP">CL246</a> : <a href="C:\Users\Duncan\git\ForthCPU\generalGroupDecoder\source\generalGroupDecoder.v:17:14:17:25:@W:CL246:@XP_MSG">generalGroupDecoder.v(17)</a><!@TM:1698681571> | Input port bits 13 to 11 of INSTRUCTION[15:0] are unused. Assign logic for all port bits or change the input port size.</font>
+<font color=#A52A2A>@W:<a href="@W:CL246:@XP_HELP">CL246</a> : <a href="C:\Users\Duncan\git\ForthCPU\generalGroupDecoder\source\generalGroupDecoder.v:17:14:17:25:@W:CL246:@XP_MSG">generalGroupDecoder.v(17)</a><!@TM:1698681571> | Input port bits 7 to 0 of INSTRUCTION[15:0] are unused. Assign logic for all port bits or change the input port size.</font>
+@N:<a href="@N:CL159:@XP_HELP">CL159</a> : <a href="C:\Users\Duncan\git\ForthCPU\generalGroupDecoder\source\generalGroupDecoder.v:16:7:16:12:@N:CL159:@XP_MSG">generalGroupDecoder.v(16)</a><!@TM:1698681571> | Input FETCH is unused.
+@N:<a href="@N:CL159:@XP_HELP">CL159</a> : <a href="C:\Users\Duncan\git\ForthCPU\generalGroupDecoder\source\generalGroupDecoder.v:16:14:16:20:@N:CL159:@XP_MSG">generalGroupDecoder.v(16)</a><!@TM:1698681571> | Input DECODE is unused.
+@N:<a href="@N:CL159:@XP_HELP">CL159</a> : <a href="C:\Users\Duncan\git\ForthCPU\generalGroupDecoder\source\generalGroupDecoder.v:16:22:16:29:@N:CL159:@XP_MSG">generalGroupDecoder.v(16)</a><!@TM:1698681571> | Input EXECUTE is unused.
 Finished optimization stage 2 on generalGroupDecoder (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 103MB)
 Running optimization stage 2 on jumpGroupDecoder .......
-<font color=#A52A2A>@W:<a href="@W:CL246:@XP_HELP">CL246</a> : <a href="C:\Users\Duncan\git\ForthCPU\jumpGroupDecoder\source\jumpGroupDecoder.v:41:14:41:25:@W:CL246:@XP_MSG">jumpGroupDecoder.v(41)</a><!@TM:1698505209> | Input port bits 7 to 0 of INSTRUCTION[15:0] are unused. Assign logic for all port bits or change the input port size.</font>
-@N:<a href="@N:CL159:@XP_HELP">CL159</a> : <a href="C:\Users\Duncan\git\ForthCPU\jumpGroupDecoder\source\jumpGroupDecoder.v:39:7:39:10:@N:CL159:@XP_MSG">jumpGroupDecoder.v(39)</a><!@TM:1698505209> | Input CLK is unused.
-@N:<a href="@N:CL159:@XP_HELP">CL159</a> : <a href="C:\Users\Duncan\git\ForthCPU\jumpGroupDecoder\source\jumpGroupDecoder.v:40:7:40:12:@N:CL159:@XP_MSG">jumpGroupDecoder.v(40)</a><!@TM:1698505209> | Input RESET is unused.
-@N:<a href="@N:CL159:@XP_HELP">CL159</a> : <a href="C:\Users\Duncan\git\ForthCPU\jumpGroupDecoder\source\jumpGroupDecoder.v:43:7:43:12:@N:CL159:@XP_MSG">jumpGroupDecoder.v(43)</a><!@TM:1698505209> | Input FETCH is unused.
-@N:<a href="@N:CL159:@XP_HELP">CL159</a> : <a href="C:\Users\Duncan\git\ForthCPU\jumpGroupDecoder\source\jumpGroupDecoder.v:44:7:44:13:@N:CL159:@XP_MSG">jumpGroupDecoder.v(44)</a><!@TM:1698505209> | Input DECODE is unused.
-@N:<a href="@N:CL159:@XP_HELP">CL159</a> : <a href="C:\Users\Duncan\git\ForthCPU\jumpGroupDecoder\source\jumpGroupDecoder.v:45:7:45:14:@N:CL159:@XP_MSG">jumpGroupDecoder.v(45)</a><!@TM:1698505209> | Input EXECUTE is unused.
-@N:<a href="@N:CL159:@XP_HELP">CL159</a> : <a href="C:\Users\Duncan\git\ForthCPU\jumpGroupDecoder\source\jumpGroupDecoder.v:46:7:46:13:@N:CL159:@XP_MSG">jumpGroupDecoder.v(46)</a><!@TM:1698505209> | Input COMMIT is unused.
+<font color=#A52A2A>@W:<a href="@W:CL246:@XP_HELP">CL246</a> : <a href="C:\Users\Duncan\git\ForthCPU\jumpGroupDecoder\source\jumpGroupDecoder.v:41:14:41:25:@W:CL246:@XP_MSG">jumpGroupDecoder.v(41)</a><!@TM:1698681571> | Input port bits 7 to 0 of INSTRUCTION[15:0] are unused. Assign logic for all port bits or change the input port size.</font>
+@N:<a href="@N:CL159:@XP_HELP">CL159</a> : <a href="C:\Users\Duncan\git\ForthCPU\jumpGroupDecoder\source\jumpGroupDecoder.v:39:7:39:10:@N:CL159:@XP_MSG">jumpGroupDecoder.v(39)</a><!@TM:1698681571> | Input CLK is unused.
+@N:<a href="@N:CL159:@XP_HELP">CL159</a> : <a href="C:\Users\Duncan\git\ForthCPU\jumpGroupDecoder\source\jumpGroupDecoder.v:40:7:40:12:@N:CL159:@XP_MSG">jumpGroupDecoder.v(40)</a><!@TM:1698681571> | Input RESET is unused.
+@N:<a href="@N:CL159:@XP_HELP">CL159</a> : <a href="C:\Users\Duncan\git\ForthCPU\jumpGroupDecoder\source\jumpGroupDecoder.v:43:7:43:12:@N:CL159:@XP_MSG">jumpGroupDecoder.v(43)</a><!@TM:1698681571> | Input FETCH is unused.
+@N:<a href="@N:CL159:@XP_HELP">CL159</a> : <a href="C:\Users\Duncan\git\ForthCPU\jumpGroupDecoder\source\jumpGroupDecoder.v:44:7:44:13:@N:CL159:@XP_MSG">jumpGroupDecoder.v(44)</a><!@TM:1698681571> | Input DECODE is unused.
+@N:<a href="@N:CL159:@XP_HELP">CL159</a> : <a href="C:\Users\Duncan\git\ForthCPU\jumpGroupDecoder\source\jumpGroupDecoder.v:45:7:45:14:@N:CL159:@XP_MSG">jumpGroupDecoder.v(45)</a><!@TM:1698681571> | Input EXECUTE is unused.
+@N:<a href="@N:CL159:@XP_HELP">CL159</a> : <a href="C:\Users\Duncan\git\ForthCPU\jumpGroupDecoder\source\jumpGroupDecoder.v:46:7:46:13:@N:CL159:@XP_MSG">jumpGroupDecoder.v(46)</a><!@TM:1698681571> | Input COMMIT is unused.
 Finished optimization stage 2 on jumpGroupDecoder (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 103MB)
 Running optimization stage 2 on loadStoreGroupDecoder .......
-<font color=#A52A2A>@W:<a href="@W:CL177:@XP_HELP">CL177</a> : <a href="C:\Users\Duncan\git\ForthCPU\loadStoreGroupDecoder\source\loadStoreGroupDecoder.v:263:0:263:6:@W:CL177:@XP_MSG">loadStoreGroupDecoder.v(263)</a><!@TM:1698505209> | Sharing sequential element REGB_EN and merging REGA_EN. Add a syn_preserve attribute to the element to prevent sharing.</font>
-@N:<a href="@N:CL159:@XP_HELP">CL159</a> : <a href="C:\Users\Duncan\git\ForthCPU\loadStoreGroupDecoder\source\loadStoreGroupDecoder.v:65:7:65:12:@N:CL159:@XP_MSG">loadStoreGroupDecoder.v(65)</a><!@TM:1698505209> | Input FETCH is unused.
+<font color=#A52A2A>@W:<a href="@W:CL177:@XP_HELP">CL177</a> : <a href="C:\Users\Duncan\git\ForthCPU\loadStoreGroupDecoder\source\loadStoreGroupDecoder.v:261:0:261:6:@W:CL177:@XP_MSG">loadStoreGroupDecoder.v(261)</a><!@TM:1698681571> | Sharing sequential element REGB_EN and merging REGA_EN. Add a syn_preserve attribute to the element to prevent sharing.</font>
+@N:<a href="@N:CL159:@XP_HELP">CL159</a> : <a href="C:\Users\Duncan\git\ForthCPU\loadStoreGroupDecoder\source\loadStoreGroupDecoder.v:65:7:65:12:@N:CL159:@XP_MSG">loadStoreGroupDecoder.v(65)</a><!@TM:1698681571> | Input FETCH is unused.
 Finished optimization stage 2 on loadStoreGroupDecoder (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 103MB)
 Running optimization stage 2 on aluGroupDecoder .......
-@N:<a href="@N:CL159:@XP_HELP">CL159</a> : <a href="C:\Users\Duncan\git\ForthCPU\aluGroupDecoder\source\aluGroupDecoder.v:37:7:37:12:@N:CL159:@XP_MSG">aluGroupDecoder.v(37)</a><!@TM:1698505209> | Input RESET is unused.
+@N:<a href="@N:CL159:@XP_HELP">CL159</a> : <a href="C:\Users\Duncan\git\ForthCPU\aluGroupDecoder\source\aluGroupDecoder.v:37:7:37:12:@N:CL159:@XP_MSG">aluGroupDecoder.v(37)</a><!@TM:1698681571> | Input RESET is unused.
 Finished optimization stage 2 on aluGroupDecoder (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 103MB)
 Running optimization stage 2 on interruptStateMachine .......
-@N:<a href="@N:CL201:@XP_HELP">CL201</a> : <a href="C:\Users\Duncan\git\ForthCPU\interruptLogic\source\interruptStateMachine.v:175:0:175:6:@N:CL201:@XP_MSG">interruptStateMachine.v(175)</a><!@TM:1698505209> | Trying to extract state machine for register STATE.
+@N:<a href="@N:CL201:@XP_HELP">CL201</a> : <a href="C:\Users\Duncan\git\ForthCPU\interruptLogic\source\interruptStateMachine.v:174:0:174:6:@N:CL201:@XP_MSG">interruptStateMachine.v(174)</a><!@TM:1698681571> | Trying to extract state machine for register STATE.
 Extracted state machine for register STATE
 State machine has 10 reachable states with original encodings of:
    0000
@@ -327,9 +347,9 @@ Finished optimization stage 2 on branchLogic (CPU Time 0h:00m:00s, Memory Used c
 Running optimization stage 2 on programCounter .......
 Finished optimization stage 2 on programCounter (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 103MB)
 Running optimization stage 2 on busController .......
-@N:<a href="@N:CL159:@XP_HELP">CL159</a> : <a href="C:\Users\Duncan\git\ForthCPU\busController\source\busController.v:12:7:12:12:@N:CL159:@XP_MSG">busController.v(12)</a><!@TM:1698505209> | Input RESET is unused.
-@N:<a href="@N:CL159:@XP_HELP">CL159</a> : <a href="C:\Users\Duncan\git\ForthCPU\busController\source\busController.v:13:7:13:12:@N:CL159:@XP_MSG">busController.v(13)</a><!@TM:1698505209> | Input FETCH is unused.
-@N:<a href="@N:CL159:@XP_HELP">CL159</a> : <a href="C:\Users\Duncan\git\ForthCPU\busController\source\busController.v:15:7:15:14:@N:CL159:@XP_MSG">busController.v(15)</a><!@TM:1698505209> | Input EXECUTE is unused.
+@N:<a href="@N:CL159:@XP_HELP">CL159</a> : <a href="C:\Users\Duncan\git\ForthCPU\busController\source\busController.v:12:7:12:12:@N:CL159:@XP_MSG">busController.v(12)</a><!@TM:1698681571> | Input RESET is unused.
+@N:<a href="@N:CL159:@XP_HELP">CL159</a> : <a href="C:\Users\Duncan\git\ForthCPU\busController\source\busController.v:13:7:13:12:@N:CL159:@XP_MSG">busController.v(13)</a><!@TM:1698681571> | Input FETCH is unused.
+@N:<a href="@N:CL159:@XP_HELP">CL159</a> : <a href="C:\Users\Duncan\git\ForthCPU\busController\source\busController.v:15:7:15:14:@N:CL159:@XP_MSG">busController.v(15)</a><!@TM:1698681571> | Input EXECUTE is unused.
 Finished optimization stage 2 on busController (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 103MB)
 Running optimization stage 2 on registerFile .......
 Finished optimization stage 2 on registerFile (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 103MB)
@@ -339,19 +359,17 @@ Running optimization stage 2 on VLO .......
 Finished optimization stage 2 on VLO (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 103MB)
 Running optimization stage 2 on DP8KC .......
 Finished optimization stage 2 on DP8KC (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 103MB)
-Running optimization stage 2 on VHI .......
-Finished optimization stage 2 on VHI (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 103MB)
 Running optimization stage 2 on fullALU .......
 Finished optimization stage 2 on fullALU (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 103MB)
 Running optimization stage 2 on aluBMux .......
-@N:<a href="@N:CL159:@XP_HELP">CL159</a> : <a href="C:\Users\Duncan\git\ForthCPU\aluB\source\aluBMux.v:13:13:13:20:@N:CL159:@XP_MSG">aluBMux.v(13)</a><!@TM:1698505209> | Input LDSINCF is unused.
+@N:<a href="@N:CL159:@XP_HELP">CL159</a> : <a href="C:\Users\Duncan\git\ForthCPU\aluB\source\aluBMux.v:13:13:13:20:@N:CL159:@XP_MSG">aluBMux.v(13)</a><!@TM:1698681571> | Input LDSINCF is unused.
 Finished optimization stage 2 on aluBMux (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 103MB)
 Running optimization stage 2 on aluAMux .......
 Finished optimization stage 2 on aluAMux (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 103MB)
 Running optimization stage 2 on alu .......
 Finished optimization stage 2 on alu (CPU Time 0h:00m:00s, Memory Used current: 106MB peak: 107MB)
 Running optimization stage 2 on instructionPhaseDecoder .......
-@N:<a href="@N:CL201:@XP_HELP">CL201</a> : <a href="C:\Users\Duncan\git\ForthCPU\instructionPhaseDecoder\source\instructionPhaseDecoder.v:18:0:18:6:@N:CL201:@XP_MSG">instructionPhaseDecoder.v(18)</a><!@TM:1698505209> | Trying to extract state machine for register PHASE.
+@N:<a href="@N:CL201:@XP_HELP">CL201</a> : <a href="C:\Users\Duncan\git\ForthCPU\instructionPhaseDecoder\source\instructionPhaseDecoder.v:18:0:18:6:@N:CL201:@XP_MSG">instructionPhaseDecoder.v(18)</a><!@TM:1698681571> | Trying to extract state machine for register PHASE.
 Extracted state machine for register PHASE
 State machine has 5 reachable states with original encodings of:
    000
@@ -360,18 +378,22 @@ State machine has 5 reachable states with original encodings of:
    011
    100
 Finished optimization stage 2 on instructionPhaseDecoder (CPU Time 0h:00m:00s, Memory Used current: 106MB peak: 107MB)
+Running optimization stage 2 on devBoard .......
+<font color=#A52A2A>@W:<a href="@W:CL246:@XP_HELP">CL246</a> : <a href="C:\Users\Duncan\git\ForthCPU\GPIO\source\devBoard.v:19:21:19:24:@W:CL246:@XP_MSG">devBoard.v(19)</a><!@TM:1698681571> | Input port bits 15 to 8 of GPO[15:0] are unused. Assign logic for all port bits or change the input port size.</font>
+@N:<a href="@N:CL159:@XP_HELP">CL159</a> : <a href="C:\Users\Duncan\git\ForthCPU\GPIO\source\devBoard.v:20:14:20:21:@N:CL159:@XP_MSG">devBoard.v(20)</a><!@TM:1698681571> | Input RD_GPIO is unused.
+Finished optimization stage 2 on devBoard (CPU Time 0h:00m:00s, Memory Used current: 106MB peak: 107MB)
 
 For a summary of runtime and memory usage per design unit, please see file:
 ==========================================================
 Linked File:  <a href="C:\Users\Duncan\git\ForthCPU\impl1\synwork\layer0.rt.csv:@XP_FILE">layer0.rt.csv</a>
 
 
-At c_ver Exit (Real Time elapsed 0h:00m:10s; CPU Time elapsed 0h:00m:09s; Memory used current: 106MB peak: 107MB)
+At c_ver Exit (Real Time elapsed 0h:00m:06s; CPU Time elapsed 0h:00m:06s; Memory used current: 106MB peak: 107MB)
 
-Process took 0h:00m:10s realtime, 0h:00m:09s cputime
+Process took 0h:00m:06s realtime, 0h:00m:06s cputime
 
 Process completed successfully.
-# Sat Oct 28 16:00:08 2023
+# Mon Oct 30 15:59:31 2023
 
 ###########################################################]
 ###########################################################[
@@ -391,7 +413,7 @@ Hostname: EDAWIN
 Implementation : impl1
 <a name=compilerReport3></a>Synopsys Synopsys Netlist Linker, Version comp202103synp2, Build 093R, Built Aug 10 2021 09:15:36, @</a>
 
-@N: : <!@TM:1698505209> | Running in 64-bit mode 
+@N: : <!@TM:1698681571> | Running in 64-bit mode 
 File C:\Users\Duncan\git\ForthCPU\impl1\synwork\layer0.srs changed - recompiling
 
 At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 93MB peak: 93MB)
@@ -399,7 +421,7 @@ At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Sat Oct 28 16:00:09 2023
+# Mon Oct 30 15:59:31 2023
 
 ###########################################################]
 
@@ -409,18 +431,18 @@ Linked File:  <a href="C:\Users\Duncan\git\ForthCPU\impl1\synwork\ForthCPU_impl1
 
 @END
 
-At c_hdl Exit (Real Time elapsed 0h:00m:10s; CPU Time elapsed 0h:00m:09s; Memory used current: 23MB peak: 23MB)
+At c_hdl Exit (Real Time elapsed 0h:00m:06s; CPU Time elapsed 0h:00m:07s; Memory used current: 23MB peak: 23MB)
 
-Process took 0h:00m:10s realtime, 0h:00m:09s cputime
+Process took 0h:00m:06s realtime, 0h:00m:07s cputime
 
 Process completed successfully.
-# Sat Oct 28 16:00:09 2023
+# Mon Oct 30 15:59:31 2023
 
 ###########################################################]
 
 </pre></samp></body></html>
 <html><body><samp><pre>
-<!@TC:1698505198>
+<!@TC:1698681564>
 ###########################################################[
 
 Copyright (C) 1994-2021 Synopsys, Inc.
@@ -438,22 +460,28 @@ Hostname: EDAWIN
 Implementation : impl1
 <a name=compilerReport4></a>Synopsys Synopsys Netlist Linker, Version comp202103synp2, Build 093R, Built Aug 10 2021 09:15:36, @</a>
 
-@N: : <!@TM:1698505210> | Running in 64-bit mode 
+@N: : <!@TM:1698681573> | Running in 64-bit mode 
 File C:\Users\Duncan\git\ForthCPU\impl1\synwork\ForthCPU_impl1_comp.srs changed - recompiling
 
-At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 93MB peak: 94MB)
+At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 94MB peak: 94MB)
 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Sat Oct 28 16:00:10 2023
+# Mon Oct 30 15:59:33 2023
 
 ###########################################################]
 
 </pre></samp></body></html>
 <html><body><samp><pre>
-<!@TC:1698505198>
-# Sat Oct 28 16:00:10 2023
+<!@TC:1698681564>
+Premap Report
+
+
+</pre></samp></body></html>
+<html><body><samp><pre>
+<!@TC:1698681564>
+# Mon Oct 30 15:59:33 2023
 
 
 Copyright (C) 1994-2021 Synopsys, Inc.
@@ -477,1117 +505,38 @@ Mapper Startup Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:0
 
 Done reading skeleton netlist (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 122MB peak: 129MB)
 
-@A:<a href="@A:MF827:@XP_HELP">MF827</a> : <!@TM:1698505213> | No constraint file specified. 
+@A:<a href="@A:MF827:@XP_HELP">MF827</a> : <!@TM:1698681574> | No constraint file specified. 
 Linked File:  <a href="C:\Users\Duncan\git\ForthCPU\impl1\ForthCPU_impl1_scck.rpt:@XP_FILE">ForthCPU_impl1_scck.rpt</a>
 See clock summary report "C:\Users\Duncan\git\ForthCPU\impl1\ForthCPU_impl1_scck.rpt"
-@N:<a href="@N:MF916:@XP_HELP">MF916</a> : <!@TM:1698505213> | Option synthesis_strategy=base is enabled.  
-@N:<a href="@N:MF248:@XP_HELP">MF248</a> : <!@TM:1698505213> | Running in 64-bit mode. 
-@N:<a href="@N:MF666:@XP_HELP">MF666</a> : <!@TM:1698505213> | Clock conversion enabled. (Command "set_option -fix_gated_and_generated_clocks 1" in the project file.) 
+@N:<a href="@N:MF916:@XP_HELP">MF916</a> : <!@TM:1698681574> | Option synthesis_strategy=base is enabled.  
+@N:<a href="@N:MF248:@XP_HELP">MF248</a> : <!@TM:1698681574> | Running in 64-bit mode. 
+@N:<a href="@N:MF666:@XP_HELP">MF666</a> : <!@TM:1698681574> | Clock conversion enabled. (Command "set_option -fix_gated_and_generated_clocks 1" in the project file.) 
 
-Design Input Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 129MB peak: 129MB)
+Design Input Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 130MB peak: 130MB)
 
 
-Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 129MB peak: 130MB)
+Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 130MB peak: 130MB)
 
 
 Start loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 142MB peak: 142MB)
 
 
-Finished loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 142MB peak: 144MB)
-
-@N:<a href="@N:FX493:@XP_HELP">FX493</a> : <!@TM:1698505213> | Applying initial value "00000000" on instance r_RX_Byte[7:0]. 
-<font color=#A52A2A>@W:<a href="@W:FX474:@XP_HELP">FX474</a> : <!@TM:1698505213> | User-specified initial value defined for some sequential elements which can prevent optimum synthesis results from being achieved. </font> 
-@N:<a href="@N:FX493:@XP_HELP">FX493</a> : <!@TM:1698505213> | Applying initial value "0" on instance r_RX_DV. 
-@N:<a href="@N:FX493:@XP_HELP">FX493</a> : <!@TM:1698505213> | Applying initial value "000" on instance r_SM_Main[2:0]. 
-@N:<a href="@N:MO111:@XP_HELP">MO111</a> : <a href="c:\lscc\diamond\3.12\synpbase\lib\lucent\machxo3l.v:1:1:1:3:@N:MO111:@XP_MSG">machxo3l.v(1)</a><!@TM:1698505213> | Tristate driver ALU_DATA_BUSX (in view: work.core(verilog)) on net ALU_DATA_BUSX (in view: work.core(verilog)) has its enable tied to GND.
-@N:<a href="@N:MO111:@XP_HELP">MO111</a> : <a href="c:\lscc\diamond\3.12\synpbase\lib\lucent\machxo3l.v:1:1:1:3:@N:MO111:@XP_MSG">machxo3l.v(1)</a><!@TM:1698505213> | Tristate driver ALU_REGA_DINX (in view: work.core(verilog)) on net ALU_REGA_DINX (in view: work.core(verilog)) has its enable tied to GND.
-@N:<a href="@N:MO111:@XP_HELP">MO111</a> : <a href="c:\users\duncan\git\forthcpu\impl1\source\mcu.v:68:7:68:15:@N:MO111:@XP_MSG">mcu.v(68)</a><!@TM:1698505213> | Tristate driver WR0N_BUF (in view: work.mcu(verilog)) on net WR0N_BUF (in view: work.mcu(verilog)) has its enable tied to GND.
-@N:<a href="@N:MO111:@XP_HELP">MO111</a> : <a href="c:\users\duncan\git\forthcpu\impl1\source\mcu.v:69:7:69:15:@N:MO111:@XP_MSG">mcu.v(69)</a><!@TM:1698505213> | Tristate driver WR1N_BUF (in view: work.mcu(verilog)) on net WR1N_BUF (in view: work.mcu(verilog)) has its enable tied to GND.
-@N:<a href="@N:BN362:@XP_HELP">BN362</a> : <a href="c:\users\duncan\git\forthcpu\buscontroller\source\buscontroller.v:74:0:74:6:@N:BN362:@XP_MSG">buscontroller.v(74)</a><!@TM:1698505213> | Removing sequential instance DBUS_OEN (in view: work.busController(verilog)) of type view:PrimLib.dff(prim) because it does not drive other instances.
-@N:<a href="@N:BN115:@XP_HELP">BN115</a> : <a href="c:\users\duncan\git\forthcpu\mcuresources\source\mcuresources.v:83:4:83:11:@N:BN115:@XP_MSG">mcuresources.v(83)</a><!@TM:1698505213> | Removing instance ROMInst (in view: work.mcuResources(verilog)) of type view:work.rom(verilog) because it does not drive other instances.
-@N:<a href="@N:BN115:@XP_HELP">BN115</a> : <a href="c:\users\duncan\git\forthcpu\mcuresources\source\mcuresources.v:88:4:88:11:@N:BN115:@XP_MSG">mcuresources.v(88)</a><!@TM:1698505213> | Removing instance RAMInst (in view: work.mcuResources(verilog)) of type view:work.RAM(verilog) because it does not drive other instances.
-@N:<a href="@N:BN362:@XP_HELP">BN362</a> : <a href="c:\users\duncan\git\forthcpu\interruptlogic\source\interruptmaskregister.v:49:2:49:4:@N:BN362:@XP_MSG">interruptmaskregister.v(49)</a><!@TM:1698505213> | Removing sequential instance DOUT_1[8:0] (in view: work.interruptMaskRegister(verilog)) of type view:PrimLib.lat(prim) because it does not drive other instances.
-@N:<a href="@N:BN362:@XP_HELP">BN362</a> : <a href="c:\users\duncan\git\forthcpu\uart\source\uart.v:74:0:74:6:@N:BN362:@XP_MSG">uart.v(74)</a><!@TM:1698505213> | Removing sequential instance DOUT[15:0] (in view: work.UART(verilog)) of type view:PrimLib.dffe(prim) because it does not drive other instances.
-<font color=#A52A2A>@W:<a href="@W:BN114:@XP_HELP">BN114</a> : <a href="c:\users\duncan\git\forthcpu\bootrom\source\rom.v:74:13:74:20:@W:BN114:@XP_MSG">rom.v(74)</a><!@TM:1698505213> | Removing instance mem_0_0 (in view: work.rom(verilog)) of black box view:LUCENT.ROM32X1A(PRIM) because it does not drive other instances.</font>
-<font color=#A52A2A>@W:<a href="@W:BN114:@XP_HELP">BN114</a> : <a href="c:\users\duncan\git\forthcpu\bootrom\source\rom.v:70:13:70:20:@W:BN114:@XP_MSG">rom.v(70)</a><!@TM:1698505213> | Removing instance mem_0_1 (in view: work.rom(verilog)) of black box view:LUCENT.ROM32X1A(PRIM) because it does not drive other instances.</font>
-<font color=#A52A2A>@W:<a href="@W:BN114:@XP_HELP">BN114</a> : <a href="c:\users\duncan\git\forthcpu\bootrom\source\rom.v:66:13:66:20:@W:BN114:@XP_MSG">rom.v(66)</a><!@TM:1698505213> | Removing instance mem_0_2 (in view: work.rom(verilog)) of black box view:LUCENT.ROM32X1A(PRIM) because it does not drive other instances.</font>
-<font color=#A52A2A>@W:<a href="@W:BN114:@XP_HELP">BN114</a> : <a href="c:\users\duncan\git\forthcpu\bootrom\source\rom.v:62:13:62:20:@W:BN114:@XP_MSG">rom.v(62)</a><!@TM:1698505213> | Removing instance mem_0_3 (in view: work.rom(verilog)) of black box view:LUCENT.ROM32X1A(PRIM) because it does not drive other instances.</font>
-<font color=#A52A2A>@W:<a href="@W:BN114:@XP_HELP">BN114</a> : <a href="c:\users\duncan\git\forthcpu\bootrom\source\rom.v:58:13:58:20:@W:BN114:@XP_MSG">rom.v(58)</a><!@TM:1698505213> | Removing instance mem_0_4 (in view: work.rom(verilog)) of black box view:LUCENT.ROM32X1A(PRIM) because it does not drive other instances.</font>
-<font color=#A52A2A>@W:<a href="@W:BN114:@XP_HELP">BN114</a> : <a href="c:\users\duncan\git\forthcpu\bootrom\source\rom.v:54:13:54:20:@W:BN114:@XP_MSG">rom.v(54)</a><!@TM:1698505213> | Removing instance mem_0_5 (in view: work.rom(verilog)) of black box view:LUCENT.ROM32X1A(PRIM) because it does not drive other instances.</font>
-<font color=#A52A2A>@W:<a href="@W:BN114:@XP_HELP">BN114</a> : <a href="c:\users\duncan\git\forthcpu\bootrom\source\rom.v:50:13:50:20:@W:BN114:@XP_MSG">rom.v(50)</a><!@TM:1698505213> | Removing instance mem_0_6 (in view: work.rom(verilog)) of black box view:LUCENT.ROM32X1A(PRIM) because it does not drive other instances.</font>
-<font color=#A52A2A>@W:<a href="@W:BN114:@XP_HELP">BN114</a> : <a href="c:\users\duncan\git\forthcpu\bootrom\source\rom.v:46:13:46:20:@W:BN114:@XP_MSG">rom.v(46)</a><!@TM:1698505213> | Removing instance mem_0_7 (in view: work.rom(verilog)) of black box view:LUCENT.ROM32X1A(PRIM) because it does not drive other instances.</font>
-<font color=#A52A2A>@W:<a href="@W:BN114:@XP_HELP">BN114</a> : <a href="c:\users\duncan\git\forthcpu\bootrom\source\rom.v:42:13:42:20:@W:BN114:@XP_MSG">rom.v(42)</a><!@TM:1698505213> | Removing instance mem_0_8 (in view: work.rom(verilog)) of black box view:LUCENT.ROM32X1A(PRIM) because it does not drive other instances.</font>
-<font color=#A52A2A>@W:<a href="@W:BN114:@XP_HELP">BN114</a> : <a href="c:\users\duncan\git\forthcpu\bootrom\source\rom.v:38:13:38:20:@W:BN114:@XP_MSG">rom.v(38)</a><!@TM:1698505213> | Removing instance mem_0_9 (in view: work.rom(verilog)) of black box view:LUCENT.ROM32X1A(PRIM) because it does not drive other instances.</font>
-<font color=#A52A2A>@W:<a href="@W:BN114:@XP_HELP">BN114</a> : <a href="c:\users\duncan\git\forthcpu\bootrom\source\rom.v:34:13:34:21:@W:BN114:@XP_MSG">rom.v(34)</a><!@TM:1698505213> | Removing instance mem_0_10 (in view: work.rom(verilog)) of black box view:LUCENT.ROM32X1A(PRIM) because it does not drive other instances.</font>
-<font color=#A52A2A>@W:<a href="@W:BN114:@XP_HELP">BN114</a> : <a href="c:\users\duncan\git\forthcpu\bootrom\source\rom.v:30:13:30:21:@W:BN114:@XP_MSG">rom.v(30)</a><!@TM:1698505213> | Removing instance mem_0_11 (in view: work.rom(verilog)) of black box view:LUCENT.ROM32X1A(PRIM) because it does not drive other instances.</font>
-<font color=#A52A2A>@W:<a href="@W:BN114:@XP_HELP">BN114</a> : <a href="c:\users\duncan\git\forthcpu\bootrom\source\rom.v:26:13:26:21:@W:BN114:@XP_MSG">rom.v(26)</a><!@TM:1698505213> | Removing instance mem_0_12 (in view: work.rom(verilog)) of black box view:LUCENT.ROM32X1A(PRIM) because it does not drive other instances.</font>
-<font color=#A52A2A>@W:<a href="@W:BN114:@XP_HELP">BN114</a> : <a href="c:\users\duncan\git\forthcpu\bootrom\source\rom.v:22:13:22:21:@W:BN114:@XP_MSG">rom.v(22)</a><!@TM:1698505213> | Removing instance mem_0_13 (in view: work.rom(verilog)) of black box view:LUCENT.ROM32X1A(PRIM) because it does not drive other instances.</font>
-<font color=#A52A2A>@W:<a href="@W:BN114:@XP_HELP">BN114</a> : <a href="c:\users\duncan\git\forthcpu\bootrom\source\rom.v:18:13:18:21:@W:BN114:@XP_MSG">rom.v(18)</a><!@TM:1698505213> | Removing instance mem_0_14 (in view: work.rom(verilog)) of black box view:LUCENT.ROM32X1A(PRIM) because it does not drive other instances.</font>
-<font color=#A52A2A>@W:<a href="@W:BN114:@XP_HELP">BN114</a> : <a href="c:\users\duncan\git\forthcpu\bootrom\source\rom.v:14:13:14:21:@W:BN114:@XP_MSG">rom.v(14)</a><!@TM:1698505213> | Removing instance mem_0_15 (in view: work.rom(verilog)) of black box view:LUCENT.ROM32X1A(PRIM) because it does not drive other instances.</font>
-<font color=#A52A2A>@W:<a href="@W:BN114:@XP_HELP">BN114</a> : <a href="c:\users\duncan\git\forthcpu\ram\source\ram.v:1145:10:1145:19:@W:BN114:@XP_MSG">ram.v(1145)</a><!@TM:1698505213> | Removing instance RAM_7_0_1 (in view: work.RAM(verilog)) of black box view:LUCENT.DP8KC(PRIM) because it does not drive other instances.</font>
-<font color=#A52A2A>@W:<a href="@W:BN114:@XP_HELP">BN114</a> : <a href="c:\users\duncan\git\forthcpu\ram\source\ram.v:1013:10:1013:19:@W:BN114:@XP_MSG">ram.v(1013)</a><!@TM:1698505213> | Removing instance RAM_6_0_3 (in view: work.RAM(verilog)) of black box view:LUCENT.DP8KC(PRIM) because it does not drive other instances.</font>
-<font color=#A52A2A>@W:<a href="@W:BN114:@XP_HELP">BN114</a> : <a href="c:\users\duncan\git\forthcpu\ram\source\ram.v:881:10:881:19:@W:BN114:@XP_MSG">ram.v(881)</a><!@TM:1698505213> | Removing instance RAM_5_0_5 (in view: work.RAM(verilog)) of black box view:LUCENT.DP8KC(PRIM) because it does not drive other instances.</font>
-<font color=#A52A2A>@W:<a href="@W:BN114:@XP_HELP">BN114</a> : <a href="c:\users\duncan\git\forthcpu\ram\source\ram.v:749:10:749:19:@W:BN114:@XP_MSG">ram.v(749)</a><!@TM:1698505213> | Removing instance RAM_4_0_7 (in view: work.RAM(verilog)) of black box view:LUCENT.DP8KC(PRIM) because it does not drive other instances.</font>
-<font color=#A52A2A>@W:<a href="@W:BN114:@XP_HELP">BN114</a> : <a href="c:\users\duncan\git\forthcpu\ram\source\ram.v:617:10:617:19:@W:BN114:@XP_MSG">ram.v(617)</a><!@TM:1698505213> | Removing instance RAM_3_0_9 (in view: work.RAM(verilog)) of black box view:LUCENT.DP8KC(PRIM) because it does not drive other instances.</font>
-<font color=#A52A2A>@W:<a href="@W:BN114:@XP_HELP">BN114</a> : <a href="c:\users\duncan\git\forthcpu\ram\source\ram.v:485:10:485:20:@W:BN114:@XP_MSG">ram.v(485)</a><!@TM:1698505213> | Removing instance RAM_2_0_11 (in view: work.RAM(verilog)) of black box view:LUCENT.DP8KC(PRIM) because it does not drive other instances.</font>
-<font color=#A52A2A>@W:<a href="@W:BN114:@XP_HELP">BN114</a> : <a href="c:\users\duncan\git\forthcpu\ram\source\ram.v:353:10:353:20:@W:BN114:@XP_MSG">ram.v(353)</a><!@TM:1698505213> | Removing instance RAM_1_0_13 (in view: work.RAM(verilog)) of black box view:LUCENT.DP8KC(PRIM) because it does not drive other instances.</font>
-<font color=#A52A2A>@W:<a href="@W:BN114:@XP_HELP">BN114</a> : <a href="c:\users\duncan\git\forthcpu\ram\source\ram.v:221:10:221:20:@W:BN114:@XP_MSG">ram.v(221)</a><!@TM:1698505213> | Removing instance RAM_0_0_15 (in view: work.RAM(verilog)) of black box view:LUCENT.DP8KC(PRIM) because it does not drive other instances.</font>
-<font color=#A52A2A>@W:<a href="@W:BN114:@XP_HELP">BN114</a> : <a href="c:\users\duncan\git\forthcpu\ram\source\ram.v:1213:10:1213:19:@W:BN114:@XP_MSG">ram.v(1213)</a><!@TM:1698505213> | Removing instance RAM_7_1_0 (in view: work.RAM(verilog)) of black box view:LUCENT.DP8KC(PRIM) because it does not drive other instances.</font>
-<font color=#A52A2A>@W:<a href="@W:BN114:@XP_HELP">BN114</a> : <a href="c:\users\duncan\git\forthcpu\ram\source\ram.v:1079:10:1079:19:@W:BN114:@XP_MSG">ram.v(1079)</a><!@TM:1698505213> | Removing instance RAM_6_1_2 (in view: work.RAM(verilog)) of black box view:LUCENT.DP8KC(PRIM) because it does not drive other instances.</font>
-<font color=#A52A2A>@W:<a href="@W:BN114:@XP_HELP">BN114</a> : <a href="c:\users\duncan\git\forthcpu\ram\source\ram.v:947:10:947:19:@W:BN114:@XP_MSG">ram.v(947)</a><!@TM:1698505213> | Removing instance RAM_5_1_4 (in view: work.RAM(verilog)) of black box view:LUCENT.DP8KC(PRIM) because it does not drive other instances.</font>
-<font color=#A52A2A>@W:<a href="@W:BN114:@XP_HELP">BN114</a> : <a href="c:\users\duncan\git\forthcpu\ram\source\ram.v:815:10:815:19:@W:BN114:@XP_MSG">ram.v(815)</a><!@TM:1698505213> | Removing instance RAM_4_1_6 (in view: work.RAM(verilog)) of black box view:LUCENT.DP8KC(PRIM) because it does not drive other instances.</font>
-<font color=#A52A2A>@W:<a href="@W:BN114:@XP_HELP">BN114</a> : <a href="c:\users\duncan\git\forthcpu\ram\source\ram.v:683:10:683:19:@W:BN114:@XP_MSG">ram.v(683)</a><!@TM:1698505213> | Removing instance RAM_3_1_8 (in view: work.RAM(verilog)) of black box view:LUCENT.DP8KC(PRIM) because it does not drive other instances.</font>
-<font color=#A52A2A>@W:<a href="@W:BN114:@XP_HELP">BN114</a> : <a href="c:\users\duncan\git\forthcpu\ram\source\ram.v:551:10:551:20:@W:BN114:@XP_MSG">ram.v(551)</a><!@TM:1698505213> | Removing instance RAM_2_1_10 (in view: work.RAM(verilog)) of black box view:LUCENT.DP8KC(PRIM) because it does not drive other instances.</font>
-<font color=#A52A2A>@W:<a href="@W:BN114:@XP_HELP">BN114</a> : <a href="c:\users\duncan\git\forthcpu\ram\source\ram.v:419:10:419:20:@W:BN114:@XP_MSG">ram.v(419)</a><!@TM:1698505213> | Removing instance RAM_1_1_12 (in view: work.RAM(verilog)) of black box view:LUCENT.DP8KC(PRIM) because it does not drive other instances.</font>
-<font color=#A52A2A>@W:<a href="@W:BN114:@XP_HELP">BN114</a> : <a href="c:\users\duncan\git\forthcpu\ram\source\ram.v:287:10:287:20:@W:BN114:@XP_MSG">ram.v(287)</a><!@TM:1698505213> | Removing instance RAM_0_1_14 (in view: work.RAM(verilog)) of black box view:LUCENT.DP8KC(PRIM) because it does not drive other instances.</font>
-@N:<a href="@N:BN362:@XP_HELP">BN362</a> : <a href="c:\users\duncan\git\forthcpu\ram\source\ram.v:1257:12:1257:16:@N:BN362:@XP_MSG">ram.v(1257)</a><!@TM:1698505213> | Removing sequential instance FF_0 (in view: work.RAM(verilog)) of type view:LUCENT.FD1P3DX(PRIM) because it does not drive other instances.
-@N:<a href="@N:BN362:@XP_HELP">BN362</a> : <a href="c:\users\duncan\git\forthcpu\ram\source\ram.v:1251:12:1251:16:@N:BN362:@XP_MSG">ram.v(1251)</a><!@TM:1698505213> | Removing sequential instance FF_1 (in view: work.RAM(verilog)) of type view:LUCENT.FD1P3DX(PRIM) because it does not drive other instances.
-@N:<a href="@N:BN362:@XP_HELP">BN362</a> : <a href="c:\users\duncan\git\forthcpu\ram\source\ram.v:1247:12:1247:16:@N:BN362:@XP_MSG">ram.v(1247)</a><!@TM:1698505213> | Removing sequential instance FF_2 (in view: work.RAM(verilog)) of type view:LUCENT.FD1P3DX(PRIM) because it does not drive other instances.
-@N:<a href="@N:BN362:@XP_HELP">BN362</a> : <a href="c:\users\duncan\git\forthcpu\interruptlogic\source\interruptmaskregister.v:59:0:59:6:@N:BN362:@XP_MSG">interruptmaskregister.v(59)</a><!@TM:1698505213> | Removing sequential instance PRI_REG[2:0] (in view: work.interruptMaskRegister(verilog)) of type view:PrimLib.dffr(prim) because it does not drive other instances.
-@N:<a href="@N:BN362:@XP_HELP">BN362</a> : <a href="c:\users\duncan\git\forthcpu\interruptlogic\source\interruptmaskregister.v:59:0:59:6:@N:BN362:@XP_MSG">interruptmaskregister.v(59)</a><!@TM:1698505213> | Removing sequential instance INTS_REG[7:1] (in view: work.interruptMaskRegister(verilog)) of type view:PrimLib.dffr(prim) because it does not drive other instances.
-@N:<a href="@N:BN362:@XP_HELP">BN362</a> : <a href="c:\users\duncan\git\forthcpu\ram\source\ram.v:1243:12:1243:16:@N:BN362:@XP_MSG">ram.v(1243)</a><!@TM:1698505213> | Removing sequential instance FF_3 (in view: work.RAM(verilog)) of type view:LUCENT.FD1P3DX(PRIM) because it does not drive other instances.
-@N:<a href="@N:BN362:@XP_HELP">BN362</a> : <a href="c:\users\duncan\git\forthcpu\ram\source\ram.v:1239:12:1239:16:@N:BN362:@XP_MSG">ram.v(1239)</a><!@TM:1698505213> | Removing sequential instance FF_4 (in view: work.RAM(verilog)) of type view:LUCENT.FD1P3DX(PRIM) because it does not drive other instances.
-@N:<a href="@N:BN362:@XP_HELP">BN362</a> : <a href="c:\users\duncan\git\forthcpu\ram\source\ram.v:1235:12:1235:16:@N:BN362:@XP_MSG">ram.v(1235)</a><!@TM:1698505213> | Removing sequential instance FF_5 (in view: work.RAM(verilog)) of type view:LUCENT.FD1P3DX(PRIM) because it does not drive other instances.
-@N:<a href="@N:BN362:@XP_HELP">BN362</a> : <a href="c:\users\duncan\git\forthcpu\uart\source\receiver.v:37:2:37:8:@N:BN362:@XP_MSG">receiver.v(37)</a><!@TM:1698505213> | Removing sequential instance r_RX_Byte[0] (in view: work.UART_RX(verilog)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N:<a href="@N:BN362:@XP_HELP">BN362</a> : <a href="c:\users\duncan\git\forthcpu\uart\source\receiver.v:37:2:37:8:@N:BN362:@XP_MSG">receiver.v(37)</a><!@TM:1698505213> | Removing sequential instance r_RX_Byte[1] (in view: work.UART_RX(verilog)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N:<a href="@N:BN362:@XP_HELP">BN362</a> : <a href="c:\users\duncan\git\forthcpu\uart\source\receiver.v:37:2:37:8:@N:BN362:@XP_MSG">receiver.v(37)</a><!@TM:1698505213> | Removing sequential instance r_RX_Byte[2] (in view: work.UART_RX(verilog)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N:<a href="@N:BN362:@XP_HELP">BN362</a> : <a href="c:\users\duncan\git\forthcpu\uart\source\receiver.v:37:2:37:8:@N:BN362:@XP_MSG">receiver.v(37)</a><!@TM:1698505213> | Removing sequential instance r_RX_Byte[3] (in view: work.UART_RX(verilog)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N:<a href="@N:BN362:@XP_HELP">BN362</a> : <a href="c:\users\duncan\git\forthcpu\uart\source\receiver.v:37:2:37:8:@N:BN362:@XP_MSG">receiver.v(37)</a><!@TM:1698505213> | Removing sequential instance r_RX_Byte[4] (in view: work.UART_RX(verilog)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N:<a href="@N:BN362:@XP_HELP">BN362</a> : <a href="c:\users\duncan\git\forthcpu\uart\source\receiver.v:37:2:37:8:@N:BN362:@XP_MSG">receiver.v(37)</a><!@TM:1698505213> | Removing sequential instance r_RX_Byte[5] (in view: work.UART_RX(verilog)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N:<a href="@N:BN362:@XP_HELP">BN362</a> : <a href="c:\users\duncan\git\forthcpu\uart\source\receiver.v:37:2:37:8:@N:BN362:@XP_MSG">receiver.v(37)</a><!@TM:1698505213> | Removing sequential instance r_RX_Byte[6] (in view: work.UART_RX(verilog)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N:<a href="@N:BN362:@XP_HELP">BN362</a> : <a href="c:\users\duncan\git\forthcpu\uart\source\receiver.v:37:2:37:8:@N:BN362:@XP_MSG">receiver.v(37)</a><!@TM:1698505213> | Removing sequential instance r_RX_Byte[7] (in view: work.UART_RX(verilog)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-@N:<a href="@N:BN362:@XP_HELP">BN362</a> : <a href="c:\users\duncan\git\forthcpu\uart\source\uart.v:74:0:74:6:@N:BN362:@XP_MSG">uart.v(74)</a><!@TM:1698505213> | Removing sequential instance STATUS[2:0] (in view: work.UART(verilog)) of type view:PrimLib.dffr(prim) because it does not drive other instances.
-@N:<a href="@N:BN362:@XP_HELP">BN362</a> : <a href="c:\users\duncan\git\forthcpu\uart\source\uart.v:74:0:74:6:@N:BN362:@XP_MSG">uart.v(74)</a><!@TM:1698505213> | Removing sequential instance RX_CLK_DIV[15:0] (in view: work.UART(verilog)) of type view:PrimLib.dffpatre(prim) because it does not drive other instances.
-@N:<a href="@N:BN115:@XP_HELP">BN115</a> : <a href="c:\users\duncan\git\forthcpu\uart\source\uart.v:51:8:51:18:@N:BN115:@XP_MSG">uart.v(51)</a><!@TM:1698505213> | Removing instance uartRXInst (in view: work.UART(verilog)) of type view:work.UART_RX(verilog) because it does not drive other instances.
-Encoding state machine PHASE[4:0] (in view: work.instructionPhaseDecoder(verilog))
-original code -> new code
-   000 -> 000
-   001 -> 001
-   010 -> 010
-   011 -> 011
-   100 -> 100
-Encoding state machine STATE[9:0] (in view: work.interruptStateMachine(verilog))
-original code -> new code
-   0000 -> 0000000001
-   0010 -> 0000000010
-   0011 -> 0000000100
-   0100 -> 0000001000
-   0101 -> 0000010000
-   0110 -> 0000100000
-   0111 -> 0001000000
-   1000 -> 0010000000
-   1001 -> 0100000000
-   1010 -> 1000000000
-Encoding state machine r_SM_Main[3:0] (in view: work.UART_TX(verilog))
-original code -> new code
-   000 -> 00
-   001 -> 01
-   010 -> 10
-   011 -> 11
-@N:<a href="@N:MO225:@XP_HELP">MO225</a> : <a href="c:\users\duncan\git\forthcpu\uart\source\transmitter.v:38:2:38:8:@N:MO225:@XP_MSG">transmitter.v(38)</a><!@TM:1698505213> | There are no possible illegal states for state machine r_SM_Main[3:0] (in view: work.UART_TX(verilog)); safe FSM implementation is not required.
-
-Starting clock optimization phase (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 177MB peak: 177MB)
-
-@N:<a href="@N:BN362:@XP_HELP">BN362</a> : <a href="c:\users\duncan\git\forthcpu\uart\source\transmitter.v:38:2:38:8:@N:BN362:@XP_MSG">transmitter.v(38)</a><!@TM:1698505213> | Removing sequential instance o_TX_Done (in view: work.UART_TX(verilog)) of type view:PrimLib.dffr(prim) because it does not drive other instances.
-@N:<a href="@N:MF578:@XP_HELP">MF578</a> : <!@TM:1698505213> | Incompatible asynchronous control logic preventing generated clock conversion. 
-
-Finished clock optimization phase (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 177MB peak: 177MB)
-
-<font color=#A52A2A>@W:<a href="@W:BZ101:@XP_HELP">BZ101</a> : <!@TM:1698505213> | Potential glitch can occur at the output of 15 instances  </font> 
-
-Starting clock optimization report phase (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 177MB peak: 177MB)
-
-
-Finished clock optimization report phase (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 177MB peak: 178MB)
-
-@N:<a href="@N:FX1184:@XP_HELP">FX1184</a> : <!@TM:1698505213> | Applying syn_allowed_resources blockrams=240 on top level netlist mcu  
-
-Finished netlist restructuring (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 177MB peak: 178MB)
-
-
-
-<a name=mapperReport6></a>Clock Summary</a>
-******************
-
-          Start       Requested     Requested     Clock        Clock                   Clock
-Level     Clock       Frequency     Period        Type         Group                   Load 
---------------------------------------------------------------------------------------------
-0 -       System      100.0 MHz     10.000        system       system_clkgroup         17   
-                                                                                            
-0 -       mcu|CLK     100.0 MHz     10.000        inferred     Inferred_clkgroup_0     171  
-============================================================================================
-
-
-
-Clock Load Summary
-***********************
-
-            Clock     Source        Clock Pin                                                      Non-clock Pin     Non-clock Pin                               
-Clock       Load      Pin           Seq Example                                                    Seq Example       Comb Example                                
------------------------------------------------------------------------------------------------------------------------------------------------------------------
-System      17        -             coreInst.fullALUInst.aluInst.CARRY.C                           -                 -                                           
-                                                                                                                                                                 
-mcu|CLK     171       CLK(port)     mcuResourcesInst.interruptMaskRegisterInst.MASK_REG[7:0].C     -                 coreInst.busControllerInst.un1_CLK.I[0](inv)
-=================================================================================================================================================================
-
-<font color=#A52A2A>@W:<a href="@W:MT531:@XP_HELP">MT531</a> : <a href="c:\users\duncan\git\forthcpu\alub\source\alu.v:34:3:34:7:@W:MT531:@XP_MSG">alu.v(34)</a><!@TM:1698505213> | Found signal identified as System clock which controls 17 sequential elements including coreInst.fullALUInst.aluInst.tmp[15].  Using this clock, which has no specified timing constraint, can prevent conversion of gated or generated clocks and can adversely impact design performance. </font>
-<font color=#A52A2A>@W:<a href="@W:MT529:@XP_HELP">MT529</a> : <a href="c:\users\duncan\git\forthcpu\instructionphasedecoder\source\instructionphasedecoder.v:18:0:18:6:@W:MT529:@XP_MSG">instructionphasedecoder.v(18)</a><!@TM:1698505213> | Found inferred clock mcu|CLK which controls 171 sequential elements including coreInst.instructionPhaseDecoderInst.PHASE[2]. This clock has no specified timing constraint which may prevent conversion of gated or generated clocks and may adversely impact design performance. </font>
-
-ICG Latch Removal Summary:
-Number of ICG latches removed: 0
-Number of ICG latches not removed:	0
-For details review file gcc_ICG_report.rpt
-
-
-@S |Clock Optimization Summary
-
-
-
-<a name=clockReport7></a>#### START OF PREMAP CLOCK OPTIMIZATION REPORT #####[</a>
-
-1 non-gated/non-generated clock tree(s) driving 171 clock pin(s) of sequential element(s)
-2 gated/generated clock tree(s) driving 17 clock pin(s) of sequential element(s)
-0 instances converted, 17 sequential instances remain driven by gated/generated clocks
-
-=========================================== Non-Gated/Non-Generated Clocks ============================================
-Clock Tree ID     Driving Element     Drive Element Type     Fanout     Sample Instance                                
------------------------------------------------------------------------------------------------------------------------
-<a href="@|L:C:\Users\Duncan\git\ForthCPU\impl1\synwork\ForthCPU_impl1_prem.srm@|S:CLK@|E:mcuResourcesInst.interruptMaskRegisterInst.INT1@|F:@syn_dgcc_clockid0_0==1@|M:ClockId_0_0 @XP_NAMES_BY_PROP">ClockId_0_0</a>       CLK                 port                   171        mcuResourcesInst.interruptMaskRegisterInst.INT1
-=======================================================================================================================
-================================================================================ Gated/Generated Clocks ================================================================================
-Clock Tree ID     Driving Element                                 Drive Element Type     Unconverted Fanout     Sample Instance                          Explanation                    
-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-<a href="@|L:C:\Users\Duncan\git\ForthCPU\impl1\synwork\ForthCPU_impl1_prem.srm@|S:coreInst.fullALUInst.aluInst.un1_ALUX_2.OUT@|E:coreInst.fullALUInst.aluInst.tmp[15]@|F:@syn_dgcc_clockid0_1==1@|M:ClockId_0_1 @XP_NAMES_BY_PROP">ClockId_0_1</a>       coreInst.fullALUInst.aluInst.un1_ALUX_2.OUT     and                    16                     coreInst.fullALUInst.aluInst.tmp[15]     Clock source is invalid for GCC
-<a href="@|L:C:\Users\Duncan\git\ForthCPU\impl1\synwork\ForthCPU_impl1_prem.srm@|S:coreInst.fullALUInst.aluInst.un1_ALUX_1.OUT@|E:coreInst.fullALUInst.aluInst.CARRY@|F:@syn_dgcc_clockid0_2==1@|M:ClockId_0_2 @XP_NAMES_BY_PROP">ClockId_0_2</a>       coreInst.fullALUInst.aluInst.un1_ALUX_1.OUT     and                    1                      coreInst.fullALUInst.aluInst.CARRY       Clock source is invalid for GCC
-========================================================================================================================================================================================
-
-
-##### END OF CLOCK OPTIMIZATION REPORT ######
-
-@N:<a href="@N:FX1143:@XP_HELP">FX1143</a> : <!@TM:1698505213> | Skipping assigning INTERNAL_VREF to iobanks, because the table of mapping from pin to iobank is not initialized. 
-Finished Pre Mapping Phase.
-
-Starting constraint checker (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 178MB peak: 178MB)
-
-
-Finished constraint checker preprocessing (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:02s; Memory used current: 178MB peak: 178MB)
-
-
-Finished constraint checker (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:02s; Memory used current: 178MB peak: 178MB)
-
-Pre-mapping successful!
-
-At Mapper Exit (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:02s; Memory used current: 92MB peak: 179MB)
-
-Process took 0h:00m:02s realtime, 0h:00m:02s cputime
-# Sat Oct 28 16:00:12 2023
-
-###########################################################]
-
-</pre></samp></body></html>
-<html><body><samp><pre>
-<!@TC:1698505198>
-# Sat Oct 28 16:00:13 2023
-
-
-Copyright (C) 1994-2021 Synopsys, Inc.
-This Synopsys software and all associated documentation are proprietary to Synopsys, Inc.
-and may only be used pursuant to the terms and conditions of a written license agreement
-with Synopsys, Inc. All other use, reproduction, modification, or distribution of the
-Synopsys software or the associated documentation is strictly prohibited.
-Tool: Synplify Pro (R)
-Build: R-2021.03L-SP1
-Install: C:\lscc\diamond\3.12\synpbase
-OS: Windows 6.2
-
-Hostname: EDAWIN
-
-Implementation : impl1
-<a name=mapperReport8></a>Synopsys Lattice Technology Mapper, Version map202103lat, Build 070R, Built Oct  6 2021 11:12:38, @</a>
-
-
-Mapper Startup Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 117MB peak: 117MB)
-
-@N:<a href="@N:MF916:@XP_HELP">MF916</a> : <!@TM:1698505226> | Option synthesis_strategy=base is enabled.  
-@N:<a href="@N:MF248:@XP_HELP">MF248</a> : <!@TM:1698505226> | Running in 64-bit mode. 
-@N:<a href="@N:MF666:@XP_HELP">MF666</a> : <!@TM:1698505226> | Clock conversion enabled. (Command "set_option -fix_gated_and_generated_clocks 1" in the project file.) 
-
-Design Input Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 119MB peak: 129MB)
-
-
-Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 119MB peak: 129MB)
-
-
-Start loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 132MB peak: 132MB)
-
-
-Finished loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 134MB peak: 136MB)
-
-
-
-Starting Optimization and Mapping (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 169MB peak: 169MB)
-
-@N:<a href="@N:MO111:@XP_HELP">MO111</a> : <a href="c:\lscc\diamond\3.12\synpbase\lib\lucent\machxo3l.v:1:1:1:3:@N:MO111:@XP_MSG">machxo3l.v(1)</a><!@TM:1698505226> | Tristate driver ALU_REGA_DINX (in view: work.core(verilog)) on net ALU_REGA_DINX (in view: work.core(verilog)) has its enable tied to GND.
-@N:<a href="@N:MO111:@XP_HELP">MO111</a> : <a href="c:\lscc\diamond\3.12\synpbase\lib\lucent\machxo3l.v:1:1:1:3:@N:MO111:@XP_MSG">machxo3l.v(1)</a><!@TM:1698505226> | Tristate driver ALU_DATA_BUSX (in view: work.core(verilog)) on net ALU_DATA_BUSX (in view: work.core(verilog)) has its enable tied to GND.
-@N:<a href="@N:MO111:@XP_HELP">MO111</a> : <a href="c:\users\duncan\git\forthcpu\impl1\source\mcu.v:68:7:68:15:@N:MO111:@XP_MSG">mcu.v(68)</a><!@TM:1698505226> | Tristate driver WR0N_BUF (in view: work.mcu(verilog)) on net WR0N_BUF (in view: work.mcu(verilog)) has its enable tied to GND.
-@N:<a href="@N:MO111:@XP_HELP">MO111</a> : <a href="c:\users\duncan\git\forthcpu\impl1\source\mcu.v:69:7:69:15:@N:MO111:@XP_MSG">mcu.v(69)</a><!@TM:1698505226> | Tristate driver WR1N_BUF (in view: work.mcu(verilog)) on net WR1N_BUF (in view: work.mcu(verilog)) has its enable tied to GND.
-<font color=#A52A2A>@W:<a href="@W:BN132:@XP_HELP">BN132</a> : <a href="c:\users\duncan\git\forthcpu\interruptlogic\source\interruptstatemachine.v:175:0:175:6:@W:BN132:@XP_MSG">interruptstatemachine.v(175)</a><!@TM:1698505226> | Removing sequential instance coreInst.interruptStateMachineInst.PC_LD_INT1 because it is equivalent to instance coreInst.interruptStateMachineInst.STATE[1]. To keep the instance, apply constraint syn_preserve=1 on the instance.</font>
-<font color=#A52A2A>@W:<a href="@W:FA239:@XP_HELP">FA239</a> : <a href="c:\users\duncan\git\forthcpu\alub\source\alu.v:34:3:34:7:@W:FA239:@XP_MSG">alu.v(34)</a><!@TM:1698505226> | ROM arithmetic (in view: work.alu(verilog)) mapped in logic. To map to a technology ROM, apply attribute syn_romstyle on this instance.</font>
-@N:<a href="@N:MO106:@XP_HELP">MO106</a> : <a href="c:\users\duncan\git\forthcpu\alub\source\alu.v:34:3:34:7:@N:MO106:@XP_MSG">alu.v(34)</a><!@TM:1698505226> | Found ROM arithmetic (in view: work.alu(verilog)) with 16 words by 1 bit.
-
-Finished RTL optimizations (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:01s; Memory used current: 174MB peak: 174MB)
-
-<font color=#A52A2A>@W:<a href="@W:BN132:@XP_HELP">BN132</a> : <a href="c:\users\duncan\git\forthcpu\interruptlogic\source\interruptstatemachine.v:175:0:175:6:@W:BN132:@XP_MSG">interruptstatemachine.v(175)</a><!@TM:1698505226> | Removing instance coreInst.interruptStateMachineInst.PC_NEXTX[2] because it is equivalent to instance coreInst.interruptStateMachineInst.STATE[7]. To keep the instance, apply constraint syn_preserve=1 on the instance.</font>
-@N:<a href="@N:BN362:@XP_HELP">BN362</a> : <a href="c:\users\duncan\git\forthcpu\interruptlogic\source\interruptmaskregister.v:59:0:59:6:@N:BN362:@XP_MSG">interruptmaskregister.v(59)</a><!@TM:1698505226> | Removing sequential instance interruptMaskRegisterInst.MASK_REG[0] (in view: work.mcuResources(verilog)) because it does not drive other instances.
-
-Starting factoring (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 184MB peak: 184MB)
-
-
-Finished factoring (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 185MB peak: 185MB)
-
-
-Available hyper_sources - for debug and ip models
-	None Found
-
-
-Finished generic timing optimizations - Pass 1 (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:02s; Memory used current: 187MB peak: 194MB)
-
-
-Starting Early Timing Optimization (Real Time elapsed 0h:00m:05s; CPU Time elapsed 0h:00m:05s; Memory used current: 191MB peak: 195MB)
-
-
-Finished Early Timing Optimization (Real Time elapsed 0h:00m:06s; CPU Time elapsed 0h:00m:06s; Memory used current: 192MB peak: 195MB)
-
-
-Finished generic timing optimizations - Pass 2 (Real Time elapsed 0h:00m:06s; CPU Time elapsed 0h:00m:06s; Memory used current: 192MB peak: 195MB)
-
-
-Finished preparing to map (Real Time elapsed 0h:00m:06s; CPU Time elapsed 0h:00m:06s; Memory used current: 192MB peak: 195MB)
-
-
-Finished technology mapping (Real Time elapsed 0h:00m:08s; CPU Time elapsed 0h:00m:08s; Memory used current: 235MB peak: 235MB)
-
-Pass		 CPU time		Worst Slack		Luts / Registers
-------------------------------------------------------------
-   1		0h:00m:08s		   -14.79ns		 966 /       164
-   2		0h:00m:08s		   -14.79ns		 951 /       164
-   3		0h:00m:08s		   -14.80ns		 951 /       164
-   4		0h:00m:08s		   -14.79ns		 951 /       164
-   5		0h:00m:08s		   -14.79ns		 951 /       164
-   6		0h:00m:08s		   -14.79ns		 951 /       164
-@N:<a href="@N:FX271:@XP_HELP">FX271</a> : <a href="c:\users\duncan\git\forthcpu\instructionphasedecoder\source\instructionphasedecoder.v:69:0:69:6:@N:FX271:@XP_MSG">instructionphasedecoder.v(69)</a><!@TM:1698505226> | Replicating instance coreInst.instructionPhaseDecoderInst.INSTRUCTION[15] (in view: work.mcu(verilog)) with 36 loads 3 times to improve timing.
-@N:<a href="@N:FX271:@XP_HELP">FX271</a> : <a href="c:\users\duncan\git\forthcpu\instructionphasedecoder\source\instructionphasedecoder.v:69:0:69:6:@N:FX271:@XP_MSG">instructionphasedecoder.v(69)</a><!@TM:1698505226> | Replicating instance coreInst.instructionPhaseDecoderInst.INSTRUCTION[14] (in view: work.mcu(verilog)) with 32 loads 3 times to improve timing.
-Timing driven replication report
-Added 6 Registers via timing driven replication
-Added 0 LUTs via timing driven replication
-
-   7		0h:00m:10s		   -14.59ns		 969 /       170
-   8		0h:00m:10s		   -14.45ns		 970 /       170
-   9		0h:00m:10s		   -14.51ns		 970 /       170
-  10		0h:00m:10s		   -14.51ns		 971 /       170
-  11		0h:00m:10s		   -14.51ns		 972 /       170
-  12		0h:00m:10s		   -14.51ns		 973 /       170
-
-@N:<a href="@N:FX271:@XP_HELP">FX271</a> : <a href="c:\users\duncan\git\forthcpu\instructionphasedecoder\source\instructionphasedecoder.v:69:0:69:6:@N:FX271:@XP_MSG">instructionphasedecoder.v(69)</a><!@TM:1698505226> | Replicating instance coreInst.instructionPhaseDecoderInst.INSTRUCTION[9] (in view: work.mcu(verilog)) with 16 loads 1 time to improve timing.
-@N:<a href="@N:FX271:@XP_HELP">FX271</a> : <a href="c:\users\duncan\git\forthcpu\instructionphasedecoder\source\instructionphasedecoder.v:69:0:69:6:@N:FX271:@XP_MSG">instructionphasedecoder.v(69)</a><!@TM:1698505226> | Replicating instance coreInst.instructionPhaseDecoderInst.INSTRUCTION[8] (in view: work.mcu(verilog)) with 16 loads 1 time to improve timing.
-Added 2 Registers via timing driven replication
-Added 0 LUTs via timing driven replication
-
-  13		0h:00m:10s		   -14.45ns		 972 /       172
-
-Finished technology timing optimizations and critical path resynthesis (Real Time elapsed 0h:00m:10s; CPU Time elapsed 0h:00m:10s; Memory used current: 236MB peak: 237MB)
-
-@N:<a href="@N:FX164:@XP_HELP">FX164</a> : <!@TM:1698505226> | The option to pack registers in the IOB has not been specified. Please set syn_useioff attribute.   
-
-Finished restoring hierarchy (Real Time elapsed 0h:00m:11s; CPU Time elapsed 0h:00m:10s; Memory used current: 237MB peak: 237MB)
-
-
-Start Writing Netlists (Real Time elapsed 0h:00m:11s; CPU Time elapsed 0h:00m:11s; Memory used current: 196MB peak: 238MB)
-
-Writing Analyst data base C:\Users\Duncan\git\ForthCPU\impl1\synwork\ForthCPU_impl1_m.srm
-
-Finished Writing Netlist Databases (Real Time elapsed 0h:00m:11s; CPU Time elapsed 0h:00m:11s; Memory used current: 236MB peak: 238MB)
-
-Writing EDIF Netlist and constraint files
-@N:<a href="@N:FX1056:@XP_HELP">FX1056</a> : <!@TM:1698505226> | Writing EDF file: C:\Users\Duncan\git\ForthCPU\impl1\ForthCPU_impl1.edi 
-@N:<a href="@N:BW106:@XP_HELP">BW106</a> : <!@TM:1698505226> | Synplicity Constraint File capacitance units using default value of 1pF  
-
-Finished Writing EDIF Netlist and constraint files (Real Time elapsed 0h:00m:12s; CPU Time elapsed 0h:00m:12s; Memory used current: 241MB peak: 241MB)
-
-
-Finished Writing Netlists (Real Time elapsed 0h:00m:12s; CPU Time elapsed 0h:00m:12s; Memory used current: 241MB peak: 241MB)
-
-
-Start final timing analysis (Real Time elapsed 0h:00m:13s; CPU Time elapsed 0h:00m:12s; Memory used current: 235MB peak: 241MB)
-
-<font color=#A52A2A>@W:<a href="@W:MT420:@XP_HELP">MT420</a> : <!@TM:1698505226> | Found inferred clock mcu|CLK with period 10.00ns. Please declare a user-defined clock on port CLK.</font> 
-
-
-<a name=timingReport9></a>##### START OF TIMING REPORT #####[</a>
-# Timing report written on Sat Oct 28 16:00:26 2023
-#
-
-
-Top view:               mcu
-Requested Frequency:    100.0 MHz
-Wire load mode:         top
-Paths requested:        5
-Constraint File(s):    
-@N:<a href="@N:MT320:@XP_HELP">MT320</a> : <!@TM:1698505226> | This timing report is an estimate of place and route data. For final timing results, use the FPGA vendor place and route report. 
-
-@N:<a href="@N:MT322:@XP_HELP">MT322</a> : <!@TM:1698505226> | Clock constraints include only register-to-register paths associated with each individual clock. 
-
-
-
-<a name=performanceSummary10></a>Performance Summary</a>
-*******************
-
-
-Worst slack in design: -14.295
-
-                   Requested     Estimated     Requested     Estimated                 Clock        Clock              
-Starting Clock     Frequency     Frequency     Period        Period        Slack       Type         Group              
------------------------------------------------------------------------------------------------------------------------
-mcu|CLK            100.0 MHz     43.1 MHz      10.000        23.184        -13.184     inferred     Inferred_clkgroup_0
-System             100.0 MHz     265.0 MHz     10.000        3.774         6.226       system       system_clkgroup    
-=======================================================================================================================
-
-
-
-
-
-<a name=clockRelationships11></a>Clock Relationships</a>
-*******************
-
-Clocks             |    rise  to  rise     |    fall  to  fall   |    rise  to  fall   |    fall  to  rise 
------------------------------------------------------------------------------------------------------------
-Starting  Ending   |  constraint  slack    |  constraint  slack  |  constraint  slack  |  constraint  slack
------------------------------------------------------------------------------------------------------------
-System    mcu|CLK  |  10.000      6.226    |  No paths    -      |  No paths    -      |  No paths    -    
-mcu|CLK   System   |  10.000      -14.295  |  No paths    -      |  No paths    -      |  No paths    -    
-mcu|CLK   mcu|CLK  |  10.000      -13.184  |  No paths    -      |  5.000       3.167  |  No paths    -    
-===========================================================================================================
- Note: 'No paths' indicates there are no paths in the design for that pair of clock edges.
-       'Diff grp' indicates that paths exist but the starting clock and ending clock are in different clock groups.
-
-
-
-<a name=interfaceInfo12></a>Interface Information </a>
-*********************
-
-No IO constraint found
-
-
-
-====================================
-<a name=clockReport13></a>Detailed Report for Clock: mcu|CLK</a>
-====================================
-
-
-
-<a name=startingSlack14></a>Starting Points with Worst Slack</a>
-********************************
-
-                                                                Starting                                                              Arrival            
-Instance                                                        Reference     Type         Pin      Net                               Time        Slack  
-                                                                Clock                                                                                    
----------------------------------------------------------------------------------------------------------------------------------------------------------
-coreInst.instructionPhaseDecoderInst.INSTRUCTION_fast[15]       mcu|CLK       FD1P3DX      Q        INSTRUCTION_fast[15]              1.276       -14.295
-coreInst_instructionPhaseDecoderInst_INSTRUCTION_fastio[14]     mcu|CLK       IFS1P3DX     Q        coreInst.INSTRUCTION_fast[14]     1.276       -14.295
-coreInst.instructionPhaseDecoderInst.INSTRUCTION_fast[8]        mcu|CLK       FD1P3DX      Q        INSTRUCTION_fast[8]               1.148       -14.093
-coreInst.instructionPhaseDecoderInst.INSTRUCTION_fast[9]        mcu|CLK       FD1P3DX      Q        INSTRUCTION_fast[9]               1.148       -14.093
-coreInst.registerFileInst.regs.registers_0_0_1                  mcu|CLK       DP8KC        DOA0     REGA_DOUT[0]                      3.548       -13.900
-coreInst.registerFileInst.regs.registers_0_0_1                  mcu|CLK       DP8KC        DOA2     REGA_DOUT[2]                      3.548       -13.189
-coreInst.registerFileInst.regs.registers_0_0_1                  mcu|CLK       DP8KC        DOB1     REGB_DOUT[1]                      3.548       -13.189
-coreInst.registerFileInst.regs.registers_0_0_1                  mcu|CLK       DP8KC        DOB2     REGB_DOUT[2]                      3.548       -13.117
-coreInst.registerFileInst.regs.registers_0_0_1                  mcu|CLK       DP8KC        DOB3     REGB_DOUT[3]                      3.548       -13.117
-coreInst.instructionPhaseDecoderInst.INSTRUCTION_15_rep1        mcu|CLK       FD1P3DX      Q        INSTRUCTION_15_rep1               1.148       -13.110
-=========================================================================================================================================================
-
-
-<a name=endingSlack15></a>Ending Points with Worst Slack</a>
-******************************
-
-                                         Starting                                        Required            
-Instance                                 Reference     Type        Pin     Net           Time         Slack  
-                                         Clock                                                               
--------------------------------------------------------------------------------------------------------------
-coreInst.fullALUInst.aluInst.tmp[14]     mcu|CLK       FD1S1AY     D       tmp_1[14]     10.089       -14.295
-coreInst.fullALUInst.aluInst.tmp[15]     mcu|CLK       FD1S1AY     D       tmp_1[15]     10.089       -14.295
-coreInst.fullALUInst.aluInst.tmp[12]     mcu|CLK       FD1S1AY     D       tmp_1[12]     10.089       -14.152
-coreInst.fullALUInst.aluInst.tmp[13]     mcu|CLK       FD1S1AY     D       tmp_1[13]     10.089       -14.152
-coreInst.fullALUInst.aluInst.tmp[10]     mcu|CLK       FD1S1AY     D       tmp_1[10]     10.089       -14.009
-coreInst.fullALUInst.aluInst.tmp[11]     mcu|CLK       FD1S1AY     D       tmp_1[11]     10.089       -14.009
-coreInst.fullALUInst.aluInst.tmp[8]      mcu|CLK       FD1S1AY     D       tmp_1[8]      10.089       -13.867
-coreInst.fullALUInst.aluInst.tmp[9]      mcu|CLK       FD1S1AY     D       tmp_1[9]      10.089       -13.867
-coreInst.fullALUInst.aluInst.tmp[6]      mcu|CLK       FD1S1AY     D       tmp_1[6]      10.089       -13.724
-coreInst.fullALUInst.aluInst.tmp[7]      mcu|CLK       FD1S1AY     D       tmp_1[7]      10.089       -13.724
-=============================================================================================================
-
-
-
-<a name=worstPaths16></a>Worst Path Information</a>
-<a href="C:\Users\Duncan\git\ForthCPU\impl1\ForthCPU_impl1.srr:srsfC:\Users\Duncan\git\ForthCPU\impl1\ForthCPU_impl1.srs:fp:76940:87551:@XP_NAMES_GATE">View Worst Path in Analyst</a>
-***********************
-
-
-Path information for path number 1: 
-      Requested Period:                      10.000
-    - Setup time:                            -0.089
-    + Clock delay at ending point:           0.000 (ideal)
-    + Estimated clock delay at ending point: 0.000
-    = Required time:                         10.089
-
-    - Propagation time:                      24.384
-    - Clock delay at starting point:         0.000 (ideal)
-    = Slack (critical) :                     -14.295
-
-    Number of logic level(s):                26
-    Starting point:                          coreInst.instructionPhaseDecoderInst.INSTRUCTION_fast[15] / Q
-    Ending point:                            coreInst.fullALUInst.aluInst.tmp[15] / D
-    The start point is clocked by            mcu|CLK [rising] (rise=0.000 fall=5.000 period=10.000) on pin CK
-    The end   point is clocked by            System [rising] on pin CK
-
-Instance / Net                                                                 Pin      Pin               Arrival      No. of    
-Name                                                              Type         Name     Dir     Delay     Time         Fan Out(s)
----------------------------------------------------------------------------------------------------------------------------------
-coreInst.instructionPhaseDecoderInst.INSTRUCTION_fast[15]         FD1P3DX      Q        Out     1.276     1.276 r      -         
-INSTRUCTION_fast[15]                                              Net          -        -       -         -            19        
-coreInst.opxMultiplexerInst.N_125_i_i_o2                          ORCALUT4     B        In      0.000     1.276 r      -         
-coreInst.opxMultiplexerInst.N_125_i_i_o2                          ORCALUT4     Z        Out     1.378     2.654 r      -         
-N_285                                                             Net          -        -       -         -            38        
-coreInst.fullALUInst.muxA.ALUA_DATA_i_i_a2[0]                     ORCALUT4     A        In      0.000     2.654 r      -         
-coreInst.fullALUInst.muxA.ALUA_DATA_i_i_a2[0]                     ORCALUT4     Z        Out     1.289     3.943 f      -         
-N_402                                                             Net          -        -       -         -            12        
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_0_cry_0_0_RNO_0     ORCALUT4     A        In      0.000     3.943 f      -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_0_cry_0_0_RNO_0     ORCALUT4     Z        Out     1.017     4.960 r      -         
-madd_0_0_b_1_0                                                    Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_0_cry_0_0_RNO       ORCALUT4     D        In      0.000     4.960 r      -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_0_cry_0_0_RNO       ORCALUT4     Z        Out     1.017     5.977 f      -         
-madd_0_cry_0_0_RNO                                                Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_0_cry_0_0           CCU2D        C1       In      0.000     5.977 f      -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_0_cry_0_0           CCU2D        COUT     Out     1.544     7.521 r      -         
-madd_0_cry_0                                                      Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_0_cry_1_0           CCU2D        CIN      In      0.000     7.521 r      -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_0_cry_1_0           CCU2D        S0       Out     1.621     9.142 r      -         
-madd_0[2]                                                         Net          -        -       -         -            2         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_8_cry_0_0           CCU2D        C1       In      0.000     9.142 r      -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_8_cry_0_0           CCU2D        COUT     Out     1.544     10.687 r     -         
-madd_8_cry_0                                                      Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_8_cry_1_0           CCU2D        CIN      In      0.000     10.687 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_8_cry_1_0           CCU2D        S1       Out     1.621     12.308 r     -         
-madd_8[4]                                                         Net          -        -       -         -            2         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_12_cry_0_0          CCU2D        B1       In      0.000     12.308 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_12_cry_0_0          CCU2D        COUT     Out     1.544     13.852 r     -         
-madd_12_cry_0                                                     Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_12_cry_1_0          CCU2D        CIN      In      0.000     13.852 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_12_cry_1_0          CCU2D        COUT     Out     0.143     13.995 r     -         
-madd_12_cry_2                                                     Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_12_cry_3_0          CCU2D        CIN      In      0.000     13.995 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_12_cry_3_0          CCU2D        S1       Out     1.621     15.616 r     -         
-madd_12[8]                                                        Net          -        -       -         -            2         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_14_cry_0_0          CCU2D        B1       In      0.000     15.616 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_14_cry_0_0          CCU2D        COUT     Out     1.544     17.160 r     -         
-madd_14_cry_0                                                     Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_14_cry_1_0          CCU2D        CIN      In      0.000     17.160 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_14_cry_1_0          CCU2D        COUT     Out     0.143     17.303 r     -         
-madd_14_cry_2                                                     Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_14_cry_3_0          CCU2D        CIN      In      0.000     17.303 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_14_cry_3_0          CCU2D        COUT     Out     0.143     17.446 r     -         
-madd_14_cry_4                                                     Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_14_cry_5_0          CCU2D        CIN      In      0.000     17.446 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_14_cry_5_0          CCU2D        COUT     Out     0.143     17.589 r     -         
-madd_14_cry_6                                                     Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_14_cry_7_0          CCU2D        CIN      In      0.000     17.589 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_14_cry_7_0          CCU2D        S0       Out     1.685     19.274 r     -         
-madd_14[15]                                                       Net          -        -       -         -            3         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_0_0             CCU2D        B1       In      0.000     19.274 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_0_0             CCU2D        COUT     Out     1.544     20.818 r     -         
-madd_cry_0                                                        Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_1_0             CCU2D        CIN      In      0.000     20.818 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_1_0             CCU2D        COUT     Out     0.143     20.961 r     -         
-madd_cry_2                                                        Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_3_0             CCU2D        CIN      In      0.000     20.961 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_3_0             CCU2D        COUT     Out     0.143     21.104 r     -         
-madd_cry_4                                                        Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_5_0             CCU2D        CIN      In      0.000     21.104 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_5_0             CCU2D        COUT     Out     0.143     21.247 r     -         
-madd_cry_6                                                        Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_7_0             CCU2D        CIN      In      0.000     21.247 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_7_0             CCU2D        COUT     Out     0.143     21.390 r     -         
-madd_cry_8                                                        Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_9_0             CCU2D        CIN      In      0.000     21.390 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_9_0             CCU2D        COUT     Out     0.143     21.532 r     -         
-madd_cry_10                                                       Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_11_0            CCU2D        CIN      In      0.000     21.532 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_11_0            CCU2D        COUT     Out     0.143     21.675 r     -         
-madd_cry_12                                                       Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_13_0            CCU2D        CIN      In      0.000     21.675 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_13_0            CCU2D        COUT     Out     0.143     21.818 r     -         
-madd_cry_14                                                       Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_15_0            CCU2D        CIN      In      0.000     21.818 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_15_0            CCU2D        S1       Out     1.549     23.367 r     -         
-un21_RESULT[31]                                                   Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.tmp_1[15]                            ORCALUT4     C        In      0.000     23.367 r     -         
-coreInst.fullALUInst.aluInst.tmp_1[15]                            ORCALUT4     Z        Out     1.017     24.384 r     -         
-tmp_1[15]                                                         Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.tmp[15]                              FD1S1AY      D        In      0.000     24.384 r     -         
-=================================================================================================================================
-
-
-Path information for path number 2: 
-      Requested Period:                      10.000
-    - Setup time:                            -0.089
-    + Clock delay at ending point:           0.000 (ideal)
-    + Estimated clock delay at ending point: 0.000
-    = Required time:                         10.089
-
-    - Propagation time:                      24.384
-    - Clock delay at starting point:         0.000 (ideal)
-    = Slack (critical) :                     -14.295
-
-    Number of logic level(s):                26
-    Starting point:                          coreInst_instructionPhaseDecoderInst_INSTRUCTION_fastio[14] / Q
-    Ending point:                            coreInst.fullALUInst.aluInst.tmp[15] / D
-    The start point is clocked by            mcu|CLK [rising] (rise=0.000 fall=5.000 period=10.000) on pin SCLK
-    The end   point is clocked by            System [rising] on pin CK
-
-Instance / Net                                                                 Pin      Pin               Arrival      No. of    
-Name                                                              Type         Name     Dir     Delay     Time         Fan Out(s)
----------------------------------------------------------------------------------------------------------------------------------
-coreInst_instructionPhaseDecoderInst_INSTRUCTION_fastio[14]       IFS1P3DX     Q        Out     1.276     1.276 r      -         
-coreInst.INSTRUCTION_fast[14]                                     Net          -        -       -         -            19        
-coreInst.opxMultiplexerInst.N_125_i_i_o2                          ORCALUT4     A        In      0.000     1.276 r      -         
-coreInst.opxMultiplexerInst.N_125_i_i_o2                          ORCALUT4     Z        Out     1.378     2.654 f      -         
-N_285                                                             Net          -        -       -         -            38        
-coreInst.fullALUInst.muxA.ALUA_DATA_i_i_a2[0]                     ORCALUT4     A        In      0.000     2.654 f      -         
-coreInst.fullALUInst.muxA.ALUA_DATA_i_i_a2[0]                     ORCALUT4     Z        Out     1.289     3.943 r      -         
-N_402                                                             Net          -        -       -         -            12        
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_0_cry_0_0_RNO_0     ORCALUT4     A        In      0.000     3.943 r      -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_0_cry_0_0_RNO_0     ORCALUT4     Z        Out     1.017     4.960 f      -         
-madd_0_0_b_1_0                                                    Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_0_cry_0_0_RNO       ORCALUT4     D        In      0.000     4.960 f      -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_0_cry_0_0_RNO       ORCALUT4     Z        Out     1.017     5.977 r      -         
-madd_0_cry_0_0_RNO                                                Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_0_cry_0_0           CCU2D        C1       In      0.000     5.977 r      -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_0_cry_0_0           CCU2D        COUT     Out     1.544     7.521 r      -         
-madd_0_cry_0                                                      Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_0_cry_1_0           CCU2D        CIN      In      0.000     7.521 r      -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_0_cry_1_0           CCU2D        S0       Out     1.621     9.142 r      -         
-madd_0[2]                                                         Net          -        -       -         -            2         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_8_cry_0_0           CCU2D        C1       In      0.000     9.142 r      -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_8_cry_0_0           CCU2D        COUT     Out     1.544     10.687 r     -         
-madd_8_cry_0                                                      Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_8_cry_1_0           CCU2D        CIN      In      0.000     10.687 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_8_cry_1_0           CCU2D        S1       Out     1.621     12.308 r     -         
-madd_8[4]                                                         Net          -        -       -         -            2         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_12_cry_0_0          CCU2D        B1       In      0.000     12.308 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_12_cry_0_0          CCU2D        COUT     Out     1.544     13.852 r     -         
-madd_12_cry_0                                                     Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_12_cry_1_0          CCU2D        CIN      In      0.000     13.852 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_12_cry_1_0          CCU2D        COUT     Out     0.143     13.995 r     -         
-madd_12_cry_2                                                     Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_12_cry_3_0          CCU2D        CIN      In      0.000     13.995 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_12_cry_3_0          CCU2D        S1       Out     1.621     15.616 r     -         
-madd_12[8]                                                        Net          -        -       -         -            2         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_14_cry_0_0          CCU2D        B1       In      0.000     15.616 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_14_cry_0_0          CCU2D        COUT     Out     1.544     17.160 r     -         
-madd_14_cry_0                                                     Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_14_cry_1_0          CCU2D        CIN      In      0.000     17.160 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_14_cry_1_0          CCU2D        COUT     Out     0.143     17.303 r     -         
-madd_14_cry_2                                                     Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_14_cry_3_0          CCU2D        CIN      In      0.000     17.303 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_14_cry_3_0          CCU2D        COUT     Out     0.143     17.446 r     -         
-madd_14_cry_4                                                     Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_14_cry_5_0          CCU2D        CIN      In      0.000     17.446 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_14_cry_5_0          CCU2D        COUT     Out     0.143     17.589 r     -         
-madd_14_cry_6                                                     Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_14_cry_7_0          CCU2D        CIN      In      0.000     17.589 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_14_cry_7_0          CCU2D        S0       Out     1.685     19.274 r     -         
-madd_14[15]                                                       Net          -        -       -         -            3         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_0_0             CCU2D        B1       In      0.000     19.274 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_0_0             CCU2D        COUT     Out     1.544     20.818 r     -         
-madd_cry_0                                                        Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_1_0             CCU2D        CIN      In      0.000     20.818 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_1_0             CCU2D        COUT     Out     0.143     20.961 r     -         
-madd_cry_2                                                        Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_3_0             CCU2D        CIN      In      0.000     20.961 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_3_0             CCU2D        COUT     Out     0.143     21.104 r     -         
-madd_cry_4                                                        Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_5_0             CCU2D        CIN      In      0.000     21.104 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_5_0             CCU2D        COUT     Out     0.143     21.247 r     -         
-madd_cry_6                                                        Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_7_0             CCU2D        CIN      In      0.000     21.247 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_7_0             CCU2D        COUT     Out     0.143     21.390 r     -         
-madd_cry_8                                                        Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_9_0             CCU2D        CIN      In      0.000     21.390 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_9_0             CCU2D        COUT     Out     0.143     21.532 r     -         
-madd_cry_10                                                       Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_11_0            CCU2D        CIN      In      0.000     21.532 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_11_0            CCU2D        COUT     Out     0.143     21.675 r     -         
-madd_cry_12                                                       Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_13_0            CCU2D        CIN      In      0.000     21.675 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_13_0            CCU2D        COUT     Out     0.143     21.818 r     -         
-madd_cry_14                                                       Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_15_0            CCU2D        CIN      In      0.000     21.818 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_15_0            CCU2D        S1       Out     1.549     23.367 r     -         
-un21_RESULT[31]                                                   Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.tmp_1[15]                            ORCALUT4     C        In      0.000     23.367 r     -         
-coreInst.fullALUInst.aluInst.tmp_1[15]                            ORCALUT4     Z        Out     1.017     24.384 r     -         
-tmp_1[15]                                                         Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.tmp[15]                              FD1S1AY      D        In      0.000     24.384 r     -         
-=================================================================================================================================
-
-
-Path information for path number 3: 
-      Requested Period:                      10.000
-    - Setup time:                            -0.089
-    + Clock delay at ending point:           0.000 (ideal)
-    + Estimated clock delay at ending point: 0.000
-    = Required time:                         10.089
-
-    - Propagation time:                      24.384
-    - Clock delay at starting point:         0.000 (ideal)
-    = Slack (critical) :                     -14.295
-
-    Number of logic level(s):                26
-    Starting point:                          coreInst.instructionPhaseDecoderInst.INSTRUCTION_fast[15] / Q
-    Ending point:                            coreInst.fullALUInst.aluInst.tmp[14] / D
-    The start point is clocked by            mcu|CLK [rising] (rise=0.000 fall=5.000 period=10.000) on pin CK
-    The end   point is clocked by            System [rising] on pin CK
-
-Instance / Net                                                                 Pin      Pin               Arrival      No. of    
-Name                                                              Type         Name     Dir     Delay     Time         Fan Out(s)
----------------------------------------------------------------------------------------------------------------------------------
-coreInst.instructionPhaseDecoderInst.INSTRUCTION_fast[15]         FD1P3DX      Q        Out     1.276     1.276 r      -         
-INSTRUCTION_fast[15]                                              Net          -        -       -         -            19        
-coreInst.opxMultiplexerInst.N_125_i_i_o2                          ORCALUT4     B        In      0.000     1.276 r      -         
-coreInst.opxMultiplexerInst.N_125_i_i_o2                          ORCALUT4     Z        Out     1.378     2.654 r      -         
-N_285                                                             Net          -        -       -         -            38        
-coreInst.fullALUInst.muxA.ALUA_DATA_i_i_a2[0]                     ORCALUT4     A        In      0.000     2.654 r      -         
-coreInst.fullALUInst.muxA.ALUA_DATA_i_i_a2[0]                     ORCALUT4     Z        Out     1.289     3.943 f      -         
-N_402                                                             Net          -        -       -         -            12        
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_0_cry_0_0_RNO_0     ORCALUT4     A        In      0.000     3.943 f      -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_0_cry_0_0_RNO_0     ORCALUT4     Z        Out     1.017     4.960 r      -         
-madd_0_0_b_1_0                                                    Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_0_cry_0_0_RNO       ORCALUT4     D        In      0.000     4.960 r      -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_0_cry_0_0_RNO       ORCALUT4     Z        Out     1.017     5.977 f      -         
-madd_0_cry_0_0_RNO                                                Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_0_cry_0_0           CCU2D        C1       In      0.000     5.977 f      -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_0_cry_0_0           CCU2D        COUT     Out     1.544     7.521 r      -         
-madd_0_cry_0                                                      Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_0_cry_1_0           CCU2D        CIN      In      0.000     7.521 r      -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_0_cry_1_0           CCU2D        S0       Out     1.621     9.142 r      -         
-madd_0[2]                                                         Net          -        -       -         -            2         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_8_cry_0_0           CCU2D        C1       In      0.000     9.142 r      -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_8_cry_0_0           CCU2D        COUT     Out     1.544     10.687 r     -         
-madd_8_cry_0                                                      Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_8_cry_1_0           CCU2D        CIN      In      0.000     10.687 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_8_cry_1_0           CCU2D        S1       Out     1.621     12.308 r     -         
-madd_8[4]                                                         Net          -        -       -         -            2         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_12_cry_0_0          CCU2D        B1       In      0.000     12.308 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_12_cry_0_0          CCU2D        COUT     Out     1.544     13.852 r     -         
-madd_12_cry_0                                                     Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_12_cry_1_0          CCU2D        CIN      In      0.000     13.852 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_12_cry_1_0          CCU2D        COUT     Out     0.143     13.995 r     -         
-madd_12_cry_2                                                     Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_12_cry_3_0          CCU2D        CIN      In      0.000     13.995 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_12_cry_3_0          CCU2D        S1       Out     1.621     15.616 r     -         
-madd_12[8]                                                        Net          -        -       -         -            2         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_14_cry_0_0          CCU2D        B1       In      0.000     15.616 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_14_cry_0_0          CCU2D        COUT     Out     1.544     17.160 r     -         
-madd_14_cry_0                                                     Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_14_cry_1_0          CCU2D        CIN      In      0.000     17.160 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_14_cry_1_0          CCU2D        COUT     Out     0.143     17.303 r     -         
-madd_14_cry_2                                                     Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_14_cry_3_0          CCU2D        CIN      In      0.000     17.303 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_14_cry_3_0          CCU2D        COUT     Out     0.143     17.446 r     -         
-madd_14_cry_4                                                     Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_14_cry_5_0          CCU2D        CIN      In      0.000     17.446 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_14_cry_5_0          CCU2D        COUT     Out     0.143     17.589 r     -         
-madd_14_cry_6                                                     Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_14_cry_7_0          CCU2D        CIN      In      0.000     17.589 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_14_cry_7_0          CCU2D        S0       Out     1.685     19.274 r     -         
-madd_14[15]                                                       Net          -        -       -         -            3         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_0_0             CCU2D        B1       In      0.000     19.274 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_0_0             CCU2D        COUT     Out     1.544     20.818 r     -         
-madd_cry_0                                                        Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_1_0             CCU2D        CIN      In      0.000     20.818 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_1_0             CCU2D        COUT     Out     0.143     20.961 r     -         
-madd_cry_2                                                        Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_3_0             CCU2D        CIN      In      0.000     20.961 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_3_0             CCU2D        COUT     Out     0.143     21.104 r     -         
-madd_cry_4                                                        Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_5_0             CCU2D        CIN      In      0.000     21.104 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_5_0             CCU2D        COUT     Out     0.143     21.247 r     -         
-madd_cry_6                                                        Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_7_0             CCU2D        CIN      In      0.000     21.247 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_7_0             CCU2D        COUT     Out     0.143     21.390 r     -         
-madd_cry_8                                                        Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_9_0             CCU2D        CIN      In      0.000     21.390 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_9_0             CCU2D        COUT     Out     0.143     21.532 r     -         
-madd_cry_10                                                       Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_11_0            CCU2D        CIN      In      0.000     21.532 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_11_0            CCU2D        COUT     Out     0.143     21.675 r     -         
-madd_cry_12                                                       Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_13_0            CCU2D        CIN      In      0.000     21.675 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_13_0            CCU2D        COUT     Out     0.143     21.818 r     -         
-madd_cry_14                                                       Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_15_0            CCU2D        CIN      In      0.000     21.818 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_15_0            CCU2D        S0       Out     1.549     23.367 r     -         
-un21_RESULT[30]                                                   Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.tmp_RNO[14]                          ORCALUT4     C        In      0.000     23.367 r     -         
-coreInst.fullALUInst.aluInst.tmp_RNO[14]                          ORCALUT4     Z        Out     1.017     24.384 r     -         
-tmp_1[14]                                                         Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.tmp[14]                              FD1S1AY      D        In      0.000     24.384 r     -         
-=================================================================================================================================
-
-
-Path information for path number 4: 
-      Requested Period:                      10.000
-    - Setup time:                            -0.089
-    + Clock delay at ending point:           0.000 (ideal)
-    + Estimated clock delay at ending point: 0.000
-    = Required time:                         10.089
-
-    - Propagation time:                      24.384
-    - Clock delay at starting point:         0.000 (ideal)
-    = Slack (critical) :                     -14.295
-
-    Number of logic level(s):                26
-    Starting point:                          coreInst_instructionPhaseDecoderInst_INSTRUCTION_fastio[14] / Q
-    Ending point:                            coreInst.fullALUInst.aluInst.tmp[14] / D
-    The start point is clocked by            mcu|CLK [rising] (rise=0.000 fall=5.000 period=10.000) on pin SCLK
-    The end   point is clocked by            System [rising] on pin CK
-
-Instance / Net                                                                 Pin      Pin               Arrival      No. of    
-Name                                                              Type         Name     Dir     Delay     Time         Fan Out(s)
----------------------------------------------------------------------------------------------------------------------------------
-coreInst_instructionPhaseDecoderInst_INSTRUCTION_fastio[14]       IFS1P3DX     Q        Out     1.276     1.276 r      -         
-coreInst.INSTRUCTION_fast[14]                                     Net          -        -       -         -            19        
-coreInst.opxMultiplexerInst.N_125_i_i_o2                          ORCALUT4     A        In      0.000     1.276 r      -         
-coreInst.opxMultiplexerInst.N_125_i_i_o2                          ORCALUT4     Z        Out     1.378     2.654 f      -         
-N_285                                                             Net          -        -       -         -            38        
-coreInst.fullALUInst.muxA.ALUA_DATA_i_i_a2[0]                     ORCALUT4     A        In      0.000     2.654 f      -         
-coreInst.fullALUInst.muxA.ALUA_DATA_i_i_a2[0]                     ORCALUT4     Z        Out     1.289     3.943 r      -         
-N_402                                                             Net          -        -       -         -            12        
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_0_cry_0_0_RNO_0     ORCALUT4     A        In      0.000     3.943 r      -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_0_cry_0_0_RNO_0     ORCALUT4     Z        Out     1.017     4.960 f      -         
-madd_0_0_b_1_0                                                    Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_0_cry_0_0_RNO       ORCALUT4     D        In      0.000     4.960 f      -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_0_cry_0_0_RNO       ORCALUT4     Z        Out     1.017     5.977 r      -         
-madd_0_cry_0_0_RNO                                                Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_0_cry_0_0           CCU2D        C1       In      0.000     5.977 r      -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_0_cry_0_0           CCU2D        COUT     Out     1.544     7.521 r      -         
-madd_0_cry_0                                                      Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_0_cry_1_0           CCU2D        CIN      In      0.000     7.521 r      -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_0_cry_1_0           CCU2D        S0       Out     1.621     9.142 r      -         
-madd_0[2]                                                         Net          -        -       -         -            2         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_8_cry_0_0           CCU2D        C1       In      0.000     9.142 r      -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_8_cry_0_0           CCU2D        COUT     Out     1.544     10.687 r     -         
-madd_8_cry_0                                                      Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_8_cry_1_0           CCU2D        CIN      In      0.000     10.687 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_8_cry_1_0           CCU2D        S1       Out     1.621     12.308 r     -         
-madd_8[4]                                                         Net          -        -       -         -            2         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_12_cry_0_0          CCU2D        B1       In      0.000     12.308 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_12_cry_0_0          CCU2D        COUT     Out     1.544     13.852 r     -         
-madd_12_cry_0                                                     Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_12_cry_1_0          CCU2D        CIN      In      0.000     13.852 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_12_cry_1_0          CCU2D        COUT     Out     0.143     13.995 r     -         
-madd_12_cry_2                                                     Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_12_cry_3_0          CCU2D        CIN      In      0.000     13.995 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_12_cry_3_0          CCU2D        S1       Out     1.621     15.616 r     -         
-madd_12[8]                                                        Net          -        -       -         -            2         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_14_cry_0_0          CCU2D        B1       In      0.000     15.616 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_14_cry_0_0          CCU2D        COUT     Out     1.544     17.160 r     -         
-madd_14_cry_0                                                     Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_14_cry_1_0          CCU2D        CIN      In      0.000     17.160 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_14_cry_1_0          CCU2D        COUT     Out     0.143     17.303 r     -         
-madd_14_cry_2                                                     Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_14_cry_3_0          CCU2D        CIN      In      0.000     17.303 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_14_cry_3_0          CCU2D        COUT     Out     0.143     17.446 r     -         
-madd_14_cry_4                                                     Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_14_cry_5_0          CCU2D        CIN      In      0.000     17.446 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_14_cry_5_0          CCU2D        COUT     Out     0.143     17.589 r     -         
-madd_14_cry_6                                                     Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_14_cry_7_0          CCU2D        CIN      In      0.000     17.589 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_14_cry_7_0          CCU2D        S0       Out     1.685     19.274 r     -         
-madd_14[15]                                                       Net          -        -       -         -            3         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_0_0             CCU2D        B1       In      0.000     19.274 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_0_0             CCU2D        COUT     Out     1.544     20.818 r     -         
-madd_cry_0                                                        Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_1_0             CCU2D        CIN      In      0.000     20.818 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_1_0             CCU2D        COUT     Out     0.143     20.961 r     -         
-madd_cry_2                                                        Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_3_0             CCU2D        CIN      In      0.000     20.961 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_3_0             CCU2D        COUT     Out     0.143     21.104 r     -         
-madd_cry_4                                                        Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_5_0             CCU2D        CIN      In      0.000     21.104 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_5_0             CCU2D        COUT     Out     0.143     21.247 r     -         
-madd_cry_6                                                        Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_7_0             CCU2D        CIN      In      0.000     21.247 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_7_0             CCU2D        COUT     Out     0.143     21.390 r     -         
-madd_cry_8                                                        Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_9_0             CCU2D        CIN      In      0.000     21.390 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_9_0             CCU2D        COUT     Out     0.143     21.532 r     -         
-madd_cry_10                                                       Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_11_0            CCU2D        CIN      In      0.000     21.532 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_11_0            CCU2D        COUT     Out     0.143     21.675 r     -         
-madd_cry_12                                                       Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_13_0            CCU2D        CIN      In      0.000     21.675 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_13_0            CCU2D        COUT     Out     0.143     21.818 r     -         
-madd_cry_14                                                       Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_15_0            CCU2D        CIN      In      0.000     21.818 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_15_0            CCU2D        S0       Out     1.549     23.367 r     -         
-un21_RESULT[30]                                                   Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.tmp_RNO[14]                          ORCALUT4     C        In      0.000     23.367 r     -         
-coreInst.fullALUInst.aluInst.tmp_RNO[14]                          ORCALUT4     Z        Out     1.017     24.384 r     -         
-tmp_1[14]                                                         Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.tmp[14]                              FD1S1AY      D        In      0.000     24.384 r     -         
-=================================================================================================================================
-
-
-Path information for path number 5: 
-      Requested Period:                      10.000
-    - Setup time:                            -0.089
-    + Clock delay at ending point:           0.000 (ideal)
-    + Estimated clock delay at ending point: 0.000
-    = Required time:                         10.089
-
-    - Propagation time:                      24.312
-    - Clock delay at starting point:         0.000 (ideal)
-    = Slack (non-critical) :                 -14.223
-
-    Number of logic level(s):                26
-    Starting point:                          coreInst.instructionPhaseDecoderInst.INSTRUCTION_fast[15] / Q
-    Ending point:                            coreInst.fullALUInst.aluInst.tmp[15] / D
-    The start point is clocked by            mcu|CLK [rising] (rise=0.000 fall=5.000 period=10.000) on pin CK
-    The end   point is clocked by            System [rising] on pin CK
-
-Instance / Net                                                                 Pin      Pin               Arrival      No. of    
-Name                                                              Type         Name     Dir     Delay     Time         Fan Out(s)
----------------------------------------------------------------------------------------------------------------------------------
-coreInst.instructionPhaseDecoderInst.INSTRUCTION_fast[15]         FD1P3DX      Q        Out     1.276     1.276 r      -         
-INSTRUCTION_fast[15]                                              Net          -        -       -         -            19        
-coreInst.opxMultiplexerInst.N_125_i_i_o2                          ORCALUT4     B        In      0.000     1.276 r      -         
-coreInst.opxMultiplexerInst.N_125_i_i_o2                          ORCALUT4     Z        Out     1.378     2.654 r      -         
-N_285                                                             Net          -        -       -         -            38        
-coreInst.fullALUInst.muxA.ALUA_DATA_i_i_a2[0]                     ORCALUT4     A        In      0.000     2.654 r      -         
-coreInst.fullALUInst.muxA.ALUA_DATA_i_i_a2[0]                     ORCALUT4     Z        Out     1.289     3.943 f      -         
-N_402                                                             Net          -        -       -         -            12        
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_0_cry_0_0_RNO_0     ORCALUT4     A        In      0.000     3.943 f      -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_0_cry_0_0_RNO_0     ORCALUT4     Z        Out     1.017     4.960 r      -         
-madd_0_0_b_1_0                                                    Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_0_cry_0_0_RNO       ORCALUT4     D        In      0.000     4.960 r      -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_0_cry_0_0_RNO       ORCALUT4     Z        Out     1.017     5.977 f      -         
-madd_0_cry_0_0_RNO                                                Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_0_cry_0_0           CCU2D        C1       In      0.000     5.977 f      -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_0_cry_0_0           CCU2D        COUT     Out     1.544     7.521 r      -         
-madd_0_cry_0                                                      Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_0_cry_1_0           CCU2D        CIN      In      0.000     7.521 r      -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_0_cry_1_0           CCU2D        COUT     Out     0.143     7.664 r      -         
-madd_0_cry_2                                                      Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_0_cry_3_0           CCU2D        CIN      In      0.000     7.664 r      -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_0_cry_3_0           CCU2D        COUT     Out     0.143     7.807 r      -         
-madd_0_cry_4                                                      Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_0_cry_5_0           CCU2D        CIN      In      0.000     7.807 r      -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_0_cry_5_0           CCU2D        S0       Out     1.621     9.428 r      -         
-madd_0[6]                                                         Net          -        -       -         -            2         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_9_cry_2_0           CCU2D        B1       In      0.000     9.428 r      -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_9_cry_2_0           CCU2D        COUT     Out     1.544     10.972 r     -         
-madd_9_cry_2                                                      Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_9_cry_3_0           CCU2D        CIN      In      0.000     10.972 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_9_cry_3_0           CCU2D        COUT     Out     0.143     11.115 r     -         
-madd_9_cry_4                                                      Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_9_cry_5_0           CCU2D        CIN      In      0.000     11.115 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_9_cry_5_0           CCU2D        COUT     Out     0.143     11.258 r     -         
-madd_9_cry_6                                                      Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_9_cry_7_0           CCU2D        CIN      In      0.000     11.258 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_9_cry_7_0           CCU2D        S1       Out     1.621     12.879 r     -         
-madd_13                                                           Net          -        -       -         -            2         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_13_cry_4_0          CCU2D        A1       In      0.000     12.879 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_13_cry_4_0          CCU2D        COUT     Out     1.544     14.423 r     -         
-madd_13_cry_4                                                     Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_13_cry_5_0          CCU2D        CIN      In      0.000     14.423 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_13_cry_5_0          CCU2D        S1       Out     1.549     15.972 r     -         
-madd_13[14]                                                       Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_14_cry_5_0          CCU2D        A1       In      0.000     15.972 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_14_cry_5_0          CCU2D        COUT     Out     1.544     17.517 r     -         
-madd_14_cry_6                                                     Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_14_cry_7_0          CCU2D        CIN      In      0.000     17.517 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_14_cry_7_0          CCU2D        S0       Out     1.685     19.202 r     -         
-madd_14[15]                                                       Net          -        -       -         -            3         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_0_0             CCU2D        B1       In      0.000     19.202 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_0_0             CCU2D        COUT     Out     1.544     20.746 r     -         
-madd_cry_0                                                        Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_1_0             CCU2D        CIN      In      0.000     20.746 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_1_0             CCU2D        COUT     Out     0.143     20.889 r     -         
-madd_cry_2                                                        Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_3_0             CCU2D        CIN      In      0.000     20.889 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_3_0             CCU2D        COUT     Out     0.143     21.032 r     -         
-madd_cry_4                                                        Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_5_0             CCU2D        CIN      In      0.000     21.032 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_5_0             CCU2D        COUT     Out     0.143     21.175 r     -         
-madd_cry_6                                                        Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_7_0             CCU2D        CIN      In      0.000     21.175 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_7_0             CCU2D        COUT     Out     0.143     21.317 r     -         
-madd_cry_8                                                        Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_9_0             CCU2D        CIN      In      0.000     21.317 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_9_0             CCU2D        COUT     Out     0.143     21.460 r     -         
-madd_cry_10                                                       Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_11_0            CCU2D        CIN      In      0.000     21.460 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_11_0            CCU2D        COUT     Out     0.143     21.603 r     -         
-madd_cry_12                                                       Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_13_0            CCU2D        CIN      In      0.000     21.603 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_13_0            CCU2D        COUT     Out     0.143     21.746 r     -         
-madd_cry_14                                                       Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_15_0            CCU2D        CIN      In      0.000     21.746 r     -         
-coreInst.fullALUInst.aluInst.un21_RESULT.madd_cry_15_0            CCU2D        S1       Out     1.549     23.295 r     -         
-un21_RESULT[31]                                                   Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.tmp_1[15]                            ORCALUT4     C        In      0.000     23.295 r     -         
-coreInst.fullALUInst.aluInst.tmp_1[15]                            ORCALUT4     Z        Out     1.017     24.312 r     -         
-tmp_1[15]                                                         Net          -        -       -         -            1         
-coreInst.fullALUInst.aluInst.tmp[15]                              FD1S1AY      D        In      0.000     24.312 r     -         
-=================================================================================================================================
-
-
-
-
-====================================
-<a name=clockReport17></a>Detailed Report for Clock: System</a>
-====================================
-
-
-
-<a name=startingSlack18></a>Starting Points with Worst Slack</a>
-********************************
-
-                                        Starting                                     Arrival          
-Instance                                Reference     Type        Pin     Net        Time        Slack
-                                        Clock                                                         
-------------------------------------------------------------------------------------------------------
-coreInst.fullALUInst.aluInst.tmp[0]     System        FD1S1AY     Q       tmp[0]     0.972       6.226
-coreInst.fullALUInst.aluInst.tmp[1]     System        FD1S1AY     Q       tmp[1]     0.972       6.226
-coreInst.fullALUInst.aluInst.tmp[2]     System        FD1S1AY     Q       tmp[2]     0.972       6.226
-coreInst.fullALUInst.aluInst.tmp[3]     System        FD1S1AY     Q       tmp[3]     0.972       6.226
-coreInst.fullALUInst.aluInst.tmp[4]     System        FD1S1AY     Q       tmp[4]     0.972       6.226
-coreInst.fullALUInst.aluInst.tmp[5]     System        FD1S1AY     Q       tmp[5]     0.972       6.226
-coreInst.fullALUInst.aluInst.tmp[6]     System        FD1S1AY     Q       tmp[6]     0.972       6.226
-coreInst.fullALUInst.aluInst.tmp[7]     System        FD1S1AY     Q       tmp[7]     0.972       6.226
-coreInst.fullALUInst.aluInst.tmp[8]     System        FD1S1AY     Q       tmp[8]     0.972       6.226
-coreInst.fullALUInst.aluInst.tmp[9]     System        FD1S1AY     Q       tmp[9]     0.972       6.226
-======================================================================================================
-
-
-<a name=endingSlack19></a>Ending Points with Worst Slack</a>
-******************************
-
-                                   Starting                                   Required          
-Instance                           Reference     Type        Pin     Net      Time         Slack
-                                   Clock                                                        
-------------------------------------------------------------------------------------------------
-coreInst.fullALUInst.CC_PARITY     System        FD1P3DX     D       CC_P     9.894        6.226
-coreInst.fullALUInst.CC_CARRY      System        FD1P3DX     D       CC_C     9.894        8.923
-================================================================================================
-
-
-
-<a name=worstPaths20></a>Worst Path Information</a>
-<a href="C:\Users\Duncan\git\ForthCPU\impl1\ForthCPU_impl1.srr:srsfC:\Users\Duncan\git\ForthCPU\impl1\ForthCPU_impl1.srs:fp:139655:141290:@XP_NAMES_GATE">View Worst Path in Analyst</a>
-***********************
-
-
-Path information for path number 1: 
-      Requested Period:                      10.000
-    - Setup time:                            0.106
-    + Clock delay at ending point:           0.000 (ideal)
-    = Required time:                         9.894
-
-    - Propagation time:                      3.668
-    - Clock delay at starting point:         0.000 (ideal)
-    - Estimated clock delay at start point:  -0.000
-    = Slack (non-critical) :                 6.226
-
-    Number of logic level(s):                4
-    Starting point:                          coreInst.fullALUInst.aluInst.tmp[0] / Q
-    Ending point:                            coreInst.fullALUInst.CC_PARITY / D
-    The start point is clocked by            System [rising] on pin CK
-    The end   point is clocked by            mcu|CLK [rising] (rise=0.000 fall=5.000 period=10.000) on pin CK
-
-Instance / Net                                            Pin      Pin               Arrival     No. of    
-Name                                         Type         Name     Dir     Delay     Time        Fan Out(s)
------------------------------------------------------------------------------------------------------------
-coreInst.fullALUInst.aluInst.tmp[0]          FD1S1AY      Q        Out     0.972     0.972 r     -         
-tmp[0]                                       Net          -        -       -         -           1         
-coreInst.fullALUInst.aluInst.PARITY_2_10     ORCALUT4     A        In      0.000     0.972 r     -         
-coreInst.fullALUInst.aluInst.PARITY_2_10     ORCALUT4     Z        Out     1.017     1.989 r     -         
-PARITY_2_10                                  Net          -        -       -         -           1         
-coreInst.fullALUInst.aluInst.PARITY_2        ORCALUT4     C        In      0.000     1.989 r     -         
-coreInst.fullALUInst.aluInst.PARITY_2        ORCALUT4     Z        Out     1.017     3.005 r     -         
-PARITY_2                                     Net          -        -       -         -           1         
-coreInst.fullALUInst.aluInst.PARITY_0        PFUMX        BLUT     In      0.000     3.005 r     -         
-coreInst.fullALUInst.aluInst.PARITY_0        PFUMX        Z        Out     0.214     3.220 r     -         
-N_323                                        Net          -        -       -         -           1         
-coreInst.fullALUInst.aluInst.PARITY_u        ORCALUT4     B        In      0.000     3.220 r     -         
-coreInst.fullALUInst.aluInst.PARITY_u        ORCALUT4     Z        Out     0.449     3.668 r     -         
-CC_P                                         Net          -        -       -         -           1         
-coreInst.fullALUInst.CC_PARITY               FD1P3DX      D        In      0.000     3.668 r     -         
-===========================================================================================================
-
-
-
-##### END OF TIMING REPORT #####]
-
-Timing exceptions that could not be applied
-
-Finished final timing analysis (Real Time elapsed 0h:00m:13s; CPU Time elapsed 0h:00m:12s; Memory used current: 236MB peak: 241MB)
-
-
-Finished timing report (Real Time elapsed 0h:00m:13s; CPU Time elapsed 0h:00m:12s; Memory used current: 236MB peak: 241MB)
-
----------------------------------------
-<a name=resourceUsage21></a>Resource Usage Report</a>
-Part: lcmxo3l_6900c-5
-
-Register bits: 172 of 54912 (0%)
-Latch bits:      17
-PIC Latch:       0
-I/O cells:       50
-Block Rams : 2 of 240 (0%)
-
-
-Details:
-BB:             16
-CCU2D:          229
-DP8KC:          2
-FD1P3AX:        12
-FD1P3BX:        22
-FD1P3DX:        81
-FD1P3IX:        3
-FD1P3JX:        1
-FD1S1AY:        17
-FD1S3DX:        12
-FD1S3IX:        21
-FD1S3JX:        3
-GSR:            1
-IB:             10
-IFS1P3DX:       16
-INV:            5
-L6MUX21:        24
-OB:             8
-OBZ:            16
-OFS1P3BX:       1
-ORCALUT4:       955
-PFUMX:          73
-PUR:            1
-VHI:            22
-VLO:            22
-Mapper successful!
-
-At Mapper Exit (Real Time elapsed 0h:00m:13s; CPU Time elapsed 0h:00m:12s; Memory used current: 72MB peak: 241MB)
-
-Process took 0h:00m:13s realtime, 0h:00m:12s cputime
-# Sat Oct 28 16:00:26 2023
+Finished loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 143MB peak: 144MB)
+
+@N:<a href="@N:FX493:@XP_HELP">FX493</a> : <!@TM:1698681574> | Applying initial value "00000000" on instance r_RX_Byte[7:0]. 
+<font color=#A52A2A>@W:<a href="@W:FX474:@XP_HELP">FX474</a> : <!@TM:1698681574> | User-specified initial value defined for some sequential elements which can prevent optimum synthesis results from being achieved. </font> 
+@N:<a href="@N:FX493:@XP_HELP">FX493</a> : <!@TM:1698681574> | Applying initial value "0" on instance r_RX_DV. 
+@N:<a href="@N:FX493:@XP_HELP">FX493</a> : <!@TM:1698681574> | Applying initial value "000" on instance r_SM_Main[2:0]. 
+@A:<a href="@A:BN321:@XP_HELP">BN321</a> : <a href="c:\users\duncan\git\forthcpu\impl1\source\mcu.v:47:9:47:18:@A:BN321:@XP_MSG">mcu.v(47)</a><!@TM:1698681574> | Found multiple drivers on net DIN_GPIO[4] (in view: work.mcu(verilog)); if one driver is a constant (true or false), use Resolve Mixed Drivers option to connect the net to VCC or GND.
+<a name=error6></a><font color=red>@E: : <!@TM:1698681574> | Net DIN_GPIO[4] (in view: work.mcu(verilog)) has conflicting drivers, the connections are</font> 
+Connection 1: Direction is (Output ) pin:GPI[7] inst:boardInst of work.devBoard(verilog)
+Connection 2: Direction is (Output ) pin:GPI[6] inst:boardInst of work.devBoard(verilog)
+Connection 3: Direction is (Output ) pin:GPI[5] inst:boardInst of work.devBoard(verilog)
+Connection 4: Direction is (Output ) pin:GPI[4] inst:boardInst of work.devBoard(verilog)
+Connection 5: Direction is (Output ) pin:O[0] inst:false of PrimLib.false(prim)
+<a name=error7></a><font color=red>@E:<a href="@E:BN314:@XP_HELP">BN314</a> : <a href="c:\users\duncan\git\forthcpu\impl1\source\mcu.v:47:9:47:18:@E:BN314:@XP_MSG">mcu.v(47)</a><!@TM:1698681574> | Net GND in work.mcu(verilog) has multiple drivers. </font>
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+# Mon Oct 30 15:59:33 2023
 
 ###########################################################]
 

@@ -18,7 +18,6 @@ module interruptStateMachine(
 );
 
 reg EI;
-reg EI_NEXT;
 reg [3:0] STATE;
 reg [3:0] STATE_NEXT;
 reg [2:0] PC_NEXTX_NEXT;

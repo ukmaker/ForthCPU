@@ -21,7 +21,6 @@ reg sex;
 
 reg OVFL;
 
-wire [31:0] w_result;
 reg [15:0] tmp;
 	
 always @ (*)

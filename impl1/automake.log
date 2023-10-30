@@ -1,254 +1,537 @@
 
-map -a "MachXO3L" -p LCMXO3L-6900C -t CABGA256 -s 5 -oc Commercial   "ForthCPU_impl1.ngd" -o "ForthCPU_impl1_map.ncd" -pr "ForthCPU_impl1.prf" -mp "ForthCPU_impl1.mrp" -lpf "C:/Users/Duncan/git/ForthCPU/impl1/ForthCPU_impl1_synplify.lpf" -lpf "C:/Users/Duncan/git/ForthCPU/ForthCPU.lpf"  -c 0           
-map:  version Diamond (64-bit) 3.12.1.454
+synpwrap -msg -prj "ForthCPU_impl1_synplify.tcl" -log "ForthCPU_impl1.srf"
+Copyright (C) 1992-2020 Lattice Semiconductor Corporation. All rights reserved.
+Lattice Diamond Version 3.12.1.454
+    <postMsg mid="2011000" type="Info"    dynamic="0" navigation="0"  />
 
-Copyright (c) 1991-1994 by NeoCAD Inc. All rights reserved.
-Copyright (c) 1995 AT&T Corp.   All rights reserved.
-Copyright (c) 1995-2001 Lucent Technologies Inc.  All rights reserved.
-Copyright (c) 2001 Agere Systems   All rights reserved.
-Copyright (c) 2002-2020 Lattice Semiconductor Corporation,  All rights reserved.
-   Process the file: ForthCPU_impl1.ngd
-   Picdevice="LCMXO3L-6900C"
+==contents of ForthCPU_impl1.srf
+#Build: Synplify Pro (R) R-2021.03L-SP1, Build 093R, Aug 10 2021
+#install: C:\lscc\diamond\3.12\synpbase
+#OS: Windows 8 6.2
+#Hostname: EDAWIN
 
-   Pictype="CABGA256"
+# Mon Oct 30 15:59:24 2023
 
-   Picspeed=5
-
-   Remove unused logic
-
-   Do not produce over sized NCDs.
-
-Part used: LCMXO3L-6900CCABGA256, Performance used: 5.
-
-    <postMsg mid="1100523" type="Warning" dynamic="2" navigation="2" arg0="C:/Users/Duncan/git/ForthCPU/ForthCPU.lpf(18): Semantic error in &quot;FREQUENCY NET &quot;CLKOP&quot; 80.000000 MHz ;&quot;: " arg1="CLKOP matches no clock nets in the design. " arg2="C:/Users/Duncan/git/ForthCPU/ForthCPU.lpf" arg3="18"  />
-    <postMsg mid="1101121" type="Warning" dynamic="2" navigation="2" arg0="C:/Users/Duncan/git/ForthCPU/ForthCPU.lpf(19): Semantic error in &quot;INPUT_SETUP ALLPORTS 50.000000 ns HOLD 12.000000 ns CLKNET &quot;clk&quot; ;&quot;: " arg1="&quot;clk&quot; matches no clknets in the design. " arg2="C:/Users/Duncan/git/ForthCPU/ForthCPU.lpf" arg3="19"  />
-    <postMsg mid="1101121" type="Warning" dynamic="2" navigation="2" arg0="C:/Users/Duncan/git/ForthCPU/ForthCPU.lpf(20): Semantic error in &quot;INPUT_SETUP PORT &quot;reset&quot; 50.000000 ns CLKNET &quot;clk&quot; ;&quot;: " arg1="reset matches no ports in the design. &quot;clk&quot; matches no clknets in the design. " arg2="C:/Users/Duncan/git/ForthCPU/ForthCPU.lpf" arg3="20"  />
-    <postMsg mid="1100679" type="Warning" dynamic="2" navigation="2" arg0="C:/Users/Duncan/git/ForthCPU/ForthCPU.lpf(5): Semantic error in &quot;LOCATE COMP &quot;addr[0]&quot; SITE &quot;P16&quot; ;&quot;: " arg1="addr[0]" arg2="C:/Users/Duncan/git/ForthCPU/ForthCPU.lpf" arg3="5"  />
-    <postMsg mid="1100679" type="Warning" dynamic="2" navigation="2" arg0="C:/Users/Duncan/git/ForthCPU/ForthCPU.lpf(6): Semantic error in &quot;LOCATE COMP &quot;addr[1]&quot; SITE &quot;N15&quot; ;&quot;: " arg1="addr[1]" arg2="C:/Users/Duncan/git/ForthCPU/ForthCPU.lpf" arg3="6"  />
-    <postMsg mid="1100679" type="Warning" dynamic="2" navigation="2" arg0="C:/Users/Duncan/git/ForthCPU/ForthCPU.lpf(7): Semantic error in &quot;LOCATE COMP &quot;addr[2]&quot; SITE &quot;L13&quot; ;&quot;: " arg1="addr[2]" arg2="C:/Users/Duncan/git/ForthCPU/ForthCPU.lpf" arg3="7"  />
-    <postMsg mid="1100679" type="Warning" dynamic="2" navigation="2" arg0="C:/Users/Duncan/git/ForthCPU/ForthCPU.lpf(8): Semantic error in &quot;LOCATE COMP &quot;addr[3]&quot; SITE &quot;K11&quot; ;&quot;: " arg1="addr[3]" arg2="C:/Users/Duncan/git/ForthCPU/ForthCPU.lpf" arg3="8"  />
-    <postMsg mid="1100679" type="Warning" dynamic="2" navigation="2" arg0="C:/Users/Duncan/git/ForthCPU/ForthCPU.lpf(9): Semantic error in &quot;LOCATE COMP &quot;addr[4]&quot; SITE &quot;L12&quot; ;&quot;: " arg1="addr[4]" arg2="C:/Users/Duncan/git/ForthCPU/ForthCPU.lpf" arg3="9"  />
-    <postMsg mid="1100679" type="Warning" dynamic="2" navigation="2" arg0="C:/Users/Duncan/git/ForthCPU/ForthCPU.lpf(10): Semantic error in &quot;LOCATE COMP &quot;addr[5]&quot; SITE &quot;J11&quot; ;&quot;: " arg1="addr[5]" arg2="C:/Users/Duncan/git/ForthCPU/ForthCPU.lpf" arg3="10"  />
-    <postMsg mid="1100679" type="Warning" dynamic="2" navigation="2" arg0="C:/Users/Duncan/git/ForthCPU/ForthCPU.lpf(11): Semantic error in &quot;LOCATE COMP &quot;addr[6]&quot; SITE &quot;J13&quot; ;&quot;: " arg1="addr[6]" arg2="C:/Users/Duncan/git/ForthCPU/ForthCPU.lpf" arg3="11"  />
-    <postMsg mid="1100679" type="Warning" dynamic="2" navigation="2" arg0="C:/Users/Duncan/git/ForthCPU/ForthCPU.lpf(12): Semantic error in &quot;LOCATE COMP &quot;addr[7]&quot; SITE &quot;H11&quot; ;&quot;: " arg1="addr[7]" arg2="C:/Users/Duncan/git/ForthCPU/ForthCPU.lpf" arg3="12"  />
-    <postMsg mid="1100644" type="Warning" dynamic="2" navigation="2" arg0="C:/Users/Duncan/git/ForthCPU/ForthCPU.lpf(13): Semantic error in &quot;IOBUF PORT &quot;reset&quot; IO_TYPE=LVCMOS33 ;&quot;: " arg1="reset" arg2="C:/Users/Duncan/git/ForthCPU/ForthCPU.lpf" arg3="13"  />
-    <postMsg mid="1100679" type="Warning" dynamic="2" navigation="2" arg0="C:/Users/Duncan/git/ForthCPU/ForthCPU.lpf(15): Semantic error in &quot;LOCATE COMP &quot;pc_opx[0]&quot; SITE &quot;N2&quot; ;&quot;: " arg1="pc_opx[0]" arg2="C:/Users/Duncan/git/ForthCPU/ForthCPU.lpf" arg3="15"  />
-    <postMsg mid="1100679" type="Warning" dynamic="2" navigation="2" arg0="C:/Users/Duncan/git/ForthCPU/ForthCPU.lpf(16): Semantic error in &quot;LOCATE COMP &quot;pc_opx[1]&quot; SITE &quot;P1&quot; ;&quot;: " arg1="pc_opx[1]" arg2="C:/Users/Duncan/git/ForthCPU/ForthCPU.lpf" arg3="16"  />
-Loading device for application map from file 'xo3c6900.nph' in environment: C:/lscc/diamond/3.12/ispfpga.
-Package Status:                     Final          Version 1.17.
-
-Running general design DRC...
-
-Removing unused logic...
-
-Optimizing...
-
-3 CCU2 constant inputs absorbed.
-
-    <postMsg mid="51001030" type="Warning" dynamic="1" navigation="0" arg0="RESET_c"  />
-    <postMsg mid="51001046" type="Warning" dynamic="1" navigation="0" arg0="RXD"  />
+#Implementation: impl1
 
 
+Copyright (C) 1994-2021 Synopsys, Inc.
+This Synopsys software and all associated documentation are proprietary to Synopsys, Inc.
+and may only be used pursuant to the terms and conditions of a written license agreement
+with Synopsys, Inc. All other use, reproduction, modification, or distribution of the
+Synopsys software or the associated documentation is strictly prohibited.
+Tool: Synplify Pro (R)
+Build: R-2021.03L-SP1
+Install: C:\lscc\diamond\3.12\synpbase
+OS: Windows 6.2
 
-Design Summary:
-   Number of registers:    189 out of  7485 (3%)
-      PFU registers:          172 out of  6864 (3%)
-      PIO registers:           17 out of   621 (3%)
-   Number of SLICEs:       711 out of  3432 (21%)
-      SLICEs as Logic/ROM:    711 out of  3432 (21%)
-      SLICEs as RAM:            0 out of  2574 (0%)
-      SLICEs as Carry:        229 out of  3432 (7%)
-   Number of LUT4s:        1416 out of  6864 (21%)
-      Number used as logic LUTs:        958
-      Number used as distributed RAM:     0
-      Number used as ripple logic:      458
-      Number used as shift registers:     0
-   Number of PIO sites used: 50 + 4(JTAG) out of 207 (26%)
-   Number of block RAMs:  2 out of 26 (8%)
-   Number of GSRs:        1 out of 1 (100%)
-   EFB used :        No
-   JTAG used :       No
-   Readback used :   No
-   Oscillator used : No
-   Startup used :    No
-   POR :             On
-   Bandgap :         On
-   Number of Power Controller:  0 out of 1 (0%)
-   Number of Dynamic Bank Controller (BCINRD):  0 out of 6 (0%)
-   Number of Dynamic Bank Controller (BCLVDSO):  0 out of 1 (0%)
-   Number of DCCA:  0 out of 8 (0%)
-   Number of DCMA:  0 out of 2 (0%)
-   Number of PLLs:  0 out of 2 (0%)
-   Number of DQSDLLs:  0 out of 2 (0%)
-   Number of CLKDIVC:  0 out of 4 (0%)
-   Number of ECLKSYNCA:  0 out of 4 (0%)
-   Number of ECLKBRIDGECS:  0 out of 2 (0%)
-   Notes:-
-      1. Total number of LUT4s = (Number of logic LUT4s) + 2*(Number of distributed RAMs) + 2*(Number of ripple logic)
-      2. Number of logic LUT4s does not include count of distributed RAM and ripple logic.
-   Number of clocks:  3
-     Net CLK_c: 114 loads, 113 rising, 1 falling (Driver: PIO CLK )
-     Net coreInst/fullALUInst/aluInst/un1_ALUX_1_buf: 1 loads, 1 rising, 0 falling (Driver: coreInst/fullALUInst/aluInst/un1_ALUX_1 )
-     Net coreInst/fullALUInst/aluInst/un1_ALUX_2_buf: 8 loads, 8 rising, 0 falling (Driver: coreInst/fullALUInst/aluInst/un1_ALUX_2 )
-   Number of Clock Enables:  18
-     Net RESET_c: 3 loads, 3 LSLICEs
-     Net N_198_i: 20 loads, 4 LSLICEs
-     Net mcuResourcesInst/interruptMaskRegisterInst/MASK_REG_0_sqmuxa: 4 loads, 4 LSLICEs
-     Net mcuResourcesInst/UARTInst/uartTxInst/r_TX_Data_0_sqmuxa_1: 4 loads, 4 LSLICEs
-     Net mcuResourcesInst/UARTInst/uartTxInst/N_43_i: 1 loads, 1 LSLICEs
-     Net mcuResourcesInst/UARTInst/TX_CLK_DIV_1_sqmuxa: 8 loads, 8 LSLICEs
-     Net mcuResourcesInst/UARTInst/START_TX_1_sqmuxa_i: 1 loads, 1 LSLICEs
-     Net coreInst/REGB_EN: 4 loads, 0 LSLICEs
-     Net EXECUTE_c: 1 loads, 1 LSLICEs
-     Net coreInst/REGA_EN: 4 loads, 0 LSLICEs
-     Net COMMIT_c: 10 loads, 10 LSLICEs
-     Net coreInst/N_301_i: 2 loads, 2 LSLICEs
-     Net coreInst/aluGroupDecoderInst/REGA_EN_1_sqmuxa_i: 2 loads, 2 LSLICEs
-     Net DECODE_c: 1 loads, 1 LSLICEs
-     Net coreInst/CCL_LD: 3 loads, 3 LSLICEs
-     Net coreInst/programCounterInst/N_200_i: 8 loads, 8 LSLICEs
-     Net coreInst/programCounterInst/INTR15: 8 loads, 8 LSLICEs
-     Net coreInst/programCounterInst/INTR05: 8 loads, 8 LSLICEs
-   Number of local set/reset loads for net RESET_c merged into GSR:  132
-   Number of LSRs:  10
-     Net RESET_c: 4 loads, 0 LSLICEs
-     Net FETCH_c: 1 loads, 1 LSLICEs
-     Net coreInst.INSTRUCTION[15]: 2 loads, 2 LSLICEs
-     Net mcuResourcesInst/UARTInst/uartTxInst/r_Clock_Count15_cry_16_0_RNINU4S: 9 loads, 9 LSLICEs
-     Net mcuResourcesInst/UARTInst/uartTxInst/un1_r_TX_Data_0_sqmuxa_1: 2 loads, 2 LSLICEs
-     Net coreInst/aluGroupDecoderInst/N_227_i: 1 loads, 1 LSLICEs
-     Net coreInst/aluGroupDecoderInst/N_15_i: 1 loads, 1 LSLICEs
-     Net DECODE_c: 1 loads, 1 LSLICEs
-     Net coreInst/aluGroupDecoderInst/fb: 1 loads, 1 LSLICEs
-     Net coreInst/aluGroupDecoderInst/CCL_LD_0_sqmuxa: 1 loads, 1 LSLICEs
-   Number of nets driven by tri-state buffers:  0
-   Top 10 highest fanout non-clock nets:
-     Net coreInst/ALUX_i_1[3]: 131 loads
-     Net coreInst/N_233: 85 loads
-     Net coreInst/N_229: 78 loads
-     Net coreInst/N_231: 77 loads
-     Net coreInst/ARGB_i_1[0]: 69 loads
-     Net coreInst/ALUX_i_1[2]: 65 loads
-     Net coreInst/fullALUInst/N_344: 61 loads
-     Net coreInst/fullALUInst/aluInst/OVER_0: 45 loads
-     Net coreInst/N_388: 41 loads
-     Net coreInst/N_389: 41 loads
- 
+Hostname: EDAWIN
 
-   Number of warnings:  16
-   Number of errors:    0
+Implementation : impl1
+Synopsys HDL Compiler, Version comp202103synp2, Build 093R, Built Aug 10 2021 09:15:36, @
+
+@N|Running in 64-bit mode
+###########################################################[
+
+Copyright (C) 1994-2021 Synopsys, Inc.
+This Synopsys software and all associated documentation are proprietary to Synopsys, Inc.
+and may only be used pursuant to the terms and conditions of a written license agreement
+with Synopsys, Inc. All other use, reproduction, modification, or distribution of the
+Synopsys software or the associated documentation is strictly prohibited.
+Tool: Synplify Pro (R)
+Build: R-2021.03L-SP1
+Install: C:\lscc\diamond\3.12\synpbase
+OS: Windows 6.2
+
+Hostname: EDAWIN
+
+Implementation : impl1
+Synopsys Verilog Compiler, Version comp202103synp2, Build 093R, Built Aug 10 2021 09:15:36, @
+
+@N|Running in 64-bit mode
+@N: CG1349 :	| Running Verilog Compiler in System Verilog mode
+
+@N: CG1350 :	| Running Verilog Compiler in Multiple File Compilation Unit mode
+
+@I::"C:\lscc\diamond\3.12\synpbase\lib\lucent\machxo3l.v" (library work)
+@I::"C:\lscc\diamond\3.12\synpbase\lib\lucent\pmi_def.v" (library work)
+@I::"C:\lscc\diamond\3.12\synpbase\lib\vlog\hypermods.v" (library __hyper__lib__)
+@I::"C:\lscc\diamond\3.12\synpbase\lib\vlog\umr_capim.v" (library snps_haps)
+@I::"C:\lscc\diamond\3.12\synpbase\lib\vlog\scemi_objects.v" (library snps_haps)
+@I::"C:\lscc\diamond\3.12\synpbase\lib\vlog\scemi_pipes.svh" (library snps_haps)
+@I::"C:\Users\Duncan\git\ForthCPU\constants.v" (library work)
+@I::"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v" (library work)
+@I:"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":"C:/Users/Duncan/git/ForthCPU\constants.v" (library work)
+@I::"C:\Users\Duncan\git\ForthCPU\aluGroupDecoder\source\aluGroupDecoder.v" (library work)
+@I::"C:\Users\Duncan\git\ForthCPU\loadStoreGroupDecoder\source\loadStoreGroupDecoder.v" (library work)
+@I::"C:\Users\Duncan\git\ForthCPU\instructionPhaseDecoder\source\instructionPhaseDecoder.v" (library work)
+@I::"C:\Users\Duncan\git\ForthCPU\programCounter\source\programCounter.v" (library work)
+@I::"C:\Users\Duncan\git\ForthCPU\jumpGroupDecoder\source\jumpGroupDecoder.v" (library work)
+@I::"C:\Users\Duncan\git\ForthCPU\registerFileB\source\registerFile.v" (library work)
+@I::"C:\Users\Duncan\git\ForthCPU\registerFileB\source\registers.v" (library work)
+@I::"C:\Users\Duncan\git\ForthCPU\aluB\source\alu.v" (library work)
+@I::"C:\Users\Duncan\git\ForthCPU\aluB\source\aluAMux.v" (library work)
+@I::"C:\Users\Duncan\git\ForthCPU\aluB\source\aluBMux.v" (library work)
+@I::"C:\Users\Duncan\git\ForthCPU\aluB\source\fullALU.v" (library work)
+@I::"C:\Users\Duncan\git\ForthCPU\opxMultiplexer\source\opxMultiplexer.v" (library work)
+@I:"C:\Users\Duncan\git\ForthCPU\opxMultiplexer\source\opxMultiplexer.v":"C:\Users\Duncan\git\ForthCPU\opxMultiplexer\source\../..\constants.v" (library work)
+@I::"C:\Users\Duncan\git\ForthCPU\interruptLogic\source\interruptStateMachine.v" (library work)
+@I:"C:\Users\Duncan\git\ForthCPU\interruptLogic\source\interruptStateMachine.v":"C:\Users\Duncan\git\ForthCPU\interruptLogic\source\../..\constants.v" (library work)
+@I::"C:\Users\Duncan\git\ForthCPU\branchLogic\source\branchLogic.v" (library work)
+@I::"C:\Users\Duncan\git\ForthCPU\busController\source\busController.v" (library work)
+@I:"C:\Users\Duncan\git\ForthCPU\busController\source\busController.v":"C:\Users\Duncan\git\ForthCPU\busController\source\../..\constants.v" (library work)
+@I::"C:\Users\Duncan\git\ForthCPU\generalGroupDecoder\source\generalGroupDecoder.v" (library work)
+@I::"C:\Users\Duncan\git\ForthCPU\impl1\source\mcu.v" (library work)
+@I::"C:\Users\Duncan\git\ForthCPU\bootROM\source\rom.v" (library work)
+@I::"C:\Users\Duncan\git\ForthCPU\memoryMapper\source\memoryMapper.v" (library work)
+@I:"C:\Users\Duncan\git\ForthCPU\memoryMapper\source\memoryMapper.v":"C:\Users\Duncan\git\ForthCPU\memoryMapper\source\../..\constants.v" (library work)
+@I::"C:\Users\Duncan\git\ForthCPU\mcuResources\source\mcuResources.v" (library work)
+@I:"C:\Users\Duncan\git\ForthCPU\mcuResources\source\mcuResources.v":"C:\Users\Duncan\git\ForthCPU\mcuResources\source\../..\constants.v" (library work)
+@I::"C:\Users\Duncan\git\ForthCPU\RAM\source\RAM.v" (library work)
+@I::"C:\Users\Duncan\git\ForthCPU\interruptLogic\source\interruptMaskRegister.v" (library work)
+@I::"C:\Users\Duncan\git\ForthCPU\UART\source\receiver.v" (library work)
+@I::"C:\Users\Duncan\git\ForthCPU\UART\source\transmitter.v" (library work)
+@I::"C:\Users\Duncan\git\ForthCPU\UART\source\UART.v" (library work)
+@I:"C:\Users\Duncan\git\ForthCPU\UART\source\UART.v":"C:\Users\Duncan\git\ForthCPU\UART\source\../..\constants.v" (library work)
+@I::"C:\Users\Duncan\git\ForthCPU\GPIO\source\devBoard.v" (library work)
+Verilog syntax check successful!
+File C:\Users\Duncan\git\ForthCPU\loadStoreGroupDecoder\source\loadStoreGroupDecoder.v changed - recompiling
+File C:\Users\Duncan\git\ForthCPU\interruptLogic\source\interruptStateMachine.v changed - recompiling
+Selecting top level module mcu
+@N: CG364 :"C:\Users\Duncan\git\ForthCPU\GPIO\source\devBoard.v":7:7:7:14|Synthesizing module devBoard in library work.
+Running optimization stage 1 on devBoard .......
+@N: CL189 :"C:\Users\Duncan\git\ForthCPU\GPIO\source\devBoard.v":28:0:28:5|Register bit GPI[15] is always 0.
+@N: CL189 :"C:\Users\Duncan\git\ForthCPU\GPIO\source\devBoard.v":28:0:28:5|Register bit GPI[14] is always 0.
+@N: CL189 :"C:\Users\Duncan\git\ForthCPU\GPIO\source\devBoard.v":28:0:28:5|Register bit GPI[13] is always 0.
+@N: CL189 :"C:\Users\Duncan\git\ForthCPU\GPIO\source\devBoard.v":28:0:28:5|Register bit GPI[12] is always 0.
+@N: CL189 :"C:\Users\Duncan\git\ForthCPU\GPIO\source\devBoard.v":28:0:28:5|Register bit GPI[11] is always 0.
+@N: CL189 :"C:\Users\Duncan\git\ForthCPU\GPIO\source\devBoard.v":28:0:28:5|Register bit GPI[10] is always 0.
+@N: CL189 :"C:\Users\Duncan\git\ForthCPU\GPIO\source\devBoard.v":28:0:28:5|Register bit GPI[9] is always 0.
+@N: CL189 :"C:\Users\Duncan\git\ForthCPU\GPIO\source\devBoard.v":28:0:28:5|Register bit GPI[8] is always 0.
+@W: CL279 :"C:\Users\Duncan\git\ForthCPU\GPIO\source\devBoard.v":28:0:28:5|Pruning register bits 15 to 8 of GPI[15:0]. If this is not the intended behavior, drive the inputs with valid values, or inputs from the top level.
+Finished optimization stage 1 on devBoard (CPU Time 0h:00m:00s, Memory Used current: 94MB peak: 94MB)
+@N: CG364 :"C:\Users\Duncan\git\ForthCPU\instructionPhaseDecoder\source\instructionPhaseDecoder.v":3:7:3:29|Synthesizing module instructionPhaseDecoder in library work.
+Running optimization stage 1 on instructionPhaseDecoder .......
+@A: CL282 :"C:\Users\Duncan\git\ForthCPU\instructionPhaseDecoder\source\instructionPhaseDecoder.v":18:0:18:5|Feedback mux created for signal FETCH. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
+@A: CL282 :"C:\Users\Duncan\git\ForthCPU\instructionPhaseDecoder\source\instructionPhaseDecoder.v":18:0:18:5|Feedback mux created for signal EXECUTE. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
+@A: CL282 :"C:\Users\Duncan\git\ForthCPU\instructionPhaseDecoder\source\instructionPhaseDecoder.v":18:0:18:5|Feedback mux created for signal DECODE. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
+@A: CL282 :"C:\Users\Duncan\git\ForthCPU\instructionPhaseDecoder\source\instructionPhaseDecoder.v":18:0:18:5|Feedback mux created for signal COMMIT. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
+Finished optimization stage 1 on instructionPhaseDecoder (CPU Time 0h:00m:00s, Memory Used current: 94MB peak: 94MB)
+@N: CG364 :"C:\Users\Duncan\git\ForthCPU\aluB\source\alu.v":3:7:3:9|Synthesizing module alu in library work.
+Running optimization stage 1 on alu .......
+@W: CL118 :"C:\Users\Duncan\git\ForthCPU\aluB\source\alu.v":33:3:33:6|Latch generated from always block for signal CARRY; possible missing assignment in an if or case statement.
+@W: CL118 :"C:\Users\Duncan\git\ForthCPU\aluB\source\alu.v":33:3:33:6|Latch generated from always block for signal tmp[15:0]; possible missing assignment in an if or case statement.
+Finished optimization stage 1 on alu (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 99MB)
+@N: CG364 :"C:\Users\Duncan\git\ForthCPU\aluB\source\aluAMux.v":6:7:6:13|Synthesizing module aluAMux in library work.
+Running optimization stage 1 on aluAMux .......
+Finished optimization stage 1 on aluAMux (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 99MB)
+@N: CG364 :"C:\Users\Duncan\git\ForthCPU\aluB\source\aluBMux.v":6:7:6:13|Synthesizing module aluBMux in library work.
+Running optimization stage 1 on aluBMux .......
+Finished optimization stage 1 on aluBMux (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 99MB)
+@N: CG364 :"C:\Users\Duncan\git\ForthCPU\aluB\source\fullALU.v":9:7:9:13|Synthesizing module fullALU in library work.
+Running optimization stage 1 on fullALU .......
+Finished optimization stage 1 on fullALU (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 99MB)
+@N: CG364 :"C:\lscc\diamond\3.12\synpbase\lib\lucent\machxo3l.v":1291:7:1291:11|Synthesizing module DP8KC in library work.
+Running optimization stage 1 on DP8KC .......
+Finished optimization stage 1 on DP8KC (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 99MB)
+@N: CG364 :"C:\lscc\diamond\3.12\synpbase\lib\lucent\machxo3l.v":1124:7:1124:9|Synthesizing module VLO in library work.
+Running optimization stage 1 on VLO .......
+Finished optimization stage 1 on VLO (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 99MB)
+@N: CG364 :"C:\Users\Duncan\git\ForthCPU\registerFileB\source\registers.v":8:7:8:15|Synthesizing module registers in library work.
+@W: CG360 :"C:\Users\Duncan\git\ForthCPU\registerFileB\source\registers.v":27:9:27:17|Removing wire scuba_vhi, as there is no assignment to it.
+Running optimization stage 1 on registers .......
+Finished optimization stage 1 on registers (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 99MB)
+@N: CG364 :"C:\Users\Duncan\git\ForthCPU\registerFileB\source\registerFile.v":3:7:3:18|Synthesizing module registerFile in library work.
+Running optimization stage 1 on registerFile .......
+Finished optimization stage 1 on registerFile (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 100MB)
+@N: CG364 :"C:\Users\Duncan\git\ForthCPU\busController\source\busController.v":9:7:9:19|Synthesizing module busController in library work.
+Running optimization stage 1 on busController .......
+Finished optimization stage 1 on busController (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 100MB)
+@N: CG364 :"C:\Users\Duncan\git\ForthCPU\programCounter\source\programCounter.v":16:7:16:20|Synthesizing module programCounter in library work.
+Running optimization stage 1 on programCounter .......
+Finished optimization stage 1 on programCounter (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 100MB)
+@N: CG364 :"C:\Users\Duncan\git\ForthCPU\branchLogic\source\branchLogic.v":6:7:6:17|Synthesizing module branchLogic in library work.
+Running optimization stage 1 on branchLogic .......
+Finished optimization stage 1 on branchLogic (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 100MB)
+@N: CG364 :"C:\Users\Duncan\git\ForthCPU\interruptLogic\source\interruptStateMachine.v":3:7:3:27|Synthesizing module interruptStateMachine in library work.
+Running optimization stage 1 on interruptStateMachine .......
+Finished optimization stage 1 on interruptStateMachine (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 100MB)
+@N: CG364 :"C:\Users\Duncan\git\ForthCPU\aluGroupDecoder\source\aluGroupDecoder.v":34:7:34:21|Synthesizing module aluGroupDecoder in library work.
+Running optimization stage 1 on aluGroupDecoder .......
+@N: CL189 :"C:\Users\Duncan\git\ForthCPU\aluGroupDecoder\source\aluGroupDecoder.v":134:0:134:5|Register bit REGB_WEN is always 0.
+Finished optimization stage 1 on aluGroupDecoder (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 100MB)
+@N: CG364 :"C:\Users\Duncan\git\ForthCPU\loadStoreGroupDecoder\source\loadStoreGroupDecoder.v":59:7:59:27|Synthesizing module loadStoreGroupDecoder in library work.
+Running optimization stage 1 on loadStoreGroupDecoder .......
+Finished optimization stage 1 on loadStoreGroupDecoder (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 100MB)
+@N: CG364 :"C:\Users\Duncan\git\ForthCPU\jumpGroupDecoder\source\jumpGroupDecoder.v":37:7:37:22|Synthesizing module jumpGroupDecoder in library work.
+Running optimization stage 1 on jumpGroupDecoder .......
+Finished optimization stage 1 on jumpGroupDecoder (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 100MB)
+@N: CG364 :"C:\Users\Duncan\git\ForthCPU\generalGroupDecoder\source\generalGroupDecoder.v":12:7:12:25|Synthesizing module generalGroupDecoder in library work.
+Running optimization stage 1 on generalGroupDecoder .......
+@W: CL169 :"C:\Users\Duncan\git\ForthCPU\generalGroupDecoder\source\generalGroupDecoder.v":33:0:33:5|Pruning unused register EI. Make sure that there are no unused intermediate registers.
+@W: CL169 :"C:\Users\Duncan\git\ForthCPU\generalGroupDecoder\source\generalGroupDecoder.v":33:0:33:5|Pruning unused register DI. Make sure that there are no unused intermediate registers.
+@W: CL169 :"C:\Users\Duncan\git\ForthCPU\generalGroupDecoder\source\generalGroupDecoder.v":33:0:33:5|Pruning unused register RETI. Make sure that there are no unused intermediate registers.
+@W: CL169 :"C:\Users\Duncan\git\ForthCPU\generalGroupDecoder\source\generalGroupDecoder.v":33:0:33:5|Pruning unused register HALT. Make sure that there are no unused intermediate registers.
+Finished optimization stage 1 on generalGroupDecoder (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 100MB)
+@N: CG364 :"C:\Users\Duncan\git\ForthCPU\opxMultiplexer\source\opxMultiplexer.v":7:7:7:20|Synthesizing module opxMultiplexer in library work.
+Running optimization stage 1 on opxMultiplexer .......
+Finished optimization stage 1 on opxMultiplexer (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 100MB)
+@N: CG364 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":6:7:6:10|Synthesizing module core in library work.
+@W: CG360 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":34:12:34:19|Removing wire ALUA_DIN, as there is no assignment to it.
+@W: CG360 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":37:12:37:19|Removing wire ALUB_DIN, as there is no assignment to it.
+@W: CG360 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":59:12:59:15|Removing wire PC_D, as there is no assignment to it.
+@W: CG360 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":60:13:60:22|Removing wire PC_LD_INT0, as there is no assignment to it.
+@W: CG360 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":61:13:61:22|Removing wire PC_LD_INT1, as there is no assignment to it.
+@W: CG360 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":86:12:86:24|Removing wire ALU_REGA_DINX, as there is no assignment to it.
+Running optimization stage 1 on core .......
+Finished optimization stage 1 on core (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 100MB)
+@N: CG364 :"C:\Users\Duncan\git\ForthCPU\memoryMapper\source\memoryMapper.v":11:7:11:18|Synthesizing module memoryMapper in library work.
+@W: CG360 :"C:\Users\Duncan\git\ForthCPU\memoryMapper\source\memoryMapper.v":58:5:58:9|Removing wire CLKEN, as there is no assignment to it.
+@W: CG133 :"C:\Users\Duncan\git\ForthCPU\memoryMapper\source\memoryMapper.v":59:4:59:5|Object WE is declared but not assigned. Either assign a value or remove the declaration.
+@W: CG360 :"C:\Users\Duncan\git\ForthCPU\memoryMapper\source\memoryMapper.v":61:12:61:19|Removing wire RAM_DATA, as there is no assignment to it.
+@W: CG360 :"C:\Users\Duncan\git\ForthCPU\memoryMapper\source\memoryMapper.v":62:12:62:19|Removing wire ROM_DATA, as there is no assignment to it.
+Running optimization stage 1 on memoryMapper .......
+Finished optimization stage 1 on memoryMapper (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 100MB)
+@N: CG364 :"C:\lscc\diamond\3.12\synpbase\lib\lucent\machxo3l.v":1077:7:1077:14|Synthesizing module ROM32X1A in library work.
+Running optimization stage 1 on ROM32X1A .......
+Finished optimization stage 1 on ROM32X1A (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 100MB)
+@N: CG364 :"C:\Users\Duncan\git\ForthCPU\bootROM\source\rom.v":8:7:8:9|Synthesizing module rom in library work.
+Running optimization stage 1 on rom .......
+Finished optimization stage 1 on rom (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 100MB)
+@N: CG364 :"C:\lscc\diamond\3.12\synpbase\lib\lucent\machxo3l.v":563:7:563:9|Synthesizing module INV in library work.
+Running optimization stage 1 on INV .......
+Finished optimization stage 1 on INV (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 100MB)
+@N: CG364 :"C:\lscc\diamond\3.12\synpbase\lib\lucent\machxo3l.v":43:7:43:10|Synthesizing module AND2 in library work.
+Running optimization stage 1 on AND2 .......
+Finished optimization stage 1 on AND2 (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 100MB)
+@N: CG364 :"C:\lscc\diamond\3.12\synpbase\lib\lucent\machxo3l.v":1120:7:1120:9|Synthesizing module VHI in library work.
+Running optimization stage 1 on VHI .......
+Finished optimization stage 1 on VHI (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 100MB)
+@N: CG364 :"C:\lscc\diamond\3.12\synpbase\lib\lucent\machxo3l.v":187:7:187:13|Synthesizing module FD1P3DX in library work.
+Running optimization stage 1 on FD1P3DX .......
+Finished optimization stage 1 on FD1P3DX (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 100MB)
+@N: CG364 :"C:\lscc\diamond\3.12\synpbase\lib\lucent\machxo3l.v":782:7:782:11|Synthesizing module MUX81 in library work.
+Running optimization stage 1 on MUX81 .......
+Finished optimization stage 1 on MUX81 (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 100MB)
+@N: CG364 :"C:\Users\Duncan\git\ForthCPU\RAM\source\RAM.v":8:7:8:9|Synthesizing module RAM in library work.
+Running optimization stage 1 on RAM .......
+Finished optimization stage 1 on RAM (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 100MB)
+@N: CG364 :"C:\Users\Duncan\git\ForthCPU\UART\source\receiver.v":14:7:14:13|Synthesizing module UART_RX in library work.
+Running optimization stage 1 on UART_RX .......
+Finished optimization stage 1 on UART_RX (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 101MB)
+@N: CG364 :"C:\Users\Duncan\git\ForthCPU\UART\source\transmitter.v":14:7:14:13|Synthesizing module UART_TX in library work.
+Running optimization stage 1 on UART_TX .......
+@A: CL282 :"C:\Users\Duncan\git\ForthCPU\UART\source\transmitter.v":38:2:38:7|Feedback mux created for signal r_TX_Data[7:0]. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
+@A: CL282 :"C:\Users\Duncan\git\ForthCPU\UART\source\transmitter.v":38:2:38:7|Feedback mux created for signal r_Clock_Count[15:0]. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
+@A: CL282 :"C:\Users\Duncan\git\ForthCPU\UART\source\transmitter.v":38:2:38:7|Feedback mux created for signal r_Bit_Index[2:0]. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
+Finished optimization stage 1 on UART_TX (CPU Time 0h:00m:00s, Memory Used current: 101MB peak: 102MB)
+@N: CG364 :"C:\Users\Duncan\git\ForthCPU\UART\source\UART.v":17:7:17:10|Synthesizing module UART in library work.
+Running optimization stage 1 on UART .......
+@W: CL113 :"C:\Users\Duncan\git\ForthCPU\UART\source\UART.v":74:0:74:5|Feedback mux created for signal STATUS[15:3]. To avoid the feedback mux, assign values explicitly under all conditions of conditional assignment statements.
+@A: CL282 :"C:\Users\Duncan\git\ForthCPU\UART\source\UART.v":74:0:74:5|Feedback mux created for signal DOUT[15:0]. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
+@W: CL250 :"C:\Users\Duncan\git\ForthCPU\UART\source\UART.v":74:0:74:5|All reachable assignments to STATUS[15:3] assign 0, register removed by optimization
+Finished optimization stage 1 on UART (CPU Time 0h:00m:00s, Memory Used current: 101MB peak: 102MB)
+@N: CG364 :"C:\Users\Duncan\git\ForthCPU\interruptLogic\source\interruptMaskRegister.v":7:7:7:27|Synthesizing module interruptMaskRegister in library work.
+Running optimization stage 1 on interruptMaskRegister .......
+@W: CL118 :"C:\Users\Duncan\git\ForthCPU\interruptLogic\source\interruptMaskRegister.v":49:2:49:3|Latch generated from always block for signal DOUT[15:0]; possible missing assignment in an if or case statement.
+@W: CL208 :"C:\Users\Duncan\git\ForthCPU\interruptLogic\source\interruptMaskRegister.v":59:0:59:5|All reachable assignments to bit 0 of INTS_REG[7:0] assign 0, register removed by optimization.
+Finished optimization stage 1 on interruptMaskRegister (CPU Time 0h:00m:00s, Memory Used current: 101MB peak: 102MB)
+@N: CG364 :"C:\Users\Duncan\git\ForthCPU\mcuResources\source\mcuResources.v":3:7:3:18|Synthesizing module mcuResources in library work.
+@W: CG1273 :"C:\Users\Duncan\git\ForthCPU\mcuResources\source\mcuResources.v":58:10:58:16|An input port (port CPU_DIN) is the target of an assignment - please check if this is intentional
+@W: CG1273 :"C:\Users\Duncan\git\ForthCPU\mcuResources\source\mcuResources.v":91:10:91:16|An input port (port WR_GPIO) is the target of an assignment - please check if this is intentional
+@W: CG1273 :"C:\Users\Duncan\git\ForthCPU\mcuResources\source\mcuResources.v":90:10:90:16|An input port (port RD_GPIO) is the target of an assignment - please check if this is intentional
+@W: CG1273 :"C:\Users\Duncan\git\ForthCPU\mcuResources\source\mcuResources.v":92:12:92:20|An input port (port ADDR_GPIO) is the target of an assignment - please check if this is intentional
+Running optimization stage 1 on mcuResources .......
+Finished optimization stage 1 on mcuResources (CPU Time 0h:00m:00s, Memory Used current: 101MB peak: 102MB)
+@N: CG364 :"C:\Users\Duncan\git\ForthCPU\impl1\source\mcu.v":7:7:7:9|Synthesizing module mcu in library work.
+Running optimization stage 1 on mcu .......
+Finished optimization stage 1 on mcu (CPU Time 0h:00m:00s, Memory Used current: 101MB peak: 102MB)
+Running optimization stage 2 on mcu .......
+@W: CL156 :"C:\Users\Duncan\git\ForthCPU\impl1\source\mcu.v":55:10:55:16|*Input RD_GPIO to expression [instance] has undriven bits; assigning undriven bits to 0.  Simulation mismatch possible. Assign all bits of the input.
+@W: CL156 :"C:\Users\Duncan\git\ForthCPU\impl1\source\mcu.v":56:10:56:16|*Input WR_GPIO to expression [instance] has undriven bits; assigning undriven bits to 0.  Simulation mismatch possible. Assign all bits of the input.
+@W: CL156 :"C:\Users\Duncan\git\ForthCPU\impl1\source\mcu.v":57:12:57:20|*Input ADDR_GPIO to expression [instance] has undriven bits; assigning undriven bits to 0.  Simulation mismatch possible. Assign all bits of the input.
+@W: CL156 :"C:\Users\Duncan\git\ForthCPU\impl1\source\mcu.v":97:7:97:14|*Input WR0N_BUF to expression [instance] has undriven bits; assigning undriven bits to 0.  Simulation mismatch possible. Assign all bits of the input.
+@W: CL156 :"C:\Users\Duncan\git\ForthCPU\impl1\source\mcu.v":98:7:98:14|*Input WR1N_BUF to expression [instance] has undriven bits; assigning undriven bits to 0.  Simulation mismatch possible. Assign all bits of the input.
+@W: CL156 :"C:\Users\Duncan\git\ForthCPU\impl1\source\mcu.v":55:10:55:16|*Input RD_GPIO to expression [instance] has undriven bits; assigning undriven bits to 0.  Simulation mismatch possible. Assign all bits of the input.
+@W: CL156 :"C:\Users\Duncan\git\ForthCPU\impl1\source\mcu.v":56:10:56:16|*Input WR_GPIO to expression [instance] has undriven bits; assigning undriven bits to 0.  Simulation mismatch possible. Assign all bits of the input.
+@W: CL156 :"C:\Users\Duncan\git\ForthCPU\impl1\source\mcu.v":57:12:57:20|*Input ADDR_GPIO to expression [instance] has undriven bits; assigning undriven bits to 0.  Simulation mismatch possible. Assign all bits of the input.
+Finished optimization stage 2 on mcu (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 102MB)
+Running optimization stage 2 on mcuResources .......
+@N: CL159 :"C:\Users\Duncan\git\ForthCPU\mcuResources\source\mcuResources.v":9:20:9:26|Input CPU_DIN is unused.
+@N: CL159 :"C:\Users\Duncan\git\ForthCPU\mcuResources\source\mcuResources.v":20:15:20:21|Input RD_GPIO is unused.
+@N: CL159 :"C:\Users\Duncan\git\ForthCPU\mcuResources\source\mcuResources.v":21:15:21:21|Input WR_GPIO is unused.
+@N: CL159 :"C:\Users\Duncan\git\ForthCPU\mcuResources\source\mcuResources.v":22:15:22:23|Input ADDR_GPIO is unused.
+Finished optimization stage 2 on mcuResources (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 102MB)
+Running optimization stage 2 on interruptMaskRegister .......
+@W: CL279 :"C:\Users\Duncan\git\ForthCPU\interruptLogic\source\interruptMaskRegister.v":49:2:49:3|Pruning register bits 15 to 9 of DOUT[15:0]. If this is not the intended behavior, drive the inputs with valid values, or inputs from the top level.
+@W: CL246 :"C:\Users\Duncan\git\ForthCPU\interruptLogic\source\interruptMaskRegister.v":11:14:11:16|Input port bits 15 to 8 of DIN[15:0] are unused. Assign logic for all port bits or change the input port size.
+Finished optimization stage 2 on interruptMaskRegister (CPU Time 0h:00m:00s, Memory Used current: 101MB peak: 103MB)
+Running optimization stage 2 on UART .......
+Finished optimization stage 2 on UART (CPU Time 0h:00m:00s, Memory Used current: 101MB peak: 103MB)
+Running optimization stage 2 on UART_TX .......
+@N: CL201 :"C:\Users\Duncan\git\ForthCPU\UART\source\transmitter.v":38:2:38:7|Trying to extract state machine for register r_SM_Main.
+Extracted state machine for register r_SM_Main
+State machine has 4 reachable states with original encodings of:
+   000
+   001
+   010
+   011
+Finished optimization stage 2 on UART_TX (CPU Time 0h:00m:00s, Memory Used current: 98MB peak: 103MB)
+Running optimization stage 2 on UART_RX .......
+@N: CL201 :"C:\Users\Duncan\git\ForthCPU\UART\source\receiver.v":37:2:37:7|Trying to extract state machine for register r_SM_Main.
+Finished optimization stage 2 on UART_RX (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 103MB)
+Running optimization stage 2 on RAM .......
+Finished optimization stage 2 on RAM (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 103MB)
+Running optimization stage 2 on MUX81 .......
+Finished optimization stage 2 on MUX81 (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 103MB)
+Running optimization stage 2 on FD1P3DX .......
+Finished optimization stage 2 on FD1P3DX (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 103MB)
+Running optimization stage 2 on VHI .......
+Finished optimization stage 2 on VHI (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 103MB)
+Running optimization stage 2 on AND2 .......
+Finished optimization stage 2 on AND2 (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 103MB)
+Running optimization stage 2 on INV .......
+Finished optimization stage 2 on INV (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 103MB)
+Running optimization stage 2 on rom .......
+Finished optimization stage 2 on rom (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 103MB)
+Running optimization stage 2 on ROM32X1A .......
+Finished optimization stage 2 on ROM32X1A (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 103MB)
+Running optimization stage 2 on memoryMapper .......
+@N: CL159 :"C:\Users\Duncan\git\ForthCPU\memoryMapper\source\memoryMapper.v":13:7:13:9|Input CLK is unused.
+@N: CL159 :"C:\Users\Duncan\git\ForthCPU\memoryMapper\source\memoryMapper.v":14:7:14:11|Input RESET is unused.
+Finished optimization stage 2 on memoryMapper (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 103MB)
+Running optimization stage 2 on core .......
+@W: CL156 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":86:12:86:24|*Input ALU_REGA_DINX[1:0] to expression [instance] has undriven bits; assigning undriven bits to 0.  Simulation mismatch possible. Assign all bits of the input.
+Finished optimization stage 2 on core (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 103MB)
+Running optimization stage 2 on opxMultiplexer .......
+@W: CL246 :"C:\Users\Duncan\git\ForthCPU\opxMultiplexer\source\opxMultiplexer.v":11:14:11:24|Input port bits 13 to 0 of INSTRUCTION[15:0] are unused. Assign logic for all port bits or change the input port size.
+@N: CL159 :"C:\Users\Duncan\git\ForthCPU\opxMultiplexer\source\opxMultiplexer.v":10:7:10:11|Input RESET is unused.
+@N: CL159 :"C:\Users\Duncan\git\ForthCPU\opxMultiplexer\source\opxMultiplexer.v":14:7:14:12|Input DECODE is unused.
+@N: CL159 :"C:\Users\Duncan\git\ForthCPU\opxMultiplexer\source\opxMultiplexer.v":16:7:16:12|Input COMMIT is unused.
+Finished optimization stage 2 on opxMultiplexer (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 103MB)
+Running optimization stage 2 on generalGroupDecoder .......
+@W: CL246 :"C:\Users\Duncan\git\ForthCPU\generalGroupDecoder\source\generalGroupDecoder.v":17:14:17:24|Input port bits 13 to 11 of INSTRUCTION[15:0] are unused. Assign logic for all port bits or change the input port size.
+@W: CL246 :"C:\Users\Duncan\git\ForthCPU\generalGroupDecoder\source\generalGroupDecoder.v":17:14:17:24|Input port bits 7 to 0 of INSTRUCTION[15:0] are unused. Assign logic for all port bits or change the input port size.
+@N: CL159 :"C:\Users\Duncan\git\ForthCPU\generalGroupDecoder\source\generalGroupDecoder.v":16:7:16:11|Input FETCH is unused.
+@N: CL159 :"C:\Users\Duncan\git\ForthCPU\generalGroupDecoder\source\generalGroupDecoder.v":16:14:16:19|Input DECODE is unused.
+@N: CL159 :"C:\Users\Duncan\git\ForthCPU\generalGroupDecoder\source\generalGroupDecoder.v":16:22:16:28|Input EXECUTE is unused.
+Finished optimization stage 2 on generalGroupDecoder (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 103MB)
+Running optimization stage 2 on jumpGroupDecoder .......
+@W: CL246 :"C:\Users\Duncan\git\ForthCPU\jumpGroupDecoder\source\jumpGroupDecoder.v":41:14:41:24|Input port bits 7 to 0 of INSTRUCTION[15:0] are unused. Assign logic for all port bits or change the input port size.
+@N: CL159 :"C:\Users\Duncan\git\ForthCPU\jumpGroupDecoder\source\jumpGroupDecoder.v":39:7:39:9|Input CLK is unused.
+@N: CL159 :"C:\Users\Duncan\git\ForthCPU\jumpGroupDecoder\source\jumpGroupDecoder.v":40:7:40:11|Input RESET is unused.
+@N: CL159 :"C:\Users\Duncan\git\ForthCPU\jumpGroupDecoder\source\jumpGroupDecoder.v":43:7:43:11|Input FETCH is unused.
+@N: CL159 :"C:\Users\Duncan\git\ForthCPU\jumpGroupDecoder\source\jumpGroupDecoder.v":44:7:44:12|Input DECODE is unused.
+@N: CL159 :"C:\Users\Duncan\git\ForthCPU\jumpGroupDecoder\source\jumpGroupDecoder.v":45:7:45:13|Input EXECUTE is unused.
+@N: CL159 :"C:\Users\Duncan\git\ForthCPU\jumpGroupDecoder\source\jumpGroupDecoder.v":46:7:46:12|Input COMMIT is unused.
+Finished optimization stage 2 on jumpGroupDecoder (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 103MB)
+Running optimization stage 2 on loadStoreGroupDecoder .......
+@W: CL177 :"C:\Users\Duncan\git\ForthCPU\loadStoreGroupDecoder\source\loadStoreGroupDecoder.v":261:0:261:5|Sharing sequential element REGB_EN and merging REGA_EN. Add a syn_preserve attribute to the element to prevent sharing.
+@N: CL159 :"C:\Users\Duncan\git\ForthCPU\loadStoreGroupDecoder\source\loadStoreGroupDecoder.v":65:7:65:11|Input FETCH is unused.
+Finished optimization stage 2 on loadStoreGroupDecoder (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 103MB)
+Running optimization stage 2 on aluGroupDecoder .......
+@N: CL159 :"C:\Users\Duncan\git\ForthCPU\aluGroupDecoder\source\aluGroupDecoder.v":37:7:37:11|Input RESET is unused.
+Finished optimization stage 2 on aluGroupDecoder (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 103MB)
+Running optimization stage 2 on interruptStateMachine .......
+@N: CL201 :"C:\Users\Duncan\git\ForthCPU\interruptLogic\source\interruptStateMachine.v":174:0:174:5|Trying to extract state machine for register STATE.
+Extracted state machine for register STATE
+State machine has 10 reachable states with original encodings of:
+   0000
+   0010
+   0011
+   0100
+   0101
+   0110
+   0111
+   1000
+   1001
+   1010
+Finished optimization stage 2 on interruptStateMachine (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 103MB)
+Running optimization stage 2 on branchLogic .......
+Finished optimization stage 2 on branchLogic (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 103MB)
+Running optimization stage 2 on programCounter .......
+Finished optimization stage 2 on programCounter (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 103MB)
+Running optimization stage 2 on busController .......
+@N: CL159 :"C:\Users\Duncan\git\ForthCPU\busController\source\busController.v":12:7:12:11|Input RESET is unused.
+@N: CL159 :"C:\Users\Duncan\git\ForthCPU\busController\source\busController.v":13:7:13:11|Input FETCH is unused.
+@N: CL159 :"C:\Users\Duncan\git\ForthCPU\busController\source\busController.v":15:7:15:13|Input EXECUTE is unused.
+Finished optimization stage 2 on busController (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 103MB)
+Running optimization stage 2 on registerFile .......
+Finished optimization stage 2 on registerFile (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 103MB)
+Running optimization stage 2 on registers .......
+Finished optimization stage 2 on registers (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 103MB)
+Running optimization stage 2 on VLO .......
+Finished optimization stage 2 on VLO (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 103MB)
+Running optimization stage 2 on DP8KC .......
+Finished optimization stage 2 on DP8KC (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 103MB)
+Running optimization stage 2 on fullALU .......
+Finished optimization stage 2 on fullALU (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 103MB)
+Running optimization stage 2 on aluBMux .......
+@N: CL159 :"C:\Users\Duncan\git\ForthCPU\aluB\source\aluBMux.v":13:13:13:19|Input LDSINCF is unused.
+Finished optimization stage 2 on aluBMux (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 103MB)
+Running optimization stage 2 on aluAMux .......
+Finished optimization stage 2 on aluAMux (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 103MB)
+Running optimization stage 2 on alu .......
+Finished optimization stage 2 on alu (CPU Time 0h:00m:00s, Memory Used current: 106MB peak: 107MB)
+Running optimization stage 2 on instructionPhaseDecoder .......
+@N: CL201 :"C:\Users\Duncan\git\ForthCPU\instructionPhaseDecoder\source\instructionPhaseDecoder.v":18:0:18:5|Trying to extract state machine for register PHASE.
+Extracted state machine for register PHASE
+State machine has 5 reachable states with original encodings of:
+   000
+   001
+   010
+   011
+   100
+Finished optimization stage 2 on instructionPhaseDecoder (CPU Time 0h:00m:00s, Memory Used current: 106MB peak: 107MB)
+Running optimization stage 2 on devBoard .......
+@W: CL246 :"C:\Users\Duncan\git\ForthCPU\GPIO\source\devBoard.v":19:21:19:23|Input port bits 15 to 8 of GPO[15:0] are unused. Assign logic for all port bits or change the input port size.
+@N: CL159 :"C:\Users\Duncan\git\ForthCPU\GPIO\source\devBoard.v":20:14:20:20|Input RD_GPIO is unused.
+Finished optimization stage 2 on devBoard (CPU Time 0h:00m:00s, Memory Used current: 106MB peak: 107MB)
+
+For a summary of runtime and memory usage per design unit, please see file:
+==========================================================
+@L: C:\Users\Duncan\git\ForthCPU\impl1\synwork\layer0.rt.csv
 
 
+At c_ver Exit (Real Time elapsed 0h:00m:06s; CPU Time elapsed 0h:00m:06s; Memory used current: 106MB peak: 107MB)
 
-Total CPU Time: 1 secs  
-Total REAL Time: 2 secs  
-Peak Memory Usage: 49 MB
+Process took 0h:00m:06s realtime, 0h:00m:06s cputime
 
-Dumping design to file ForthCPU_impl1_map.ncd.
+Process completed successfully.
+# Mon Oct 30 15:59:31 2023
 
-trce -f "ForthCPU_impl1.mt" -o "ForthCPU_impl1.tw1" "ForthCPU_impl1_map.ncd" "ForthCPU_impl1.prf"
-trce:  version Diamond (64-bit) 3.12.1.454
+###########################################################]
+###########################################################[
 
-Copyright (c) 1991-1994 by NeoCAD Inc. All rights reserved.
-Copyright (c) 1995 AT&T Corp.   All rights reserved.
-Copyright (c) 1995-2001 Lucent Technologies Inc.  All rights reserved.
-Copyright (c) 2001 Agere Systems   All rights reserved.
-Copyright (c) 2002-2020 Lattice Semiconductor Corporation,  All rights reserved.
+Copyright (C) 1994-2021 Synopsys, Inc.
+This Synopsys software and all associated documentation are proprietary to Synopsys, Inc.
+and may only be used pursuant to the terms and conditions of a written license agreement
+with Synopsys, Inc. All other use, reproduction, modification, or distribution of the
+Synopsys software or the associated documentation is strictly prohibited.
+Tool: Synplify Pro (R)
+Build: R-2021.03L-SP1
+Install: C:\lscc\diamond\3.12\synpbase
+OS: Windows 6.2
 
-Loading design for application trce from file forthcpu_impl1_map.ncd.
-Design name: mcu
-NCD version: 3.3
-Vendor:      LATTICE
-Device:      LCMXO3L-6900C
-Package:     CABGA256
-Performance: 5
-Loading device for application trce from file 'xo3c6900.nph' in environment: C:/lscc/diamond/3.12/ispfpga.
-Package Status:                     Final          Version 1.17.
-Performance Hardware Data Status:   Final          Version 37.5.
-Setup and Hold Report
+Hostname: EDAWIN
 
---------------------------------------------------------------------------------
-Lattice TRACE Report - Setup, Version Diamond (64-bit) 3.12.1.454
-Sat Oct 28 16:03:27 2023
+Implementation : impl1
+Synopsys Synopsys Netlist Linker, Version comp202103synp2, Build 093R, Built Aug 10 2021 09:15:36, @
 
-Copyright (c) 1991-1994 by NeoCAD Inc. All rights reserved.
-Copyright (c) 1995 AT&T Corp.   All rights reserved.
-Copyright (c) 1995-2001 Lucent Technologies Inc.  All rights reserved.
-Copyright (c) 2001 Agere Systems   All rights reserved.
-Copyright (c) 2002-2020 Lattice Semiconductor Corporation,  All rights reserved.
+@N|Running in 64-bit mode
+File C:\Users\Duncan\git\ForthCPU\impl1\synwork\layer0.srs changed - recompiling
 
-Report Information
-------------------
-Command line:    trce -v 1 -gt -mapchkpnt 0 -sethld -o ForthCPU_impl1.tw1 -gui -msgset C:/Users/Duncan/git/ForthCPU/promote.xml ForthCPU_impl1_map.ncd ForthCPU_impl1.prf 
-Design file:     forthcpu_impl1_map.ncd
-Preference file: forthcpu_impl1.prf
-Device,speed:    LCMXO3L-6900C,5
-Report level:    verbose report, limited to 1 item per preference
---------------------------------------------------------------------------------
+At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 93MB peak: 93MB)
 
-Report Type:     based on TRACE automatically generated preferences
-BLOCK ASYNCPATHS
-BLOCK RESETPATHS
-BLOCK JTAG PATHS
---------------------------------------------------------------------------------
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
+Process completed successfully.
+# Mon Oct 30 15:59:31 2023
 
+###########################################################]
 
-Timing summary (Setup):
----------------
+For a summary of runtime and memory usage for all design units, please see file:
+==========================================================
+@L: C:\Users\Duncan\git\ForthCPU\impl1\synwork\ForthCPU_impl1_comp.rt.csv
 
-Timing errors: 9409  Score: 2066138122
-Cumulative negative slack: 2066138122
+@END
 
-Constraints cover 93401606 paths, 3 nets, and 5045 connections (95.49% coverage)
+At c_hdl Exit (Real Time elapsed 0h:00m:06s; CPU Time elapsed 0h:00m:07s; Memory used current: 23MB peak: 23MB)
 
---------------------------------------------------------------------------------
-Lattice TRACE Report - Hold, Version Diamond (64-bit) 3.12.1.454
-Sat Oct 28 16:03:28 2023
+Process took 0h:00m:06s realtime, 0h:00m:07s cputime
 
-Copyright (c) 1991-1994 by NeoCAD Inc. All rights reserved.
-Copyright (c) 1995 AT&T Corp.   All rights reserved.
-Copyright (c) 1995-2001 Lucent Technologies Inc.  All rights reserved.
-Copyright (c) 2001 Agere Systems   All rights reserved.
-Copyright (c) 2002-2020 Lattice Semiconductor Corporation,  All rights reserved.
+Process completed successfully.
+# Mon Oct 30 15:59:31 2023
 
-Report Information
-------------------
-Command line:    trce -v 1 -gt -mapchkpnt 0 -sethld -o ForthCPU_impl1.tw1 -gui -msgset C:/Users/Duncan/git/ForthCPU/promote.xml ForthCPU_impl1_map.ncd ForthCPU_impl1.prf 
-Design file:     forthcpu_impl1_map.ncd
-Preference file: forthcpu_impl1.prf
-Device,speed:    LCMXO3L-6900C,M
-Report level:    verbose report, limited to 1 item per preference
---------------------------------------------------------------------------------
+###########################################################]
+###########################################################[
 
-BLOCK ASYNCPATHS
-BLOCK RESETPATHS
-BLOCK JTAG PATHS
---------------------------------------------------------------------------------
+Copyright (C) 1994-2021 Synopsys, Inc.
+This Synopsys software and all associated documentation are proprietary to Synopsys, Inc.
+and may only be used pursuant to the terms and conditions of a written license agreement
+with Synopsys, Inc. All other use, reproduction, modification, or distribution of the
+Synopsys software or the associated documentation is strictly prohibited.
+Tool: Synplify Pro (R)
+Build: R-2021.03L-SP1
+Install: C:\lscc\diamond\3.12\synpbase
+OS: Windows 6.2
+
+Hostname: EDAWIN
+
+Implementation : impl1
+Synopsys Synopsys Netlist Linker, Version comp202103synp2, Build 093R, Built Aug 10 2021 09:15:36, @
+
+@N|Running in 64-bit mode
+File C:\Users\Duncan\git\ForthCPU\impl1\synwork\ForthCPU_impl1_comp.srs changed - recompiling
+
+At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 94MB peak: 94MB)
+
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+
+Process completed successfully.
+# Mon Oct 30 15:59:33 2023
+
+###########################################################]
+Premap Report
+
+# Mon Oct 30 15:59:33 2023
 
 
+Copyright (C) 1994-2021 Synopsys, Inc.
+This Synopsys software and all associated documentation are proprietary to Synopsys, Inc.
+and may only be used pursuant to the terms and conditions of a written license agreement
+with Synopsys, Inc. All other use, reproduction, modification, or distribution of the
+Synopsys software or the associated documentation is strictly prohibited.
+Tool: Synplify Pro (R)
+Build: R-2021.03L-SP1
+Install: C:\lscc\diamond\3.12\synpbase
+OS: Windows 6.2
 
-Timing summary (Hold):
----------------
+Hostname: EDAWIN
 
-Timing errors: 0  Score: 0
-Cumulative negative slack: 0
-
-Constraints cover 93401606 paths, 3 nets, and 5120 connections (96.91% coverage)
+Implementation : impl1
+Synopsys Lattice Technology Pre-mapping, Version map202103lat, Build 070R, Built Oct  6 2021 11:12:38, @
 
 
+Mapper Startup Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 117MB peak: 117MB)
 
-Timing summary (Setup and Hold):
----------------
 
-Timing errors: 9409 (setup), 0 (hold)
-Score: 2066138122 (setup), 0 (hold)
-Cumulative negative slack: 2066138122 (2066138122+0)
---------------------------------------------------------------------------------
+Done reading skeleton netlist (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 122MB peak: 129MB)
 
---------------------------------------------------------------------------------
+@A: MF827 |No constraint file specified.
+@L: C:\Users\Duncan\git\ForthCPU\impl1\ForthCPU_impl1_scck.rpt 
+See clock summary report "C:\Users\Duncan\git\ForthCPU\impl1\ForthCPU_impl1_scck.rpt"
+@N: MF916 |Option synthesis_strategy=base is enabled. 
+@N: MF248 |Running in 64-bit mode.
+@N: MF666 |Clock conversion enabled. (Command "set_option -fix_gated_and_generated_clocks 1" in the project file.)
 
-Total CPU Time: 1 secs 
-Total REAL Time: 2 secs 
-Peak Memory Usage: 80 MB
+Design Input Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 130MB peak: 130MB)
 
+
+Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 130MB peak: 130MB)
+
+
+Start loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 142MB peak: 142MB)
+
+
+Finished loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 143MB peak: 144MB)
+
+@N: FX493 |Applying initial value "00000000" on instance r_RX_Byte[7:0].
+@W: FX474 |User-specified initial value defined for some sequential elements which can prevent optimum synthesis results from being achieved. 
+@N: FX493 |Applying initial value "0" on instance r_RX_DV.
+@N: FX493 |Applying initial value "000" on instance r_SM_Main[2:0].
+@A: BN321 :"c:\users\duncan\git\forthcpu\impl1\source\mcu.v":47:9:47:17|Found multiple drivers on net DIN_GPIO[4] (in view: work.mcu(verilog)); if one driver is a constant (true or false), use Resolve Mixed Drivers option to connect the net to VCC or GND.
+@E: Net DIN_GPIO[4] (in view: work.mcu(verilog)) has conflicting drivers, the connections are
+Connection 1: Direction is (Output ) pin:GPI[7] inst:boardInst of work.devBoard(verilog)
+Connection 2: Direction is (Output ) pin:GPI[6] inst:boardInst of work.devBoard(verilog)
+Connection 3: Direction is (Output ) pin:GPI[5] inst:boardInst of work.devBoard(verilog)
+Connection 4: Direction is (Output ) pin:GPI[4] inst:boardInst of work.devBoard(verilog)
+Connection 5: Direction is (Output ) pin:O[0] inst:false of PrimLib.false(prim)
+@E: BN314 :"c:\users\duncan\git\forthcpu\impl1\source\mcu.v":47:9:47:17|Net GND in work.mcu(verilog) has multiple drivers. 
+Process took 0h:00m:01s realtime, 0h:00m:01s cputime
+# Mon Oct 30 15:59:33 2023
+
+###########################################################]
+
+
+Synthesis exit by 9.

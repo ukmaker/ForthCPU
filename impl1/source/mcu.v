@@ -1,14 +1,13 @@
 /**
 * CPU, RAM and ROM
-* UART
-* Pin bindings
+* UART, GPIO and INT mask
 **/
 `include "C:/Users/Duncan/git/ForthCPU/constants.v"
 
 module mcu(
 	
-	input CLK,
-	input RESET,
+	input CLK_X1,
+	input RESETN,
 	
 	output wire FETCH, DECODE, EXECUTE, COMMIT,
 	
@@ -29,13 +28,42 @@ module mcu(
 	output reg WRN1,
 	
 	input RXD,
-	output TXD
+	output TXD,
+	
+	input [3:0] GPIO_IN,
+	output wire [7:0] GPIO_OUT
 	
 );
 
 wire [15:0] ADDR_BUF;
 wire [15:0] DOUT_BUF;
 wire [15:0] DIN;
+wire [15:0] DIN_GPIO;
+wire CLK;
+wire RESET;
+
+assign DIN_GPIO[15:4] = 12'h000;
+
+devBoard boardInst(
+
+	.CLK_X1(CLK_X1),
+	.RESETN(RESETN),
+	.CLK(CLK),
+	.RESET(RESET),
+	
+	// Internal connections
+	.RD_GPIO(RD_GPIO),
+	.WR_GPIO(WR_GPIO),
+	.ADDR_GPIO(ADDR_GPIO),
+	.GPI(DIN_GPIO),
+	.GPO(DOUT_BUF),
+	
+	// Actual connection to LEDs and switches
+	.LED(GPIO_OUT),
+	.DIPSW(GPIO_IN)
+	
+
+);
 
 
 core coreInst(
@@ -69,7 +97,12 @@ mcuResources mcuResourcesInst(
 	.WR0N(WR0N_BUF),
 	.WR1N(WR1N_BUF),
 	.DIN_BUS(DATA_BUS),
-	
+	// GPIO
+	.GPIO_IN(DIN_GPIO),
+	.RD_GPIO(RD_GPIO),
+	.WR_GPIO(WR_GPIO),
+	.ADDR_GPIO(ADDR_GPIO),
+
 	.UART_RXD(RXD),
 	.UART_TXD(TXD),
 	
@@ -88,11 +121,6 @@ mcuResources mcuResourcesInst(
 
 );
 
-
-reg [15:0] DBUS;
-
-assign DIN = DATA_BUS;
-assign DATA_BUS = DBUS;
 
 always @(*) begin
 	if(RESET) begin
