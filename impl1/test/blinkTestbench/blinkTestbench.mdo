@@ -1,0 +1,101 @@
+if {![file exists "C:/Users/Duncan/git/ForthCPU/impl1/test/blinkTestbench/blinkTestbench.mpf"]} { 
+	project new "C:/Users/Duncan/git/ForthCPU/impl1/test/blinkTestbench" blinkTestbench
+	project addfile "C:/Users/Duncan/git/ForthCPU/interruptLogic/source/interruptMaskRegister.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/UART/source/transmitter.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/UART/source/receiver.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/UART/source/UART.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/RAM/source/RAM.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/bootROM/source/rom.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/memoryMapper/source/memoryMapper.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/mcuResources/source/mcuResources.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/opxMultiplexer/source/opxMultiplexer.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/generalGroupDecoder/source/generalGroupDecoder.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/jumpGroupDecoder/source/jumpGroupDecoder.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/loadStoreGroupDecoder/source/loadStoreGroupDecoder.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/aluGroupDecoder/source/aluGroupDecoder.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/interruptLogic/source/interruptStateMachine.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/branchLogic/source/branchLogic.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/programCounter/source/programCounter.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/busController/source/busController.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/registerFileB/source/registers.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/registerFileB/source/registerFile.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/aluB/source/aluBMux.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/aluB/source/aluAMux.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/aluB/source/alu.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/aluB/source/fullALU.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/instructionPhaseDecoder/source/instructionPhaseDecoder.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/processorCore/source/core.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/devBoard/source/devBoard.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/impl1/source/mcu.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/impl1/test/blinkTest.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/constants.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/registerFileB/source/registers.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/registerFileB/source/registers.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/bootROM/source/rom.v"
+	vlib  work
+	vdel -lib work -all 
+	vlib work
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/bootROM/source  -work work  "C:/Users/Duncan/git/ForthCPU/bootROM/source/rom.v"
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/registerFileB/source  -work work  "C:/Users/Duncan/git/ForthCPU/registerFileB/source/registers.v"
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/registerFileB/source  -work work  "C:/Users/Duncan/git/ForthCPU/registerFileB/source/registers.v"
+	vlog -sv -mfcu \
+	+incdir+C:/Users/Duncan/git/ForthCPU/interruptLogic/source \
+	+incdir+C:/Users/Duncan/git/ForthCPU/UART/source \
+	+incdir+C:/Users/Duncan/git/ForthCPU/RAM/source \
+	+incdir+C:/Users/Duncan/git/ForthCPU/memoryMapper/source \
+	+incdir+C:/Users/Duncan/git/ForthCPU/mcuResources/source \
+	+incdir+C:/Users/Duncan/git/ForthCPU/opxMultiplexer/source \
+	+incdir+C:/Users/Duncan/git/ForthCPU/generalGroupDecoder/source \
+	+incdir+C:/Users/Duncan/git/ForthCPU/jumpGroupDecoder/source \
+	+incdir+C:/Users/Duncan/git/ForthCPU/loadStoreGroupDecoder/source \
+	+incdir+C:/Users/Duncan/git/ForthCPU/aluGroupDecoder/source \
+	+incdir+C:/Users/Duncan/git/ForthCPU/branchLogic/source \
+	+incdir+C:/Users/Duncan/git/ForthCPU/programCounter/source \
+	+incdir+C:/Users/Duncan/git/ForthCPU/busController/source \
+	+incdir+C:/Users/Duncan/git/ForthCPU/registerFileB/source \
+	+incdir+C:/Users/Duncan/git/ForthCPU/aluB/source \
+	+incdir+C:/Users/Duncan/git/ForthCPU/instructionPhaseDecoder/source \
+	+incdir+C:/Users/Duncan/git/ForthCPU/processorCore/source \
+	+incdir+C:/Users/Duncan/git/ForthCPU/devBoard/source \
+	+incdir+C:/Users/Duncan/git/ForthCPU/impl1/source \
+	+incdir+C:/Users/Duncan/git/ForthCPU/impl1/test \
+	+incdir+C:/Users/Duncan/git/ForthCPU \
+	+incdir+C:/Users/Duncan/git/ForthCPU/bootROM/source \
+ -work work \
+	"C:/Users/Duncan/git/ForthCPU/interruptLogic/source/interruptMaskRegister.v" \
+	"C:/Users/Duncan/git/ForthCPU/UART/source/transmitter.v" \
+	"C:/Users/Duncan/git/ForthCPU/UART/source/receiver.v" \
+	"C:/Users/Duncan/git/ForthCPU/UART/source/UART.v" \
+	"C:/Users/Duncan/git/ForthCPU/RAM/source/RAM.v" \
+	"C:/Users/Duncan/git/ForthCPU/memoryMapper/source/memoryMapper.v" \
+	"C:/Users/Duncan/git/ForthCPU/mcuResources/source/mcuResources.v" \
+	"C:/Users/Duncan/git/ForthCPU/opxMultiplexer/source/opxMultiplexer.v" \
+	"C:/Users/Duncan/git/ForthCPU/generalGroupDecoder/source/generalGroupDecoder.v" \
+	"C:/Users/Duncan/git/ForthCPU/jumpGroupDecoder/source/jumpGroupDecoder.v" \
+	"C:/Users/Duncan/git/ForthCPU/loadStoreGroupDecoder/source/loadStoreGroupDecoder.v" \
+	"C:/Users/Duncan/git/ForthCPU/aluGroupDecoder/source/aluGroupDecoder.v" \
+	"C:/Users/Duncan/git/ForthCPU/interruptLogic/source/interruptStateMachine.v" \
+	"C:/Users/Duncan/git/ForthCPU/branchLogic/source/branchLogic.v" \
+	"C:/Users/Duncan/git/ForthCPU/programCounter/source/programCounter.v" \
+	"C:/Users/Duncan/git/ForthCPU/busController/source/busController.v" \
+	"C:/Users/Duncan/git/ForthCPU/registerFileB/source/registers.v" \
+	"C:/Users/Duncan/git/ForthCPU/registerFileB/source/registerFile.v" \
+	"C:/Users/Duncan/git/ForthCPU/aluB/source/aluBMux.v" \
+	"C:/Users/Duncan/git/ForthCPU/aluB/source/aluAMux.v" \
+	"C:/Users/Duncan/git/ForthCPU/aluB/source/alu.v" \
+	"C:/Users/Duncan/git/ForthCPU/aluB/source/fullALU.v" \
+	"C:/Users/Duncan/git/ForthCPU/instructionPhaseDecoder/source/instructionPhaseDecoder.v" \
+	"C:/Users/Duncan/git/ForthCPU/processorCore/source/core.v" \
+	"C:/Users/Duncan/git/ForthCPU/devBoard/source/devBoard.v" \
+	"C:/Users/Duncan/git/ForthCPU/impl1/source/mcu.v" \
+	"C:/Users/Duncan/git/ForthCPU/impl1/test/blinkTest.v" \
+	"C:/Users/Duncan/git/ForthCPU/constants.v" \
+	"C:/Users/Duncan/git/ForthCPU/bootROM/source/rom.v"
+} else {
+	project open "C:/Users/Duncan/git/ForthCPU/impl1/test/blinkTestbench/blinkTestbench"
+	project compileoutofdate
+}
+vsim -L work -L pmi_work -L ovi_machxo3l  blinkTests
+view wave
+add wave /*
+run 1000ns

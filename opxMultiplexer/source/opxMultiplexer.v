@@ -7,16 +7,16 @@
 module opxMultiplexer(
 	
 	input CLK,
-	input RESET,
-	input [15:0] INSTRUCTION,
+
+	input [1:0] INSTRUCTION_GROUP,
 	
 	input FETCH,
-	input DECODE,
 	input EXECUTE,
-	input COMMIT,
+
 	
 	input [3:0]  ALU_ALU_OPX,
 	input [2:0]  ALU_ALUA_SRCX,
+	input [2:0]  ALU_ALUB_SRCX,
 	input [1:0]  ALU_REGA_ADDRX,
 	input         ALU_REGA_EN,
 	input [2:0]  ALU_REGB_ADDRX,
@@ -72,12 +72,8 @@ module opxMultiplexer(
 
 );
 
-wire [1:0] GROUPF;
-
-assign GROUPF = INSTRUCTION[15:14];
-
 always @(*) begin
-	case(GROUPF)
+	case(INSTRUCTION_GROUP)
 		`GROUP_SYSTEM: begin
 			ALU_OPX       = `ALU_OPX_MOV;
 			ALUA_SRCX     = `ALUA_SRCX_REG_A;
@@ -138,7 +134,7 @@ always @(*) begin
 		`GROUP_ARITHMETIC_LOGIC: begin
 			ALU_OPX       = ALU_ALU_OPX;
 			ALUA_SRCX     = ALU_ALUA_SRCX;
-			ALUB_SRCX     = `ALUB_SRCX_REG_B;
+			ALUB_SRCX     = ALU_ALUB_SRCX;
 			BYTEX         = `BYTEX_WORD;
 			DATA_BUSX     = `DATA_BUSX_ALU_R;
 			RDX           = `RDX_NONE;
@@ -146,7 +142,7 @@ always @(*) begin
 			REGA_WEN      = ALU_REGA_WEN;
 			REGA_ADDRX    = ALU_REGA_ADDRX;
 			REGA_BYTE_ENX = `REG_BYTE_ENX_BOTH;
-			REGA_DINX     = `REGA_DINX_DIN;
+			REGA_DINX     = `REGA_DINX_ALU_R;
 			REGB_EN       = ALU_REGB_EN;
 			REGB_WEN      = ALU_REGB_WEN;
 			REGB_ADDRX    = ALU_REGB_ADDRX;
@@ -162,7 +158,7 @@ always @(posedge CLK) begin
 	if(FETCH) begin
 		ADDR_BUSX <= `ADDR_BUSX_PC_A;
 	end else if(EXECUTE) begin
-		case(GROUPF)
+		case(INSTRUCTION_GROUP)
 			`GROUP_SYSTEM: begin
 				ADDR_BUSX    <= `ADDR_BUSX_PC_A;
 			end

@@ -1,27 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <BaliProject version="3.2" title="ForthCPU" device="LCMXO3L-6900C-5BG256C" default_implementation="impl1">
     <Options/>
-    <Implementation title="GPIO" dir="GPIO" description="GPIO" synthesis="synplify" default_strategy="Area">
-        <Options def_top="GPIOTests"/>
-        <Source name="GPIO/test/GPIOTests.v" type="Verilog" type_short="Verilog">
-            <Options top_module="GPIOTests"/>
-        </Source>
-        <Source name="constants.v" type="Verilog" type_short="Verilog">
-            <Options/>
-        </Source>
-        <Source name="testSetup.v" type="Verilog" type_short="Verilog">
-            <Options/>
-        </Source>
-        <Source name="GPIO/source/GPIO.v" type="Verilog" type_short="Verilog">
-            <Options/>
-        </Source>
-        <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">
-            <Options/>
-        </Source>
-        <Source name="GPIO/test/GPIOTestbench/GPIOTestbench.spf" type="Simulation Project File" type_short="SPF">
-            <Options/>
-        </Source>
-    </Implementation>
     <Implementation title="RAM" dir="RAM" description="RAM" synthesis="synplify" default_strategy="Area">
         <Options def_top="RAM"/>
         <Source name="RAM/source/RAM.ipx" type="IPX_Module" type_short="IPX">
@@ -97,7 +76,7 @@
             <Options/>
         </Source>
         <Source name="alu/test/aluBMuxTests.v" type="Verilog" type_short="Verilog">
-            <Options top_module="aluBMuxTests"/>
+            <Options/>
         </Source>
         <Source name="alu/source/incrementer.v" type="Verilog" type_short="Verilog">
             <Options/>
@@ -148,7 +127,7 @@
             <Options/>
         </Source>
         <Source name="aluB/test/aluBMuxTests.v" type="Verilog" type_short="Verilog">
-            <Options top_module="aluBMuxTests"/>
+            <Options/>
         </Source>
         <Source name="aluB/test/fullALUTests.v" type="Verilog" type_short="Verilog">
             <Options top_module="fullALUTests"/>
@@ -284,9 +263,15 @@
         </Source>
     </Implementation>
     <Implementation title="devBoard" dir="devBoard" description="devBoard" synthesis="synplify" default_strategy="Area">
-        <Options def_top="devBoard"/>
+        <Options def_top="devBoardTests"/>
         <Source name="devBoard/source/devBoard.v" type="Verilog" type_short="Verilog">
-            <Options top_module="devBoard"/>
+            <Options/>
+        </Source>
+        <Source name="devBoard/test/devBoardTests.v" type="Verilog" type_short="Verilog">
+            <Options top_module="devBoardTests"/>
+        </Source>
+        <Source name="devBoard/test/devBoardTestbench/devBoardTestbench.spf" type="Simulation Project File" type_short="SPF">
+            <Options/>
         </Source>
         <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">
             <Options/>
@@ -317,7 +302,7 @@
         </Source>
     </Implementation>
     <Implementation title="impl1" dir="impl1" description="impl1" synthesis="synplify" default_strategy="Strategy1">
-        <Options VerilogStandard="System Verilog" def_top="mcu"/>
+        <Options VerilogStandard="System Verilog" def_top="blinkTests"/>
         <Source name="constants.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
@@ -382,7 +367,7 @@
             <Options/>
         </Source>
         <Source name="impl1/source/mcu.v" type="Verilog" type_short="Verilog">
-            <Options top_module="mcu"/>
+            <Options/>
         </Source>
         <Source name="bootROM/source/rom.ipx" type="IPX_Module" type_short="IPX">
             <Options/>
@@ -414,7 +399,13 @@
         <Source name="devBoard/source/devBoard.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
+        <Source name="impl1/test/blinkTest.v" type="Verilog" type_short="Verilog">
+            <Options top_module="blinkTests"/>
+        </Source>
         <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">
+            <Options/>
+        </Source>
+        <Source name="impl1/test/blinkTestbench/blinkTestbench.spf" type="Simulation Project File" type_short="SPF">
             <Options/>
         </Source>
     </Implementation>
@@ -461,18 +452,18 @@
         </Source>
     </Implementation>
     <Implementation title="jumpGroupDecoder" dir="jumpGroupDecoder" description="jumpGroupDecoder" synthesis="synplify" default_strategy="Area">
-        <Options def_top="jumpGroupDecoderTests"/>
+        <Options def_top="jumpGroupDecoder"/>
         <Source name="jumpGroupDecoder/test/jumpGroupDecoderTests.v" type="Verilog" type_short="Verilog">
-            <Options top_module="jumpGroupDecoderTests"/>
+            <Options/>
         </Source>
         <Source name="instructionPhaseDecoder/source/instructionPhaseDecoder.v" type="Verilog" type_short="Verilog">
-            <Options/>
+            <Options top_module="instructionPhaseDecoder"/>
         </Source>
         <Source name="constants.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
         <Source name="jumpGroupDecoder/source/jumpGroupDecoder.v" type="Verilog" type_short="Verilog">
-            <Options/>
+            <Options top_module="jumpGroupDecoder"/>
         </Source>
         <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">
             <Options/>

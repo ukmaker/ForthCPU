@@ -187,10 +187,7 @@ registerFile registerFileInst(
 ****************************************/
 busController busControllerInst(
 	.CLK(CLK),
-	.RESET(RESET),
-	.FETCH(FETCH),
 	.DECODE(DECODE),
-	.EXECUTE(EXECUTE),
 	.COMMIT(COMMIT),
 	.PC_A(PC_A),
 	.ALU_R(ALU_R),
@@ -293,7 +290,9 @@ aluGroupDecoder aluGroupDecoderInst(
 loadStoreGroupDecoder loadStoreGroupDecoderInst(
 	.CLK(CLK),
 	.RESET(RESET),
-	.INSTRUCTION(INSTRUCTION[13:8]),
+	.INCF(INSTRUCTION[13:12]),
+	.LDSF(INSTRUCTION[11:10]),
+	.MODEF(INSTRUCTION[9:8]),
 	.FETCH(FETCH),
 	.DECODE(DECODE),
 	.EXECUTE(EXECUTE),
@@ -321,13 +320,10 @@ loadStoreGroupDecoder loadStoreGroupDecoderInst(
 * Jump Group Decoder
 ****************************************/
 jumpGroupDecoder jumpGroupDecoderInst(
-	.CLK(CLK),
-	.RESET(RESET),
-	.INSTRUCTION(INSTRUCTION),
-	.FETCH(FETCH),
-	.DECODE(DECODE),
-	.EXECUTE(EXECUTE),
-	.COMMIT(COMMIT),
+	.GROUPF(INSTRUCTION[15:14]),
+	.SKIPF(INSTRUCTION[13:12]),
+	.JPF(INSTRUCTION[9:8]),
+	.CCF(INSTRUCTION[11:10]),
 	.JRX(JRX),
 	.JMPX(JMPX),
 	.CC_APPLYX(CC_APPLYX),
@@ -348,11 +344,10 @@ generalGroupDecoder generalGroupDecoderInst(
 	
 	.CLK(CLK),
 	.RESET(RESET),
-	.FETCH(FETCH), 
-	.DECODE(DECODE), 
 	.EXECUTE(EXECUTE), 
 	.COMMIT(COMMIT),
-	.INSTRUCTION(INSTRUCTION),
+	.INSTRUCTION_GROUP(INSTRUCTION[15:14]),
+	.INSTRUCTION_OP(INSTRUCTION[10:8]),
 	
 	.EIX(EIX),
 	.DIX(DIX),
@@ -366,16 +361,14 @@ generalGroupDecoder generalGroupDecoderInst(
 opxMultiplexer opxMultiplexerInst(
 
 	.CLK(CLK),
-	.RESET(RESET),
-	.INSTRUCTION(INSTRUCTION),
+	.INSTRUCTION_GROUP(INSTRUCTION[15:14]),
 
 	.FETCH(FETCH),
-	.DECODE(DECODE),
 	.EXECUTE(EXECUTE),
-	.COMMIT(COMMIT),
 
 	.ALU_ALU_OPX(ALU_ALU_OPX),
 	.ALU_ALUA_SRCX(ALU_ALUA_SRCX),
+	.ALU_ALUB_SRCX(ALU_ALUB_SRCX),
 	.ALU_REGA_ADDRX(ALU_REGA_ADDRX),
 	.ALU_REGA_EN(ALU_REGA_EN),
 	.ALU_REGB_ADDRX(ALU_REGB_ADDRX),

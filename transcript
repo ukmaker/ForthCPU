@@ -1,12 +1,11 @@
 # Reading pref.tcl
-# do {C:/Users/Duncan/git/ForthCPU/generalGroupDecoder/test/generalGroupDecoderTestbench/generalGroupDecoderTestbench.mdo}
-# Loading project generalGroupDecoderTestbench
-# Compile of generalGroupDecoder.v was successful.
+# do {C:/Users/Duncan/git/ForthCPU/impl1/test/blinkTestbench/blinkTestbench.mdo}
+# Loading project blinkTestbench
 # Compile of instructionPhaseDecoder.v was successful.
-# Compile of constants.v was successful.
-# 3 compiles, 0 failed with no errors.
-# vsim -L work -L pmi_work -L ovi_machxo3l generalGroupDecoderTests 
-# Start time: 18:43:07 on Oct 30,2023
+# Compile of devBoard.v was successful.
+# 2 compiles, 0 failed with no errors.
+# vsim -L work -L pmi_work -L ovi_machxo3l blinkTests 
+# Start time: 18:20:56 on Oct 31,2023
 # //  ModelSim - Lattice FPGA Edition 2020.3 Oct 14 2020
 # //
 # //  Copyright 1991-2020 Mentor Graphics Corporation
@@ -20,35 +19,46 @@
 # //  is prohibited from disclosure under the Trade Secrets Act,
 # //  18 U.S.C. Section 1905.
 # //
-# Loading work.generalGroupDecoderTests
+# Loading work.blinkTests
+# Loading work.mcu
+# Loading ovi_machxo3l.PUR
+# Loading ovi_machxo3l.GSR
+# Loading work.devBoard
+# Loading work.core
 # Loading work.instructionPhaseDecoder
+# Loading work.fullALU
+# Loading work.alu
+# Loading work.aluAMux
+# Loading work.aluBMux
+# Loading work.registerFile
+# Loading work.registers
+# Loading ovi_machxo3l.DP8KC
+# Loading ovi_machxo3l.VLO
+# Loading work.busController
+# Loading work.programCounter
+# Loading work.branchLogic
+# Loading work.interruptStateMachine
+# Loading work.aluGroupDecoder
+# Loading work.loadStoreGroupDecoder
+# Loading work.jumpGroupDecoder
 # Loading work.generalGroupDecoder
+# Loading work.opxMultiplexer
+# Loading work.mcuResources
+# Loading work.memoryMapper
+# Loading work.rom
+# Loading ovi_machxo3l.ROM64X1A
+# Loading work.RAM
+# Loading ovi_machxo3l.INV
+# Loading ovi_machxo3l.AND2
+# Loading ovi_machxo3l.VHI
+# Loading ovi_machxo3l.FD1P3DX
+# Loading ovi_machxo3l.MUX81
+# Loading work.UART
+# Loading work.UART_RX
+# Loading work.UART_TX
+# Loading work.interruptMaskRegister
+# Loading ovi_machxo3l.UDFDL5E_UDP_X
 # .main_pane.wave.interior.cs.body.pw.wf
-# FETCH   [T=      455]    1 {0000} :: {c2af} MOV RB,0x00af
-# DECODE  [T=      555]    2 
-# EXECUTE [T=      655]    3 
-# COMMIT  [T=      755]    4 
-# FETCH   [T=      855]    5 {0000} :: {0000} NOP
-# DECODE  [T=      955]    6 
-run 10us
-# EXECUTE [T=     1055]    7 
-# COMMIT  [T=     1155]    8 
-# FETCH   [T=     1255]    9 {0000} :: {0200} EI
-# DECODE  [T=     1355]   10 
-# EXECUTE [T=     1455]   11 
-# COMMIT  [T=     1555]   12 
-# FETCH   [T=     1655]   13 {0000} :: {0300} DI
-# DECODE  [T=     1755]   14 
-# EXECUTE [T=     1855]   15 
-# COMMIT  [T=     1955]   16 
-# FETCH   [T=     2055]   17 {0000} :: {0400} RETI
-# DECODE  [T=     2155]   18 
-# EXECUTE [T=     2255]   19 
-# COMMIT  [T=     2355]   20 
-# FETCH   [T=     2455]   21 {0000} :: {0100} HALT
-# DECODE  [T=     2555]   22 
-# EXECUTE [T=     2655]   23 
-# COMMIT  [T=     2755]   24 
-write format wave -window .main_pane.wave.interior.cs.body.pw.wf C:/Users/Duncan/git/ForthCPU/generalGroupDecoder/test/generalGroupDecoderTestbench/wave.do
-# End time: 18:43:39 on Oct 30,2023, Elapsed time: 0:00:32
+run 100us
+# End time: 18:21:29 on Oct 31,2023, Elapsed time: 0:00:33
 # Errors: 0, Warnings: 2

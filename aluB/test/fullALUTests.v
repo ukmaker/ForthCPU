@@ -23,7 +23,10 @@ module fullALUTests;
 	wire [15:0] ALUA_DATA;
 	wire [15:0] ALUB_DATA;
 	wire [15:0] ALU_R;
-	wire [3:0] CCN;
+	wire CC_ZERO;
+	wire CC_CARRY;
+	wire CC_SIGN;
+	wire CC_PARITY;
 
 fullALU testInstance(
 	.CLK(CLK),
@@ -38,7 +41,10 @@ fullALU testInstance(
 	.LDSINCF(LDSINCF),
 	.CCL_LD(CCL_LD),
 	.ALU_R(ALU_R),
-	.CCN(CCN),
+	.CC_ZERO(CC_ZERO),
+	.CC_CARRY(CC_CARRY),
+	.CC_SIGN(CC_SIGN),
+	.CC_PARITY(CC_PARITY),
 	.ALUA_DATA(ALUA_DATA),
 	.ALUB_DATA(ALUB_DATA)
 );
@@ -79,7 +85,10 @@ initial begin
 	`TICKTOCK;
 	// Result
 	`assert("ALU_R",      16'h5555, ALU_R)
-	`assert("CCN",        4'b0000,  CCN)
+	`assert("CC_ZERO",        1'b0, CC_ZERO)
+	`assert("CC_CARRY",       1'b0, CC_CARRY)
+	`assert("CC_SIGN",        1'b0, CC_SIGN)
+	`assert("CC_PARITY",      1'b0, CC_PARITY)
 	`TICKTOCK;
 	CCL_LD = 0;
 	ALUA_DIN = 16'hffff;
@@ -87,13 +96,19 @@ initial begin
 	`TICKTOCK;
 	// CC Result should be unchanged
 	`assert("ALU_R",      16'hfffe, ALU_R)
-	`assert("CCN",        4'b0000,  CCN)
+	`assert("CC_ZERO",        1'b0, CC_ZERO)
+	`assert("CC_CARRY",       1'b0, CC_CARRY)
+	`assert("CC_SIGN",        1'b0, CC_SIGN)
+	`assert("CC_PARITY",      1'b0, CC_PARITY)
 	`TICKTOCK;
 	CCL_LD = 1;
 	`TICKTOCK;
 	// CC Result should be latched through
 	`assert("ALU_R",      16'hfffe, ALU_R)
-	`assert("CCN",        4'b0011,  CCN)
+	`assert("CC_ZERO",        1'b0, CC_ZERO)
+	`assert("CC_CARRY",       1'b0, CC_CARRY)
+	`assert("CC_SIGN",        1'b1, CC_SIGN)
+	`assert("CC_PARITY",      1'b1, CC_PARITY)
 	
 end
 

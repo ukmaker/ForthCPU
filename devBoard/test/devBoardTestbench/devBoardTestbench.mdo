@@ -1,0 +1,17 @@
+if {![file exists "C:/Users/Duncan/git/ForthCPU/devBoard/test/devBoardTestbench/devBoardTestbench.mpf"]} { 
+	project new "C:/Users/Duncan/git/ForthCPU/devBoard/test/devBoardTestbench" devBoardTestbench
+	project addfile "C:/Users/Duncan/git/ForthCPU/devBoard/source/devBoard.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/devBoard/test/devBoardTests.v"
+	vlib  work
+	vdel -lib work -all 
+	vlib work
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/devBoard/source  -work work  "C:/Users/Duncan/git/ForthCPU/devBoard/source/devBoard.v"
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/devBoard/test  -work work  "C:/Users/Duncan/git/ForthCPU/devBoard/test/devBoardTests.v"
+} else {
+	project open "C:/Users/Duncan/git/ForthCPU/devBoard/test/devBoardTestbench/devBoardTestbench"
+	project compileoutofdate
+}
+vsim -L work -L pmi_work -L ovi_machxo3l  devBoardTests
+view wave
+add wave /*
+run 1000ns

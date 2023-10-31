@@ -6,7 +6,7 @@ module mcuResources(
 	
 	// Interface to the CPU
 	input       [15:0] ADDR,
-	wire        [15:0] CPU_DIN,
+	output      [15:0] CPU_DIN,
 	input       [15:0] CPU_DOUT,
 	input RDN,
 	input WR0N,
@@ -17,12 +17,12 @@ module mcuResources(
 	
 	// GPIO
 	input [15:0] DIN_GPIO,
-	wire          RD_GPIO,
-	wire          WR_GPIO,
-	wire          ADDR_GPIO,
+	output        RD_GPIO,
+	output        WR_GPIO,
+	output        ADDR_GPIO,
 	
 	// UART signals
-	input UART_RXD,
+	input  UART_RXD,
 	output UART_TXD,
 	
 	// Interrupt signals
@@ -33,7 +33,6 @@ module mcuResources(
 	input INTS4,
 	input INTS5,
 	input INTS6,
-	input INTS7,
 	
 	output INT0,
 	output INT1
@@ -50,7 +49,6 @@ wire UART_INT7;
 
 memoryMapper memoryMapperInst(
 	
-	.CLK(CLK),
 	.RESET(RESET),
 	
 	// Interface to the CPU
@@ -93,7 +91,7 @@ memoryMapper memoryMapperInst(
 );
 
 rom ROMInst(
-	.Address(ADDR[4:0]),
+	.Address(ADDR[5:0]),
 	.Q(DIN_ROM)
 );
 
@@ -124,7 +122,7 @@ UART UARTInst(
 interruptMaskRegister interruptMaskRegisterInst(
 	.CLK(CLK),
 	.RESET(RESET),
-	.DIN(CPU_DOUT),
+	.DIN(CPU_DOUT[7:0]),
 	.RD(RD_INT),
 	.WR(WR_INT),
 	.ADDR(ADDR_INT),
@@ -134,7 +132,7 @@ interruptMaskRegister interruptMaskRegisterInst(
 	.INTS4(INTS4),
 	.INTS5(INTS5),
 	.INTS6(INTS6),
-	.INTS7(INTS7),
+	.INTS7(UART_INT7),
 	.DOUT(DIN_INT),
 	.INT1(INT1)
 );

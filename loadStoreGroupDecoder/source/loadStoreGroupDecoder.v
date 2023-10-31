@@ -60,8 +60,11 @@ module loadStoreGroupDecoder(
 	
 	input CLK,
 	input RESET,
-	input [13:8] INSTRUCTION,
 	
+	input [1:0] INCF,
+	input [1:0] LDSF,
+	input [1:0] MODEF,
+
 	input FETCH,
 	input DECODE,
 	input EXECUTE,
@@ -107,14 +110,6 @@ module loadStoreGroupDecoder(
 	output reg        BYTEX,
 	output reg [1:0] ADDR_BUSX
 );
-     
-wire [1:0] INCF;
-wire [1:0] LDSF;
-wire [1:0] MODEF;
-
-assign INCF = INSTRUCTION[13:12];
-assign LDSF = INSTRUCTION[11:10];
-assign MODEF = INSTRUCTION[9:8];
 
 reg RD_A, RD_B, WR_A, WR_B, RD_M, WR_M, BYTE_OP;
 

@@ -34,19 +34,28 @@ module UART(
 	
 );
 
-wire DATA_AVAILABLE;
 wire [7:0] RX_BYTE;
 
+wire DATA_AVAILABLE;
 wire TX_ACTIVE;
-wire TX_DONE;
+
+reg DATA_AVAILABLE_R;
+reg TX_ACTIVE_R;
+reg TX_COMPLETE_R;
+
 reg START_TX;
 
-reg [15:0] STATUS;
+wire [15:0] STATUS;
 reg [15:0] RX_CLK_DIV;
 reg [15:0] TX_CLK_DIV;
 wire RESETN;
 
 assign RESETN = ~RESET;
+
+assign STATUS = 16'h0000 
+  | (DATA_AVAILABLE_R ? `UART_STATUS_DATA_AVAILABLE : 0) 
+  | (TX_ACTIVE_R      ? `UART_STATUS_TX_ACTIVE : 0) 
+  | (TX_COMPLETE_R    ? `UART_STATUS_TX_COMPLETE : 0) ;
 
 UART_RX uartRXInst(
    .i_Clock(CLK),
@@ -73,20 +82,22 @@ end
 
 always @(posedge CLK or posedge RESET) begin
 	if(RESET) begin
-		START_TX <= 0;
-		STATUS <= 16'h0000;
-		RX_CLK_DIV <= 16'd217;
-		TX_CLK_DIV <= 16'd217;
+		START_TX         <= 0;
+		RX_CLK_DIV       <= 16'd217;
+		TX_CLK_DIV       <= 16'd217;
+		DATA_AVAILABLE_R <= 0;
+		TX_ACTIVE_R      <= 0;
+		TX_COMPLETE_R    <= 0;
 	end else if(CLK) begin
 		// latch completions
 		if(DATA_AVAILABLE) begin
-			STATUS[`UART_STATUS_DATA_AVAILABLE] <= 1;
+			DATA_AVAILABLE_R <= 1;
 		end
 		
-		STATUS[`UART_STATUS_TX_ACTIVE] <= TX_ACTIVE;
+		TX_ACTIVE_R <= TX_ACTIVE;
 		
 		if(TX_DONE) begin
-			STATUS[`UART_STATUS_TX_COMPLETE] <= 1;
+			TX_COMPLETE_R <= 1;
 		end
 			
 		if(TX_ACTIVE) begin
@@ -101,7 +112,7 @@ always @(posedge CLK or posedge RESET) begin
 				
 				2'b01: begin // Read data, reset flag
 					DOUT <= RX_BYTE;
-					STATUS[`UART_STATUS_DATA_AVAILABLE] <= 0;
+					DATA_AVAILABLE_R <= 0;
 				end
 				
 				2'b10: begin // Read RX_CLK_DIV
@@ -119,7 +130,7 @@ always @(posedge CLK or posedge RESET) begin
 				2'b00: begin end // Ignore status writes
 				2'b01: begin     // Write data, clear sent flag
 					START_TX <= 1;
-					STATUS[`UART_STATUS_TX_COMPLETE] <= 0;
+					TX_COMPLETE_R <= 0;
 				end
 				2'b10: begin     // RX_CLK_DIV
 					RX_CLK_DIV <= DIN;

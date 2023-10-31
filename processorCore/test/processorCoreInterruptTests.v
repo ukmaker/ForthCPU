@@ -42,9 +42,7 @@ core testInstance(
 	.WRN0_BUF(WRN0_BUF),
 	.WRN1_BUF(WRN1_BUF),
 	
-	.ABUS_OEN(ABUS_OEN),
-	.DBUS_OEN(DBUS_OEN)
-
+	.ABUS_OEN(ABUS_OEN)
 );
 
 reg [15:0] INSTR;

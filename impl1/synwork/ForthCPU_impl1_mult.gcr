@@ -1,40 +1,9 @@
-i CLK
+i N_1
 m 0 0
-u 62 171
-p {p:CLK}{t:mcuResourcesInst.CLK}{p:mcuResourcesInst.CLK}{t:mcuResourcesInst.interruptMaskRegisterInst.CLK}{p:mcuResourcesInst.interruptMaskRegisterInst.CLK}{t:mcuResourcesInst.interruptMaskRegisterInst.INT1.C}
-e ckid0_0 {t:mcuResourcesInst.interruptMaskRegisterInst.INT1.C} dffr
-c ckid0_0 {p:CLK} port Unsupported/too complex instance on clock path
-i coreInst.fullALUInst.aluInst.un1_ALUX_2_buf
-m 0 0
-u 16 16
-n ckid0_1 {t:coreInst.fullALUInst.aluInst.tmp[15].C} Clock source is invalid for GCC
-p {t:coreInst.fullALUInst.aluInst.un1_ALUX_2.OUT}{t:coreInst.fullALUInst.aluInst.tmp[15].C}
-e ckid0_1 {t:coreInst.fullALUInst.aluInst.tmp[15].C} lat
-d ckid0_1 {t:coreInst.fullALUInst.aluInst.un1_ALUX_2.OUT} and Unable to find a clock in input cone
-i coreInst.fullALUInst.aluInst.un1_ALUX_1_buf
-m 0 0
-u 1 1
-n ckid0_2 {t:coreInst.fullALUInst.aluInst.CARRY.C} Clock source is invalid for GCC
-p {t:coreInst.fullALUInst.aluInst.un1_ALUX_1.OUT}{t:coreInst.fullALUInst.aluInst.CARRY.C}
-e ckid0_2 {t:coreInst.fullALUInst.aluInst.CARRY.C} lat
-d ckid0_2 {t:coreInst.fullALUInst.aluInst.un1_ALUX_1.OUT} and Unable to find a clock in input cone
-i coreInst.instructionPhaseDecoderInst.INSTRUCTION[15]
-m 0 0
-u 0 0
-i coreInst.instructionPhaseDecoderInst.INSTRUCTION[14]
-m 0 0
-u 0 0
-i coreInst.instructionPhaseDecoderInst.INSTRUCTION[13]
-m 0 0
-u 0 0
-i coreInst.instructionPhaseDecoderInst.INSTRUCTION[12]
-m 0 0
-u 0 0
-i coreInst.instructionPhaseDecoderInst.INSTRUCTION[11]
-m 0 0
-u 0 0
-i coreInst.instructionPhaseDecoderInst.INSTRUCTION[10]
-m 0 0
-u 0 0
+u 99 255
+n ckid0_0 {t:mcuInst.mcuResourcesInst.interruptMaskRegisterInst.PRI_REG[2:0].C} Clock source is invalid for GCC
+p {t:G_1.OUT[0]}{t:mcuInst.PIN_CLK_X1}{p:mcuInst.PIN_CLK_X1}{t:mcuInst.boardInst.PIN_CLK_X1}{p:mcuInst.boardInst.PIN_CLK_X1}{t:mcuInst.boardInst.PIN_LED[7:0].C}
+e ckid0_1 {t:mcuInst.boardInst.PIN_LED[7:0].C} dffre
+d ckid0_0,ckid0_1 {t:G_1.OUT[0]} loopbuf Clock optimization blocked by combinational loop marker (loopbuf)
 l 0 0 0 0 0 0
 r 0 0 0 0 0 0 0 0

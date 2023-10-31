@@ -36,14 +36,10 @@
 */
 module jumpGroupDecoder(
 	
-	input CLK,
-	input RESET,
-	input [15:0] INSTRUCTION,
-	
-	input FETCH,
-	input DECODE,
-	input EXECUTE,
-	input COMMIT,
+	input [1:0] GROUPF,
+	input [1:0] SKIPF,
+	input [1:0] JPF,
+	input [1:0] CCF,
 	
 	/**
 	* Program counter control
@@ -70,16 +66,7 @@ module jumpGroupDecoder(
 	
 );
 
-wire [1:0] GROUPF;
-wire [1:0] SKIPF;
-wire [1:0] JPF;
-
-
-assign GROUPF     = INSTRUCTION[15:14];
-assign SKIPF      = INSTRUCTION[13:12];
-assign CC_SELECTX = INSTRUCTION[11:10];
-assign JPF        = INSTRUCTION[9:8];
-
+assign CC_SELECTX = CCF;
 assign CC_INVERTX = SKIPF[0];
 assign CC_APPLYX  = SKIPF[1];
 

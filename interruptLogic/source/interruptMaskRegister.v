@@ -8,7 +8,7 @@ module interruptMaskRegister(
 	
 	input CLK,
 	input RESET,
-	input [15:0] DIN,
+	input [7:0] DIN,
 	input RD,
 	input WR,
 	input [1:0] ADDR,
@@ -46,6 +46,7 @@ always @(*) begin
 				  INTS[7] ? 7 : 0;
 		INT = PRI != 0;
 		
+		DOUT = 8'h00;
 		if(RD) begin
 			case(ADDR)
 				2'b00: DOUT = MASK_REG;

@@ -268,9 +268,9 @@
 /*******************************************
 * UART definitions
 ********************************************/
-`define UART_STATUS_DATA_AVAILABLE 0
-`define UART_STATUS_TX_ACTIVE      1
-`define UART_STATUS_TX_COMPLETE    2
+`define UART_STATUS_DATA_AVAILABLE 1
+`define UART_STATUS_TX_ACTIVE      2
+`define UART_STATUS_TX_COMPLETE    4
 
 `define UART_REG_STATUS      2'b00
 `define UART_REG_DATA        2'b01

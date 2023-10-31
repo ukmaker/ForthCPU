@@ -9,7 +9,6 @@ module aluGroupDecoderTests;
 	wire         FETCH, DECODE, EXECUTE, COMMIT;
 	reg  [15:0] DIN;
 	wire [15:0] INSTRUCTION;
-	reg         PC_ENX;
 	
 	/** 
 	* Outputs to control functional blocks
@@ -44,6 +43,8 @@ module aluGroupDecoderTests;
 	wire [3:0] ARGA_X;
 	wire [3:0] ARGB_X;
 	wire [1:0] LDSINCF;
+	
+	wire PC_ENX;
 
 instructionPhaseDecoder decoder(
 	.CLK(CLK),
@@ -92,7 +93,6 @@ end
 initial begin
 	#90
 	CLK = 0; 
-	PC_ENX = 1;
 	 RESET = 1;
 	 DIN = 16'h0000;
 	 `TICKTOCK;
@@ -143,6 +143,8 @@ initial begin
 	`assert("REGB_EN", 0, REGB_EN)
 	`assert("REGA_WEN",   0, REGA_WEN)
 	`assert("REG_B_WEN",  0, REGB_WEN)
+	`assert("ALUA_SRCX", `ALUA_SRCX_REG_A, ALUA_SRCX)
+	`assert("ALUB_SRCX", `ALUB_SRCX_U4, ALUB_SRCX)
 	$display("[T=%09t] %d - COMMMIT", $realtime, 8);	
 	`TICKTOCK;
 	`assert("REGA_EN", 1, REGA_EN)
@@ -164,6 +166,8 @@ initial begin
 	`assert("REGA_WEN",   0, REGA_WEN)
 	`assert("REG_B_WEN",  0, REGB_WEN)
 	`assert("CCL_LD",     0, CCL_LD)
+	`assert("ALUA_SRCX", `ALUA_SRCX_REG_A, ALUA_SRCX)
+	`assert("ALUB_SRCX", `ALUB_SRCX_U8, ALUB_SRCX)
 	$display("[T=%09t] %d - COMMMIT", $realtime, 12);	
 	`TICKTOCK;
 	`assert("REGA_EN", 1, REGA_EN)
@@ -191,6 +195,8 @@ initial begin
 	`assert("REGA_WEN",   0, REGA_WEN)
 	`assert("REG_B_WEN",  0, REGB_WEN)
 	`assert("CCL_LD",     0, CCL_LD)
+	`assert("ALUA_SRCX", `ALUA_SRCX_REG_A, ALUA_SRCX)
+	`assert("ALUB_SRCX", `ALUB_SRCX_U8H, ALUB_SRCX)
 	$display("[T=%09t] %d - COMMMIT", $realtime, 16);	
 	`TICKTOCK;
 	`assert("REGA_EN", 1, REGA_EN)

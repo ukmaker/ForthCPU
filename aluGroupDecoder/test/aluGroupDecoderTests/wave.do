@@ -6,9 +6,8 @@ add wave -noupdate /aluGroupDecoderTests/FETCH
 add wave -noupdate /aluGroupDecoderTests/DECODE
 add wave -noupdate /aluGroupDecoderTests/EXECUTE
 add wave -noupdate /aluGroupDecoderTests/COMMIT
-add wave -noupdate -radix hexadecimal /aluGroupDecoderTests/DIN
-add wave -noupdate -radix hexadecimal /aluGroupDecoderTests/INSTRUCTION
-add wave -noupdate /aluGroupDecoderTests/PC_ENX
+add wave -noupdate /aluGroupDecoderTests/DIN
+add wave -noupdate /aluGroupDecoderTests/INSTRUCTION
 add wave -noupdate /aluGroupDecoderTests/REGA_EN
 add wave -noupdate /aluGroupDecoderTests/REGB_EN
 add wave -noupdate /aluGroupDecoderTests/REGA_WEN
@@ -22,11 +21,12 @@ add wave -noupdate /aluGroupDecoderTests/CCL_LD
 add wave -noupdate /aluGroupDecoderTests/ARGA_X
 add wave -noupdate /aluGroupDecoderTests/ARGB_X
 add wave -noupdate /aluGroupDecoderTests/LDSINCF
+add wave -noupdate /aluGroupDecoderTests/PC_ENX
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {1991 ns} 0}
+WaveRestoreCursors {{Cursor 1} {10848 ns} 0}
 quietly wave cursor active 1
-configure wave -namecolwidth 325
-configure wave -valuecolwidth 100
+configure wave -namecolwidth 264
+configure wave -valuecolwidth 219
 configure wave -justifyvalue left
 configure wave -signalnamewidth 0
 configure wave -snapdistance 10
@@ -39,4 +39,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ns
 update
-WaveRestoreZoom {503 ns} {3089 ns}
+WaveRestoreZoom {0 ns} {11642 ns}

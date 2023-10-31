@@ -4,7 +4,7 @@ module instructionPhaseDecoder(
 	input CLK,
 	input RESET,
 	input [15:0] DIN,
-	input PC_ENX,
+	input      PC_ENX,
 	output reg FETCH,
 	output reg DECODE,
 	output reg EXECUTE,
@@ -19,8 +19,7 @@ always @ (posedge CLK or posedge RESET)
 begin
 	if(RESET) begin
 		PHASE <= 0;
-
-	end else begin
+	end else if(PC_ENX) begin
 		case (PHASE)
 			0: begin
 				FETCH <= 0;
@@ -69,7 +68,7 @@ end
 always @(posedge CLK or posedge RESET) begin
 	if(RESET) begin
 		INSTRUCTION <= 0;
-	end else if(DECODE & PC_ENX) begin
+	end else if(DECODE) begin
 		INSTRUCTION <= DIN;
 	end
 end

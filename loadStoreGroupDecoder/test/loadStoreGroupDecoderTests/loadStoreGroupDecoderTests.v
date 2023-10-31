@@ -7,7 +7,6 @@ module loadStoreGroupDecoderTests;
 	
 	reg CLK;
 	reg RESET;
-	reg [15:0] INSTRUCTION;
 	
 	wire FETCH;
 	wire DECODE;
@@ -53,10 +52,20 @@ module loadStoreGroupDecoderTests;
 	wire       BYTEX;
 	wire [1:0] ADDR_BUSX;
 	
+	
+	reg  [15:0] DIN;
+	wire [15:0] INSTRUCTION;
+	wire [1:0] INCF;
+	wire [1:0] LDSF;
+	wire [1:0] MODEF;
+	wire PC_ENX;
+	
 loadStoreGroupDecoder testInstance(
 	.CLK(CLK),
 	.RESET(RESET),
-	.INSTRUCTION(INSTRUCTION[13:8]),
+	.INCF(INCF),
+	.LDSF(LDSF),
+	.MODEF(MODEF),
 	.FETCH(FETCH),
 	.DECODE(DECODE),
 	.EXECUTE(EXECUTE),
@@ -86,8 +95,15 @@ instructionPhaseDecoder decoder(
 	.FETCH(FETCH),
 	.DECODE(DECODE),
 	.EXECUTE(EXECUTE),
-	.COMMIT(COMMIT)
+	.COMMIT(COMMIT),
+	.DIN(DIN),
+	.INSTRUCTION(INSTRUCTION),
+	.PC_ENX(PC_ENX)
 );	
+
+assign INCF = INSTRUCTION[13:12];
+assign LDSF = INSTRUCTION[11:10];
+assign MODEF = INSTRUCTION[9:8];
 
 // clk gen
 always begin
@@ -99,7 +115,7 @@ initial begin
 	CLK = 0; 
 	`TICK;
 	 RESET = 1;
-	 INSTRUCTION = 16'h0000;
+	 DIN = 16'h0000;
 	 `TICK;
 	 `TICK;
 	 
@@ -113,7 +129,7 @@ initial begin
 	 *************************************************************************/
 	 // Start FETCH
 	 `TICK;
-	 INSTRUCTION = {`GROUP_LOAD_STORE,`LDSINCF_NONE,`LDSOPF_LD,`MODE_LDS_REG_MEM,`R5,`RI};	 
+	 DIN = {`GROUP_LOAD_STORE,`LDSINCF_NONE,`LDSOPF_LD,`MODE_LDS_REG_MEM,`R5,`RI};	 
 	 `TICK;  
 	// DECODE
 	`TICKTOCK; 
@@ -147,7 +163,7 @@ initial begin
 	 *************************************************************************/
 	// FETCH
 	`TICK;
-	INSTRUCTION = {`GROUP_LOAD_STORE,`LDSINCF_PRE_DEC,`LDSOPF_LD,`MODE_LDS_REG_MEM,`R5,`RI};	 
+	DIN = {`GROUP_LOAD_STORE,`LDSINCF_PRE_DEC,`LDSOPF_LD,`MODE_LDS_REG_MEM,`R5,`RI};	 
 	`TICK;
 	 
 	// DECODE
@@ -160,9 +176,9 @@ initial begin
 	`assert("REGB_EN",      1,                   REGB_EN)
 	`assert("REGA_WEN",     0,                   REGA_WEN)
 	`assert("REG_B_WEN",    0,                   REGB_WEN)
-	`assert("ALUA_SRCX",   `ALUA_SRCX_TWO,       ALUA_SRCX)
+	`assert("ALUA_SRCX",   `ALUA_SRCX_MINUS_TWO, ALUA_SRCX)
 	`assert("ALUB_SRCX",   `ALUB_SRCX_REG_B,     ALUB_SRCX)
-	`assert("ALU_OPX",     `ALU_OPX_SUB,         ALU_OPX)
+	`assert("ALU_OPX",     `ALU_OPX_ADD,         ALU_OPX)
 	`assert("ADDR_BUSX",   `ADDR_BUSX_ALU_R,     ADDR_BUSX)
 	`assert("REGA_ADDRX",  `REGA_ADDRX_ARGA,     REGA_ADDRX)
 	
@@ -182,7 +198,7 @@ initial begin
 	 *************************************************************************/
 	// FETCH
 	 `TICK;
-	 INSTRUCTION = {`GROUP_LOAD_STORE,`LDSINCF_POST_INC,`LDSOPF_LD,`MODE_LDS_REG_MEM,`R5,`RI};	 
+	 DIN = {`GROUP_LOAD_STORE,`LDSINCF_POST_INC,`LDSOPF_LD,`MODE_LDS_REG_MEM,`R5,`RI};	 
 	 `TICK;	 
 	// DECODE
 	`TICKTOCK; 
@@ -214,7 +230,7 @@ initial begin
 	 *************************************************************************/
 	 // Start FETCH
 	 `TICK;
-	 INSTRUCTION = {`GROUP_LOAD_STORE,`LDSINCF_NONE,`LDSOPF_ST,`MODE_LDS_REG_MEM,`R5,`RI};	 
+	 DIN = {`GROUP_LOAD_STORE,`LDSINCF_NONE,`LDSOPF_ST,`MODE_LDS_REG_MEM,`R5,`RI};	 
 	 `TICK;
 	 // DECODE
 	`TICKTOCK; 
@@ -230,7 +246,7 @@ initial begin
 	`assert("ALU_OPX",     `ALU_OPX_ADD,         ALU_OPX)
 	`assert("ADDR_BUSX",   `ADDR_BUSX_ALUB_DATA, ADDR_BUSX)
 	`assert("REGA_ADDRX",  `REGA_ADDRX_ARGA,     REGA_ADDRX)
-	`assert("DATA_BUSX",   `DATA_BUSX_ALUA_DATA, DATA_BUSX)
+	`assert("DATA_BUSX",   `DATA_BUSX_REGA_DOUT, DATA_BUSX)
 	// COMMIT
 	`TICKTOCK;
 	`mark(8)
@@ -243,11 +259,11 @@ initial begin
 
 	
 	/************************************************************************
-	 * LD Ra,(FP - U6)
+	 * LD Ra,(FP + S6.0)
 	 *************************************************************************/
 	 // Start FETCH
 	 `TICK;
-	 INSTRUCTION = {`GROUP_LOAD_STORE,2'b10,`LDSOPF_LD,`MODE_LDS_REG_FRAME,`R5,4'b0101};	 
+	 DIN = {`GROUP_LOAD_STORE,2'b10,`LDSOPF_LD,`MODE_LDS_REG_FP,`R5,4'b0101};	 
 	 `TICK;
 	 // DECODE
 	`TICKTOCK; 
@@ -258,9 +274,9 @@ initial begin
 	`assert("REGB_EN",      1,                  REGB_EN)
 	`assert("REGA_WEN",     0,                  REGA_WEN)
 	`assert("REG_B_WEN",    0,                  REGB_WEN)
-	`assert("ALUA_SRCX",   `ALUA_SRCX_U6_0,     ALUA_SRCX)
+	`assert("ALUA_SRCX",   `ALUA_SRCX_S6_0,     ALUA_SRCX)
 	`assert("ALUB_SRCX",   `ALUB_SRCX_REG_B,    ALUB_SRCX)
-	`assert("ALU_OPX",     `ALU_OPX_SUB,        ALU_OPX)
+	`assert("ALU_OPX",     `ALU_OPX_ADD,        ALU_OPX)
 	`assert("ADDR_BUSX",   `ADDR_BUSX_ALU_R,    ADDR_BUSX)
 	`assert("REGB_ADDRX",  `REGB_ADDRX_RFP,     REGB_ADDRX)
 			
@@ -274,11 +290,11 @@ initial begin
 	`TICKTOCK;
 	
 	/************************************************************************
-	 * LD Ra,(SP + U6)
+	 * LD Ra,(SP + S6.0)
 	 *************************************************************************/
 	 // Start FETCH
 	 `TICK;
-	 INSTRUCTION = {`GROUP_LOAD_STORE,2'b10,`LDSOPF_LD,`MODE_LDS_REG_STACK,`R5,4'b0101};	 
+	 DIN = {`GROUP_LOAD_STORE,2'b10,`LDSOPF_LD,`MODE_LDS_REG_SP,`R5,4'b0101};	 
 	 `TICK;
 	 // DECODE
 	`TICKTOCK; 
@@ -289,7 +305,7 @@ initial begin
 	`assert("REGB_EN",      1,                  REGB_EN)
 	`assert("REGA_WEN",     0,                  REGA_WEN)
 	`assert("REG_B_WEN",    0,                  REGB_WEN)
-	`assert("ALUA_SRCX",   `ALUA_SRCX_U6_0,     ALUA_SRCX)
+	`assert("ALUA_SRCX",   `ALUA_SRCX_S6_0,     ALUA_SRCX)
 	`assert("ALUB_SRCX",   `ALUB_SRCX_REG_B,    ALUB_SRCX)
 	`assert("ALU_OPX",     `ALU_OPX_ADD,        ALU_OPX)
 	`assert("ADDR_BUSX",   `ADDR_BUSX_ALU_R,    ADDR_BUSX)
@@ -305,11 +321,11 @@ initial begin
 	`TICKTOCK;
 	
 	/************************************************************************
-	 * LD Ra,(RS + U6)
+	 * LD Ra,(RS + S6.0)
 	 *************************************************************************/
 	 // Start FETCH
 	 `TICK;
-	 INSTRUCTION = {`GROUP_LOAD_STORE,2'b10,`LDSOPF_LD,`MODE_LDS_REG_RETSTACK,`R5,4'b0101};	 
+	 DIN = {`GROUP_LOAD_STORE,2'b10,`LDSOPF_LD,`MODE_LDS_REG_RS,`R5,4'b0101};	 
 	 `TICK;
 	 // DECODE
 	`TICKTOCK; 
@@ -320,7 +336,7 @@ initial begin
 	`assert("REGB_EN",      1,                  REGB_EN)
 	`assert("REGA_WEN",     0,                  REGA_WEN)
 	`assert("REG_B_WEN",    0,                  REGB_WEN)
-	`assert("ALUA_SRCX",   `ALUA_SRCX_U6_0,     ALUA_SRCX)
+	`assert("ALUA_SRCX",   `ALUA_SRCX_S6_0,     ALUA_SRCX)
 	`assert("ALUB_SRCX",   `ALUB_SRCX_REG_B,    ALUB_SRCX)
 	`assert("ALU_OPX",     `ALU_OPX_ADD,        ALU_OPX)
 	`assert("ADDR_BUSX",   `ADDR_BUSX_ALU_R,    ADDR_BUSX)

@@ -13,8 +13,9 @@ module generalGroupDecoder(
 	
 	input CLK,
 	input RESET,
-	input FETCH, DECODE, EXECUTE, COMMIT,
-	input [15:0] INSTRUCTION,
+	input EXECUTE, COMMIT,
+	input [1:0] INSTRUCTION_GROUP,
+	input [2:0] INSTRUCTION_OP,
 	
 	output reg EIX,
 	output reg DIX,
@@ -22,13 +23,8 @@ module generalGroupDecoder(
 	output reg PC_ENX
 );
 
-wire [1:0] GROUP;
-wire [2:0] OP;
-
 reg GEN, EI, DI, RETI, HALT;
 
-assign GROUP = INSTRUCTION[15:14];
-assign OP    = INSTRUCTION[10:8];
 
 always @(*) begin
 	// decode the instruction
@@ -38,9 +34,9 @@ always @(*) begin
 	RETI = 0;
 	HALT = 0;
 	
-	if(GROUP == 2'b00) begin
+	if(INSTRUCTION_GROUP == 2'b00) begin
 		GEN = 1;
-		case(OP)
+		case(INSTRUCTION_OP)
 			`GEN_OP_HALT: HALT = 1;
 			`GEN_OP_EI:   EI = 1;
 			`GEN_OP_DI:   DI = 1;

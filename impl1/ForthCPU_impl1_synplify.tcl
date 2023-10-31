@@ -77,9 +77,10 @@ add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/UART/source/recei
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/UART/source/transmitter.v}
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/UART/source/UART.v}
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/devBoard/source/devBoard.v}
+add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/impl1/test/blinkTest.v}
 
 #-- top module name
-set_option -top_module mcu
+set_option -top_module blinkTests
 
 #-- set result format/file last
 project -result_file {C:/Users/Duncan/git/ForthCPU/impl1/ForthCPU_impl1.edi}

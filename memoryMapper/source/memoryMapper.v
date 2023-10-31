@@ -10,7 +10,6 @@
 ****************************************************/
 module memoryMapper(
 	
-	input CLK,
 	input RESET,
 	
 	
@@ -114,35 +113,38 @@ always @(*) begin
 	RD_GPIO = 0;
 	WR_GPIO = 0;
 	
-	if(UART_MAP) begin
-		WR_UART = WRITE;
-		RD_UART = READ;
-	end 
+	if(!RESET) begin
 	
-	if(INT_MAP) begin
-		RD_INT = READ;
-		WR_INT = WRITE;
-	end
-	
-	if(GPIO_MAP) begin
-		RD_GPIO = READ;
-		WR_GPIO = WRITE;
-	end
-	
-	if(RAM_MAP) begin
-		EN_RAM = 1;
-		if(READ) begin
-			BE0 = 1;
-			BE1 = 1;
-			WR_RAM = 0;
-		end else if(WRITE) begin
-			BE1 = ~WR0N; // note enables seem to be numbered in reverse order
-			BE0 = ~WR1N;
-			WR_RAM = 1;
-		end else begin
-			BE0 = 0;
-			BE1 = 0;
-			WR_RAM = 0;
+		if(UART_MAP) begin
+			WR_UART = WRITE;
+			RD_UART = READ;
+		end 
+		
+		if(INT_MAP) begin
+			RD_INT = READ;
+			WR_INT = WRITE;
+		end
+		
+		if(GPIO_MAP) begin
+			RD_GPIO = READ;
+			WR_GPIO = WRITE;
+		end
+		
+		if(RAM_MAP) begin
+			EN_RAM = 1;
+			if(READ) begin
+				BE0 = 1;
+				BE1 = 1;
+				WR_RAM = 0;
+			end else if(WRITE) begin
+				BE1 = ~WR0N; // note enables seem to be numbered in reverse order
+				BE0 = ~WR1N;
+				WR_RAM = 1;
+			end else begin
+				BE0 = 0;
+				BE1 = 0;
+				WR_RAM = 0;
+			end
 		end
 	end
 end

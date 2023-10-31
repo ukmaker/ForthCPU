@@ -58,11 +58,13 @@ module devBoard (
 		output wire UART_RXD,
 		input  wire UART_TXD,
 		
-		output reg [15:0] DIN_GPIO,
+		output reg [7:0] DIN_GPIO,
 		input wire RD_GPIO,
 		input wire WR_GPIO,
 		input wire ADDR_GPIO
 );
+
+reg [3:0] DIPSW_R;
 
 assign CLK = PIN_CLK_X1;
 assign RESET = ~PIN_RESETN;
@@ -76,42 +78,49 @@ assign INTS4 = PIN_INT4;
 assign INTS5 = PIN_INT5;
 assign INTS6 = PIN_INT6;
 assign UART_RXD = PIN_RXD;
-assign DIN_GPIO[15:8] = 8'h00;
+
+// Passthru signals
+always @(*) begin
+	if(RESET) begin	
+		PIN_ADDR = 16'h0000;
+		PIN_RDN  = 1'b1;
+		PIN_WR0N = 1'b1;
+		PIN_WR1N = 1'b1;
+		PIN_TXD  = 1'b0;
+	end else begin
+		PIN_ADDR = ADDR;
+		PIN_RDN  = RDN;
+		PIN_WR0N = WR0N;
+		PIN_WR1N = WR1N;
+		PIN_TXD  = UART_TXD;
+		
+		if(RD_GPIO && ADDR_GPIO == 0) begin
+			DIN_GPIO[7:0] = {4'h0,DIPSW_R};
+		end else begin
+			DIN_GPIO[7:0] = PIN_LED;
+		end
+		
+		if(RDN) begin
+			DIN = PIN_DBUS;
+		end else begin
+			DIN = DOUT;
+		end
+	end
+end
 
 always @(posedge CLK or posedge RESET) begin
 	if(RESET) begin
 		
 		PIN_LED  <= 8'b00000000;
-		DIN_GPIO[7:0] <= 8'h00;
-		DIN      <= 16'h0000;
-		PIN_ADDR <= 16'h0000;
-		PIN_RDN  <= 1'b1;
-		PIN_WR0N <= 1'b1;
-		PIN_WR1N <= 1'b1;
-		PIN_TXD  <= 1'b0;
+		DIPSW_R  <= 4'b0000;
 		
 	end else begin
 		
-		PIN_RDN  <= RDN;
-		PIN_WR0N <= WR0N;
-		PIN_WR1N <= WR1N;
-		PIN_ADDR <= ADDR;
-		PIN_TXD  <= UART_TXD;
-		
-		if(RD_GPIO && ADDR_GPIO == 0) begin
-			DIN_GPIO[7:0] <= {4'h0,PIN_DIPSW};
-		end else begin
-			DIN_GPIO[7:0] <= PIN_LED;
-		end
+		DIPSW_R <= PIN_DIPSW;
 		
 		if(WR_GPIO & ADDR_GPIO) begin
 			PIN_LED <= DOUT;
 		end
-		
-		if(RDN) 
-			DIN <= PIN_DBUS;
-		else
-			DIN <= DOUT;
 	end
 end
 
