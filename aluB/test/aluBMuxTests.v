@@ -4,7 +4,7 @@
 
 module aluBMuxTests;
 	
-	reg [15:0] ALUB_DIN;
+	reg [15:0] REGB_DOUT;
 	reg [2:0] ALUB_SRCX;
 	
 	reg [3:0] ARGA_X;
@@ -17,7 +17,7 @@ module aluBMuxTests;
 	
 aluBMux testInstance(
 
-	.ALUB_DIN(ALUB_DIN),
+	.REGB_DOUT(REGB_DOUT),
 	.ALUB_SRCX(ALUB_SRCX),
 	.ARGA_X(ARGA_X),
 	.ARGB_X(ARGB_X),
@@ -38,7 +38,7 @@ initial begin
 	`TICKTOCK;
 	`TICKTOCK;
 	 
-	ALUB_DIN = 16'h1234;
+	REGB_DOUT = 16'h1234;
 	ALUB_SRCX = 3'b000;
 	ARGA_X = 4'b1010;
 	ARGB_X = 4'b0101;
@@ -83,20 +83,6 @@ initial begin
 	ARGB_X = 4'b0001;
 	`TICKTOCK;
 	`assert("ALUB_DATA", 16'h0002, ALUB_DATA)
-
-	ALUB_SRCX = `ALUB_SRCX_U6;
-	ARGA_X = 4'b1000;
-	ARGB_X = 4'b1010;
-	`TICKTOCK;
-	`assert("ALUB_DATA", 16'h002a, ALUB_DATA)
-
-
-	ALUB_SRCX = `ALUB_SRCX_U6_0;
-	ARGA_X = 4'b1000;
-	ARGB_X = 4'b1010;
-	// 0101 0100
-	`TICKTOCK;
-	`assert("ALUB_DATA", 16'h0054, ALUB_DATA)
 
 
 end

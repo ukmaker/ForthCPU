@@ -18,6 +18,7 @@ module busController(
 	input [15:0] PC_A,
 	input [15:0] ALU_R,
 	input [15:0] ALUB_DATA,
+	input [15:0] HERE,
 	
 	input [1:0] ADDR_BUSX,
 	
@@ -56,7 +57,7 @@ always @(*) begin
 		`ADDR_BUSX_PC_A:      ADDR_BUF = PC_A;
 		`ADDR_BUSX_ALU_R:     ADDR_BUF = ALU_R;
 		`ADDR_BUSX_ALUB_DATA: ADDR_BUF = ALUB_DATA;
-		default:              ADDR_BUF = ALUB_DATA;
+		default:              ADDR_BUF = HERE;
 	endcase
 end
 	

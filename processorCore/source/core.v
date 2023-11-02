@@ -46,17 +46,16 @@ wire [1:0]  CC_SELECTX;
 wire [1:0]  DATA_BUSX;
 wire         DIX;
 wire         EIX;
+wire [15:0] HERE;
 wire [15:0] INSTRUCTION;
-wire         JMPX;
-wire         JRX;
 wire [1:0]  LDSINCF;
 wire [15:0] PC_A;
 wire [15:0] PC_A_NEXT;
-wire         PC_BASEX;
+wire [1:0]  PC_BASEX;
 wire         PC_LD_INT0X;
 wire         PC_LD_INT1X;
 wire [2:0]  PC_NEXTX;
-wire         PC_OFFSETX;
+wire [1:0]  PC_OFFSETX;
 wire         PC_ENX;
 wire [1:0]  REGA_ADDRX;
 wire [1:0]  REGA_BYTE_ENX;
@@ -91,6 +90,8 @@ wire [2:0]  LDS_ALUB_SRCX;
 wire [3:0]  LDS_ALU_OPX;
 wire         LDS_BYTEX;
 wire [1:0]  LDS_DATA_BUSX;
+wire [1:0]  LDS_PC_BASEX;
+wire [1:0]  LDS_PC_OFFSETX;
 wire         LDS_RDX;
 wire         LDS_REGA_EN;
 wire         LDS_REGA_WEN;
@@ -103,6 +104,9 @@ wire [2:0]  LDS_REGB_ADDRX;
 wire [1:0]  LDS_REGB_BYTE_ENX;
 wire         LDS_WRX;
 
+wire [1:0]  JMP_ADDR_BUSX;
+wire [1:0]  JMP_PC_BASEX;
+wire [1:0]  JMP_PC_OFFSETX;
 wire [1:0]  JMP_REGA_ADDRX;
 wire [2:0]  JMP_REGB_ADDRX;
 wire         JMP_REGA_EN;
@@ -145,7 +149,7 @@ fullALU fullALUInst(
 	
 	.ARGA_X(ARGA_X),
 	.ARGB_X(ARGB_X),
-	.LDSINCF(LDSINCF),
+	.B5(INSTRUCTION[13]),
 	
 	.CCL_LD(CCL_LD),
 	.ALU_R(ALU_R),
@@ -200,6 +204,7 @@ busController busControllerInst(
 	.WRX(WRX),
 	.RDX(RDX),
 	.DOUT_BUF(DOUT_BUF),
+	.HERE(HERE),
 	.HIGH_BYTEX(HIGH_BYTEX),
 	.RDN_BUF(RDN_BUF),
 	.WRN0_BUF(WRN0_BUF),
@@ -213,32 +218,18 @@ programCounter programCounterInst(
 	.CLK(CLK),
 	.RESET(RESET),
 	.FETCH(FETCH),
+	.DECODE(DECODE),
 	.PC_ENX(PC_ENX),
 	.PC_LD_INT0X(PC_LD_INT0X),
 	.PC_LD_INT1X(PC_LD_INT1X),
 	.PC_BASEX(PC_BASEX),
 	.PC_OFFSETX(PC_OFFSETX),
-	.PC_D(ALUB_DATA),
+	.REGB_DOUT(ALUB_DATA),
+	.DIN(DIN),
 	.PC_NEXTX(PC_NEXTX),
+	.HERE(HERE),
 	.PC_A_NEXT(PC_A_NEXT),
 	.PC_A(PC_A)
-);
-
-/***************************************
-* Branch Logic
-****************************************/
-branchLogic branchLogicInst(
-	.CC_ZERO(CC_ZERO),
-	.CC_SIGN(CC_SIGN),
-	.CC_CARRY(CC_CARRY),
-	.CC_PARITY(CC_PARITY),
-	.CC_SELECTX(CC_SELECTX),
-	.CC_INVERTX(CC_INVERTX),
-	.CC_APPLYX(CC_APPLYX),
-	.JMPX(JMPX),
-	.JRX(JRX),
-	.PC_OFFSETX(PC_OFFSETX),
-	.PC_BASEX(PC_BASEX)
 );
 
 /***************************************
@@ -280,8 +271,7 @@ aluGroupDecoder aluGroupDecoderInst(
 	.ALUA_SRCX(ALU_ALUA_SRCX),
 	.ALUB_SRCX(ALU_ALUB_SRCX),
 	.ARGA_X(ARGA_X),
-	.ARGB_X(ARGB_X),
-	.LDSINCF(LDSINCF)
+	.ARGB_X(ARGB_X)
 );
 
 /***************************************
@@ -290,9 +280,8 @@ aluGroupDecoder aluGroupDecoderInst(
 loadStoreGroupDecoder loadStoreGroupDecoderInst(
 	.CLK(CLK),
 	.RESET(RESET),
-	.INCF(INSTRUCTION[13:12]),
-	.LDSF(INSTRUCTION[11:10]),
-	.MODEF(INSTRUCTION[9:8]),
+	.OPF(INSTRUCTION[12:11]),
+	.MODEF(INSTRUCTION[10:8]),
 	.FETCH(FETCH),
 	.DECODE(DECODE),
 	.EXECUTE(EXECUTE),
@@ -311,6 +300,7 @@ loadStoreGroupDecoder loadStoreGroupDecoderInst(
 	.REGB_BYTE_ENX(LDS_REGB_BYTE_ENX),
 	.DATA_BUSX(LDS_DATA_BUSX),
 	.BYTEX(LDS_BYTEX),
+	.PC_OFFSETX(LDS_PC_OFFSETX),
 	.WRX(LDS_WRX),
 	.RDX(LDS_RDX),
 	.ADDR_BUSX(LDS_ADDR_BUSX)
@@ -322,13 +312,18 @@ loadStoreGroupDecoder loadStoreGroupDecoderInst(
 jumpGroupDecoder jumpGroupDecoderInst(
 	.GROUPF(INSTRUCTION[15:14]),
 	.SKIPF(INSTRUCTION[13:12]),
-	.JPF(INSTRUCTION[9:8]),
 	.CCF(INSTRUCTION[11:10]),
-	.JRX(JRX),
-	.JMPX(JMPX),
-	.CC_APPLYX(CC_APPLYX),
-	.CC_INVERTX(CC_INVERTX),
-	.CC_SELECTX(CC_SELECTX),
+	.JPF(INSTRUCTION[9:8]),
+	.JLF(INSTRUCTION[7]),
+	
+	.CC_ZERO(CC_ZERO),
+	.CC_CARRY(CC_CARRY),
+	.CC_SIGN(CC_SIGN),
+	.CC_PARITY(CC_PARITY),
+	
+	.PC_OFFSETX(JMP_PC_OFFSETX),
+	.PC_BASEX(JMP_PC_BASEX),
+	.ADDR_BUSX(JMP_ADDR_BUSX),
 	.REGA_ADDRX(JMP_REGA_ADDRX),
 	.REGB_ADDRX(JMP_REGB_ADDRX),
 	.REGA_EN(JMP_REGA_EN),
@@ -382,6 +377,7 @@ opxMultiplexer opxMultiplexerInst(
 	.LDS_ALUB_SRCX(LDS_ALUB_SRCX),
 	.LDS_BYTEX(LDS_BYTEX),	
 	.LDS_DATA_BUSX(LDS_DATA_BUSX),	
+	.LDS_PC_OFFSETX(LDS_PC_OFFSETX),
 	.LDS_RDX(LDS_RDX),
 	.LDS_REGA_EN(LDS_REGA_EN),
 	.LDS_REGA_WEN(LDS_REGA_WEN),
@@ -394,12 +390,15 @@ opxMultiplexer opxMultiplexerInst(
 	.LDS_REGB_BYTE_ENX(LDS_REGB_BYTE_ENX),
 	.LDS_WRX(LDS_WRX),
 
+	.JMP_ADDR_BUSX(JMP_ADDR_BUSX),
 	.JMP_ALUB_SRCX(JMP_ALUB_SRCX),
 	.JMP_REGA_ADDRX(JMP_REGA_ADDRX),
 	.JMP_REGB_ADDRX(JMP_REGB_ADDRX),
 	.JMP_REGA_EN(JMP_REGA_EN),
 	.JMP_REGA_WEN(JMP_REGA_WEN),
 	.JMP_REGB_EN(JMP_REGB_EN),
+	.JMP_PC_BASEX(JMP_PC_BASEX),
+	.JMP_PC_OFFSETX(JMP_PC_OFFSETX),
 
 	/*********************************************
 	* Combined outputs
@@ -410,6 +409,8 @@ opxMultiplexer opxMultiplexerInst(
 	.ALUB_SRCX(ALUB_SRCX),
 	.BYTEX(BYTEX),
 	.DATA_BUSX(DATA_BUSX),
+	.PC_BASEX(PC_BASEX),
+	.PC_OFFSETX(PC_OFFSETX),	
 	.RDX(RDX),
 	.REGA_EN(REGA_EN),
 	.REGA_WEN(REGA_WEN),

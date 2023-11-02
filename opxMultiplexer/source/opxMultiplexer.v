@@ -30,6 +30,7 @@ module opxMultiplexer(
 	input [2:0]  LDS_ALUB_SRCX,
 	input         LDS_BYTEX,	
 	input [1:0]  LDS_DATA_BUSX,	
+	input [1:0]  LDS_PC_OFFSETX,
 	input         LDS_RDX,
 	input         LDS_REGA_EN,
 	input         LDS_REGA_WEN,
@@ -42,12 +43,16 @@ module opxMultiplexer(
 	input [1:0]  LDS_REGB_BYTE_ENX,
 	input         LDS_WRX,
 
+	input [1:0]  JMP_ADDR_BUSX,
 	input [2:0]  JMP_ALUB_SRCX,
 	input [1:0]  JMP_REGA_ADDRX,
 	input [2:0]  JMP_REGB_ADDRX,
 	input         JMP_REGA_EN,
 	input         JMP_REGA_WEN,
 	input         JMP_REGB_EN,
+	
+	input [1:0]  JMP_PC_BASEX,
+	input [1:0]  JMP_PC_OFFSETX,
 	
 	/*********************************************
 	* Combined outputs
@@ -58,6 +63,8 @@ module opxMultiplexer(
 	output reg [2:0]  ALUB_SRCX,
 	output reg	       BYTEX,
 	output reg [1:0]  DATA_BUSX,
+	output reg [1:0]  PC_BASEX,
+	output reg [1:0]  PC_OFFSETX,
 	output reg	       RDX,
 	output reg         REGA_EN,
 	output reg         REGA_WEN,
@@ -72,7 +79,11 @@ module opxMultiplexer(
 
 );
 
+reg [1:0] PC_BASEX_R;
+reg [1:0] PC_OFFSETX_R;
+
 always @(*) begin
+			
 	case(INSTRUCTION_GROUP)
 		`GROUP_SYSTEM: begin
 			ALU_OPX       = `ALU_OPX_MOV;
@@ -80,6 +91,8 @@ always @(*) begin
 			ALUB_SRCX     = `ALUB_SRCX_REG_B;
 			BYTEX         = `BYTEX_WORD;
 			DATA_BUSX     = `DATA_BUSX_REGA_DOUT;
+			PC_BASEX_R    = `PC_BASEX_PC_A;
+			PC_OFFSETX_R  = `PC_OFFSETX_2;
 			RDX           = `RDX_NONE;
 			REGA_EN       = `REG_EN_NONE;
 			REGA_WEN      = `REG_WEN_NONE;
@@ -99,6 +112,8 @@ always @(*) begin
 			ALUB_SRCX     = LDS_ALUB_SRCX;
 			BYTEX         = LDS_BYTEX;
 			DATA_BUSX     = LDS_DATA_BUSX;
+			PC_BASEX_R    = `PC_BASEX_PC_A;
+			PC_OFFSETX_R  = LDS_PC_OFFSETX;
 			RDX           = LDS_RDX;
 			REGA_EN       = LDS_REGA_EN;
 			REGA_WEN      = LDS_REGA_WEN;
@@ -118,6 +133,8 @@ always @(*) begin
 			ALUB_SRCX     = JMP_ALUB_SRCX;
 			BYTEX         = `BYTEX_WORD;
 			DATA_BUSX     = `DATA_BUSX_REGA_DOUT;
+			PC_BASEX_R    = JMP_PC_BASEX;
+			PC_OFFSETX_R  = JMP_PC_OFFSETX;
 			RDX           = `RDX_NONE;
 			REGA_EN       = JMP_REGA_EN;
 			REGA_WEN      = JMP_REGA_WEN;
@@ -137,6 +154,8 @@ always @(*) begin
 			ALUB_SRCX     = ALU_ALUB_SRCX;
 			BYTEX         = `BYTEX_WORD;
 			DATA_BUSX     = `DATA_BUSX_ALU_R;
+			PC_BASEX_R    = `PC_BASEX_PC_A;
+			PC_OFFSETX_R  = `PC_OFFSETX_2;
 			RDX           = `RDX_NONE;
 			REGA_EN       = ALU_REGA_EN;
 			REGA_WEN      = ALU_REGA_WEN;
@@ -156,8 +175,17 @@ end
 always @(posedge CLK) begin
 	
 	if(FETCH) begin
+		
 		ADDR_BUSX <= `ADDR_BUSX_PC_A;
+		// Always generate the next address for HERE
+		PC_BASEX   <= `PC_BASEX_PC_A;
+		PC_OFFSETX <= `PC_OFFSETX_2;
+		
 	end else if(EXECUTE) begin
+		
+		PC_BASEX   <= PC_BASEX_R;
+		PC_OFFSETX <= PC_OFFSETX_R;
+		
 		case(INSTRUCTION_GROUP)
 			`GROUP_SYSTEM: begin
 				ADDR_BUSX    <= `ADDR_BUSX_PC_A;
@@ -168,7 +196,7 @@ always @(posedge CLK) begin
 			end
 				
 			`GROUP_JUMP:begin
-				ADDR_BUSX    <= `ADDR_BUSX_PC_A;
+				ADDR_BUSX    <= JMP_ADDR_BUSX;
 			end
 				
 			`GROUP_ARITHMETIC_LOGIC: begin

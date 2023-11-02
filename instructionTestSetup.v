@@ -124,35 +124,27 @@
 	`TOCK;
 	
 	
-`define LD_VALUE_STEP(n, addr, instruction, ld_addr, ld_data, rr) \
-	$display("LOAD    [T=%09t] %04d R%02d,(%04x -> %04x)", $realtime, n, rr, ld_addr, ld_data); \
-	$display("FETCH   [T=%09t] %04d {%04x} :: {%04x}", $realtime, n, addr, instruction); \
+`define LD_HERE_STEP(n, addr, ld_data, rr) \
+	$display("%04d LOAD    [T=%09t] R%02x, %04x", n, $realtime, rr, ld_data); \
 	#1 \
 	`assert("ADDR", addr, ADDR_BUF) \
-	#49 DIN = instruction; \
+	#49 DIN = {`GROUP_LOAD_STORE, 1'b0, `LDSOPF_LD, `MODE_LDS_REG_HERE, rr, 4'b0000}; \
 	#50 \
 	`assert("WRN0_BUF", 1, WRN0_BUF) \
 	`assert("WRN1_BUF", 1, WRN1_BUF) \
-	$display("DECODE  [T=%09t]", $realtime); \
+	$display("%04d DECODE  [T=%09t]", n, $realtime); \
 	`TICK; \
 	DIN = 16'hzzzz; \
 	`TOCK; \
-	$display("EXECUTE  [T=%09t]", $realtime); \
+	$display("%04d EXECUTE [T=%09t]", n, $realtime); \
 	`TICKTOCK; \
-	$display("COMMIT  [T=%09t]", $realtime); \
+	$display("%04d COMMIT  [T=%09t]", n, $realtime); \
 	`TICK; \
 	DIN = ld_data; \
-	`assert("ADDR_BUF", ld_addr, ADDR_BUF) \
-	`assert("WRN0_BUF", 1, WRN0_BUF) \
-	`assert("WRN1_BUF", 1, WRN1_BUF) \
+	`assert("ADDR_BUF", addr+2, ADDR_BUF) \
+	`assert("WRN0_BUF", 1,      WRN0_BUF) \
+	`assert("WRN1_BUF", 1,      WRN1_BUF) \
 	`TOCK;
-	
-`define LOAD(n, addr, rr, value) \
-	INSTR = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_XOR,`MODE_ALU_REG_REG, `R0,`R0}; \
-	`ALU_STEP( n,addr,   INSTR, "XOR R0,R0") \
-	INSTR = {`GROUP_LOAD_STORE,`LDSINCF_NONE,`LDSOPF_LD,`MODE_LDS_REG_MEM, rr,`R0}; \
-	`LD_VALUE_STEP(n+1, addr+2, INSTR, 16'h0000, value, rr)
-	
 
 `define SYS_STEP(n, addr, instruction, sys_addr, sys_data, m) \
 	$display("FETCH   [T=%09t] %04d {%04x} :: {%04x} %s", $realtime, n, addr, instruction, m); \

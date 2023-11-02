@@ -24,12 +24,6 @@
 /**
 * Branch logic control fields
 **/
-`define JRX_ABS  1'b0
-`define JRX_REL  1'b1
-
-`define JMPX_NONE 1'b0
-`define JMPX_JMP  1'b1
-
 `define CC_INVERTX_NONE   1'b0
 `define CC_INVERTX_INVERT 1'b1
 
@@ -42,11 +36,14 @@
 `define CC_SELECTX_P 2'b11
 
 // The outputs
-`define PC_OFFSETX_2    1'b0
-`define PC_OFFSETX_PC_D 1'b1
+`define PC_OFFSETX_0    2'b00
+`define PC_OFFSETX_2    2'b01
+`define PC_OFFSETX_4    2'b10
+`define PC_OFFSETX_DIN  2'b11
 
-`define PC_BASEX_PC_A   1'b0
-`define PC_BASEX_0      1'b1
+`define PC_BASEX_PC_A      2'b00
+`define PC_BASEX_REGB_DOUT 2'b01
+`define PC_BASEX_0         2'b10
 
 /**
 * Program counter control inputs
@@ -59,6 +56,9 @@
 
 `define PC_ENX_NONE      1'b0
 `define PC_ENX_EN        1'b1
+
+`define PC_HEREX_NONE    1'b0
+`define PC_HEREX_EN      1'b1
 
 `define PC_NEXTX_NEXT  3'b000
 `define PC_NEXTX_INTV0 3'b001
@@ -153,8 +153,8 @@
 `define ALUA_SRCX_TWO       3'b011
 `define ALUA_SRCX_MINUS_ONE 3'b100
 `define ALUA_SRCX_MINUS_TWO 3'b101
-`define ALUA_SRCX_S6        3'b110
-`define ALUA_SRCX_S6_0      3'b111
+`define ALUA_SRCX_U5        3'b110
+`define ALUA_SRCX_U5_0      3'b111
 
 // ALU B input
 `define ALUB_SRCX_REG_B  3'b000
@@ -170,6 +170,7 @@
 `define ADDR_BUSX_PC_A      2'b00
 `define ADDR_BUSX_ALU_R     2'b01
 `define ADDR_BUSX_ALUB_DATA 2'b10
+`define ADDR_BUSX_HERE      2'b11
 
 /**
 * Data bus sources
@@ -208,18 +209,35 @@
 // ALU operations
 `define MODE_ALU_REG_REG   2'b00
 `define MODE_ALU_REG_U4    2'b01
-`define MODE_ALU_REGB_U8   2'b10
-`define MODE_ALU_REGA_U8RB 2'b11
+`define MODE_ALU_REGA_U8   2'b10
+`define MODE_ALU_REGA_S8   2'b11
 // Load/Store operations
-`define MODE_LDS_REG_MEM  2'b00
-`define MODE_LDS_REG_FP   2'b01
-`define MODE_LDS_REG_SP   2'b10
-`define MODE_LDS_REG_RS   2'b11
+// 32 ops => 5 bits
+/**
+* LD Ra,(Rb)
+* LD Ra,(HERE)
+* LD Ra,(Rb++)
+* LD Ra,(--Rb)
+* 
+* LD Ra,(RB+U5)
+* LD Ra,(FP-U5)
+* LD Ra,(SP+U5)
+* LD Ra,(RS+U5)
+**/
+`define MODE_LDS_REG_REG      3'b000
+`define MODE_LDS_REG_HERE     3'b001
+`define MODE_LDS_REG_REG_INC  3'b010
+`define MODE_LDS_REG_REG_DEC  3'b011
+`define MODE_LDS_REG_RB       3'b100
+`define MODE_LDS_REG_FP       3'b101
+`define MODE_LDS_REG_SP       3'b110
+`define MODE_LDS_REG_RS       3'b111
+
 // Jumps
 `define MODE_JMP_ABS_REG  2'b00
-`define MODE_JMP_ABS_U8RB 2'b01
-`define MODE_JMP_REL_REG  2'b10
-`define MODE_JMP_REL_U8RB 2'b11
+`define MODE_JMP_ABS_HERE 2'b01
+`define MODE_JMP_IND_REG  2'b10
+`define MODE_JMP_REL_HERE 2'b11
 
 /**
 * ALU operations
@@ -249,10 +267,6 @@
 `define LDSOPF_ST  2'b10
 `define LDSOPF_STB 2'b11
 
-`define LDSINCF_NONE     2'b00
-`define LDSINCF_PRE_DEC  2'b10
-`define LDSINCF_POST_INC 2'b11
-
 /**
 * Jump
 **/
@@ -260,10 +274,8 @@
 `define SKIPF_SKIP     2'b10
 `define SKIPF_NOT_SKIP 2'b11
 
-`define JPF_ABS_R   2'b00
-`define JPF_ABS_U8H 2'b01
-`define JPF_REL_S8  2'b10
-`define JPF_REL_U8H 2'b11
+`define JLF_NONE       1'b0
+`define JLF_LINK       1'b1
 
 /*******************************************
 * UART definitions

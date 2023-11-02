@@ -3,216 +3,253 @@ Report for cell mcu
    Instance path: mcu
                      Cell usage:
                                   cell	      count    Res Usage(%)
-                                  SLIC	     711.00        100.0
-                                 IOLGC	      17.00        100.0
-                                  LUT4	     958.00        100.0
-                                 IOREG	         17        100.0
-                                 IOBUF	         50        100.0
-                                PFUREG	        172        100.0
-                                RIPPLE	        229        100.0
-                                   EBR	          2        100.0
+                                  SLIC	     920.00        100.0
+                                 IOLGC	       5.00        100.0
+                                  LUT4	    1280.00        100.0
+                                 IOREG	          5        100.0
+                                 IOBUF	         62        100.0
+                                PFUREG	        285        100.0
+                                RIPPLE	        273        100.0
+                                   EBR	         18        100.0
 SUB MODULES
                                   cell	      count    SLC Usage(%)
-                          mcuResources	          1         8.1
-                                  core	          1        91.8
+                          mcuResources	          1        25.4
+                                  core	          1        71.8
+                              devBoard	          1         2.7
 ---------------------------------------------------
 Report for cell mcuResources
    Instance path: mcu/mcuResourcesInst
                      Cell usage:
                                   cell	      count    Res Usage(%)
-                                  SLIC	      57.25         8.1
-                                  LUT4	      47.00         4.9
-                                PFUREG	         55        32.0
-                                RIPPLE	         28        12.2
+                                  SLIC	     233.75        25.4
+                                  LUT4	     335.00        26.2
+                                PFUREG	        139        48.8
+                                RIPPLE	         63        23.1
+                                   EBR	         16        88.9
 SUB MODULES
                                   cell	      count    SLC Usage(%)
-                          memoryMapper	          1         0.7
-                 interruptMaskRegister	          1         0.8
-                                  UART	          1         6.6
+                                   rom	          1         2.9
+                          memoryMapper	          1         4.2
+                 interruptMaskRegister	          1         2.1
+                                  UART	          1        12.5
+                                   RAM	          1         3.7
 ---------------------------------------------------
 Report for cell interruptMaskRegister
    Instance path: mcu/mcuResourcesInst/interruptMaskRegisterInst
                      Cell usage:
                                   cell	      count    Res Usage(%)
-                                  SLIC	       5.67         0.8
-                                  LUT4	       8.00         0.8
-                                PFUREG	          8         4.7
+                                  SLIC	      19.50         2.1
+                                  LUT4	      37.00         2.9
+                                PFUREG	         19         6.7
 ---------------------------------------------------
 Report for cell UART
    Instance path: mcu/mcuResourcesInst/UARTInst
                      Cell usage:
                                   cell	      count    Res Usage(%)
-                                  SLIC	      46.83         6.6
-                                  LUT4	      29.00         3.0
-                                PFUREG	         47        27.3
-                                RIPPLE	         28        12.2
+                                  SLIC	     114.83        12.5
+                                  LUT4	      99.00         7.7
+                                PFUREG	        114        40.0
+                                RIPPLE	         63        23.1
 SUB MODULES
                                   cell	      count    SLC Usage(%)
-                               UART_TX	          1         5.6
+                               UART_RX	          1         5.4
+                               UART_TX	          1         4.2
 ---------------------------------------------------
 Report for cell UART_TX
    Instance path: mcu/mcuResourcesInst/UARTInst/uartTxInst
                      Cell usage:
                                   cell	      count    Res Usage(%)
-                                  SLIC	      39.83         5.6
-                                  LUT4	      23.00         2.4
-                                PFUREG	         30        17.4
-                                RIPPLE	         28        12.2
+                                  SLIC	      39.00         4.2
+                                  LUT4	      21.00         1.6
+                                PFUREG	         32        11.2
+                                RIPPLE	         28        10.3
+---------------------------------------------------
+Report for cell UART_RX
+   Instance path: mcu/mcuResourcesInst/UARTInst/uartRXInst
+                     Cell usage:
+                                  cell	      count    Res Usage(%)
+                                  SLIC	      49.83         5.4
+                                  LUT4	      45.00         3.5
+                                PFUREG	         30        10.5
+                                RIPPLE	         35        12.8
+---------------------------------------------------
+Report for cell RAM
+   Instance path: mcu/mcuResourcesInst/RAMInst
+                     Cell usage:
+                                  cell	      count    Res Usage(%)
+                                  SLIC	      34.33         3.7
+                                  LUT4	      65.00         5.1
+                                PFUREG	          6         2.1
+                                   EBR	         16        88.9
+---------------------------------------------------
+Report for cell rom
+   Instance path: mcu/mcuResourcesInst/ROMInst
+                     Cell usage:
+                                  cell	      count    Res Usage(%)
+                                  SLIC	      26.50         2.9
+                                  LUT4	      45.00         3.5
 ---------------------------------------------------
 Report for cell memoryMapper
    Instance path: mcu/mcuResourcesInst/memoryMapperInst
                      Cell usage:
                                   cell	      count    Res Usage(%)
-                                  SLIC	       4.75         0.7
-                                  LUT4	      10.00         1.0
+                                  SLIC	      38.58         4.2
+                                  LUT4	      89.00         7.0
 ---------------------------------------------------
 Report for cell core
    Instance path: mcu/coreInst
                      Cell usage:
                                   cell	      count    Res Usage(%)
-                                  SLIC	     652.50        91.8
-                                  LUT4	     908.50        94.8
-                                PFUREG	        117        68.0
-                                RIPPLE	        201        87.8
-                                   EBR	          2        100.0
+                                  SLIC	     661.00        71.8
+                                  LUT4	     898.00        70.2
+                                PFUREG	        114        40.0
+                                RIPPLE	        210        76.9
+                                   EBR	          2        11.1
 SUB MODULES
                                   cell	      count    SLC Usage(%)
-                          registerFile	          1         1.7
-                        programCounter	          1         5.3
+                          registerFile	          1         3.8
                         opxMultiplexer	          1         1.2
-                               fullALU	          1        74.2
-                   generalGroupDecoder	          1         0.5
-                 loadStoreGroupDecoder	          1         0.4
-                 interruptStateMachine	          1         1.3
-               instructionPhaseDecoder	          1         1.0
-                         busController	          1         4.6
+                        programCounter	          1         3.3
                            branchLogic	          1         0.3
-                       aluGroupDecoder	          1         1.3
+                       aluGroupDecoder	          1         0.8
+                 loadStoreGroupDecoder	          1         0.4
+                 interruptStateMachine	          1         1.0
+                   generalGroupDecoder	          1         0.4
+               instructionPhaseDecoder	          1         1.2
+                               fullALU	          1        54.9
+                         busController	          1         4.7
 ---------------------------------------------------
 Report for cell opxMultiplexer
    Instance path: mcu/coreInst/opxMultiplexerInst
                      Cell usage:
                                   cell	      count    Res Usage(%)
-                                  SLIC	       8.75         1.2
-                                  LUT4	      20.50         2.1
-                                PFUREG	          2         1.2
+                                  SLIC	      10.58         1.2
+                                  LUT4	      23.00         1.8
+                                PFUREG	          2         0.7
 ---------------------------------------------------
 Report for cell generalGroupDecoder
    Instance path: mcu/coreInst/generalGroupDecoderInst
                      Cell usage:
                                   cell	      count    Res Usage(%)
-                                  SLIC	       3.67         0.5
-                                  LUT4	       7.00         0.7
-                                PFUREG	          4         2.3
+                                  SLIC	       3.50         0.4
+                                  LUT4	       7.00         0.5
+                                PFUREG	          4         1.4
 ---------------------------------------------------
 Report for cell loadStoreGroupDecoder
    Instance path: mcu/coreInst/loadStoreGroupDecoderInst
                      Cell usage:
                                   cell	      count    Res Usage(%)
-                                  SLIC	       3.15         0.4
-                                  LUT4	       4.00         0.4
-                                PFUREG	          6         3.5
+                                  SLIC	       3.58         0.4
+                                  LUT4	       5.00         0.4
+                                PFUREG	          6         2.1
 ---------------------------------------------------
 Report for cell aluGroupDecoder
    Instance path: mcu/coreInst/aluGroupDecoderInst
                      Cell usage:
                                   cell	      count    Res Usage(%)
-                                  SLIC	       9.03         1.3
-                                  LUT4	      17.00         1.8
-                                PFUREG	          4         2.3
+                                  SLIC	       7.42         0.8
+                                  LUT4	      13.50         1.1
+                                PFUREG	          4         1.4
 ---------------------------------------------------
 Report for cell interruptStateMachine
    Instance path: mcu/coreInst/interruptStateMachineInst
                      Cell usage:
                                   cell	      count    Res Usage(%)
-                                  SLIC	       9.00         1.3
-                                  LUT4	      17.00         1.8
-                                PFUREG	         14         8.1
+                                  SLIC	       9.00         1.0
+                                  LUT4	      18.00         1.4
+                                PFUREG	         14         4.9
 ---------------------------------------------------
 Report for cell branchLogic
    Instance path: mcu/coreInst/branchLogicInst
                      Cell usage:
                                   cell	      count    Res Usage(%)
-                                  SLIC	       2.00         0.3
-                                  LUT4	       5.00         0.5
+                                  SLIC	       2.33         0.3
+                                  LUT4	       5.00         0.4
 ---------------------------------------------------
 Report for cell programCounter
    Instance path: mcu/coreInst/programCounterInst
                      Cell usage:
                                   cell	      count    Res Usage(%)
-                                  SLIC	      38.00         5.3
-                                  LUT4	      58.00         6.1
-                                PFUREG	         48        27.9
-                                RIPPLE	          9         3.9
+                                  SLIC	      30.23         3.3
+                                  LUT4	      38.00         3.0
+                                PFUREG	         48        16.8
+                                RIPPLE	          9         3.3
 ---------------------------------------------------
 Report for cell busController
    Instance path: mcu/coreInst/busControllerInst
                      Cell usage:
                                   cell	      count    Res Usage(%)
-                                  SLIC	      32.50         4.6
-                                  LUT4	      71.00         7.4
-                                PFUREG	          3         1.7
+                                  SLIC	      42.83         4.7
+                                  LUT4	      95.00         7.4
+                                PFUREG	          3         1.1
 ---------------------------------------------------
 Report for cell registerFile
    Instance path: mcu/coreInst/registerFileInst
                      Cell usage:
                                   cell	      count    Res Usage(%)
-                                  SLIC	      12.00         1.7
-                                  LUT4	      24.50         2.6
-                                   EBR	          2        100.0
+                                  SLIC	      35.35         3.8
+                                  LUT4	      74.50         5.8
+                                   EBR	          2        11.1
 SUB MODULES
                                   cell	      count    SLC Usage(%)
-                             registers	          1         0.3
+                             registers	          1         0.1
 ---------------------------------------------------
 Report for cell registers
    Instance path: mcu/coreInst/registerFileInst/regs
                      Cell usage:
                                   cell	      count    Res Usage(%)
-                                  SLIC	       2.00         0.3
-                                  LUT4	       4.00         0.4
-                                   EBR	          2        100.0
+                                  SLIC	       1.33         0.1
+                                  LUT4	       3.00         0.2
+                                   EBR	          2        11.1
 ---------------------------------------------------
 Report for cell fullALU
    Instance path: mcu/coreInst/fullALUInst
                      Cell usage:
                                   cell	      count    Res Usage(%)
-                                  SLIC	     527.45        74.2
-                                  LUT4	     677.50        70.7
-                                PFUREG	         21        12.2
-                                RIPPLE	        192        83.8
+                                  SLIC	     505.00        54.9
+                                  LUT4	     612.00        47.8
+                                PFUREG	          4         1.4
+                                RIPPLE	        201        73.6
 SUB MODULES
                                   cell	      count    SLC Usage(%)
-                               aluAMux	          1         2.1
-                               aluBMux	          1         3.8
-                                   alu	          1        68.2
+                               aluAMux	          1         1.6
+                               aluBMux	          1         2.4
+                                   alu	          1        50.7
 ---------------------------------------------------
 Report for cell aluBMux
    Instance path: mcu/coreInst/fullALUInst/muxB
                      Cell usage:
                                   cell	      count    Res Usage(%)
-                                  SLIC	      26.67         3.8
-                                  LUT4	      53.00         5.5
+                                  SLIC	      22.50         2.4
+                                  LUT4	      47.00         3.7
 ---------------------------------------------------
 Report for cell aluAMux
    Instance path: mcu/coreInst/fullALUInst/muxA
                      Cell usage:
                                   cell	      count    Res Usage(%)
-                                  SLIC	      15.03         2.1
-                                  LUT4	      34.50         3.6
+                                  SLIC	      14.67         1.6
+                                  LUT4	      30.00         2.3
 ---------------------------------------------------
 Report for cell alu
    Instance path: mcu/coreInst/fullALUInst/aluInst
                      Cell usage:
                                   cell	      count    Res Usage(%)
-                                  SLIC	     484.58        68.2
-                                  LUT4	     590.00        61.6
-                                PFUREG	         17         9.9
-                                RIPPLE	        192        83.8
+                                  SLIC	     466.58        50.7
+                                  LUT4	     535.00        41.8
+                                RIPPLE	        201        73.6
 ---------------------------------------------------
 Report for cell instructionPhaseDecoder
    Instance path: mcu/coreInst/instructionPhaseDecoderInst
                      Cell usage:
                                   cell	      count    Res Usage(%)
-                                  SLIC	       6.95         1.0
-                                  LUT4	       7.00         0.7
-                                PFUREG	         15         8.7
+                                  SLIC	      11.17         1.2
+                                  LUT4	       7.00         0.5
+                                PFUREG	         29        10.2
+---------------------------------------------------
+Report for cell devBoard
+   Instance path: mcu/boardInst
+                     Cell usage:
+                                  cell	      count    Res Usage(%)
+                                  SLIC	      25.25         2.7
+                                  LUT4	      47.00         3.7
+                                PFUREG	         32        11.2

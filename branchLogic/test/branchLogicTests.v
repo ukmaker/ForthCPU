@@ -13,24 +13,22 @@ module branchLogicTests;
 	reg [1:0] CC_SELECTX;
 	reg CC_INVERTX;
 	reg CC_APPLYX;
-	reg JMPX;
-	reg JRX;
+	reg [1:0] JMPX;
 	
-	wire PC_OFFSETX;
-	wire PC_BASEX;
+	wire [1:0] PC_OFFSETX;
+	wire [1:0] PC_BASEX;
 	
 branchLogic testInstance(
-.CCZ(CCZ),
-.CCC(CCC),
-.CCP(CCP),
-.CCS(CCS),
-.CC_SELECTX(CC_SELECTX),
-.CC_INVERTX(CC_INVERTX),
-.CC_APPLYX(CC_APPLYX),
-.JMPX(JMPX),
-.JRX(JRX),
-.PC_OFFSETX(PC_OFFSETX),
-.PC_BASEX(PC_BASEX)
+	.CC_ZERO(CCZ),
+	.CC_CARRY(CCC),
+	.CC_PARITY(CCP),
+	.CC_SIGN(CCS),
+	.CC_SELECTX(CC_SELECTX),
+	.CC_INVERTX(CC_INVERTX),
+	.CC_APPLYX(CC_APPLYX),
+	.JMPX(JMPX),
+	.PC_OFFSETX(PC_OFFSETX),
+	.PC_BASEX(PC_BASEX)
 );
 	
 reg CLK;
@@ -52,9 +50,8 @@ initial begin
 	CCC = 0;
 	CC_SELECTX = `CC_SELECTX_Z;
 	CC_INVERTX = `CC_INVERTX_NONE;
-	CC_APPLYX = `CC_APPLYX_NONE;
-	JMPX = `JMPX_NONE;
-	JRX = `JRX_ABS;
+	CC_APPLYX  = `CC_APPLYX_NONE;
+	JMPX       = `MODE_JMP_ABS_REG;
 	
 	`TICKTOCK;
 	`TICKTOCK;
@@ -64,37 +61,42 @@ initial begin
 
 	`TICKTOCK;
 	IDX = 1;
-	`assert("PC_OFFSETX", 0, PC_OFFSETX)
-	`assert("PC_BASEX",   0, PC_BASEX)
+	`assert("PC_OFFSETX", `PC_OFFSETX_2,  PC_OFFSETX)
+	`assert("PC_BASEX",   `PC_BASEX_PC_A, PC_BASEX)
 	
 	// CCs shouldn't affect anything yet
 	CCZ = 1;
 	`TICKTOCK;
 	IDX = 2;
-	`assert("PC_OFFSETX", 0, PC_OFFSETX)
-	`assert("PC_BASEX",   0, PC_BASEX)
+	`assert("PC_OFFSETX", `PC_OFFSETX_2,  PC_OFFSETX)
+	`assert("PC_BASEX",   `PC_BASEX_PC_A, PC_BASEX)
+	
 	CCS = 1;
 	`TICKTOCK;
 	IDX = 3;
-	`assert("PC_OFFSETX", 0, PC_OFFSETX)
-	`assert("PC_BASEX",   0, PC_BASEX)
+	`assert("PC_OFFSETX", `PC_OFFSETX_2,  PC_OFFSETX)
+	`assert("PC_BASEX",   `PC_BASEX_PC_A, PC_BASEX)
+	
 	CCP = 1;
 	`TICKTOCK;
 	IDX = 4;
-	`assert("PC_OFFSETX", 0, PC_OFFSETX)
-	`assert("PC_BASEX",   0, PC_BASEX)
+	`assert("PC_OFFSETX", `PC_OFFSETX_2,  PC_OFFSETX)
+	`assert("PC_BASEX",   `PC_BASEX_PC_A, PC_BASEX)
+	
 	CCC = 1;
 	`TICKTOCK;
 	IDX = 5;
-	`assert("PC_OFFSETX", 0, PC_OFFSETX)
-	`assert("PC_BASEX",   0, PC_BASEX)
+	`assert("PC_OFFSETX", `PC_OFFSETX_2,  PC_OFFSETX)
+	`assert("PC_BASEX",   `PC_BASEX_PC_A, PC_BASEX)
+	
 
 	// CCs shouldn't affect anything yet
 	CC_INVERTX = 1;
 	`TICKTOCK;
 	IDX = 6;
-	`assert("PC_OFFSETX", 0, PC_OFFSETX)
-	`assert("PC_BASEX",   0, PC_BASEX)
+	`assert("PC_OFFSETX", `PC_OFFSETX_2,  PC_OFFSETX)
+	`assert("PC_BASEX",   `PC_BASEX_PC_A, PC_BASEX)
+	
 	
 	CCZ = 0;
 	CCS = 0;
@@ -103,19 +105,21 @@ initial begin
 	CC_APPLYX = 1;
 	`TICKTOCK;
 	IDX = 7;
-	`assert("PC_OFFSETX", 0, PC_OFFSETX)
-	`assert("PC_BASEX",   0, PC_BASEX)
+	`assert("PC_OFFSETX", `PC_OFFSETX_2,  PC_OFFSETX)
+	`assert("PC_BASEX",   `PC_BASEX_PC_A, PC_BASEX)
 	
 	CCZ = 1;
 	`TICKTOCK;
 	IDX = 8;
-	`assert("PC_OFFSETX", 0, PC_OFFSETX)
-	`assert("PC_BASEX",   0, PC_BASEX)
+	`assert("PC_OFFSETX", `PC_OFFSETX_2,  PC_OFFSETX)
+	`assert("PC_BASEX",   `PC_BASEX_PC_A, PC_BASEX)
+	
 	CC_INVERTX = 1;
 	`TICKTOCK;
 	IDX = 9;
-	`assert("PC_OFFSETX", 0, PC_OFFSETX)
-	`assert("PC_BASEX",   0, PC_BASEX)
+	`assert("PC_OFFSETX", `PC_OFFSETX_2,  PC_OFFSETX)
+	`assert("PC_BASEX",   `PC_BASEX_PC_A, PC_BASEX)
+	
 	
 
 	
@@ -125,44 +129,45 @@ initial begin
 	CCC = 0;
 	CC_APPLYX = 1;
 	CC_INVERTX = 0;
-	JMPX = `JMPX_JMP;
+	JMPX = `MODE_JMP_ABS_REG;
 	// JP[Z] - not taken
 	`TICKTOCK;
 	IDX = 10;
 	#20
-	`assert("PC_OFFSETX", 0, PC_OFFSETX)
-	`assert("PC_BASEX",   0, PC_BASEX)
+	`assert("PC_OFFSETX", `PC_OFFSETX_2,  PC_OFFSETX)
+	`assert("PC_BASEX",   `PC_BASEX_PC_A, PC_BASEX)
+	
 
 	CCZ = 1;
 	// JP[Z] - taken
 	`TICKTOCK;
 	IDX = 11;
 	#20
-	`assert("PC_OFFSETX", `PC_OFFSETX_PC_D, PC_OFFSETX)
+	`assert("PC_OFFSETX", `PC_OFFSETX_DIN, PC_OFFSETX)
 	`assert("PC_BASEX",   `PC_BASEX_0, PC_BASEX)
 	#20
 	CC_INVERTX = 1;
 	// JP[Z] - not taken
 	`TICKTOCK;
 	IDX = 12;
-	`assert("PC_OFFSETX", 0, PC_OFFSETX)
-	`assert("PC_BASEX",   0, PC_BASEX)
+	`assert("PC_OFFSETX", `PC_OFFSETX_2,  PC_OFFSETX)
+	`assert("PC_BASEX",   `PC_BASEX_PC_A, PC_BASEX)
+	
 	
 	`TICKTOCK;
 	IDX = 13;
-	`assert("PC_OFFSETX", 0, PC_OFFSETX)
-	`assert("PC_BASEX",   0, PC_BASEX)
-	
+	`assert("PC_OFFSETX", `PC_OFFSETX_2,  PC_OFFSETX)
+	`assert("PC_BASEX",   `PC_BASEX_PC_A, PC_BASEX)	
 
 
-	JRX = `JRX_REL;
+	JMPX = `MODE_JMP_REL_HERE;
 	CCZ = 1;
 	CC_INVERTX = 0;
 	// JP[Z] - taken
 	`TICKTOCK;
 	IDX = 14;
 	#20
-	`assert("PC_OFFSETX", `PC_OFFSETX_PC_D, PC_OFFSETX)
+	`assert("PC_OFFSETX", `PC_OFFSETX_DIN, PC_OFFSETX)
 	`assert("PC_BASEX",   `PC_BASEX_PC_A, PC_BASEX)
 	#20
 	CC_INVERTX = 1;
@@ -174,7 +179,7 @@ initial begin
 	CCZ = 0;	
 	`TICKTOCK;
 	IDX = 16;
-	`assert("PC_OFFSETX", `PC_OFFSETX_PC_D, PC_OFFSETX)
+	`assert("PC_OFFSETX", `PC_OFFSETX_DIN, PC_OFFSETX)
 	`assert("PC_BASEX",   `PC_BASEX_PC_A, PC_BASEX)
 	
 

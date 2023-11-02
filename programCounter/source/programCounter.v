@@ -17,16 +17,19 @@ module programCounter(
 	input CLK,
 	input RESET,
 	input FETCH,
+	input DECODE,
 	input PC_ENX,
 	
 	input PC_LD_INT0X,
 	input PC_LD_INT1X,
-	input PC_BASEX,
-	input PC_OFFSETX,
+	input [1:0] PC_BASEX,
+	input [1:0] PC_OFFSETX,
 	
-	input [15:0] PC_D,
-	input [2:0] PC_NEXTX,
+	input [15:0] REGB_DOUT,
+	input [15:0] DIN,
+	input [2:0]  PC_NEXTX,
 	
+	output reg [15:0] HERE,
 	output reg [15:0] PC_A_NEXT,
 	output reg [15:0] PC_A
 );
@@ -39,13 +42,26 @@ reg [15:0] INTR0;
 reg [15:0] INTR1;
 wire [15:0] ZERO = 16'h0000;
 wire [15:0] TWO  = 16'h0002;
+wire [15:0] FOUR  = 16'h0004;
 reg [15:0] PC_NEXT;
 
 
 // The input muxes and adder
 always @(*) begin
-	ARGA = PC_OFFSETX == `PC_OFFSETX_2 ? TWO : PC_D;
-	ARGB = PC_BASEX == `PC_BASEX_0     ? ZERO : PC_A;
+	case(PC_OFFSETX)
+		`PC_OFFSETX_0: ARGA = ZERO;
+		`PC_OFFSETX_2: ARGA = TWO;
+		`PC_OFFSETX_4: ARGA = FOUR;
+		default:       ARGA = DIN;
+	endcase
+	
+	case(PC_BASEX)
+		`PC_BASEX_PC_A:      ARGB = PC_A;
+		`PC_BASEX_REGB_DOUT: ARGB = REGB_DOUT;
+		`PC_BASEX_0:         ARGB = ZERO;
+ 		default:             ARGB = PC_A;
+	endcase
+
 	SUM = ARGA + ARGB;
 end
 
@@ -81,10 +97,19 @@ always @(posedge CLK or posedge RESET) begin
 	end
 end
 
+// The HERE register
+always @(posedge CLK or posedge RESET) begin
+	if(RESET) begin
+		HERE <= 16'h0000;
+	end else if(PC_ENX & DECODE) begin
+		HERE <= SUM;
+	end
+end
+
 // the PC register
 always @(posedge CLK or posedge RESET) begin
 	if(RESET) begin
-		PC_A <= 16'hfffe;
+		PC_A <= 16'h0000;
 	end else if(PC_ENX & FETCH) begin
 		PC_A <= PC_NEXT;
 	end

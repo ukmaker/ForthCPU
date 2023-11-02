@@ -13,11 +13,11 @@ Hostname: EDAWIN
 
 Implementation : impl1
 
-# Written on Tue Oct 31 18:20:28 2023
+# Written on Tue Oct 31 18:52:51 2023
 
 ##### DESIGN INFO #######################################################
 
-Top View:                "blinkTests"
+Top View:                "mcu"
 Constraint File(s):      (none)
 
 
@@ -35,10 +35,13 @@ Found 0 issues in 0 out of 0 constraints
 Clock Relationships
 *******************
 
-Starting     Ending     |     rise to rise     |     fall to fall     |     rise to fall     |     fall to rise                     
------------------------------------------------------------------------------------------------------------------------------------
-System       System     |     10.000           |     No paths         |     No paths         |     No paths                         
-===================================================================================================================================
+Starting           Ending             |     rise to rise     |     fall to fall     |     rise to fall     |     fall to rise                     
+-------------------------------------------------------------------------------------------------------------------------------------------------
+System             mcu|PIN_CLK_X1     |     10.000           |     No paths         |     No paths         |     No paths                         
+mcu|PIN_CLK_X1     mcu|PIN_CLK_X1     |     10.000           |     No paths         |     5.000            |     5.000                            
+mcu|PIN_CLK_X1     mcu|PIN_RESETN     |     No paths         |     Diff grp         |     Diff grp         |     No paths                         
+mcu|PIN_RESETN     mcu|PIN_CLK_X1     |     No paths         |     No paths         |     No paths         |     Diff grp                         
+=================================================================================================================================================
  Note: 'No paths' indicates there are no paths in the design for that pair of clock edges.
        'Diff grp' indicates that paths exist but the starting clock and ending clock are in different clock groups.
 
@@ -46,7 +49,62 @@ System       System     |     10.000           |     No paths         |     No p
 Unconstrained Start/End Points
 ******************************
 
-(none)
+p:COMMIT
+p:DECODE
+p:EXECUTE
+p:FETCH
+p:PIN_DATA_BUS[0] (bidir end point)
+p:PIN_DATA_BUS[0] (bidir start point)
+p:PIN_DATA_BUS[1] (bidir end point)
+p:PIN_DATA_BUS[1] (bidir start point)
+p:PIN_DATA_BUS[2] (bidir end point)
+p:PIN_DATA_BUS[2] (bidir start point)
+p:PIN_DATA_BUS[3] (bidir end point)
+p:PIN_DATA_BUS[3] (bidir start point)
+p:PIN_DATA_BUS[4] (bidir end point)
+p:PIN_DATA_BUS[4] (bidir start point)
+p:PIN_DATA_BUS[5] (bidir end point)
+p:PIN_DATA_BUS[5] (bidir start point)
+p:PIN_DATA_BUS[6] (bidir end point)
+p:PIN_DATA_BUS[6] (bidir start point)
+p:PIN_DATA_BUS[7] (bidir end point)
+p:PIN_DATA_BUS[7] (bidir start point)
+p:PIN_DATA_BUS[8] (bidir end point)
+p:PIN_DATA_BUS[8] (bidir start point)
+p:PIN_DATA_BUS[9] (bidir end point)
+p:PIN_DATA_BUS[9] (bidir start point)
+p:PIN_DATA_BUS[10] (bidir end point)
+p:PIN_DATA_BUS[10] (bidir start point)
+p:PIN_DATA_BUS[11] (bidir end point)
+p:PIN_DATA_BUS[11] (bidir start point)
+p:PIN_DATA_BUS[12] (bidir end point)
+p:PIN_DATA_BUS[12] (bidir start point)
+p:PIN_DATA_BUS[13] (bidir end point)
+p:PIN_DATA_BUS[13] (bidir start point)
+p:PIN_DATA_BUS[14] (bidir end point)
+p:PIN_DATA_BUS[14] (bidir start point)
+p:PIN_DATA_BUS[15] (bidir end point)
+p:PIN_DATA_BUS[15] (bidir start point)
+p:PIN_DIPSW[0]
+p:PIN_DIPSW[1]
+p:PIN_DIPSW[2]
+p:PIN_DIPSW[3]
+p:PIN_INT0
+p:PIN_INT1
+p:PIN_INT2
+p:PIN_INT3
+p:PIN_INT4
+p:PIN_INT5
+p:PIN_INT6
+p:PIN_LED[0]
+p:PIN_LED[1]
+p:PIN_LED[2]
+p:PIN_LED[3]
+p:PIN_LED[4]
+p:PIN_LED[5]
+p:PIN_LED[6]
+p:PIN_LED[7]
+p:PIN_RXD
 
 
 Inapplicable constraints

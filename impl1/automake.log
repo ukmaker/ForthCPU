@@ -1,946 +1,166 @@
 
-synpwrap -msg -prj "ForthCPU_impl1_synplify.tcl" -log "ForthCPU_impl1.srf"
-Copyright (C) 1992-2020 Lattice Semiconductor Corporation. All rights reserved.
-Lattice Diamond Version 3.12.1.454
-    <postMsg mid="2011000" type="Info"    dynamic="0" navigation="0"  />
-
-==contents of ForthCPU_impl1.srf
-#Build: Synplify Pro (R) R-2021.03L-SP1, Build 093R, Aug 10 2021
-#install: C:\lscc\diamond\3.12\synpbase
-#OS: Windows 8 6.2
-#Hostname: EDAWIN
-
-# Tue Oct 31 18:20:18 2023
-
-#Implementation: impl1
-
-
-Copyright (C) 1994-2021 Synopsys, Inc.
-This Synopsys software and all associated documentation are proprietary to Synopsys, Inc.
-and may only be used pursuant to the terms and conditions of a written license agreement
-with Synopsys, Inc. All other use, reproduction, modification, or distribution of the
-Synopsys software or the associated documentation is strictly prohibited.
-Tool: Synplify Pro (R)
-Build: R-2021.03L-SP1
-Install: C:\lscc\diamond\3.12\synpbase
-OS: Windows 6.2
-
-Hostname: EDAWIN
-
-Implementation : impl1
-Synopsys HDL Compiler, Version comp202103synp2, Build 093R, Built Aug 10 2021 09:15:36, @
-
-@N|Running in 64-bit mode
-###########################################################[
-
-Copyright (C) 1994-2021 Synopsys, Inc.
-This Synopsys software and all associated documentation are proprietary to Synopsys, Inc.
-and may only be used pursuant to the terms and conditions of a written license agreement
-with Synopsys, Inc. All other use, reproduction, modification, or distribution of the
-Synopsys software or the associated documentation is strictly prohibited.
-Tool: Synplify Pro (R)
-Build: R-2021.03L-SP1
-Install: C:\lscc\diamond\3.12\synpbase
-OS: Windows 6.2
-
-Hostname: EDAWIN
-
-Implementation : impl1
-Synopsys Verilog Compiler, Version comp202103synp2, Build 093R, Built Aug 10 2021 09:15:36, @
-
-@N|Running in 64-bit mode
-@N: CG1349 :	| Running Verilog Compiler in System Verilog mode
-
-@N: CG1350 :	| Running Verilog Compiler in Multiple File Compilation Unit mode
-
-@I::"C:\lscc\diamond\3.12\synpbase\lib\lucent\machxo3l.v" (library work)
-@I::"C:\lscc\diamond\3.12\synpbase\lib\lucent\pmi_def.v" (library work)
-@I::"C:\lscc\diamond\3.12\synpbase\lib\vlog\hypermods.v" (library __hyper__lib__)
-@I::"C:\lscc\diamond\3.12\synpbase\lib\vlog\umr_capim.v" (library snps_haps)
-@I::"C:\lscc\diamond\3.12\synpbase\lib\vlog\scemi_objects.v" (library snps_haps)
-@I::"C:\lscc\diamond\3.12\synpbase\lib\vlog\scemi_pipes.svh" (library snps_haps)
-@I::"C:\Users\Duncan\git\ForthCPU\constants.v" (library work)
-@I::"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v" (library work)
-@I:"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":"C:/Users/Duncan/git/ForthCPU\constants.v" (library work)
-@I::"C:\Users\Duncan\git\ForthCPU\aluGroupDecoder\source\aluGroupDecoder.v" (library work)
-@I::"C:\Users\Duncan\git\ForthCPU\loadStoreGroupDecoder\source\loadStoreGroupDecoder.v" (library work)
-@I::"C:\Users\Duncan\git\ForthCPU\instructionPhaseDecoder\source\instructionPhaseDecoder.v" (library work)
-@I::"C:\Users\Duncan\git\ForthCPU\programCounter\source\programCounter.v" (library work)
-@I::"C:\Users\Duncan\git\ForthCPU\jumpGroupDecoder\source\jumpGroupDecoder.v" (library work)
-@I::"C:\Users\Duncan\git\ForthCPU\registerFileB\source\registerFile.v" (library work)
-@I::"C:\Users\Duncan\git\ForthCPU\registerFileB\source\registers.v" (library work)
-@I::"C:\Users\Duncan\git\ForthCPU\aluB\source\alu.v" (library work)
-@I::"C:\Users\Duncan\git\ForthCPU\aluB\source\aluAMux.v" (library work)
-@I::"C:\Users\Duncan\git\ForthCPU\aluB\source\aluBMux.v" (library work)
-@I::"C:\Users\Duncan\git\ForthCPU\aluB\source\fullALU.v" (library work)
-@I::"C:\Users\Duncan\git\ForthCPU\opxMultiplexer\source\opxMultiplexer.v" (library work)
-@I:"C:\Users\Duncan\git\ForthCPU\opxMultiplexer\source\opxMultiplexer.v":"C:\Users\Duncan\git\ForthCPU\opxMultiplexer\source\../..\constants.v" (library work)
-@I::"C:\Users\Duncan\git\ForthCPU\interruptLogic\source\interruptStateMachine.v" (library work)
-@I:"C:\Users\Duncan\git\ForthCPU\interruptLogic\source\interruptStateMachine.v":"C:\Users\Duncan\git\ForthCPU\interruptLogic\source\../..\constants.v" (library work)
-@I::"C:\Users\Duncan\git\ForthCPU\branchLogic\source\branchLogic.v" (library work)
-@I::"C:\Users\Duncan\git\ForthCPU\busController\source\busController.v" (library work)
-@I:"C:\Users\Duncan\git\ForthCPU\busController\source\busController.v":"C:\Users\Duncan\git\ForthCPU\busController\source\../..\constants.v" (library work)
-@I::"C:\Users\Duncan\git\ForthCPU\generalGroupDecoder\source\generalGroupDecoder.v" (library work)
-@I::"C:\Users\Duncan\git\ForthCPU\impl1\source\mcu.v" (library work)
-@I::"C:\Users\Duncan\git\ForthCPU\bootROM\source\rom.v" (library work)
-@I::"C:\Users\Duncan\git\ForthCPU\memoryMapper\source\memoryMapper.v" (library work)
-@I:"C:\Users\Duncan\git\ForthCPU\memoryMapper\source\memoryMapper.v":"C:\Users\Duncan\git\ForthCPU\memoryMapper\source\../..\constants.v" (library work)
-@I::"C:\Users\Duncan\git\ForthCPU\mcuResources\source\mcuResources.v" (library work)
-@I:"C:\Users\Duncan\git\ForthCPU\mcuResources\source\mcuResources.v":"C:\Users\Duncan\git\ForthCPU\mcuResources\source\../..\constants.v" (library work)
-@I::"C:\Users\Duncan\git\ForthCPU\RAM\source\RAM.v" (library work)
-@I::"C:\Users\Duncan\git\ForthCPU\interruptLogic\source\interruptMaskRegister.v" (library work)
-@I::"C:\Users\Duncan\git\ForthCPU\UART\source\receiver.v" (library work)
-@I::"C:\Users\Duncan\git\ForthCPU\UART\source\transmitter.v" (library work)
-@I::"C:\Users\Duncan\git\ForthCPU\UART\source\UART.v" (library work)
-@I:"C:\Users\Duncan\git\ForthCPU\UART\source\UART.v":"C:\Users\Duncan\git\ForthCPU\UART\source\../..\constants.v" (library work)
-@I::"C:\Users\Duncan\git\ForthCPU\devBoard\source\devBoard.v" (library work)
-@I::"C:\Users\Duncan\git\ForthCPU\impl1\test\blinkTest.v" (library work)
-@I:"C:\Users\Duncan\git\ForthCPU\impl1\test\blinkTest.v":"C:\Users\Duncan\git\ForthCPU\impl1\test\../..\constants.v" (library work)
-@I:"C:\Users\Duncan\git\ForthCPU\impl1\test\blinkTest.v":"C:\Users\Duncan\git\ForthCPU\impl1\test\../..\testSetup.v" (library work)
-Verilog syntax check successful!
-File C:\Users\Duncan\git\ForthCPU\instructionPhaseDecoder\source\instructionPhaseDecoder.v changed - recompiling
-Selecting top level module blinkTests
-@W: CG730 :"C:\Users\Duncan\git\ForthCPU\impl1\test\blinkTest.v":5:7:5:16|Top-level module blinkTests has no ports
-
-@N: CG364 :"C:\lscc\diamond\3.12\synpbase\lib\lucent\machxo3l.v":1032:7:1032:9|Synthesizing module PUR in library work.
-Running optimization stage 1 on PUR .......
-Finished optimization stage 1 on PUR (CPU Time 0h:00m:00s, Memory Used current: 93MB peak: 94MB)
-@N: CG364 :"C:\lscc\diamond\3.12\synpbase\lib\lucent\machxo3l.v":494:7:494:9|Synthesizing module GSR in library work.
-Running optimization stage 1 on GSR .......
-Finished optimization stage 1 on GSR (CPU Time 0h:00m:00s, Memory Used current: 93MB peak: 94MB)
-@N: CG364 :"C:\Users\Duncan\git\ForthCPU\devBoard\source\devBoard.v":8:7:8:14|Synthesizing module devBoard in library work.
-Running optimization stage 1 on devBoard .......
-@W: CL118 :"C:\Users\Duncan\git\ForthCPU\devBoard\source\devBoard.v":84:1:84:2|Latch generated from always block for signal DIN[15:0]; possible missing assignment in an if or case statement.
-@W: CL118 :"C:\Users\Duncan\git\ForthCPU\devBoard\source\devBoard.v":84:1:84:2|Latch generated from always block for signal DIN_GPIO[7:0]; possible missing assignment in an if or case statement.
-Finished optimization stage 1 on devBoard (CPU Time 0h:00m:00s, Memory Used current: 94MB peak: 94MB)
-@N: CG364 :"C:\Users\Duncan\git\ForthCPU\instructionPhaseDecoder\source\instructionPhaseDecoder.v":3:7:3:29|Synthesizing module instructionPhaseDecoder in library work.
-Running optimization stage 1 on instructionPhaseDecoder .......
-@A: CL282 :"C:\Users\Duncan\git\ForthCPU\instructionPhaseDecoder\source\instructionPhaseDecoder.v":18:0:18:5|Feedback mux created for signal FETCH. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
-@A: CL282 :"C:\Users\Duncan\git\ForthCPU\instructionPhaseDecoder\source\instructionPhaseDecoder.v":18:0:18:5|Feedback mux created for signal EXECUTE. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
-@A: CL282 :"C:\Users\Duncan\git\ForthCPU\instructionPhaseDecoder\source\instructionPhaseDecoder.v":18:0:18:5|Feedback mux created for signal DECODE. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
-@A: CL282 :"C:\Users\Duncan\git\ForthCPU\instructionPhaseDecoder\source\instructionPhaseDecoder.v":18:0:18:5|Feedback mux created for signal COMMIT. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
-Finished optimization stage 1 on instructionPhaseDecoder (CPU Time 0h:00m:00s, Memory Used current: 94MB peak: 95MB)
-@N: CG364 :"C:\Users\Duncan\git\ForthCPU\aluB\source\alu.v":3:7:3:9|Synthesizing module alu in library work.
-Running optimization stage 1 on alu .......
-Finished optimization stage 1 on alu (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 99MB)
-@N: CG364 :"C:\Users\Duncan\git\ForthCPU\aluB\source\aluAMux.v":6:7:6:13|Synthesizing module aluAMux in library work.
-Running optimization stage 1 on aluAMux .......
-Finished optimization stage 1 on aluAMux (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 99MB)
-@N: CG364 :"C:\Users\Duncan\git\ForthCPU\aluB\source\aluBMux.v":6:7:6:13|Synthesizing module aluBMux in library work.
-Running optimization stage 1 on aluBMux .......
-Finished optimization stage 1 on aluBMux (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 99MB)
-@N: CG364 :"C:\Users\Duncan\git\ForthCPU\aluB\source\fullALU.v":9:7:9:13|Synthesizing module fullALU in library work.
-Running optimization stage 1 on fullALU .......
-Finished optimization stage 1 on fullALU (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 99MB)
-@N: CG364 :"C:\lscc\diamond\3.12\synpbase\lib\lucent\machxo3l.v":1291:7:1291:11|Synthesizing module DP8KC in library work.
-Running optimization stage 1 on DP8KC .......
-Finished optimization stage 1 on DP8KC (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 99MB)
-@N: CG364 :"C:\lscc\diamond\3.12\synpbase\lib\lucent\machxo3l.v":1124:7:1124:9|Synthesizing module VLO in library work.
-Running optimization stage 1 on VLO .......
-Finished optimization stage 1 on VLO (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 99MB)
-@N: CG364 :"C:\Users\Duncan\git\ForthCPU\registerFileB\source\registers.v":8:7:8:15|Synthesizing module registers in library work.
-@W: CG360 :"C:\Users\Duncan\git\ForthCPU\registerFileB\source\registers.v":27:9:27:17|Removing wire scuba_vhi, as there is no assignment to it.
-Running optimization stage 1 on registers .......
-Finished optimization stage 1 on registers (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 99MB)
-@N: CG364 :"C:\Users\Duncan\git\ForthCPU\registerFileB\source\registerFile.v":3:7:3:18|Synthesizing module registerFile in library work.
-Running optimization stage 1 on registerFile .......
-Finished optimization stage 1 on registerFile (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 100MB)
-@N: CG364 :"C:\Users\Duncan\git\ForthCPU\busController\source\busController.v":9:7:9:19|Synthesizing module busController in library work.
-Running optimization stage 1 on busController .......
-Finished optimization stage 1 on busController (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 100MB)
-@N: CG364 :"C:\Users\Duncan\git\ForthCPU\programCounter\source\programCounter.v":16:7:16:20|Synthesizing module programCounter in library work.
-Running optimization stage 1 on programCounter .......
-Finished optimization stage 1 on programCounter (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 100MB)
-@N: CG364 :"C:\Users\Duncan\git\ForthCPU\branchLogic\source\branchLogic.v":6:7:6:17|Synthesizing module branchLogic in library work.
-Running optimization stage 1 on branchLogic .......
-Finished optimization stage 1 on branchLogic (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 100MB)
-@N: CG364 :"C:\Users\Duncan\git\ForthCPU\interruptLogic\source\interruptStateMachine.v":3:7:3:27|Synthesizing module interruptStateMachine in library work.
-Running optimization stage 1 on interruptStateMachine .......
-Finished optimization stage 1 on interruptStateMachine (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 100MB)
-@N: CG364 :"C:\Users\Duncan\git\ForthCPU\aluGroupDecoder\source\aluGroupDecoder.v":34:7:34:21|Synthesizing module aluGroupDecoder in library work.
-Running optimization stage 1 on aluGroupDecoder .......
-@N: CL189 :"C:\Users\Duncan\git\ForthCPU\aluGroupDecoder\source\aluGroupDecoder.v":134:0:134:5|Register bit REGB_WEN is always 0.
-Finished optimization stage 1 on aluGroupDecoder (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 100MB)
-@N: CG364 :"C:\Users\Duncan\git\ForthCPU\loadStoreGroupDecoder\source\loadStoreGroupDecoder.v":59:7:59:27|Synthesizing module loadStoreGroupDecoder in library work.
-Running optimization stage 1 on loadStoreGroupDecoder .......
-Finished optimization stage 1 on loadStoreGroupDecoder (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 100MB)
-@N: CG364 :"C:\Users\Duncan\git\ForthCPU\jumpGroupDecoder\source\jumpGroupDecoder.v":37:7:37:22|Synthesizing module jumpGroupDecoder in library work.
-Running optimization stage 1 on jumpGroupDecoder .......
-Finished optimization stage 1 on jumpGroupDecoder (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 100MB)
-@N: CG364 :"C:\Users\Duncan\git\ForthCPU\generalGroupDecoder\source\generalGroupDecoder.v":12:7:12:25|Synthesizing module generalGroupDecoder in library work.
-Running optimization stage 1 on generalGroupDecoder .......
-Finished optimization stage 1 on generalGroupDecoder (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 100MB)
-@N: CG364 :"C:\Users\Duncan\git\ForthCPU\opxMultiplexer\source\opxMultiplexer.v":7:7:7:20|Synthesizing module opxMultiplexer in library work.
-Running optimization stage 1 on opxMultiplexer .......
-Finished optimization stage 1 on opxMultiplexer (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 100MB)
-@N: CG364 :"C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v":6:7:6:10|Synthesizing module core in library work.
-Running optimization stage 1 on core .......
-Finished optimization stage 1 on core (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 100MB)
-@N: CG364 :"C:\Users\Duncan\git\ForthCPU\memoryMapper\source\memoryMapper.v":11:7:11:18|Synthesizing module memoryMapper in library work.
-Running optimization stage 1 on memoryMapper .......
-Finished optimization stage 1 on memoryMapper (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 100MB)
-@N: CG364 :"C:\lscc\diamond\3.12\synpbase\lib\lucent\machxo3l.v":1089:7:1089:14|Synthesizing module ROM64X1A in library work.
-Running optimization stage 1 on ROM64X1A .......
-Finished optimization stage 1 on ROM64X1A (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 100MB)
-@N: CG364 :"C:\Users\Duncan\git\ForthCPU\bootROM\source\rom.v":8:7:8:9|Synthesizing module rom in library work.
-Running optimization stage 1 on rom .......
-Finished optimization stage 1 on rom (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 100MB)
-@N: CG364 :"C:\lscc\diamond\3.12\synpbase\lib\lucent\machxo3l.v":563:7:563:9|Synthesizing module INV in library work.
-Running optimization stage 1 on INV .......
-Finished optimization stage 1 on INV (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 100MB)
-@N: CG364 :"C:\lscc\diamond\3.12\synpbase\lib\lucent\machxo3l.v":43:7:43:10|Synthesizing module AND2 in library work.
-Running optimization stage 1 on AND2 .......
-Finished optimization stage 1 on AND2 (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 100MB)
-@N: CG364 :"C:\lscc\diamond\3.12\synpbase\lib\lucent\machxo3l.v":1120:7:1120:9|Synthesizing module VHI in library work.
-Running optimization stage 1 on VHI .......
-Finished optimization stage 1 on VHI (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 100MB)
-@N: CG364 :"C:\lscc\diamond\3.12\synpbase\lib\lucent\machxo3l.v":187:7:187:13|Synthesizing module FD1P3DX in library work.
-Running optimization stage 1 on FD1P3DX .......
-Finished optimization stage 1 on FD1P3DX (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 100MB)
-@N: CG364 :"C:\lscc\diamond\3.12\synpbase\lib\lucent\machxo3l.v":782:7:782:11|Synthesizing module MUX81 in library work.
-Running optimization stage 1 on MUX81 .......
-Finished optimization stage 1 on MUX81 (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 100MB)
-@N: CG364 :"C:\Users\Duncan\git\ForthCPU\RAM\source\RAM.v":8:7:8:9|Synthesizing module RAM in library work.
-Running optimization stage 1 on RAM .......
-Finished optimization stage 1 on RAM (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 101MB)
-@N: CG364 :"C:\Users\Duncan\git\ForthCPU\UART\source\receiver.v":14:7:14:13|Synthesizing module UART_RX in library work.
-Running optimization stage 1 on UART_RX .......
-Finished optimization stage 1 on UART_RX (CPU Time 0h:00m:00s, Memory Used current: 101MB peak: 101MB)
-@N: CG364 :"C:\Users\Duncan\git\ForthCPU\UART\source\transmitter.v":14:7:14:13|Synthesizing module UART_TX in library work.
-Running optimization stage 1 on UART_TX .......
-@A: CL282 :"C:\Users\Duncan\git\ForthCPU\UART\source\transmitter.v":38:2:38:7|Feedback mux created for signal r_TX_Data[7:0]. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
-@A: CL282 :"C:\Users\Duncan\git\ForthCPU\UART\source\transmitter.v":38:2:38:7|Feedback mux created for signal r_Clock_Count[15:0]. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
-@A: CL282 :"C:\Users\Duncan\git\ForthCPU\UART\source\transmitter.v":38:2:38:7|Feedback mux created for signal r_Bit_Index[2:0]. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
-Finished optimization stage 1 on UART_TX (CPU Time 0h:00m:00s, Memory Used current: 101MB peak: 103MB)
-@N: CG364 :"C:\Users\Duncan\git\ForthCPU\UART\source\UART.v":17:7:17:10|Synthesizing module UART in library work.
-Running optimization stage 1 on UART .......
-@A: CL282 :"C:\Users\Duncan\git\ForthCPU\UART\source\UART.v":83:0:83:5|Feedback mux created for signal DOUT[15:0]. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
-Finished optimization stage 1 on UART (CPU Time 0h:00m:00s, Memory Used current: 101MB peak: 103MB)
-@N: CG364 :"C:\Users\Duncan\git\ForthCPU\interruptLogic\source\interruptMaskRegister.v":7:7:7:27|Synthesizing module interruptMaskRegister in library work.
-Running optimization stage 1 on interruptMaskRegister .......
-@W: CL208 :"C:\Users\Duncan\git\ForthCPU\interruptLogic\source\interruptMaskRegister.v":60:0:60:5|All reachable assignments to bit 0 of INTS_REG[7:0] assign 0, register removed by optimization.
-Finished optimization stage 1 on interruptMaskRegister (CPU Time 0h:00m:00s, Memory Used current: 101MB peak: 103MB)
-@N: CG364 :"C:\Users\Duncan\git\ForthCPU\mcuResources\source\mcuResources.v":3:7:3:18|Synthesizing module mcuResources in library work.
-Running optimization stage 1 on mcuResources .......
-Finished optimization stage 1 on mcuResources (CPU Time 0h:00m:00s, Memory Used current: 101MB peak: 103MB)
-@N: CG364 :"C:\Users\Duncan\git\ForthCPU\impl1\source\mcu.v":7:7:7:9|Synthesizing module mcu in library work.
-Running optimization stage 1 on mcu .......
-Finished optimization stage 1 on mcu (CPU Time 0h:00m:00s, Memory Used current: 101MB peak: 103MB)
-@N: CG364 :"C:\Users\Duncan\git\ForthCPU\impl1\test\blinkTest.v":5:7:5:16|Synthesizing module blinkTests in library work.
-@W: CG294 :"C:\Users\Duncan\git\ForthCPU\impl1\test\blinkTest.v":55:0:55:5|always block should contain at least one event control
-@W: CG532 :"C:\Users\Duncan\git\ForthCPU\impl1\test\blinkTest.v":59:0:59:6|Within an initial block, only Verilog force statements and memory initialization statements and initialization of entire variable are recognized, and all other content is ignored. Simulation mismatch may occur
-@W: CG204 :"C:\Users\Duncan\git\ForthCPU\impl1\test\blinkTest.v":59:0:59:6|Within an initial block, memory initialization statements of entire variable and nested loops are not recognized. Simulation mismatch may occur
-@W: CG133 :"C:\Users\Duncan\git\ForthCPU\impl1\test\blinkTest.v":15:5:15:12|Object PIN_INT0 is declared but not assigned. Either assign a value or remove the declaration.
-@W: CG133 :"C:\Users\Duncan\git\ForthCPU\impl1\test\blinkTest.v":16:5:16:12|Object PIN_INT1 is declared but not assigned. Either assign a value or remove the declaration.
-@W: CG133 :"C:\Users\Duncan\git\ForthCPU\impl1\test\blinkTest.v":17:5:17:12|Object PIN_INT2 is declared but not assigned. Either assign a value or remove the declaration.
-@W: CG133 :"C:\Users\Duncan\git\ForthCPU\impl1\test\blinkTest.v":18:5:18:12|Object PIN_INT3 is declared but not assigned. Either assign a value or remove the declaration.
-@W: CG133 :"C:\Users\Duncan\git\ForthCPU\impl1\test\blinkTest.v":19:5:19:12|Object PIN_INT4 is declared but not assigned. Either assign a value or remove the declaration.
-@W: CG133 :"C:\Users\Duncan\git\ForthCPU\impl1\test\blinkTest.v":20:5:20:12|Object PIN_INT5 is declared but not assigned. Either assign a value or remove the declaration.
-@W: CG133 :"C:\Users\Duncan\git\ForthCPU\impl1\test\blinkTest.v":21:5:21:12|Object PIN_INT6 is declared but not assigned. Either assign a value or remove the declaration.
-@W: CG133 :"C:\Users\Duncan\git\ForthCPU\impl1\test\blinkTest.v":27:5:27:11|Object PIN_RXD is declared but not assigned. Either assign a value or remove the declaration.
-@W: CG133 :"C:\Users\Duncan\git\ForthCPU\impl1\test\blinkTest.v":30:11:30:19|Object PIN_DIPSW is declared but not assigned. Either assign a value or remove the declaration.
-Running optimization stage 1 on blinkTests .......
-Finished optimization stage 1 on blinkTests (CPU Time 0h:00m:00s, Memory Used current: 101MB peak: 103MB)
-Running optimization stage 2 on blinkTests .......
-@W: FX105 :"C:\Users\Duncan\git\ForthCPU\impl1\test\blinkTest.v":56:19:56:29|Found combinational loop at PIN_CLK_X1
-@A: CL153 :"C:\Users\Duncan\git\ForthCPU\impl1\test\blinkTest.v":15:5:15:12|*Unassigned bits of PIN_INT0 are referenced and tied to 0 -- simulation mismatch possible.
-@A: CL153 :"C:\Users\Duncan\git\ForthCPU\impl1\test\blinkTest.v":16:5:16:12|*Unassigned bits of PIN_INT1 are referenced and tied to 0 -- simulation mismatch possible.
-@A: CL153 :"C:\Users\Duncan\git\ForthCPU\impl1\test\blinkTest.v":17:5:17:12|*Unassigned bits of PIN_INT2 are referenced and tied to 0 -- simulation mismatch possible.
-@A: CL153 :"C:\Users\Duncan\git\ForthCPU\impl1\test\blinkTest.v":18:5:18:12|*Unassigned bits of PIN_INT3 are referenced and tied to 0 -- simulation mismatch possible.
-@A: CL153 :"C:\Users\Duncan\git\ForthCPU\impl1\test\blinkTest.v":19:5:19:12|*Unassigned bits of PIN_INT4 are referenced and tied to 0 -- simulation mismatch possible.
-@A: CL153 :"C:\Users\Duncan\git\ForthCPU\impl1\test\blinkTest.v":20:5:20:12|*Unassigned bits of PIN_INT5 are referenced and tied to 0 -- simulation mismatch possible.
-@A: CL153 :"C:\Users\Duncan\git\ForthCPU\impl1\test\blinkTest.v":21:5:21:12|*Unassigned bits of PIN_INT6 are referenced and tied to 0 -- simulation mismatch possible.
-@A: CL153 :"C:\Users\Duncan\git\ForthCPU\impl1\test\blinkTest.v":27:5:27:11|*Unassigned bits of PIN_RXD are referenced and tied to 0 -- simulation mismatch possible.
-@A: CL153 :"C:\Users\Duncan\git\ForthCPU\impl1\test\blinkTest.v":30:11:30:19|*Unassigned bits of PIN_DIPSW[3:0] are referenced and tied to 0 -- simulation mismatch possible.
-Finished optimization stage 2 on blinkTests (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 103MB)
-Running optimization stage 2 on mcu .......
-Finished optimization stage 2 on mcu (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 103MB)
-Running optimization stage 2 on mcuResources .......
-Finished optimization stage 2 on mcuResources (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 103MB)
-Running optimization stage 2 on interruptMaskRegister .......
-Finished optimization stage 2 on interruptMaskRegister (CPU Time 0h:00m:00s, Memory Used current: 101MB peak: 103MB)
-Running optimization stage 2 on UART .......
-Finished optimization stage 2 on UART (CPU Time 0h:00m:00s, Memory Used current: 101MB peak: 103MB)
-Running optimization stage 2 on UART_TX .......
-@N: CL201 :"C:\Users\Duncan\git\ForthCPU\UART\source\transmitter.v":38:2:38:7|Trying to extract state machine for register r_SM_Main.
-Extracted state machine for register r_SM_Main
-State machine has 4 reachable states with original encodings of:
-   000
-   001
-   010
-   011
-Finished optimization stage 2 on UART_TX (CPU Time 0h:00m:00s, Memory Used current: 98MB peak: 103MB)
-Running optimization stage 2 on UART_RX .......
-@N: CL201 :"C:\Users\Duncan\git\ForthCPU\UART\source\receiver.v":37:2:37:7|Trying to extract state machine for register r_SM_Main.
-Finished optimization stage 2 on UART_RX (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 103MB)
-Running optimization stage 2 on RAM .......
-Finished optimization stage 2 on RAM (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 103MB)
-Running optimization stage 2 on MUX81 .......
-Finished optimization stage 2 on MUX81 (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 103MB)
-Running optimization stage 2 on FD1P3DX .......
-Finished optimization stage 2 on FD1P3DX (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 103MB)
-Running optimization stage 2 on VHI .......
-Finished optimization stage 2 on VHI (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 103MB)
-Running optimization stage 2 on AND2 .......
-Finished optimization stage 2 on AND2 (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 103MB)
-Running optimization stage 2 on INV .......
-Finished optimization stage 2 on INV (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 103MB)
-Running optimization stage 2 on rom .......
-Finished optimization stage 2 on rom (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 103MB)
-Running optimization stage 2 on ROM64X1A .......
-Finished optimization stage 2 on ROM64X1A (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 103MB)
-Running optimization stage 2 on memoryMapper .......
-Finished optimization stage 2 on memoryMapper (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 103MB)
-Running optimization stage 2 on core .......
-Finished optimization stage 2 on core (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 103MB)
-Running optimization stage 2 on opxMultiplexer .......
-Finished optimization stage 2 on opxMultiplexer (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 103MB)
-Running optimization stage 2 on generalGroupDecoder .......
-Finished optimization stage 2 on generalGroupDecoder (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 103MB)
-Running optimization stage 2 on jumpGroupDecoder .......
-Finished optimization stage 2 on jumpGroupDecoder (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 103MB)
-Running optimization stage 2 on loadStoreGroupDecoder .......
-@W: CL177 :"C:\Users\Duncan\git\ForthCPU\loadStoreGroupDecoder\source\loadStoreGroupDecoder.v":256:0:256:5|Sharing sequential element REGB_EN and merging REGA_EN. Add a syn_preserve attribute to the element to prevent sharing.
-@N: CL159 :"C:\Users\Duncan\git\ForthCPU\loadStoreGroupDecoder\source\loadStoreGroupDecoder.v":68:7:68:11|Input FETCH is unused.
-Finished optimization stage 2 on loadStoreGroupDecoder (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 103MB)
-Running optimization stage 2 on aluGroupDecoder .......
-@N: CL159 :"C:\Users\Duncan\git\ForthCPU\aluGroupDecoder\source\aluGroupDecoder.v":37:7:37:11|Input RESET is unused.
-Finished optimization stage 2 on aluGroupDecoder (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 103MB)
-Running optimization stage 2 on interruptStateMachine .......
-@N: CL201 :"C:\Users\Duncan\git\ForthCPU\interruptLogic\source\interruptStateMachine.v":174:0:174:5|Trying to extract state machine for register STATE.
-Extracted state machine for register STATE
-State machine has 10 reachable states with original encodings of:
-   0000
-   0010
-   0011
-   0100
-   0101
-   0110
-   0111
-   1000
-   1001
-   1010
-Finished optimization stage 2 on interruptStateMachine (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 103MB)
-Running optimization stage 2 on branchLogic .......
-Finished optimization stage 2 on branchLogic (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 103MB)
-Running optimization stage 2 on programCounter .......
-Finished optimization stage 2 on programCounter (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 103MB)
-Running optimization stage 2 on busController .......
-Finished optimization stage 2 on busController (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 103MB)
-Running optimization stage 2 on registerFile .......
-Finished optimization stage 2 on registerFile (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 103MB)
-Running optimization stage 2 on registers .......
-Finished optimization stage 2 on registers (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 103MB)
-Running optimization stage 2 on VLO .......
-Finished optimization stage 2 on VLO (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 103MB)
-Running optimization stage 2 on DP8KC .......
-Finished optimization stage 2 on DP8KC (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 103MB)
-Running optimization stage 2 on fullALU .......
-Finished optimization stage 2 on fullALU (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 103MB)
-Running optimization stage 2 on aluBMux .......
-@N: CL159 :"C:\Users\Duncan\git\ForthCPU\aluB\source\aluBMux.v":13:13:13:19|Input LDSINCF is unused.
-Finished optimization stage 2 on aluBMux (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 103MB)
-Running optimization stage 2 on aluAMux .......
-Finished optimization stage 2 on aluAMux (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 103MB)
-Running optimization stage 2 on alu .......
-Finished optimization stage 2 on alu (CPU Time 0h:00m:00s, Memory Used current: 105MB peak: 106MB)
-Running optimization stage 2 on instructionPhaseDecoder .......
-@N: CL201 :"C:\Users\Duncan\git\ForthCPU\instructionPhaseDecoder\source\instructionPhaseDecoder.v":18:0:18:5|Trying to extract state machine for register PHASE.
-Extracted state machine for register PHASE
-State machine has 5 reachable states with original encodings of:
-   000
-   001
-   010
-   011
-   100
-Finished optimization stage 2 on instructionPhaseDecoder (CPU Time 0h:00m:00s, Memory Used current: 101MB peak: 106MB)
-Running optimization stage 2 on devBoard .......
-Finished optimization stage 2 on devBoard (CPU Time 0h:00m:00s, Memory Used current: 101MB peak: 106MB)
-Running optimization stage 2 on GSR .......
-Finished optimization stage 2 on GSR (CPU Time 0h:00m:00s, Memory Used current: 101MB peak: 106MB)
-Running optimization stage 2 on PUR .......
-Finished optimization stage 2 on PUR (CPU Time 0h:00m:00s, Memory Used current: 101MB peak: 106MB)
-
-For a summary of runtime and memory usage per design unit, please see file:
-==========================================================
-@L: C:\Users\Duncan\git\ForthCPU\impl1\synwork\layer0.rt.csv
-
-
-At c_ver Exit (Real Time elapsed 0h:00m:07s; CPU Time elapsed 0h:00m:07s; Memory used current: 101MB peak: 106MB)
-
-Process took 0h:00m:07s realtime, 0h:00m:07s cputime
-
-Process completed successfully.
-# Tue Oct 31 18:20:25 2023
-
-###########################################################]
-###########################################################[
-
-Copyright (C) 1994-2021 Synopsys, Inc.
-This Synopsys software and all associated documentation are proprietary to Synopsys, Inc.
-and may only be used pursuant to the terms and conditions of a written license agreement
-with Synopsys, Inc. All other use, reproduction, modification, or distribution of the
-Synopsys software or the associated documentation is strictly prohibited.
-Tool: Synplify Pro (R)
-Build: R-2021.03L-SP1
-Install: C:\lscc\diamond\3.12\synpbase
-OS: Windows 6.2
-
-Hostname: EDAWIN
-
-Implementation : impl1
-Synopsys Synopsys Netlist Linker, Version comp202103synp2, Build 093R, Built Aug 10 2021 09:15:36, @
-
-@N|Running in 64-bit mode
-File C:\Users\Duncan\git\ForthCPU\impl1\synwork\layer0.srs changed - recompiling
-
-At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 93MB peak: 93MB)
-
-Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-
-Process completed successfully.
-# Tue Oct 31 18:20:25 2023
-
-###########################################################]
-
-For a summary of runtime and memory usage for all design units, please see file:
-==========================================================
-@L: C:\Users\Duncan\git\ForthCPU\impl1\synwork\ForthCPU_impl1_comp.rt.csv
-
-@END
-
-At c_hdl Exit (Real Time elapsed 0h:00m:07s; CPU Time elapsed 0h:00m:07s; Memory used current: 23MB peak: 23MB)
-
-Process took 0h:00m:07s realtime, 0h:00m:07s cputime
-
-Process completed successfully.
-# Tue Oct 31 18:20:25 2023
-
-###########################################################]
-###########################################################[
-
-Copyright (C) 1994-2021 Synopsys, Inc.
-This Synopsys software and all associated documentation are proprietary to Synopsys, Inc.
-and may only be used pursuant to the terms and conditions of a written license agreement
-with Synopsys, Inc. All other use, reproduction, modification, or distribution of the
-Synopsys software or the associated documentation is strictly prohibited.
-Tool: Synplify Pro (R)
-Build: R-2021.03L-SP1
-Install: C:\lscc\diamond\3.12\synpbase
-OS: Windows 6.2
-
-Hostname: EDAWIN
-
-Implementation : impl1
-Synopsys Synopsys Netlist Linker, Version comp202103synp2, Build 093R, Built Aug 10 2021 09:15:36, @
-
-@N|Running in 64-bit mode
-File C:\Users\Duncan\git\ForthCPU\impl1\synwork\ForthCPU_impl1_comp.srs changed - recompiling
-
-At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 94MB peak: 94MB)
-
-Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-
-Process completed successfully.
-# Tue Oct 31 18:20:27 2023
-
-###########################################################]
-# Tue Oct 31 18:20:27 2023
-
-
-Copyright (C) 1994-2021 Synopsys, Inc.
-This Synopsys software and all associated documentation are proprietary to Synopsys, Inc.
-and may only be used pursuant to the terms and conditions of a written license agreement
-with Synopsys, Inc. All other use, reproduction, modification, or distribution of the
-Synopsys software or the associated documentation is strictly prohibited.
-Tool: Synplify Pro (R)
-Build: R-2021.03L-SP1
-Install: C:\lscc\diamond\3.12\synpbase
-OS: Windows 6.2
-
-Hostname: EDAWIN
-
-Implementation : impl1
-Synopsys Lattice Technology Pre-mapping, Version map202103lat, Build 070R, Built Oct  6 2021 11:12:38, @
-
-
-Mapper Startup Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 117MB peak: 117MB)
-
-
-Done reading skeleton netlist (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 122MB peak: 129MB)
-
-@A: MF827 |No constraint file specified.
-@L: C:\Users\Duncan\git\ForthCPU\impl1\ForthCPU_impl1_scck.rpt 
-See clock summary report "C:\Users\Duncan\git\ForthCPU\impl1\ForthCPU_impl1_scck.rpt"
-@N: MF916 |Option synthesis_strategy=base is enabled. 
-@N: MF248 |Running in 64-bit mode.
-@N: MF666 |Clock conversion enabled. (Command "set_option -fix_gated_and_generated_clocks 1" in the project file.)
-
-Design Input Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 130MB peak: 130MB)
-
-
-Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 130MB peak: 130MB)
-
-
-Start loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 142MB peak: 142MB)
-
-
-Finished loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 142MB peak: 144MB)
-
-@N: FX493 |Applying initial value "00000000" on instance r_RX_Byte[7:0].
-@W: FX474 |User-specified initial value defined for some sequential elements which can prevent optimum synthesis results from being achieved. 
-@N: FX493 |Applying initial value "0" on instance r_RX_DV.
-@N: FX493 |Applying initial value "000" on instance r_SM_Main[2:0].
-Encoding state machine PHASE[4:0] (in view: work.instructionPhaseDecoder(verilog))
-original code -> new code
-   000 -> 000
-   001 -> 001
-   010 -> 010
-   011 -> 011
-   100 -> 100
-Encoding state machine STATE[9:0] (in view: work.interruptStateMachine(verilog))
-original code -> new code
-   0000 -> 0000
-   0010 -> 0001
-   0011 -> 0010
-   0100 -> 0011
-   0101 -> 0100
-   0110 -> 0101
-   0111 -> 0110
-   1000 -> 0111
-   1001 -> 1000
-   1010 -> 1001
-Encoding state machine r_SM_Main[3:0] (in view: work.UART_TX(verilog))
-original code -> new code
-   000 -> 00
-   001 -> 01
-   010 -> 10
-   011 -> 11
-@N: MO225 :"c:\users\duncan\git\forthcpu\uart\source\transmitter.v":38:2:38:7|There are no possible illegal states for state machine r_SM_Main[3:0] (in view: work.UART_TX(verilog)); safe FSM implementation is not required.
-
-Starting clock optimization phase (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 176MB peak: 176MB)
-
-@N: BN362 :"c:\users\duncan\git\forthcpu\programcounter\source\programcounter.v":67:0:67:5|Removing sequential instance INTR0[15:0] (in view: work.programCounter(verilog)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
-
-Finished clock optimization phase (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 176MB peak: 176MB)
-
-
-Starting clock optimization report phase (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 176MB peak: 176MB)
-
-
-Finished clock optimization report phase (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 176MB peak: 177MB)
-
-@N: FX1184 |Applying syn_allowed_resources blockrams=240 on top level netlist blinkTests 
-
-Finished netlist restructuring (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 176MB peak: 177MB)
-
-
-
-Clock Summary
-******************
-
-          Start      Requested     Requested     Clock      Clock               Clock
-Level     Clock      Frequency     Period        Type       Group               Load 
--------------------------------------------------------------------------------------
-0 -       System     100.0 MHz     10.000        system     system_clkgroup     252  
-=====================================================================================
-
-
-
-Clock Load Summary
-***********************
-
-           Clock     Source     Clock Pin                                                              Non-clock Pin     Non-clock Pin
-Clock      Load      Pin        Seq Example                                                            Seq Example       Comb Example 
---------------------------------------------------------------------------------------------------------------------------------------
-System     252       -          mcuInst.mcuResourcesInst.interruptMaskRegisterInst.INTS_REG[7:1].C     -                 -            
-======================================================================================================================================
-
-@W: MT531 :"c:\users\duncan\git\forthcpu\devboard\source\devboard.v":111:0:111:5|Found signal identified as System clock which controls 252 sequential elements including mcuInst.boardInst.PIN_LED[7:0].  Using this clock, which has no specified timing constraint, can prevent conversion of gated or generated clocks and can adversely impact design performance. 
-
-ICG Latch Removal Summary:
-Number of ICG latches removed: 0
-Number of ICG latches not removed:	0
-For details review file gcc_ICG_report.rpt
-
-
-@S |Clock Optimization Summary
-
-
-
-#### START OF PREMAP CLOCK OPTIMIZATION REPORT #####[
-
-0 non-gated/non-generated clock tree(s) driving 0 clock pin(s) of sequential element(s)
-1 gated/generated clock tree(s) driving 255 clock pin(s) of sequential element(s)
-0 instances converted, 255 sequential instances remain driven by gated/generated clocks
-
-=============================================================== Gated/Generated Clocks ===============================================================
-Clock Tree ID     Driving Element     Drive Element Type     Unconverted Fanout     Sample Instance                    Explanation                    
-------------------------------------------------------------------------------------------------------------------------------------------------------
-@KP:ckid0_1       G_1.OUT[0]          loopbuf                255                    mcuInst.boardInst.PIN_LED[7:0]     Clock source is invalid for GCC
-======================================================================================================================================================
-
-
-##### END OF CLOCK OPTIMIZATION REPORT ######
-
-@N: FX1143 |Skipping assigning INTERNAL_VREF to iobanks, because the table of mapping from pin to iobank is not initialized.
-Finished Pre Mapping Phase.
-
-Starting constraint checker (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 177MB peak: 177MB)
-
-
-Finished constraint checker preprocessing (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 177MB peak: 177MB)
-
-
-Finished constraint checker (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 178MB peak: 178MB)
-
-Pre-mapping successful!
-
-At Mapper Exit (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 96MB peak: 178MB)
-
-Process took 0h:00m:01s realtime, 0h:00m:01s cputime
-# Tue Oct 31 18:20:28 2023
-
-###########################################################]
-Map & Optimize Report
-
-# Tue Oct 31 18:20:29 2023
-
-
-Copyright (C) 1994-2021 Synopsys, Inc.
-This Synopsys software and all associated documentation are proprietary to Synopsys, Inc.
-and may only be used pursuant to the terms and conditions of a written license agreement
-with Synopsys, Inc. All other use, reproduction, modification, or distribution of the
-Synopsys software or the associated documentation is strictly prohibited.
-Tool: Synplify Pro (R)
-Build: R-2021.03L-SP1
-Install: C:\lscc\diamond\3.12\synpbase
-OS: Windows 6.2
-
-Hostname: EDAWIN
-
-Implementation : impl1
-Synopsys Lattice Technology Mapper, Version map202103lat, Build 070R, Built Oct  6 2021 11:12:38, @
-
-
-Mapper Startup Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 117MB peak: 117MB)
-
-@N: MF916 |Option synthesis_strategy=base is enabled. 
-@N: MF248 |Running in 64-bit mode.
-@N: MF666 |Clock conversion enabled. (Command "set_option -fix_gated_and_generated_clocks 1" in the project file.)
-
-Design Input Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 119MB peak: 129MB)
-
-
-Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 119MB peak: 129MB)
-
-
-Start loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 133MB peak: 133MB)
-
-
-Finished loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 134MB peak: 136MB)
-
-
-
-Starting Optimization and Mapping (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 170MB peak: 170MB)
-
-@W: MO160 :"c:\users\duncan\git\forthcpu\uart\source\receiver.v":37:2:37:7|Register bit r_RX_Byte[7] (in view view:work.UART_RX(verilog)) is always 0. To keep the instance, apply syn_preserve=1 on the instance.
-@W: MO160 :"c:\users\duncan\git\forthcpu\uart\source\receiver.v":37:2:37:7|Register bit r_RX_Byte[6] (in view view:work.UART_RX(verilog)) is always 0. To keep the instance, apply syn_preserve=1 on the instance.
-@W: MO160 :"c:\users\duncan\git\forthcpu\uart\source\receiver.v":37:2:37:7|Register bit r_RX_Byte[5] (in view view:work.UART_RX(verilog)) is always 0. To keep the instance, apply syn_preserve=1 on the instance.
-@W: MO160 :"c:\users\duncan\git\forthcpu\uart\source\receiver.v":37:2:37:7|Register bit r_RX_Byte[4] (in view view:work.UART_RX(verilog)) is always 0. To keep the instance, apply syn_preserve=1 on the instance.
-@W: MO160 :"c:\users\duncan\git\forthcpu\uart\source\receiver.v":37:2:37:7|Register bit r_RX_Byte[3] (in view view:work.UART_RX(verilog)) is always 0. To keep the instance, apply syn_preserve=1 on the instance.
-@W: MO160 :"c:\users\duncan\git\forthcpu\uart\source\receiver.v":37:2:37:7|Register bit r_RX_Byte[2] (in view view:work.UART_RX(verilog)) is always 0. To keep the instance, apply syn_preserve=1 on the instance.
-@W: MO160 :"c:\users\duncan\git\forthcpu\uart\source\receiver.v":37:2:37:7|Register bit r_RX_Byte[1] (in view view:work.UART_RX(verilog)) is always 0. To keep the instance, apply syn_preserve=1 on the instance.
-@W: MO160 :"c:\users\duncan\git\forthcpu\uart\source\receiver.v":37:2:37:7|Register bit r_RX_Byte[0] (in view view:work.UART_RX(verilog)) is always 0. To keep the instance, apply syn_preserve=1 on the instance.
-@W: FA239 :"c:\users\duncan\git\forthcpu\alub\source\alu.v":34:3:34:6|ROM arithmetic (in view: work.alu(verilog)) mapped in logic. To map to a technology ROM, apply attribute syn_romstyle on this instance.
-@N: MO106 :"c:\users\duncan\git\forthcpu\alub\source\alu.v":34:3:34:6|Found ROM arithmetic (in view: work.alu(verilog)) with 16 words by 1 bit.
-
-Finished RTL optimizations (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 176MB peak: 176MB)
-
-@W: FX474 |User-specified initial value defined for some sequential elements which can prevent optimum synthesis results from being achieved. 
-@N: MF179 :"c:\users\duncan\git\forthcpu\uart\source\receiver.v":56:14:56:49|Found 17 by 17 bit equality operator ('==') r_Clock_Count17 (in view: work.UART_RX(verilog))
-@W: MO129 :"c:\users\duncan\git\forthcpu\interruptlogic\source\interruptmaskregister.v":60:0:60:5|Sequential instance mcuInst.mcuResourcesInst.interruptMaskRegisterInst.INTS_REG[1] is reduced to a combinational gate by constant propagation.
-@W: MO129 :"c:\users\duncan\git\forthcpu\interruptlogic\source\interruptmaskregister.v":60:0:60:5|Sequential instance mcuInst.mcuResourcesInst.interruptMaskRegisterInst.INTS_REG[2] is reduced to a combinational gate by constant propagation.
-@W: MO129 :"c:\users\duncan\git\forthcpu\interruptlogic\source\interruptmaskregister.v":60:0:60:5|Sequential instance mcuInst.mcuResourcesInst.interruptMaskRegisterInst.INTS_REG[3] is reduced to a combinational gate by constant propagation.
-@W: MO129 :"c:\users\duncan\git\forthcpu\interruptlogic\source\interruptmaskregister.v":60:0:60:5|Sequential instance mcuInst.mcuResourcesInst.interruptMaskRegisterInst.INTS_REG[4] is reduced to a combinational gate by constant propagation.
-@W: MO129 :"c:\users\duncan\git\forthcpu\interruptlogic\source\interruptmaskregister.v":60:0:60:5|Sequential instance mcuInst.mcuResourcesInst.interruptMaskRegisterInst.INTS_REG[5] is reduced to a combinational gate by constant propagation.
-@W: MO129 :"c:\users\duncan\git\forthcpu\interruptlogic\source\interruptmaskregister.v":60:0:60:5|Sequential instance mcuInst.mcuResourcesInst.interruptMaskRegisterInst.INTS_REG[6] is reduced to a combinational gate by constant propagation.
-@W: BN132 :"c:\users\duncan\git\forthcpu\interruptlogic\source\interruptmaskregister.v":60:0:60:5|Removing instance mcuInst.mcuResourcesInst.interruptMaskRegisterInst.PRI_REG[2] because it is equivalent to instance mcuInst.mcuResourcesInst.interruptMaskRegisterInst.INT1. To keep the instance, apply constraint syn_preserve=1 on the instance.
-@W: BN132 :"c:\users\duncan\git\forthcpu\interruptlogic\source\interruptmaskregister.v":60:0:60:5|Removing instance mcuInst.mcuResourcesInst.interruptMaskRegisterInst.PRI_REG[1] because it is equivalent to instance mcuInst.mcuResourcesInst.interruptMaskRegisterInst.INT1. To keep the instance, apply constraint syn_preserve=1 on the instance.
-@W: BN132 :"c:\users\duncan\git\forthcpu\interruptlogic\source\interruptmaskregister.v":60:0:60:5|Removing instance mcuInst.mcuResourcesInst.interruptMaskRegisterInst.PRI_REG[0] because it is equivalent to instance mcuInst.mcuResourcesInst.interruptMaskRegisterInst.INT1. To keep the instance, apply constraint syn_preserve=1 on the instance.
-@W: BN132 :"c:\users\duncan\git\forthcpu\interruptlogic\source\interruptmaskregister.v":60:0:60:5|Removing instance mcuInst.mcuResourcesInst.interruptMaskRegisterInst.INTS_REG[7] because it is equivalent to instance mcuInst.mcuResourcesInst.interruptMaskRegisterInst.INT1. To keep the instance, apply constraint syn_preserve=1 on the instance.
-
-Starting factoring (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:02s; Memory used current: 186MB peak: 186MB)
-
-@W: BN132 :"c:\users\duncan\git\forthcpu\interruptlogic\source\interruptstatemachine.v":174:0:174:5|Removing instance mcuInst.coreInst.interruptStateMachineInst.PC_NEXTX[0] because it is equivalent to instance mcuInst.coreInst.interruptStateMachineInst.STATE[3]. To keep the instance, apply constraint syn_preserve=1 on the instance.
-@W: BN132 :"c:\users\duncan\git\forthcpu\instructionphasedecoder\source\instructionphasedecoder.v":18:0:18:5|Removing instance mcuInst.coreInst.instructionPhaseDecoderInst.EXECUTE because it is equivalent to instance mcuInst.coreInst.instructionPhaseDecoderInst.PHASE[2]. To keep the instance, apply constraint syn_preserve=1 on the instance.
-
-Finished factoring (Real Time elapsed 0h:00m:04s; CPU Time elapsed 0h:00m:04s; Memory used current: 203MB peak: 203MB)
-
-
-Available hyper_sources - for debug and ip models
-	None Found
-
-@N: BN362 :"c:\users\duncan\git\forthcpu\devboard\source\devboard.v":111:0:111:5|Removing sequential instance mcuInst.boardInst.PIN_LED[7] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\devboard\source\devboard.v":111:0:111:5|Removing sequential instance mcuInst.boardInst.PIN_LED[6] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\devboard\source\devboard.v":111:0:111:5|Removing sequential instance mcuInst.boardInst.PIN_LED[5] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\devboard\source\devboard.v":111:0:111:5|Removing sequential instance mcuInst.boardInst.PIN_LED[4] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\devboard\source\devboard.v":111:0:111:5|Removing sequential instance mcuInst.boardInst.PIN_LED[3] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\devboard\source\devboard.v":111:0:111:5|Removing sequential instance mcuInst.boardInst.PIN_LED[2] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\devboard\source\devboard.v":111:0:111:5|Removing sequential instance mcuInst.boardInst.PIN_LED[1] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\devboard\source\devboard.v":111:0:111:5|Removing sequential instance mcuInst.boardInst.PIN_LED[0] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\interruptlogic\source\interruptmaskregister.v":60:0:60:5|Removing sequential instance mcuInst.mcuResourcesInst.interruptMaskRegisterInst.INT1 (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\interruptlogic\source\interruptmaskregister.v":60:0:60:5|Removing sequential instance mcuInst.mcuResourcesInst.interruptMaskRegisterInst.MASK_REG[7] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\interruptlogic\source\interruptmaskregister.v":60:0:60:5|Removing sequential instance mcuInst.mcuResourcesInst.interruptMaskRegisterInst.MASK_REG[6] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\interruptlogic\source\interruptmaskregister.v":60:0:60:5|Removing sequential instance mcuInst.mcuResourcesInst.interruptMaskRegisterInst.MASK_REG[5] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\interruptlogic\source\interruptmaskregister.v":60:0:60:5|Removing sequential instance mcuInst.mcuResourcesInst.interruptMaskRegisterInst.MASK_REG[4] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\interruptlogic\source\interruptmaskregister.v":60:0:60:5|Removing sequential instance mcuInst.mcuResourcesInst.interruptMaskRegisterInst.MASK_REG[3] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\interruptlogic\source\interruptmaskregister.v":60:0:60:5|Removing sequential instance mcuInst.mcuResourcesInst.interruptMaskRegisterInst.MASK_REG[2] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\interruptlogic\source\interruptmaskregister.v":60:0:60:5|Removing sequential instance mcuInst.mcuResourcesInst.interruptMaskRegisterInst.MASK_REG[1] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\interruptlogic\source\interruptmaskregister.v":60:0:60:5|Removing sequential instance mcuInst.mcuResourcesInst.interruptMaskRegisterInst.MASK_REG[0] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\uart.v":83:0:83:5|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.TX_ACTIVE_R (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\uart.v":83:0:83:5|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.TX_CLK_DIV[15] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\uart.v":83:0:83:5|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.TX_CLK_DIV[14] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\uart.v":83:0:83:5|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.TX_CLK_DIV[13] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\uart.v":83:0:83:5|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.TX_CLK_DIV[12] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\uart.v":83:0:83:5|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.TX_CLK_DIV[11] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\uart.v":83:0:83:5|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.TX_CLK_DIV[10] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\uart.v":83:0:83:5|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.TX_CLK_DIV[9] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\uart.v":83:0:83:5|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.TX_CLK_DIV[8] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\uart.v":83:0:83:5|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.TX_CLK_DIV[7] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\uart.v":83:0:83:5|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.TX_CLK_DIV[6] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\uart.v":83:0:83:5|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.TX_CLK_DIV[5] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\uart.v":83:0:83:5|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.TX_CLK_DIV[4] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\uart.v":83:0:83:5|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.TX_CLK_DIV[3] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\uart.v":83:0:83:5|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.TX_CLK_DIV[2] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\uart.v":83:0:83:5|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.TX_CLK_DIV[1] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\uart.v":83:0:83:5|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.TX_CLK_DIV[0] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\uart.v":83:0:83:5|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.RX_CLK_DIV[15] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\uart.v":83:0:83:5|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.RX_CLK_DIV[14] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\uart.v":83:0:83:5|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.RX_CLK_DIV[13] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\uart.v":83:0:83:5|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.RX_CLK_DIV[12] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\uart.v":83:0:83:5|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.RX_CLK_DIV[11] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\uart.v":83:0:83:5|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.RX_CLK_DIV[10] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\uart.v":83:0:83:5|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.RX_CLK_DIV[9] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\uart.v":83:0:83:5|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.RX_CLK_DIV[8] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\uart.v":83:0:83:5|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.RX_CLK_DIV[7] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\uart.v":83:0:83:5|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.RX_CLK_DIV[6] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\uart.v":83:0:83:5|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.RX_CLK_DIV[5] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\uart.v":83:0:83:5|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.RX_CLK_DIV[4] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\uart.v":83:0:83:5|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.RX_CLK_DIV[3] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\uart.v":83:0:83:5|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.RX_CLK_DIV[2] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\uart.v":83:0:83:5|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.RX_CLK_DIV[1] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\uart.v":83:0:83:5|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.RX_CLK_DIV[0] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\uart.v":83:0:83:5|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.DATA_AVAILABLE_R (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\uart.v":83:0:83:5|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.START_TX (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\uart.v":83:0:83:5|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.TX_COMPLETE_R (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\uart.v":83:0:83:5|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.DOUT[15] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\uart.v":83:0:83:5|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.DOUT[14] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\uart.v":83:0:83:5|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.DOUT[13] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\uart.v":83:0:83:5|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.DOUT[12] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\uart.v":83:0:83:5|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.DOUT[11] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\uart.v":83:0:83:5|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.DOUT[10] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\uart.v":83:0:83:5|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.DOUT[9] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\uart.v":83:0:83:5|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.DOUT[8] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\uart.v":83:0:83:5|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.DOUT[7] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\uart.v":83:0:83:5|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.DOUT[6] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\uart.v":83:0:83:5|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.DOUT[5] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\uart.v":83:0:83:5|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.DOUT[4] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\uart.v":83:0:83:5|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.DOUT[3] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\uart.v":83:0:83:5|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.DOUT[2] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\uart.v":83:0:83:5|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.DOUT[1] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\uart.v":83:0:83:5|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.DOUT[0] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\transmitter.v":38:2:38:7|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.uartTxInst.r_SM_Main[1] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\transmitter.v":38:2:38:7|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.uartTxInst.r_SM_Main[0] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\transmitter.v":38:2:38:7|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.uartTxInst.o_TX_Done (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\transmitter.v":38:2:38:7|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.uartTxInst.o_TX_Serial (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\transmitter.v":38:2:38:7|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.uartTxInst.r_TX_Data[7] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\transmitter.v":38:2:38:7|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.uartTxInst.r_TX_Data[6] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\transmitter.v":38:2:38:7|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.uartTxInst.r_TX_Data[5] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\transmitter.v":38:2:38:7|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.uartTxInst.r_TX_Data[4] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\transmitter.v":38:2:38:7|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.uartTxInst.r_TX_Data[3] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\transmitter.v":38:2:38:7|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.uartTxInst.r_TX_Data[2] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\transmitter.v":38:2:38:7|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.uartTxInst.r_TX_Data[1] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\transmitter.v":38:2:38:7|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.uartTxInst.r_TX_Data[0] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\transmitter.v":38:2:38:7|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.uartTxInst.o_TX_Active (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\transmitter.v":38:2:38:7|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.uartTxInst.r_Clock_Count[15] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\transmitter.v":38:2:38:7|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.uartTxInst.r_Clock_Count[14] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\transmitter.v":38:2:38:7|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.uartTxInst.r_Clock_Count[13] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\transmitter.v":38:2:38:7|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.uartTxInst.r_Clock_Count[12] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\transmitter.v":38:2:38:7|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.uartTxInst.r_Clock_Count[11] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\transmitter.v":38:2:38:7|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.uartTxInst.r_Clock_Count[10] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\transmitter.v":38:2:38:7|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.uartTxInst.r_Clock_Count[9] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\transmitter.v":38:2:38:7|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.uartTxInst.r_Clock_Count[8] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\transmitter.v":38:2:38:7|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.uartTxInst.r_Clock_Count[7] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\transmitter.v":38:2:38:7|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.uartTxInst.r_Clock_Count[6] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\transmitter.v":38:2:38:7|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.uartTxInst.r_Clock_Count[5] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\transmitter.v":38:2:38:7|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.uartTxInst.r_Clock_Count[4] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\transmitter.v":38:2:38:7|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.uartTxInst.r_Clock_Count[3] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\transmitter.v":38:2:38:7|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.uartTxInst.r_Clock_Count[2] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\transmitter.v":38:2:38:7|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.uartTxInst.r_Clock_Count[1] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\transmitter.v":38:2:38:7|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.uartTxInst.r_Clock_Count[0] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\transmitter.v":38:2:38:7|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.uartTxInst.r_Bit_Index[2] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-@N: BN362 :"c:\users\duncan\git\forthcpu\uart\source\transmitter.v":38:2:38:7|Removing sequential instance mcuInst.mcuResourcesInst.UARTInst.uartTxInst.r_Bit_Index[1] (in view: work.blinkTests(verilog)) because it does not drive other instances.
-
-Only the first 100 messages of id 'BN362' are reported. To see all messages use 'report_messages -log C:\Users\Duncan\git\ForthCPU\impl1\synlog\ForthCPU_impl1_fpga_mapper.srr -id BN362' in the Tcl shell. To see all messages in future runs, use the command 'message_override -limit {BN362} -count unlimited' in the Tcl shell.
-@W: BN114 :"c:\users\duncan\git\forthcpu\ram\source\ram.v":221:10:221:19|Removing instance mcuInst.mcuResourcesInst.RAMInst.RAM_0_0_15 (in view: work.blinkTests(verilog)) of black box view:LUCENT.DP8KC(PRIM) because it does not drive other instances.
-@W: BN114 :"c:\users\duncan\git\forthcpu\ram\source\ram.v":287:10:287:19|Removing instance mcuInst.mcuResourcesInst.RAMInst.RAM_0_1_14 (in view: work.blinkTests(verilog)) of black box view:LUCENT.DP8KC(PRIM) because it does not drive other instances.
-@W: BN114 :"c:\users\duncan\git\forthcpu\ram\source\ram.v":353:10:353:19|Removing instance mcuInst.mcuResourcesInst.RAMInst.RAM_1_0_13 (in view: work.blinkTests(verilog)) of black box view:LUCENT.DP8KC(PRIM) because it does not drive other instances.
-@W: BN114 :"c:\users\duncan\git\forthcpu\ram\source\ram.v":419:10:419:19|Removing instance mcuInst.mcuResourcesInst.RAMInst.RAM_1_1_12 (in view: work.blinkTests(verilog)) of black box view:LUCENT.DP8KC(PRIM) because it does not drive other instances.
-@W: BN114 :"c:\users\duncan\git\forthcpu\ram\source\ram.v":485:10:485:19|Removing instance mcuInst.mcuResourcesInst.RAMInst.RAM_2_0_11 (in view: work.blinkTests(verilog)) of black box view:LUCENT.DP8KC(PRIM) because it does not drive other instances.
-@W: BN114 :"c:\users\duncan\git\forthcpu\ram\source\ram.v":551:10:551:19|Removing instance mcuInst.mcuResourcesInst.RAMInst.RAM_2_1_10 (in view: work.blinkTests(verilog)) of black box view:LUCENT.DP8KC(PRIM) because it does not drive other instances.
-@W: BN114 :"c:\users\duncan\git\forthcpu\ram\source\ram.v":617:10:617:18|Removing instance mcuInst.mcuResourcesInst.RAMInst.RAM_3_0_9 (in view: work.blinkTests(verilog)) of black box view:LUCENT.DP8KC(PRIM) because it does not drive other instances.
-@W: BN114 :"c:\users\duncan\git\forthcpu\ram\source\ram.v":683:10:683:18|Removing instance mcuInst.mcuResourcesInst.RAMInst.RAM_3_1_8 (in view: work.blinkTests(verilog)) of black box view:LUCENT.DP8KC(PRIM) because it does not drive other instances.
-@W: BN114 :"c:\users\duncan\git\forthcpu\ram\source\ram.v":749:10:749:18|Removing instance mcuInst.mcuResourcesInst.RAMInst.RAM_4_0_7 (in view: work.blinkTests(verilog)) of black box view:LUCENT.DP8KC(PRIM) because it does not drive other instances.
-@W: BN114 :"c:\users\duncan\git\forthcpu\ram\source\ram.v":815:10:815:18|Removing instance mcuInst.mcuResourcesInst.RAMInst.RAM_4_1_6 (in view: work.blinkTests(verilog)) of black box view:LUCENT.DP8KC(PRIM) because it does not drive other instances.
-@W: BN114 :"c:\users\duncan\git\forthcpu\ram\source\ram.v":881:10:881:18|Removing instance mcuInst.mcuResourcesInst.RAMInst.RAM_5_0_5 (in view: work.blinkTests(verilog)) of black box view:LUCENT.DP8KC(PRIM) because it does not drive other instances.
-@W: BN114 :"c:\users\duncan\git\forthcpu\ram\source\ram.v":947:10:947:18|Removing instance mcuInst.mcuResourcesInst.RAMInst.RAM_5_1_4 (in view: work.blinkTests(verilog)) of black box view:LUCENT.DP8KC(PRIM) because it does not drive other instances.
-@W: BN114 :"c:\users\duncan\git\forthcpu\ram\source\ram.v":1013:10:1013:18|Removing instance mcuInst.mcuResourcesInst.RAMInst.RAM_6_0_3 (in view: work.blinkTests(verilog)) of black box view:LUCENT.DP8KC(PRIM) because it does not drive other instances.
-@W: BN114 :"c:\users\duncan\git\forthcpu\ram\source\ram.v":1079:10:1079:18|Removing instance mcuInst.mcuResourcesInst.RAMInst.RAM_6_1_2 (in view: work.blinkTests(verilog)) of black box view:LUCENT.DP8KC(PRIM) because it does not drive other instances.
-@W: BN114 :"c:\users\duncan\git\forthcpu\ram\source\ram.v":1145:10:1145:18|Removing instance mcuInst.mcuResourcesInst.RAMInst.RAM_7_0_1 (in view: work.blinkTests(verilog)) of black box view:LUCENT.DP8KC(PRIM) because it does not drive other instances.
-@W: BN114 :"c:\users\duncan\git\forthcpu\ram\source\ram.v":1213:10:1213:18|Removing instance mcuInst.mcuResourcesInst.RAMInst.RAM_7_1_0 (in view: work.blinkTests(verilog)) of black box view:LUCENT.DP8KC(PRIM) because it does not drive other instances.
-@W: BN114 :"c:\users\duncan\git\forthcpu\bootrom\source\rom.v":14:13:14:20|Removing instance mcuInst.mcuResourcesInst.ROMInst.mem_0_15 (in view: work.blinkTests(verilog)) of black box view:LUCENT.ROM64X1A(PRIM) because it does not drive other instances.
-@W: BN114 :"c:\users\duncan\git\forthcpu\bootrom\source\rom.v":18:13:18:20|Removing instance mcuInst.mcuResourcesInst.ROMInst.mem_0_14 (in view: work.blinkTests(verilog)) of black box view:LUCENT.ROM64X1A(PRIM) because it does not drive other instances.
-@W: BN114 :"c:\users\duncan\git\forthcpu\bootrom\source\rom.v":22:13:22:20|Removing instance mcuInst.mcuResourcesInst.ROMInst.mem_0_13 (in view: work.blinkTests(verilog)) of black box view:LUCENT.ROM64X1A(PRIM) because it does not drive other instances.
-@W: BN114 :"c:\users\duncan\git\forthcpu\bootrom\source\rom.v":26:13:26:20|Removing instance mcuInst.mcuResourcesInst.ROMInst.mem_0_12 (in view: work.blinkTests(verilog)) of black box view:LUCENT.ROM64X1A(PRIM) because it does not drive other instances.
-@W: BN114 :"c:\users\duncan\git\forthcpu\bootrom\source\rom.v":30:13:30:20|Removing instance mcuInst.mcuResourcesInst.ROMInst.mem_0_11 (in view: work.blinkTests(verilog)) of black box view:LUCENT.ROM64X1A(PRIM) because it does not drive other instances.
-@W: BN114 :"c:\users\duncan\git\forthcpu\bootrom\source\rom.v":34:13:34:20|Removing instance mcuInst.mcuResourcesInst.ROMInst.mem_0_10 (in view: work.blinkTests(verilog)) of black box view:LUCENT.ROM64X1A(PRIM) because it does not drive other instances.
-@W: BN114 :"c:\users\duncan\git\forthcpu\bootrom\source\rom.v":38:13:38:19|Removing instance mcuInst.mcuResourcesInst.ROMInst.mem_0_9 (in view: work.blinkTests(verilog)) of black box view:LUCENT.ROM64X1A(PRIM) because it does not drive other instances.
-@W: BN114 :"c:\users\duncan\git\forthcpu\bootrom\source\rom.v":42:13:42:19|Removing instance mcuInst.mcuResourcesInst.ROMInst.mem_0_8 (in view: work.blinkTests(verilog)) of black box view:LUCENT.ROM64X1A(PRIM) because it does not drive other instances.
-@W: BN114 :"c:\users\duncan\git\forthcpu\bootrom\source\rom.v":46:13:46:19|Removing instance mcuInst.mcuResourcesInst.ROMInst.mem_0_7 (in view: work.blinkTests(verilog)) of black box view:LUCENT.ROM64X1A(PRIM) because it does not drive other instances.
-@W: BN114 :"c:\users\duncan\git\forthcpu\bootrom\source\rom.v":50:13:50:19|Removing instance mcuInst.mcuResourcesInst.ROMInst.mem_0_6 (in view: work.blinkTests(verilog)) of black box view:LUCENT.ROM64X1A(PRIM) because it does not drive other instances.
-@W: BN114 :"c:\users\duncan\git\forthcpu\bootrom\source\rom.v":54:13:54:19|Removing instance mcuInst.mcuResourcesInst.ROMInst.mem_0_5 (in view: work.blinkTests(verilog)) of black box view:LUCENT.ROM64X1A(PRIM) because it does not drive other instances.
-@W: BN114 :"c:\users\duncan\git\forthcpu\bootrom\source\rom.v":58:13:58:19|Removing instance mcuInst.mcuResourcesInst.ROMInst.mem_0_4 (in view: work.blinkTests(verilog)) of black box view:LUCENT.ROM64X1A(PRIM) because it does not drive other instances.
-@W: BN114 :"c:\users\duncan\git\forthcpu\bootrom\source\rom.v":62:13:62:19|Removing instance mcuInst.mcuResourcesInst.ROMInst.mem_0_3 (in view: work.blinkTests(verilog)) of black box view:LUCENT.ROM64X1A(PRIM) because it does not drive other instances.
-@W: BN114 :"c:\users\duncan\git\forthcpu\bootrom\source\rom.v":66:13:66:19|Removing instance mcuInst.mcuResourcesInst.ROMInst.mem_0_2 (in view: work.blinkTests(verilog)) of black box view:LUCENT.ROM64X1A(PRIM) because it does not drive other instances.
-@W: BN114 :"c:\users\duncan\git\forthcpu\bootrom\source\rom.v":70:13:70:19|Removing instance mcuInst.mcuResourcesInst.ROMInst.mem_0_1 (in view: work.blinkTests(verilog)) of black box view:LUCENT.ROM64X1A(PRIM) because it does not drive other instances.
-@W: BN114 :"c:\users\duncan\git\forthcpu\bootrom\source\rom.v":74:13:74:19|Removing instance mcuInst.mcuResourcesInst.ROMInst.mem_0_0 (in view: work.blinkTests(verilog)) of black box view:LUCENT.ROM64X1A(PRIM) because it does not drive other instances.
-@W: BN114 :"c:\users\duncan\git\forthcpu\registerfileb\source\registers.v":74:10:74:24|Removing instance mcuInst.coreInst.registerFileInst.regs.registers_0_0_1 (in view: work.blinkTests(verilog)) of black box view:LUCENT.DP8KC(PRIM) because it does not drive other instances.
-@W: BN114 :"c:\users\duncan\git\forthcpu\registerfileb\source\registers.v":142:10:142:24|Removing instance mcuInst.coreInst.registerFileInst.regs.registers_0_1_0 (in view: work.blinkTests(verilog)) of black box view:LUCENT.DP8KC(PRIM) because it does not drive other instances.
-
-Finished generic timing optimizations - Pass 1 (Real Time elapsed 0h:00m:04s; CPU Time elapsed 0h:00m:04s; Memory used current: 199MB peak: 205MB)
-
-
-Starting Early Timing Optimization (Real Time elapsed 0h:00m:04s; CPU Time elapsed 0h:00m:04s; Memory used current: 199MB peak: 205MB)
-
-
-Finished Early Timing Optimization (Real Time elapsed 0h:00m:04s; CPU Time elapsed 0h:00m:04s; Memory used current: 199MB peak: 205MB)
-
-
-Finished generic timing optimizations - Pass 2 (Real Time elapsed 0h:00m:04s; CPU Time elapsed 0h:00m:04s; Memory used current: 199MB peak: 205MB)
-
-
-Finished preparing to map (Real Time elapsed 0h:00m:04s; CPU Time elapsed 0h:00m:04s; Memory used current: 199MB peak: 205MB)
-
-
-Finished technology mapping (Real Time elapsed 0h:00m:04s; CPU Time elapsed 0h:00m:04s; Memory used current: 199MB peak: 205MB)
-
-Pass		 CPU time		Worst Slack		Luts / Registers
-------------------------------------------------------------
-   1		0h:00m:04s		100000.00ns		   0 /         0
-
-Finished technology timing optimizations and critical path resynthesis (Real Time elapsed 0h:00m:04s; CPU Time elapsed 0h:00m:04s; Memory used current: 199MB peak: 205MB)
-
-@N: FX164 |The option to pack registers in the IOB has not been specified. Please set syn_useioff attribute.  
-
-Finished restoring hierarchy (Real Time elapsed 0h:00m:04s; CPU Time elapsed 0h:00m:04s; Memory used current: 198MB peak: 205MB)
-
-
-Start Writing Netlists (Real Time elapsed 0h:00m:05s; CPU Time elapsed 0h:00m:05s; Memory used current: 156MB peak: 205MB)
-
-Writing Analyst data base C:\Users\Duncan\git\ForthCPU\impl1\synwork\ForthCPU_impl1_m.srm
-
-Finished Writing Netlist Databases (Real Time elapsed 0h:00m:05s; CPU Time elapsed 0h:00m:05s; Memory used current: 190MB peak: 205MB)
-
-Writing EDIF Netlist and constraint files
-@N: FX1056 |Writing EDF file: C:\Users\Duncan\git\ForthCPU\impl1\ForthCPU_impl1.edi
-@N: BW106 |Synplicity Constraint File capacitance units using default value of 1pF 
-
-Finished Writing EDIF Netlist and constraint files (Real Time elapsed 0h:00m:05s; CPU Time elapsed 0h:00m:05s; Memory used current: 195MB peak: 205MB)
-
-
-Finished Writing Netlists (Real Time elapsed 0h:00m:05s; CPU Time elapsed 0h:00m:05s; Memory used current: 195MB peak: 205MB)
-
-
-Start final timing analysis (Real Time elapsed 0h:00m:05s; CPU Time elapsed 0h:00m:05s; Memory used current: 194MB peak: 205MB)
-
-
-
-##### START OF TIMING REPORT #####[
-# Timing report written on Tue Oct 31 18:20:35 2023
-#
-
-
-Top view:               blinkTests
-Requested Frequency:    100.0 MHz
-Wire load mode:         top
-Paths requested:        5
-Constraint File(s):    
-@N: MT320 |This timing report is an estimate of place and route data. For final timing results, use the FPGA vendor place and route report.
-
-@N: MT322 |Clock constraints include only register-to-register paths associated with each individual clock.
-
-
-
-Performance Summary
-*******************
-
-
-Worst slack in design: NA
-
-
-
-
-
-
-Clock Relationships
-*******************
-
-Clocks            |    rise  to  rise   |    fall  to  fall   |    rise  to  fall   |    fall  to  rise 
---------------------------------------------------------------------------------------------------------
-Starting  Ending  |  constraint  slack  |  constraint  slack  |  constraint  slack  |  constraint  slack
---------------------------------------------------------------------------------------------------------
-========================================================================================================
- Note: 'No paths' indicates there are no paths in the design for that pair of clock edges.
-       'Diff grp' indicates that paths exist but the starting clock and ending clock are in different clock groups.
-
-
-
-Interface Information 
-*********************
-
-No IO constraint found
-
-
-##### END OF TIMING REPORT #####]
-
-Timing exceptions that could not be applied
-
-Finished final timing analysis (Real Time elapsed 0h:00m:05s; CPU Time elapsed 0h:00m:05s; Memory used current: 195MB peak: 205MB)
-
-
-Finished timing report (Real Time elapsed 0h:00m:06s; CPU Time elapsed 0h:00m:06s; Memory used current: 195MB peak: 205MB)
-
----------------------------------------
-Resource Usage Report
-Part: lcmxo3l_6900c-5
-
-Register bits: 0 of 54912 (0%)
-PIC Latch:       0
-I/O cells:       0
-
-
-Details:
-VHI:            1
-VLO:            1
-Mapper successful!
-
-At Mapper Exit (Real Time elapsed 0h:00m:06s; CPU Time elapsed 0h:00m:06s; Memory used current: 66MB peak: 205MB)
-
-Process took 0h:00m:06s realtime, 0h:00m:06s cputime
-# Tue Oct 31 18:20:35 2023
-
-###########################################################]
-
-
-Synthesis exit by 0.
+tmcheck -par "ForthCPU_impl1.par" 
+
+bitgen -f "ForthCPU_impl1.t2b" -w "ForthCPU_impl1.ncd"  "ForthCPU_impl1.prf"
+
+
+BITGEN: Bitstream Generator Diamond (64-bit) 3.12.1.454
+Copyright (c) 1991-1994 by NeoCAD Inc. All rights reserved.
+Copyright (c) 1995 AT&T Corp.   All rights reserved.
+Copyright (c) 1995-2001 Lucent Technologies Inc.  All rights reserved.
+Copyright (c) 2001 Agere Systems   All rights reserved.
+Copyright (c) 2002-2020 Lattice Semiconductor Corporation,  All rights reserved.
+
+
+Loading design for application Bitgen from file ForthCPU_impl1.ncd.
+Design name: mcu
+NCD version: 3.3
+Vendor:      LATTICE
+Device:      LCMXO3L-6900C
+Package:     CABGA256
+Performance: 5
+Loading device for application Bitgen from file 'xo3c6900.nph' in environment: C:/lscc/diamond/3.12/ispfpga.
+Package Status:                     Final          Version 1.17.
+Performance Hardware Data Status:   Final          Version 37.5.
+
+Running DRC.
+INFO: Design contains EBR with ASYNC Reset Mode that has a limitation: The use of the EBR block asynchronous reset requires that certain timing be met between the clock and the reset within the memory block. See the device specific data sheet for additional details.
+DRC detected 0 errors and 0 warnings.
+Reading Preference File from ForthCPU_impl1.prf.
+    <postMsg mid="1083781" type="Warning" dynamic="1" navigation="0" arg0="MachXO3L"  />
+
+Preference Summary:
++---------------------------------+---------------------------------+
+|  Preference                     |  Current Setting                |
++---------------------------------+---------------------------------+
+|                         RamCfg  |                        Reset**  |
++---------------------------------+---------------------------------+
+|                     MCCLK_FREQ  |                         2.08**  |
++---------------------------------+---------------------------------+
+|                  CONFIG_SECURE  |                          OFF**  |
++---------------------------------+---------------------------------+
+|                          INBUF  |                           ON**  |
++---------------------------------+---------------------------------+
+|                      JTAG_PORT  |                       ENABLE**  |
++---------------------------------+---------------------------------+
+|                       SDM_PORT  |                      DISABLE**  |
++---------------------------------+---------------------------------+
+|                 SLAVE_SPI_PORT  |                       ENABLE**  |
++---------------------------------+---------------------------------+
+|                MASTER_SPI_PORT  |                         ENABLE  |
++---------------------------------+---------------------------------+
+|                       I2C_PORT  |                      DISABLE**  |
++---------------------------------+---------------------------------+
+|        MUX_CONFIGURATION_PORTS  |                      DISABLE**  |
++---------------------------------+---------------------------------+
+|                  CONFIGURATION  |                       EXTERNAL  |
++---------------------------------+---------------------------------+
+|                COMPRESS_CONFIG  |                           ON**  |
++---------------------------------+---------------------------------+
+|                        MY_ASSP  |                          OFF**  |
++---------------------------------+---------------------------------+
+|               ONE_TIME_PROGRAM  |                          OFF**  |
++---------------------------------+---------------------------------+
+|                 ENABLE_TRANSFR  |                      DISABLE**  |
++---------------------------------+---------------------------------+
+|                  SHAREDEBRINIT  |                      DISABLE**  |
++---------------------------------+---------------------------------+
+|            BACKGROUND_RECONFIG  |                          OFF**  |
++---------------------------------+---------------------------------+
+|                 DUALBOOTGOLDEN  |                     INTERNAL**  |
++---------------------------------+---------------------------------+
+ *  Default setting.
+ ** The specified setting matches the default setting.
+
+
+Creating bit map...
+ 
+Bitstream Status: Final           Version 1.95.
+ 
+Saving bit stream in "ForthCPU_impl1.bit".
+Total CPU Time: 3 secs 
+Total REAL Time: 3 secs 
+Peak Memory Usage: 297 MB
+
+tmcheck -par "ForthCPU_impl1.par" 
+
+bitgen -f "ForthCPU_impl1.t2b" -w "ForthCPU_impl1.ncd"  -jedec "ForthCPU_impl1.prf"
+
+
+BITGEN: Bitstream Generator Diamond (64-bit) 3.12.1.454
+Copyright (c) 1991-1994 by NeoCAD Inc. All rights reserved.
+Copyright (c) 1995 AT&T Corp.   All rights reserved.
+Copyright (c) 1995-2001 Lucent Technologies Inc.  All rights reserved.
+Copyright (c) 2001 Agere Systems   All rights reserved.
+Copyright (c) 2002-2020 Lattice Semiconductor Corporation,  All rights reserved.
+
+
+Loading design for application Bitgen from file ForthCPU_impl1.ncd.
+Design name: mcu
+NCD version: 3.3
+Vendor:      LATTICE
+Device:      LCMXO3L-6900C
+Package:     CABGA256
+Performance: 5
+Loading device for application Bitgen from file 'xo3c6900.nph' in environment: C:/lscc/diamond/3.12/ispfpga.
+Package Status:                     Final          Version 1.17.
+Performance Hardware Data Status:   Final          Version 37.5.
+
+Running DRC.
+INFO: Design contains EBR with ASYNC Reset Mode that has a limitation: The use of the EBR block asynchronous reset requires that certain timing be met between the clock and the reset within the memory block. See the device specific data sheet for additional details.
+DRC detected 0 errors and 0 warnings.
+Reading Preference File from ForthCPU_impl1.prf.
+    <postMsg mid="1083781" type="Warning" dynamic="1" navigation="0" arg0="MachXO3L"  />
+
+Preference Summary:
++---------------------------------+---------------------------------+
+|  Preference                     |  Current Setting                |
++---------------------------------+---------------------------------+
+|                         RamCfg  |                        Reset**  |
++---------------------------------+---------------------------------+
+|                     MCCLK_FREQ  |                         2.08**  |
++---------------------------------+---------------------------------+
+|                  CONFIG_SECURE  |                          OFF**  |
++---------------------------------+---------------------------------+
+|                          INBUF  |                           ON**  |
++---------------------------------+---------------------------------+
+|                      JTAG_PORT  |                       ENABLE**  |
++---------------------------------+---------------------------------+
+|                       SDM_PORT  |                      DISABLE**  |
++---------------------------------+---------------------------------+
+|                 SLAVE_SPI_PORT  |                       ENABLE**  |
++---------------------------------+---------------------------------+
+|                MASTER_SPI_PORT  |                         ENABLE  |
++---------------------------------+---------------------------------+
+|                       I2C_PORT  |                      DISABLE**  |
++---------------------------------+---------------------------------+
+|        MUX_CONFIGURATION_PORTS  |                      DISABLE**  |
++---------------------------------+---------------------------------+
+|                  CONFIGURATION  |                       EXTERNAL  |
++---------------------------------+---------------------------------+
+|                COMPRESS_CONFIG  |                           ON**  |
++---------------------------------+---------------------------------+
+|                        MY_ASSP  |                          OFF**  |
++---------------------------------+---------------------------------+
+|               ONE_TIME_PROGRAM  |                          OFF**  |
++---------------------------------+---------------------------------+
+|                 ENABLE_TRANSFR  |                      DISABLE**  |
++---------------------------------+---------------------------------+
+|                  SHAREDEBRINIT  |                      DISABLE**  |
++---------------------------------+---------------------------------+
+|            BACKGROUND_RECONFIG  |                          OFF**  |
++---------------------------------+---------------------------------+
+|                 DUALBOOTGOLDEN  |                     INTERNAL**  |
++---------------------------------+---------------------------------+
+ *  Default setting.
+ ** The specified setting matches the default setting.
+
+
+Creating bit map...
+ 
+Bitstream Status: Final           Version 1.95.
+ 
+Saving bit stream in "ForthCPU_impl1.jed".
+Total CPU Time: 3 secs 
+Total REAL Time: 3 secs 
+Peak Memory Usage: 297 MB

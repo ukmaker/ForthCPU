@@ -80,7 +80,7 @@ add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/devBoard/source/d
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/impl1/test/blinkTest.v}
 
 #-- top module name
-set_option -top_module blinkTests
+set_option -top_module mcu
 
 #-- set result format/file last
 project -result_file {C:/Users/Duncan/git/ForthCPU/impl1/ForthCPU_impl1.edi}

@@ -7,30 +7,30 @@
 ************************************************/
 module devBoard (
         // inputs
-        input   wire         PIN_CLK_X1,     // 12M clock from FTDI/X1 crystal
-        input   wire         PIN_RESETN,       // from SW1 pushbutton
-        input   wire  [3:0] PIN_DIPSW,      // from SW2 DIP switches
+        input   wire         BPIN_CLK_X1,     // 12M clock from FTDI/X1 crystal
+        input   wire         BPIN_RESETN,       // from SW1 pushbutton
+        input   wire  [3:0] BPIN_DIPSW,      // from SW2 DIP switches
         
         // outputs
-        output reg  [7:0] PIN_LED,         // to LEDs (D2-D9)
-		output reg         PIN_RDN,
-		output reg         PIN_WR0N,
-		output reg         PIN_WR1N,
-		inout      [15:0] PIN_DBUS,
-		output reg [15:0] PIN_ADDR,
+        output reg  [7:0] BPIN_LED,         // to LEDs (D2-D9)
+		output reg         BPIN_RDN,
+		output reg         BPIN_WR0N,
+		output reg         BPIN_WR1N,
+		inout      [15:0] BPIN_DBUS,
+		output reg [15:0] BPIN_ADDR,
 		
 		// UART I/O
-		input wire PIN_RXD,
-		output reg PIN_TXD,
+		input wire BPIN_RXD,
+		output reg BPIN_TXD,
 		
 		// Interrupts
-		input wire PIN_INT0,
-		input wire PIN_INT1,
-		input wire PIN_INT2,
-		input wire PIN_INT3,
-		input wire PIN_INT4,
-		input wire PIN_INT5,
-		input wire PIN_INT6,
+		input wire BPIN_INT0,
+		input wire BPIN_INT1,
+		input wire BPIN_INT2,
+		input wire BPIN_INT3,
+		input wire BPIN_INT4,
+		input wire BPIN_INT5,
+		input wire BPIN_INT6,
 		
 		/********************************
 		* Internal signals
@@ -66,42 +66,42 @@ module devBoard (
 
 reg [3:0] DIPSW_R;
 
-assign CLK = PIN_CLK_X1;
-assign RESET = ~PIN_RESETN;
-assign PIN_DBUS = (WR0N == 0 || WR1N == 0) ? DOUT : 16'hZZZZ;
+assign CLK = BPIN_CLK_X1;
+assign RESET = ~BPIN_RESETN;
+assign BPIN_DBUS = (WR0N == 0 || WR1N == 0) ? DOUT : 16'hZZZZ;
 
-assign INTS0 = PIN_INT0;
-assign INTS1 = PIN_INT1;
-assign INTS2 = PIN_INT2;
-assign INTS3 = PIN_INT3;
-assign INTS4 = PIN_INT4;
-assign INTS5 = PIN_INT5;
-assign INTS6 = PIN_INT6;
-assign UART_RXD = PIN_RXD;
+assign INTS0 = BPIN_INT0;
+assign INTS1 = BPIN_INT1;
+assign INTS2 = BPIN_INT2;
+assign INTS3 = BPIN_INT3;
+assign INTS4 = BPIN_INT4;
+assign INTS5 = BPIN_INT5;
+assign INTS6 = BPIN_INT6;
+assign UART_RXD = BPIN_RXD;
 
 // Passthru signals
 always @(*) begin
 	if(RESET) begin	
-		PIN_ADDR = 16'h0000;
-		PIN_RDN  = 1'b1;
-		PIN_WR0N = 1'b1;
-		PIN_WR1N = 1'b1;
-		PIN_TXD  = 1'b0;
+		BPIN_ADDR = 16'h0000;
+		BPIN_RDN  = 1'b1;
+		BPIN_WR0N = 1'b1;
+		BPIN_WR1N = 1'b1;
+		BPIN_TXD  = 1'b0;
 	end else begin
-		PIN_ADDR = ADDR;
-		PIN_RDN  = RDN;
-		PIN_WR0N = WR0N;
-		PIN_WR1N = WR1N;
-		PIN_TXD  = UART_TXD;
+		BPIN_ADDR = ADDR;
+		BPIN_RDN  = RDN;
+		BPIN_WR0N = WR0N;
+		BPIN_WR1N = WR1N;
+		BPIN_TXD  = UART_TXD;
 		
 		if(RD_GPIO && ADDR_GPIO == 0) begin
 			DIN_GPIO[7:0] = {4'h0,DIPSW_R};
 		end else begin
-			DIN_GPIO[7:0] = PIN_LED;
+			DIN_GPIO[7:0] = BPIN_LED;
 		end
 		
 		if(RDN) begin
-			DIN = PIN_DBUS;
+			DIN = BPIN_DBUS;
 		end else begin
 			DIN = DOUT;
 		end
@@ -111,15 +111,15 @@ end
 always @(posedge CLK or posedge RESET) begin
 	if(RESET) begin
 		
-		PIN_LED  <= 8'b00000000;
+		BPIN_LED  <= 8'b00000000;
 		DIPSW_R  <= 4'b0000;
 		
 	end else begin
 		
-		DIPSW_R <= PIN_DIPSW;
+		DIPSW_R <= BPIN_DIPSW;
 		
 		if(WR_GPIO & ADDR_GPIO) begin
-			PIN_LED <= DOUT;
+			BPIN_LED <= DOUT;
 		end
 	end
 end

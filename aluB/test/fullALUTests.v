@@ -7,11 +7,11 @@ module fullALUTests;
 	reg CLK;
 	reg RESET;
 	
-	reg [15:0] ALUA_DIN;
-	reg [15:0] ALUB_DIN;
+	reg [15:0] REGA_DOUT;
+	reg [15:0] REGB_DOUT;
 	reg [3:0]  ALU_OPX;
 	
-	reg [1:0] ALUA_SRCX;
+	reg [2:0] ALUA_SRCX;
 	reg [2:0] ALUB_SRCX;
 	
 	reg [3:0] ARGA_X;
@@ -31,8 +31,8 @@ module fullALUTests;
 fullALU testInstance(
 	.CLK(CLK),
 	.RESET(RESET),
-	.ALUA_DIN(ALUA_DIN),
-	.ALUB_DIN(ALUB_DIN),
+	.REGA_DOUT(REGA_DOUT),
+	.REGB_DOUT(REGB_DOUT),
 	.ALU_OPX(ALU_OPX),
 	.ALUA_SRCX(ALUA_SRCX),
 	.ALUB_SRCX(ALUB_SRCX),
@@ -61,8 +61,8 @@ initial begin
 	`TICK;
 	CCL_LD = 0;
 	RESET = 1;
-	ALUA_DIN = 16'h1234;
-	ALUB_DIN = 16'h4321;
+	REGA_DOUT = 16'h1234;
+	REGB_DOUT = 16'h4321;
 	ALU_OPX = `ALU_OPX_ADD;
 	ALUA_SRCX = `ALUA_SRCX_REG_A;
 	ALUB_SRCX = `ALUB_SRCX_REG_B;
@@ -91,8 +91,8 @@ initial begin
 	`assert("CC_PARITY",      1'b0, CC_PARITY)
 	`TICKTOCK;
 	CCL_LD = 0;
-	ALUA_DIN = 16'hffff;
-	ALUB_DIN = 16'hffff;
+	REGA_DOUT = 16'hffff;
+	REGB_DOUT = 16'hffff;
 	`TICKTOCK;
 	// CC Result should be unchanged
 	`assert("ALU_R",      16'hfffe, ALU_R)

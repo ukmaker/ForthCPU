@@ -20,7 +20,7 @@ module fullALU(
 	
 	input [3:0] ARGA_X,
 	input [3:0] ARGB_X,
-	input [1:0] LDSINCF,
+	input        B5,
 
 	input CCL_LD,
 	
@@ -50,7 +50,7 @@ alu aluInst(
 );
 
 aluAMux muxA(
-	.U6({LDSINCF,ARGB_X}),
+	.U5({B5,ARGB_X}),
 	.REGA_DOUT(REGA_DOUT),
 	.ALUA_SRCX(ALUA_SRCX),
 	.ALUA_DATA(ALUA_DATA)
@@ -61,7 +61,6 @@ aluBMux muxB(
 	.ALUB_SRCX(ALUB_SRCX),
 	.ARGA_X(ARGA_X),
 	.ARGB_X(ARGB_X),
-	.LDSINCF(LDSINCF),
 	.ALUB_DATA(ALUB_DATA)
 
 );

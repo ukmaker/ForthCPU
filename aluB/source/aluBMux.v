@@ -10,7 +10,6 @@ module aluBMux(
 	
 	input [3:0] ARGA_X,
 	input [3:0] ARGB_X,
-	input [1:0] LDSINCF,
 	
 	output reg [15:0] ALUB_DATA
 	 

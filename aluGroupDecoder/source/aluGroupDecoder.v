@@ -74,10 +74,7 @@ module aluGroupDecoder(
 	* Arguments
 	**/
 	output wire [3:0] ARGA_X,
-	output wire [3:0] ARGB_X,
-	output wire [1:0] LDSINCF
-	
-
+	output wire [3:0] ARGB_X
 
 );
 
@@ -89,7 +86,6 @@ assign ALU_OPX = INSTRUCTION[13:10];
 assign ARGF    = INSTRUCTION[9:8];
 assign ARGA_X  = INSTRUCTION[7:4];
 assign ARGB_X  = INSTRUCTION[3:0];
-assign LDSINCF = INSTRUCTION[13:12];
 
 reg RD_A, RD_B, WR_A, WR_B;
 
@@ -114,17 +110,17 @@ begin
 				ALUB_SRCX = `ALUB_SRCX_U4;
 				RD_A = 1; WR_A = 1;
 			end
-			`MODE_ALU_REGB_U8: begin // ALU RB,U8
-				REGA_ADDRX = `REGA_ADDRX_RB;
+			`MODE_ALU_REGA_U8: begin // ALU RA,U8
+				REGA_ADDRX = `REGA_ADDRX_RA;
 				ALUA_SRCX = `ALUA_SRCX_REG_A;
 				ALUB_SRCX = `ALUB_SRCX_U8;
 				RD_A = 1; WR_A = 1; RD_B = 0;
 			end
-			`MODE_ALU_REGA_U8RB: begin // ALU RA,U8.RB
+			`MODE_ALU_REGA_S8: begin // ALU RA,S8
 				REGA_ADDRX = `REGA_ADDRX_RA;
 				REGB_ADDRX = `REGB_ADDRX_RB;
 				ALUA_SRCX = `ALUA_SRCX_REG_A;
-				ALUB_SRCX = `ALUB_SRCX_U8H;
+				ALUB_SRCX = `ALUB_SRCX_S8;
 				RD_A = 1; RD_B = 1; WR_A = 1;
 			end
 		endcase

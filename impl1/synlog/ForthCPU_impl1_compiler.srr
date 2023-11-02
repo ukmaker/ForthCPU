@@ -82,10 +82,8 @@ Synopsys Verilog Compiler, Version comp202103synp2, Build 093R, Built Aug 10 202
 @I:"C:\Users\Duncan\git\ForthCPU\impl1\test\blinkTest.v":"C:\Users\Duncan\git\ForthCPU\impl1\test\../..\constants.v" (library work)
 @I:"C:\Users\Duncan\git\ForthCPU\impl1\test\blinkTest.v":"C:\Users\Duncan\git\ForthCPU\impl1\test\../..\testSetup.v" (library work)
 Verilog syntax check successful!
-File C:\Users\Duncan\git\ForthCPU\instructionPhaseDecoder\source\instructionPhaseDecoder.v changed - recompiling
-Selecting top level module blinkTests
-@W: CG730 :"C:\Users\Duncan\git\ForthCPU\impl1\test\blinkTest.v":5:7:5:16|Top-level module blinkTests has no ports
-
+Options changed - recompiling
+Selecting top level module mcu
 @N: CG364 :"C:\lscc\diamond\3.12\synpbase\lib\lucent\machxo3l.v":1032:7:1032:9|Synthesizing module PUR in library work.
 Running optimization stage 1 on PUR .......
 Finished optimization stage 1 on PUR (CPU Time 0h:00m:00s, Memory Used current: 93MB peak: 94MB)
@@ -144,16 +142,16 @@ Finished optimization stage 1 on interruptStateMachine (CPU Time 0h:00m:00s, Mem
 @N: CG364 :"C:\Users\Duncan\git\ForthCPU\aluGroupDecoder\source\aluGroupDecoder.v":34:7:34:21|Synthesizing module aluGroupDecoder in library work.
 Running optimization stage 1 on aluGroupDecoder .......
 @N: CL189 :"C:\Users\Duncan\git\ForthCPU\aluGroupDecoder\source\aluGroupDecoder.v":134:0:134:5|Register bit REGB_WEN is always 0.
-Finished optimization stage 1 on aluGroupDecoder (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 100MB)
+Finished optimization stage 1 on aluGroupDecoder (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 100MB)
 @N: CG364 :"C:\Users\Duncan\git\ForthCPU\loadStoreGroupDecoder\source\loadStoreGroupDecoder.v":59:7:59:27|Synthesizing module loadStoreGroupDecoder in library work.
 Running optimization stage 1 on loadStoreGroupDecoder .......
-Finished optimization stage 1 on loadStoreGroupDecoder (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 100MB)
+Finished optimization stage 1 on loadStoreGroupDecoder (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 100MB)
 @N: CG364 :"C:\Users\Duncan\git\ForthCPU\jumpGroupDecoder\source\jumpGroupDecoder.v":37:7:37:22|Synthesizing module jumpGroupDecoder in library work.
 Running optimization stage 1 on jumpGroupDecoder .......
-Finished optimization stage 1 on jumpGroupDecoder (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 100MB)
+Finished optimization stage 1 on jumpGroupDecoder (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 100MB)
 @N: CG364 :"C:\Users\Duncan\git\ForthCPU\generalGroupDecoder\source\generalGroupDecoder.v":12:7:12:25|Synthesizing module generalGroupDecoder in library work.
 Running optimization stage 1 on generalGroupDecoder .......
-Finished optimization stage 1 on generalGroupDecoder (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 100MB)
+Finished optimization stage 1 on generalGroupDecoder (CPU Time 0h:00m:00s, Memory Used current: 99MB peak: 100MB)
 @N: CG364 :"C:\Users\Duncan\git\ForthCPU\opxMultiplexer\source\opxMultiplexer.v":7:7:7:20|Synthesizing module opxMultiplexer in library work.
 Running optimization stage 1 on opxMultiplexer .......
 Finished optimization stage 1 on opxMultiplexer (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 100MB)
@@ -195,52 +193,25 @@ Running optimization stage 1 on UART_TX .......
 @A: CL282 :"C:\Users\Duncan\git\ForthCPU\UART\source\transmitter.v":38:2:38:7|Feedback mux created for signal r_TX_Data[7:0]. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
 @A: CL282 :"C:\Users\Duncan\git\ForthCPU\UART\source\transmitter.v":38:2:38:7|Feedback mux created for signal r_Clock_Count[15:0]. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
 @A: CL282 :"C:\Users\Duncan\git\ForthCPU\UART\source\transmitter.v":38:2:38:7|Feedback mux created for signal r_Bit_Index[2:0]. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
-Finished optimization stage 1 on UART_TX (CPU Time 0h:00m:00s, Memory Used current: 101MB peak: 103MB)
+Finished optimization stage 1 on UART_TX (CPU Time 0h:00m:00s, Memory Used current: 101MB peak: 102MB)
 @N: CG364 :"C:\Users\Duncan\git\ForthCPU\UART\source\UART.v":17:7:17:10|Synthesizing module UART in library work.
 Running optimization stage 1 on UART .......
 @A: CL282 :"C:\Users\Duncan\git\ForthCPU\UART\source\UART.v":83:0:83:5|Feedback mux created for signal DOUT[15:0]. It is possible a set/reset assignment for this is signal missing. To improve timing and area, specify a set/reset value.
-Finished optimization stage 1 on UART (CPU Time 0h:00m:00s, Memory Used current: 101MB peak: 103MB)
+Finished optimization stage 1 on UART (CPU Time 0h:00m:00s, Memory Used current: 101MB peak: 102MB)
 @N: CG364 :"C:\Users\Duncan\git\ForthCPU\interruptLogic\source\interruptMaskRegister.v":7:7:7:27|Synthesizing module interruptMaskRegister in library work.
 Running optimization stage 1 on interruptMaskRegister .......
 @W: CL208 :"C:\Users\Duncan\git\ForthCPU\interruptLogic\source\interruptMaskRegister.v":60:0:60:5|All reachable assignments to bit 0 of INTS_REG[7:0] assign 0, register removed by optimization.
-Finished optimization stage 1 on interruptMaskRegister (CPU Time 0h:00m:00s, Memory Used current: 101MB peak: 103MB)
+Finished optimization stage 1 on interruptMaskRegister (CPU Time 0h:00m:00s, Memory Used current: 102MB peak: 102MB)
 @N: CG364 :"C:\Users\Duncan\git\ForthCPU\mcuResources\source\mcuResources.v":3:7:3:18|Synthesizing module mcuResources in library work.
 Running optimization stage 1 on mcuResources .......
-Finished optimization stage 1 on mcuResources (CPU Time 0h:00m:00s, Memory Used current: 101MB peak: 103MB)
+Finished optimization stage 1 on mcuResources (CPU Time 0h:00m:00s, Memory Used current: 102MB peak: 102MB)
 @N: CG364 :"C:\Users\Duncan\git\ForthCPU\impl1\source\mcu.v":7:7:7:9|Synthesizing module mcu in library work.
 Running optimization stage 1 on mcu .......
-Finished optimization stage 1 on mcu (CPU Time 0h:00m:00s, Memory Used current: 101MB peak: 103MB)
-@N: CG364 :"C:\Users\Duncan\git\ForthCPU\impl1\test\blinkTest.v":5:7:5:16|Synthesizing module blinkTests in library work.
-@W: CG294 :"C:\Users\Duncan\git\ForthCPU\impl1\test\blinkTest.v":55:0:55:5|always block should contain at least one event control
-@W: CG532 :"C:\Users\Duncan\git\ForthCPU\impl1\test\blinkTest.v":59:0:59:6|Within an initial block, only Verilog force statements and memory initialization statements and initialization of entire variable are recognized, and all other content is ignored. Simulation mismatch may occur
-@W: CG204 :"C:\Users\Duncan\git\ForthCPU\impl1\test\blinkTest.v":59:0:59:6|Within an initial block, memory initialization statements of entire variable and nested loops are not recognized. Simulation mismatch may occur
-@W: CG133 :"C:\Users\Duncan\git\ForthCPU\impl1\test\blinkTest.v":15:5:15:12|Object PIN_INT0 is declared but not assigned. Either assign a value or remove the declaration.
-@W: CG133 :"C:\Users\Duncan\git\ForthCPU\impl1\test\blinkTest.v":16:5:16:12|Object PIN_INT1 is declared but not assigned. Either assign a value or remove the declaration.
-@W: CG133 :"C:\Users\Duncan\git\ForthCPU\impl1\test\blinkTest.v":17:5:17:12|Object PIN_INT2 is declared but not assigned. Either assign a value or remove the declaration.
-@W: CG133 :"C:\Users\Duncan\git\ForthCPU\impl1\test\blinkTest.v":18:5:18:12|Object PIN_INT3 is declared but not assigned. Either assign a value or remove the declaration.
-@W: CG133 :"C:\Users\Duncan\git\ForthCPU\impl1\test\blinkTest.v":19:5:19:12|Object PIN_INT4 is declared but not assigned. Either assign a value or remove the declaration.
-@W: CG133 :"C:\Users\Duncan\git\ForthCPU\impl1\test\blinkTest.v":20:5:20:12|Object PIN_INT5 is declared but not assigned. Either assign a value or remove the declaration.
-@W: CG133 :"C:\Users\Duncan\git\ForthCPU\impl1\test\blinkTest.v":21:5:21:12|Object PIN_INT6 is declared but not assigned. Either assign a value or remove the declaration.
-@W: CG133 :"C:\Users\Duncan\git\ForthCPU\impl1\test\blinkTest.v":27:5:27:11|Object PIN_RXD is declared but not assigned. Either assign a value or remove the declaration.
-@W: CG133 :"C:\Users\Duncan\git\ForthCPU\impl1\test\blinkTest.v":30:11:30:19|Object PIN_DIPSW is declared but not assigned. Either assign a value or remove the declaration.
-Running optimization stage 1 on blinkTests .......
-Finished optimization stage 1 on blinkTests (CPU Time 0h:00m:00s, Memory Used current: 101MB peak: 103MB)
-Running optimization stage 2 on blinkTests .......
-@W: FX105 :"C:\Users\Duncan\git\ForthCPU\impl1\test\blinkTest.v":56:19:56:29|Found combinational loop at PIN_CLK_X1
-@A: CL153 :"C:\Users\Duncan\git\ForthCPU\impl1\test\blinkTest.v":15:5:15:12|*Unassigned bits of PIN_INT0 are referenced and tied to 0 -- simulation mismatch possible.
-@A: CL153 :"C:\Users\Duncan\git\ForthCPU\impl1\test\blinkTest.v":16:5:16:12|*Unassigned bits of PIN_INT1 are referenced and tied to 0 -- simulation mismatch possible.
-@A: CL153 :"C:\Users\Duncan\git\ForthCPU\impl1\test\blinkTest.v":17:5:17:12|*Unassigned bits of PIN_INT2 are referenced and tied to 0 -- simulation mismatch possible.
-@A: CL153 :"C:\Users\Duncan\git\ForthCPU\impl1\test\blinkTest.v":18:5:18:12|*Unassigned bits of PIN_INT3 are referenced and tied to 0 -- simulation mismatch possible.
-@A: CL153 :"C:\Users\Duncan\git\ForthCPU\impl1\test\blinkTest.v":19:5:19:12|*Unassigned bits of PIN_INT4 are referenced and tied to 0 -- simulation mismatch possible.
-@A: CL153 :"C:\Users\Duncan\git\ForthCPU\impl1\test\blinkTest.v":20:5:20:12|*Unassigned bits of PIN_INT5 are referenced and tied to 0 -- simulation mismatch possible.
-@A: CL153 :"C:\Users\Duncan\git\ForthCPU\impl1\test\blinkTest.v":21:5:21:12|*Unassigned bits of PIN_INT6 are referenced and tied to 0 -- simulation mismatch possible.
-@A: CL153 :"C:\Users\Duncan\git\ForthCPU\impl1\test\blinkTest.v":27:5:27:11|*Unassigned bits of PIN_RXD are referenced and tied to 0 -- simulation mismatch possible.
-@A: CL153 :"C:\Users\Duncan\git\ForthCPU\impl1\test\blinkTest.v":30:11:30:19|*Unassigned bits of PIN_DIPSW[3:0] are referenced and tied to 0 -- simulation mismatch possible.
-Finished optimization stage 2 on blinkTests (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 103MB)
+Finished optimization stage 1 on mcu (CPU Time 0h:00m:00s, Memory Used current: 102MB peak: 102MB)
 Running optimization stage 2 on mcu .......
-Finished optimization stage 2 on mcu (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 103MB)
+Finished optimization stage 2 on mcu (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 102MB)
 Running optimization stage 2 on mcuResources .......
-Finished optimization stage 2 on mcuResources (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 103MB)
+Finished optimization stage 2 on mcuResources (CPU Time 0h:00m:00s, Memory Used current: 100MB peak: 102MB)
 Running optimization stage 2 on interruptMaskRegister .......
 Finished optimization stage 2 on interruptMaskRegister (CPU Time 0h:00m:00s, Memory Used current: 101MB peak: 103MB)
 Running optimization stage 2 on UART .......
@@ -355,7 +326,7 @@ At c_ver Exit (Real Time elapsed 0h:00m:07s; CPU Time elapsed 0h:00m:07s; Memory
 Process took 0h:00m:07s realtime, 0h:00m:07s cputime
 
 Process completed successfully.
-# Tue Oct 31 18:20:25 2023
+# Tue Oct 31 18:52:48 2023
 
 ###########################################################]
 ###########################################################[
@@ -383,7 +354,7 @@ At syn_nfilter Exit (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; 
 Process took 0h:00m:01s realtime, 0h:00m:01s cputime
 
 Process completed successfully.
-# Tue Oct 31 18:20:25 2023
+# Tue Oct 31 18:52:48 2023
 
 ###########################################################]
 
@@ -398,6 +369,6 @@ At c_hdl Exit (Real Time elapsed 0h:00m:07s; CPU Time elapsed 0h:00m:07s; Memory
 Process took 0h:00m:07s realtime, 0h:00m:07s cputime
 
 Process completed successfully.
-# Tue Oct 31 18:20:25 2023
+# Tue Oct 31 18:52:48 2023
 
 ###########################################################]

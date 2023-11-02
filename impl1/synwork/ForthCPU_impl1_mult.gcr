@@ -1,9 +1,14 @@
-i N_1
+i PIN_CLK_X1
 m 0 0
-u 99 255
-n ckid0_0 {t:mcuInst.mcuResourcesInst.interruptMaskRegisterInst.PRI_REG[2:0].C} Clock source is invalid for GCC
-p {t:G_1.OUT[0]}{t:mcuInst.PIN_CLK_X1}{p:mcuInst.PIN_CLK_X1}{t:mcuInst.boardInst.PIN_CLK_X1}{p:mcuInst.boardInst.PIN_CLK_X1}{t:mcuInst.boardInst.PIN_LED[7:0].C}
-e ckid0_1 {t:mcuInst.boardInst.PIN_LED[7:0].C} dffre
-d ckid0_0,ckid0_1 {t:G_1.OUT[0]} loopbuf Clock optimization blocked by combinational loop marker (loopbuf)
+u 108 282
+p {p:PIN_CLK_X1}{t:boardInst.BPIN_CLK_X1}{p:boardInst.BPIN_CLK_X1}{t:boardInst.BPIN_LED[7:0].C}
+e ckid0_0 {t:boardInst.BPIN_LED[7:0].C} dffre
+c ckid0_0 {p:PIN_CLK_X1} port Unsupported/too complex instance on clock path
+i PIN_RESETN
+m 0 0
+u 24 24
+p {p:PIN_RESETN}{t:boardInst.BPIN_RESETN}{p:boardInst.BPIN_RESETN}{t:boardInst.DIN_GPIO[7].C}
+e ckid0_1 {t:boardInst.DIN_GPIO[7].C} lat
+c ckid0_1 {p:PIN_RESETN} port Unsupported/too complex instance on clock path
 l 0 0 0 0 0 0
 r 0 0 0 0 0 0 0 0

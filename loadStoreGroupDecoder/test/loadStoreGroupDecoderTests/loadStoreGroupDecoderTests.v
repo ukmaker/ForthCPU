@@ -43,6 +43,8 @@ module loadStoreGroupDecoderTests;
 	wire [2:0] REGB_ADDRX;
 	wire [1:0] REGA_BYTE_ENX;
 	wire [1:0] REGB_BYTE_ENX;
+	
+	wire [1:0] PC_OFFSETX;
 	/**
 	* Bus control
 	**/
@@ -55,16 +57,14 @@ module loadStoreGroupDecoderTests;
 	
 	reg  [15:0] DIN;
 	wire [15:0] INSTRUCTION;
-	wire [1:0] INCF;
-	wire [1:0] LDSF;
-	wire [1:0] MODEF;
-	wire PC_ENX;
+	wire [1:0] OPF;
+	wire [2:0] MODEF;
+	reg PC_ENX;
 	
 loadStoreGroupDecoder testInstance(
 	.CLK(CLK),
 	.RESET(RESET),
-	.INCF(INCF),
-	.LDSF(LDSF),
+	.OPF(OPF),
 	.MODEF(MODEF),
 	.FETCH(FETCH),
 	.DECODE(DECODE),
@@ -86,7 +86,8 @@ loadStoreGroupDecoder testInstance(
 	.RDX(RDX),
 	.WRX(WRX),
 	.BYTEX(BYTEX),
-	.ADDR_BUSX(ADDR_BUSX)
+	.ADDR_BUSX(ADDR_BUSX),
+	.PC_OFFSETX(PC_OFFSETX)
 );
 
 instructionPhaseDecoder decoder(
@@ -101,9 +102,8 @@ instructionPhaseDecoder decoder(
 	.PC_ENX(PC_ENX)
 );	
 
-assign INCF = INSTRUCTION[13:12];
-assign LDSF = INSTRUCTION[11:10];
-assign MODEF = INSTRUCTION[9:8];
+assign OPF  = INSTRUCTION[12:11];
+assign MODEF = INSTRUCTION[10:8];
 
 // clk gen
 always begin
@@ -113,6 +113,7 @@ end
 initial begin
 	#10
 	CLK = 0; 
+	PC_ENX = 1;
 	`TICK;
 	 RESET = 1;
 	 DIN = 16'h0000;
@@ -129,7 +130,7 @@ initial begin
 	 *************************************************************************/
 	 // Start FETCH
 	 `TICK;
-	 DIN = {`GROUP_LOAD_STORE,`LDSINCF_NONE,`LDSOPF_LD,`MODE_LDS_REG_MEM,`R5,`RI};	 
+	 DIN = {`GROUP_LOAD_STORE,1'b0,`LDSOPF_LD,`MODE_LDS_REG_REG,`R5,`RI};	 
 	 `TICK;  
 	// DECODE
 	`TICKTOCK; 
@@ -157,13 +158,47 @@ initial begin
 	`assert("REG_B_WEN",  0, REGB_WEN)
 	
 	`TICKTOCK
+	 /************************************************************************
+	 * LD Ra,(HERE)
+	 *************************************************************************/
+	 // Start FETCH
+	 `TICK;
+	 DIN = {`GROUP_LOAD_STORE,1'b0,`LDSOPF_LD,`MODE_LDS_REG_HERE,`R5,`RI};	 
+	 `TICK;  
+	// DECODE
+	`TICKTOCK; 
+	// EXECUTE 
+	// Control outputs become valid here
+	#10
+	`mark(3)
+	`assert("REGA_EN",      1,                   REGA_EN)
+	`assert("REGB_EN",      1,                   REGB_EN)
+	`assert("REGA_WEN",     0,                   REGA_WEN)
+	`assert("REG_B_WEN",    0,                   REGB_WEN)
+	`assert("ALUA_SRCX",   `ALUA_SRCX_ZERO,      ALUA_SRCX)
+	`assert("ALUB_SRCX",   `ALUB_SRCX_REG_B,     ALUB_SRCX)
+	`assert("ALU_OPX",     `ALU_OPX_ADD,         ALU_OPX)
+	`assert("ADDR_BUSX",   `ADDR_BUSX_HERE,      ADDR_BUSX)
+	`assert("REGA_ADDRX",  `REGA_ADDRX_ARGA,     REGA_ADDRX)
+	`assert("REGB_ADDRX",  `REGB_ADDRX_ARGB,     REGB_ADDRX)
 	
+	// COMMIT
+	`TICKTOCK;
+	`mark(4)
+	`assert("REGA_EN", 1, REGA_EN)
+	`assert("REGB_EN", 1, REGB_EN)
+	`assert("REGA_WEN",   1, REGA_WEN)
+	`assert("REG_B_WEN",  0, REGB_WEN)
+	
+	`TICKTOCK
+
+
 	 /************************************************************************
 	 * LD Ra,(--Rb)
 	 *************************************************************************/
 	// FETCH
 	`TICK;
-	DIN = {`GROUP_LOAD_STORE,`LDSINCF_PRE_DEC,`LDSOPF_LD,`MODE_LDS_REG_MEM,`R5,`RI};	 
+	 DIN = {`GROUP_LOAD_STORE,1'b0,`LDSOPF_LD,`MODE_LDS_REG_REG_DEC,`R5,`RI};	 	 
 	`TICK;
 	 
 	// DECODE
@@ -171,7 +206,7 @@ initial begin
 
 	// EXECUTE 
 	// Control outputs become valid here
-	`mark(3)
+	`mark(5)
 	`assert("REGA_EN",      1,                   REGA_EN)
 	`assert("REGB_EN",      1,                   REGB_EN)
 	`assert("REGA_WEN",     0,                   REGA_WEN)
@@ -184,7 +219,7 @@ initial begin
 	
 	// COMMIT
 	`TICKTOCK;
-	`mark(4)
+	`mark(6)
 	`assert("REGA_EN",    1, REGA_EN)
 	`assert("REGB_EN",    1, REGB_EN)
 	`assert("REGA_WEN",   1, REGA_WEN)
@@ -198,14 +233,14 @@ initial begin
 	 *************************************************************************/
 	// FETCH
 	 `TICK;
-	 DIN = {`GROUP_LOAD_STORE,`LDSINCF_POST_INC,`LDSOPF_LD,`MODE_LDS_REG_MEM,`R5,`RI};	 
+	  DIN = {`GROUP_LOAD_STORE,1'b0,`LDSOPF_LD,`MODE_LDS_REG_REG_INC,`R5,`RI};	 	 
 	 `TICK;	 
 	// DECODE
 	`TICKTOCK; 
 
 	// EXECUTE 
 	// Control outputs become valid here
-	`mark(5)
+	`mark(7)
 	`assert("REGA_EN",      1,                   REGA_EN)
 	`assert("REGB_EN",      1,                   REGB_EN)
 	`assert("REGA_WEN",     0,                   REGA_WEN)
@@ -218,7 +253,7 @@ initial begin
 	
 	// COMMIT
 	`TICKTOCK;
-	`mark(6)
+	`mark(8)
 	`assert("REGA_EN",    1, REGA_EN)
 	`assert("REGB_EN",    1, REGB_EN)
 	`assert("REGA_WEN",   1, REGA_WEN)
@@ -230,13 +265,13 @@ initial begin
 	 *************************************************************************/
 	 // Start FETCH
 	 `TICK;
-	 DIN = {`GROUP_LOAD_STORE,`LDSINCF_NONE,`LDSOPF_ST,`MODE_LDS_REG_MEM,`R5,`RI};	 
+	 DIN = {`GROUP_LOAD_STORE,1'b0,`LDSOPF_ST,`MODE_LDS_REG_REG,`R5,`RI};	 	 
 	 `TICK;
 	 // DECODE
 	`TICKTOCK; 
 	// EXECUTE 
 	// Control outputs become valid here
-	`mark(7)
+	`mark(9)
 	`assert("REGA_EN",      1,                   REGA_EN)
 	`assert("REGB_EN",      1,                   REGB_EN)
 	`assert("REGA_WEN",     0,                   REGA_WEN)
@@ -249,7 +284,7 @@ initial begin
 	`assert("DATA_BUSX",   `DATA_BUSX_REGA_DOUT, DATA_BUSX)
 	// COMMIT
 	`TICKTOCK;
-	`mark(8)
+	`mark(10)
 	`assert("REGA_EN",    1, REGA_EN)
 	`assert("REGB_EN",    1, REGB_EN)
 	`assert("REGA_WEN",   0, REGA_WEN)
@@ -259,42 +294,11 @@ initial begin
 
 	
 	/************************************************************************
-	 * LD Ra,(FP + S6.0)
+	 * LD Ra,(FP + S5.0)
 	 *************************************************************************/
 	 // Start FETCH
 	 `TICK;
-	 DIN = {`GROUP_LOAD_STORE,2'b10,`LDSOPF_LD,`MODE_LDS_REG_FP,`R5,4'b0101};	 
-	 `TICK;
-	 // DECODE
-	`TICKTOCK; 
-	// EXECUTE 
-	// Control outputs become valid here
-	`mark(9)
-	`assert("REGA_EN",      1,                  REGA_EN)
-	`assert("REGB_EN",      1,                  REGB_EN)
-	`assert("REGA_WEN",     0,                  REGA_WEN)
-	`assert("REG_B_WEN",    0,                  REGB_WEN)
-	`assert("ALUA_SRCX",   `ALUA_SRCX_S6_0,     ALUA_SRCX)
-	`assert("ALUB_SRCX",   `ALUB_SRCX_REG_B,    ALUB_SRCX)
-	`assert("ALU_OPX",     `ALU_OPX_ADD,        ALU_OPX)
-	`assert("ADDR_BUSX",   `ADDR_BUSX_ALU_R,    ADDR_BUSX)
-	`assert("REGB_ADDRX",  `REGB_ADDRX_RFP,     REGB_ADDRX)
-			
-	// COMMIT
-	`TICKTOCK;
-	`mark(10)
-	`assert("REGA_EN",    1, REGA_EN)
-	`assert("REGB_EN",    1, REGB_EN)
-	`assert("REGA_WEN",   1, REGA_WEN)
-	`assert("REG_B_WEN",  0, REGB_WEN)
-	`TICKTOCK;
-	
-	/************************************************************************
-	 * LD Ra,(SP + S6.0)
-	 *************************************************************************/
-	 // Start FETCH
-	 `TICK;
-	 DIN = {`GROUP_LOAD_STORE,2'b10,`LDSOPF_LD,`MODE_LDS_REG_SP,`R5,4'b0101};	 
+	 DIN = {`GROUP_LOAD_STORE,1'b0,`LDSOPF_LD,`MODE_LDS_REG_FP,`R5,4'b0101};	 	 
 	 `TICK;
 	 // DECODE
 	`TICKTOCK; 
@@ -305,11 +309,11 @@ initial begin
 	`assert("REGB_EN",      1,                  REGB_EN)
 	`assert("REGA_WEN",     0,                  REGA_WEN)
 	`assert("REG_B_WEN",    0,                  REGB_WEN)
-	`assert("ALUA_SRCX",   `ALUA_SRCX_S6_0,     ALUA_SRCX)
+	`assert("ALUA_SRCX",   `ALUA_SRCX_U5_0,     ALUA_SRCX)
 	`assert("ALUB_SRCX",   `ALUB_SRCX_REG_B,    ALUB_SRCX)
 	`assert("ALU_OPX",     `ALU_OPX_ADD,        ALU_OPX)
 	`assert("ADDR_BUSX",   `ADDR_BUSX_ALU_R,    ADDR_BUSX)
-	`assert("REGB_ADDRX",  `REGB_ADDRX_RSP,     REGB_ADDRX)
+	`assert("REGB_ADDRX",  `REGB_ADDRX_RFP,     REGB_ADDRX)
 			
 	// COMMIT
 	`TICKTOCK;
@@ -321,11 +325,11 @@ initial begin
 	`TICKTOCK;
 	
 	/************************************************************************
-	 * LD Ra,(RS + S6.0)
+	 * LD Ra,(SP + S6.0)
 	 *************************************************************************/
 	 // Start FETCH
 	 `TICK;
-	 DIN = {`GROUP_LOAD_STORE,2'b10,`LDSOPF_LD,`MODE_LDS_REG_RS,`R5,4'b0101};	 
+	 DIN = {`GROUP_LOAD_STORE,1'b0,`LDSOPF_LD,`MODE_LDS_REG_SP,`R5,4'b0101};	 	 
 	 `TICK;
 	 // DECODE
 	`TICKTOCK; 
@@ -336,7 +340,38 @@ initial begin
 	`assert("REGB_EN",      1,                  REGB_EN)
 	`assert("REGA_WEN",     0,                  REGA_WEN)
 	`assert("REG_B_WEN",    0,                  REGB_WEN)
-	`assert("ALUA_SRCX",   `ALUA_SRCX_S6_0,     ALUA_SRCX)
+	`assert("ALUA_SRCX",   `ALUA_SRCX_U5_0,     ALUA_SRCX)
+	`assert("ALUB_SRCX",   `ALUB_SRCX_REG_B,    ALUB_SRCX)
+	`assert("ALU_OPX",     `ALU_OPX_ADD,        ALU_OPX)
+	`assert("ADDR_BUSX",   `ADDR_BUSX_ALU_R,    ADDR_BUSX)
+	`assert("REGB_ADDRX",  `REGB_ADDRX_RSP,     REGB_ADDRX)
+			
+	// COMMIT
+	`TICKTOCK;
+	`mark(14)
+	`assert("REGA_EN",    1, REGA_EN)
+	`assert("REGB_EN",    1, REGB_EN)
+	`assert("REGA_WEN",   1, REGA_WEN)
+	`assert("REG_B_WEN",  0, REGB_WEN)
+	`TICKTOCK;
+	
+	/************************************************************************
+	 * LD Ra,(RS + S6.0)
+	 *************************************************************************/
+	 // Start FETCH
+	 `TICK;
+	 DIN = {`GROUP_LOAD_STORE,1'b0,`LDSOPF_LD,`MODE_LDS_REG_RS,`R5,`RI};	 	 
+	 `TICK;
+	 // DECODE
+	`TICKTOCK; 
+	// EXECUTE 
+	// Control outputs become valid here
+	`mark(15)
+	`assert("REGA_EN",      1,                  REGA_EN)
+	`assert("REGB_EN",      1,                  REGB_EN)
+	`assert("REGA_WEN",     0,                  REGA_WEN)
+	`assert("REG_B_WEN",    0,                  REGB_WEN)
+	`assert("ALUA_SRCX",   `ALUA_SRCX_U5_0,     ALUA_SRCX)
 	`assert("ALUB_SRCX",   `ALUB_SRCX_REG_B,    ALUB_SRCX)
 	`assert("ALU_OPX",     `ALU_OPX_ADD,        ALU_OPX)
 	`assert("ADDR_BUSX",   `ADDR_BUSX_ALU_R,    ADDR_BUSX)
@@ -344,7 +379,7 @@ initial begin
 			
 	// COMMIT
 	`TICKTOCK;
-	`mark(14)
+	`mark(16)
 	`assert("REGA_EN",    1, REGA_EN)
 	`assert("REGB_EN",    1, REGB_EN)
 	`assert("REGA_WEN",   1, REGA_WEN)

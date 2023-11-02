@@ -3,6 +3,8 @@
 #
 
 # Period Constraints 
+#FREQUENCY PORT "PIN_CLK_X1" 100.0 MHz;
+#FREQUENCY PORT "PIN_RESETN" 100.0 MHz;
 
 
 # Output Constraints 
@@ -14,6 +16,8 @@
 
 
 # Block Path Constraints 
+#BLOCK PATH FROM CLKNET "PIN_RESETN_c" TO CLKNET "PIN_CLK_X1_c";
+#BLOCK PATH FROM CLKNET "PIN_CLK_X1_c" TO CLKNET "PIN_RESETN_c";
 
 BLOCK ASYNCPATHS;
 

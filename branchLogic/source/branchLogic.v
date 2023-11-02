@@ -13,11 +13,10 @@ module branchLogic(
 	input [1:0] CC_SELECTX,
 	input CC_INVERTX,
 	input CC_APPLYX,
-	input JMPX,
-	input JRX,
+	input [1:0] JMPX,
 	
-	output reg PC_OFFSETX,
-	output reg PC_BASEX
+	output reg [1:0] PC_OFFSETX,
+	output reg [1:0] PC_BASEX
 	
 );
 
@@ -25,6 +24,9 @@ reg CC;
 reg CC_APPLY;
 
 always @(*) begin
+	
+	PC_OFFSETX = `PC_OFFSETX_2;
+	PC_BASEX   = `PC_BASEX_PC_A;
 	
 	case(CC_SELECTX)
 		`CC_SELECTX_Z: CC = CC_ZERO;
@@ -34,8 +36,31 @@ always @(*) begin
 	endcase
 	
 	CC_APPLY = ~CC_APPLYX | (CC_INVERTX ? ~CC : CC);
-	PC_OFFSETX = JMPX & CC_APPLY;
-	PC_BASEX   = JMPX & ~JRX & CC_APPLY;	
+	
+	if(CC_APPLY) begin
+		case(JMPX)
+			`MODE_JMP_ABS_REG: begin
+				PC_OFFSETX = `PC_OFFSETX_DIN;
+				PC_BASEX   = `PC_BASEX_0;
+			end
+			
+			`MODE_JMP_ABS_HERE: begin
+				PC_OFFSETX = `PC_OFFSETX_DIN;
+				PC_BASEX   = `PC_BASEX_0;
+			end
+			
+			`MODE_JMP_IND_REG: begin
+				PC_OFFSETX = `PC_OFFSETX_DIN;
+				PC_BASEX   = `PC_BASEX_0;
+			end
+			
+			`MODE_JMP_REL_HERE: begin
+				PC_OFFSETX = `PC_OFFSETX_DIN;
+				PC_BASEX   = `PC_BASEX_PC_A;
+			end
+			
+		endcase
+	end
 	
 end
 	
