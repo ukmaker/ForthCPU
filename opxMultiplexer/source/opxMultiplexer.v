@@ -7,6 +7,7 @@
 module opxMultiplexer(
 	
 	input CLK,
+	input RESET,
 
 	input [1:0] INSTRUCTION_GROUP,
 	
@@ -45,6 +46,7 @@ module opxMultiplexer(
 
 	input [1:0]  JMP_ADDR_BUSX,
 	input [2:0]  JMP_ALUB_SRCX,
+	input         JMP_RDX,
 	input [1:0]  JMP_REGA_ADDRX,
 	input [2:0]  JMP_REGB_ADDRX,
 	input         JMP_REGA_EN,
@@ -135,7 +137,7 @@ always @(*) begin
 			DATA_BUSX     = `DATA_BUSX_REGA_DOUT;
 			PC_BASEX_R    = JMP_PC_BASEX;
 			PC_OFFSETX_R  = JMP_PC_OFFSETX;
-			RDX           = `RDX_NONE;
+			RDX           = JMP_RDX;
 			REGA_EN       = JMP_REGA_EN;
 			REGA_WEN      = JMP_REGA_WEN;
 			REGA_ADDRX    = JMP_REGA_ADDRX;
@@ -172,9 +174,9 @@ endcase
 end
 
 
-always @(posedge CLK) begin
+always @(posedge CLK or posedge RESET) begin
 	
-	if(FETCH) begin
+	if(RESET | FETCH) begin
 		
 		ADDR_BUSX <= `ADDR_BUSX_PC_A;
 		// Always generate the next address for HERE

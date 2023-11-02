@@ -75,15 +75,40 @@ initial begin
 	/**************************************************************************
 	* ALU Group - Operations
 	***************************************************************************/
-	INSTR = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_MOV,`MODE_ALU_REGA_S8,8'haf};
-	`ALU_STEP(  1, 16'h0000,   INSTR, "MOVS RA,0xaf")
-	INSTR = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_MOV,`MODE_ALU_REGA_U8,8'hfa};	 
-	`ALU_STEP(   2, 16'h0002,  INSTR, "MOV RA,0xfa")
-	
 	// Setup R0 as the base address 0xfaaf
-	`LD_HERE_STEP(3, 16'h004, `R0, 16'hfaaf) //0001 0010 0011 0100 -> 0000 0100 1000 1101
-
+	`LD_HERE_STEP(3, 16'h000, 16'hfaaf, `R0)
 	
+	// Load an 8-bit value
+	INSTR = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_MOV,`MODE_ALU_REGA_S8,8'haf};
+	`ALU_STEP(  1, 16'h0004,   INSTR, "MOV RA,0xaf")
+	// Check the value  
+	INSTR = {`GROUP_LOAD_STORE,1'b0,`LDSOPF_ST,`MODE_LDS_REG_REG,`RA,`R0};	 
+	`ST_STEP(   2, 16'h0006,   INSTR, 16'hfaaf, 16'hffaf, "ST (R0),RA")	
+	
+	INSTR = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_MOV,`MODE_ALU_REGA_U8,8'hfa};	 
+	`ALU_STEP(  3, 16'h0008,  INSTR, "MOV RA,0xfa")
+	// Check the value  
+	INSTR = {`GROUP_LOAD_STORE,1'b0,`LDSOPF_ST,`MODE_LDS_REG_REG,`RA,`R0};	 
+	`ST_STEP(   4, 16'h000a,   INSTR, 16'hfaaf, 16'h00fa, "ST (R0),RA")	
+	
+	// Load some 4-bit values
+	INSTR = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_MOV,`MODE_ALU_REG_U4, `R1, 4'h1};	 
+	`ALU_STEP(  5, 16'h000c,  INSTR, "MOV R1,0x1")
+	INSTR = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_MOV,`MODE_ALU_REG_U4, `R2, 4'h3};	 
+	`ALU_STEP(  6, 16'h000e,  INSTR, "MOV R2,0x3")
+	INSTR = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_MOV,`MODE_ALU_REG_U4, `R3, 4'h5};	 
+	`ALU_STEP(  7, 16'h0010,  INSTR, "MOV R3,0x5")
+	INSTR = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_MOV,`MODE_ALU_REG_U4, `R4, 4'h7};	 
+	`ALU_STEP(  8, 16'h0012,  INSTR, "MOV R4,0x7")
+	// Check the values  
+	INSTR = {`GROUP_LOAD_STORE,1'b0,`LDSOPF_ST,`MODE_LDS_REG_REG,`R1,`R0};	 
+	`ST_STEP(   9, 16'h0014,   INSTR, 16'hfaaf, 16'h0001, "ST (R0),R1")	
+	INSTR = {`GROUP_LOAD_STORE,1'b0,`LDSOPF_ST,`MODE_LDS_REG_REG,`R2,`R0};	 
+	`ST_STEP(  10, 16'h0016,   INSTR, 16'hfaaf, 16'h0003, "ST (R0),R2")	
+	INSTR = {`GROUP_LOAD_STORE,1'b0,`LDSOPF_ST,`MODE_LDS_REG_REG,`R3,`R0};	 
+	`ST_STEP(  11, 16'h0018,   INSTR, 16'hfaaf, 16'h0005, "ST (R0),R3")	
+	INSTR = {`GROUP_LOAD_STORE,1'b0,`LDSOPF_ST,`MODE_LDS_REG_REG,`R4,`R0};	 
+	`ST_STEP(  12, 16'h001a,   INSTR, 16'hfaaf, 16'h0007, "ST (R0),R4")	
 	
 	
 end

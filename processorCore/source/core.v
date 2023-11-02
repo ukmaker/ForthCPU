@@ -107,6 +107,7 @@ wire         LDS_WRX;
 wire [1:0]  JMP_ADDR_BUSX;
 wire [1:0]  JMP_PC_BASEX;
 wire [1:0]  JMP_PC_OFFSETX;
+wire         JMP_RDX;
 wire [1:0]  JMP_REGA_ADDRX;
 wire [2:0]  JMP_REGB_ADDRX;
 wire         JMP_REGA_EN;
@@ -310,6 +311,11 @@ loadStoreGroupDecoder loadStoreGroupDecoderInst(
 * Jump Group Decoder
 ****************************************/
 jumpGroupDecoder jumpGroupDecoderInst(
+	.CLK(CLK),
+	.RESET(RESET),
+	.DECODE(DECODE),
+	.EXECUTE(EXECUTE),
+	.COMMIT(COMMIT),
 	.GROUPF(INSTRUCTION[15:14]),
 	.SKIPF(INSTRUCTION[13:12]),
 	.CCF(INSTRUCTION[11:10]),
@@ -324,6 +330,7 @@ jumpGroupDecoder jumpGroupDecoderInst(
 	.PC_OFFSETX(JMP_PC_OFFSETX),
 	.PC_BASEX(JMP_PC_BASEX),
 	.ADDR_BUSX(JMP_ADDR_BUSX),
+	.RDX(JMP_RDX),
 	.REGA_ADDRX(JMP_REGA_ADDRX),
 	.REGB_ADDRX(JMP_REGB_ADDRX),
 	.REGA_EN(JMP_REGA_EN),
@@ -356,6 +363,7 @@ generalGroupDecoder generalGroupDecoderInst(
 opxMultiplexer opxMultiplexerInst(
 
 	.CLK(CLK),
+	.RESET(RESET),
 	.INSTRUCTION_GROUP(INSTRUCTION[15:14]),
 
 	.FETCH(FETCH),
@@ -392,6 +400,7 @@ opxMultiplexer opxMultiplexerInst(
 
 	.JMP_ADDR_BUSX(JMP_ADDR_BUSX),
 	.JMP_ALUB_SRCX(JMP_ALUB_SRCX),
+	.JMP_RDX(JMP_RDX),
 	.JMP_REGA_ADDRX(JMP_REGA_ADDRX),
 	.JMP_REGB_ADDRX(JMP_REGB_ADDRX),
 	.JMP_REGA_EN(JMP_REGA_EN),

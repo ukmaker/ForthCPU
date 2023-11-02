@@ -28,6 +28,12 @@
 */
 module jumpGroupDecoder(
 	
+	input CLK,
+	input RESET,
+	input DECODE,
+	input EXECUTE,
+	input COMMIT,
+	
 	input [1:0] GROUPF,
 	input [1:0] SKIPF,
 	input [1:0] CCF,
@@ -58,9 +64,14 @@ module jumpGroupDecoder(
 	/**
 	* ALU control
 	**/
-	output reg [2:0] ALUB_SRCX
-	
+	output reg [2:0] ALUB_SRCX,
+	/**
+	* Bus control
+	**/
+	output reg        RDX
 );
+
+reg RD_M;
 
 reg         CC;
 reg         CC_APPLY;
@@ -74,10 +85,6 @@ assign CC_APPLYX  = SKIPF[1];
 
 // Select the condition code
 always @(*) begin
-	
-	PC_OFFSETX = `PC_OFFSETX_2;
-	PC_BASEX   = `PC_BASEX_PC_A;
-	ADDR_BUSX  = `ADDR_BUSX_PC_A;
 	
 	case(CC_SELECTX)
 		`CC_SELECTX_Z: CC = CC_ZERO;
@@ -93,14 +100,12 @@ end
 // These lines will be activated by the opxMultiplexer during COMMIT
 always @(*) begin
 	
-	PC_OFFSETX = `PC_OFFSETX_2;
-	PC_BASEX   = `PC_BASEX_PC_A;
-	
 	if(CC_APPLY) begin
 		case(JPF)
 			`MODE_JMP_ABS_REG: begin
 				PC_OFFSETX = `PC_OFFSETX_0;
 				PC_BASEX   = `PC_BASEX_REGB_DOUT;
+				ADDR_BUSX  = `ADDR_BUSX_PC_A;
 			end
 			
 			`MODE_JMP_ABS_HERE: begin
@@ -112,15 +117,42 @@ always @(*) begin
 			`MODE_JMP_IND_REG: begin
 				PC_OFFSETX = `PC_OFFSETX_DIN;
 				PC_BASEX   = `PC_BASEX_0;
+				ADDR_BUSX  = `ADDR_BUSX_PC_A;
 			end
 			
 			`MODE_JMP_REL_HERE: begin
 				PC_OFFSETX = `PC_OFFSETX_DIN;
 				PC_BASEX   = `PC_BASEX_PC_A;
+				ADDR_BUSX  = `ADDR_BUSX_HERE;
+			end
+		endcase
+	end	else begin
+		case(JPF)
+			`MODE_JMP_ABS_REG: begin
+				PC_OFFSETX = `PC_OFFSETX_2;
+				PC_BASEX   = `PC_BASEX_PC_A;
+				ADDR_BUSX  = `ADDR_BUSX_PC_A;
 			end
 			
+			`MODE_JMP_ABS_HERE: begin
+				PC_OFFSETX = `PC_OFFSETX_4;
+				PC_BASEX   = `PC_BASEX_PC_A;
+				ADDR_BUSX  = `ADDR_BUSX_PC_A;
+			end
+			
+			`MODE_JMP_IND_REG: begin
+				PC_OFFSETX = `PC_OFFSETX_2;
+				PC_BASEX   = `PC_BASEX_PC_A;
+				ADDR_BUSX  = `ADDR_BUSX_PC_A;
+			end
+			
+			`MODE_JMP_REL_HERE: begin
+				PC_OFFSETX = `PC_OFFSETX_4;
+				PC_BASEX   = `PC_BASEX_PC_A;
+				ADDR_BUSX  = `ADDR_BUSX_PC_A;
+			end
 		endcase
-	end	
+	end
 end
 
 always @(*) begin
@@ -131,6 +163,7 @@ always @(*) begin
 	REGA_EN    = 0;
 	REGA_WEN   = 0;
 	REGB_EN    = 0;
+	RD_M = 0;
 	
 	if(JLF == `JLF_LINK) begin
 		REGA_EN  = 1;
@@ -143,7 +176,7 @@ always @(*) begin
 		end
 		
 		`MODE_JMP_ABS_HERE: begin
-			// 	
+			RD_M = 1;	
 		end
 
 		`MODE_JMP_IND_REG: begin
@@ -162,8 +195,29 @@ always @(*) begin
 			REGA_EN  = 0;
 			REGA_WEN = 0;
 			REGB_EN  = 1;
+			RD_M = 1;	
 		end
 	endcase
+end
+
+
+always @(posedge CLK or posedge RESET) begin
+	
+	if(RESET) begin
+		RDX <= 0;
+	end else begin
+		
+		if(DECODE) begin
+			RDX <= RD_M;
+		end else if(EXECUTE) begin
+			RDX <= RD_M;
+		end else if(COMMIT) begin
+			RDX <= RD_M;
+		end else begin
+			RDX <= 0;
+		end
+	end
+	
 end
 	
 endmodule

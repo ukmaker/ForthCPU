@@ -20,8 +20,8 @@ always @(*) begin
 		`ALUA_SRCX_TWO:         ALUA_DATA = 16'h0002;
 		`ALUA_SRCX_MINUS_ONE:   ALUA_DATA = 16'h0001;
 		`ALUA_SRCX_MINUS_TWO:   ALUA_DATA = 16'h0002;
-		`ALUA_SRCX_U5:          ALUA_DATA = U5;
-		`ALUA_SRCX_U5_0:        ALUA_DATA = {U5[14:0],1'b0};
+		`ALUA_SRCX_U5:          ALUA_DATA = {11'b00000000000, U5};
+		`ALUA_SRCX_U5_0:        ALUA_DATA = {10'b0000000000, U5,1'b0};
 	endcase
 end
 

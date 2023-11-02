@@ -109,7 +109,7 @@ end
 // the PC register
 always @(posedge CLK or posedge RESET) begin
 	if(RESET) begin
-		PC_A <= 16'h0000;
+		PC_A <= 16'hfffe;
 	end else if(PC_ENX & FETCH) begin
 		PC_A <= PC_NEXT;
 	end

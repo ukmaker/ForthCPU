@@ -22,7 +22,7 @@ Setup and Hold Report
 
 --------------------------------------------------------------------------------
 <A name="Map_Twr_setup"></A><B><U><big>Lattice TRACE Report - Setup, Version Diamond (64-bit) 3.12.1.454</big></U></B>
-Tue Oct 31 19:17:01 2023
+Thu Nov 02 22:00:54 2023
 
 Copyright (c) 1991-1994 by NeoCAD Inc. All rights reserved.
 Copyright (c) 1995 AT&T Corp.   All rights reserved.
@@ -42,8 +42,9 @@ Report level:    verbose report, limited to 1 item per preference
 <A name="mtw1_set_ps"></A><B><U><big>Preference Summary</big></U></B>
 
 <LI><A href='#map_twr_pref_0_0' Target='right'>FREQUENCY PORT "PIN_CLK_X1" 12.000000 MHz (0 errors)</A></LI>            4096 items scored, 0 timing errors detected.
-Report:   27.806MHz is the maximum frequency for this preference.
+Report:   19.503MHz is the maximum frequency for this preference.
 
+2 potential circuit loops found in timing analysis.
 BLOCK ASYNCPATHS
 BLOCK RESETPATHS
 --------------------------------------------------------------------------------
@@ -56,74 +57,106 @@ BLOCK RESETPATHS
 --------------------------------------------------------------------------------
 
 
-Passed: The following path meets requirements by 47.370ns
+Passed: The following path meets requirements by 32.059ns
 
  Logical Details:  Cell type  Pin type       Cell/ASIC name  (clock net +/-)
 
    Source:         DP8KC      Port           coreInst/registerFileInst/regs/registers_0_1_0(ASIC)  (from PIN_CLK_X1_c +)
-   Destination:    DP8KC      Port           coreInst/registerFileInst/regs/registers_0_0_1(ASIC)  (to PIN_CLK_X1_c +)
+   Destination:    FF         Data in        coreInst/programCounterInst/PC_A[15]  (to PIN_CLK_X1_c +)
 
-   Delay:              36.008ns  (44.5% logic, 55.5% route), 22 logic levels.
+   Delay:              51.124ns  (42.8% logic, 57.2% route), 38 logic levels.
 
  Constraint Details:
 
-     36.008ns physical path delay coreInst/registerFileInst/regs/registers_0_1_0 to coreInst/registerFileInst/regs/registers_0_0_1 meets
+     51.124ns physical path delay coreInst/registerFileInst/regs/registers_0_1_0 to coreInst/programCounterInst/SLICE_358 meets
      83.333ns delay constraint less
-     -0.045ns DATA_SET requirement (totaling 83.378ns) by 47.370ns
+      0.150ns DIN_SET requirement (totaling 83.183ns) by 32.059ns
 
  Physical Path Details:
 
-      Data path coreInst/registerFileInst/regs/registers_0_1_0 to coreInst/registerFileInst/regs/registers_0_0_1:
+      Data path coreInst/registerFileInst/regs/registers_0_1_0 to coreInst/programCounterInst/SLICE_358:
 
    Name    Fanout   Delay (ns)          Site               Resource
-C2Q_DEL     ---     4.739 *rs_0_1_0.CLKB to *rs_0_1_0.DOB3 coreInst/registerFileInst/regs/registers_0_1_0 (from PIN_CLK_X1_c)
-ROUTE         2   e 1.030 *rs_0_1_0.DOB3 to */SLICE_511.A1 coreInst/REGB_DOUT[11]
-CTOOFX_DEL  ---     0.661 */SLICE_511.A1 to *LICE_511.OFX0 coreInst/fullALUInst/muxB/ALUB_DATA_6_d[11]/SLICE_511
-ROUTE         2   e 1.030 *LICE_511.OFX0 to */SLICE_751.B0 coreInst/fullALUInst/ALUB_DATA_6_d[11]
-CTOF_DEL    ---     0.452 */SLICE_751.B0 to */SLICE_751.F0 coreInst/SLICE_751
-ROUTE        28   e 1.030 */SLICE_751.F0 to */SLICE_239.A0 coreInst/ALUB_DATA[11]
-C0TOFCO_DE  ---     0.905 */SLICE_239.A0 to *SLICE_239.FCO coreInst/fullALUInst/aluInst/SLICE_239
-ROUTE         1   e 0.001 *SLICE_239.FCO to *SLICE_238.FCI coreInst/fullALUInst/aluInst/un47_RESULT_cry_12
-FCITOF1_DE  ---     0.569 *SLICE_238.FCI to */SLICE_238.F1 coreInst/fullALUInst/aluInst/SLICE_238
-ROUTE         1   e 1.030 */SLICE_238.F1 to */SLICE_960.D0 coreInst/fullALUInst/aluInst/un47_RESULT[14]
-CTOF_DEL    ---     0.452 */SLICE_960.D0 to */SLICE_960.F0 coreInst/fullALUInst/aluInst/SLICE_960
-ROUTE         1   e 1.030 */SLICE_960.F0 to */SLICE_825.A1 coreInst/fullALUInst/aluInst/OVER_i_1_a2_7
-CTOF_DEL    ---     0.452 */SLICE_825.A1 to */SLICE_825.F1 coreInst/fullALUInst/aluInst/SLICE_825
-ROUTE        17   e 0.401 */SLICE_825.F1 to */SLICE_825.C0 coreInst/fullALUInst/aluInst/OVER_i
-CTOF_DEL    ---     0.452 */SLICE_825.C0 to */SLICE_825.F0 coreInst/fullALUInst/aluInst/SLICE_825
-ROUTE         1   e 1.030 */SLICE_825.F0 to */SLICE_547.B0 coreInst/fullALUInst/aluInst/RESULT_12[6]
-CTOOFX_DEL  ---     0.661 */SLICE_547.B0 to *LICE_547.OFX0 coreInst/fullALUInst/aluInst/RESULT_6_0[6]/SLICE_547
-ROUTE         2   e 1.030 *LICE_547.OFX0 to */SLICE_950.A0 coreInst/fullALUInst/aluInst/N_151
-CTOF_DEL    ---     0.452 */SLICE_950.A0 to */SLICE_950.F0 coreInst/fullALUInst/aluInst/SLICE_950
-ROUTE         1   e 1.030 */SLICE_950.F0 to */SLICE_490.C0 coreInst/N_167
-CTOOFX_DEL  ---     0.661 */SLICE_490.C0 to *LICE_490.OFX0 coreInst/busControllerInst/ADDR_BUF_1_RNO[6]/SLICE_490
-ROUTE         1   e 1.030 *LICE_490.OFX0 to   SLICE_709.C1 coreInst/busControllerInst/ADDR_BUF_1_RNO[6]
-CTOF_DEL    ---     0.452   SLICE_709.C1 to   SLICE_709.F1 SLICE_709
-ROUTE        21   e 1.030   SLICE_709.F1 to   SLICE_710.D0 ADDR_BUF[6]
-CTOF_DEL    ---     0.452   SLICE_710.D0 to   SLICE_710.F0 SLICE_710
-ROUTE         1   e 1.030   SLICE_710.F0 to   SLICE_711.D0 mcuResourcesInst/memoryMapperInst/UART_MAP_N_4L6_1
-CTOF_DEL    ---     0.452   SLICE_711.D0 to   SLICE_711.F0 SLICE_711
-ROUTE         1   e 1.030   SLICE_711.F0 to   SLICE_712.D0 mcuResourcesInst/memoryMapperInst/UART_MAP_N_4L6
-CTOF_DEL    ---     0.452   SLICE_712.D0 to   SLICE_712.F0 SLICE_712
-ROUTE         3   e 1.030   SLICE_712.F0 to */SLICE_700.C1 mcuResourcesInst/memoryMapperInst/UART_MAP_1
-CTOF_DEL    ---     0.452 */SLICE_700.C1 to */SLICE_700.F1 mcuResourcesInst/SLICE_700
-ROUTE        17   e 1.030 */SLICE_700.F1 to */SLICE_481.A1 mcuResourcesInst/UART_MAP
-CTOOFX_DEL  ---     0.661 */SLICE_481.A1 to *LICE_481.OFX0 mcuResourcesInst/memoryMapperInst/CPU_DIN_d_1[0]/SLICE_481
-ROUTE         1   e 1.030 *LICE_481.OFX0 to */SLICE_636.B1 mcuResourcesInst/memoryMapperInst/CPU_DIN_d_1[0]
-CTOOFX_DEL  ---     0.661 */SLICE_636.B1 to *LICE_636.OFX0 mcuResourcesInst/SLICE_636
-ROUTE         1   e 0.001 *LICE_636.OFX0 to *SLICE_636.FXB mcuResourcesInst/ROMInst/mem_0_3_1_f5b
-FXTOOFX_DE  ---     0.223 *SLICE_636.FXB to *LICE_636.OFX1 mcuResourcesInst/SLICE_636
-ROUTE         1   e 1.030 *LICE_636.OFX1 to */SLICE_484.B0 mcuResourcesInst/DIN_ROM[3]
-CTOOFX_DEL  ---     0.661 */SLICE_484.B0 to *LICE_484.OFX0 mcuResourcesInst/memoryMapperInst/CPU_DIN_3[3]/SLICE_484
-ROUTE         2   e 1.030 *LICE_484.OFX0 to   SLICE_306.B1 mcuResourcesInst.N_74
-CTOF_DEL    ---     0.452   SLICE_306.B1 to   SLICE_306.F1 SLICE_306
-ROUTE         2   e 1.030   SLICE_306.F1 to */SLICE_504.A1 CPU_DIN[3]
-CTOOFX_DEL  ---     0.661 */SLICE_504.A1 to *LICE_504.OFX0 coreInst/registerFileInst/DINA[3]/SLICE_504
-ROUTE         1   e 1.030 *LICE_504.OFX0 to *rs_0_0_1.DIA3 coreInst/registerFileInst/DINA[3] (to PIN_CLK_X1_c)
+C2Q_DEL     ---     4.739 *rs_0_1_0.CLKB to *rs_0_1_0.DOB7 coreInst/registerFileInst/regs/registers_0_1_0 (from PIN_CLK_X1_c)
+ROUTE         1   e 1.030 *rs_0_1_0.DOB7 to */SLICE_783.C0 coreInst/REGB_DOUT[15]
+CTOF_DEL    ---     0.452 */SLICE_783.C0 to */SLICE_783.F0 coreInst/fullALUInst/SLICE_783
+ROUTE        10   e 1.030 */SLICE_783.F0 to */SLICE_753.A1 coreInst/fullALUInst/N_46
+CTOF_DEL    ---     0.452 */SLICE_753.A1 to */SLICE_753.F1 coreInst/SLICE_753
+ROUTE        28   e 1.030 */SLICE_753.F1 to */SLICE_994.B0 coreInst/un47_RESULT_axb_15
+CTOF_DEL    ---     0.452 */SLICE_994.B0 to */SLICE_994.F0 coreInst/fullALUInst/aluInst/SLICE_994
+ROUTE         1   e 1.030 */SLICE_994.F0 to */SLICE_852.D1 coreInst/fullALUInst/aluInst/un3_tmp_0_14_1
+CTOF_DEL    ---     0.452 */SLICE_852.D1 to */SLICE_852.F1 coreInst/fullALUInst/aluInst/SLICE_852
+ROUTE        35   e 1.030 */SLICE_852.F1 to */SLICE_862.B0 coreInst/fullALUInst/aluInst/un3_tmp_0_14_4
+CTOF_DEL    ---     0.452 */SLICE_862.B0 to */SLICE_862.F0 coreInst/fullALUInst/aluInst/SLICE_862
+ROUTE         5   e 1.030 */SLICE_862.F0 to */SLICE_796.D1 coreInst/fullALUInst/aluInst/un3_tmp[11]
+CTOF_DEL    ---     0.452 */SLICE_796.D1 to */SLICE_796.F1 coreInst/fullALUInst/aluInst/SLICE_796
+ROUTE         1   e 1.030 */SLICE_796.F1 to */SLICE_794.B1 coreInst/fullALUInst/aluInst/sex_2_2
+CTOF_DEL    ---     0.452 */SLICE_794.B1 to */SLICE_794.F1 coreInst/fullALUInst/aluInst/SLICE_794
+ROUTE         1   e 1.030 */SLICE_794.F1 to */SLICE_834.B0 coreInst/fullALUInst/aluInst/sex_2_9
+CTOF_DEL    ---     0.452 */SLICE_834.B0 to */SLICE_834.F0 coreInst/fullALUInst/aluInst/SLICE_834
+ROUTE        16   e 1.030 */SLICE_834.F0 to */SLICE_829.B0 coreInst/fullALUInst/aluInst/sex_2
+CTOF_DEL    ---     0.452 */SLICE_829.B0 to */SLICE_829.F0 coreInst/fullALUInst/aluInst/SLICE_829
+ROUTE         1   e 1.030 */SLICE_829.F0 to */SLICE_616.B1 coreInst/fullALUInst/aluInst/N_242
+CTOOFX_DEL  ---     0.661 */SLICE_616.B1 to *LICE_616.OFX0 coreInst/fullALUInst/aluInst/RESULT_14[1]/SLICE_616
+ROUTE         1   e 1.030 *LICE_616.OFX0 to */SLICE_778.C1 coreInst/fullALUInst/aluInst/N_274
+CTOF_DEL    ---     0.452 */SLICE_778.C1 to */SLICE_778.F1 coreInst/SLICE_778
+ROUTE         2   e 1.030 */SLICE_778.F1 to *SLICE_1024.B1 coreInst/N_290
+CTOF_DEL    ---     0.452 *SLICE_1024.B1 to *SLICE_1024.F1 coreInst/SLICE_1024
+ROUTE         5   e 1.030 *SLICE_1024.F1 to   SLICE_759.B0 coreInst/ALU_R[1]
+CTOF_DEL    ---     0.452   SLICE_759.B0 to   SLICE_759.F0 SLICE_759
+ROUTE         4   e 1.030   SLICE_759.F0 to */SLICE_717.B1 coreInst.N_129
+CTOF_DEL    ---     0.452 */SLICE_717.B1 to */SLICE_717.F1 mcuResourcesInst/memoryMapperInst/SLICE_717
+ROUTE         2   e 1.030 */SLICE_717.F1 to   SLICE_702.D0 mcuResourcesInst/memoryMapperInst/GPIO_MAP_11_1
+CTOF_DEL    ---     0.452   SLICE_702.D0 to   SLICE_702.F0 SLICE_702
+ROUTE         5   e 1.030   SLICE_702.F0 to   SLICE_655.B0 mcuResourcesInst.memoryMapperInst.GPIO_MAP_11
+CTOF_DEL    ---     0.452   SLICE_655.B0 to   SLICE_655.F0 SLICE_655
+ROUTE        26   e 1.030   SLICE_655.F0 to   SLICE_301.A1 mcuResourcesInst.memoryMapperInst.CPU_DIN_sn_N_6
+CTOOFX_DEL  ---     0.661   SLICE_301.A1 to SLICE_301.OFX0 SLICE_301
+ROUTE         4   e 1.030 SLICE_301.OFX0 to */SLICE_296.B1 CPU_DIN[11]
+CTOF_DEL    ---     0.452 */SLICE_296.B1 to */SLICE_296.F1 coreInst/SLICE_296
+ROUTE         1   e 1.030 */SLICE_296.F1 to */SLICE_516.C1 coreInst/registerFileInst/N_23
+CTOOFX_DEL  ---     0.661 */SLICE_516.C1 to *LICE_516.OFX0 coreInst/registerFileInst/regs/registers_0_0_1_RNO_4/SLICE_516
+ROUTE         1   e 1.030 *LICE_516.OFX0 to   SLICE_647.A1 coreInst/registerFileInst/regs/registers_0_0_1_RNO_4
+CTOOFX_DEL  ---     0.661   SLICE_647.A1 to SLICE_647.OFX0 SLICE_647
+ROUTE         1   e 0.001 SLICE_647.OFX0 to *SLICE_648.FXA mcuResourcesInst/ROMInst/mem_0_2_0_f5a
+FXTOOFX_DE  ---     0.223 *SLICE_648.FXA to *LICE_648.OFX1 mcuResourcesInst/ROMInst/SLICE_648
+ROUTE         2   e 1.030 *LICE_648.OFX1 to */SLICE_498.B0 mcuResourcesInst/DIN_ROM[2]
+CTOOFX_DEL  ---     0.661 */SLICE_498.B0 to *LICE_498.OFX0 mcuResourcesInst/memoryMapperInst/CPU_DIN_3[2]/SLICE_498
+ROUTE         3   e 1.030 *LICE_498.OFX0 to   SLICE_312.C1 mcuResourcesInst/memoryMapperInst/N_73
+CTOF_DEL    ---     0.452   SLICE_312.C1 to   SLICE_312.F1 SLICE_312
+ROUTE         1   e 0.401   SLICE_312.F1 to   SLICE_312.D0 mcuResourcesInst/memoryMapperInst/g0_12_1
+CTOF_DEL    ---     0.452   SLICE_312.D0 to   SLICE_312.F0 SLICE_312
+ROUTE         2   e 1.030   SLICE_312.F0 to */SLICE_515.A0 CPU_DIN[2]
+CTOOFX_DEL  ---     0.661 */SLICE_515.A0 to *LICE_515.OFX0 coreInst/registerFileInst/regs/registers_0_0_1_RNO_3/SLICE_515
+ROUTE         1   e 1.030 *LICE_515.OFX0 to   SLICE_646.A1 coreInst/registerFileInst/regs/registers_0_0_1_RNO_3
+CTOOFX_DEL  ---     0.661   SLICE_646.A1 to SLICE_646.OFX0 SLICE_646
+ROUTE         1   e 0.001 SLICE_646.OFX0 to  SLICE_646.FXB mcuResourcesInst/ROMInst/mem_0_3_1_f5b
+FXTOOFX_DE  ---     0.223  SLICE_646.FXB to SLICE_646.OFX1 SLICE_646
+ROUTE         1   e 1.030 SLICE_646.OFX1 to   SLICE_698.A0 mcuResourcesInst/DIN_ROM[3]
+CTOF_DEL    ---     0.452   SLICE_698.A0 to   SLICE_698.F0 SLICE_698
+ROUTE         1   e 1.030   SLICE_698.F0 to   SLICE_313.B1 mcuResourcesInst/memoryMapperInst/N_39
+CTOOFX_DEL  ---     0.661   SLICE_313.B1 to SLICE_313.OFX0 SLICE_313
+ROUTE         4   e 1.030 SLICE_313.OFX0 to *t/SLICE_70.B0 CPU_DIN[3]
+C0TOFCO_DE  ---     0.905 *t/SLICE_70.B0 to */SLICE_70.FCO coreInst/programCounterInst/SLICE_70
+ROUTE         1   e 0.001 */SLICE_70.FCO to */SLICE_69.FCI coreInst/programCounterInst/PC_A_NEXT_cry_4
+FCITOFCO_D  ---     0.146 */SLICE_69.FCI to */SLICE_69.FCO coreInst/programCounterInst/SLICE_69
+ROUTE         1   e 0.001 */SLICE_69.FCO to */SLICE_68.FCI coreInst/programCounterInst/PC_A_NEXT_cry_6
+FCITOFCO_D  ---     0.146 */SLICE_68.FCI to */SLICE_68.FCO coreInst/programCounterInst/SLICE_68
+ROUTE         1   e 0.001 */SLICE_68.FCO to */SLICE_67.FCI coreInst/programCounterInst/PC_A_NEXT_cry_8
+FCITOFCO_D  ---     0.146 */SLICE_67.FCI to */SLICE_67.FCO coreInst/programCounterInst/SLICE_67
+ROUTE         1   e 0.001 */SLICE_67.FCO to */SLICE_66.FCI coreInst/programCounterInst/PC_A_NEXT_cry_10
+FCITOFCO_D  ---     0.146 */SLICE_66.FCI to */SLICE_66.FCO coreInst/programCounterInst/SLICE_66
+ROUTE         1   e 0.001 */SLICE_66.FCO to */SLICE_65.FCI coreInst/programCounterInst/PC_A_NEXT_cry_12
+FCITOFCO_D  ---     0.146 */SLICE_65.FCI to */SLICE_65.FCO coreInst/programCounterInst/SLICE_65
+ROUTE         1   e 0.001 */SLICE_65.FCO to */SLICE_64.FCI coreInst/programCounterInst/PC_A_NEXT_cry_14
+FCITOF0_DE  ---     0.517 */SLICE_64.FCI to *t/SLICE_64.F0 coreInst/programCounterInst/SLICE_64
+ROUTE         5   e 1.030 *t/SLICE_64.F0 to */SLICE_358.A1 coreInst/programCounterInst/PC_A_NEXT[15]
+CTOOFX_DEL  ---     0.661 */SLICE_358.A1 to *LICE_358.OFX0 coreInst/programCounterInst/SLICE_358
+ROUTE         1   e 0.001 *LICE_358.OFX0 to *SLICE_358.DI0 coreInst/programCounterInst/PC_A_3[15] (to PIN_CLK_X1_c)
                   --------
-                   36.008   (44.5% logic, 55.5% route), 22 logic levels.
+                   51.124   (42.8% logic, 57.2% route), 38 logic levels.
 
-Report:   27.806MHz is the maximum frequency for this preference.
+Report:   19.503MHz is the maximum frequency for this preference.
 
 <A name="mtw1_set_rs"></A><B><U><big>Report Summary</big></U></B>
 --------------
@@ -132,7 +165,7 @@ Preference                              |   Constraint|       Actual|Levels
 ----------------------------------------------------------------------------
                                         |             |             |
 FREQUENCY PORT "PIN_CLK_X1" 12.000000   |             |             |
-MHz ;                                   |   12.000 MHz|   27.806 MHz|  22  
+MHz ;                                   |   12.000 MHz|   19.503 MHz|  38  
                                         |             |             |
 ----------------------------------------------------------------------------
 
@@ -145,10 +178,10 @@ All preferences were met.
 
 Found 2 clocks:
 
-Clock Domain: PIN_RESETN_c   Source: PIN_RESETN.PAD   Loads: 72
+Clock Domain: PIN_RESETN_c   Source: PIN_RESETN.PAD   Loads: 74
    No transfer within this clock domain is found
 
-Clock Domain: PIN_CLK_X1_c   Source: PIN_CLK_X1.PAD   Loads: 196
+Clock Domain: PIN_CLK_X1_c   Source: PIN_CLK_X1.PAD   Loads: 213
    Covered under: FREQUENCY PORT "PIN_CLK_X1" 12.000000 MHz ;
 
    Data transfers from:
@@ -164,11 +197,11 @@ Clock Domain: PIN_CLK_X1_c   Source: PIN_CLK_X1.PAD   Loads: 196
 Timing errors: 0  Score: 0
 Cumulative negative slack: 0
 
-Constraints cover 576785487 paths, 1 nets, and 6846 connections (92.92% coverage)
+Constraints cover 2147483647 paths, 1 nets, and 7347 connections (93.41% coverage)
 
 --------------------------------------------------------------------------------
 <A name="Map_Twr_hold"></A><B><U><big>Lattice TRACE Report - Hold, Version Diamond (64-bit) 3.12.1.454</big></U></B>
-Tue Oct 31 19:17:01 2023
+Thu Nov 02 22:00:54 2023
 
 Copyright (c) 1991-1994 by NeoCAD Inc. All rights reserved.
 Copyright (c) 1995 AT&T Corp.   All rights reserved.
@@ -189,6 +222,7 @@ Report level:    verbose report, limited to 1 item per preference
 
 <LI><A href='#map_twr_pref_1_0' Target='right'>FREQUENCY PORT "PIN_CLK_X1" 12.000000 MHz (0 errors)</A></LI>            4096 items scored, 0 timing errors detected.
 
+2 potential circuit loops found in timing analysis.
 BLOCK ASYNCPATHS
 BLOCK RESETPATHS
 --------------------------------------------------------------------------------
@@ -212,19 +246,19 @@ Passed: The following path meets requirements by 0.447ns
 
  Constraint Details:
 
-      0.434ns physical path delay mcuResourcesInst/UARTInst/uartRXInst/SLICE_418 to mcuResourcesInst/UARTInst/uartRXInst/SLICE_418 meets
+      0.434ns physical path delay mcuResourcesInst/UARTInst/uartRXInst/SLICE_430 to mcuResourcesInst/UARTInst/uartRXInst/SLICE_430 meets
      -0.013ns DIN_HLD and
       0.000ns delay constraint requirement (totaling -0.013ns) by 0.447ns
 
  Physical Path Details:
 
-      Data path mcuResourcesInst/UARTInst/uartRXInst/SLICE_418 to mcuResourcesInst/UARTInst/uartRXInst/SLICE_418:
+      Data path mcuResourcesInst/UARTInst/uartRXInst/SLICE_430 to mcuResourcesInst/UARTInst/uartRXInst/SLICE_430:
 
    Name    Fanout   Delay (ns)          Site               Resource
-REG_DEL     ---     0.133 *SLICE_418.CLK to */SLICE_418.Q0 mcuResourcesInst/UARTInst/uartRXInst/SLICE_418 (from PIN_CLK_X1_c)
-ROUTE        12   e 0.199 */SLICE_418.Q0 to */SLICE_418.D1 mcuResourcesInst/UARTInst/uartRXInst/r_Bit_Index[0]
-CTOF_DEL    ---     0.101 */SLICE_418.D1 to */SLICE_418.F1 mcuResourcesInst/UARTInst/uartRXInst/SLICE_418
-ROUTE         1   e 0.001 */SLICE_418.F1 to *SLICE_418.DI1 mcuResourcesInst/UARTInst/uartRXInst/r_Bit_Index_5[1] (to PIN_CLK_X1_c)
+REG_DEL     ---     0.133 *SLICE_430.CLK to */SLICE_430.Q0 mcuResourcesInst/UARTInst/uartRXInst/SLICE_430 (from PIN_CLK_X1_c)
+ROUTE        12   e 0.199 */SLICE_430.Q0 to */SLICE_430.D1 mcuResourcesInst/UARTInst/uartRXInst/r_Bit_Index[0]
+CTOF_DEL    ---     0.101 */SLICE_430.D1 to */SLICE_430.F1 mcuResourcesInst/UARTInst/uartRXInst/SLICE_430
+ROUTE         1   e 0.001 */SLICE_430.F1 to *SLICE_430.DI1 mcuResourcesInst/UARTInst/uartRXInst/r_Bit_Index_5[1] (to PIN_CLK_X1_c)
                   --------
                     0.434   (53.9% logic, 46.1% route), 2 logic levels.
 
@@ -248,10 +282,10 @@ All preferences were met.
 
 Found 2 clocks:
 
-Clock Domain: PIN_RESETN_c   Source: PIN_RESETN.PAD   Loads: 72
+Clock Domain: PIN_RESETN_c   Source: PIN_RESETN.PAD   Loads: 74
    No transfer within this clock domain is found
 
-Clock Domain: PIN_CLK_X1_c   Source: PIN_CLK_X1.PAD   Loads: 196
+Clock Domain: PIN_CLK_X1_c   Source: PIN_CLK_X1.PAD   Loads: 213
    Covered under: FREQUENCY PORT "PIN_CLK_X1" 12.000000 MHz ;
 
    Data transfers from:
@@ -267,7 +301,7 @@ Clock Domain: PIN_CLK_X1_c   Source: PIN_CLK_X1.PAD   Loads: 196
 Timing errors: 0  Score: 0
 Cumulative negative slack: 0
 
-Constraints cover 576785487 paths, 1 nets, and 7029 connections (95.40% coverage)
+Constraints cover 2147483647 paths, 1 nets, and 7524 connections (95.66% coverage)
 
 
 

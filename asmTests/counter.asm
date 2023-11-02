@@ -11,7 +11,7 @@
 #INTV0: 0x0004
 #INTV1: 0x0008
 
-#HALTED: 0xA
+#HALTED: 0xAAAA
 #LEDS:   0xfff9
 
 .ORG #COLD
@@ -25,17 +25,16 @@
 
 INT0_HANDLER:
 INT1_HANDLER:
-    MOVI R0,#HALTED
-    MOVL RA,#LEDS   ; Macro-assembled to MOVI RB,0xf9 MOVL RA,0xff.RB
+    LD   R0,#HALTED
+    LD   RA,#LEDS 
     ST   (RA),R0
     HALT
 
+
 COLD_BOOT:
-    MOVL RA,#LEDS
-    MOV  R1,RA
-    MOVL RA,0xffff ; Delay count
-    MOV  R2,RA
-    MOVI R0, 0x05
+    LD   R1,#LEDS
+    LD   R2,0xffff ; Delay count
+    LD   R0,0xc183 ; Alternating LED pattern
 
  BLINK:
     MOV R3,R2
