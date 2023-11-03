@@ -204,7 +204,7 @@ always @(*) begin
 			// Address from the register
 			ADDR_BUSX = `ADDR_BUSX_ALUB_DATA;
 			// Before the adder
-			ALUA_SRCX = `ALUA_SRCX_TWO;
+			ALUA_SRCX = BYTE_OP ? `ALUA_SRCX_ONE : `ALUA_SRCX_TWO;
 			// write the address back to PortB
 			WR_B = 1;
 			// Operation is +2
@@ -215,7 +215,7 @@ always @(*) begin
 			// Address from the ALU
 			ADDR_BUSX = `ADDR_BUSX_ALU_R;
 			// After the adder
-			ALUA_SRCX = `ALUA_SRCX_MINUS_TWO;
+			ALUA_SRCX = BYTE_OP ? `ALUA_SRCX_ONE : `ALUA_SRCX_TWO;
 			// write the address back to PortB
 			WR_B = 1;
 			// Operation is -2

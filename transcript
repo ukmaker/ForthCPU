@@ -1,8 +1,12 @@
 # Reading pref.tcl
 # do {C:/Users/Duncan/git/ForthCPU/impl1/test/blinkTestbench/blinkTestbench.mdo}
 # Loading project blinkTestbench
+# Compile of UART.v was successful.
+# Compile of constants.v was successful.
+# Compile of rom.v was successful.
+# 3 compiles, 0 failed with no errors.
 # vsim -L work -L pmi_work -L ovi_machxo3l blinkTests 
-# Start time: 19:00:50 on Nov 02,2023
+# Start time: 15:35:26 on Nov 03,2023
 # //  ModelSim - Lattice FPGA Edition 2020.3 Oct 14 2020
 # //
 # //  Copyright 1991-2020 Mentor Graphics Corporation
@@ -42,7 +46,7 @@
 # Loading work.mcuResources
 # Loading work.memoryMapper
 # Loading work.rom
-# Loading ovi_machxo3l.ROM64X1A
+# Loading ovi_machxo3l.ROM128X1A
 # Loading work.RAM
 # Loading ovi_machxo3l.INV
 # Loading ovi_machxo3l.AND2
@@ -55,8 +59,21 @@
 # Loading work.interruptMaskRegister
 # Loading ovi_machxo3l.UDFDL5E_UDP_X
 # .main_pane.wave.interior.cs.body.pw.wf
-run 10us
 run 100us
+add wave -position end  sim:/blinkTests/mcuInst/coreInst/registerFileInst/regs/DataInA
+add wave -position end  sim:/blinkTests/mcuInst/coreInst/registerFileInst/regs/DataInB
+add wave -position end  sim:/blinkTests/mcuInst/coreInst/registerFileInst/regs/AddressA
+add wave -position end  sim:/blinkTests/mcuInst/coreInst/registerFileInst/regs/AddressB
+add wave -position end  sim:/blinkTests/mcuInst/coreInst/registerFileInst/regs/WrA
+add wave -position end  sim:/blinkTests/mcuInst/coreInst/registerFileInst/regs/WrB
+restart  ; run 10us
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+run 100us
+add wave -position end  sim:/blinkTests/mcuInst/coreInst/jumpGroupDecoderInst/JLF
+add wave -position 28  sim:/blinkTests/mcuInst/coreInst/jumpGroupDecoderInst/JPF
+add wave -position end  sim:/blinkTests/mcuInst/coreInst/jumpGroupDecoderInst/REGA_ADDRX
+add wave -position end  sim:/blinkTests/mcuInst/coreInst/jumpGroupDecoderInst/REGB_ADDRX
+restart ; run 100us
 # Compile of interruptMaskRegister.v was successful.
 # Compile of transmitter.v was successful.
 # Compile of receiver.v was successful.
@@ -70,12 +87,11 @@ run 100us
 # Compile of loadStoreGroupDecoder.v was successful.
 # Compile of aluGroupDecoder.v was successful.
 # Compile of interruptStateMachine.v was successful.
-# Compile of branchLogic.v was successful.
 # Compile of programCounter.v was successful.
 # Compile of busController.v was successful.
 # Compile of registerFile.v was successful.
 # Compile of aluBMux.v was successful.
-# Compile of aluAMux.v was successful with warnings.
+# Compile of aluAMux.v was successful.
 # Compile of alu.v was successful.
 # Compile of fullALU.v was successful.
 # Compile of instructionPhaseDecoder.v was successful.
@@ -83,11 +99,12 @@ run 100us
 # Compile of devBoard.v was successful.
 # Compile of mcu.v was successful.
 # Compile of blinkTest.v was successful.
+# Compile of branchLogic.v was successful.
 # Compile of constants.v was successful.
 # Compile of rom.v was successful.
 # Compile of registers.v was successful.
 # 29 compiles, 0 failed with no errors.
-restart
+restart  ; run 100us
 # ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
 # Loading work.blinkTests
 # Loading work.mcu
@@ -116,7 +133,7 @@ restart
 # Loading work.UART_RX
 # Loading work.UART_TX
 # Loading work.interruptMaskRegister
-run 100us
+# WARNING: No extended dataflow license exists
 # Compile of interruptMaskRegister.v was successful.
 # Compile of transmitter.v was successful.
 # Compile of receiver.v was successful.
@@ -130,12 +147,11 @@ run 100us
 # Compile of loadStoreGroupDecoder.v was successful.
 # Compile of aluGroupDecoder.v was successful.
 # Compile of interruptStateMachine.v was successful.
-# Compile of branchLogic.v was successful.
 # Compile of programCounter.v was successful.
 # Compile of busController.v was successful.
 # Compile of registerFile.v was successful.
 # Compile of aluBMux.v was successful.
-# Compile of aluAMux.v was successful with warnings.
+# Compile of aluAMux.v was successful.
 # Compile of alu.v was successful.
 # Compile of fullALU.v was successful.
 # Compile of instructionPhaseDecoder.v was successful.
@@ -143,11 +159,12 @@ run 100us
 # Compile of devBoard.v was successful.
 # Compile of mcu.v was successful.
 # Compile of blinkTest.v was successful.
+# Compile of branchLogic.v was successful.
 # Compile of constants.v was successful.
 # Compile of rom.v was successful.
 # Compile of registers.v was successful.
 # 29 compiles, 0 failed with no errors.
-restart
+restart ; run 100us
 # ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
 # Loading work.blinkTests
 # Loading work.mcu
@@ -176,79 +193,10 @@ restart
 # Loading work.UART_RX
 # Loading work.UART_TX
 # Loading work.interruptMaskRegister
-run 100us
-# Compile of interruptMaskRegister.v was successful.
-# Compile of transmitter.v was successful.
-# Compile of receiver.v was successful.
-# Compile of UART.v was successful.
-# Compile of RAM.v was successful.
-# Compile of memoryMapper.v was successful.
-# Compile of mcuResources.v was successful.
-# Compile of opxMultiplexer.v was successful.
-# Compile of generalGroupDecoder.v was successful.
-# Compile of jumpGroupDecoder.v was successful.
-# Compile of loadStoreGroupDecoder.v was successful.
-# Compile of aluGroupDecoder.v was successful.
-# Compile of interruptStateMachine.v was successful.
-# Compile of branchLogic.v was successful.
-# Compile of programCounter.v was successful.
-# Compile of busController.v was successful.
-# Compile of registerFile.v was successful.
-# Compile of aluBMux.v was successful.
-# Compile of aluAMux.v was successful with warnings.
-# Compile of alu.v was successful.
-# Compile of fullALU.v was successful.
-# Compile of instructionPhaseDecoder.v was successful.
-# Compile of core.v was successful.
-# Compile of devBoard.v was successful.
-# Compile of mcu.v was successful.
-# Compile of blinkTest.v was successful.
-# Compile of constants.v was successful.
-# Compile of rom.v was successful.
-# Compile of registers.v was successful.
-# 29 compiles, 0 failed with no errors.
-restart
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.blinkTests
-# Loading work.mcu
-# Loading work.devBoard
-# Loading work.core
-# Loading work.instructionPhaseDecoder
-# Loading work.fullALU
-# Loading work.alu
-# Loading work.aluAMux
-# Loading work.aluBMux
-# Loading work.registerFile
-# Loading work.registers
-# Loading work.busController
-# Loading work.programCounter
-# Loading work.interruptStateMachine
-# Loading work.aluGroupDecoder
-# Loading work.loadStoreGroupDecoder
-# Loading work.jumpGroupDecoder
-# Loading work.generalGroupDecoder
-# Loading work.opxMultiplexer
-# Loading work.mcuResources
-# Loading work.memoryMapper
-# Loading work.rom
-# Loading work.RAM
-# Loading work.UART
-# Loading work.UART_RX
-# Loading work.UART_TX
-# Loading work.interruptMaskRegister
-run 100us
-add wave -position end  sim:/blinkTests/mcuInst/coreInst/programCounterInst/PC_A_NEXT
-add wave -position end  sim:/blinkTests/mcuInst/coreInst/programCounterInst/PC_A
-add wave -position end  sim:/blinkTests/mcuInst/coreInst/programCounterInst/PC_BASEX
-add wave -position end  sim:/blinkTests/mcuInst/coreInst/programCounterInst/PC_OFFSETX
-add wave -position end  sim:/blinkTests/mcuInst/coreInst/programCounterInst/PC_LD_INT0X
-add wave -position end  sim:/blinkTests/mcuInst/coreInst/programCounterInst/PC_LD_INT1X
-restart
-run 4us
-add wave -position 6  sim:/blinkTests/mcuInst/mcuResourcesInst/ROMInst/Address
+add wave -position 8  sim:/blinkTests/mcuInst/mcuResourcesInst/UARTInst/DIN
+restart ; run 100us
 add wave -position 7  sim:/blinkTests/mcuInst/mcuResourcesInst/ROMInst/Q
-restart
-run 4us
+restart ; run 100us
 # Compile of interruptMaskRegister.v was successful.
 # Compile of transmitter.v was successful.
 # Compile of receiver.v was successful.
@@ -262,12 +210,11 @@ run 4us
 # Compile of loadStoreGroupDecoder.v was successful.
 # Compile of aluGroupDecoder.v was successful.
 # Compile of interruptStateMachine.v was successful.
-# Compile of branchLogic.v was successful.
 # Compile of programCounter.v was successful.
 # Compile of busController.v was successful.
 # Compile of registerFile.v was successful.
 # Compile of aluBMux.v was successful.
-# Compile of aluAMux.v was successful with warnings.
+# Compile of aluAMux.v was successful.
 # Compile of alu.v was successful.
 # Compile of fullALU.v was successful.
 # Compile of instructionPhaseDecoder.v was successful.
@@ -275,6 +222,249 @@ run 4us
 # Compile of devBoard.v was successful.
 # Compile of mcu.v was successful.
 # Compile of blinkTest.v was successful.
+# Compile of branchLogic.v was successful.
+# Compile of constants.v was successful.
+# Compile of rom.v was successful.
+# Compile of registers.v was successful.
+# 29 compiles, 0 failed with no errors.
+restart ; run 100us
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.blinkTests
+# Loading work.mcu
+# Loading work.devBoard
+# Loading work.core
+# Loading work.instructionPhaseDecoder
+# Loading work.fullALU
+# Loading work.alu
+# Loading work.aluAMux
+# Loading work.aluBMux
+# Loading work.registerFile
+# Loading work.registers
+# Loading work.busController
+# Loading work.programCounter
+# Loading work.interruptStateMachine
+# Loading work.aluGroupDecoder
+# Loading work.loadStoreGroupDecoder
+# Loading work.jumpGroupDecoder
+# Loading work.generalGroupDecoder
+# Loading work.opxMultiplexer
+# Loading work.mcuResources
+# Loading work.memoryMapper
+# Loading work.rom
+# Loading work.RAM
+# Loading work.UART
+# Loading work.UART_RX
+# Loading work.UART_TX
+# Loading work.interruptMaskRegister
+# Compile of interruptMaskRegister.v was successful.
+# Compile of transmitter.v was successful.
+# Compile of receiver.v was successful.
+# Compile of UART.v was successful.
+# Compile of RAM.v was successful.
+# Compile of memoryMapper.v was successful.
+# Compile of mcuResources.v was successful.
+# Compile of opxMultiplexer.v was successful.
+# Compile of generalGroupDecoder.v was successful.
+# Compile of jumpGroupDecoder.v was successful.
+# Compile of loadStoreGroupDecoder.v was successful.
+# Compile of aluGroupDecoder.v was successful.
+# Compile of interruptStateMachine.v was successful.
+# Compile of programCounter.v was successful.
+# Compile of busController.v was successful.
+# Compile of registerFile.v was successful.
+# Compile of aluBMux.v was successful.
+# Compile of aluAMux.v was successful.
+# Compile of alu.v was successful.
+# Compile of fullALU.v was successful.
+# Compile of instructionPhaseDecoder.v was successful.
+# Compile of core.v was successful.
+# Compile of devBoard.v was successful.
+# Compile of mcu.v was successful.
+# Compile of blinkTest.v was successful.
+# Compile of branchLogic.v was successful.
+# Compile of constants.v was successful.
+# Compile of rom.v was successful.
+# Compile of registers.v was successful.
+# 29 compiles, 0 failed with no errors.
+restart ; run 100us
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.blinkTests
+# Loading work.mcu
+# Loading work.devBoard
+# Loading work.core
+# Loading work.instructionPhaseDecoder
+# Loading work.fullALU
+# Loading work.alu
+# Loading work.aluAMux
+# Loading work.aluBMux
+# Loading work.registerFile
+# Loading work.registers
+# Loading work.busController
+# Loading work.programCounter
+# Loading work.interruptStateMachine
+# Loading work.aluGroupDecoder
+# Loading work.loadStoreGroupDecoder
+# Loading work.jumpGroupDecoder
+# Loading work.generalGroupDecoder
+# Loading work.opxMultiplexer
+# Loading work.mcuResources
+# Loading work.memoryMapper
+# Loading work.rom
+# Loading work.RAM
+# Loading work.UART
+# Loading work.UART_RX
+# Loading work.UART_TX
+# Loading work.interruptMaskRegister
+# Compile of interruptMaskRegister.v was successful.
+# Compile of transmitter.v was successful.
+# Compile of receiver.v was successful.
+# Compile of UART.v was successful.
+# Compile of RAM.v was successful.
+# Compile of memoryMapper.v was successful.
+# Compile of mcuResources.v was successful.
+# Compile of opxMultiplexer.v was successful.
+# Compile of generalGroupDecoder.v was successful.
+# Compile of jumpGroupDecoder.v was successful.
+# Compile of loadStoreGroupDecoder.v was successful.
+# Compile of aluGroupDecoder.v was successful.
+# Compile of interruptStateMachine.v was successful.
+# Compile of programCounter.v was successful.
+# Compile of busController.v was successful.
+# Compile of registerFile.v was successful.
+# Compile of aluBMux.v was successful.
+# Compile of aluAMux.v was successful.
+# Compile of alu.v was successful.
+# Compile of fullALU.v was successful.
+# Compile of instructionPhaseDecoder.v was successful.
+# Compile of core.v was successful.
+# Compile of devBoard.v was successful.
+# Compile of mcu.v was successful.
+# Compile of blinkTest.v was successful.
+# Compile of branchLogic.v was successful.
+# Compile of constants.v was successful.
+# Compile of rom.v was successful.
+# Compile of registers.v was successful.
+# 29 compiles, 0 failed with no errors.
+restart ; run 100us
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.blinkTests
+# Loading work.mcu
+# Loading work.devBoard
+# Loading work.core
+# Loading work.instructionPhaseDecoder
+# Loading work.fullALU
+# Loading work.alu
+# Loading work.aluAMux
+# Loading work.aluBMux
+# Loading work.registerFile
+# Loading work.registers
+# Loading work.busController
+# Loading work.programCounter
+# Loading work.interruptStateMachine
+# Loading work.aluGroupDecoder
+# Loading work.loadStoreGroupDecoder
+# Loading work.jumpGroupDecoder
+# Loading work.generalGroupDecoder
+# Loading work.opxMultiplexer
+# Loading work.mcuResources
+# Loading work.memoryMapper
+# Loading work.rom
+# Loading work.RAM
+# Loading work.UART
+# Loading work.UART_RX
+# Loading work.UART_TX
+# Loading work.interruptMaskRegister
+run 1ms
+# Compile of interruptMaskRegister.v was successful.
+# Compile of transmitter.v was successful.
+# Compile of receiver.v was successful.
+# Compile of UART.v was successful.
+# Compile of RAM.v was successful.
+# Compile of memoryMapper.v was successful.
+# Compile of mcuResources.v was successful.
+# Compile of opxMultiplexer.v was successful.
+# Compile of generalGroupDecoder.v was successful.
+# Compile of jumpGroupDecoder.v was successful.
+# Compile of loadStoreGroupDecoder.v was successful.
+# Compile of aluGroupDecoder.v was successful.
+# Compile of interruptStateMachine.v was successful.
+# Compile of programCounter.v was successful.
+# Compile of busController.v was successful.
+# Compile of registerFile.v was successful.
+# Compile of aluBMux.v was successful.
+# Compile of aluAMux.v was successful.
+# Compile of alu.v was successful.
+# Compile of fullALU.v was successful.
+# Compile of instructionPhaseDecoder.v was successful.
+# Compile of core.v was successful.
+# Compile of devBoard.v was successful.
+# Compile of mcu.v was successful.
+# Compile of blinkTest.v was successful.
+# Compile of branchLogic.v was successful.
+# Compile of constants.v was successful.
+# Compile of rom.v was successful.
+# Compile of registers.v was successful.
+# 29 compiles, 0 failed with no errors.
+resart ; run 100us
+# invalid command name "resart"
+
+restart ; run 100us
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.blinkTests
+# Loading work.mcu
+# Loading work.devBoard
+# Loading work.core
+# Loading work.instructionPhaseDecoder
+# Loading work.fullALU
+# Loading work.alu
+# Loading work.aluAMux
+# Loading work.aluBMux
+# Loading work.registerFile
+# Loading work.registers
+# Loading work.busController
+# Loading work.programCounter
+# Loading work.interruptStateMachine
+# Loading work.aluGroupDecoder
+# Loading work.loadStoreGroupDecoder
+# Loading work.jumpGroupDecoder
+# Loading work.generalGroupDecoder
+# Loading work.opxMultiplexer
+# Loading work.mcuResources
+# Loading work.memoryMapper
+# Loading work.rom
+# Loading work.RAM
+# Loading work.UART
+# Loading work.UART_RX
+# Loading work.UART_TX
+# Loading work.interruptMaskRegister
+run 1ms
+run 1ms
+# Compile of interruptMaskRegister.v was successful.
+# Compile of transmitter.v was successful.
+# Compile of receiver.v was successful.
+# Compile of UART.v was successful.
+# Compile of RAM.v was successful.
+# Compile of memoryMapper.v was successful.
+# Compile of mcuResources.v was successful.
+# Compile of opxMultiplexer.v was successful.
+# Compile of generalGroupDecoder.v was successful.
+# Compile of jumpGroupDecoder.v was successful.
+# Compile of loadStoreGroupDecoder.v was successful.
+# Compile of aluGroupDecoder.v was successful.
+# Compile of interruptStateMachine.v was successful.
+# Compile of programCounter.v was successful.
+# Compile of busController.v was successful.
+# Compile of registerFile.v was successful.
+# Compile of aluBMux.v was successful.
+# Compile of aluAMux.v was successful.
+# Compile of alu.v was successful.
+# Compile of fullALU.v was successful.
+# Compile of instructionPhaseDecoder.v was successful.
+# Compile of core.v was successful.
+# Compile of devBoard.v was successful.
+# Compile of mcu.v was successful.
+# Compile of blinkTest.v was successful.
+# Compile of branchLogic.v was successful.
 # Compile of constants.v was successful.
 # Compile of rom.v was successful.
 # Compile of registers.v was successful.
@@ -308,7 +498,7 @@ restart
 # Loading work.UART_RX
 # Loading work.UART_TX
 # Loading work.interruptMaskRegister
-run 4us
+run 2ms
 # Compile of interruptMaskRegister.v was successful.
 # Compile of transmitter.v was successful.
 # Compile of receiver.v was successful.
@@ -322,12 +512,11 @@ run 4us
 # Compile of loadStoreGroupDecoder.v was successful.
 # Compile of aluGroupDecoder.v was successful.
 # Compile of interruptStateMachine.v was successful.
-# Compile of branchLogic.v was successful.
 # Compile of programCounter.v was successful.
 # Compile of busController.v was successful.
 # Compile of registerFile.v was successful.
 # Compile of aluBMux.v was successful.
-# Compile of aluAMux.v was successful with warnings.
+# Compile of aluAMux.v was successful.
 # Compile of alu.v was successful.
 # Compile of fullALU.v was successful.
 # Compile of instructionPhaseDecoder.v was successful.
@@ -335,6 +524,7 @@ run 4us
 # Compile of devBoard.v was successful.
 # Compile of mcu.v was successful.
 # Compile of blinkTest.v was successful.
+# Compile of branchLogic.v was successful.
 # Compile of constants.v was successful.
 # Compile of rom.v was successful.
 # Compile of registers.v was successful.
@@ -368,265 +558,7 @@ restart
 # Loading work.UART_RX
 # Loading work.UART_TX
 # Loading work.interruptMaskRegister
-run 4us
-add wave -position 10  sim:/blinkTests/mcuInst/coreInst/instructionPhaseDecoderInst/INSTRUCTION
-add wave -position 10  sim:/blinkTests/mcuInst/coreInst/instructionPhaseDecoderInst/DIN
-restart
-run 4us
-add wave -position 12  sim:/blinkTests/mcuInst/coreInst/jumpGroupDecoderInst/ADDR_BUSX
-restart
-run 4us
-add wave -position 13  sim:/blinkTests/mcuInst/coreInst/opxMultiplexerInst/JMP_ADDR_BUSX
-add wave -position 14  sim:/blinkTests/mcuInst/coreInst/opxMultiplexerInst/ADDR_BUSX
-add wave -position 15  sim:/blinkTests/mcuInst/coreInst/opxMultiplexerInst/PC_BASEX
-add wave -position 16  sim:/blinkTests/mcuInst/coreInst/opxMultiplexerInst/PC_OFFSETX
-restart
-run 4us
-# Compile of interruptMaskRegister.v was successful.
-# Compile of transmitter.v was successful.
-# Compile of receiver.v was successful.
-# Compile of UART.v was successful.
-# Compile of RAM.v was successful.
-# Compile of memoryMapper.v was successful.
-# Compile of mcuResources.v was successful.
-# Compile of opxMultiplexer.v was successful.
-# Compile of generalGroupDecoder.v was successful.
-# Compile of jumpGroupDecoder.v was successful.
-# Compile of loadStoreGroupDecoder.v was successful.
-# Compile of aluGroupDecoder.v was successful.
-# Compile of interruptStateMachine.v was successful.
-# Compile of branchLogic.v was successful.
-# Compile of programCounter.v was successful.
-# Compile of busController.v was successful.
-# Compile of registerFile.v was successful.
-# Compile of aluBMux.v was successful.
-# Compile of aluAMux.v was successful with warnings.
-# Compile of alu.v was successful.
-# Compile of fullALU.v was successful.
-# Compile of instructionPhaseDecoder.v was successful.
-# Compile of core.v was successful.
-# Compile of devBoard.v was successful.
-# Compile of mcu.v was successful.
-# Compile of blinkTest.v was successful.
-# Compile of constants.v was successful.
-# Compile of rom.v was successful.
-# Compile of registers.v was successful.
-# 29 compiles, 0 failed with no errors.
-restart
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.blinkTests
-# Loading work.mcu
-# Loading work.devBoard
-# Loading work.core
-# Loading work.instructionPhaseDecoder
-# Loading work.fullALU
-# Loading work.alu
-# Loading work.aluAMux
-# Loading work.aluBMux
-# Loading work.registerFile
-# Loading work.registers
-# Loading work.busController
-# Loading work.programCounter
-# Loading work.interruptStateMachine
-# Loading work.aluGroupDecoder
-# Loading work.loadStoreGroupDecoder
-# Loading work.jumpGroupDecoder
-# Loading work.generalGroupDecoder
-# Loading work.opxMultiplexer
-# Loading work.mcuResources
-# Loading work.memoryMapper
-# Loading work.rom
-# Loading work.RAM
-# Loading work.UART
-# Loading work.UART_RX
-# Loading work.UART_TX
-# Loading work.interruptMaskRegister
-run 4us
-# Compile of interruptMaskRegister.v was successful.
-# Compile of transmitter.v was successful.
-# Compile of receiver.v was successful.
-# Compile of UART.v was successful.
-# Compile of RAM.v was successful.
-# Compile of memoryMapper.v was successful.
-# Compile of mcuResources.v was successful.
-# Compile of opxMultiplexer.v was successful.
-# Compile of generalGroupDecoder.v was successful.
-# Compile of jumpGroupDecoder.v was successful.
-# Compile of loadStoreGroupDecoder.v was successful.
-# Compile of aluGroupDecoder.v was successful.
-# Compile of interruptStateMachine.v was successful.
-# Compile of branchLogic.v was successful.
-# Compile of programCounter.v was successful.
-# Compile of busController.v was successful.
-# Compile of registerFile.v was successful.
-# Compile of aluBMux.v was successful.
-# Compile of aluAMux.v was successful with warnings.
-# Compile of alu.v was successful.
-# Compile of fullALU.v was successful.
-# Compile of instructionPhaseDecoder.v was successful.
-# Compile of core.v was successful.
-# Compile of devBoard.v was successful.
-# Compile of mcu.v was successful.
-# Compile of blinkTest.v was successful.
-# Compile of constants.v was successful.
-# Compile of rom.v was successful.
-# Compile of registers.v was successful.
-# 29 compiles, 0 failed with no errors.
-restart
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.blinkTests
-# Loading work.mcu
-# Loading work.devBoard
-# Loading work.core
-# Loading work.instructionPhaseDecoder
-# Loading work.fullALU
-# Loading work.alu
-# Loading work.aluAMux
-# Loading work.aluBMux
-# Loading work.registerFile
-# Loading work.registers
-# Loading work.busController
-# Loading work.programCounter
-# Loading work.interruptStateMachine
-# Loading work.aluGroupDecoder
-# Loading work.loadStoreGroupDecoder
-# Loading work.jumpGroupDecoder
-# Loading work.generalGroupDecoder
-# Loading work.opxMultiplexer
-# Loading work.mcuResources
-# Loading work.memoryMapper
-# Loading work.rom
-# Loading work.RAM
-# Loading work.UART
-# Loading work.UART_RX
-# Loading work.UART_TX
-# Loading work.interruptMaskRegister
-run 4us
-# Compile of interruptMaskRegister.v was successful.
-# Compile of transmitter.v was successful.
-# Compile of receiver.v was successful.
-# Compile of UART.v was successful.
-# Compile of RAM.v was successful.
-# Compile of memoryMapper.v was successful.
-# Compile of mcuResources.v was successful.
-# Compile of opxMultiplexer.v was successful.
-# Compile of generalGroupDecoder.v was successful.
-# Compile of jumpGroupDecoder.v was successful.
-# Compile of loadStoreGroupDecoder.v was successful.
-# Compile of aluGroupDecoder.v was successful.
-# Compile of interruptStateMachine.v was successful.
-# Compile of branchLogic.v was successful.
-# Compile of programCounter.v was successful.
-# Compile of busController.v was successful.
-# Compile of registerFile.v was successful.
-# Compile of aluBMux.v was successful.
-# Compile of aluAMux.v was successful with warnings.
-# Compile of alu.v was successful.
-# Compile of fullALU.v was successful.
-# Compile of instructionPhaseDecoder.v was successful.
-# Compile of core.v was successful.
-# Compile of devBoard.v was successful.
-# Compile of mcu.v was successful.
-# Compile of blinkTest.v was successful.
-# Compile of constants.v was successful.
-# Compile of rom.v was successful.
-# Compile of registers.v was successful.
-# 29 compiles, 0 failed with no errors.
-restart
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.blinkTests
-# Loading work.mcu
-# Loading work.devBoard
-# Loading work.core
-# Loading work.instructionPhaseDecoder
-# Loading work.fullALU
-# Loading work.alu
-# Loading work.aluAMux
-# Loading work.aluBMux
-# Loading work.registerFile
-# Loading work.registers
-# Loading work.busController
-# Loading work.programCounter
-# Loading work.interruptStateMachine
-# Loading work.aluGroupDecoder
-# Loading work.loadStoreGroupDecoder
-# Loading work.jumpGroupDecoder
-# Loading work.generalGroupDecoder
-# Loading work.opxMultiplexer
-# Loading work.mcuResources
-# Loading work.memoryMapper
-# Loading work.rom
-# Loading work.RAM
-# Loading work.UART
-# Loading work.UART_RX
-# Loading work.UART_TX
-# Loading work.interruptMaskRegister
-run 4us
-# Compile of interruptMaskRegister.v was successful.
-# Compile of transmitter.v was successful.
-# Compile of receiver.v was successful.
-# Compile of UART.v was successful.
-# Compile of RAM.v was successful.
-# Compile of memoryMapper.v was successful.
-# Compile of mcuResources.v was successful.
-# Compile of opxMultiplexer.v was successful.
-# Compile of generalGroupDecoder.v was successful.
-# Compile of jumpGroupDecoder.v was successful.
-# Compile of loadStoreGroupDecoder.v was successful.
-# Compile of aluGroupDecoder.v was successful.
-# Compile of interruptStateMachine.v was successful.
-# Compile of branchLogic.v was successful.
-# Compile of programCounter.v was successful.
-# Compile of busController.v was successful.
-# Compile of registerFile.v was successful.
-# Compile of aluBMux.v was successful.
-# Compile of aluAMux.v was successful with warnings.
-# Compile of alu.v was successful.
-# Compile of fullALU.v was successful.
-# Compile of instructionPhaseDecoder.v was successful.
-# Compile of core.v was successful.
-# Compile of devBoard.v was successful.
-# Compile of mcu.v was successful.
-# Compile of blinkTest.v was successful.
-# Compile of constants.v was successful.
-# Compile of rom.v was successful.
-# Compile of registers.v was successful.
-# 29 compiles, 0 failed with no errors.
-restart
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.blinkTests
-# Loading work.mcu
-# Loading work.devBoard
-# Loading work.core
-# Loading work.instructionPhaseDecoder
-# Loading work.fullALU
-# Loading work.alu
-# Loading work.aluAMux
-# Loading work.aluBMux
-# Loading work.registerFile
-# Loading work.registers
-# Loading work.busController
-# Loading work.programCounter
-# Loading work.interruptStateMachine
-# Loading work.aluGroupDecoder
-# Loading work.loadStoreGroupDecoder
-# Loading work.jumpGroupDecoder
-# Loading work.generalGroupDecoder
-# Loading work.opxMultiplexer
-# Loading work.mcuResources
-# Loading work.memoryMapper
-# Loading work.rom
-# Loading work.RAM
-# Loading work.UART
-# Loading work.UART_RX
-# Loading work.UART_TX
-# Loading work.interruptMaskRegister
-run 4us
 run 100us
-add wave -position 12  sim:/blinkTests/mcuInst/coreInst/jumpGroupDecoderInst/RDX
-restart
-run 4us
-run 10us
 # Compile of interruptMaskRegister.v was successful.
 # Compile of transmitter.v was successful.
 # Compile of receiver.v was successful.
@@ -640,12 +572,11 @@ run 10us
 # Compile of loadStoreGroupDecoder.v was successful.
 # Compile of aluGroupDecoder.v was successful.
 # Compile of interruptStateMachine.v was successful.
-# Compile of branchLogic.v was successful.
 # Compile of programCounter.v was successful.
 # Compile of busController.v was successful.
 # Compile of registerFile.v was successful.
 # Compile of aluBMux.v was successful.
-# Compile of aluAMux.v was successful with warnings.
+# Compile of aluAMux.v was successful.
 # Compile of alu.v was successful.
 # Compile of fullALU.v was successful.
 # Compile of instructionPhaseDecoder.v was successful.
@@ -653,67 +584,7 @@ run 10us
 # Compile of devBoard.v was successful.
 # Compile of mcu.v was successful.
 # Compile of blinkTest.v was successful.
-# Compile of constants.v was successful.
-# Compile of rom.v was successful.
-# Compile of registers.v was successful.
-# 29 compiles, 0 failed with no errors.
-run 4us
-restart
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.blinkTests
-# Loading work.mcu
-# Loading work.devBoard
-# Loading work.core
-# Loading work.instructionPhaseDecoder
-# Loading work.fullALU
-# Loading work.alu
-# Loading work.aluAMux
-# Loading work.aluBMux
-# Loading work.registerFile
-# Loading work.registers
-# Loading work.busController
-# Loading work.programCounter
-# Loading work.interruptStateMachine
-# Loading work.aluGroupDecoder
-# Loading work.loadStoreGroupDecoder
-# Loading work.jumpGroupDecoder
-# Loading work.generalGroupDecoder
-# Loading work.opxMultiplexer
-# Loading work.mcuResources
-# Loading work.memoryMapper
-# Loading work.rom
-# Loading work.RAM
-# Loading work.UART
-# Loading work.UART_RX
-# Loading work.UART_TX
-# Loading work.interruptMaskRegister
-run 10us
-# Compile of interruptMaskRegister.v was successful.
-# Compile of transmitter.v was successful.
-# Compile of receiver.v was successful.
-# Compile of UART.v was successful.
-# Compile of RAM.v was successful.
-# Compile of memoryMapper.v was successful.
-# Compile of mcuResources.v was successful.
-# Compile of opxMultiplexer.v was successful.
-# Compile of generalGroupDecoder.v was successful.
-# Compile of jumpGroupDecoder.v was successful.
-# Compile of loadStoreGroupDecoder.v was successful.
-# Compile of aluGroupDecoder.v was successful.
-# Compile of interruptStateMachine.v was successful.
 # Compile of branchLogic.v was successful.
-# Compile of programCounter.v was successful.
-# Compile of busController.v was successful.
-# Compile of registerFile.v was successful.
-# Compile of aluBMux.v was successful.
-# Compile of aluAMux.v was successful with warnings.
-# Compile of alu.v was successful.
-# Compile of fullALU.v was successful.
-# Compile of instructionPhaseDecoder.v was successful.
-# Compile of core.v was successful.
-# Compile of devBoard.v was successful.
-# Compile of mcu.v was successful.
-# Compile of blinkTest.v was successful.
 # Compile of constants.v was successful.
 # Compile of rom.v was successful.
 # Compile of registers.v was successful.
@@ -747,16 +618,7 @@ restart
 # Loading work.UART_RX
 # Loading work.UART_TX
 # Loading work.interruptMaskRegister
-run 10us
-add wave -position 18  sim:/blinkTests/mcuInst/coreInst/fullALUInst/CC_ZERO
-add wave -position 19  sim:/blinkTests/mcuInst/coreInst/fullALUInst/CC_Z
-restart
-run 10us
-add wave -position 20  sim:/blinkTests/mcuInst/coreInst/jumpGroupDecoderInst/CC_APPLY
-add wave -position 21  sim:/blinkTests/mcuInst/coreInst/jumpGroupDecoderInst/CC_INVERTX
-restart
-run 4us
-run 6us
+run 100us
 # Compile of interruptMaskRegister.v was successful.
 # Compile of transmitter.v was successful.
 # Compile of receiver.v was successful.
@@ -770,12 +632,11 @@ run 6us
 # Compile of loadStoreGroupDecoder.v was successful.
 # Compile of aluGroupDecoder.v was successful.
 # Compile of interruptStateMachine.v was successful.
-# Compile of branchLogic.v was successful.
 # Compile of programCounter.v was successful.
 # Compile of busController.v was successful.
 # Compile of registerFile.v was successful.
 # Compile of aluBMux.v was successful.
-# Compile of aluAMux.v was successful with warnings.
+# Compile of aluAMux.v was successful.
 # Compile of alu.v was successful.
 # Compile of fullALU.v was successful.
 # Compile of instructionPhaseDecoder.v was successful.
@@ -783,6 +644,7 @@ run 6us
 # Compile of devBoard.v was successful.
 # Compile of mcu.v was successful.
 # Compile of blinkTest.v was successful.
+# Compile of branchLogic.v was successful.
 # Compile of constants.v was successful.
 # Compile of rom.v was successful.
 # Compile of registers.v was successful.
@@ -816,126 +678,6 @@ restart
 # Loading work.UART_RX
 # Loading work.UART_TX
 # Loading work.interruptMaskRegister
-run 10us
-# Compile of interruptMaskRegister.v was successful.
-# Compile of transmitter.v was successful.
-# Compile of receiver.v was successful.
-# Compile of UART.v was successful.
-# Compile of RAM.v was successful.
-# Compile of memoryMapper.v was successful.
-# Compile of mcuResources.v was successful.
-# Compile of opxMultiplexer.v was successful.
-# Compile of generalGroupDecoder.v was successful.
-# Compile of jumpGroupDecoder.v was successful.
-# Compile of loadStoreGroupDecoder.v was successful.
-# Compile of aluGroupDecoder.v was successful.
-# Compile of interruptStateMachine.v was successful.
-# Compile of branchLogic.v was successful.
-# Compile of programCounter.v was successful.
-# Compile of busController.v was successful.
-# Compile of registerFile.v was successful.
-# Compile of aluBMux.v was successful.
-# Compile of aluAMux.v was successful with warnings.
-# Compile of alu.v was successful.
-# Compile of fullALU.v was successful.
-# Compile of instructionPhaseDecoder.v was successful.
-# Compile of core.v was successful.
-# Compile of devBoard.v was successful.
-# Compile of mcu.v was successful.
-# Compile of blinkTest.v was successful.
-# Compile of constants.v was successful.
-# Compile of rom.v was successful.
-# Compile of registers.v was successful.
-# 29 compiles, 0 failed with no errors.
-restart
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.blinkTests
-# Loading work.mcu
-# Loading work.devBoard
-# Loading work.core
-# Loading work.instructionPhaseDecoder
-# Loading work.fullALU
-# Loading work.alu
-# Loading work.aluAMux
-# Loading work.aluBMux
-# Loading work.registerFile
-# Loading work.registers
-# Loading work.busController
-# Loading work.programCounter
-# Loading work.interruptStateMachine
-# Loading work.aluGroupDecoder
-# Loading work.loadStoreGroupDecoder
-# Loading work.jumpGroupDecoder
-# Loading work.generalGroupDecoder
-# Loading work.opxMultiplexer
-# Loading work.mcuResources
-# Loading work.memoryMapper
-# Loading work.rom
-# Loading work.RAM
-# Loading work.UART
-# Loading work.UART_RX
-# Loading work.UART_TX
-# Loading work.interruptMaskRegister
-run 10us
-# Compile of interruptMaskRegister.v was successful.
-# Compile of transmitter.v was successful.
-# Compile of receiver.v was successful.
-# Compile of UART.v was successful.
-# Compile of RAM.v was successful.
-# Compile of memoryMapper.v was successful.
-# Compile of mcuResources.v was successful.
-# Compile of opxMultiplexer.v was successful.
-# Compile of generalGroupDecoder.v was successful.
-# Compile of jumpGroupDecoder.v was successful.
-# Compile of loadStoreGroupDecoder.v was successful.
-# Compile of aluGroupDecoder.v was successful.
-# Compile of interruptStateMachine.v was successful.
-# Compile of branchLogic.v was successful.
-# Compile of programCounter.v was successful.
-# Compile of busController.v was successful.
-# Compile of registerFile.v was successful.
-# Compile of aluBMux.v was successful.
-# Compile of aluAMux.v was successful with warnings.
-# Compile of alu.v was successful.
-# Compile of fullALU.v was successful.
-# Compile of instructionPhaseDecoder.v was successful.
-# Compile of core.v was successful.
-# Compile of devBoard.v was successful.
-# Compile of mcu.v was successful.
-# Compile of blinkTest.v was successful.
-# Compile of constants.v was successful.
-# Compile of rom.v was successful.
-# Compile of registers.v was successful.
-# 29 compiles, 0 failed with no errors.
-restart
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.blinkTests
-# Loading work.mcu
-# Loading work.devBoard
-# Loading work.core
-# Loading work.instructionPhaseDecoder
-# Loading work.fullALU
-# Loading work.alu
-# Loading work.aluAMux
-# Loading work.aluBMux
-# Loading work.registerFile
-# Loading work.registers
-# Loading work.busController
-# Loading work.programCounter
-# Loading work.interruptStateMachine
-# Loading work.aluGroupDecoder
-# Loading work.loadStoreGroupDecoder
-# Loading work.jumpGroupDecoder
-# Loading work.generalGroupDecoder
-# Loading work.opxMultiplexer
-# Loading work.mcuResources
-# Loading work.memoryMapper
-# Loading work.rom
-# Loading work.RAM
-# Loading work.UART
-# Loading work.UART_RX
-# Loading work.UART_TX
-# Loading work.interruptMaskRegister
-run 10us
-# End time: 21:15:33 on Nov 02,2023, Elapsed time: 2:14:43
+run 100us
+# End time: 18:43:21 on Nov 03,2023, Elapsed time: 3:07:55
 # Errors: 0, Warnings: 1

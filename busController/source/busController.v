@@ -43,13 +43,13 @@ module busController(
 );
 
 reg  [15:0] DOUT_W;
-wire [15:0] REGA_DOUT_L;
+wire [15:0] DOUT_L;
 
-assign REGA_DOUT_L = {REGA_DOUT[7:0],8'h00};
+assign DOUT_L = {DOUT_W[7:0], 8'h00};
 
 always @(*) begin
 	HIGH_BYTEX = BYTEX & ADDR_BUF[0];
-	DOUT_W = HIGH_BYTEX ? REGA_DOUT_L : REGA_DOUT;
+	DOUT_BUF   = HIGH_BYTEX ? DOUT_L : DOUT_W;
 end
 
 always @(*) begin
@@ -63,8 +63,8 @@ end
 	
 always @(*) begin
 	case(DATA_BUSX)
-		`DATA_BUSX_REGA_DOUT:  DOUT_BUF = DOUT_W;
-		default:               DOUT_BUF = ALU_R;
+		`DATA_BUSX_REGA_DOUT:  DOUT_W = REGA_DOUT;
+		default:               DOUT_W = ALU_R;
 	endcase
 end
 

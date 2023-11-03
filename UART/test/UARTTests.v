@@ -108,16 +108,25 @@ initial begin
 	#4400
 	// Now the data should be available in the receiver
 	// start by checking for the flag in the status register
+	// Expect RXI=1 , TXC=1 (no transmit from this instance yet, so still 
+	// at 1 after reset)
 	ADDR = 2'b00;
 	RD1 = 1;
 	`TICKTOCK;
-	`assert("STATUS", 16'h0001, DOUT1)
+	`assert("STATUS", 16'h000d, DOUT1)
 	RD1 = 0;
 	`TICKTOCK;
 	ADDR = 2'b01;
 	RD1 = 1;
 	`TICKTOCK;
 	`assert("DATA", 16'h00cd, DOUT1)
+	RD1 = 0;
+	`TICKTOCK;
+	// Re-read the status register and check that the RXI has been cleared
+	ADDR = 2'b00;
+	RD1 = 1;
+	`TICKTOCK;
+	`assert("STATUS", `UART_STATUS_TX_COMPLETE, DOUT1)
 	RD1 = 0;
 	`TICKTOCK;
 

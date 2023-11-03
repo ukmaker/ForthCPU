@@ -55,6 +55,7 @@ module jumpGroupDecoder(
 	/**
 	* Register file control
 	**/
+	output reg[1:0] REGA_DINX,
 	output reg[1:0] REGA_ADDRX,
 	output reg[2:0] REGB_ADDRX,
 	output reg REGA_EN,
@@ -158,6 +159,7 @@ end
 always @(*) begin
 	
 	ALUB_SRCX  = `ALUB_SRCX_REG_B;
+	REGA_DINX  = `REGA_DINX_HERE;
 	REGA_ADDRX = `REGA_ADDRX_RL;
 	REGB_ADDRX = `REGB_ADDRX_ARGB;
 	REGA_EN    = 0;

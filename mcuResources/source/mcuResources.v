@@ -91,7 +91,7 @@ memoryMapper memoryMapperInst(
 );
 
 rom ROMInst(
-	.Address(ADDR[5:0]),
+	.Address({ADDR[6:1], 1'b0}),
 	.Q(DIN_ROM)
 );
 
@@ -101,7 +101,7 @@ RAM RAMInst(
 	.Reset(RESET),
 	.ByteEn({BE1,BE0}),
 	.WE(WR_RAM),
-	.Address(ADDR[12:0]),
+	.Address({ADDR[12:1], 1'b0}),
 	.Data(CPU_DOUT),
 	.Q(DIN_RAM)
 );

@@ -13,7 +13,7 @@ Setup and Hold Report
 
 --------------------------------------------------------------------------------
 Lattice TRACE Report - Setup, Version Diamond (64-bit) 3.12.1.454
-Thu Nov 02 22:01:27 2023
+Fri Nov 03 17:48:54 2023
 
 Copyright (c) 1991-1994 by NeoCAD Inc. All rights reserved.
 Copyright (c) 1995 AT&T Corp.   All rights reserved.
@@ -30,7 +30,6 @@ Device,speed:    LCMXO3L-6900C,5
 Report level:    verbose report, limited to 10 items per preference
 --------------------------------------------------------------------------------
 
-2 potential circuit loops found in timing analysis.
 BLOCK ASYNCPATHS
 BLOCK RESETPATHS
 --------------------------------------------------------------------------------
@@ -43,1152 +42,894 @@ Preference: FREQUENCY PORT "PIN_CLK_X1" 12.000000 MHz ;
 --------------------------------------------------------------------------------
 
 
-Passed: The following path meets requirements by 22.615ns
-
- Logical Details:  Cell type  Pin type       Cell/ASIC name  (clock net +/-)
-
-   Source:         FF         Q              coreInst/instructionPhaseDecoderInst/INSTRUCTION_14_rep1  (from PIN_CLK_X1_c +)
-   Destination:    FF         Data in        coreInst/programCounterInst/PC_A[13]  (to PIN_CLK_X1_c +)
-
-   Delay:              60.568ns  (29.1% logic, 70.9% route), 37 logic levels.
-
- Constraint Details:
-
-     60.568ns physical path delay coreInst/SLICE_977 to coreInst/programCounterInst/SLICE_356 meets
-     83.333ns delay constraint less
-      0.000ns skew and
-      0.150ns DIN_SET requirement (totaling 83.183ns) by 22.615ns
-
- Physical Path Details:
-
-      Data path coreInst/SLICE_977 to coreInst/programCounterInst/SLICE_356:
-
-   Name    Fanout   Delay (ns)          Site               Resource
-REG_DEL     ---     0.409    R16C25C.CLK to     R16C25C.Q0 coreInst/SLICE_977 (from PIN_CLK_X1_c)
-ROUTE        11     3.261     R16C25C.Q0 to     R12C27A.D0 coreInst/INSTRUCTION_14_rep1
-CTOF_DEL    ---     0.452     R12C27A.D0 to     R12C27A.F0 coreInst/SLICE_727
-ROUTE        48     2.579     R12C27A.F0 to     R15C20B.D1 coreInst/ALUB_SRCX[2]
-CTOF_DEL    ---     0.452     R15C20B.D1 to     R15C20B.F1 coreInst/SLICE_739
-ROUTE        38     4.599     R15C20B.F1 to      R9C26B.B0 coreInst/ALUB_DATA[4]
-CTOF_DEL    ---     0.452      R9C26B.B0 to      R9C26B.F0 coreInst/fullALUInst/aluInst/SLICE_994
-ROUTE         1     1.324      R9C26B.F0 to     R11C23C.A1 coreInst/fullALUInst/aluInst/un3_tmp_0_14_1
-CTOF_DEL    ---     0.452     R11C23C.A1 to     R11C23C.F1 coreInst/fullALUInst/aluInst/SLICE_852
-ROUTE        35     2.132     R11C23C.F1 to      R8C24C.A0 coreInst/fullALUInst/aluInst/un3_tmp_0_14_4
-CTOF_DEL    ---     0.452      R8C24C.A0 to      R8C24C.F0 coreInst/fullALUInst/aluInst/SLICE_862
-ROUTE         5     1.936      R8C24C.F0 to     R10C24D.B1 coreInst/fullALUInst/aluInst/un3_tmp[11]
-CTOF_DEL    ---     0.452     R10C24D.B1 to     R10C24D.F1 coreInst/fullALUInst/aluInst/SLICE_796
-ROUTE         1     0.659     R10C24D.F1 to     R10C24B.C1 coreInst/fullALUInst/aluInst/sex_2_2
-CTOF_DEL    ---     0.452     R10C24B.C1 to     R10C24B.F1 coreInst/fullALUInst/aluInst/SLICE_794
-ROUTE         1     0.678     R10C24B.F1 to     R11C24B.C0 coreInst/fullALUInst/aluInst/sex_2_9
-CTOF_DEL    ---     0.452     R11C24B.C0 to     R11C24B.F0 coreInst/fullALUInst/aluInst/SLICE_834
-ROUTE        16     1.657     R11C24B.F0 to     R11C20C.B0 coreInst/fullALUInst/aluInst/sex_2
-CTOF_DEL    ---     0.452     R11C20C.B0 to     R11C20C.F0 coreInst/fullALUInst/aluInst/SLICE_828
-ROUTE         1     0.873     R11C20C.F0 to     R11C22B.A0 coreInst/fullALUInst/aluInst/N_243
-CTOF_DEL    ---     0.452     R11C22B.A0 to     R11C22B.F0 coreInst/fullALUInst/aluInst/SLICE_827
-ROUTE         1     0.851     R11C22B.F0 to     R10C22C.A1 coreInst/fullALUInst/aluInst/N_259
-CTOOFX_DEL  ---     0.661     R10C22C.A1 to   R10C22C.OFX0 coreInst/fullALUInst/aluInst/RESULT_15[2]/SLICE_618
-ROUTE         3     1.730   R10C22C.OFX0 to     R18C21A.A1 coreInst.fullALUInst.aluInst.N_291
-CTOF_DEL    ---     0.452     R18C21A.A1 to     R18C21A.F1 coreInst/SLICE_922
-ROUTE         4     3.159     R18C21A.F1 to     R15C17C.C1 coreInst/ALU_R[2]
-CTOOFX_DEL  ---     0.661     R15C17C.C1 to   R15C17C.OFX0 coreInst/busControllerInst/ADDR_BUF_3[2]/SLICE_513
-ROUTE        57     1.334   R15C17C.OFX0 to     R18C16A.D0 ADDR_BUF[2]
-CTOF_DEL    ---     0.452     R18C16A.D0 to     R18C16A.F0 mcuResourcesInst/memoryMapperInst/SLICE_721
-ROUTE         1     0.579     R18C16A.F0 to     R18C16A.A1 mcuResourcesInst/memoryMapperInst/g0_18_1
-CTOF_DEL    ---     0.452     R18C16A.A1 to     R18C16A.F1 mcuResourcesInst/memoryMapperInst/SLICE_721
-ROUTE         3     0.691     R18C16A.F1 to     R18C18D.C0 mcuResourcesInst.memoryMapperInst.INT_MAP_0_a2_2
-CTOF_DEL    ---     0.452     R18C18D.C0 to     R18C18D.F0 SLICE_655
-ROUTE        26     2.145     R18C18D.F0 to     R17C27D.B1 mcuResourcesInst.memoryMapperInst.CPU_DIN_sn_N_6
-CTOOFX_DEL  ---     0.661     R17C27D.B1 to   R17C27D.OFX0 SLICE_301
-ROUTE         4     1.070   R17C27D.OFX0 to     R17C20C.D1 CPU_DIN[11]
-CTOF_DEL    ---     0.452     R17C20C.D1 to     R17C20C.F1 coreInst/SLICE_296
-ROUTE         1     0.882     R17C20C.F1 to     R17C19C.B1 coreInst/registerFileInst/N_23
-CTOOFX_DEL  ---     0.661     R17C19C.B1 to   R17C19C.OFX0 coreInst/registerFileInst/regs/registers_0_0_1_RNO_4/SLICE_516
-ROUTE         1     1.324   R17C19C.OFX0 to     R16C16B.A1 coreInst/registerFileInst/regs/registers_0_0_1_RNO_4
-CTOOFX_DEL  ---     0.661     R16C16B.A1 to   R16C16B.OFX0 SLICE_647
-ROUTE         1     0.000   R16C16B.OFX0 to    R16C16A.FXA mcuResourcesInst/ROMInst/mem_0_2_0_f5a
-FXTOOFX_DE  ---     0.223    R16C16A.FXA to   R16C16A.OFX1 mcuResourcesInst/ROMInst/SLICE_648
-ROUTE         2     0.911   R16C16A.OFX1 to     R17C16B.B0 mcuResourcesInst/DIN_ROM[2]
-CTOOFX_DEL  ---     0.661     R17C16B.B0 to   R17C16B.OFX0 mcuResourcesInst/memoryMapperInst/CPU_DIN_3[2]/SLICE_498
-ROUTE         3     1.675   R17C16B.OFX0 to     R18C18C.B1 mcuResourcesInst/memoryMapperInst/N_73
-CTOF_DEL    ---     0.452     R18C18C.B1 to     R18C18C.F1 SLICE_312
-ROUTE         1     0.384     R18C18C.F1 to     R18C18C.C0 mcuResourcesInst/memoryMapperInst/g0_12_1
-CTOF_DEL    ---     0.452     R18C18C.C0 to     R18C18C.F0 SLICE_312
-ROUTE         2     0.392     R18C18C.F0 to     R18C19A.C0 CPU_DIN[2]
-CTOOFX_DEL  ---     0.661     R18C19A.C0 to   R18C19A.OFX0 coreInst/registerFileInst/regs/registers_0_0_1_RNO_3/SLICE_515
-ROUTE         1     1.057   R18C19A.OFX0 to     R16C17C.C1 coreInst/registerFileInst/regs/registers_0_0_1_RNO_3
-CTOOFX_DEL  ---     0.661     R16C17C.C1 to   R16C17C.OFX0 SLICE_646
-ROUTE         1     0.000   R16C17C.OFX0 to    R16C17C.FXB mcuResourcesInst/ROMInst/mem_0_3_1_f5b
-FXTOOFX_DE  ---     0.223    R16C17C.FXB to   R16C17C.OFX1 SLICE_646
-ROUTE         1     0.904   R16C17C.OFX1 to     R17C17D.B0 mcuResourcesInst/DIN_ROM[3]
-CTOF_DEL    ---     0.452     R17C17D.B0 to     R17C17D.F0 SLICE_698
-ROUTE         1     1.057     R17C17D.F0 to     R18C19D.C1 mcuResourcesInst/memoryMapperInst/N_39
-CTOOFX_DEL  ---     0.661     R18C19D.C1 to   R18C19D.OFX0 SLICE_313
-ROUTE         4     1.231   R18C19D.OFX0 to     R16C19C.B0 CPU_DIN[3]
-C0TOFCO_DE  ---     0.905     R16C19C.B0 to    R16C19C.FCO coreInst/programCounterInst/SLICE_70
-ROUTE         1     0.000    R16C19C.FCO to    R16C19D.FCI coreInst/programCounterInst/PC_A_NEXT_cry_4
-FCITOFCO_D  ---     0.146    R16C19D.FCI to    R16C19D.FCO coreInst/programCounterInst/SLICE_69
-ROUTE         1     0.000    R16C19D.FCO to    R16C20A.FCI coreInst/programCounterInst/PC_A_NEXT_cry_6
-FCITOFCO_D  ---     0.146    R16C20A.FCI to    R16C20A.FCO coreInst/programCounterInst/SLICE_68
-ROUTE         1     0.000    R16C20A.FCO to    R16C20B.FCI coreInst/programCounterInst/PC_A_NEXT_cry_8
-FCITOFCO_D  ---     0.146    R16C20B.FCI to    R16C20B.FCO coreInst/programCounterInst/SLICE_67
-ROUTE         1     0.000    R16C20B.FCO to    R16C20C.FCI coreInst/programCounterInst/PC_A_NEXT_cry_10
-FCITOFCO_D  ---     0.146    R16C20C.FCI to    R16C20C.FCO coreInst/programCounterInst/SLICE_66
-ROUTE         1     0.000    R16C20C.FCO to    R16C20D.FCI coreInst/programCounterInst/PC_A_NEXT_cry_12
-FCITOF0_DE  ---     0.517    R16C20D.FCI to     R16C20D.F0 coreInst/programCounterInst/SLICE_65
-ROUTE         5     1.887     R16C20D.F0 to     R15C19A.B0 coreInst/programCounterInst/PC_A_NEXT[13]
-CTOOFX_DEL  ---     0.661     R15C19A.B0 to   R15C19A.OFX0 coreInst/programCounterInst/SLICE_356
-ROUTE         1     0.000   R15C19A.OFX0 to    R15C19A.DI0 coreInst/programCounterInst/PC_A_3[13] (to PIN_CLK_X1_c)
-                  --------
-                   60.568   (29.1% logic, 70.9% route), 37 logic levels.
-
- Clock Skew Details: 
-
-      Source Clock Path PIN_CLK_X1 to coreInst/SLICE_977:
-
-   Name    Fanout   Delay (ns)          Site               Resource
-ROUTE       213     2.351       C8.PADDI to    R16C25C.CLK PIN_CLK_X1_c
-                  --------
-                    2.351   (0.0% logic, 100.0% route), 0 logic levels.
-
-      Destination Clock Path PIN_CLK_X1 to coreInst/programCounterInst/SLICE_356:
-
-   Name    Fanout   Delay (ns)          Site               Resource
-ROUTE       213     2.351       C8.PADDI to    R15C19A.CLK PIN_CLK_X1_c
-                  --------
-                    2.351   (0.0% logic, 100.0% route), 0 logic levels.
-
-
-Passed: The following path meets requirements by 22.615ns
-
- Logical Details:  Cell type  Pin type       Cell/ASIC name  (clock net +/-)
-
-   Source:         FF         Q              coreInst/instructionPhaseDecoderInst/INSTRUCTION_14_rep1  (from PIN_CLK_X1_c +)
-   Destination:    FF         Data in        coreInst/programCounterInst/PC_A[13]  (to PIN_CLK_X1_c +)
-
-   Delay:              60.568ns  (29.1% logic, 70.9% route), 37 logic levels.
-
- Constraint Details:
-
-     60.568ns physical path delay coreInst/SLICE_977 to coreInst/programCounterInst/SLICE_356 meets
-     83.333ns delay constraint less
-      0.000ns skew and
-      0.150ns DIN_SET requirement (totaling 83.183ns) by 22.615ns
-
- Physical Path Details:
-
-      Data path coreInst/SLICE_977 to coreInst/programCounterInst/SLICE_356:
-
-   Name    Fanout   Delay (ns)          Site               Resource
-REG_DEL     ---     0.409    R16C25C.CLK to     R16C25C.Q0 coreInst/SLICE_977 (from PIN_CLK_X1_c)
-ROUTE        11     3.261     R16C25C.Q0 to     R12C27A.D0 coreInst/INSTRUCTION_14_rep1
-CTOF_DEL    ---     0.452     R12C27A.D0 to     R12C27A.F0 coreInst/SLICE_727
-ROUTE        48     2.579     R12C27A.F0 to     R15C20B.D1 coreInst/ALUB_SRCX[2]
-CTOF_DEL    ---     0.452     R15C20B.D1 to     R15C20B.F1 coreInst/SLICE_739
-ROUTE        38     4.599     R15C20B.F1 to      R9C26B.B0 coreInst/ALUB_DATA[4]
-CTOF_DEL    ---     0.452      R9C26B.B0 to      R9C26B.F0 coreInst/fullALUInst/aluInst/SLICE_994
-ROUTE         1     1.324      R9C26B.F0 to     R11C23C.A1 coreInst/fullALUInst/aluInst/un3_tmp_0_14_1
-CTOF_DEL    ---     0.452     R11C23C.A1 to     R11C23C.F1 coreInst/fullALUInst/aluInst/SLICE_852
-ROUTE        35     2.132     R11C23C.F1 to      R8C24C.A0 coreInst/fullALUInst/aluInst/un3_tmp_0_14_4
-CTOF_DEL    ---     0.452      R8C24C.A0 to      R8C24C.F0 coreInst/fullALUInst/aluInst/SLICE_862
-ROUTE         5     1.936      R8C24C.F0 to     R10C24D.B1 coreInst/fullALUInst/aluInst/un3_tmp[11]
-CTOF_DEL    ---     0.452     R10C24D.B1 to     R10C24D.F1 coreInst/fullALUInst/aluInst/SLICE_796
-ROUTE         1     0.659     R10C24D.F1 to     R10C24B.C1 coreInst/fullALUInst/aluInst/sex_2_2
-CTOF_DEL    ---     0.452     R10C24B.C1 to     R10C24B.F1 coreInst/fullALUInst/aluInst/SLICE_794
-ROUTE         1     0.678     R10C24B.F1 to     R11C24B.C0 coreInst/fullALUInst/aluInst/sex_2_9
-CTOF_DEL    ---     0.452     R11C24B.C0 to     R11C24B.F0 coreInst/fullALUInst/aluInst/SLICE_834
-ROUTE        16     1.657     R11C24B.F0 to     R11C20C.B0 coreInst/fullALUInst/aluInst/sex_2
-CTOF_DEL    ---     0.452     R11C20C.B0 to     R11C20C.F0 coreInst/fullALUInst/aluInst/SLICE_828
-ROUTE         1     0.873     R11C20C.F0 to     R11C22B.A0 coreInst/fullALUInst/aluInst/N_243
-CTOF_DEL    ---     0.452     R11C22B.A0 to     R11C22B.F0 coreInst/fullALUInst/aluInst/SLICE_827
-ROUTE         1     0.851     R11C22B.F0 to     R10C22C.A1 coreInst/fullALUInst/aluInst/N_259
-CTOOFX_DEL  ---     0.661     R10C22C.A1 to   R10C22C.OFX0 coreInst/fullALUInst/aluInst/RESULT_15[2]/SLICE_618
-ROUTE         3     1.730   R10C22C.OFX0 to     R18C21A.A1 coreInst.fullALUInst.aluInst.N_291
-CTOF_DEL    ---     0.452     R18C21A.A1 to     R18C21A.F1 coreInst/SLICE_922
-ROUTE         4     3.159     R18C21A.F1 to     R15C17C.C1 coreInst/ALU_R[2]
-CTOOFX_DEL  ---     0.661     R15C17C.C1 to   R15C17C.OFX0 coreInst/busControllerInst/ADDR_BUF_3[2]/SLICE_513
-ROUTE        57     1.334   R15C17C.OFX0 to     R18C16A.D0 ADDR_BUF[2]
-CTOF_DEL    ---     0.452     R18C16A.D0 to     R18C16A.F0 mcuResourcesInst/memoryMapperInst/SLICE_721
-ROUTE         1     0.579     R18C16A.F0 to     R18C16A.A1 mcuResourcesInst/memoryMapperInst/g0_18_1
-CTOF_DEL    ---     0.452     R18C16A.A1 to     R18C16A.F1 mcuResourcesInst/memoryMapperInst/SLICE_721
-ROUTE         3     0.691     R18C16A.F1 to     R18C18D.C0 mcuResourcesInst.memoryMapperInst.INT_MAP_0_a2_2
-CTOF_DEL    ---     0.452     R18C18D.C0 to     R18C18D.F0 SLICE_655
-ROUTE        26     2.145     R18C18D.F0 to     R17C27D.B0 mcuResourcesInst.memoryMapperInst.CPU_DIN_sn_N_6
-CTOOFX_DEL  ---     0.661     R17C27D.B0 to   R17C27D.OFX0 SLICE_301
-ROUTE         4     1.070   R17C27D.OFX0 to     R17C20C.D1 CPU_DIN[11]
-CTOF_DEL    ---     0.452     R17C20C.D1 to     R17C20C.F1 coreInst/SLICE_296
-ROUTE         1     0.882     R17C20C.F1 to     R17C19C.B1 coreInst/registerFileInst/N_23
-CTOOFX_DEL  ---     0.661     R17C19C.B1 to   R17C19C.OFX0 coreInst/registerFileInst/regs/registers_0_0_1_RNO_4/SLICE_516
-ROUTE         1     1.324   R17C19C.OFX0 to     R16C16B.A1 coreInst/registerFileInst/regs/registers_0_0_1_RNO_4
-CTOOFX_DEL  ---     0.661     R16C16B.A1 to   R16C16B.OFX0 SLICE_647
-ROUTE         1     0.000   R16C16B.OFX0 to    R16C16A.FXA mcuResourcesInst/ROMInst/mem_0_2_0_f5a
-FXTOOFX_DE  ---     0.223    R16C16A.FXA to   R16C16A.OFX1 mcuResourcesInst/ROMInst/SLICE_648
-ROUTE         2     0.911   R16C16A.OFX1 to     R17C16B.B0 mcuResourcesInst/DIN_ROM[2]
-CTOOFX_DEL  ---     0.661     R17C16B.B0 to   R17C16B.OFX0 mcuResourcesInst/memoryMapperInst/CPU_DIN_3[2]/SLICE_498
-ROUTE         3     1.675   R17C16B.OFX0 to     R18C18C.B1 mcuResourcesInst/memoryMapperInst/N_73
-CTOF_DEL    ---     0.452     R18C18C.B1 to     R18C18C.F1 SLICE_312
-ROUTE         1     0.384     R18C18C.F1 to     R18C18C.C0 mcuResourcesInst/memoryMapperInst/g0_12_1
-CTOF_DEL    ---     0.452     R18C18C.C0 to     R18C18C.F0 SLICE_312
-ROUTE         2     0.392     R18C18C.F0 to     R18C19A.C0 CPU_DIN[2]
-CTOOFX_DEL  ---     0.661     R18C19A.C0 to   R18C19A.OFX0 coreInst/registerFileInst/regs/registers_0_0_1_RNO_3/SLICE_515
-ROUTE         1     1.057   R18C19A.OFX0 to     R16C17C.C1 coreInst/registerFileInst/regs/registers_0_0_1_RNO_3
-CTOOFX_DEL  ---     0.661     R16C17C.C1 to   R16C17C.OFX0 SLICE_646
-ROUTE         1     0.000   R16C17C.OFX0 to    R16C17C.FXB mcuResourcesInst/ROMInst/mem_0_3_1_f5b
-FXTOOFX_DE  ---     0.223    R16C17C.FXB to   R16C17C.OFX1 SLICE_646
-ROUTE         1     0.904   R16C17C.OFX1 to     R17C17D.B0 mcuResourcesInst/DIN_ROM[3]
-CTOF_DEL    ---     0.452     R17C17D.B0 to     R17C17D.F0 SLICE_698
-ROUTE         1     1.057     R17C17D.F0 to     R18C19D.C1 mcuResourcesInst/memoryMapperInst/N_39
-CTOOFX_DEL  ---     0.661     R18C19D.C1 to   R18C19D.OFX0 SLICE_313
-ROUTE         4     1.231   R18C19D.OFX0 to     R16C19C.B0 CPU_DIN[3]
-C0TOFCO_DE  ---     0.905     R16C19C.B0 to    R16C19C.FCO coreInst/programCounterInst/SLICE_70
-ROUTE         1     0.000    R16C19C.FCO to    R16C19D.FCI coreInst/programCounterInst/PC_A_NEXT_cry_4
-FCITOFCO_D  ---     0.146    R16C19D.FCI to    R16C19D.FCO coreInst/programCounterInst/SLICE_69
-ROUTE         1     0.000    R16C19D.FCO to    R16C20A.FCI coreInst/programCounterInst/PC_A_NEXT_cry_6
-FCITOFCO_D  ---     0.146    R16C20A.FCI to    R16C20A.FCO coreInst/programCounterInst/SLICE_68
-ROUTE         1     0.000    R16C20A.FCO to    R16C20B.FCI coreInst/programCounterInst/PC_A_NEXT_cry_8
-FCITOFCO_D  ---     0.146    R16C20B.FCI to    R16C20B.FCO coreInst/programCounterInst/SLICE_67
-ROUTE         1     0.000    R16C20B.FCO to    R16C20C.FCI coreInst/programCounterInst/PC_A_NEXT_cry_10
-FCITOFCO_D  ---     0.146    R16C20C.FCI to    R16C20C.FCO coreInst/programCounterInst/SLICE_66
-ROUTE         1     0.000    R16C20C.FCO to    R16C20D.FCI coreInst/programCounterInst/PC_A_NEXT_cry_12
-FCITOF0_DE  ---     0.517    R16C20D.FCI to     R16C20D.F0 coreInst/programCounterInst/SLICE_65
-ROUTE         5     1.887     R16C20D.F0 to     R15C19A.B0 coreInst/programCounterInst/PC_A_NEXT[13]
-CTOOFX_DEL  ---     0.661     R15C19A.B0 to   R15C19A.OFX0 coreInst/programCounterInst/SLICE_356
-ROUTE         1     0.000   R15C19A.OFX0 to    R15C19A.DI0 coreInst/programCounterInst/PC_A_3[13] (to PIN_CLK_X1_c)
-                  --------
-                   60.568   (29.1% logic, 70.9% route), 37 logic levels.
-
- Clock Skew Details: 
-
-      Source Clock Path PIN_CLK_X1 to coreInst/SLICE_977:
-
-   Name    Fanout   Delay (ns)          Site               Resource
-ROUTE       213     2.351       C8.PADDI to    R16C25C.CLK PIN_CLK_X1_c
-                  --------
-                    2.351   (0.0% logic, 100.0% route), 0 logic levels.
-
-      Destination Clock Path PIN_CLK_X1 to coreInst/programCounterInst/SLICE_356:
-
-   Name    Fanout   Delay (ns)          Site               Resource
-ROUTE       213     2.351       C8.PADDI to    R15C19A.CLK PIN_CLK_X1_c
-                  --------
-                    2.351   (0.0% logic, 100.0% route), 0 logic levels.
-
-
-Passed: The following path meets requirements by 22.615ns
-
- Logical Details:  Cell type  Pin type       Cell/ASIC name  (clock net +/-)
-
-   Source:         FF         Q              coreInst/instructionPhaseDecoderInst/INSTRUCTION_14_rep1  (from PIN_CLK_X1_c +)
-   Destination:    FF         Data in        coreInst/programCounterInst/PC_A[13]  (to PIN_CLK_X1_c +)
-
-   Delay:              60.568ns  (29.1% logic, 70.9% route), 37 logic levels.
-
- Constraint Details:
-
-     60.568ns physical path delay coreInst/SLICE_977 to coreInst/programCounterInst/SLICE_356 meets
-     83.333ns delay constraint less
-      0.000ns skew and
-      0.150ns DIN_SET requirement (totaling 83.183ns) by 22.615ns
-
- Physical Path Details:
-
-      Data path coreInst/SLICE_977 to coreInst/programCounterInst/SLICE_356:
-
-   Name    Fanout   Delay (ns)          Site               Resource
-REG_DEL     ---     0.409    R16C25C.CLK to     R16C25C.Q0 coreInst/SLICE_977 (from PIN_CLK_X1_c)
-ROUTE        11     3.261     R16C25C.Q0 to     R12C27A.D0 coreInst/INSTRUCTION_14_rep1
-CTOF_DEL    ---     0.452     R12C27A.D0 to     R12C27A.F0 coreInst/SLICE_727
-ROUTE        48     2.579     R12C27A.F0 to     R15C20B.D1 coreInst/ALUB_SRCX[2]
-CTOF_DEL    ---     0.452     R15C20B.D1 to     R15C20B.F1 coreInst/SLICE_739
-ROUTE        38     4.599     R15C20B.F1 to      R9C26B.B0 coreInst/ALUB_DATA[4]
-CTOF_DEL    ---     0.452      R9C26B.B0 to      R9C26B.F0 coreInst/fullALUInst/aluInst/SLICE_994
-ROUTE         1     1.324      R9C26B.F0 to     R11C23C.A1 coreInst/fullALUInst/aluInst/un3_tmp_0_14_1
-CTOF_DEL    ---     0.452     R11C23C.A1 to     R11C23C.F1 coreInst/fullALUInst/aluInst/SLICE_852
-ROUTE        35     2.132     R11C23C.F1 to      R8C24C.A0 coreInst/fullALUInst/aluInst/un3_tmp_0_14_4
-CTOF_DEL    ---     0.452      R8C24C.A0 to      R8C24C.F0 coreInst/fullALUInst/aluInst/SLICE_862
-ROUTE         5     1.936      R8C24C.F0 to     R10C24D.B1 coreInst/fullALUInst/aluInst/un3_tmp[11]
-CTOF_DEL    ---     0.452     R10C24D.B1 to     R10C24D.F1 coreInst/fullALUInst/aluInst/SLICE_796
-ROUTE         1     0.659     R10C24D.F1 to     R10C24B.C1 coreInst/fullALUInst/aluInst/sex_2_2
-CTOF_DEL    ---     0.452     R10C24B.C1 to     R10C24B.F1 coreInst/fullALUInst/aluInst/SLICE_794
-ROUTE         1     0.678     R10C24B.F1 to     R11C24B.C0 coreInst/fullALUInst/aluInst/sex_2_9
-CTOF_DEL    ---     0.452     R11C24B.C0 to     R11C24B.F0 coreInst/fullALUInst/aluInst/SLICE_834
-ROUTE        16     1.657     R11C24B.F0 to     R11C20C.B0 coreInst/fullALUInst/aluInst/sex_2
-CTOF_DEL    ---     0.452     R11C20C.B0 to     R11C20C.F0 coreInst/fullALUInst/aluInst/SLICE_828
-ROUTE         1     0.873     R11C20C.F0 to     R11C22B.A0 coreInst/fullALUInst/aluInst/N_243
-CTOF_DEL    ---     0.452     R11C22B.A0 to     R11C22B.F0 coreInst/fullALUInst/aluInst/SLICE_827
-ROUTE         1     0.851     R11C22B.F0 to     R10C22C.A1 coreInst/fullALUInst/aluInst/N_259
-CTOOFX_DEL  ---     0.661     R10C22C.A1 to   R10C22C.OFX0 coreInst/fullALUInst/aluInst/RESULT_15[2]/SLICE_618
-ROUTE         3     1.730   R10C22C.OFX0 to     R18C21A.A1 coreInst.fullALUInst.aluInst.N_291
-CTOF_DEL    ---     0.452     R18C21A.A1 to     R18C21A.F1 coreInst/SLICE_922
-ROUTE         4     3.159     R18C21A.F1 to     R15C17C.C1 coreInst/ALU_R[2]
-CTOOFX_DEL  ---     0.661     R15C17C.C1 to   R15C17C.OFX0 coreInst/busControllerInst/ADDR_BUF_3[2]/SLICE_513
-ROUTE        57     1.334   R15C17C.OFX0 to     R18C16A.D0 ADDR_BUF[2]
-CTOF_DEL    ---     0.452     R18C16A.D0 to     R18C16A.F0 mcuResourcesInst/memoryMapperInst/SLICE_721
-ROUTE         1     0.579     R18C16A.F0 to     R18C16A.A1 mcuResourcesInst/memoryMapperInst/g0_18_1
-CTOF_DEL    ---     0.452     R18C16A.A1 to     R18C16A.F1 mcuResourcesInst/memoryMapperInst/SLICE_721
-ROUTE         3     0.691     R18C16A.F1 to     R18C18D.C0 mcuResourcesInst.memoryMapperInst.INT_MAP_0_a2_2
-CTOF_DEL    ---     0.452     R18C18D.C0 to     R18C18D.F0 SLICE_655
-ROUTE        26     2.145     R18C18D.F0 to     R17C27D.B0 mcuResourcesInst.memoryMapperInst.CPU_DIN_sn_N_6
-CTOOFX_DEL  ---     0.661     R17C27D.B0 to   R17C27D.OFX0 SLICE_301
-ROUTE         4     1.070   R17C27D.OFX0 to     R17C20C.D1 CPU_DIN[11]
-CTOF_DEL    ---     0.452     R17C20C.D1 to     R17C20C.F1 coreInst/SLICE_296
-ROUTE         1     0.882     R17C20C.F1 to     R17C19C.B1 coreInst/registerFileInst/N_23
-CTOOFX_DEL  ---     0.661     R17C19C.B1 to   R17C19C.OFX0 coreInst/registerFileInst/regs/registers_0_0_1_RNO_4/SLICE_516
-ROUTE         1     1.324   R17C19C.OFX0 to     R16C16B.A1 coreInst/registerFileInst/regs/registers_0_0_1_RNO_4
-CTOOFX_DEL  ---     0.661     R16C16B.A1 to   R16C16B.OFX0 SLICE_647
-ROUTE         1     0.000   R16C16B.OFX0 to    R16C16A.FXA mcuResourcesInst/ROMInst/mem_0_2_0_f5a
-FXTOOFX_DE  ---     0.223    R16C16A.FXA to   R16C16A.OFX1 mcuResourcesInst/ROMInst/SLICE_648
-ROUTE         2     0.911   R16C16A.OFX1 to     R17C16B.B0 mcuResourcesInst/DIN_ROM[2]
-CTOOFX_DEL  ---     0.661     R17C16B.B0 to   R17C16B.OFX0 mcuResourcesInst/memoryMapperInst/CPU_DIN_3[2]/SLICE_498
-ROUTE         3     1.675   R17C16B.OFX0 to     R18C18C.B1 mcuResourcesInst/memoryMapperInst/N_73
-CTOF_DEL    ---     0.452     R18C18C.B1 to     R18C18C.F1 SLICE_312
-ROUTE         1     0.384     R18C18C.F1 to     R18C18C.C0 mcuResourcesInst/memoryMapperInst/g0_12_1
-CTOF_DEL    ---     0.452     R18C18C.C0 to     R18C18C.F0 SLICE_312
-ROUTE         2     0.392     R18C18C.F0 to     R18C19A.C0 CPU_DIN[2]
-CTOOFX_DEL  ---     0.661     R18C19A.C0 to   R18C19A.OFX0 coreInst/registerFileInst/regs/registers_0_0_1_RNO_3/SLICE_515
-ROUTE         1     1.057   R18C19A.OFX0 to     R16C17C.C1 coreInst/registerFileInst/regs/registers_0_0_1_RNO_3
-CTOOFX_DEL  ---     0.661     R16C17C.C1 to   R16C17C.OFX0 SLICE_646
-ROUTE         1     0.000   R16C17C.OFX0 to    R16C17C.FXB mcuResourcesInst/ROMInst/mem_0_3_1_f5b
-FXTOOFX_DE  ---     0.223    R16C17C.FXB to   R16C17C.OFX1 SLICE_646
-ROUTE         1     0.904   R16C17C.OFX1 to     R17C17D.B0 mcuResourcesInst/DIN_ROM[3]
-CTOF_DEL    ---     0.452     R17C17D.B0 to     R17C17D.F0 SLICE_698
-ROUTE         1     1.057     R17C17D.F0 to     R18C19D.C1 mcuResourcesInst/memoryMapperInst/N_39
-CTOOFX_DEL  ---     0.661     R18C19D.C1 to   R18C19D.OFX0 SLICE_313
-ROUTE         4     1.231   R18C19D.OFX0 to     R16C19C.B0 CPU_DIN[3]
-C0TOFCO_DE  ---     0.905     R16C19C.B0 to    R16C19C.FCO coreInst/programCounterInst/SLICE_70
-ROUTE         1     0.000    R16C19C.FCO to    R16C19D.FCI coreInst/programCounterInst/PC_A_NEXT_cry_4
-FCITOFCO_D  ---     0.146    R16C19D.FCI to    R16C19D.FCO coreInst/programCounterInst/SLICE_69
-ROUTE         1     0.000    R16C19D.FCO to    R16C20A.FCI coreInst/programCounterInst/PC_A_NEXT_cry_6
-FCITOFCO_D  ---     0.146    R16C20A.FCI to    R16C20A.FCO coreInst/programCounterInst/SLICE_68
-ROUTE         1     0.000    R16C20A.FCO to    R16C20B.FCI coreInst/programCounterInst/PC_A_NEXT_cry_8
-FCITOFCO_D  ---     0.146    R16C20B.FCI to    R16C20B.FCO coreInst/programCounterInst/SLICE_67
-ROUTE         1     0.000    R16C20B.FCO to    R16C20C.FCI coreInst/programCounterInst/PC_A_NEXT_cry_10
-FCITOFCO_D  ---     0.146    R16C20C.FCI to    R16C20C.FCO coreInst/programCounterInst/SLICE_66
-ROUTE         1     0.000    R16C20C.FCO to    R16C20D.FCI coreInst/programCounterInst/PC_A_NEXT_cry_12
-FCITOF0_DE  ---     0.517    R16C20D.FCI to     R16C20D.F0 coreInst/programCounterInst/SLICE_65
-ROUTE         5     1.887     R16C20D.F0 to     R15C19A.B1 coreInst/programCounterInst/PC_A_NEXT[13]
-CTOOFX_DEL  ---     0.661     R15C19A.B1 to   R15C19A.OFX0 coreInst/programCounterInst/SLICE_356
-ROUTE         1     0.000   R15C19A.OFX0 to    R15C19A.DI0 coreInst/programCounterInst/PC_A_3[13] (to PIN_CLK_X1_c)
-                  --------
-                   60.568   (29.1% logic, 70.9% route), 37 logic levels.
-
- Clock Skew Details: 
-
-      Source Clock Path PIN_CLK_X1 to coreInst/SLICE_977:
-
-   Name    Fanout   Delay (ns)          Site               Resource
-ROUTE       213     2.351       C8.PADDI to    R16C25C.CLK PIN_CLK_X1_c
-                  --------
-                    2.351   (0.0% logic, 100.0% route), 0 logic levels.
-
-      Destination Clock Path PIN_CLK_X1 to coreInst/programCounterInst/SLICE_356:
-
-   Name    Fanout   Delay (ns)          Site               Resource
-ROUTE       213     2.351       C8.PADDI to    R15C19A.CLK PIN_CLK_X1_c
-                  --------
-                    2.351   (0.0% logic, 100.0% route), 0 logic levels.
-
-
-Passed: The following path meets requirements by 22.615ns
-
- Logical Details:  Cell type  Pin type       Cell/ASIC name  (clock net +/-)
-
-   Source:         FF         Q              coreInst/instructionPhaseDecoderInst/INSTRUCTION_14_rep1  (from PIN_CLK_X1_c +)
-   Destination:    FF         Data in        coreInst/programCounterInst/PC_A[13]  (to PIN_CLK_X1_c +)
-
-   Delay:              60.568ns  (29.1% logic, 70.9% route), 37 logic levels.
-
- Constraint Details:
-
-     60.568ns physical path delay coreInst/SLICE_977 to coreInst/programCounterInst/SLICE_356 meets
-     83.333ns delay constraint less
-      0.000ns skew and
-      0.150ns DIN_SET requirement (totaling 83.183ns) by 22.615ns
-
- Physical Path Details:
-
-      Data path coreInst/SLICE_977 to coreInst/programCounterInst/SLICE_356:
-
-   Name    Fanout   Delay (ns)          Site               Resource
-REG_DEL     ---     0.409    R16C25C.CLK to     R16C25C.Q0 coreInst/SLICE_977 (from PIN_CLK_X1_c)
-ROUTE        11     3.261     R16C25C.Q0 to     R12C27A.D0 coreInst/INSTRUCTION_14_rep1
-CTOF_DEL    ---     0.452     R12C27A.D0 to     R12C27A.F0 coreInst/SLICE_727
-ROUTE        48     2.579     R12C27A.F0 to     R15C20B.D1 coreInst/ALUB_SRCX[2]
-CTOF_DEL    ---     0.452     R15C20B.D1 to     R15C20B.F1 coreInst/SLICE_739
-ROUTE        38     4.599     R15C20B.F1 to      R9C26B.B0 coreInst/ALUB_DATA[4]
-CTOF_DEL    ---     0.452      R9C26B.B0 to      R9C26B.F0 coreInst/fullALUInst/aluInst/SLICE_994
-ROUTE         1     1.324      R9C26B.F0 to     R11C23C.A1 coreInst/fullALUInst/aluInst/un3_tmp_0_14_1
-CTOF_DEL    ---     0.452     R11C23C.A1 to     R11C23C.F1 coreInst/fullALUInst/aluInst/SLICE_852
-ROUTE        35     2.132     R11C23C.F1 to      R8C24C.A0 coreInst/fullALUInst/aluInst/un3_tmp_0_14_4
-CTOF_DEL    ---     0.452      R8C24C.A0 to      R8C24C.F0 coreInst/fullALUInst/aluInst/SLICE_862
-ROUTE         5     1.936      R8C24C.F0 to     R10C24D.B1 coreInst/fullALUInst/aluInst/un3_tmp[11]
-CTOF_DEL    ---     0.452     R10C24D.B1 to     R10C24D.F1 coreInst/fullALUInst/aluInst/SLICE_796
-ROUTE         1     0.659     R10C24D.F1 to     R10C24B.C1 coreInst/fullALUInst/aluInst/sex_2_2
-CTOF_DEL    ---     0.452     R10C24B.C1 to     R10C24B.F1 coreInst/fullALUInst/aluInst/SLICE_794
-ROUTE         1     0.678     R10C24B.F1 to     R11C24B.C0 coreInst/fullALUInst/aluInst/sex_2_9
-CTOF_DEL    ---     0.452     R11C24B.C0 to     R11C24B.F0 coreInst/fullALUInst/aluInst/SLICE_834
-ROUTE        16     1.657     R11C24B.F0 to     R11C20C.B0 coreInst/fullALUInst/aluInst/sex_2
-CTOF_DEL    ---     0.452     R11C20C.B0 to     R11C20C.F0 coreInst/fullALUInst/aluInst/SLICE_828
-ROUTE         1     0.873     R11C20C.F0 to     R11C22B.A0 coreInst/fullALUInst/aluInst/N_243
-CTOF_DEL    ---     0.452     R11C22B.A0 to     R11C22B.F0 coreInst/fullALUInst/aluInst/SLICE_827
-ROUTE         1     0.851     R11C22B.F0 to     R10C22C.A1 coreInst/fullALUInst/aluInst/N_259
-CTOOFX_DEL  ---     0.661     R10C22C.A1 to   R10C22C.OFX0 coreInst/fullALUInst/aluInst/RESULT_15[2]/SLICE_618
-ROUTE         3     1.730   R10C22C.OFX0 to     R18C21A.A1 coreInst.fullALUInst.aluInst.N_291
-CTOF_DEL    ---     0.452     R18C21A.A1 to     R18C21A.F1 coreInst/SLICE_922
-ROUTE         4     3.159     R18C21A.F1 to     R15C17C.C1 coreInst/ALU_R[2]
-CTOOFX_DEL  ---     0.661     R15C17C.C1 to   R15C17C.OFX0 coreInst/busControllerInst/ADDR_BUF_3[2]/SLICE_513
-ROUTE        57     1.334   R15C17C.OFX0 to     R18C16A.D0 ADDR_BUF[2]
-CTOF_DEL    ---     0.452     R18C16A.D0 to     R18C16A.F0 mcuResourcesInst/memoryMapperInst/SLICE_721
-ROUTE         1     0.579     R18C16A.F0 to     R18C16A.A1 mcuResourcesInst/memoryMapperInst/g0_18_1
-CTOF_DEL    ---     0.452     R18C16A.A1 to     R18C16A.F1 mcuResourcesInst/memoryMapperInst/SLICE_721
-ROUTE         3     0.691     R18C16A.F1 to     R18C18D.C0 mcuResourcesInst.memoryMapperInst.INT_MAP_0_a2_2
-CTOF_DEL    ---     0.452     R18C18D.C0 to     R18C18D.F0 SLICE_655
-ROUTE        26     2.145     R18C18D.F0 to     R17C27D.B1 mcuResourcesInst.memoryMapperInst.CPU_DIN_sn_N_6
-CTOOFX_DEL  ---     0.661     R17C27D.B1 to   R17C27D.OFX0 SLICE_301
-ROUTE         4     1.070   R17C27D.OFX0 to     R17C20C.D1 CPU_DIN[11]
-CTOF_DEL    ---     0.452     R17C20C.D1 to     R17C20C.F1 coreInst/SLICE_296
-ROUTE         1     0.882     R17C20C.F1 to     R17C19C.B1 coreInst/registerFileInst/N_23
-CTOOFX_DEL  ---     0.661     R17C19C.B1 to   R17C19C.OFX0 coreInst/registerFileInst/regs/registers_0_0_1_RNO_4/SLICE_516
-ROUTE         1     1.324   R17C19C.OFX0 to     R16C16B.A1 coreInst/registerFileInst/regs/registers_0_0_1_RNO_4
-CTOOFX_DEL  ---     0.661     R16C16B.A1 to   R16C16B.OFX0 SLICE_647
-ROUTE         1     0.000   R16C16B.OFX0 to    R16C16A.FXA mcuResourcesInst/ROMInst/mem_0_2_0_f5a
-FXTOOFX_DE  ---     0.223    R16C16A.FXA to   R16C16A.OFX1 mcuResourcesInst/ROMInst/SLICE_648
-ROUTE         2     0.911   R16C16A.OFX1 to     R17C16B.B0 mcuResourcesInst/DIN_ROM[2]
-CTOOFX_DEL  ---     0.661     R17C16B.B0 to   R17C16B.OFX0 mcuResourcesInst/memoryMapperInst/CPU_DIN_3[2]/SLICE_498
-ROUTE         3     1.675   R17C16B.OFX0 to     R18C18C.B1 mcuResourcesInst/memoryMapperInst/N_73
-CTOF_DEL    ---     0.452     R18C18C.B1 to     R18C18C.F1 SLICE_312
-ROUTE         1     0.384     R18C18C.F1 to     R18C18C.C0 mcuResourcesInst/memoryMapperInst/g0_12_1
-CTOF_DEL    ---     0.452     R18C18C.C0 to     R18C18C.F0 SLICE_312
-ROUTE         2     0.392     R18C18C.F0 to     R18C19A.C0 CPU_DIN[2]
-CTOOFX_DEL  ---     0.661     R18C19A.C0 to   R18C19A.OFX0 coreInst/registerFileInst/regs/registers_0_0_1_RNO_3/SLICE_515
-ROUTE         1     1.057   R18C19A.OFX0 to     R16C17C.C1 coreInst/registerFileInst/regs/registers_0_0_1_RNO_3
-CTOOFX_DEL  ---     0.661     R16C17C.C1 to   R16C17C.OFX0 SLICE_646
-ROUTE         1     0.000   R16C17C.OFX0 to    R16C17C.FXB mcuResourcesInst/ROMInst/mem_0_3_1_f5b
-FXTOOFX_DE  ---     0.223    R16C17C.FXB to   R16C17C.OFX1 SLICE_646
-ROUTE         1     0.904   R16C17C.OFX1 to     R17C17D.B0 mcuResourcesInst/DIN_ROM[3]
-CTOF_DEL    ---     0.452     R17C17D.B0 to     R17C17D.F0 SLICE_698
-ROUTE         1     1.057     R17C17D.F0 to     R18C19D.C1 mcuResourcesInst/memoryMapperInst/N_39
-CTOOFX_DEL  ---     0.661     R18C19D.C1 to   R18C19D.OFX0 SLICE_313
-ROUTE         4     1.231   R18C19D.OFX0 to     R16C19C.B0 CPU_DIN[3]
-C0TOFCO_DE  ---     0.905     R16C19C.B0 to    R16C19C.FCO coreInst/programCounterInst/SLICE_70
-ROUTE         1     0.000    R16C19C.FCO to    R16C19D.FCI coreInst/programCounterInst/PC_A_NEXT_cry_4
-FCITOFCO_D  ---     0.146    R16C19D.FCI to    R16C19D.FCO coreInst/programCounterInst/SLICE_69
-ROUTE         1     0.000    R16C19D.FCO to    R16C20A.FCI coreInst/programCounterInst/PC_A_NEXT_cry_6
-FCITOFCO_D  ---     0.146    R16C20A.FCI to    R16C20A.FCO coreInst/programCounterInst/SLICE_68
-ROUTE         1     0.000    R16C20A.FCO to    R16C20B.FCI coreInst/programCounterInst/PC_A_NEXT_cry_8
-FCITOFCO_D  ---     0.146    R16C20B.FCI to    R16C20B.FCO coreInst/programCounterInst/SLICE_67
-ROUTE         1     0.000    R16C20B.FCO to    R16C20C.FCI coreInst/programCounterInst/PC_A_NEXT_cry_10
-FCITOFCO_D  ---     0.146    R16C20C.FCI to    R16C20C.FCO coreInst/programCounterInst/SLICE_66
-ROUTE         1     0.000    R16C20C.FCO to    R16C20D.FCI coreInst/programCounterInst/PC_A_NEXT_cry_12
-FCITOF0_DE  ---     0.517    R16C20D.FCI to     R16C20D.F0 coreInst/programCounterInst/SLICE_65
-ROUTE         5     1.887     R16C20D.F0 to     R15C19A.B1 coreInst/programCounterInst/PC_A_NEXT[13]
-CTOOFX_DEL  ---     0.661     R15C19A.B1 to   R15C19A.OFX0 coreInst/programCounterInst/SLICE_356
-ROUTE         1     0.000   R15C19A.OFX0 to    R15C19A.DI0 coreInst/programCounterInst/PC_A_3[13] (to PIN_CLK_X1_c)
-                  --------
-                   60.568   (29.1% logic, 70.9% route), 37 logic levels.
-
- Clock Skew Details: 
-
-      Source Clock Path PIN_CLK_X1 to coreInst/SLICE_977:
-
-   Name    Fanout   Delay (ns)          Site               Resource
-ROUTE       213     2.351       C8.PADDI to    R16C25C.CLK PIN_CLK_X1_c
-                  --------
-                    2.351   (0.0% logic, 100.0% route), 0 logic levels.
-
-      Destination Clock Path PIN_CLK_X1 to coreInst/programCounterInst/SLICE_356:
-
-   Name    Fanout   Delay (ns)          Site               Resource
-ROUTE       213     2.351       C8.PADDI to    R15C19A.CLK PIN_CLK_X1_c
-                  --------
-                    2.351   (0.0% logic, 100.0% route), 0 logic levels.
-
-
-Passed: The following path meets requirements by 22.748ns
-
- Logical Details:  Cell type  Pin type       Cell/ASIC name  (clock net +/-)
-
-   Source:         FF         Q              coreInst/instructionPhaseDecoderInst/INSTRUCTION_15_rep1  (from PIN_CLK_X1_c +)
-   Destination:    FF         Data in        coreInst/programCounterInst/PC_A[13]  (to PIN_CLK_X1_c +)
-
-   Delay:              60.435ns  (29.1% logic, 70.9% route), 37 logic levels.
-
- Constraint Details:
-
-     60.435ns physical path delay coreInst/SLICE_977 to coreInst/programCounterInst/SLICE_356 meets
-     83.333ns delay constraint less
-      0.000ns skew and
-      0.150ns DIN_SET requirement (totaling 83.183ns) by 22.748ns
-
- Physical Path Details:
-
-      Data path coreInst/SLICE_977 to coreInst/programCounterInst/SLICE_356:
-
-   Name    Fanout   Delay (ns)          Site               Resource
-REG_DEL     ---     0.409    R16C25C.CLK to     R16C25C.Q1 coreInst/SLICE_977 (from PIN_CLK_X1_c)
-ROUTE        11     3.128     R16C25C.Q1 to     R12C27A.C0 coreInst/INSTRUCTION_15_rep1
-CTOF_DEL    ---     0.452     R12C27A.C0 to     R12C27A.F0 coreInst/SLICE_727
-ROUTE        48     2.579     R12C27A.F0 to     R15C20B.D1 coreInst/ALUB_SRCX[2]
-CTOF_DEL    ---     0.452     R15C20B.D1 to     R15C20B.F1 coreInst/SLICE_739
-ROUTE        38     4.599     R15C20B.F1 to      R9C26B.B0 coreInst/ALUB_DATA[4]
-CTOF_DEL    ---     0.452      R9C26B.B0 to      R9C26B.F0 coreInst/fullALUInst/aluInst/SLICE_994
-ROUTE         1     1.324      R9C26B.F0 to     R11C23C.A1 coreInst/fullALUInst/aluInst/un3_tmp_0_14_1
-CTOF_DEL    ---     0.452     R11C23C.A1 to     R11C23C.F1 coreInst/fullALUInst/aluInst/SLICE_852
-ROUTE        35     2.132     R11C23C.F1 to      R8C24C.A0 coreInst/fullALUInst/aluInst/un3_tmp_0_14_4
-CTOF_DEL    ---     0.452      R8C24C.A0 to      R8C24C.F0 coreInst/fullALUInst/aluInst/SLICE_862
-ROUTE         5     1.936      R8C24C.F0 to     R10C24D.B1 coreInst/fullALUInst/aluInst/un3_tmp[11]
-CTOF_DEL    ---     0.452     R10C24D.B1 to     R10C24D.F1 coreInst/fullALUInst/aluInst/SLICE_796
-ROUTE         1     0.659     R10C24D.F1 to     R10C24B.C1 coreInst/fullALUInst/aluInst/sex_2_2
-CTOF_DEL    ---     0.452     R10C24B.C1 to     R10C24B.F1 coreInst/fullALUInst/aluInst/SLICE_794
-ROUTE         1     0.678     R10C24B.F1 to     R11C24B.C0 coreInst/fullALUInst/aluInst/sex_2_9
-CTOF_DEL    ---     0.452     R11C24B.C0 to     R11C24B.F0 coreInst/fullALUInst/aluInst/SLICE_834
-ROUTE        16     1.657     R11C24B.F0 to     R11C20C.B0 coreInst/fullALUInst/aluInst/sex_2
-CTOF_DEL    ---     0.452     R11C20C.B0 to     R11C20C.F0 coreInst/fullALUInst/aluInst/SLICE_828
-ROUTE         1     0.873     R11C20C.F0 to     R11C22B.A0 coreInst/fullALUInst/aluInst/N_243
-CTOF_DEL    ---     0.452     R11C22B.A0 to     R11C22B.F0 coreInst/fullALUInst/aluInst/SLICE_827
-ROUTE         1     0.851     R11C22B.F0 to     R10C22C.A1 coreInst/fullALUInst/aluInst/N_259
-CTOOFX_DEL  ---     0.661     R10C22C.A1 to   R10C22C.OFX0 coreInst/fullALUInst/aluInst/RESULT_15[2]/SLICE_618
-ROUTE         3     1.730   R10C22C.OFX0 to     R18C21A.A1 coreInst.fullALUInst.aluInst.N_291
-CTOF_DEL    ---     0.452     R18C21A.A1 to     R18C21A.F1 coreInst/SLICE_922
-ROUTE         4     3.159     R18C21A.F1 to     R15C17C.C1 coreInst/ALU_R[2]
-CTOOFX_DEL  ---     0.661     R15C17C.C1 to   R15C17C.OFX0 coreInst/busControllerInst/ADDR_BUF_3[2]/SLICE_513
-ROUTE        57     1.334   R15C17C.OFX0 to     R18C16A.D0 ADDR_BUF[2]
-CTOF_DEL    ---     0.452     R18C16A.D0 to     R18C16A.F0 mcuResourcesInst/memoryMapperInst/SLICE_721
-ROUTE         1     0.579     R18C16A.F0 to     R18C16A.A1 mcuResourcesInst/memoryMapperInst/g0_18_1
-CTOF_DEL    ---     0.452     R18C16A.A1 to     R18C16A.F1 mcuResourcesInst/memoryMapperInst/SLICE_721
-ROUTE         3     0.691     R18C16A.F1 to     R18C18D.C0 mcuResourcesInst.memoryMapperInst.INT_MAP_0_a2_2
-CTOF_DEL    ---     0.452     R18C18D.C0 to     R18C18D.F0 SLICE_655
-ROUTE        26     2.145     R18C18D.F0 to     R17C27D.B1 mcuResourcesInst.memoryMapperInst.CPU_DIN_sn_N_6
-CTOOFX_DEL  ---     0.661     R17C27D.B1 to   R17C27D.OFX0 SLICE_301
-ROUTE         4     1.070   R17C27D.OFX0 to     R17C20C.D1 CPU_DIN[11]
-CTOF_DEL    ---     0.452     R17C20C.D1 to     R17C20C.F1 coreInst/SLICE_296
-ROUTE         1     0.882     R17C20C.F1 to     R17C19C.B1 coreInst/registerFileInst/N_23
-CTOOFX_DEL  ---     0.661     R17C19C.B1 to   R17C19C.OFX0 coreInst/registerFileInst/regs/registers_0_0_1_RNO_4/SLICE_516
-ROUTE         1     1.324   R17C19C.OFX0 to     R16C16B.A1 coreInst/registerFileInst/regs/registers_0_0_1_RNO_4
-CTOOFX_DEL  ---     0.661     R16C16B.A1 to   R16C16B.OFX0 SLICE_647
-ROUTE         1     0.000   R16C16B.OFX0 to    R16C16A.FXA mcuResourcesInst/ROMInst/mem_0_2_0_f5a
-FXTOOFX_DE  ---     0.223    R16C16A.FXA to   R16C16A.OFX1 mcuResourcesInst/ROMInst/SLICE_648
-ROUTE         2     0.911   R16C16A.OFX1 to     R17C16B.B0 mcuResourcesInst/DIN_ROM[2]
-CTOOFX_DEL  ---     0.661     R17C16B.B0 to   R17C16B.OFX0 mcuResourcesInst/memoryMapperInst/CPU_DIN_3[2]/SLICE_498
-ROUTE         3     1.675   R17C16B.OFX0 to     R18C18C.B1 mcuResourcesInst/memoryMapperInst/N_73
-CTOF_DEL    ---     0.452     R18C18C.B1 to     R18C18C.F1 SLICE_312
-ROUTE         1     0.384     R18C18C.F1 to     R18C18C.C0 mcuResourcesInst/memoryMapperInst/g0_12_1
-CTOF_DEL    ---     0.452     R18C18C.C0 to     R18C18C.F0 SLICE_312
-ROUTE         2     0.392     R18C18C.F0 to     R18C19A.C0 CPU_DIN[2]
-CTOOFX_DEL  ---     0.661     R18C19A.C0 to   R18C19A.OFX0 coreInst/registerFileInst/regs/registers_0_0_1_RNO_3/SLICE_515
-ROUTE         1     1.057   R18C19A.OFX0 to     R16C17C.C1 coreInst/registerFileInst/regs/registers_0_0_1_RNO_3
-CTOOFX_DEL  ---     0.661     R16C17C.C1 to   R16C17C.OFX0 SLICE_646
-ROUTE         1     0.000   R16C17C.OFX0 to    R16C17C.FXB mcuResourcesInst/ROMInst/mem_0_3_1_f5b
-FXTOOFX_DE  ---     0.223    R16C17C.FXB to   R16C17C.OFX1 SLICE_646
-ROUTE         1     0.904   R16C17C.OFX1 to     R17C17D.B0 mcuResourcesInst/DIN_ROM[3]
-CTOF_DEL    ---     0.452     R17C17D.B0 to     R17C17D.F0 SLICE_698
-ROUTE         1     1.057     R17C17D.F0 to     R18C19D.C1 mcuResourcesInst/memoryMapperInst/N_39
-CTOOFX_DEL  ---     0.661     R18C19D.C1 to   R18C19D.OFX0 SLICE_313
-ROUTE         4     1.231   R18C19D.OFX0 to     R16C19C.B0 CPU_DIN[3]
-C0TOFCO_DE  ---     0.905     R16C19C.B0 to    R16C19C.FCO coreInst/programCounterInst/SLICE_70
-ROUTE         1     0.000    R16C19C.FCO to    R16C19D.FCI coreInst/programCounterInst/PC_A_NEXT_cry_4
-FCITOFCO_D  ---     0.146    R16C19D.FCI to    R16C19D.FCO coreInst/programCounterInst/SLICE_69
-ROUTE         1     0.000    R16C19D.FCO to    R16C20A.FCI coreInst/programCounterInst/PC_A_NEXT_cry_6
-FCITOFCO_D  ---     0.146    R16C20A.FCI to    R16C20A.FCO coreInst/programCounterInst/SLICE_68
-ROUTE         1     0.000    R16C20A.FCO to    R16C20B.FCI coreInst/programCounterInst/PC_A_NEXT_cry_8
-FCITOFCO_D  ---     0.146    R16C20B.FCI to    R16C20B.FCO coreInst/programCounterInst/SLICE_67
-ROUTE         1     0.000    R16C20B.FCO to    R16C20C.FCI coreInst/programCounterInst/PC_A_NEXT_cry_10
-FCITOFCO_D  ---     0.146    R16C20C.FCI to    R16C20C.FCO coreInst/programCounterInst/SLICE_66
-ROUTE         1     0.000    R16C20C.FCO to    R16C20D.FCI coreInst/programCounterInst/PC_A_NEXT_cry_12
-FCITOF0_DE  ---     0.517    R16C20D.FCI to     R16C20D.F0 coreInst/programCounterInst/SLICE_65
-ROUTE         5     1.887     R16C20D.F0 to     R15C19A.B0 coreInst/programCounterInst/PC_A_NEXT[13]
-CTOOFX_DEL  ---     0.661     R15C19A.B0 to   R15C19A.OFX0 coreInst/programCounterInst/SLICE_356
-ROUTE         1     0.000   R15C19A.OFX0 to    R15C19A.DI0 coreInst/programCounterInst/PC_A_3[13] (to PIN_CLK_X1_c)
-                  --------
-                   60.435   (29.1% logic, 70.9% route), 37 logic levels.
-
- Clock Skew Details: 
-
-      Source Clock Path PIN_CLK_X1 to coreInst/SLICE_977:
-
-   Name    Fanout   Delay (ns)          Site               Resource
-ROUTE       213     2.351       C8.PADDI to    R16C25C.CLK PIN_CLK_X1_c
-                  --------
-                    2.351   (0.0% logic, 100.0% route), 0 logic levels.
-
-      Destination Clock Path PIN_CLK_X1 to coreInst/programCounterInst/SLICE_356:
-
-   Name    Fanout   Delay (ns)          Site               Resource
-ROUTE       213     2.351       C8.PADDI to    R15C19A.CLK PIN_CLK_X1_c
-                  --------
-                    2.351   (0.0% logic, 100.0% route), 0 logic levels.
-
-
-Passed: The following path meets requirements by 22.748ns
-
- Logical Details:  Cell type  Pin type       Cell/ASIC name  (clock net +/-)
-
-   Source:         FF         Q              coreInst/instructionPhaseDecoderInst/INSTRUCTION_15_rep1  (from PIN_CLK_X1_c +)
-   Destination:    FF         Data in        coreInst/programCounterInst/PC_A[13]  (to PIN_CLK_X1_c +)
-
-   Delay:              60.435ns  (29.1% logic, 70.9% route), 37 logic levels.
-
- Constraint Details:
-
-     60.435ns physical path delay coreInst/SLICE_977 to coreInst/programCounterInst/SLICE_356 meets
-     83.333ns delay constraint less
-      0.000ns skew and
-      0.150ns DIN_SET requirement (totaling 83.183ns) by 22.748ns
-
- Physical Path Details:
-
-      Data path coreInst/SLICE_977 to coreInst/programCounterInst/SLICE_356:
-
-   Name    Fanout   Delay (ns)          Site               Resource
-REG_DEL     ---     0.409    R16C25C.CLK to     R16C25C.Q1 coreInst/SLICE_977 (from PIN_CLK_X1_c)
-ROUTE        11     3.128     R16C25C.Q1 to     R12C27A.C0 coreInst/INSTRUCTION_15_rep1
-CTOF_DEL    ---     0.452     R12C27A.C0 to     R12C27A.F0 coreInst/SLICE_727
-ROUTE        48     2.579     R12C27A.F0 to     R15C20B.D1 coreInst/ALUB_SRCX[2]
-CTOF_DEL    ---     0.452     R15C20B.D1 to     R15C20B.F1 coreInst/SLICE_739
-ROUTE        38     4.599     R15C20B.F1 to      R9C26B.B0 coreInst/ALUB_DATA[4]
-CTOF_DEL    ---     0.452      R9C26B.B0 to      R9C26B.F0 coreInst/fullALUInst/aluInst/SLICE_994
-ROUTE         1     1.324      R9C26B.F0 to     R11C23C.A1 coreInst/fullALUInst/aluInst/un3_tmp_0_14_1
-CTOF_DEL    ---     0.452     R11C23C.A1 to     R11C23C.F1 coreInst/fullALUInst/aluInst/SLICE_852
-ROUTE        35     2.132     R11C23C.F1 to      R8C24C.A0 coreInst/fullALUInst/aluInst/un3_tmp_0_14_4
-CTOF_DEL    ---     0.452      R8C24C.A0 to      R8C24C.F0 coreInst/fullALUInst/aluInst/SLICE_862
-ROUTE         5     1.936      R8C24C.F0 to     R10C24D.B1 coreInst/fullALUInst/aluInst/un3_tmp[11]
-CTOF_DEL    ---     0.452     R10C24D.B1 to     R10C24D.F1 coreInst/fullALUInst/aluInst/SLICE_796
-ROUTE         1     0.659     R10C24D.F1 to     R10C24B.C1 coreInst/fullALUInst/aluInst/sex_2_2
-CTOF_DEL    ---     0.452     R10C24B.C1 to     R10C24B.F1 coreInst/fullALUInst/aluInst/SLICE_794
-ROUTE         1     0.678     R10C24B.F1 to     R11C24B.C0 coreInst/fullALUInst/aluInst/sex_2_9
-CTOF_DEL    ---     0.452     R11C24B.C0 to     R11C24B.F0 coreInst/fullALUInst/aluInst/SLICE_834
-ROUTE        16     1.657     R11C24B.F0 to     R11C20C.B0 coreInst/fullALUInst/aluInst/sex_2
-CTOF_DEL    ---     0.452     R11C20C.B0 to     R11C20C.F0 coreInst/fullALUInst/aluInst/SLICE_828
-ROUTE         1     0.873     R11C20C.F0 to     R11C22B.A0 coreInst/fullALUInst/aluInst/N_243
-CTOF_DEL    ---     0.452     R11C22B.A0 to     R11C22B.F0 coreInst/fullALUInst/aluInst/SLICE_827
-ROUTE         1     0.851     R11C22B.F0 to     R10C22C.A1 coreInst/fullALUInst/aluInst/N_259
-CTOOFX_DEL  ---     0.661     R10C22C.A1 to   R10C22C.OFX0 coreInst/fullALUInst/aluInst/RESULT_15[2]/SLICE_618
-ROUTE         3     1.730   R10C22C.OFX0 to     R18C21A.A1 coreInst.fullALUInst.aluInst.N_291
-CTOF_DEL    ---     0.452     R18C21A.A1 to     R18C21A.F1 coreInst/SLICE_922
-ROUTE         4     3.159     R18C21A.F1 to     R15C17C.C1 coreInst/ALU_R[2]
-CTOOFX_DEL  ---     0.661     R15C17C.C1 to   R15C17C.OFX0 coreInst/busControllerInst/ADDR_BUF_3[2]/SLICE_513
-ROUTE        57     1.334   R15C17C.OFX0 to     R18C16A.D0 ADDR_BUF[2]
-CTOF_DEL    ---     0.452     R18C16A.D0 to     R18C16A.F0 mcuResourcesInst/memoryMapperInst/SLICE_721
-ROUTE         1     0.579     R18C16A.F0 to     R18C16A.A1 mcuResourcesInst/memoryMapperInst/g0_18_1
-CTOF_DEL    ---     0.452     R18C16A.A1 to     R18C16A.F1 mcuResourcesInst/memoryMapperInst/SLICE_721
-ROUTE         3     0.691     R18C16A.F1 to     R18C18D.C0 mcuResourcesInst.memoryMapperInst.INT_MAP_0_a2_2
-CTOF_DEL    ---     0.452     R18C18D.C0 to     R18C18D.F0 SLICE_655
-ROUTE        26     2.145     R18C18D.F0 to     R17C27D.B0 mcuResourcesInst.memoryMapperInst.CPU_DIN_sn_N_6
-CTOOFX_DEL  ---     0.661     R17C27D.B0 to   R17C27D.OFX0 SLICE_301
-ROUTE         4     1.070   R17C27D.OFX0 to     R17C20C.D1 CPU_DIN[11]
-CTOF_DEL    ---     0.452     R17C20C.D1 to     R17C20C.F1 coreInst/SLICE_296
-ROUTE         1     0.882     R17C20C.F1 to     R17C19C.B1 coreInst/registerFileInst/N_23
-CTOOFX_DEL  ---     0.661     R17C19C.B1 to   R17C19C.OFX0 coreInst/registerFileInst/regs/registers_0_0_1_RNO_4/SLICE_516
-ROUTE         1     1.324   R17C19C.OFX0 to     R16C16B.A1 coreInst/registerFileInst/regs/registers_0_0_1_RNO_4
-CTOOFX_DEL  ---     0.661     R16C16B.A1 to   R16C16B.OFX0 SLICE_647
-ROUTE         1     0.000   R16C16B.OFX0 to    R16C16A.FXA mcuResourcesInst/ROMInst/mem_0_2_0_f5a
-FXTOOFX_DE  ---     0.223    R16C16A.FXA to   R16C16A.OFX1 mcuResourcesInst/ROMInst/SLICE_648
-ROUTE         2     0.911   R16C16A.OFX1 to     R17C16B.B0 mcuResourcesInst/DIN_ROM[2]
-CTOOFX_DEL  ---     0.661     R17C16B.B0 to   R17C16B.OFX0 mcuResourcesInst/memoryMapperInst/CPU_DIN_3[2]/SLICE_498
-ROUTE         3     1.675   R17C16B.OFX0 to     R18C18C.B1 mcuResourcesInst/memoryMapperInst/N_73
-CTOF_DEL    ---     0.452     R18C18C.B1 to     R18C18C.F1 SLICE_312
-ROUTE         1     0.384     R18C18C.F1 to     R18C18C.C0 mcuResourcesInst/memoryMapperInst/g0_12_1
-CTOF_DEL    ---     0.452     R18C18C.C0 to     R18C18C.F0 SLICE_312
-ROUTE         2     0.392     R18C18C.F0 to     R18C19A.C0 CPU_DIN[2]
-CTOOFX_DEL  ---     0.661     R18C19A.C0 to   R18C19A.OFX0 coreInst/registerFileInst/regs/registers_0_0_1_RNO_3/SLICE_515
-ROUTE         1     1.057   R18C19A.OFX0 to     R16C17C.C1 coreInst/registerFileInst/regs/registers_0_0_1_RNO_3
-CTOOFX_DEL  ---     0.661     R16C17C.C1 to   R16C17C.OFX0 SLICE_646
-ROUTE         1     0.000   R16C17C.OFX0 to    R16C17C.FXB mcuResourcesInst/ROMInst/mem_0_3_1_f5b
-FXTOOFX_DE  ---     0.223    R16C17C.FXB to   R16C17C.OFX1 SLICE_646
-ROUTE         1     0.904   R16C17C.OFX1 to     R17C17D.B0 mcuResourcesInst/DIN_ROM[3]
-CTOF_DEL    ---     0.452     R17C17D.B0 to     R17C17D.F0 SLICE_698
-ROUTE         1     1.057     R17C17D.F0 to     R18C19D.C1 mcuResourcesInst/memoryMapperInst/N_39
-CTOOFX_DEL  ---     0.661     R18C19D.C1 to   R18C19D.OFX0 SLICE_313
-ROUTE         4     1.231   R18C19D.OFX0 to     R16C19C.B0 CPU_DIN[3]
-C0TOFCO_DE  ---     0.905     R16C19C.B0 to    R16C19C.FCO coreInst/programCounterInst/SLICE_70
-ROUTE         1     0.000    R16C19C.FCO to    R16C19D.FCI coreInst/programCounterInst/PC_A_NEXT_cry_4
-FCITOFCO_D  ---     0.146    R16C19D.FCI to    R16C19D.FCO coreInst/programCounterInst/SLICE_69
-ROUTE         1     0.000    R16C19D.FCO to    R16C20A.FCI coreInst/programCounterInst/PC_A_NEXT_cry_6
-FCITOFCO_D  ---     0.146    R16C20A.FCI to    R16C20A.FCO coreInst/programCounterInst/SLICE_68
-ROUTE         1     0.000    R16C20A.FCO to    R16C20B.FCI coreInst/programCounterInst/PC_A_NEXT_cry_8
-FCITOFCO_D  ---     0.146    R16C20B.FCI to    R16C20B.FCO coreInst/programCounterInst/SLICE_67
-ROUTE         1     0.000    R16C20B.FCO to    R16C20C.FCI coreInst/programCounterInst/PC_A_NEXT_cry_10
-FCITOFCO_D  ---     0.146    R16C20C.FCI to    R16C20C.FCO coreInst/programCounterInst/SLICE_66
-ROUTE         1     0.000    R16C20C.FCO to    R16C20D.FCI coreInst/programCounterInst/PC_A_NEXT_cry_12
-FCITOF0_DE  ---     0.517    R16C20D.FCI to     R16C20D.F0 coreInst/programCounterInst/SLICE_65
-ROUTE         5     1.887     R16C20D.F0 to     R15C19A.B0 coreInst/programCounterInst/PC_A_NEXT[13]
-CTOOFX_DEL  ---     0.661     R15C19A.B0 to   R15C19A.OFX0 coreInst/programCounterInst/SLICE_356
-ROUTE         1     0.000   R15C19A.OFX0 to    R15C19A.DI0 coreInst/programCounterInst/PC_A_3[13] (to PIN_CLK_X1_c)
-                  --------
-                   60.435   (29.1% logic, 70.9% route), 37 logic levels.
-
- Clock Skew Details: 
-
-      Source Clock Path PIN_CLK_X1 to coreInst/SLICE_977:
-
-   Name    Fanout   Delay (ns)          Site               Resource
-ROUTE       213     2.351       C8.PADDI to    R16C25C.CLK PIN_CLK_X1_c
-                  --------
-                    2.351   (0.0% logic, 100.0% route), 0 logic levels.
-
-      Destination Clock Path PIN_CLK_X1 to coreInst/programCounterInst/SLICE_356:
-
-   Name    Fanout   Delay (ns)          Site               Resource
-ROUTE       213     2.351       C8.PADDI to    R15C19A.CLK PIN_CLK_X1_c
-                  --------
-                    2.351   (0.0% logic, 100.0% route), 0 logic levels.
-
-
-Passed: The following path meets requirements by 22.748ns
-
- Logical Details:  Cell type  Pin type       Cell/ASIC name  (clock net +/-)
-
-   Source:         FF         Q              coreInst/instructionPhaseDecoderInst/INSTRUCTION_15_rep1  (from PIN_CLK_X1_c +)
-   Destination:    FF         Data in        coreInst/programCounterInst/PC_A[13]  (to PIN_CLK_X1_c +)
-
-   Delay:              60.435ns  (29.1% logic, 70.9% route), 37 logic levels.
-
- Constraint Details:
-
-     60.435ns physical path delay coreInst/SLICE_977 to coreInst/programCounterInst/SLICE_356 meets
-     83.333ns delay constraint less
-      0.000ns skew and
-      0.150ns DIN_SET requirement (totaling 83.183ns) by 22.748ns
-
- Physical Path Details:
-
-      Data path coreInst/SLICE_977 to coreInst/programCounterInst/SLICE_356:
-
-   Name    Fanout   Delay (ns)          Site               Resource
-REG_DEL     ---     0.409    R16C25C.CLK to     R16C25C.Q1 coreInst/SLICE_977 (from PIN_CLK_X1_c)
-ROUTE        11     3.128     R16C25C.Q1 to     R12C27A.C0 coreInst/INSTRUCTION_15_rep1
-CTOF_DEL    ---     0.452     R12C27A.C0 to     R12C27A.F0 coreInst/SLICE_727
-ROUTE        48     2.579     R12C27A.F0 to     R15C20B.D1 coreInst/ALUB_SRCX[2]
-CTOF_DEL    ---     0.452     R15C20B.D1 to     R15C20B.F1 coreInst/SLICE_739
-ROUTE        38     4.599     R15C20B.F1 to      R9C26B.B0 coreInst/ALUB_DATA[4]
-CTOF_DEL    ---     0.452      R9C26B.B0 to      R9C26B.F0 coreInst/fullALUInst/aluInst/SLICE_994
-ROUTE         1     1.324      R9C26B.F0 to     R11C23C.A1 coreInst/fullALUInst/aluInst/un3_tmp_0_14_1
-CTOF_DEL    ---     0.452     R11C23C.A1 to     R11C23C.F1 coreInst/fullALUInst/aluInst/SLICE_852
-ROUTE        35     2.132     R11C23C.F1 to      R8C24C.A0 coreInst/fullALUInst/aluInst/un3_tmp_0_14_4
-CTOF_DEL    ---     0.452      R8C24C.A0 to      R8C24C.F0 coreInst/fullALUInst/aluInst/SLICE_862
-ROUTE         5     1.936      R8C24C.F0 to     R10C24D.B1 coreInst/fullALUInst/aluInst/un3_tmp[11]
-CTOF_DEL    ---     0.452     R10C24D.B1 to     R10C24D.F1 coreInst/fullALUInst/aluInst/SLICE_796
-ROUTE         1     0.659     R10C24D.F1 to     R10C24B.C1 coreInst/fullALUInst/aluInst/sex_2_2
-CTOF_DEL    ---     0.452     R10C24B.C1 to     R10C24B.F1 coreInst/fullALUInst/aluInst/SLICE_794
-ROUTE         1     0.678     R10C24B.F1 to     R11C24B.C0 coreInst/fullALUInst/aluInst/sex_2_9
-CTOF_DEL    ---     0.452     R11C24B.C0 to     R11C24B.F0 coreInst/fullALUInst/aluInst/SLICE_834
-ROUTE        16     1.657     R11C24B.F0 to     R11C20C.B0 coreInst/fullALUInst/aluInst/sex_2
-CTOF_DEL    ---     0.452     R11C20C.B0 to     R11C20C.F0 coreInst/fullALUInst/aluInst/SLICE_828
-ROUTE         1     0.873     R11C20C.F0 to     R11C22B.A0 coreInst/fullALUInst/aluInst/N_243
-CTOF_DEL    ---     0.452     R11C22B.A0 to     R11C22B.F0 coreInst/fullALUInst/aluInst/SLICE_827
-ROUTE         1     0.851     R11C22B.F0 to     R10C22C.A1 coreInst/fullALUInst/aluInst/N_259
-CTOOFX_DEL  ---     0.661     R10C22C.A1 to   R10C22C.OFX0 coreInst/fullALUInst/aluInst/RESULT_15[2]/SLICE_618
-ROUTE         3     1.730   R10C22C.OFX0 to     R18C21A.A1 coreInst.fullALUInst.aluInst.N_291
-CTOF_DEL    ---     0.452     R18C21A.A1 to     R18C21A.F1 coreInst/SLICE_922
-ROUTE         4     3.159     R18C21A.F1 to     R15C17C.C1 coreInst/ALU_R[2]
-CTOOFX_DEL  ---     0.661     R15C17C.C1 to   R15C17C.OFX0 coreInst/busControllerInst/ADDR_BUF_3[2]/SLICE_513
-ROUTE        57     1.334   R15C17C.OFX0 to     R18C16A.D0 ADDR_BUF[2]
-CTOF_DEL    ---     0.452     R18C16A.D0 to     R18C16A.F0 mcuResourcesInst/memoryMapperInst/SLICE_721
-ROUTE         1     0.579     R18C16A.F0 to     R18C16A.A1 mcuResourcesInst/memoryMapperInst/g0_18_1
-CTOF_DEL    ---     0.452     R18C16A.A1 to     R18C16A.F1 mcuResourcesInst/memoryMapperInst/SLICE_721
-ROUTE         3     0.691     R18C16A.F1 to     R18C18D.C0 mcuResourcesInst.memoryMapperInst.INT_MAP_0_a2_2
-CTOF_DEL    ---     0.452     R18C18D.C0 to     R18C18D.F0 SLICE_655
-ROUTE        26     2.145     R18C18D.F0 to     R17C27D.B1 mcuResourcesInst.memoryMapperInst.CPU_DIN_sn_N_6
-CTOOFX_DEL  ---     0.661     R17C27D.B1 to   R17C27D.OFX0 SLICE_301
-ROUTE         4     1.070   R17C27D.OFX0 to     R17C20C.D1 CPU_DIN[11]
-CTOF_DEL    ---     0.452     R17C20C.D1 to     R17C20C.F1 coreInst/SLICE_296
-ROUTE         1     0.882     R17C20C.F1 to     R17C19C.B1 coreInst/registerFileInst/N_23
-CTOOFX_DEL  ---     0.661     R17C19C.B1 to   R17C19C.OFX0 coreInst/registerFileInst/regs/registers_0_0_1_RNO_4/SLICE_516
-ROUTE         1     1.324   R17C19C.OFX0 to     R16C16B.A1 coreInst/registerFileInst/regs/registers_0_0_1_RNO_4
-CTOOFX_DEL  ---     0.661     R16C16B.A1 to   R16C16B.OFX0 SLICE_647
-ROUTE         1     0.000   R16C16B.OFX0 to    R16C16A.FXA mcuResourcesInst/ROMInst/mem_0_2_0_f5a
-FXTOOFX_DE  ---     0.223    R16C16A.FXA to   R16C16A.OFX1 mcuResourcesInst/ROMInst/SLICE_648
-ROUTE         2     0.911   R16C16A.OFX1 to     R17C16B.B0 mcuResourcesInst/DIN_ROM[2]
-CTOOFX_DEL  ---     0.661     R17C16B.B0 to   R17C16B.OFX0 mcuResourcesInst/memoryMapperInst/CPU_DIN_3[2]/SLICE_498
-ROUTE         3     1.675   R17C16B.OFX0 to     R18C18C.B1 mcuResourcesInst/memoryMapperInst/N_73
-CTOF_DEL    ---     0.452     R18C18C.B1 to     R18C18C.F1 SLICE_312
-ROUTE         1     0.384     R18C18C.F1 to     R18C18C.C0 mcuResourcesInst/memoryMapperInst/g0_12_1
-CTOF_DEL    ---     0.452     R18C18C.C0 to     R18C18C.F0 SLICE_312
-ROUTE         2     0.392     R18C18C.F0 to     R18C19A.C0 CPU_DIN[2]
-CTOOFX_DEL  ---     0.661     R18C19A.C0 to   R18C19A.OFX0 coreInst/registerFileInst/regs/registers_0_0_1_RNO_3/SLICE_515
-ROUTE         1     1.057   R18C19A.OFX0 to     R16C17C.C1 coreInst/registerFileInst/regs/registers_0_0_1_RNO_3
-CTOOFX_DEL  ---     0.661     R16C17C.C1 to   R16C17C.OFX0 SLICE_646
-ROUTE         1     0.000   R16C17C.OFX0 to    R16C17C.FXB mcuResourcesInst/ROMInst/mem_0_3_1_f5b
-FXTOOFX_DE  ---     0.223    R16C17C.FXB to   R16C17C.OFX1 SLICE_646
-ROUTE         1     0.904   R16C17C.OFX1 to     R17C17D.B0 mcuResourcesInst/DIN_ROM[3]
-CTOF_DEL    ---     0.452     R17C17D.B0 to     R17C17D.F0 SLICE_698
-ROUTE         1     1.057     R17C17D.F0 to     R18C19D.C1 mcuResourcesInst/memoryMapperInst/N_39
-CTOOFX_DEL  ---     0.661     R18C19D.C1 to   R18C19D.OFX0 SLICE_313
-ROUTE         4     1.231   R18C19D.OFX0 to     R16C19C.B0 CPU_DIN[3]
-C0TOFCO_DE  ---     0.905     R16C19C.B0 to    R16C19C.FCO coreInst/programCounterInst/SLICE_70
-ROUTE         1     0.000    R16C19C.FCO to    R16C19D.FCI coreInst/programCounterInst/PC_A_NEXT_cry_4
-FCITOFCO_D  ---     0.146    R16C19D.FCI to    R16C19D.FCO coreInst/programCounterInst/SLICE_69
-ROUTE         1     0.000    R16C19D.FCO to    R16C20A.FCI coreInst/programCounterInst/PC_A_NEXT_cry_6
-FCITOFCO_D  ---     0.146    R16C20A.FCI to    R16C20A.FCO coreInst/programCounterInst/SLICE_68
-ROUTE         1     0.000    R16C20A.FCO to    R16C20B.FCI coreInst/programCounterInst/PC_A_NEXT_cry_8
-FCITOFCO_D  ---     0.146    R16C20B.FCI to    R16C20B.FCO coreInst/programCounterInst/SLICE_67
-ROUTE         1     0.000    R16C20B.FCO to    R16C20C.FCI coreInst/programCounterInst/PC_A_NEXT_cry_10
-FCITOFCO_D  ---     0.146    R16C20C.FCI to    R16C20C.FCO coreInst/programCounterInst/SLICE_66
-ROUTE         1     0.000    R16C20C.FCO to    R16C20D.FCI coreInst/programCounterInst/PC_A_NEXT_cry_12
-FCITOF0_DE  ---     0.517    R16C20D.FCI to     R16C20D.F0 coreInst/programCounterInst/SLICE_65
-ROUTE         5     1.887     R16C20D.F0 to     R15C19A.B1 coreInst/programCounterInst/PC_A_NEXT[13]
-CTOOFX_DEL  ---     0.661     R15C19A.B1 to   R15C19A.OFX0 coreInst/programCounterInst/SLICE_356
-ROUTE         1     0.000   R15C19A.OFX0 to    R15C19A.DI0 coreInst/programCounterInst/PC_A_3[13] (to PIN_CLK_X1_c)
-                  --------
-                   60.435   (29.1% logic, 70.9% route), 37 logic levels.
-
- Clock Skew Details: 
-
-      Source Clock Path PIN_CLK_X1 to coreInst/SLICE_977:
-
-   Name    Fanout   Delay (ns)          Site               Resource
-ROUTE       213     2.351       C8.PADDI to    R16C25C.CLK PIN_CLK_X1_c
-                  --------
-                    2.351   (0.0% logic, 100.0% route), 0 logic levels.
-
-      Destination Clock Path PIN_CLK_X1 to coreInst/programCounterInst/SLICE_356:
-
-   Name    Fanout   Delay (ns)          Site               Resource
-ROUTE       213     2.351       C8.PADDI to    R15C19A.CLK PIN_CLK_X1_c
-                  --------
-                    2.351   (0.0% logic, 100.0% route), 0 logic levels.
-
-
-Passed: The following path meets requirements by 22.748ns
-
- Logical Details:  Cell type  Pin type       Cell/ASIC name  (clock net +/-)
-
-   Source:         FF         Q              coreInst/instructionPhaseDecoderInst/INSTRUCTION_15_rep1  (from PIN_CLK_X1_c +)
-   Destination:    FF         Data in        coreInst/programCounterInst/PC_A[13]  (to PIN_CLK_X1_c +)
-
-   Delay:              60.435ns  (29.1% logic, 70.9% route), 37 logic levels.
-
- Constraint Details:
-
-     60.435ns physical path delay coreInst/SLICE_977 to coreInst/programCounterInst/SLICE_356 meets
-     83.333ns delay constraint less
-      0.000ns skew and
-      0.150ns DIN_SET requirement (totaling 83.183ns) by 22.748ns
-
- Physical Path Details:
-
-      Data path coreInst/SLICE_977 to coreInst/programCounterInst/SLICE_356:
-
-   Name    Fanout   Delay (ns)          Site               Resource
-REG_DEL     ---     0.409    R16C25C.CLK to     R16C25C.Q1 coreInst/SLICE_977 (from PIN_CLK_X1_c)
-ROUTE        11     3.128     R16C25C.Q1 to     R12C27A.C0 coreInst/INSTRUCTION_15_rep1
-CTOF_DEL    ---     0.452     R12C27A.C0 to     R12C27A.F0 coreInst/SLICE_727
-ROUTE        48     2.579     R12C27A.F0 to     R15C20B.D1 coreInst/ALUB_SRCX[2]
-CTOF_DEL    ---     0.452     R15C20B.D1 to     R15C20B.F1 coreInst/SLICE_739
-ROUTE        38     4.599     R15C20B.F1 to      R9C26B.B0 coreInst/ALUB_DATA[4]
-CTOF_DEL    ---     0.452      R9C26B.B0 to      R9C26B.F0 coreInst/fullALUInst/aluInst/SLICE_994
-ROUTE         1     1.324      R9C26B.F0 to     R11C23C.A1 coreInst/fullALUInst/aluInst/un3_tmp_0_14_1
-CTOF_DEL    ---     0.452     R11C23C.A1 to     R11C23C.F1 coreInst/fullALUInst/aluInst/SLICE_852
-ROUTE        35     2.132     R11C23C.F1 to      R8C24C.A0 coreInst/fullALUInst/aluInst/un3_tmp_0_14_4
-CTOF_DEL    ---     0.452      R8C24C.A0 to      R8C24C.F0 coreInst/fullALUInst/aluInst/SLICE_862
-ROUTE         5     1.936      R8C24C.F0 to     R10C24D.B1 coreInst/fullALUInst/aluInst/un3_tmp[11]
-CTOF_DEL    ---     0.452     R10C24D.B1 to     R10C24D.F1 coreInst/fullALUInst/aluInst/SLICE_796
-ROUTE         1     0.659     R10C24D.F1 to     R10C24B.C1 coreInst/fullALUInst/aluInst/sex_2_2
-CTOF_DEL    ---     0.452     R10C24B.C1 to     R10C24B.F1 coreInst/fullALUInst/aluInst/SLICE_794
-ROUTE         1     0.678     R10C24B.F1 to     R11C24B.C0 coreInst/fullALUInst/aluInst/sex_2_9
-CTOF_DEL    ---     0.452     R11C24B.C0 to     R11C24B.F0 coreInst/fullALUInst/aluInst/SLICE_834
-ROUTE        16     1.657     R11C24B.F0 to     R11C20C.B0 coreInst/fullALUInst/aluInst/sex_2
-CTOF_DEL    ---     0.452     R11C20C.B0 to     R11C20C.F0 coreInst/fullALUInst/aluInst/SLICE_828
-ROUTE         1     0.873     R11C20C.F0 to     R11C22B.A0 coreInst/fullALUInst/aluInst/N_243
-CTOF_DEL    ---     0.452     R11C22B.A0 to     R11C22B.F0 coreInst/fullALUInst/aluInst/SLICE_827
-ROUTE         1     0.851     R11C22B.F0 to     R10C22C.A1 coreInst/fullALUInst/aluInst/N_259
-CTOOFX_DEL  ---     0.661     R10C22C.A1 to   R10C22C.OFX0 coreInst/fullALUInst/aluInst/RESULT_15[2]/SLICE_618
-ROUTE         3     1.730   R10C22C.OFX0 to     R18C21A.A1 coreInst.fullALUInst.aluInst.N_291
-CTOF_DEL    ---     0.452     R18C21A.A1 to     R18C21A.F1 coreInst/SLICE_922
-ROUTE         4     3.159     R18C21A.F1 to     R15C17C.C1 coreInst/ALU_R[2]
-CTOOFX_DEL  ---     0.661     R15C17C.C1 to   R15C17C.OFX0 coreInst/busControllerInst/ADDR_BUF_3[2]/SLICE_513
-ROUTE        57     1.334   R15C17C.OFX0 to     R18C16A.D0 ADDR_BUF[2]
-CTOF_DEL    ---     0.452     R18C16A.D0 to     R18C16A.F0 mcuResourcesInst/memoryMapperInst/SLICE_721
-ROUTE         1     0.579     R18C16A.F0 to     R18C16A.A1 mcuResourcesInst/memoryMapperInst/g0_18_1
-CTOF_DEL    ---     0.452     R18C16A.A1 to     R18C16A.F1 mcuResourcesInst/memoryMapperInst/SLICE_721
-ROUTE         3     0.691     R18C16A.F1 to     R18C18D.C0 mcuResourcesInst.memoryMapperInst.INT_MAP_0_a2_2
-CTOF_DEL    ---     0.452     R18C18D.C0 to     R18C18D.F0 SLICE_655
-ROUTE        26     2.145     R18C18D.F0 to     R17C27D.B0 mcuResourcesInst.memoryMapperInst.CPU_DIN_sn_N_6
-CTOOFX_DEL  ---     0.661     R17C27D.B0 to   R17C27D.OFX0 SLICE_301
-ROUTE         4     1.070   R17C27D.OFX0 to     R17C20C.D1 CPU_DIN[11]
-CTOF_DEL    ---     0.452     R17C20C.D1 to     R17C20C.F1 coreInst/SLICE_296
-ROUTE         1     0.882     R17C20C.F1 to     R17C19C.B1 coreInst/registerFileInst/N_23
-CTOOFX_DEL  ---     0.661     R17C19C.B1 to   R17C19C.OFX0 coreInst/registerFileInst/regs/registers_0_0_1_RNO_4/SLICE_516
-ROUTE         1     1.324   R17C19C.OFX0 to     R16C16B.A1 coreInst/registerFileInst/regs/registers_0_0_1_RNO_4
-CTOOFX_DEL  ---     0.661     R16C16B.A1 to   R16C16B.OFX0 SLICE_647
-ROUTE         1     0.000   R16C16B.OFX0 to    R16C16A.FXA mcuResourcesInst/ROMInst/mem_0_2_0_f5a
-FXTOOFX_DE  ---     0.223    R16C16A.FXA to   R16C16A.OFX1 mcuResourcesInst/ROMInst/SLICE_648
-ROUTE         2     0.911   R16C16A.OFX1 to     R17C16B.B0 mcuResourcesInst/DIN_ROM[2]
-CTOOFX_DEL  ---     0.661     R17C16B.B0 to   R17C16B.OFX0 mcuResourcesInst/memoryMapperInst/CPU_DIN_3[2]/SLICE_498
-ROUTE         3     1.675   R17C16B.OFX0 to     R18C18C.B1 mcuResourcesInst/memoryMapperInst/N_73
-CTOF_DEL    ---     0.452     R18C18C.B1 to     R18C18C.F1 SLICE_312
-ROUTE         1     0.384     R18C18C.F1 to     R18C18C.C0 mcuResourcesInst/memoryMapperInst/g0_12_1
-CTOF_DEL    ---     0.452     R18C18C.C0 to     R18C18C.F0 SLICE_312
-ROUTE         2     0.392     R18C18C.F0 to     R18C19A.C0 CPU_DIN[2]
-CTOOFX_DEL  ---     0.661     R18C19A.C0 to   R18C19A.OFX0 coreInst/registerFileInst/regs/registers_0_0_1_RNO_3/SLICE_515
-ROUTE         1     1.057   R18C19A.OFX0 to     R16C17C.C1 coreInst/registerFileInst/regs/registers_0_0_1_RNO_3
-CTOOFX_DEL  ---     0.661     R16C17C.C1 to   R16C17C.OFX0 SLICE_646
-ROUTE         1     0.000   R16C17C.OFX0 to    R16C17C.FXB mcuResourcesInst/ROMInst/mem_0_3_1_f5b
-FXTOOFX_DE  ---     0.223    R16C17C.FXB to   R16C17C.OFX1 SLICE_646
-ROUTE         1     0.904   R16C17C.OFX1 to     R17C17D.B0 mcuResourcesInst/DIN_ROM[3]
-CTOF_DEL    ---     0.452     R17C17D.B0 to     R17C17D.F0 SLICE_698
-ROUTE         1     1.057     R17C17D.F0 to     R18C19D.C1 mcuResourcesInst/memoryMapperInst/N_39
-CTOOFX_DEL  ---     0.661     R18C19D.C1 to   R18C19D.OFX0 SLICE_313
-ROUTE         4     1.231   R18C19D.OFX0 to     R16C19C.B0 CPU_DIN[3]
-C0TOFCO_DE  ---     0.905     R16C19C.B0 to    R16C19C.FCO coreInst/programCounterInst/SLICE_70
-ROUTE         1     0.000    R16C19C.FCO to    R16C19D.FCI coreInst/programCounterInst/PC_A_NEXT_cry_4
-FCITOFCO_D  ---     0.146    R16C19D.FCI to    R16C19D.FCO coreInst/programCounterInst/SLICE_69
-ROUTE         1     0.000    R16C19D.FCO to    R16C20A.FCI coreInst/programCounterInst/PC_A_NEXT_cry_6
-FCITOFCO_D  ---     0.146    R16C20A.FCI to    R16C20A.FCO coreInst/programCounterInst/SLICE_68
-ROUTE         1     0.000    R16C20A.FCO to    R16C20B.FCI coreInst/programCounterInst/PC_A_NEXT_cry_8
-FCITOFCO_D  ---     0.146    R16C20B.FCI to    R16C20B.FCO coreInst/programCounterInst/SLICE_67
-ROUTE         1     0.000    R16C20B.FCO to    R16C20C.FCI coreInst/programCounterInst/PC_A_NEXT_cry_10
-FCITOFCO_D  ---     0.146    R16C20C.FCI to    R16C20C.FCO coreInst/programCounterInst/SLICE_66
-ROUTE         1     0.000    R16C20C.FCO to    R16C20D.FCI coreInst/programCounterInst/PC_A_NEXT_cry_12
-FCITOF0_DE  ---     0.517    R16C20D.FCI to     R16C20D.F0 coreInst/programCounterInst/SLICE_65
-ROUTE         5     1.887     R16C20D.F0 to     R15C19A.B1 coreInst/programCounterInst/PC_A_NEXT[13]
-CTOOFX_DEL  ---     0.661     R15C19A.B1 to   R15C19A.OFX0 coreInst/programCounterInst/SLICE_356
-ROUTE         1     0.000   R15C19A.OFX0 to    R15C19A.DI0 coreInst/programCounterInst/PC_A_3[13] (to PIN_CLK_X1_c)
-                  --------
-                   60.435   (29.1% logic, 70.9% route), 37 logic levels.
-
- Clock Skew Details: 
-
-      Source Clock Path PIN_CLK_X1 to coreInst/SLICE_977:
-
-   Name    Fanout   Delay (ns)          Site               Resource
-ROUTE       213     2.351       C8.PADDI to    R16C25C.CLK PIN_CLK_X1_c
-                  --------
-                    2.351   (0.0% logic, 100.0% route), 0 logic levels.
-
-      Destination Clock Path PIN_CLK_X1 to coreInst/programCounterInst/SLICE_356:
-
-   Name    Fanout   Delay (ns)          Site               Resource
-ROUTE       213     2.351       C8.PADDI to    R15C19A.CLK PIN_CLK_X1_c
-                  --------
-                    2.351   (0.0% logic, 100.0% route), 0 logic levels.
-
-
-Passed: The following path meets requirements by 22.838ns
+Passed: The following path meets requirements by 35.752ns
 
  Logical Details:  Cell type  Pin type       Cell/ASIC name  (clock net +/-)
 
    Source:         DP8KC      Port           coreInst/registerFileInst/regs/registers_0_0_1(ASIC)  (from PIN_CLK_X1_c +)
-   Destination:    FF         Data in        coreInst/programCounterInst/PC_A[13]  (to PIN_CLK_X1_c +)
+   Destination:    FF         Data in        coreInst/programCounterInst/PC_A[8]  (to PIN_CLK_X1_c +)
 
-   Delay:              60.192ns  (35.7% logic, 64.3% route), 36 logic levels.
+   Delay:              47.278ns  (30.9% logic, 69.1% route), 22 logic levels.
 
  Constraint Details:
 
-     60.192ns physical path delay coreInst/registerFileInst/regs/registers_0_0_1 to coreInst/programCounterInst/SLICE_356 meets
+     47.278ns physical path delay coreInst/registerFileInst/regs/registers_0_0_1 to coreInst/programCounterInst/SLICE_350 meets
      83.333ns delay constraint less
       0.153ns skew and
-      0.150ns DIN_SET requirement (totaling 83.030ns) by 22.838ns
+      0.150ns DIN_SET requirement (totaling 83.030ns) by 35.752ns
 
  Physical Path Details:
 
-      Data path coreInst/registerFileInst/regs/registers_0_0_1 to coreInst/programCounterInst/SLICE_356:
+      Data path coreInst/registerFileInst/regs/registers_0_0_1 to coreInst/programCounterInst/SLICE_350:
 
    Name    Fanout   Delay (ns)          Site               Resource
-C2Q_DEL     ---     4.739 *R_R13C21.CLKB to *R_R13C21.DOB4 coreInst/registerFileInst/regs/registers_0_0_1 (from PIN_CLK_X1_c)
-ROUTE         2     1.586 *R_R13C21.DOB4 to     R15C20B.B1 coreInst/REGB_DOUT[4]
-CTOF_DEL    ---     0.452     R15C20B.B1 to     R15C20B.F1 coreInst/SLICE_739
-ROUTE        38     4.599     R15C20B.F1 to      R9C26B.B0 coreInst/ALUB_DATA[4]
-CTOF_DEL    ---     0.452      R9C26B.B0 to      R9C26B.F0 coreInst/fullALUInst/aluInst/SLICE_994
-ROUTE         1     1.324      R9C26B.F0 to     R11C23C.A1 coreInst/fullALUInst/aluInst/un3_tmp_0_14_1
-CTOF_DEL    ---     0.452     R11C23C.A1 to     R11C23C.F1 coreInst/fullALUInst/aluInst/SLICE_852
-ROUTE        35     2.132     R11C23C.F1 to      R8C24C.A0 coreInst/fullALUInst/aluInst/un3_tmp_0_14_4
-CTOF_DEL    ---     0.452      R8C24C.A0 to      R8C24C.F0 coreInst/fullALUInst/aluInst/SLICE_862
-ROUTE         5     1.936      R8C24C.F0 to     R10C24D.B1 coreInst/fullALUInst/aluInst/un3_tmp[11]
-CTOF_DEL    ---     0.452     R10C24D.B1 to     R10C24D.F1 coreInst/fullALUInst/aluInst/SLICE_796
-ROUTE         1     0.659     R10C24D.F1 to     R10C24B.C1 coreInst/fullALUInst/aluInst/sex_2_2
-CTOF_DEL    ---     0.452     R10C24B.C1 to     R10C24B.F1 coreInst/fullALUInst/aluInst/SLICE_794
-ROUTE         1     0.678     R10C24B.F1 to     R11C24B.C0 coreInst/fullALUInst/aluInst/sex_2_9
-CTOF_DEL    ---     0.452     R11C24B.C0 to     R11C24B.F0 coreInst/fullALUInst/aluInst/SLICE_834
-ROUTE        16     1.657     R11C24B.F0 to     R11C20C.B0 coreInst/fullALUInst/aluInst/sex_2
-CTOF_DEL    ---     0.452     R11C20C.B0 to     R11C20C.F0 coreInst/fullALUInst/aluInst/SLICE_828
-ROUTE         1     0.873     R11C20C.F0 to     R11C22B.A0 coreInst/fullALUInst/aluInst/N_243
-CTOF_DEL    ---     0.452     R11C22B.A0 to     R11C22B.F0 coreInst/fullALUInst/aluInst/SLICE_827
-ROUTE         1     0.851     R11C22B.F0 to     R10C22C.A1 coreInst/fullALUInst/aluInst/N_259
-CTOOFX_DEL  ---     0.661     R10C22C.A1 to   R10C22C.OFX0 coreInst/fullALUInst/aluInst/RESULT_15[2]/SLICE_618
-ROUTE         3     1.730   R10C22C.OFX0 to     R18C21A.A1 coreInst.fullALUInst.aluInst.N_291
-CTOF_DEL    ---     0.452     R18C21A.A1 to     R18C21A.F1 coreInst/SLICE_922
-ROUTE         4     3.159     R18C21A.F1 to     R15C17C.C1 coreInst/ALU_R[2]
-CTOOFX_DEL  ---     0.661     R15C17C.C1 to   R15C17C.OFX0 coreInst/busControllerInst/ADDR_BUF_3[2]/SLICE_513
-ROUTE        57     1.334   R15C17C.OFX0 to     R18C16A.D0 ADDR_BUF[2]
-CTOF_DEL    ---     0.452     R18C16A.D0 to     R18C16A.F0 mcuResourcesInst/memoryMapperInst/SLICE_721
-ROUTE         1     0.579     R18C16A.F0 to     R18C16A.A1 mcuResourcesInst/memoryMapperInst/g0_18_1
-CTOF_DEL    ---     0.452     R18C16A.A1 to     R18C16A.F1 mcuResourcesInst/memoryMapperInst/SLICE_721
-ROUTE         3     0.691     R18C16A.F1 to     R18C18D.C0 mcuResourcesInst.memoryMapperInst.INT_MAP_0_a2_2
-CTOF_DEL    ---     0.452     R18C18D.C0 to     R18C18D.F0 SLICE_655
-ROUTE        26     2.145     R18C18D.F0 to     R17C27D.B1 mcuResourcesInst.memoryMapperInst.CPU_DIN_sn_N_6
-CTOOFX_DEL  ---     0.661     R17C27D.B1 to   R17C27D.OFX0 SLICE_301
-ROUTE         4     1.070   R17C27D.OFX0 to     R17C20C.D1 CPU_DIN[11]
-CTOF_DEL    ---     0.452     R17C20C.D1 to     R17C20C.F1 coreInst/SLICE_296
-ROUTE         1     0.882     R17C20C.F1 to     R17C19C.B1 coreInst/registerFileInst/N_23
-CTOOFX_DEL  ---     0.661     R17C19C.B1 to   R17C19C.OFX0 coreInst/registerFileInst/regs/registers_0_0_1_RNO_4/SLICE_516
-ROUTE         1     1.324   R17C19C.OFX0 to     R16C16B.A1 coreInst/registerFileInst/regs/registers_0_0_1_RNO_4
-CTOOFX_DEL  ---     0.661     R16C16B.A1 to   R16C16B.OFX0 SLICE_647
-ROUTE         1     0.000   R16C16B.OFX0 to    R16C16A.FXA mcuResourcesInst/ROMInst/mem_0_2_0_f5a
-FXTOOFX_DE  ---     0.223    R16C16A.FXA to   R16C16A.OFX1 mcuResourcesInst/ROMInst/SLICE_648
-ROUTE         2     0.911   R16C16A.OFX1 to     R17C16B.B0 mcuResourcesInst/DIN_ROM[2]
-CTOOFX_DEL  ---     0.661     R17C16B.B0 to   R17C16B.OFX0 mcuResourcesInst/memoryMapperInst/CPU_DIN_3[2]/SLICE_498
-ROUTE         3     1.675   R17C16B.OFX0 to     R18C18C.B1 mcuResourcesInst/memoryMapperInst/N_73
-CTOF_DEL    ---     0.452     R18C18C.B1 to     R18C18C.F1 SLICE_312
-ROUTE         1     0.384     R18C18C.F1 to     R18C18C.C0 mcuResourcesInst/memoryMapperInst/g0_12_1
-CTOF_DEL    ---     0.452     R18C18C.C0 to     R18C18C.F0 SLICE_312
-ROUTE         2     0.392     R18C18C.F0 to     R18C19A.C0 CPU_DIN[2]
-CTOOFX_DEL  ---     0.661     R18C19A.C0 to   R18C19A.OFX0 coreInst/registerFileInst/regs/registers_0_0_1_RNO_3/SLICE_515
-ROUTE         1     1.057   R18C19A.OFX0 to     R16C17C.C1 coreInst/registerFileInst/regs/registers_0_0_1_RNO_3
-CTOOFX_DEL  ---     0.661     R16C17C.C1 to   R16C17C.OFX0 SLICE_646
-ROUTE         1     0.000   R16C17C.OFX0 to    R16C17C.FXB mcuResourcesInst/ROMInst/mem_0_3_1_f5b
-FXTOOFX_DE  ---     0.223    R16C17C.FXB to   R16C17C.OFX1 SLICE_646
-ROUTE         1     0.904   R16C17C.OFX1 to     R17C17D.B0 mcuResourcesInst/DIN_ROM[3]
-CTOF_DEL    ---     0.452     R17C17D.B0 to     R17C17D.F0 SLICE_698
-ROUTE         1     1.057     R17C17D.F0 to     R18C19D.C1 mcuResourcesInst/memoryMapperInst/N_39
-CTOOFX_DEL  ---     0.661     R18C19D.C1 to   R18C19D.OFX0 SLICE_313
-ROUTE         4     1.231   R18C19D.OFX0 to     R16C19C.B0 CPU_DIN[3]
-C0TOFCO_DE  ---     0.905     R16C19C.B0 to    R16C19C.FCO coreInst/programCounterInst/SLICE_70
-ROUTE         1     0.000    R16C19C.FCO to    R16C19D.FCI coreInst/programCounterInst/PC_A_NEXT_cry_4
-FCITOFCO_D  ---     0.146    R16C19D.FCI to    R16C19D.FCO coreInst/programCounterInst/SLICE_69
-ROUTE         1     0.000    R16C19D.FCO to    R16C20A.FCI coreInst/programCounterInst/PC_A_NEXT_cry_6
-FCITOFCO_D  ---     0.146    R16C20A.FCI to    R16C20A.FCO coreInst/programCounterInst/SLICE_68
-ROUTE         1     0.000    R16C20A.FCO to    R16C20B.FCI coreInst/programCounterInst/PC_A_NEXT_cry_8
-FCITOFCO_D  ---     0.146    R16C20B.FCI to    R16C20B.FCO coreInst/programCounterInst/SLICE_67
-ROUTE         1     0.000    R16C20B.FCO to    R16C20C.FCI coreInst/programCounterInst/PC_A_NEXT_cry_10
-FCITOFCO_D  ---     0.146    R16C20C.FCI to    R16C20C.FCO coreInst/programCounterInst/SLICE_66
-ROUTE         1     0.000    R16C20C.FCO to    R16C20D.FCI coreInst/programCounterInst/PC_A_NEXT_cry_12
-FCITOF0_DE  ---     0.517    R16C20D.FCI to     R16C20D.F0 coreInst/programCounterInst/SLICE_65
-ROUTE         5     1.887     R16C20D.F0 to     R15C19A.B0 coreInst/programCounterInst/PC_A_NEXT[13]
-CTOOFX_DEL  ---     0.661     R15C19A.B0 to   R15C19A.OFX0 coreInst/programCounterInst/SLICE_356
-ROUTE         1     0.000   R15C19A.OFX0 to    R15C19A.DI0 coreInst/programCounterInst/PC_A_3[13] (to PIN_CLK_X1_c)
+C2Q_DEL     ---     4.739 *R_R13C13.CLKB to *R_R13C13.DOB7 coreInst/registerFileInst/regs/registers_0_0_1 (from PIN_CLK_X1_c)
+ROUTE         4     2.706 *R_R13C13.DOB7 to     R16C21D.B1 coreInst/REGB_DOUT[7]
+CTOF_DEL    ---     0.452     R16C21D.B1 to     R16C21D.F1 coreInst/SLICE_765
+ROUTE        15     2.665     R16C21D.F1 to     R17C27C.C1 coreInst/N_20
+CTOF_DEL    ---     0.452     R17C27C.C1 to     R17C27C.F1 coreInst/fullALUInst/aluInst/SLICE_962
+ROUTE        19     3.800     R17C27C.F1 to     R21C27B.A0 coreInst/fullALUInst/aluInst/un3_tmp_10[0]
+CTOF_DEL    ---     0.452     R21C27B.A0 to     R21C27B.F0 coreInst/fullALUInst/aluInst/SLICE_895
+ROUTE         5     1.733     R21C27B.F0 to     R17C26D.A1 coreInst/fullALUInst/aluInst/un3_tmp[14]
+CTOF_DEL    ---     0.452     R17C26D.A1 to     R17C26D.F1 coreInst/fullALUInst/aluInst/SLICE_683
+ROUTE         1     0.851     R17C26D.F1 to     R17C25D.A0 coreInst/fullALUInst/aluInst/sex_2_3
+CTOF_DEL    ---     0.452     R17C25D.A0 to     R17C25D.F0 coreInst/fullALUInst/aluInst/SLICE_866
+ROUTE         9     0.610     R17C25D.F0 to     R17C24D.D0 coreInst/fullALUInst/aluInst/sex_2_12
+CTOF_DEL    ---     0.452     R17C24D.D0 to     R17C24D.F0 coreInst/fullALUInst/aluInst/SLICE_861
+ROUTE         1     1.252     R17C24D.F0 to     R18C26B.A0 coreInst/fullALUInst/aluInst/N_244
+CTOF_DEL    ---     0.452     R18C26B.A0 to     R18C26B.F0 coreInst/fullALUInst/aluInst/SLICE_853
+ROUTE         1     0.851     R18C26B.F0 to     R18C27D.A1 coreInst/fullALUInst/aluInst/N_260
+CTOOFX_DEL  ---     0.661     R18C27D.A1 to   R18C27D.OFX0 coreInst/fullALUInst/aluInst/RESULT_15[3]/SLICE_532
+ROUTE         1     1.355   R18C27D.OFX0 to     R17C21D.B1 coreInst/fullALUInst/aluInst/N_292
+CTOF_DEL    ---     0.452     R17C21D.B1 to     R17C21D.F1 coreInst/SLICE_780
+ROUTE         5     0.880     R17C21D.F1 to     R17C20D.A1 coreInst/ALU_R[3]
+CTOOFX_DEL  ---     0.661     R17C20D.A1 to   R17C20D.OFX0 coreInst/busControllerInst/ADDR_BUF_3_i_m2[3]/SLICE_510
+ROUTE        90     3.626   R17C20D.OFX0 to     R14C22C.D0 N_286
+CTOF_DEL    ---     0.452     R14C22C.D0 to     R14C22C.F0 SLICE_709
+ROUTE         1     0.904     R14C22C.F0 to     R15C22D.B1 mcuResourcesInst/interruptMaskRegisterInst/MASK_REG_0_sqmuxa_0_a2_3_a2_1_0_sx_sn
+CTOF_DEL    ---     0.452     R15C22D.B1 to     R15C22D.F1 mcuResourcesInst/interruptMaskRegisterInst/SLICE_708
+ROUTE         1     1.132     R15C22D.F1 to     R14C19B.D1 mcuResourcesInst/interruptMaskRegisterInst/MASK_REG_0_sqmuxa_0_a2_3_a2_1_0_sx
+CTOF_DEL    ---     0.452     R14C19B.D1 to     R14C19B.F1 SLICE_395
+ROUTE         8     2.964     R14C19B.F1 to     R16C12B.B1 mcuResourcesInst.memoryMapperInst.INT_MAP_0_a2_3_a2_1
+CTOF_DEL    ---     0.452     R16C12B.B1 to     R16C12B.F1 mcuResourcesInst/memoryMapperInst/SLICE_723
+ROUTE        28     2.440     R16C12B.F1 to     R17C11C.A1 mcuResourcesInst.memoryMapperInst.CPU_DIN_sn_N_6
+CTOF_DEL    ---     0.452     R17C11C.A1 to     R17C11C.F1 coreInst/programCounterInst/SLICE_753
+ROUTE         1     0.851     R17C11C.F1 to     R17C12B.A0 coreInst/programCounterInst/ARGA_0_iv_0_2_0[1]
+CTOF_DEL    ---     0.452     R17C12B.A0 to     R17C12B.F0 coreInst/programCounterInst/SLICE_772
+ROUTE         1     1.355     R17C12B.F0 to     R17C16B.B0 coreInst/programCounterInst/ARGA_0_iv_0_2[1]
+C0TOFCO_DE  ---     0.905     R17C16B.B0 to    R17C16B.FCO coreInst/programCounterInst/SLICE_70
+ROUTE         1     0.000    R17C16B.FCO to    R17C16C.FCI coreInst/programCounterInst/PC_A_NEXT_cry_2
+FCITOFCO_D  ---     0.146    R17C16C.FCI to    R17C16C.FCO coreInst/programCounterInst/SLICE_69
+ROUTE         1     0.000    R17C16C.FCO to    R17C16D.FCI coreInst/programCounterInst/PC_A_NEXT_cry_4
+FCITOFCO_D  ---     0.146    R17C16D.FCI to    R17C16D.FCO coreInst/programCounterInst/SLICE_68
+ROUTE         1     0.000    R17C16D.FCO to    R17C17A.FCI coreInst/programCounterInst/PC_A_NEXT_cry_6
+FCITOF1_DE  ---     0.569    R17C17A.FCI to     R17C17A.F1 coreInst/programCounterInst/SLICE_67
+ROUTE         4     2.696     R17C17A.F1 to     R16C17B.B1 coreInst/programCounterInst/PC_A_NEXT[8]
+CTOF_DEL    ---     0.452     R16C17B.B1 to     R16C17B.F1 coreInst/programCounterInst/SLICE_350
+ROUTE         1     0.000     R16C17B.F1 to    R16C17B.DI1 coreInst/programCounterInst/PC_A_3[8] (to PIN_CLK_X1_c)
                   --------
-                   60.192   (35.7% logic, 64.3% route), 36 logic levels.
+                   47.278   (30.9% logic, 69.1% route), 22 logic levels.
 
  Clock Skew Details: 
 
       Source Clock Path PIN_CLK_X1 to coreInst/registerFileInst/regs/registers_0_0_1:
 
    Name    Fanout   Delay (ns)          Site               Resource
-ROUTE       213     2.504       C8.PADDI to *R_R13C21.CLKB PIN_CLK_X1_c
+ROUTE       201     2.504       C8.PADDI to *R_R13C13.CLKB PIN_CLK_X1_c
                   --------
                     2.504   (0.0% logic, 100.0% route), 0 logic levels.
 
-      Destination Clock Path PIN_CLK_X1 to coreInst/programCounterInst/SLICE_356:
+      Destination Clock Path PIN_CLK_X1 to coreInst/programCounterInst/SLICE_350:
 
    Name    Fanout   Delay (ns)          Site               Resource
-ROUTE       213     2.351       C8.PADDI to    R15C19A.CLK PIN_CLK_X1_c
+ROUTE       201     2.351       C8.PADDI to    R16C17B.CLK PIN_CLK_X1_c
                   --------
                     2.351   (0.0% logic, 100.0% route), 0 logic levels.
 
 
-Passed: The following path meets requirements by 22.838ns
+Passed: The following path meets requirements by 35.814ns
 
  Logical Details:  Cell type  Pin type       Cell/ASIC name  (clock net +/-)
 
    Source:         DP8KC      Port           coreInst/registerFileInst/regs/registers_0_0_1(ASIC)  (from PIN_CLK_X1_c +)
-   Destination:    FF         Data in        coreInst/programCounterInst/PC_A[13]  (to PIN_CLK_X1_c +)
+   Destination:    FF         Data in        coreInst/programCounterInst/PC_A[8]  (to PIN_CLK_X1_c +)
 
-   Delay:              60.192ns  (35.7% logic, 64.3% route), 36 logic levels.
+   Delay:              47.216ns  (32.9% logic, 67.1% route), 24 logic levels.
 
  Constraint Details:
 
-     60.192ns physical path delay coreInst/registerFileInst/regs/registers_0_0_1 to coreInst/programCounterInst/SLICE_356 meets
+     47.216ns physical path delay coreInst/registerFileInst/regs/registers_0_0_1 to coreInst/programCounterInst/SLICE_350 meets
      83.333ns delay constraint less
       0.153ns skew and
-      0.150ns DIN_SET requirement (totaling 83.030ns) by 22.838ns
+      0.150ns DIN_SET requirement (totaling 83.030ns) by 35.814ns
 
  Physical Path Details:
 
-      Data path coreInst/registerFileInst/regs/registers_0_0_1 to coreInst/programCounterInst/SLICE_356:
+      Data path coreInst/registerFileInst/regs/registers_0_0_1 to coreInst/programCounterInst/SLICE_350:
 
    Name    Fanout   Delay (ns)          Site               Resource
-C2Q_DEL     ---     4.739 *R_R13C21.CLKB to *R_R13C21.DOB4 coreInst/registerFileInst/regs/registers_0_0_1 (from PIN_CLK_X1_c)
-ROUTE         2     1.586 *R_R13C21.DOB4 to     R15C20B.B1 coreInst/REGB_DOUT[4]
-CTOF_DEL    ---     0.452     R15C20B.B1 to     R15C20B.F1 coreInst/SLICE_739
-ROUTE        38     4.599     R15C20B.F1 to      R9C26B.B0 coreInst/ALUB_DATA[4]
-CTOF_DEL    ---     0.452      R9C26B.B0 to      R9C26B.F0 coreInst/fullALUInst/aluInst/SLICE_994
-ROUTE         1     1.324      R9C26B.F0 to     R11C23C.A1 coreInst/fullALUInst/aluInst/un3_tmp_0_14_1
-CTOF_DEL    ---     0.452     R11C23C.A1 to     R11C23C.F1 coreInst/fullALUInst/aluInst/SLICE_852
-ROUTE        35     2.132     R11C23C.F1 to      R8C24C.A0 coreInst/fullALUInst/aluInst/un3_tmp_0_14_4
-CTOF_DEL    ---     0.452      R8C24C.A0 to      R8C24C.F0 coreInst/fullALUInst/aluInst/SLICE_862
-ROUTE         5     1.936      R8C24C.F0 to     R10C24D.B1 coreInst/fullALUInst/aluInst/un3_tmp[11]
-CTOF_DEL    ---     0.452     R10C24D.B1 to     R10C24D.F1 coreInst/fullALUInst/aluInst/SLICE_796
-ROUTE         1     0.659     R10C24D.F1 to     R10C24B.C1 coreInst/fullALUInst/aluInst/sex_2_2
-CTOF_DEL    ---     0.452     R10C24B.C1 to     R10C24B.F1 coreInst/fullALUInst/aluInst/SLICE_794
-ROUTE         1     0.678     R10C24B.F1 to     R11C24B.C0 coreInst/fullALUInst/aluInst/sex_2_9
-CTOF_DEL    ---     0.452     R11C24B.C0 to     R11C24B.F0 coreInst/fullALUInst/aluInst/SLICE_834
-ROUTE        16     1.657     R11C24B.F0 to     R11C20C.B0 coreInst/fullALUInst/aluInst/sex_2
-CTOF_DEL    ---     0.452     R11C20C.B0 to     R11C20C.F0 coreInst/fullALUInst/aluInst/SLICE_828
-ROUTE         1     0.873     R11C20C.F0 to     R11C22B.A0 coreInst/fullALUInst/aluInst/N_243
-CTOF_DEL    ---     0.452     R11C22B.A0 to     R11C22B.F0 coreInst/fullALUInst/aluInst/SLICE_827
-ROUTE         1     0.851     R11C22B.F0 to     R10C22C.A1 coreInst/fullALUInst/aluInst/N_259
-CTOOFX_DEL  ---     0.661     R10C22C.A1 to   R10C22C.OFX0 coreInst/fullALUInst/aluInst/RESULT_15[2]/SLICE_618
-ROUTE         3     1.730   R10C22C.OFX0 to     R18C21A.A1 coreInst.fullALUInst.aluInst.N_291
-CTOF_DEL    ---     0.452     R18C21A.A1 to     R18C21A.F1 coreInst/SLICE_922
-ROUTE         4     3.159     R18C21A.F1 to     R15C17C.C1 coreInst/ALU_R[2]
-CTOOFX_DEL  ---     0.661     R15C17C.C1 to   R15C17C.OFX0 coreInst/busControllerInst/ADDR_BUF_3[2]/SLICE_513
-ROUTE        57     1.334   R15C17C.OFX0 to     R18C16A.D0 ADDR_BUF[2]
-CTOF_DEL    ---     0.452     R18C16A.D0 to     R18C16A.F0 mcuResourcesInst/memoryMapperInst/SLICE_721
-ROUTE         1     0.579     R18C16A.F0 to     R18C16A.A1 mcuResourcesInst/memoryMapperInst/g0_18_1
-CTOF_DEL    ---     0.452     R18C16A.A1 to     R18C16A.F1 mcuResourcesInst/memoryMapperInst/SLICE_721
-ROUTE         3     0.691     R18C16A.F1 to     R18C18D.C0 mcuResourcesInst.memoryMapperInst.INT_MAP_0_a2_2
-CTOF_DEL    ---     0.452     R18C18D.C0 to     R18C18D.F0 SLICE_655
-ROUTE        26     2.145     R18C18D.F0 to     R17C27D.B1 mcuResourcesInst.memoryMapperInst.CPU_DIN_sn_N_6
-CTOOFX_DEL  ---     0.661     R17C27D.B1 to   R17C27D.OFX0 SLICE_301
-ROUTE         4     1.070   R17C27D.OFX0 to     R17C20C.D1 CPU_DIN[11]
-CTOF_DEL    ---     0.452     R17C20C.D1 to     R17C20C.F1 coreInst/SLICE_296
-ROUTE         1     0.882     R17C20C.F1 to     R17C19C.B1 coreInst/registerFileInst/N_23
-CTOOFX_DEL  ---     0.661     R17C19C.B1 to   R17C19C.OFX0 coreInst/registerFileInst/regs/registers_0_0_1_RNO_4/SLICE_516
-ROUTE         1     1.324   R17C19C.OFX0 to     R16C16B.A1 coreInst/registerFileInst/regs/registers_0_0_1_RNO_4
-CTOOFX_DEL  ---     0.661     R16C16B.A1 to   R16C16B.OFX0 SLICE_647
-ROUTE         1     0.000   R16C16B.OFX0 to    R16C16A.FXA mcuResourcesInst/ROMInst/mem_0_2_0_f5a
-FXTOOFX_DE  ---     0.223    R16C16A.FXA to   R16C16A.OFX1 mcuResourcesInst/ROMInst/SLICE_648
-ROUTE         2     0.911   R16C16A.OFX1 to     R17C16B.B0 mcuResourcesInst/DIN_ROM[2]
-CTOOFX_DEL  ---     0.661     R17C16B.B0 to   R17C16B.OFX0 mcuResourcesInst/memoryMapperInst/CPU_DIN_3[2]/SLICE_498
-ROUTE         3     1.675   R17C16B.OFX0 to     R18C18C.B1 mcuResourcesInst/memoryMapperInst/N_73
-CTOF_DEL    ---     0.452     R18C18C.B1 to     R18C18C.F1 SLICE_312
-ROUTE         1     0.384     R18C18C.F1 to     R18C18C.C0 mcuResourcesInst/memoryMapperInst/g0_12_1
-CTOF_DEL    ---     0.452     R18C18C.C0 to     R18C18C.F0 SLICE_312
-ROUTE         2     0.392     R18C18C.F0 to     R18C19A.C0 CPU_DIN[2]
-CTOOFX_DEL  ---     0.661     R18C19A.C0 to   R18C19A.OFX0 coreInst/registerFileInst/regs/registers_0_0_1_RNO_3/SLICE_515
-ROUTE         1     1.057   R18C19A.OFX0 to     R16C17C.C1 coreInst/registerFileInst/regs/registers_0_0_1_RNO_3
-CTOOFX_DEL  ---     0.661     R16C17C.C1 to   R16C17C.OFX0 SLICE_646
-ROUTE         1     0.000   R16C17C.OFX0 to    R16C17C.FXB mcuResourcesInst/ROMInst/mem_0_3_1_f5b
-FXTOOFX_DE  ---     0.223    R16C17C.FXB to   R16C17C.OFX1 SLICE_646
-ROUTE         1     0.904   R16C17C.OFX1 to     R17C17D.B0 mcuResourcesInst/DIN_ROM[3]
-CTOF_DEL    ---     0.452     R17C17D.B0 to     R17C17D.F0 SLICE_698
-ROUTE         1     1.057     R17C17D.F0 to     R18C19D.C1 mcuResourcesInst/memoryMapperInst/N_39
-CTOOFX_DEL  ---     0.661     R18C19D.C1 to   R18C19D.OFX0 SLICE_313
-ROUTE         4     1.231   R18C19D.OFX0 to     R16C19C.B0 CPU_DIN[3]
-C0TOFCO_DE  ---     0.905     R16C19C.B0 to    R16C19C.FCO coreInst/programCounterInst/SLICE_70
-ROUTE         1     0.000    R16C19C.FCO to    R16C19D.FCI coreInst/programCounterInst/PC_A_NEXT_cry_4
-FCITOFCO_D  ---     0.146    R16C19D.FCI to    R16C19D.FCO coreInst/programCounterInst/SLICE_69
-ROUTE         1     0.000    R16C19D.FCO to    R16C20A.FCI coreInst/programCounterInst/PC_A_NEXT_cry_6
-FCITOFCO_D  ---     0.146    R16C20A.FCI to    R16C20A.FCO coreInst/programCounterInst/SLICE_68
-ROUTE         1     0.000    R16C20A.FCO to    R16C20B.FCI coreInst/programCounterInst/PC_A_NEXT_cry_8
-FCITOFCO_D  ---     0.146    R16C20B.FCI to    R16C20B.FCO coreInst/programCounterInst/SLICE_67
-ROUTE         1     0.000    R16C20B.FCO to    R16C20C.FCI coreInst/programCounterInst/PC_A_NEXT_cry_10
-FCITOFCO_D  ---     0.146    R16C20C.FCI to    R16C20C.FCO coreInst/programCounterInst/SLICE_66
-ROUTE         1     0.000    R16C20C.FCO to    R16C20D.FCI coreInst/programCounterInst/PC_A_NEXT_cry_12
-FCITOF0_DE  ---     0.517    R16C20D.FCI to     R16C20D.F0 coreInst/programCounterInst/SLICE_65
-ROUTE         5     1.887     R16C20D.F0 to     R15C19A.B1 coreInst/programCounterInst/PC_A_NEXT[13]
-CTOOFX_DEL  ---     0.661     R15C19A.B1 to   R15C19A.OFX0 coreInst/programCounterInst/SLICE_356
-ROUTE         1     0.000   R15C19A.OFX0 to    R15C19A.DI0 coreInst/programCounterInst/PC_A_3[13] (to PIN_CLK_X1_c)
+C2Q_DEL     ---     4.739 *R_R13C13.CLKB to *R_R13C13.DOB6 coreInst/registerFileInst/regs/registers_0_0_1 (from PIN_CLK_X1_c)
+ROUTE         4     3.617 *R_R13C13.DOB6 to     R14C19D.B1 coreInst/REGB_DOUT[6]
+CTOF_DEL    ---     0.452     R14C19D.B1 to     R14C19D.F1 coreInst/fullALUInst/aluInst/SLICE_1040
+ROUTE         1     0.908     R14C19D.F1 to     R12C19B.D1 coreInst/fullALUInst/aluInst/OVER_2_9_i_a5_4
+CTOF_DEL    ---     0.452     R12C19B.D1 to     R12C19B.F1 coreInst/SLICE_742
+ROUTE         1     1.347     R12C19B.F1 to     R15C19A.B0 coreInst/fullALUInst/aluInst/N_74
+CTOF_DEL    ---     0.452     R15C19A.B0 to     R15C19A.F0 coreInst/fullALUInst/aluInst/SLICE_902
+ROUTE         1     1.355     R15C19A.F0 to     R15C23A.B1 coreInst/fullALUInst/aluInst/N_33_1
+CTOF_DEL    ---     0.452     R15C23A.B1 to     R15C23A.F1 coreInst/fullALUInst/SLICE_803
+ROUTE        10     1.789     R15C23A.F1 to     R16C25B.B1 coreInst/fullALUInst/aluInst/OVER_2
+CTOF_DEL    ---     0.452     R16C25B.B1 to     R16C25B.F1 coreInst/fullALUInst/aluInst/SLICE_1006
+ROUTE         4     0.869     R16C25B.F1 to     R16C25C.A1 coreInst/fullALUInst/aluInst/un7_sex[15]
+CTOF_DEL    ---     0.452     R16C25C.A1 to     R16C25C.F1 coreInst/fullALUInst/aluInst/SLICE_827
+ROUTE         1     0.904     R16C25C.F1 to     R17C25D.B0 coreInst/fullALUInst/aluInst/sex_2_0
+CTOF_DEL    ---     0.452     R17C25D.B0 to     R17C25D.F0 coreInst/fullALUInst/aluInst/SLICE_866
+ROUTE         9     0.610     R17C25D.F0 to     R17C24D.D0 coreInst/fullALUInst/aluInst/sex_2_12
+CTOF_DEL    ---     0.452     R17C24D.D0 to     R17C24D.F0 coreInst/fullALUInst/aluInst/SLICE_861
+ROUTE         1     1.252     R17C24D.F0 to     R18C26B.A0 coreInst/fullALUInst/aluInst/N_244
+CTOF_DEL    ---     0.452     R18C26B.A0 to     R18C26B.F0 coreInst/fullALUInst/aluInst/SLICE_853
+ROUTE         1     0.851     R18C26B.F0 to     R18C27D.A1 coreInst/fullALUInst/aluInst/N_260
+CTOOFX_DEL  ---     0.661     R18C27D.A1 to   R18C27D.OFX0 coreInst/fullALUInst/aluInst/RESULT_15[3]/SLICE_532
+ROUTE         1     1.355   R18C27D.OFX0 to     R17C21D.B1 coreInst/fullALUInst/aluInst/N_292
+CTOF_DEL    ---     0.452     R17C21D.B1 to     R17C21D.F1 coreInst/SLICE_780
+ROUTE         5     0.880     R17C21D.F1 to     R17C20D.A1 coreInst/ALU_R[3]
+CTOOFX_DEL  ---     0.661     R17C20D.A1 to   R17C20D.OFX0 coreInst/busControllerInst/ADDR_BUF_3_i_m2[3]/SLICE_510
+ROUTE        90     3.626   R17C20D.OFX0 to     R14C22C.D0 N_286
+CTOF_DEL    ---     0.452     R14C22C.D0 to     R14C22C.F0 SLICE_709
+ROUTE         1     0.904     R14C22C.F0 to     R15C22D.B1 mcuResourcesInst/interruptMaskRegisterInst/MASK_REG_0_sqmuxa_0_a2_3_a2_1_0_sx_sn
+CTOF_DEL    ---     0.452     R15C22D.B1 to     R15C22D.F1 mcuResourcesInst/interruptMaskRegisterInst/SLICE_708
+ROUTE         1     1.132     R15C22D.F1 to     R14C19B.D1 mcuResourcesInst/interruptMaskRegisterInst/MASK_REG_0_sqmuxa_0_a2_3_a2_1_0_sx
+CTOF_DEL    ---     0.452     R14C19B.D1 to     R14C19B.F1 SLICE_395
+ROUTE         8     2.964     R14C19B.F1 to     R16C12B.B1 mcuResourcesInst.memoryMapperInst.INT_MAP_0_a2_3_a2_1
+CTOF_DEL    ---     0.452     R16C12B.B1 to     R16C12B.F1 mcuResourcesInst/memoryMapperInst/SLICE_723
+ROUTE        28     2.440     R16C12B.F1 to     R17C11C.A1 mcuResourcesInst.memoryMapperInst.CPU_DIN_sn_N_6
+CTOF_DEL    ---     0.452     R17C11C.A1 to     R17C11C.F1 coreInst/programCounterInst/SLICE_753
+ROUTE         1     0.851     R17C11C.F1 to     R17C12B.A0 coreInst/programCounterInst/ARGA_0_iv_0_2_0[1]
+CTOF_DEL    ---     0.452     R17C12B.A0 to     R17C12B.F0 coreInst/programCounterInst/SLICE_772
+ROUTE         1     1.355     R17C12B.F0 to     R17C16B.B0 coreInst/programCounterInst/ARGA_0_iv_0_2[1]
+C0TOFCO_DE  ---     0.905     R17C16B.B0 to    R17C16B.FCO coreInst/programCounterInst/SLICE_70
+ROUTE         1     0.000    R17C16B.FCO to    R17C16C.FCI coreInst/programCounterInst/PC_A_NEXT_cry_2
+FCITOFCO_D  ---     0.146    R17C16C.FCI to    R17C16C.FCO coreInst/programCounterInst/SLICE_69
+ROUTE         1     0.000    R17C16C.FCO to    R17C16D.FCI coreInst/programCounterInst/PC_A_NEXT_cry_4
+FCITOFCO_D  ---     0.146    R17C16D.FCI to    R17C16D.FCO coreInst/programCounterInst/SLICE_68
+ROUTE         1     0.000    R17C16D.FCO to    R17C17A.FCI coreInst/programCounterInst/PC_A_NEXT_cry_6
+FCITOF1_DE  ---     0.569    R17C17A.FCI to     R17C17A.F1 coreInst/programCounterInst/SLICE_67
+ROUTE         4     2.696     R17C17A.F1 to     R16C17B.B1 coreInst/programCounterInst/PC_A_NEXT[8]
+CTOF_DEL    ---     0.452     R16C17B.B1 to     R16C17B.F1 coreInst/programCounterInst/SLICE_350
+ROUTE         1     0.000     R16C17B.F1 to    R16C17B.DI1 coreInst/programCounterInst/PC_A_3[8] (to PIN_CLK_X1_c)
                   --------
-                   60.192   (35.7% logic, 64.3% route), 36 logic levels.
+                   47.216   (32.9% logic, 67.1% route), 24 logic levels.
 
  Clock Skew Details: 
 
       Source Clock Path PIN_CLK_X1 to coreInst/registerFileInst/regs/registers_0_0_1:
 
    Name    Fanout   Delay (ns)          Site               Resource
-ROUTE       213     2.504       C8.PADDI to *R_R13C21.CLKB PIN_CLK_X1_c
+ROUTE       201     2.504       C8.PADDI to *R_R13C13.CLKB PIN_CLK_X1_c
                   --------
                     2.504   (0.0% logic, 100.0% route), 0 logic levels.
 
-      Destination Clock Path PIN_CLK_X1 to coreInst/programCounterInst/SLICE_356:
+      Destination Clock Path PIN_CLK_X1 to coreInst/programCounterInst/SLICE_350:
 
    Name    Fanout   Delay (ns)          Site               Resource
-ROUTE       213     2.351       C8.PADDI to    R15C19A.CLK PIN_CLK_X1_c
+ROUTE       201     2.351       C8.PADDI to    R16C17B.CLK PIN_CLK_X1_c
                   --------
                     2.351   (0.0% logic, 100.0% route), 0 logic levels.
 
-Report:   16.470MHz is the maximum frequency for this preference.
+
+Passed: The following path meets requirements by 35.854ns
+
+ Logical Details:  Cell type  Pin type       Cell/ASIC name  (clock net +/-)
+
+   Source:         DP8KC      Port           coreInst/registerFileInst/regs/registers_0_1_0(ASIC)  (from PIN_CLK_X1_c +)
+   Destination:    FF         Data in        coreInst/programCounterInst/PC_A[8]  (to PIN_CLK_X1_c +)
+
+   Delay:              47.176ns  (31.9% logic, 68.1% route), 23 logic levels.
+
+ Constraint Details:
+
+     47.176ns physical path delay coreInst/registerFileInst/regs/registers_0_1_0 to coreInst/programCounterInst/SLICE_350 meets
+     83.333ns delay constraint less
+      0.153ns skew and
+      0.150ns DIN_SET requirement (totaling 83.030ns) by 35.854ns
+
+ Physical Path Details:
+
+      Data path coreInst/registerFileInst/regs/registers_0_1_0 to coreInst/programCounterInst/SLICE_350:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+C2Q_DEL     ---     4.739 *R_R13C16.CLKB to *R_R13C16.DOB0 coreInst/registerFileInst/regs/registers_0_1_0 (from PIN_CLK_X1_c)
+ROUTE         2     1.481 *R_R13C16.DOB0 to     R12C21C.D1 coreInst/REGB_DOUT[8]
+CTOF_DEL    ---     0.452     R12C21C.D1 to     R12C21C.F1 coreInst/fullALUInst/muxB/SLICE_676
+ROUTE        12     0.413     R12C21C.F1 to     R12C21C.C0 coreInst/ALUB_DATA_6_i_1[8]
+CTOF_DEL    ---     0.452     R12C21C.C0 to     R12C21C.F0 coreInst/fullALUInst/muxB/SLICE_676
+ROUTE        17     2.923     R12C21C.F0 to     R17C27C.A1 coreInst/N_18
+CTOF_DEL    ---     0.452     R17C27C.A1 to     R17C27C.F1 coreInst/fullALUInst/aluInst/SLICE_962
+ROUTE        19     3.800     R17C27C.F1 to     R21C27B.A0 coreInst/fullALUInst/aluInst/un3_tmp_10[0]
+CTOF_DEL    ---     0.452     R21C27B.A0 to     R21C27B.F0 coreInst/fullALUInst/aluInst/SLICE_895
+ROUTE         5     1.733     R21C27B.F0 to     R17C26D.A1 coreInst/fullALUInst/aluInst/un3_tmp[14]
+CTOF_DEL    ---     0.452     R17C26D.A1 to     R17C26D.F1 coreInst/fullALUInst/aluInst/SLICE_683
+ROUTE         1     0.851     R17C26D.F1 to     R17C25D.A0 coreInst/fullALUInst/aluInst/sex_2_3
+CTOF_DEL    ---     0.452     R17C25D.A0 to     R17C25D.F0 coreInst/fullALUInst/aluInst/SLICE_866
+ROUTE         9     0.610     R17C25D.F0 to     R17C24D.D0 coreInst/fullALUInst/aluInst/sex_2_12
+CTOF_DEL    ---     0.452     R17C24D.D0 to     R17C24D.F0 coreInst/fullALUInst/aluInst/SLICE_861
+ROUTE         1     1.252     R17C24D.F0 to     R18C26B.A0 coreInst/fullALUInst/aluInst/N_244
+CTOF_DEL    ---     0.452     R18C26B.A0 to     R18C26B.F0 coreInst/fullALUInst/aluInst/SLICE_853
+ROUTE         1     0.851     R18C26B.F0 to     R18C27D.A1 coreInst/fullALUInst/aluInst/N_260
+CTOOFX_DEL  ---     0.661     R18C27D.A1 to   R18C27D.OFX0 coreInst/fullALUInst/aluInst/RESULT_15[3]/SLICE_532
+ROUTE         1     1.355   R18C27D.OFX0 to     R17C21D.B1 coreInst/fullALUInst/aluInst/N_292
+CTOF_DEL    ---     0.452     R17C21D.B1 to     R17C21D.F1 coreInst/SLICE_780
+ROUTE         5     0.880     R17C21D.F1 to     R17C20D.A1 coreInst/ALU_R[3]
+CTOOFX_DEL  ---     0.661     R17C20D.A1 to   R17C20D.OFX0 coreInst/busControllerInst/ADDR_BUF_3_i_m2[3]/SLICE_510
+ROUTE        90     3.626   R17C20D.OFX0 to     R14C22C.D0 N_286
+CTOF_DEL    ---     0.452     R14C22C.D0 to     R14C22C.F0 SLICE_709
+ROUTE         1     0.904     R14C22C.F0 to     R15C22D.B1 mcuResourcesInst/interruptMaskRegisterInst/MASK_REG_0_sqmuxa_0_a2_3_a2_1_0_sx_sn
+CTOF_DEL    ---     0.452     R15C22D.B1 to     R15C22D.F1 mcuResourcesInst/interruptMaskRegisterInst/SLICE_708
+ROUTE         1     1.132     R15C22D.F1 to     R14C19B.D1 mcuResourcesInst/interruptMaskRegisterInst/MASK_REG_0_sqmuxa_0_a2_3_a2_1_0_sx
+CTOF_DEL    ---     0.452     R14C19B.D1 to     R14C19B.F1 SLICE_395
+ROUTE         8     2.964     R14C19B.F1 to     R16C12B.B1 mcuResourcesInst.memoryMapperInst.INT_MAP_0_a2_3_a2_1
+CTOF_DEL    ---     0.452     R16C12B.B1 to     R16C12B.F1 mcuResourcesInst/memoryMapperInst/SLICE_723
+ROUTE        28     2.440     R16C12B.F1 to     R17C11C.A1 mcuResourcesInst.memoryMapperInst.CPU_DIN_sn_N_6
+CTOF_DEL    ---     0.452     R17C11C.A1 to     R17C11C.F1 coreInst/programCounterInst/SLICE_753
+ROUTE         1     0.851     R17C11C.F1 to     R17C12B.A0 coreInst/programCounterInst/ARGA_0_iv_0_2_0[1]
+CTOF_DEL    ---     0.452     R17C12B.A0 to     R17C12B.F0 coreInst/programCounterInst/SLICE_772
+ROUTE         1     1.355     R17C12B.F0 to     R17C16B.B0 coreInst/programCounterInst/ARGA_0_iv_0_2[1]
+C0TOFCO_DE  ---     0.905     R17C16B.B0 to    R17C16B.FCO coreInst/programCounterInst/SLICE_70
+ROUTE         1     0.000    R17C16B.FCO to    R17C16C.FCI coreInst/programCounterInst/PC_A_NEXT_cry_2
+FCITOFCO_D  ---     0.146    R17C16C.FCI to    R17C16C.FCO coreInst/programCounterInst/SLICE_69
+ROUTE         1     0.000    R17C16C.FCO to    R17C16D.FCI coreInst/programCounterInst/PC_A_NEXT_cry_4
+FCITOFCO_D  ---     0.146    R17C16D.FCI to    R17C16D.FCO coreInst/programCounterInst/SLICE_68
+ROUTE         1     0.000    R17C16D.FCO to    R17C17A.FCI coreInst/programCounterInst/PC_A_NEXT_cry_6
+FCITOF1_DE  ---     0.569    R17C17A.FCI to     R17C17A.F1 coreInst/programCounterInst/SLICE_67
+ROUTE         4     2.696     R17C17A.F1 to     R16C17B.B1 coreInst/programCounterInst/PC_A_NEXT[8]
+CTOF_DEL    ---     0.452     R16C17B.B1 to     R16C17B.F1 coreInst/programCounterInst/SLICE_350
+ROUTE         1     0.000     R16C17B.F1 to    R16C17B.DI1 coreInst/programCounterInst/PC_A_3[8] (to PIN_CLK_X1_c)
+                  --------
+                   47.176   (31.9% logic, 68.1% route), 23 logic levels.
+
+ Clock Skew Details: 
+
+      Source Clock Path PIN_CLK_X1 to coreInst/registerFileInst/regs/registers_0_1_0:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE       201     2.504       C8.PADDI to *R_R13C16.CLKB PIN_CLK_X1_c
+                  --------
+                    2.504   (0.0% logic, 100.0% route), 0 logic levels.
+
+      Destination Clock Path PIN_CLK_X1 to coreInst/programCounterInst/SLICE_350:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE       201     2.351       C8.PADDI to    R16C17B.CLK PIN_CLK_X1_c
+                  --------
+                    2.351   (0.0% logic, 100.0% route), 0 logic levels.
+
+
+Passed: The following path meets requirements by 35.891ns
+
+ Logical Details:  Cell type  Pin type       Cell/ASIC name  (clock net +/-)
+
+   Source:         DP8KC      Port           coreInst/registerFileInst/regs/registers_0_0_1(ASIC)  (from PIN_CLK_X1_c +)
+   Destination:    FF         Data in        coreInst/programCounterInst/PC_A[11]  (to PIN_CLK_X1_c +)
+
+   Delay:              47.139ns  (31.5% logic, 68.5% route), 24 logic levels.
+
+ Constraint Details:
+
+     47.139ns physical path delay coreInst/registerFileInst/regs/registers_0_0_1 to coreInst/programCounterInst/SLICE_352 meets
+     83.333ns delay constraint less
+      0.153ns skew and
+      0.150ns DIN_SET requirement (totaling 83.030ns) by 35.891ns
+
+ Physical Path Details:
+
+      Data path coreInst/registerFileInst/regs/registers_0_0_1 to coreInst/programCounterInst/SLICE_352:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+C2Q_DEL     ---     4.739 *R_R13C13.CLKB to *R_R13C13.DOB7 coreInst/registerFileInst/regs/registers_0_0_1 (from PIN_CLK_X1_c)
+ROUTE         4     2.706 *R_R13C13.DOB7 to     R16C21D.B1 coreInst/REGB_DOUT[7]
+CTOF_DEL    ---     0.452     R16C21D.B1 to     R16C21D.F1 coreInst/SLICE_765
+ROUTE        15     2.665     R16C21D.F1 to     R17C27C.C1 coreInst/N_20
+CTOF_DEL    ---     0.452     R17C27C.C1 to     R17C27C.F1 coreInst/fullALUInst/aluInst/SLICE_962
+ROUTE        19     3.800     R17C27C.F1 to     R21C27B.A0 coreInst/fullALUInst/aluInst/un3_tmp_10[0]
+CTOF_DEL    ---     0.452     R21C27B.A0 to     R21C27B.F0 coreInst/fullALUInst/aluInst/SLICE_895
+ROUTE         5     1.733     R21C27B.F0 to     R17C26D.A1 coreInst/fullALUInst/aluInst/un3_tmp[14]
+CTOF_DEL    ---     0.452     R17C26D.A1 to     R17C26D.F1 coreInst/fullALUInst/aluInst/SLICE_683
+ROUTE         1     0.851     R17C26D.F1 to     R17C25D.A0 coreInst/fullALUInst/aluInst/sex_2_3
+CTOF_DEL    ---     0.452     R17C25D.A0 to     R17C25D.F0 coreInst/fullALUInst/aluInst/SLICE_866
+ROUTE         9     0.610     R17C25D.F0 to     R17C24D.D0 coreInst/fullALUInst/aluInst/sex_2_12
+CTOF_DEL    ---     0.452     R17C24D.D0 to     R17C24D.F0 coreInst/fullALUInst/aluInst/SLICE_861
+ROUTE         1     1.252     R17C24D.F0 to     R18C26B.A0 coreInst/fullALUInst/aluInst/N_244
+CTOF_DEL    ---     0.452     R18C26B.A0 to     R18C26B.F0 coreInst/fullALUInst/aluInst/SLICE_853
+ROUTE         1     0.851     R18C26B.F0 to     R18C27D.A1 coreInst/fullALUInst/aluInst/N_260
+CTOOFX_DEL  ---     0.661     R18C27D.A1 to   R18C27D.OFX0 coreInst/fullALUInst/aluInst/RESULT_15[3]/SLICE_532
+ROUTE         1     1.355   R18C27D.OFX0 to     R17C21D.B1 coreInst/fullALUInst/aluInst/N_292
+CTOF_DEL    ---     0.452     R17C21D.B1 to     R17C21D.F1 coreInst/SLICE_780
+ROUTE         5     0.880     R17C21D.F1 to     R17C20D.A1 coreInst/ALU_R[3]
+CTOOFX_DEL  ---     0.661     R17C20D.A1 to   R17C20D.OFX0 coreInst/busControllerInst/ADDR_BUF_3_i_m2[3]/SLICE_510
+ROUTE        90     3.626   R17C20D.OFX0 to     R14C22C.D0 N_286
+CTOF_DEL    ---     0.452     R14C22C.D0 to     R14C22C.F0 SLICE_709
+ROUTE         1     0.904     R14C22C.F0 to     R15C22D.B1 mcuResourcesInst/interruptMaskRegisterInst/MASK_REG_0_sqmuxa_0_a2_3_a2_1_0_sx_sn
+CTOF_DEL    ---     0.452     R15C22D.B1 to     R15C22D.F1 mcuResourcesInst/interruptMaskRegisterInst/SLICE_708
+ROUTE         1     1.132     R15C22D.F1 to     R14C19B.D1 mcuResourcesInst/interruptMaskRegisterInst/MASK_REG_0_sqmuxa_0_a2_3_a2_1_0_sx
+CTOF_DEL    ---     0.452     R14C19B.D1 to     R14C19B.F1 SLICE_395
+ROUTE         8     2.964     R14C19B.F1 to     R16C12B.B1 mcuResourcesInst.memoryMapperInst.INT_MAP_0_a2_3_a2_1
+CTOF_DEL    ---     0.452     R16C12B.B1 to     R16C12B.F1 mcuResourcesInst/memoryMapperInst/SLICE_723
+ROUTE        28     2.440     R16C12B.F1 to     R17C11C.A1 mcuResourcesInst.memoryMapperInst.CPU_DIN_sn_N_6
+CTOF_DEL    ---     0.452     R17C11C.A1 to     R17C11C.F1 coreInst/programCounterInst/SLICE_753
+ROUTE         1     0.851     R17C11C.F1 to     R17C12B.A0 coreInst/programCounterInst/ARGA_0_iv_0_2_0[1]
+CTOF_DEL    ---     0.452     R17C12B.A0 to     R17C12B.F0 coreInst/programCounterInst/SLICE_772
+ROUTE         1     1.355     R17C12B.F0 to     R17C16B.B0 coreInst/programCounterInst/ARGA_0_iv_0_2[1]
+C0TOFCO_DE  ---     0.905     R17C16B.B0 to    R17C16B.FCO coreInst/programCounterInst/SLICE_70
+ROUTE         1     0.000    R17C16B.FCO to    R17C16C.FCI coreInst/programCounterInst/PC_A_NEXT_cry_2
+FCITOFCO_D  ---     0.146    R17C16C.FCI to    R17C16C.FCO coreInst/programCounterInst/SLICE_69
+ROUTE         1     0.000    R17C16C.FCO to    R17C16D.FCI coreInst/programCounterInst/PC_A_NEXT_cry_4
+FCITOFCO_D  ---     0.146    R17C16D.FCI to    R17C16D.FCO coreInst/programCounterInst/SLICE_68
+ROUTE         1     0.000    R17C16D.FCO to    R17C17A.FCI coreInst/programCounterInst/PC_A_NEXT_cry_6
+FCITOFCO_D  ---     0.146    R17C17A.FCI to    R17C17A.FCO coreInst/programCounterInst/SLICE_67
+ROUTE         1     0.000    R17C17A.FCO to    R17C17B.FCI coreInst/programCounterInst/PC_A_NEXT_cry_8
+FCITOFCO_D  ---     0.146    R17C17B.FCI to    R17C17B.FCO coreInst/programCounterInst/SLICE_66
+ROUTE         1     0.000    R17C17B.FCO to    R17C17C.FCI coreInst/programCounterInst/PC_A_NEXT_cry_10
+FCITOF0_DE  ---     0.517    R17C17C.FCI to     R17C17C.F0 coreInst/programCounterInst/SLICE_65
+ROUTE         4     2.317     R17C17C.F0 to     R18C18B.B0 coreInst/programCounterInst/PC_A_NEXT[11]
+CTOF_DEL    ---     0.452     R18C18B.B0 to     R18C18B.F0 coreInst/programCounterInst/SLICE_352
+ROUTE         1     0.000     R18C18B.F0 to    R18C18B.DI0 coreInst/programCounterInst/PC_A_3[11] (to PIN_CLK_X1_c)
+                  --------
+                   47.139   (31.5% logic, 68.5% route), 24 logic levels.
+
+ Clock Skew Details: 
+
+      Source Clock Path PIN_CLK_X1 to coreInst/registerFileInst/regs/registers_0_0_1:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE       201     2.504       C8.PADDI to *R_R13C13.CLKB PIN_CLK_X1_c
+                  --------
+                    2.504   (0.0% logic, 100.0% route), 0 logic levels.
+
+      Destination Clock Path PIN_CLK_X1 to coreInst/programCounterInst/SLICE_352:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE       201     2.351       C8.PADDI to    R18C18B.CLK PIN_CLK_X1_c
+                  --------
+                    2.351   (0.0% logic, 100.0% route), 0 logic levels.
+
+
+Passed: The following path meets requirements by 35.893ns
+
+ Logical Details:  Cell type  Pin type       Cell/ASIC name  (clock net +/-)
+
+   Source:         DP8KC      Port           coreInst/registerFileInst/regs/registers_0_0_1(ASIC)  (from PIN_CLK_X1_c +)
+   Destination:    FF         Data in        coreInst/programCounterInst/PC_A[9]  (to PIN_CLK_X1_c +)
+
+   Delay:              47.137ns  (31.2% logic, 68.8% route), 23 logic levels.
+
+ Constraint Details:
+
+     47.137ns physical path delay coreInst/registerFileInst/regs/registers_0_0_1 to coreInst/programCounterInst/SLICE_351 meets
+     83.333ns delay constraint less
+      0.153ns skew and
+      0.150ns DIN_SET requirement (totaling 83.030ns) by 35.893ns
+
+ Physical Path Details:
+
+      Data path coreInst/registerFileInst/regs/registers_0_0_1 to coreInst/programCounterInst/SLICE_351:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+C2Q_DEL     ---     4.739 *R_R13C13.CLKB to *R_R13C13.DOB7 coreInst/registerFileInst/regs/registers_0_0_1 (from PIN_CLK_X1_c)
+ROUTE         4     2.706 *R_R13C13.DOB7 to     R16C21D.B1 coreInst/REGB_DOUT[7]
+CTOF_DEL    ---     0.452     R16C21D.B1 to     R16C21D.F1 coreInst/SLICE_765
+ROUTE        15     2.665     R16C21D.F1 to     R17C27C.C1 coreInst/N_20
+CTOF_DEL    ---     0.452     R17C27C.C1 to     R17C27C.F1 coreInst/fullALUInst/aluInst/SLICE_962
+ROUTE        19     3.800     R17C27C.F1 to     R21C27B.A0 coreInst/fullALUInst/aluInst/un3_tmp_10[0]
+CTOF_DEL    ---     0.452     R21C27B.A0 to     R21C27B.F0 coreInst/fullALUInst/aluInst/SLICE_895
+ROUTE         5     1.733     R21C27B.F0 to     R17C26D.A1 coreInst/fullALUInst/aluInst/un3_tmp[14]
+CTOF_DEL    ---     0.452     R17C26D.A1 to     R17C26D.F1 coreInst/fullALUInst/aluInst/SLICE_683
+ROUTE         1     0.851     R17C26D.F1 to     R17C25D.A0 coreInst/fullALUInst/aluInst/sex_2_3
+CTOF_DEL    ---     0.452     R17C25D.A0 to     R17C25D.F0 coreInst/fullALUInst/aluInst/SLICE_866
+ROUTE         9     0.610     R17C25D.F0 to     R17C24D.D0 coreInst/fullALUInst/aluInst/sex_2_12
+CTOF_DEL    ---     0.452     R17C24D.D0 to     R17C24D.F0 coreInst/fullALUInst/aluInst/SLICE_861
+ROUTE         1     1.252     R17C24D.F0 to     R18C26B.A0 coreInst/fullALUInst/aluInst/N_244
+CTOF_DEL    ---     0.452     R18C26B.A0 to     R18C26B.F0 coreInst/fullALUInst/aluInst/SLICE_853
+ROUTE         1     0.851     R18C26B.F0 to     R18C27D.A1 coreInst/fullALUInst/aluInst/N_260
+CTOOFX_DEL  ---     0.661     R18C27D.A1 to   R18C27D.OFX0 coreInst/fullALUInst/aluInst/RESULT_15[3]/SLICE_532
+ROUTE         1     1.355   R18C27D.OFX0 to     R17C21D.B1 coreInst/fullALUInst/aluInst/N_292
+CTOF_DEL    ---     0.452     R17C21D.B1 to     R17C21D.F1 coreInst/SLICE_780
+ROUTE         5     0.880     R17C21D.F1 to     R17C20D.A1 coreInst/ALU_R[3]
+CTOOFX_DEL  ---     0.661     R17C20D.A1 to   R17C20D.OFX0 coreInst/busControllerInst/ADDR_BUF_3_i_m2[3]/SLICE_510
+ROUTE        90     3.626   R17C20D.OFX0 to     R14C22C.D0 N_286
+CTOF_DEL    ---     0.452     R14C22C.D0 to     R14C22C.F0 SLICE_709
+ROUTE         1     0.904     R14C22C.F0 to     R15C22D.B1 mcuResourcesInst/interruptMaskRegisterInst/MASK_REG_0_sqmuxa_0_a2_3_a2_1_0_sx_sn
+CTOF_DEL    ---     0.452     R15C22D.B1 to     R15C22D.F1 mcuResourcesInst/interruptMaskRegisterInst/SLICE_708
+ROUTE         1     1.132     R15C22D.F1 to     R14C19B.D1 mcuResourcesInst/interruptMaskRegisterInst/MASK_REG_0_sqmuxa_0_a2_3_a2_1_0_sx
+CTOF_DEL    ---     0.452     R14C19B.D1 to     R14C19B.F1 SLICE_395
+ROUTE         8     2.964     R14C19B.F1 to     R16C12B.B1 mcuResourcesInst.memoryMapperInst.INT_MAP_0_a2_3_a2_1
+CTOF_DEL    ---     0.452     R16C12B.B1 to     R16C12B.F1 mcuResourcesInst/memoryMapperInst/SLICE_723
+ROUTE        28     2.440     R16C12B.F1 to     R17C11C.A1 mcuResourcesInst.memoryMapperInst.CPU_DIN_sn_N_6
+CTOF_DEL    ---     0.452     R17C11C.A1 to     R17C11C.F1 coreInst/programCounterInst/SLICE_753
+ROUTE         1     0.851     R17C11C.F1 to     R17C12B.A0 coreInst/programCounterInst/ARGA_0_iv_0_2_0[1]
+CTOF_DEL    ---     0.452     R17C12B.A0 to     R17C12B.F0 coreInst/programCounterInst/SLICE_772
+ROUTE         1     1.355     R17C12B.F0 to     R17C16B.B0 coreInst/programCounterInst/ARGA_0_iv_0_2[1]
+C0TOFCO_DE  ---     0.905     R17C16B.B0 to    R17C16B.FCO coreInst/programCounterInst/SLICE_70
+ROUTE         1     0.000    R17C16B.FCO to    R17C16C.FCI coreInst/programCounterInst/PC_A_NEXT_cry_2
+FCITOFCO_D  ---     0.146    R17C16C.FCI to    R17C16C.FCO coreInst/programCounterInst/SLICE_69
+ROUTE         1     0.000    R17C16C.FCO to    R17C16D.FCI coreInst/programCounterInst/PC_A_NEXT_cry_4
+FCITOFCO_D  ---     0.146    R17C16D.FCI to    R17C16D.FCO coreInst/programCounterInst/SLICE_68
+ROUTE         1     0.000    R17C16D.FCO to    R17C17A.FCI coreInst/programCounterInst/PC_A_NEXT_cry_6
+FCITOFCO_D  ---     0.146    R17C17A.FCI to    R17C17A.FCO coreInst/programCounterInst/SLICE_67
+ROUTE         1     0.000    R17C17A.FCO to    R17C17B.FCI coreInst/programCounterInst/PC_A_NEXT_cry_8
+FCITOF0_DE  ---     0.517    R17C17B.FCI to     R17C17B.F0 coreInst/programCounterInst/SLICE_66
+ROUTE         4     2.461     R17C17B.F0 to     R16C18C.A0 coreInst/programCounterInst/PC_A_NEXT[9]
+CTOF_DEL    ---     0.452     R16C18C.A0 to     R16C18C.F0 coreInst/programCounterInst/SLICE_351
+ROUTE         1     0.000     R16C18C.F0 to    R16C18C.DI0 coreInst/programCounterInst/PC_A_3[9] (to PIN_CLK_X1_c)
+                  --------
+                   47.137   (31.2% logic, 68.8% route), 23 logic levels.
+
+ Clock Skew Details: 
+
+      Source Clock Path PIN_CLK_X1 to coreInst/registerFileInst/regs/registers_0_0_1:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE       201     2.504       C8.PADDI to *R_R13C13.CLKB PIN_CLK_X1_c
+                  --------
+                    2.504   (0.0% logic, 100.0% route), 0 logic levels.
+
+      Destination Clock Path PIN_CLK_X1 to coreInst/programCounterInst/SLICE_351:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE       201     2.351       C8.PADDI to    R16C18C.CLK PIN_CLK_X1_c
+                  --------
+                    2.351   (0.0% logic, 100.0% route), 0 logic levels.
+
+
+Passed: The following path meets requirements by 35.894ns
+
+ Logical Details:  Cell type  Pin type       Cell/ASIC name  (clock net +/-)
+
+   Source:         DP8KC      Port           coreInst/registerFileInst/regs/registers_0_0_1(ASIC)  (from PIN_CLK_X1_c +)
+   Destination:    FF         Data in        coreInst/programCounterInst/PC_A[8]  (to PIN_CLK_X1_c +)
+
+   Delay:              47.136ns  (31.9% logic, 68.1% route), 23 logic levels.
+
+ Constraint Details:
+
+     47.136ns physical path delay coreInst/registerFileInst/regs/registers_0_0_1 to coreInst/programCounterInst/SLICE_350 meets
+     83.333ns delay constraint less
+      0.153ns skew and
+      0.150ns DIN_SET requirement (totaling 83.030ns) by 35.894ns
+
+ Physical Path Details:
+
+      Data path coreInst/registerFileInst/regs/registers_0_0_1 to coreInst/programCounterInst/SLICE_350:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+C2Q_DEL     ---     4.739 *R_R13C13.CLKB to *R_R13C13.DOB7 coreInst/registerFileInst/regs/registers_0_0_1 (from PIN_CLK_X1_c)
+ROUTE         4     2.706 *R_R13C13.DOB7 to     R16C21D.B1 coreInst/REGB_DOUT[7]
+CTOF_DEL    ---     0.452     R16C21D.B1 to     R16C21D.F1 coreInst/SLICE_765
+ROUTE        15     2.665     R16C21D.F1 to     R17C27C.C1 coreInst/N_20
+CTOF_DEL    ---     0.452     R17C27C.C1 to     R17C27C.F1 coreInst/fullALUInst/aluInst/SLICE_962
+ROUTE        19     2.724     R17C27C.F1 to     R19C26A.C1 coreInst/fullALUInst/aluInst/un3_tmp_10[0]
+CTOF_DEL    ---     0.452     R19C26A.C1 to     R19C26A.F1 coreInst/fullALUInst/aluInst/SLICE_687
+ROUTE         4     1.550     R19C26A.F1 to     R16C27B.A1 coreInst/fullALUInst/aluInst/un3_tmp_10_0_3
+CTOF_DEL    ---     0.452     R16C27B.A1 to     R16C27B.F1 coreInst/fullALUInst/aluInst/SLICE_1042
+ROUTE         3     0.881     R16C27B.F1 to     R17C27D.A1 coreInst/fullALUInst/aluInst/un3_tmp[10]
+CTOF_DEL    ---     0.452     R17C27D.A1 to     R17C27D.F1 coreInst/fullALUInst/aluInst/SLICE_825
+ROUTE         1     0.839     R17C27D.F1 to     R17C24D.D1 coreInst/fullALUInst/aluInst/sex_2_6
+CTOF_DEL    ---     0.452     R17C24D.D1 to     R17C24D.F1 coreInst/fullALUInst/aluInst/SLICE_861
+ROUTE         9     0.406     R17C24D.F1 to     R17C24D.C0 coreInst/fullALUInst/aluInst/sex_2_13
+CTOF_DEL    ---     0.452     R17C24D.C0 to     R17C24D.F0 coreInst/fullALUInst/aluInst/SLICE_861
+ROUTE         1     1.252     R17C24D.F0 to     R18C26B.A0 coreInst/fullALUInst/aluInst/N_244
+CTOF_DEL    ---     0.452     R18C26B.A0 to     R18C26B.F0 coreInst/fullALUInst/aluInst/SLICE_853
+ROUTE         1     0.851     R18C26B.F0 to     R18C27D.A1 coreInst/fullALUInst/aluInst/N_260
+CTOOFX_DEL  ---     0.661     R18C27D.A1 to   R18C27D.OFX0 coreInst/fullALUInst/aluInst/RESULT_15[3]/SLICE_532
+ROUTE         1     1.355   R18C27D.OFX0 to     R17C21D.B1 coreInst/fullALUInst/aluInst/N_292
+CTOF_DEL    ---     0.452     R17C21D.B1 to     R17C21D.F1 coreInst/SLICE_780
+ROUTE         5     0.880     R17C21D.F1 to     R17C20D.A1 coreInst/ALU_R[3]
+CTOOFX_DEL  ---     0.661     R17C20D.A1 to   R17C20D.OFX0 coreInst/busControllerInst/ADDR_BUF_3_i_m2[3]/SLICE_510
+ROUTE        90     3.626   R17C20D.OFX0 to     R14C22C.D0 N_286
+CTOF_DEL    ---     0.452     R14C22C.D0 to     R14C22C.F0 SLICE_709
+ROUTE         1     0.904     R14C22C.F0 to     R15C22D.B1 mcuResourcesInst/interruptMaskRegisterInst/MASK_REG_0_sqmuxa_0_a2_3_a2_1_0_sx_sn
+CTOF_DEL    ---     0.452     R15C22D.B1 to     R15C22D.F1 mcuResourcesInst/interruptMaskRegisterInst/SLICE_708
+ROUTE         1     1.132     R15C22D.F1 to     R14C19B.D1 mcuResourcesInst/interruptMaskRegisterInst/MASK_REG_0_sqmuxa_0_a2_3_a2_1_0_sx
+CTOF_DEL    ---     0.452     R14C19B.D1 to     R14C19B.F1 SLICE_395
+ROUTE         8     2.964     R14C19B.F1 to     R16C12B.B1 mcuResourcesInst.memoryMapperInst.INT_MAP_0_a2_3_a2_1
+CTOF_DEL    ---     0.452     R16C12B.B1 to     R16C12B.F1 mcuResourcesInst/memoryMapperInst/SLICE_723
+ROUTE        28     2.440     R16C12B.F1 to     R17C11C.A1 mcuResourcesInst.memoryMapperInst.CPU_DIN_sn_N_6
+CTOF_DEL    ---     0.452     R17C11C.A1 to     R17C11C.F1 coreInst/programCounterInst/SLICE_753
+ROUTE         1     0.851     R17C11C.F1 to     R17C12B.A0 coreInst/programCounterInst/ARGA_0_iv_0_2_0[1]
+CTOF_DEL    ---     0.452     R17C12B.A0 to     R17C12B.F0 coreInst/programCounterInst/SLICE_772
+ROUTE         1     1.355     R17C12B.F0 to     R17C16B.B0 coreInst/programCounterInst/ARGA_0_iv_0_2[1]
+C0TOFCO_DE  ---     0.905     R17C16B.B0 to    R17C16B.FCO coreInst/programCounterInst/SLICE_70
+ROUTE         1     0.000    R17C16B.FCO to    R17C16C.FCI coreInst/programCounterInst/PC_A_NEXT_cry_2
+FCITOFCO_D  ---     0.146    R17C16C.FCI to    R17C16C.FCO coreInst/programCounterInst/SLICE_69
+ROUTE         1     0.000    R17C16C.FCO to    R17C16D.FCI coreInst/programCounterInst/PC_A_NEXT_cry_4
+FCITOFCO_D  ---     0.146    R17C16D.FCI to    R17C16D.FCO coreInst/programCounterInst/SLICE_68
+ROUTE         1     0.000    R17C16D.FCO to    R17C17A.FCI coreInst/programCounterInst/PC_A_NEXT_cry_6
+FCITOF1_DE  ---     0.569    R17C17A.FCI to     R17C17A.F1 coreInst/programCounterInst/SLICE_67
+ROUTE         4     2.696     R17C17A.F1 to     R16C17B.B1 coreInst/programCounterInst/PC_A_NEXT[8]
+CTOF_DEL    ---     0.452     R16C17B.B1 to     R16C17B.F1 coreInst/programCounterInst/SLICE_350
+ROUTE         1     0.000     R16C17B.F1 to    R16C17B.DI1 coreInst/programCounterInst/PC_A_3[8] (to PIN_CLK_X1_c)
+                  --------
+                   47.136   (31.9% logic, 68.1% route), 23 logic levels.
+
+ Clock Skew Details: 
+
+      Source Clock Path PIN_CLK_X1 to coreInst/registerFileInst/regs/registers_0_0_1:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE       201     2.504       C8.PADDI to *R_R13C13.CLKB PIN_CLK_X1_c
+                  --------
+                    2.504   (0.0% logic, 100.0% route), 0 logic levels.
+
+      Destination Clock Path PIN_CLK_X1 to coreInst/programCounterInst/SLICE_350:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE       201     2.351       C8.PADDI to    R16C17B.CLK PIN_CLK_X1_c
+                  --------
+                    2.351   (0.0% logic, 100.0% route), 0 logic levels.
+
+
+Passed: The following path meets requirements by 35.953ns
+
+ Logical Details:  Cell type  Pin type       Cell/ASIC name  (clock net +/-)
+
+   Source:         DP8KC      Port           coreInst/registerFileInst/regs/registers_0_0_1(ASIC)  (from PIN_CLK_X1_c +)
+   Destination:    FF         Data in        coreInst/programCounterInst/PC_A[11]  (to PIN_CLK_X1_c +)
+
+   Delay:              47.077ns  (33.5% logic, 66.5% route), 26 logic levels.
+
+ Constraint Details:
+
+     47.077ns physical path delay coreInst/registerFileInst/regs/registers_0_0_1 to coreInst/programCounterInst/SLICE_352 meets
+     83.333ns delay constraint less
+      0.153ns skew and
+      0.150ns DIN_SET requirement (totaling 83.030ns) by 35.953ns
+
+ Physical Path Details:
+
+      Data path coreInst/registerFileInst/regs/registers_0_0_1 to coreInst/programCounterInst/SLICE_352:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+C2Q_DEL     ---     4.739 *R_R13C13.CLKB to *R_R13C13.DOB6 coreInst/registerFileInst/regs/registers_0_0_1 (from PIN_CLK_X1_c)
+ROUTE         4     3.617 *R_R13C13.DOB6 to     R14C19D.B1 coreInst/REGB_DOUT[6]
+CTOF_DEL    ---     0.452     R14C19D.B1 to     R14C19D.F1 coreInst/fullALUInst/aluInst/SLICE_1040
+ROUTE         1     0.908     R14C19D.F1 to     R12C19B.D1 coreInst/fullALUInst/aluInst/OVER_2_9_i_a5_4
+CTOF_DEL    ---     0.452     R12C19B.D1 to     R12C19B.F1 coreInst/SLICE_742
+ROUTE         1     1.347     R12C19B.F1 to     R15C19A.B0 coreInst/fullALUInst/aluInst/N_74
+CTOF_DEL    ---     0.452     R15C19A.B0 to     R15C19A.F0 coreInst/fullALUInst/aluInst/SLICE_902
+ROUTE         1     1.355     R15C19A.F0 to     R15C23A.B1 coreInst/fullALUInst/aluInst/N_33_1
+CTOF_DEL    ---     0.452     R15C23A.B1 to     R15C23A.F1 coreInst/fullALUInst/SLICE_803
+ROUTE        10     1.789     R15C23A.F1 to     R16C25B.B1 coreInst/fullALUInst/aluInst/OVER_2
+CTOF_DEL    ---     0.452     R16C25B.B1 to     R16C25B.F1 coreInst/fullALUInst/aluInst/SLICE_1006
+ROUTE         4     0.869     R16C25B.F1 to     R16C25C.A1 coreInst/fullALUInst/aluInst/un7_sex[15]
+CTOF_DEL    ---     0.452     R16C25C.A1 to     R16C25C.F1 coreInst/fullALUInst/aluInst/SLICE_827
+ROUTE         1     0.904     R16C25C.F1 to     R17C25D.B0 coreInst/fullALUInst/aluInst/sex_2_0
+CTOF_DEL    ---     0.452     R17C25D.B0 to     R17C25D.F0 coreInst/fullALUInst/aluInst/SLICE_866
+ROUTE         9     0.610     R17C25D.F0 to     R17C24D.D0 coreInst/fullALUInst/aluInst/sex_2_12
+CTOF_DEL    ---     0.452     R17C24D.D0 to     R17C24D.F0 coreInst/fullALUInst/aluInst/SLICE_861
+ROUTE         1     1.252     R17C24D.F0 to     R18C26B.A0 coreInst/fullALUInst/aluInst/N_244
+CTOF_DEL    ---     0.452     R18C26B.A0 to     R18C26B.F0 coreInst/fullALUInst/aluInst/SLICE_853
+ROUTE         1     0.851     R18C26B.F0 to     R18C27D.A1 coreInst/fullALUInst/aluInst/N_260
+CTOOFX_DEL  ---     0.661     R18C27D.A1 to   R18C27D.OFX0 coreInst/fullALUInst/aluInst/RESULT_15[3]/SLICE_532
+ROUTE         1     1.355   R18C27D.OFX0 to     R17C21D.B1 coreInst/fullALUInst/aluInst/N_292
+CTOF_DEL    ---     0.452     R17C21D.B1 to     R17C21D.F1 coreInst/SLICE_780
+ROUTE         5     0.880     R17C21D.F1 to     R17C20D.A1 coreInst/ALU_R[3]
+CTOOFX_DEL  ---     0.661     R17C20D.A1 to   R17C20D.OFX0 coreInst/busControllerInst/ADDR_BUF_3_i_m2[3]/SLICE_510
+ROUTE        90     3.626   R17C20D.OFX0 to     R14C22C.D0 N_286
+CTOF_DEL    ---     0.452     R14C22C.D0 to     R14C22C.F0 SLICE_709
+ROUTE         1     0.904     R14C22C.F0 to     R15C22D.B1 mcuResourcesInst/interruptMaskRegisterInst/MASK_REG_0_sqmuxa_0_a2_3_a2_1_0_sx_sn
+CTOF_DEL    ---     0.452     R15C22D.B1 to     R15C22D.F1 mcuResourcesInst/interruptMaskRegisterInst/SLICE_708
+ROUTE         1     1.132     R15C22D.F1 to     R14C19B.D1 mcuResourcesInst/interruptMaskRegisterInst/MASK_REG_0_sqmuxa_0_a2_3_a2_1_0_sx
+CTOF_DEL    ---     0.452     R14C19B.D1 to     R14C19B.F1 SLICE_395
+ROUTE         8     2.964     R14C19B.F1 to     R16C12B.B1 mcuResourcesInst.memoryMapperInst.INT_MAP_0_a2_3_a2_1
+CTOF_DEL    ---     0.452     R16C12B.B1 to     R16C12B.F1 mcuResourcesInst/memoryMapperInst/SLICE_723
+ROUTE        28     2.440     R16C12B.F1 to     R17C11C.A1 mcuResourcesInst.memoryMapperInst.CPU_DIN_sn_N_6
+CTOF_DEL    ---     0.452     R17C11C.A1 to     R17C11C.F1 coreInst/programCounterInst/SLICE_753
+ROUTE         1     0.851     R17C11C.F1 to     R17C12B.A0 coreInst/programCounterInst/ARGA_0_iv_0_2_0[1]
+CTOF_DEL    ---     0.452     R17C12B.A0 to     R17C12B.F0 coreInst/programCounterInst/SLICE_772
+ROUTE         1     1.355     R17C12B.F0 to     R17C16B.B0 coreInst/programCounterInst/ARGA_0_iv_0_2[1]
+C0TOFCO_DE  ---     0.905     R17C16B.B0 to    R17C16B.FCO coreInst/programCounterInst/SLICE_70
+ROUTE         1     0.000    R17C16B.FCO to    R17C16C.FCI coreInst/programCounterInst/PC_A_NEXT_cry_2
+FCITOFCO_D  ---     0.146    R17C16C.FCI to    R17C16C.FCO coreInst/programCounterInst/SLICE_69
+ROUTE         1     0.000    R17C16C.FCO to    R17C16D.FCI coreInst/programCounterInst/PC_A_NEXT_cry_4
+FCITOFCO_D  ---     0.146    R17C16D.FCI to    R17C16D.FCO coreInst/programCounterInst/SLICE_68
+ROUTE         1     0.000    R17C16D.FCO to    R17C17A.FCI coreInst/programCounterInst/PC_A_NEXT_cry_6
+FCITOFCO_D  ---     0.146    R17C17A.FCI to    R17C17A.FCO coreInst/programCounterInst/SLICE_67
+ROUTE         1     0.000    R17C17A.FCO to    R17C17B.FCI coreInst/programCounterInst/PC_A_NEXT_cry_8
+FCITOFCO_D  ---     0.146    R17C17B.FCI to    R17C17B.FCO coreInst/programCounterInst/SLICE_66
+ROUTE         1     0.000    R17C17B.FCO to    R17C17C.FCI coreInst/programCounterInst/PC_A_NEXT_cry_10
+FCITOF0_DE  ---     0.517    R17C17C.FCI to     R17C17C.F0 coreInst/programCounterInst/SLICE_65
+ROUTE         4     2.317     R17C17C.F0 to     R18C18B.B0 coreInst/programCounterInst/PC_A_NEXT[11]
+CTOF_DEL    ---     0.452     R18C18B.B0 to     R18C18B.F0 coreInst/programCounterInst/SLICE_352
+ROUTE         1     0.000     R18C18B.F0 to    R18C18B.DI0 coreInst/programCounterInst/PC_A_3[11] (to PIN_CLK_X1_c)
+                  --------
+                   47.077   (33.5% logic, 66.5% route), 26 logic levels.
+
+ Clock Skew Details: 
+
+      Source Clock Path PIN_CLK_X1 to coreInst/registerFileInst/regs/registers_0_0_1:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE       201     2.504       C8.PADDI to *R_R13C13.CLKB PIN_CLK_X1_c
+                  --------
+                    2.504   (0.0% logic, 100.0% route), 0 logic levels.
+
+      Destination Clock Path PIN_CLK_X1 to coreInst/programCounterInst/SLICE_352:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE       201     2.351       C8.PADDI to    R18C18B.CLK PIN_CLK_X1_c
+                  --------
+                    2.351   (0.0% logic, 100.0% route), 0 logic levels.
+
+
+Passed: The following path meets requirements by 35.955ns
+
+ Logical Details:  Cell type  Pin type       Cell/ASIC name  (clock net +/-)
+
+   Source:         DP8KC      Port           coreInst/registerFileInst/regs/registers_0_0_1(ASIC)  (from PIN_CLK_X1_c +)
+   Destination:    FF         Data in        coreInst/programCounterInst/PC_A[9]  (to PIN_CLK_X1_c +)
+
+   Delay:              47.075ns  (33.1% logic, 66.9% route), 25 logic levels.
+
+ Constraint Details:
+
+     47.075ns physical path delay coreInst/registerFileInst/regs/registers_0_0_1 to coreInst/programCounterInst/SLICE_351 meets
+     83.333ns delay constraint less
+      0.153ns skew and
+      0.150ns DIN_SET requirement (totaling 83.030ns) by 35.955ns
+
+ Physical Path Details:
+
+      Data path coreInst/registerFileInst/regs/registers_0_0_1 to coreInst/programCounterInst/SLICE_351:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+C2Q_DEL     ---     4.739 *R_R13C13.CLKB to *R_R13C13.DOB6 coreInst/registerFileInst/regs/registers_0_0_1 (from PIN_CLK_X1_c)
+ROUTE         4     3.617 *R_R13C13.DOB6 to     R14C19D.B1 coreInst/REGB_DOUT[6]
+CTOF_DEL    ---     0.452     R14C19D.B1 to     R14C19D.F1 coreInst/fullALUInst/aluInst/SLICE_1040
+ROUTE         1     0.908     R14C19D.F1 to     R12C19B.D1 coreInst/fullALUInst/aluInst/OVER_2_9_i_a5_4
+CTOF_DEL    ---     0.452     R12C19B.D1 to     R12C19B.F1 coreInst/SLICE_742
+ROUTE         1     1.347     R12C19B.F1 to     R15C19A.B0 coreInst/fullALUInst/aluInst/N_74
+CTOF_DEL    ---     0.452     R15C19A.B0 to     R15C19A.F0 coreInst/fullALUInst/aluInst/SLICE_902
+ROUTE         1     1.355     R15C19A.F0 to     R15C23A.B1 coreInst/fullALUInst/aluInst/N_33_1
+CTOF_DEL    ---     0.452     R15C23A.B1 to     R15C23A.F1 coreInst/fullALUInst/SLICE_803
+ROUTE        10     1.789     R15C23A.F1 to     R16C25B.B1 coreInst/fullALUInst/aluInst/OVER_2
+CTOF_DEL    ---     0.452     R16C25B.B1 to     R16C25B.F1 coreInst/fullALUInst/aluInst/SLICE_1006
+ROUTE         4     0.869     R16C25B.F1 to     R16C25C.A1 coreInst/fullALUInst/aluInst/un7_sex[15]
+CTOF_DEL    ---     0.452     R16C25C.A1 to     R16C25C.F1 coreInst/fullALUInst/aluInst/SLICE_827
+ROUTE         1     0.904     R16C25C.F1 to     R17C25D.B0 coreInst/fullALUInst/aluInst/sex_2_0
+CTOF_DEL    ---     0.452     R17C25D.B0 to     R17C25D.F0 coreInst/fullALUInst/aluInst/SLICE_866
+ROUTE         9     0.610     R17C25D.F0 to     R17C24D.D0 coreInst/fullALUInst/aluInst/sex_2_12
+CTOF_DEL    ---     0.452     R17C24D.D0 to     R17C24D.F0 coreInst/fullALUInst/aluInst/SLICE_861
+ROUTE         1     1.252     R17C24D.F0 to     R18C26B.A0 coreInst/fullALUInst/aluInst/N_244
+CTOF_DEL    ---     0.452     R18C26B.A0 to     R18C26B.F0 coreInst/fullALUInst/aluInst/SLICE_853
+ROUTE         1     0.851     R18C26B.F0 to     R18C27D.A1 coreInst/fullALUInst/aluInst/N_260
+CTOOFX_DEL  ---     0.661     R18C27D.A1 to   R18C27D.OFX0 coreInst/fullALUInst/aluInst/RESULT_15[3]/SLICE_532
+ROUTE         1     1.355   R18C27D.OFX0 to     R17C21D.B1 coreInst/fullALUInst/aluInst/N_292
+CTOF_DEL    ---     0.452     R17C21D.B1 to     R17C21D.F1 coreInst/SLICE_780
+ROUTE         5     0.880     R17C21D.F1 to     R17C20D.A1 coreInst/ALU_R[3]
+CTOOFX_DEL  ---     0.661     R17C20D.A1 to   R17C20D.OFX0 coreInst/busControllerInst/ADDR_BUF_3_i_m2[3]/SLICE_510
+ROUTE        90     3.626   R17C20D.OFX0 to     R14C22C.D0 N_286
+CTOF_DEL    ---     0.452     R14C22C.D0 to     R14C22C.F0 SLICE_709
+ROUTE         1     0.904     R14C22C.F0 to     R15C22D.B1 mcuResourcesInst/interruptMaskRegisterInst/MASK_REG_0_sqmuxa_0_a2_3_a2_1_0_sx_sn
+CTOF_DEL    ---     0.452     R15C22D.B1 to     R15C22D.F1 mcuResourcesInst/interruptMaskRegisterInst/SLICE_708
+ROUTE         1     1.132     R15C22D.F1 to     R14C19B.D1 mcuResourcesInst/interruptMaskRegisterInst/MASK_REG_0_sqmuxa_0_a2_3_a2_1_0_sx
+CTOF_DEL    ---     0.452     R14C19B.D1 to     R14C19B.F1 SLICE_395
+ROUTE         8     2.964     R14C19B.F1 to     R16C12B.B1 mcuResourcesInst.memoryMapperInst.INT_MAP_0_a2_3_a2_1
+CTOF_DEL    ---     0.452     R16C12B.B1 to     R16C12B.F1 mcuResourcesInst/memoryMapperInst/SLICE_723
+ROUTE        28     2.440     R16C12B.F1 to     R17C11C.A1 mcuResourcesInst.memoryMapperInst.CPU_DIN_sn_N_6
+CTOF_DEL    ---     0.452     R17C11C.A1 to     R17C11C.F1 coreInst/programCounterInst/SLICE_753
+ROUTE         1     0.851     R17C11C.F1 to     R17C12B.A0 coreInst/programCounterInst/ARGA_0_iv_0_2_0[1]
+CTOF_DEL    ---     0.452     R17C12B.A0 to     R17C12B.F0 coreInst/programCounterInst/SLICE_772
+ROUTE         1     1.355     R17C12B.F0 to     R17C16B.B0 coreInst/programCounterInst/ARGA_0_iv_0_2[1]
+C0TOFCO_DE  ---     0.905     R17C16B.B0 to    R17C16B.FCO coreInst/programCounterInst/SLICE_70
+ROUTE         1     0.000    R17C16B.FCO to    R17C16C.FCI coreInst/programCounterInst/PC_A_NEXT_cry_2
+FCITOFCO_D  ---     0.146    R17C16C.FCI to    R17C16C.FCO coreInst/programCounterInst/SLICE_69
+ROUTE         1     0.000    R17C16C.FCO to    R17C16D.FCI coreInst/programCounterInst/PC_A_NEXT_cry_4
+FCITOFCO_D  ---     0.146    R17C16D.FCI to    R17C16D.FCO coreInst/programCounterInst/SLICE_68
+ROUTE         1     0.000    R17C16D.FCO to    R17C17A.FCI coreInst/programCounterInst/PC_A_NEXT_cry_6
+FCITOFCO_D  ---     0.146    R17C17A.FCI to    R17C17A.FCO coreInst/programCounterInst/SLICE_67
+ROUTE         1     0.000    R17C17A.FCO to    R17C17B.FCI coreInst/programCounterInst/PC_A_NEXT_cry_8
+FCITOF0_DE  ---     0.517    R17C17B.FCI to     R17C17B.F0 coreInst/programCounterInst/SLICE_66
+ROUTE         4     2.461     R17C17B.F0 to     R16C18C.A0 coreInst/programCounterInst/PC_A_NEXT[9]
+CTOF_DEL    ---     0.452     R16C18C.A0 to     R16C18C.F0 coreInst/programCounterInst/SLICE_351
+ROUTE         1     0.000     R16C18C.F0 to    R16C18C.DI0 coreInst/programCounterInst/PC_A_3[9] (to PIN_CLK_X1_c)
+                  --------
+                   47.075   (33.1% logic, 66.9% route), 25 logic levels.
+
+ Clock Skew Details: 
+
+      Source Clock Path PIN_CLK_X1 to coreInst/registerFileInst/regs/registers_0_0_1:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE       201     2.504       C8.PADDI to *R_R13C13.CLKB PIN_CLK_X1_c
+                  --------
+                    2.504   (0.0% logic, 100.0% route), 0 logic levels.
+
+      Destination Clock Path PIN_CLK_X1 to coreInst/programCounterInst/SLICE_351:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE       201     2.351       C8.PADDI to    R16C18C.CLK PIN_CLK_X1_c
+                  --------
+                    2.351   (0.0% logic, 100.0% route), 0 logic levels.
+
+
+Passed: The following path meets requirements by 35.993ns
+
+ Logical Details:  Cell type  Pin type       Cell/ASIC name  (clock net +/-)
+
+   Source:         DP8KC      Port           coreInst/registerFileInst/regs/registers_0_1_0(ASIC)  (from PIN_CLK_X1_c +)
+   Destination:    FF         Data in        coreInst/programCounterInst/PC_A[11]  (to PIN_CLK_X1_c +)
+
+   Delay:              47.037ns  (32.5% logic, 67.5% route), 25 logic levels.
+
+ Constraint Details:
+
+     47.037ns physical path delay coreInst/registerFileInst/regs/registers_0_1_0 to coreInst/programCounterInst/SLICE_352 meets
+     83.333ns delay constraint less
+      0.153ns skew and
+      0.150ns DIN_SET requirement (totaling 83.030ns) by 35.993ns
+
+ Physical Path Details:
+
+      Data path coreInst/registerFileInst/regs/registers_0_1_0 to coreInst/programCounterInst/SLICE_352:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+C2Q_DEL     ---     4.739 *R_R13C16.CLKB to *R_R13C16.DOB0 coreInst/registerFileInst/regs/registers_0_1_0 (from PIN_CLK_X1_c)
+ROUTE         2     1.481 *R_R13C16.DOB0 to     R12C21C.D1 coreInst/REGB_DOUT[8]
+CTOF_DEL    ---     0.452     R12C21C.D1 to     R12C21C.F1 coreInst/fullALUInst/muxB/SLICE_676
+ROUTE        12     0.413     R12C21C.F1 to     R12C21C.C0 coreInst/ALUB_DATA_6_i_1[8]
+CTOF_DEL    ---     0.452     R12C21C.C0 to     R12C21C.F0 coreInst/fullALUInst/muxB/SLICE_676
+ROUTE        17     2.923     R12C21C.F0 to     R17C27C.A1 coreInst/N_18
+CTOF_DEL    ---     0.452     R17C27C.A1 to     R17C27C.F1 coreInst/fullALUInst/aluInst/SLICE_962
+ROUTE        19     3.800     R17C27C.F1 to     R21C27B.A0 coreInst/fullALUInst/aluInst/un3_tmp_10[0]
+CTOF_DEL    ---     0.452     R21C27B.A0 to     R21C27B.F0 coreInst/fullALUInst/aluInst/SLICE_895
+ROUTE         5     1.733     R21C27B.F0 to     R17C26D.A1 coreInst/fullALUInst/aluInst/un3_tmp[14]
+CTOF_DEL    ---     0.452     R17C26D.A1 to     R17C26D.F1 coreInst/fullALUInst/aluInst/SLICE_683
+ROUTE         1     0.851     R17C26D.F1 to     R17C25D.A0 coreInst/fullALUInst/aluInst/sex_2_3
+CTOF_DEL    ---     0.452     R17C25D.A0 to     R17C25D.F0 coreInst/fullALUInst/aluInst/SLICE_866
+ROUTE         9     0.610     R17C25D.F0 to     R17C24D.D0 coreInst/fullALUInst/aluInst/sex_2_12
+CTOF_DEL    ---     0.452     R17C24D.D0 to     R17C24D.F0 coreInst/fullALUInst/aluInst/SLICE_861
+ROUTE         1     1.252     R17C24D.F0 to     R18C26B.A0 coreInst/fullALUInst/aluInst/N_244
+CTOF_DEL    ---     0.452     R18C26B.A0 to     R18C26B.F0 coreInst/fullALUInst/aluInst/SLICE_853
+ROUTE         1     0.851     R18C26B.F0 to     R18C27D.A1 coreInst/fullALUInst/aluInst/N_260
+CTOOFX_DEL  ---     0.661     R18C27D.A1 to   R18C27D.OFX0 coreInst/fullALUInst/aluInst/RESULT_15[3]/SLICE_532
+ROUTE         1     1.355   R18C27D.OFX0 to     R17C21D.B1 coreInst/fullALUInst/aluInst/N_292
+CTOF_DEL    ---     0.452     R17C21D.B1 to     R17C21D.F1 coreInst/SLICE_780
+ROUTE         5     0.880     R17C21D.F1 to     R17C20D.A1 coreInst/ALU_R[3]
+CTOOFX_DEL  ---     0.661     R17C20D.A1 to   R17C20D.OFX0 coreInst/busControllerInst/ADDR_BUF_3_i_m2[3]/SLICE_510
+ROUTE        90     3.626   R17C20D.OFX0 to     R14C22C.D0 N_286
+CTOF_DEL    ---     0.452     R14C22C.D0 to     R14C22C.F0 SLICE_709
+ROUTE         1     0.904     R14C22C.F0 to     R15C22D.B1 mcuResourcesInst/interruptMaskRegisterInst/MASK_REG_0_sqmuxa_0_a2_3_a2_1_0_sx_sn
+CTOF_DEL    ---     0.452     R15C22D.B1 to     R15C22D.F1 mcuResourcesInst/interruptMaskRegisterInst/SLICE_708
+ROUTE         1     1.132     R15C22D.F1 to     R14C19B.D1 mcuResourcesInst/interruptMaskRegisterInst/MASK_REG_0_sqmuxa_0_a2_3_a2_1_0_sx
+CTOF_DEL    ---     0.452     R14C19B.D1 to     R14C19B.F1 SLICE_395
+ROUTE         8     2.964     R14C19B.F1 to     R16C12B.B1 mcuResourcesInst.memoryMapperInst.INT_MAP_0_a2_3_a2_1
+CTOF_DEL    ---     0.452     R16C12B.B1 to     R16C12B.F1 mcuResourcesInst/memoryMapperInst/SLICE_723
+ROUTE        28     2.440     R16C12B.F1 to     R17C11C.A1 mcuResourcesInst.memoryMapperInst.CPU_DIN_sn_N_6
+CTOF_DEL    ---     0.452     R17C11C.A1 to     R17C11C.F1 coreInst/programCounterInst/SLICE_753
+ROUTE         1     0.851     R17C11C.F1 to     R17C12B.A0 coreInst/programCounterInst/ARGA_0_iv_0_2_0[1]
+CTOF_DEL    ---     0.452     R17C12B.A0 to     R17C12B.F0 coreInst/programCounterInst/SLICE_772
+ROUTE         1     1.355     R17C12B.F0 to     R17C16B.B0 coreInst/programCounterInst/ARGA_0_iv_0_2[1]
+C0TOFCO_DE  ---     0.905     R17C16B.B0 to    R17C16B.FCO coreInst/programCounterInst/SLICE_70
+ROUTE         1     0.000    R17C16B.FCO to    R17C16C.FCI coreInst/programCounterInst/PC_A_NEXT_cry_2
+FCITOFCO_D  ---     0.146    R17C16C.FCI to    R17C16C.FCO coreInst/programCounterInst/SLICE_69
+ROUTE         1     0.000    R17C16C.FCO to    R17C16D.FCI coreInst/programCounterInst/PC_A_NEXT_cry_4
+FCITOFCO_D  ---     0.146    R17C16D.FCI to    R17C16D.FCO coreInst/programCounterInst/SLICE_68
+ROUTE         1     0.000    R17C16D.FCO to    R17C17A.FCI coreInst/programCounterInst/PC_A_NEXT_cry_6
+FCITOFCO_D  ---     0.146    R17C17A.FCI to    R17C17A.FCO coreInst/programCounterInst/SLICE_67
+ROUTE         1     0.000    R17C17A.FCO to    R17C17B.FCI coreInst/programCounterInst/PC_A_NEXT_cry_8
+FCITOFCO_D  ---     0.146    R17C17B.FCI to    R17C17B.FCO coreInst/programCounterInst/SLICE_66
+ROUTE         1     0.000    R17C17B.FCO to    R17C17C.FCI coreInst/programCounterInst/PC_A_NEXT_cry_10
+FCITOF0_DE  ---     0.517    R17C17C.FCI to     R17C17C.F0 coreInst/programCounterInst/SLICE_65
+ROUTE         4     2.317     R17C17C.F0 to     R18C18B.B0 coreInst/programCounterInst/PC_A_NEXT[11]
+CTOF_DEL    ---     0.452     R18C18B.B0 to     R18C18B.F0 coreInst/programCounterInst/SLICE_352
+ROUTE         1     0.000     R18C18B.F0 to    R18C18B.DI0 coreInst/programCounterInst/PC_A_3[11] (to PIN_CLK_X1_c)
+                  --------
+                   47.037   (32.5% logic, 67.5% route), 25 logic levels.
+
+ Clock Skew Details: 
+
+      Source Clock Path PIN_CLK_X1 to coreInst/registerFileInst/regs/registers_0_1_0:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE       201     2.504       C8.PADDI to *R_R13C16.CLKB PIN_CLK_X1_c
+                  --------
+                    2.504   (0.0% logic, 100.0% route), 0 logic levels.
+
+      Destination Clock Path PIN_CLK_X1 to coreInst/programCounterInst/SLICE_352:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE       201     2.351       C8.PADDI to    R18C18B.CLK PIN_CLK_X1_c
+                  --------
+                    2.351   (0.0% logic, 100.0% route), 0 logic levels.
+
+
+Passed: The following path meets requirements by 35.995ns
+
+ Logical Details:  Cell type  Pin type       Cell/ASIC name  (clock net +/-)
+
+   Source:         DP8KC      Port           coreInst/registerFileInst/regs/registers_0_1_0(ASIC)  (from PIN_CLK_X1_c +)
+   Destination:    FF         Data in        coreInst/programCounterInst/PC_A[9]  (to PIN_CLK_X1_c +)
+
+   Delay:              47.035ns  (32.2% logic, 67.8% route), 24 logic levels.
+
+ Constraint Details:
+
+     47.035ns physical path delay coreInst/registerFileInst/regs/registers_0_1_0 to coreInst/programCounterInst/SLICE_351 meets
+     83.333ns delay constraint less
+      0.153ns skew and
+      0.150ns DIN_SET requirement (totaling 83.030ns) by 35.995ns
+
+ Physical Path Details:
+
+      Data path coreInst/registerFileInst/regs/registers_0_1_0 to coreInst/programCounterInst/SLICE_351:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+C2Q_DEL     ---     4.739 *R_R13C16.CLKB to *R_R13C16.DOB0 coreInst/registerFileInst/regs/registers_0_1_0 (from PIN_CLK_X1_c)
+ROUTE         2     1.481 *R_R13C16.DOB0 to     R12C21C.D1 coreInst/REGB_DOUT[8]
+CTOF_DEL    ---     0.452     R12C21C.D1 to     R12C21C.F1 coreInst/fullALUInst/muxB/SLICE_676
+ROUTE        12     0.413     R12C21C.F1 to     R12C21C.C0 coreInst/ALUB_DATA_6_i_1[8]
+CTOF_DEL    ---     0.452     R12C21C.C0 to     R12C21C.F0 coreInst/fullALUInst/muxB/SLICE_676
+ROUTE        17     2.923     R12C21C.F0 to     R17C27C.A1 coreInst/N_18
+CTOF_DEL    ---     0.452     R17C27C.A1 to     R17C27C.F1 coreInst/fullALUInst/aluInst/SLICE_962
+ROUTE        19     3.800     R17C27C.F1 to     R21C27B.A0 coreInst/fullALUInst/aluInst/un3_tmp_10[0]
+CTOF_DEL    ---     0.452     R21C27B.A0 to     R21C27B.F0 coreInst/fullALUInst/aluInst/SLICE_895
+ROUTE         5     1.733     R21C27B.F0 to     R17C26D.A1 coreInst/fullALUInst/aluInst/un3_tmp[14]
+CTOF_DEL    ---     0.452     R17C26D.A1 to     R17C26D.F1 coreInst/fullALUInst/aluInst/SLICE_683
+ROUTE         1     0.851     R17C26D.F1 to     R17C25D.A0 coreInst/fullALUInst/aluInst/sex_2_3
+CTOF_DEL    ---     0.452     R17C25D.A0 to     R17C25D.F0 coreInst/fullALUInst/aluInst/SLICE_866
+ROUTE         9     0.610     R17C25D.F0 to     R17C24D.D0 coreInst/fullALUInst/aluInst/sex_2_12
+CTOF_DEL    ---     0.452     R17C24D.D0 to     R17C24D.F0 coreInst/fullALUInst/aluInst/SLICE_861
+ROUTE         1     1.252     R17C24D.F0 to     R18C26B.A0 coreInst/fullALUInst/aluInst/N_244
+CTOF_DEL    ---     0.452     R18C26B.A0 to     R18C26B.F0 coreInst/fullALUInst/aluInst/SLICE_853
+ROUTE         1     0.851     R18C26B.F0 to     R18C27D.A1 coreInst/fullALUInst/aluInst/N_260
+CTOOFX_DEL  ---     0.661     R18C27D.A1 to   R18C27D.OFX0 coreInst/fullALUInst/aluInst/RESULT_15[3]/SLICE_532
+ROUTE         1     1.355   R18C27D.OFX0 to     R17C21D.B1 coreInst/fullALUInst/aluInst/N_292
+CTOF_DEL    ---     0.452     R17C21D.B1 to     R17C21D.F1 coreInst/SLICE_780
+ROUTE         5     0.880     R17C21D.F1 to     R17C20D.A1 coreInst/ALU_R[3]
+CTOOFX_DEL  ---     0.661     R17C20D.A1 to   R17C20D.OFX0 coreInst/busControllerInst/ADDR_BUF_3_i_m2[3]/SLICE_510
+ROUTE        90     3.626   R17C20D.OFX0 to     R14C22C.D0 N_286
+CTOF_DEL    ---     0.452     R14C22C.D0 to     R14C22C.F0 SLICE_709
+ROUTE         1     0.904     R14C22C.F0 to     R15C22D.B1 mcuResourcesInst/interruptMaskRegisterInst/MASK_REG_0_sqmuxa_0_a2_3_a2_1_0_sx_sn
+CTOF_DEL    ---     0.452     R15C22D.B1 to     R15C22D.F1 mcuResourcesInst/interruptMaskRegisterInst/SLICE_708
+ROUTE         1     1.132     R15C22D.F1 to     R14C19B.D1 mcuResourcesInst/interruptMaskRegisterInst/MASK_REG_0_sqmuxa_0_a2_3_a2_1_0_sx
+CTOF_DEL    ---     0.452     R14C19B.D1 to     R14C19B.F1 SLICE_395
+ROUTE         8     2.964     R14C19B.F1 to     R16C12B.B1 mcuResourcesInst.memoryMapperInst.INT_MAP_0_a2_3_a2_1
+CTOF_DEL    ---     0.452     R16C12B.B1 to     R16C12B.F1 mcuResourcesInst/memoryMapperInst/SLICE_723
+ROUTE        28     2.440     R16C12B.F1 to     R17C11C.A1 mcuResourcesInst.memoryMapperInst.CPU_DIN_sn_N_6
+CTOF_DEL    ---     0.452     R17C11C.A1 to     R17C11C.F1 coreInst/programCounterInst/SLICE_753
+ROUTE         1     0.851     R17C11C.F1 to     R17C12B.A0 coreInst/programCounterInst/ARGA_0_iv_0_2_0[1]
+CTOF_DEL    ---     0.452     R17C12B.A0 to     R17C12B.F0 coreInst/programCounterInst/SLICE_772
+ROUTE         1     1.355     R17C12B.F0 to     R17C16B.B0 coreInst/programCounterInst/ARGA_0_iv_0_2[1]
+C0TOFCO_DE  ---     0.905     R17C16B.B0 to    R17C16B.FCO coreInst/programCounterInst/SLICE_70
+ROUTE         1     0.000    R17C16B.FCO to    R17C16C.FCI coreInst/programCounterInst/PC_A_NEXT_cry_2
+FCITOFCO_D  ---     0.146    R17C16C.FCI to    R17C16C.FCO coreInst/programCounterInst/SLICE_69
+ROUTE         1     0.000    R17C16C.FCO to    R17C16D.FCI coreInst/programCounterInst/PC_A_NEXT_cry_4
+FCITOFCO_D  ---     0.146    R17C16D.FCI to    R17C16D.FCO coreInst/programCounterInst/SLICE_68
+ROUTE         1     0.000    R17C16D.FCO to    R17C17A.FCI coreInst/programCounterInst/PC_A_NEXT_cry_6
+FCITOFCO_D  ---     0.146    R17C17A.FCI to    R17C17A.FCO coreInst/programCounterInst/SLICE_67
+ROUTE         1     0.000    R17C17A.FCO to    R17C17B.FCI coreInst/programCounterInst/PC_A_NEXT_cry_8
+FCITOF0_DE  ---     0.517    R17C17B.FCI to     R17C17B.F0 coreInst/programCounterInst/SLICE_66
+ROUTE         4     2.461     R17C17B.F0 to     R16C18C.A0 coreInst/programCounterInst/PC_A_NEXT[9]
+CTOF_DEL    ---     0.452     R16C18C.A0 to     R16C18C.F0 coreInst/programCounterInst/SLICE_351
+ROUTE         1     0.000     R16C18C.F0 to    R16C18C.DI0 coreInst/programCounterInst/PC_A_3[9] (to PIN_CLK_X1_c)
+                  --------
+                   47.035   (32.2% logic, 67.8% route), 24 logic levels.
+
+ Clock Skew Details: 
+
+      Source Clock Path PIN_CLK_X1 to coreInst/registerFileInst/regs/registers_0_1_0:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE       201     2.504       C8.PADDI to *R_R13C16.CLKB PIN_CLK_X1_c
+                  --------
+                    2.504   (0.0% logic, 100.0% route), 0 logic levels.
+
+      Destination Clock Path PIN_CLK_X1 to coreInst/programCounterInst/SLICE_351:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE       201     2.351       C8.PADDI to    R16C18C.CLK PIN_CLK_X1_c
+                  --------
+                    2.351   (0.0% logic, 100.0% route), 0 logic levels.
+
+Report:   21.017MHz is the maximum frequency for this preference.
 
 Report Summary
 --------------
@@ -1197,7 +938,7 @@ Preference                              |   Constraint|       Actual|Levels
 ----------------------------------------------------------------------------
                                         |             |             |
 FREQUENCY PORT "PIN_CLK_X1" 12.000000   |             |             |
-MHz ;                                   |   12.000 MHz|   16.470 MHz|  37  
+MHz ;                                   |   12.000 MHz|   21.017 MHz|  22  
                                         |             |             |
 ----------------------------------------------------------------------------
 
@@ -1210,10 +951,10 @@ Clock Domains Analysis
 
 Found 2 clocks:
 
-Clock Domain: PIN_RESETN_c   Source: PIN_RESETN.PAD   Loads: 74
+Clock Domain: PIN_RESETN_c   Source: PIN_RESETN.PAD   Loads: 65
    No transfer within this clock domain is found
 
-Clock Domain: PIN_CLK_X1_c   Source: PIN_CLK_X1.PAD   Loads: 213
+Clock Domain: PIN_CLK_X1_c   Source: PIN_CLK_X1.PAD   Loads: 201
    Covered under: FREQUENCY PORT "PIN_CLK_X1" 12.000000 MHz ;
 
    Data transfers from:
@@ -1229,11 +970,11 @@ Timing summary (Setup):
 Timing errors: 0  Score: 0
 Cumulative negative slack: 0
 
-Constraints cover 2147483647 paths, 1 nets, and 7529 connections (95.73% coverage)
+Constraints cover 2147483647 paths, 1 nets, and 7727 connections (95.98% coverage)
 
 --------------------------------------------------------------------------------
 Lattice TRACE Report - Hold, Version Diamond (64-bit) 3.12.1.454
-Thu Nov 02 22:01:28 2023
+Fri Nov 03 17:48:55 2023
 
 Copyright (c) 1991-1994 by NeoCAD Inc. All rights reserved.
 Copyright (c) 1995 AT&T Corp.   All rights reserved.
@@ -1250,7 +991,6 @@ Device,speed:    LCMXO3L-6900C,m
 Report level:    verbose report, limited to 10 items per preference
 --------------------------------------------------------------------------------
 
-2 potential circuit loops found in timing analysis.
 BLOCK ASYNCPATHS
 BLOCK RESETPATHS
 --------------------------------------------------------------------------------
@@ -1274,169 +1014,34 @@ Passed: The following path meets requirements by 0.304ns
 
  Constraint Details:
 
-      0.285ns physical path delay coreInst/instructionPhaseDecoderInst/SLICE_368 to SLICE_1038 meets
+      0.285ns physical path delay coreInst/instructionPhaseDecoderInst/SLICE_366 to SLICE_1050 meets
      -0.019ns M_HLD and
       0.000ns delay constraint less
       0.000ns skew requirement (totaling -0.019ns) by 0.304ns
 
  Physical Path Details:
 
-      Data path coreInst/instructionPhaseDecoderInst/SLICE_368 to SLICE_1038:
+      Data path coreInst/instructionPhaseDecoderInst/SLICE_366 to SLICE_1050:
 
    Name    Fanout   Delay (ns)          Site               Resource
-REG_DEL     ---     0.133    R22C21C.CLK to     R22C21C.Q1 coreInst/instructionPhaseDecoderInst/SLICE_368 (from PIN_CLK_X1_c)
-ROUTE         1     0.152     R22C21C.Q1 to     R22C21D.M0 coreInst/instructionPhaseDecoderInst/PHASE[2] (to PIN_CLK_X1_c)
+REG_DEL     ---     0.133    R21C17D.CLK to     R21C17D.Q1 coreInst/instructionPhaseDecoderInst/SLICE_366 (from PIN_CLK_X1_c)
+ROUTE         1     0.152     R21C17D.Q1 to     R21C17C.M0 coreInst/instructionPhaseDecoderInst/PHASE[2] (to PIN_CLK_X1_c)
                   --------
                     0.285   (46.7% logic, 53.3% route), 1 logic levels.
 
  Clock Skew Details: 
 
-      Source Clock Path PIN_CLK_X1 to coreInst/instructionPhaseDecoderInst/SLICE_368:
+      Source Clock Path PIN_CLK_X1 to coreInst/instructionPhaseDecoderInst/SLICE_366:
 
    Name    Fanout   Delay (ns)          Site               Resource
-ROUTE       213     0.888       C8.PADDI to    R22C21C.CLK PIN_CLK_X1_c
+ROUTE       201     0.888       C8.PADDI to    R21C17D.CLK PIN_CLK_X1_c
                   --------
                     0.888   (0.0% logic, 100.0% route), 0 logic levels.
 
-      Destination Clock Path PIN_CLK_X1 to SLICE_1038:
+      Destination Clock Path PIN_CLK_X1 to SLICE_1050:
 
    Name    Fanout   Delay (ns)          Site               Resource
-ROUTE       213     0.888       C8.PADDI to    R22C21D.CLK PIN_CLK_X1_c
-                  --------
-                    0.888   (0.0% logic, 100.0% route), 0 logic levels.
-
-
-Passed: The following path meets requirements by 0.379ns
-
- Logical Details:  Cell type  Pin type       Cell/ASIC name  (clock net +/-)
-
-   Source:         FF         Q              mcuResourcesInst/UARTInst/uartRXInst/r_RX_DV  (from PIN_CLK_X1_c +)
-   Destination:    FF         Data in        mcuResourcesInst/UARTInst/uartRXInst/r_RX_DV  (to PIN_CLK_X1_c +)
-
-   Delay:               0.366ns  (63.9% logic, 36.1% route), 2 logic levels.
-
- Constraint Details:
-
-      0.366ns physical path delay mcuResourcesInst/UARTInst/uartRXInst/SLICE_401 to mcuResourcesInst/UARTInst/uartRXInst/SLICE_401 meets
-     -0.013ns DIN_HLD and
-      0.000ns delay constraint less
-      0.000ns skew requirement (totaling -0.013ns) by 0.379ns
-
- Physical Path Details:
-
-      Data path mcuResourcesInst/UARTInst/uartRXInst/SLICE_401 to mcuResourcesInst/UARTInst/uartRXInst/SLICE_401:
-
-   Name    Fanout   Delay (ns)          Site               Resource
-REG_DEL     ---     0.133    R21C20D.CLK to     R21C20D.Q0 mcuResourcesInst/UARTInst/uartRXInst/SLICE_401 (from PIN_CLK_X1_c)
-ROUTE         2     0.132     R21C20D.Q0 to     R21C20D.A0 mcuResourcesInst/UARTInst/DATA_AVAILABLE
-CTOF_DEL    ---     0.101     R21C20D.A0 to     R21C20D.F0 mcuResourcesInst/UARTInst/uartRXInst/SLICE_401
-ROUTE         1     0.000     R21C20D.F0 to    R21C20D.DI0 mcuResourcesInst/UARTInst/uartRXInst/r_RX_DV_r (to PIN_CLK_X1_c)
-                  --------
-                    0.366   (63.9% logic, 36.1% route), 2 logic levels.
-
- Clock Skew Details: 
-
-      Source Clock Path PIN_CLK_X1 to mcuResourcesInst/UARTInst/uartRXInst/SLICE_401:
-
-   Name    Fanout   Delay (ns)          Site               Resource
-ROUTE       213     0.888       C8.PADDI to    R21C20D.CLK PIN_CLK_X1_c
-                  --------
-                    0.888   (0.0% logic, 100.0% route), 0 logic levels.
-
-      Destination Clock Path PIN_CLK_X1 to mcuResourcesInst/UARTInst/uartRXInst/SLICE_401:
-
-   Name    Fanout   Delay (ns)          Site               Resource
-ROUTE       213     0.888       C8.PADDI to    R21C20D.CLK PIN_CLK_X1_c
-                  --------
-                    0.888   (0.0% logic, 100.0% route), 0 logic levels.
-
-
-Passed: The following path meets requirements by 0.379ns
-
- Logical Details:  Cell type  Pin type       Cell/ASIC name  (clock net +/-)
-
-   Source:         FF         Q              mcuResourcesInst/UARTInst/uartTxInst/r_Clock_Count[11]  (from PIN_CLK_X1_c +)
-   Destination:    FF         Data in        mcuResourcesInst/UARTInst/uartTxInst/r_Clock_Count[11]  (to PIN_CLK_X1_c +)
-
-   Delay:               0.366ns  (63.9% logic, 36.1% route), 2 logic levels.
-
- Constraint Details:
-
-      0.366ns physical path delay mcuResourcesInst/UARTInst/uartTxInst/SLICE_21 to mcuResourcesInst/UARTInst/uartTxInst/SLICE_21 meets
-     -0.013ns DIN_HLD and
-      0.000ns delay constraint less
-      0.000ns skew requirement (totaling -0.013ns) by 0.379ns
-
- Physical Path Details:
-
-      Data path mcuResourcesInst/UARTInst/uartTxInst/SLICE_21 to mcuResourcesInst/UARTInst/uartTxInst/SLICE_21:
-
-   Name    Fanout   Delay (ns)          Site               Resource
-REG_DEL     ---     0.133    R23C31C.CLK to     R23C31C.Q0 mcuResourcesInst/UARTInst/uartTxInst/SLICE_21 (from PIN_CLK_X1_c)
-ROUTE         2     0.132     R23C31C.Q0 to     R23C31C.A0 mcuResourcesInst/UARTInst/uartTxInst/r_Clock_Count[11]
-CTOF_DEL    ---     0.101     R23C31C.A0 to     R23C31C.F0 mcuResourcesInst/UARTInst/uartTxInst/SLICE_21
-ROUTE         1     0.000     R23C31C.F0 to    R23C31C.DI0 mcuResourcesInst/UARTInst/uartTxInst/un1_r_Clock_Count_cry_11_0_S0_0 (to PIN_CLK_X1_c)
-                  --------
-                    0.366   (63.9% logic, 36.1% route), 2 logic levels.
-
- Clock Skew Details: 
-
-      Source Clock Path PIN_CLK_X1 to mcuResourcesInst/UARTInst/uartTxInst/SLICE_21:
-
-   Name    Fanout   Delay (ns)          Site               Resource
-ROUTE       213     0.888       C8.PADDI to    R23C31C.CLK PIN_CLK_X1_c
-                  --------
-                    0.888   (0.0% logic, 100.0% route), 0 logic levels.
-
-      Destination Clock Path PIN_CLK_X1 to mcuResourcesInst/UARTInst/uartTxInst/SLICE_21:
-
-   Name    Fanout   Delay (ns)          Site               Resource
-ROUTE       213     0.888       C8.PADDI to    R23C31C.CLK PIN_CLK_X1_c
-                  --------
-                    0.888   (0.0% logic, 100.0% route), 0 logic levels.
-
-
-Passed: The following path meets requirements by 0.379ns
-
- Logical Details:  Cell type  Pin type       Cell/ASIC name  (clock net +/-)
-
-   Source:         FF         Q              mcuResourcesInst/UARTInst/uartTxInst/r_Clock_Count[7]  (from PIN_CLK_X1_c +)
-   Destination:    FF         Data in        mcuResourcesInst/UARTInst/uartTxInst/r_Clock_Count[7]  (to PIN_CLK_X1_c +)
-
-   Delay:               0.366ns  (63.9% logic, 36.1% route), 2 logic levels.
-
- Constraint Details:
-
-      0.366ns physical path delay mcuResourcesInst/UARTInst/uartTxInst/SLICE_23 to mcuResourcesInst/UARTInst/uartTxInst/SLICE_23 meets
-     -0.013ns DIN_HLD and
-      0.000ns delay constraint less
-      0.000ns skew requirement (totaling -0.013ns) by 0.379ns
-
- Physical Path Details:
-
-      Data path mcuResourcesInst/UARTInst/uartTxInst/SLICE_23 to mcuResourcesInst/UARTInst/uartTxInst/SLICE_23:
-
-   Name    Fanout   Delay (ns)          Site               Resource
-REG_DEL     ---     0.133    R23C31A.CLK to     R23C31A.Q0 mcuResourcesInst/UARTInst/uartTxInst/SLICE_23 (from PIN_CLK_X1_c)
-ROUTE         2     0.132     R23C31A.Q0 to     R23C31A.A0 mcuResourcesInst/UARTInst/uartTxInst/r_Clock_Count[7]
-CTOF_DEL    ---     0.101     R23C31A.A0 to     R23C31A.F0 mcuResourcesInst/UARTInst/uartTxInst/SLICE_23
-ROUTE         1     0.000     R23C31A.F0 to    R23C31A.DI0 mcuResourcesInst/UARTInst/uartTxInst/un1_r_Clock_Count_cry_7_0_S0_0 (to PIN_CLK_X1_c)
-                  --------
-                    0.366   (63.9% logic, 36.1% route), 2 logic levels.
-
- Clock Skew Details: 
-
-      Source Clock Path PIN_CLK_X1 to mcuResourcesInst/UARTInst/uartTxInst/SLICE_23:
-
-   Name    Fanout   Delay (ns)          Site               Resource
-ROUTE       213     0.888       C8.PADDI to    R23C31A.CLK PIN_CLK_X1_c
-                  --------
-                    0.888   (0.0% logic, 100.0% route), 0 logic levels.
-
-      Destination Clock Path PIN_CLK_X1 to mcuResourcesInst/UARTInst/uartTxInst/SLICE_23:
-
-   Name    Fanout   Delay (ns)          Site               Resource
-ROUTE       213     0.888       C8.PADDI to    R23C31A.CLK PIN_CLK_X1_c
+ROUTE       201     0.888       C8.PADDI to    R21C17C.CLK PIN_CLK_X1_c
                   --------
                     0.888   (0.0% logic, 100.0% route), 0 logic levels.
 
@@ -1452,81 +1057,261 @@ Passed: The following path meets requirements by 0.379ns
 
  Constraint Details:
 
-      0.366ns physical path delay mcuResourcesInst/UARTInst/uartTxInst/SLICE_25 to mcuResourcesInst/UARTInst/uartTxInst/SLICE_25 meets
+      0.366ns physical path delay mcuResourcesInst/UARTInst/uartTxInst/SLICE_16 to mcuResourcesInst/UARTInst/uartTxInst/SLICE_16 meets
      -0.013ns DIN_HLD and
       0.000ns delay constraint less
       0.000ns skew requirement (totaling -0.013ns) by 0.379ns
 
  Physical Path Details:
 
-      Data path mcuResourcesInst/UARTInst/uartTxInst/SLICE_25 to mcuResourcesInst/UARTInst/uartTxInst/SLICE_25:
+      Data path mcuResourcesInst/UARTInst/uartTxInst/SLICE_16 to mcuResourcesInst/UARTInst/uartTxInst/SLICE_16:
 
    Name    Fanout   Delay (ns)          Site               Resource
-REG_DEL     ---     0.133    R23C30C.CLK to     R23C30C.Q0 mcuResourcesInst/UARTInst/uartTxInst/SLICE_25 (from PIN_CLK_X1_c)
-ROUTE         2     0.132     R23C30C.Q0 to     R23C30C.A0 mcuResourcesInst/UARTInst/uartTxInst/r_Clock_Count[3]
-CTOF_DEL    ---     0.101     R23C30C.A0 to     R23C30C.F0 mcuResourcesInst/UARTInst/uartTxInst/SLICE_25
-ROUTE         1     0.000     R23C30C.F0 to    R23C30C.DI0 mcuResourcesInst/UARTInst/uartTxInst/un1_r_Clock_Count_cry_3_0_S0_0 (to PIN_CLK_X1_c)
+REG_DEL     ---     0.133      R6C5C.CLK to       R6C5C.Q0 mcuResourcesInst/UARTInst/uartTxInst/SLICE_16 (from PIN_CLK_X1_c)
+ROUTE         2     0.132       R6C5C.Q0 to       R6C5C.A0 mcuResourcesInst/UARTInst/uartTxInst/r_Clock_Count[3]
+CTOF_DEL    ---     0.101       R6C5C.A0 to       R6C5C.F0 mcuResourcesInst/UARTInst/uartTxInst/SLICE_16
+ROUTE         1     0.000       R6C5C.F0 to      R6C5C.DI0 mcuResourcesInst/UARTInst/uartTxInst/un1_r_Clock_Count_cry_3_0_S0_0 (to PIN_CLK_X1_c)
                   --------
                     0.366   (63.9% logic, 36.1% route), 2 logic levels.
 
  Clock Skew Details: 
 
-      Source Clock Path PIN_CLK_X1 to mcuResourcesInst/UARTInst/uartTxInst/SLICE_25:
+      Source Clock Path PIN_CLK_X1 to mcuResourcesInst/UARTInst/uartTxInst/SLICE_16:
 
    Name    Fanout   Delay (ns)          Site               Resource
-ROUTE       213     0.888       C8.PADDI to    R23C30C.CLK PIN_CLK_X1_c
+ROUTE       201     0.907       C8.PADDI to      R6C5C.CLK PIN_CLK_X1_c
                   --------
-                    0.888   (0.0% logic, 100.0% route), 0 logic levels.
+                    0.907   (0.0% logic, 100.0% route), 0 logic levels.
 
-      Destination Clock Path PIN_CLK_X1 to mcuResourcesInst/UARTInst/uartTxInst/SLICE_25:
+      Destination Clock Path PIN_CLK_X1 to mcuResourcesInst/UARTInst/uartTxInst/SLICE_16:
 
    Name    Fanout   Delay (ns)          Site               Resource
-ROUTE       213     0.888       C8.PADDI to    R23C30C.CLK PIN_CLK_X1_c
+ROUTE       201     0.907       C8.PADDI to      R6C5C.CLK PIN_CLK_X1_c
                   --------
-                    0.888   (0.0% logic, 100.0% route), 0 logic levels.
+                    0.907   (0.0% logic, 100.0% route), 0 logic levels.
 
 
 Passed: The following path meets requirements by 0.379ns
 
  Logical Details:  Cell type  Pin type       Cell/ASIC name  (clock net +/-)
 
-   Source:         FF         Q              coreInst/aluGroupDecoderInst/CCL_LD  (from PIN_CLK_X1_c +)
-   Destination:    FF         Data in        coreInst/aluGroupDecoderInst/CCL_LD  (to PIN_CLK_X1_c +)
+   Source:         FF         Q              mcuResourcesInst/UARTInst/uartTxInst/r_Clock_Count[11]  (from PIN_CLK_X1_c +)
+   Destination:    FF         Data in        mcuResourcesInst/UARTInst/uartTxInst/r_Clock_Count[11]  (to PIN_CLK_X1_c +)
 
    Delay:               0.366ns  (63.9% logic, 36.1% route), 2 logic levels.
 
  Constraint Details:
 
-      0.366ns physical path delay coreInst/aluGroupDecoderInst/SLICE_314 to coreInst/aluGroupDecoderInst/SLICE_314 meets
+      0.366ns physical path delay mcuResourcesInst/UARTInst/uartTxInst/SLICE_12 to mcuResourcesInst/UARTInst/uartTxInst/SLICE_12 meets
      -0.013ns DIN_HLD and
       0.000ns delay constraint less
       0.000ns skew requirement (totaling -0.013ns) by 0.379ns
 
  Physical Path Details:
 
-      Data path coreInst/aluGroupDecoderInst/SLICE_314 to coreInst/aluGroupDecoderInst/SLICE_314:
+      Data path mcuResourcesInst/UARTInst/uartTxInst/SLICE_12 to mcuResourcesInst/UARTInst/uartTxInst/SLICE_12:
 
    Name    Fanout   Delay (ns)          Site               Resource
-REG_DEL     ---     0.133    R17C26C.CLK to     R17C26C.Q0 coreInst/aluGroupDecoderInst/SLICE_314 (from PIN_CLK_X1_c)
-ROUTE         5     0.132     R17C26C.Q0 to     R17C26C.A0 coreInst/CCL_LD
-CTOF_DEL    ---     0.101     R17C26C.A0 to     R17C26C.F0 coreInst/aluGroupDecoderInst/SLICE_314
-ROUTE         1     0.000     R17C26C.F0 to    R17C26C.DI0 coreInst/aluGroupDecoderInst/fb_0 (to PIN_CLK_X1_c)
+REG_DEL     ---     0.133      R6C6C.CLK to       R6C6C.Q0 mcuResourcesInst/UARTInst/uartTxInst/SLICE_12 (from PIN_CLK_X1_c)
+ROUTE         2     0.132       R6C6C.Q0 to       R6C6C.A0 mcuResourcesInst/UARTInst/uartTxInst/r_Clock_Count[11]
+CTOF_DEL    ---     0.101       R6C6C.A0 to       R6C6C.F0 mcuResourcesInst/UARTInst/uartTxInst/SLICE_12
+ROUTE         1     0.000       R6C6C.F0 to      R6C6C.DI0 mcuResourcesInst/UARTInst/uartTxInst/un1_r_Clock_Count_cry_11_0_S0_0 (to PIN_CLK_X1_c)
                   --------
                     0.366   (63.9% logic, 36.1% route), 2 logic levels.
 
  Clock Skew Details: 
 
-      Source Clock Path PIN_CLK_X1 to coreInst/aluGroupDecoderInst/SLICE_314:
+      Source Clock Path PIN_CLK_X1 to mcuResourcesInst/UARTInst/uartTxInst/SLICE_12:
 
    Name    Fanout   Delay (ns)          Site               Resource
-ROUTE       213     0.907       C8.PADDI to    R17C26C.CLK PIN_CLK_X1_c
+ROUTE       201     0.907       C8.PADDI to      R6C6C.CLK PIN_CLK_X1_c
                   --------
                     0.907   (0.0% logic, 100.0% route), 0 logic levels.
 
-      Destination Clock Path PIN_CLK_X1 to coreInst/aluGroupDecoderInst/SLICE_314:
+      Destination Clock Path PIN_CLK_X1 to mcuResourcesInst/UARTInst/uartTxInst/SLICE_12:
 
    Name    Fanout   Delay (ns)          Site               Resource
-ROUTE       213     0.907       C8.PADDI to    R17C26C.CLK PIN_CLK_X1_c
+ROUTE       201     0.907       C8.PADDI to      R6C6C.CLK PIN_CLK_X1_c
+                  --------
+                    0.907   (0.0% logic, 100.0% route), 0 logic levels.
+
+
+Passed: The following path meets requirements by 0.379ns
+
+ Logical Details:  Cell type  Pin type       Cell/ASIC name  (clock net +/-)
+
+   Source:         FF         Q              mcuResourcesInst/UARTInst/uartTxInst/r_Clock_Count[7]  (from PIN_CLK_X1_c +)
+   Destination:    FF         Data in        mcuResourcesInst/UARTInst/uartTxInst/r_Clock_Count[7]  (to PIN_CLK_X1_c +)
+
+   Delay:               0.366ns  (63.9% logic, 36.1% route), 2 logic levels.
+
+ Constraint Details:
+
+      0.366ns physical path delay mcuResourcesInst/UARTInst/uartTxInst/SLICE_14 to mcuResourcesInst/UARTInst/uartTxInst/SLICE_14 meets
+     -0.013ns DIN_HLD and
+      0.000ns delay constraint less
+      0.000ns skew requirement (totaling -0.013ns) by 0.379ns
+
+ Physical Path Details:
+
+      Data path mcuResourcesInst/UARTInst/uartTxInst/SLICE_14 to mcuResourcesInst/UARTInst/uartTxInst/SLICE_14:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+REG_DEL     ---     0.133      R6C6A.CLK to       R6C6A.Q0 mcuResourcesInst/UARTInst/uartTxInst/SLICE_14 (from PIN_CLK_X1_c)
+ROUTE         2     0.132       R6C6A.Q0 to       R6C6A.A0 mcuResourcesInst/UARTInst/uartTxInst/r_Clock_Count[7]
+CTOF_DEL    ---     0.101       R6C6A.A0 to       R6C6A.F0 mcuResourcesInst/UARTInst/uartTxInst/SLICE_14
+ROUTE         1     0.000       R6C6A.F0 to      R6C6A.DI0 mcuResourcesInst/UARTInst/uartTxInst/un1_r_Clock_Count_cry_7_0_S0_0 (to PIN_CLK_X1_c)
+                  --------
+                    0.366   (63.9% logic, 36.1% route), 2 logic levels.
+
+ Clock Skew Details: 
+
+      Source Clock Path PIN_CLK_X1 to mcuResourcesInst/UARTInst/uartTxInst/SLICE_14:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE       201     0.907       C8.PADDI to      R6C6A.CLK PIN_CLK_X1_c
+                  --------
+                    0.907   (0.0% logic, 100.0% route), 0 logic levels.
+
+      Destination Clock Path PIN_CLK_X1 to mcuResourcesInst/UARTInst/uartTxInst/SLICE_14:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE       201     0.907       C8.PADDI to      R6C6A.CLK PIN_CLK_X1_c
+                  --------
+                    0.907   (0.0% logic, 100.0% route), 0 logic levels.
+
+
+Passed: The following path meets requirements by 0.379ns
+
+ Logical Details:  Cell type  Pin type       Cell/ASIC name  (clock net +/-)
+
+   Source:         FF         Q              mcuResourcesInst/UARTInst/uartRXInst/r_RX_Byte[0]  (from PIN_CLK_X1_c +)
+   Destination:    FF         Data in        mcuResourcesInst/UARTInst/uartRXInst/r_RX_Byte[0]  (to PIN_CLK_X1_c +)
+
+   Delay:               0.366ns  (63.9% logic, 36.1% route), 2 logic levels.
+
+ Constraint Details:
+
+      0.366ns physical path delay mcuResourcesInst/UARTInst/uartRXInst/SLICE_401 to mcuResourcesInst/UARTInst/uartRXInst/SLICE_401 meets
+     -0.013ns DIN_HLD and
+      0.000ns delay constraint less
+      0.000ns skew requirement (totaling -0.013ns) by 0.379ns
+
+ Physical Path Details:
+
+      Data path mcuResourcesInst/UARTInst/uartRXInst/SLICE_401 to mcuResourcesInst/UARTInst/uartRXInst/SLICE_401:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+REG_DEL     ---     0.133    R12C12A.CLK to     R12C12A.Q0 mcuResourcesInst/UARTInst/uartRXInst/SLICE_401 (from PIN_CLK_X1_c)
+ROUTE         2     0.132     R12C12A.Q0 to     R12C12A.A0 mcuResourcesInst/UARTInst/RX_BYTE[0]
+CTOF_DEL    ---     0.101     R12C12A.A0 to     R12C12A.F0 mcuResourcesInst/UARTInst/uartRXInst/SLICE_401
+ROUTE         1     0.000     R12C12A.F0 to    R12C12A.DI0 mcuResourcesInst/UARTInst/uartRXInst/N_199_i (to PIN_CLK_X1_c)
+                  --------
+                    0.366   (63.9% logic, 36.1% route), 2 logic levels.
+
+ Clock Skew Details: 
+
+      Source Clock Path PIN_CLK_X1 to mcuResourcesInst/UARTInst/uartRXInst/SLICE_401:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE       201     0.907       C8.PADDI to    R12C12A.CLK PIN_CLK_X1_c
+                  --------
+                    0.907   (0.0% logic, 100.0% route), 0 logic levels.
+
+      Destination Clock Path PIN_CLK_X1 to mcuResourcesInst/UARTInst/uartRXInst/SLICE_401:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE       201     0.907       C8.PADDI to    R12C12A.CLK PIN_CLK_X1_c
+                  --------
+                    0.907   (0.0% logic, 100.0% route), 0 logic levels.
+
+
+Passed: The following path meets requirements by 0.379ns
+
+ Logical Details:  Cell type  Pin type       Cell/ASIC name  (clock net +/-)
+
+   Source:         FF         Q              mcuResourcesInst/UARTInst/uartTxInst/r_Clock_Count[13]  (from PIN_CLK_X1_c +)
+   Destination:    FF         Data in        mcuResourcesInst/UARTInst/uartTxInst/r_Clock_Count[13]  (to PIN_CLK_X1_c +)
+
+   Delay:               0.366ns  (63.9% logic, 36.1% route), 2 logic levels.
+
+ Constraint Details:
+
+      0.366ns physical path delay mcuResourcesInst/UARTInst/uartTxInst/SLICE_11 to mcuResourcesInst/UARTInst/uartTxInst/SLICE_11 meets
+     -0.013ns DIN_HLD and
+      0.000ns delay constraint less
+      0.000ns skew requirement (totaling -0.013ns) by 0.379ns
+
+ Physical Path Details:
+
+      Data path mcuResourcesInst/UARTInst/uartTxInst/SLICE_11 to mcuResourcesInst/UARTInst/uartTxInst/SLICE_11:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+REG_DEL     ---     0.133      R6C6D.CLK to       R6C6D.Q0 mcuResourcesInst/UARTInst/uartTxInst/SLICE_11 (from PIN_CLK_X1_c)
+ROUTE         2     0.132       R6C6D.Q0 to       R6C6D.A0 mcuResourcesInst/UARTInst/uartTxInst/r_Clock_Count[13]
+CTOF_DEL    ---     0.101       R6C6D.A0 to       R6C6D.F0 mcuResourcesInst/UARTInst/uartTxInst/SLICE_11
+ROUTE         1     0.000       R6C6D.F0 to      R6C6D.DI0 mcuResourcesInst/UARTInst/uartTxInst/un1_r_Clock_Count_cry_13_0_S0_0 (to PIN_CLK_X1_c)
+                  --------
+                    0.366   (63.9% logic, 36.1% route), 2 logic levels.
+
+ Clock Skew Details: 
+
+      Source Clock Path PIN_CLK_X1 to mcuResourcesInst/UARTInst/uartTxInst/SLICE_11:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE       201     0.907       C8.PADDI to      R6C6D.CLK PIN_CLK_X1_c
+                  --------
+                    0.907   (0.0% logic, 100.0% route), 0 logic levels.
+
+      Destination Clock Path PIN_CLK_X1 to mcuResourcesInst/UARTInst/uartTxInst/SLICE_11:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE       201     0.907       C8.PADDI to      R6C6D.CLK PIN_CLK_X1_c
+                  --------
+                    0.907   (0.0% logic, 100.0% route), 0 logic levels.
+
+
+Passed: The following path meets requirements by 0.379ns
+
+ Logical Details:  Cell type  Pin type       Cell/ASIC name  (clock net +/-)
+
+   Source:         FF         Q              mcuResourcesInst/UARTInst/uartTxInst/r_Clock_Count[15]  (from PIN_CLK_X1_c +)
+   Destination:    FF         Data in        mcuResourcesInst/UARTInst/uartTxInst/r_Clock_Count[15]  (to PIN_CLK_X1_c +)
+
+   Delay:               0.366ns  (63.9% logic, 36.1% route), 2 logic levels.
+
+ Constraint Details:
+
+      0.366ns physical path delay mcuResourcesInst/UARTInst/uartTxInst/SLICE_10 to mcuResourcesInst/UARTInst/uartTxInst/SLICE_10 meets
+     -0.013ns DIN_HLD and
+      0.000ns delay constraint less
+      0.000ns skew requirement (totaling -0.013ns) by 0.379ns
+
+ Physical Path Details:
+
+      Data path mcuResourcesInst/UARTInst/uartTxInst/SLICE_10 to mcuResourcesInst/UARTInst/uartTxInst/SLICE_10:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+REG_DEL     ---     0.133      R6C7A.CLK to       R6C7A.Q0 mcuResourcesInst/UARTInst/uartTxInst/SLICE_10 (from PIN_CLK_X1_c)
+ROUTE         2     0.132       R6C7A.Q0 to       R6C7A.A0 mcuResourcesInst/UARTInst/uartTxInst/r_Clock_Count[15]
+CTOF_DEL    ---     0.101       R6C7A.A0 to       R6C7A.F0 mcuResourcesInst/UARTInst/uartTxInst/SLICE_10
+ROUTE         1     0.000       R6C7A.F0 to      R6C7A.DI0 mcuResourcesInst/UARTInst/uartTxInst/un1_r_Clock_Count_s_15_0_S0_0 (to PIN_CLK_X1_c)
+                  --------
+                    0.366   (63.9% logic, 36.1% route), 2 logic levels.
+
+ Clock Skew Details: 
+
+      Source Clock Path PIN_CLK_X1 to mcuResourcesInst/UARTInst/uartTxInst/SLICE_10:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE       201     0.907       C8.PADDI to      R6C7A.CLK PIN_CLK_X1_c
+                  --------
+                    0.907   (0.0% logic, 100.0% route), 0 logic levels.
+
+      Destination Clock Path PIN_CLK_X1 to mcuResourcesInst/UARTInst/uartTxInst/SLICE_10:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE       201     0.907       C8.PADDI to      R6C7A.CLK PIN_CLK_X1_c
                   --------
                     0.907   (0.0% logic, 100.0% route), 0 logic levels.
 
@@ -1542,38 +1327,83 @@ Passed: The following path meets requirements by 0.379ns
 
  Constraint Details:
 
-      0.366ns physical path delay mcuResourcesInst/UARTInst/uartTxInst/SLICE_22 to mcuResourcesInst/UARTInst/uartTxInst/SLICE_22 meets
+      0.366ns physical path delay mcuResourcesInst/UARTInst/uartTxInst/SLICE_13 to mcuResourcesInst/UARTInst/uartTxInst/SLICE_13 meets
      -0.013ns DIN_HLD and
       0.000ns delay constraint less
       0.000ns skew requirement (totaling -0.013ns) by 0.379ns
 
  Physical Path Details:
 
-      Data path mcuResourcesInst/UARTInst/uartTxInst/SLICE_22 to mcuResourcesInst/UARTInst/uartTxInst/SLICE_22:
+      Data path mcuResourcesInst/UARTInst/uartTxInst/SLICE_13 to mcuResourcesInst/UARTInst/uartTxInst/SLICE_13:
 
    Name    Fanout   Delay (ns)          Site               Resource
-REG_DEL     ---     0.133    R23C31B.CLK to     R23C31B.Q0 mcuResourcesInst/UARTInst/uartTxInst/SLICE_22 (from PIN_CLK_X1_c)
-ROUTE         2     0.132     R23C31B.Q0 to     R23C31B.A0 mcuResourcesInst/UARTInst/uartTxInst/r_Clock_Count[9]
-CTOF_DEL    ---     0.101     R23C31B.A0 to     R23C31B.F0 mcuResourcesInst/UARTInst/uartTxInst/SLICE_22
-ROUTE         1     0.000     R23C31B.F0 to    R23C31B.DI0 mcuResourcesInst/UARTInst/uartTxInst/un1_r_Clock_Count_cry_9_0_S0_0 (to PIN_CLK_X1_c)
+REG_DEL     ---     0.133      R6C6B.CLK to       R6C6B.Q0 mcuResourcesInst/UARTInst/uartTxInst/SLICE_13 (from PIN_CLK_X1_c)
+ROUTE         2     0.132       R6C6B.Q0 to       R6C6B.A0 mcuResourcesInst/UARTInst/uartTxInst/r_Clock_Count[9]
+CTOF_DEL    ---     0.101       R6C6B.A0 to       R6C6B.F0 mcuResourcesInst/UARTInst/uartTxInst/SLICE_13
+ROUTE         1     0.000       R6C6B.F0 to      R6C6B.DI0 mcuResourcesInst/UARTInst/uartTxInst/un1_r_Clock_Count_cry_9_0_S0_0 (to PIN_CLK_X1_c)
                   --------
                     0.366   (63.9% logic, 36.1% route), 2 logic levels.
 
  Clock Skew Details: 
 
-      Source Clock Path PIN_CLK_X1 to mcuResourcesInst/UARTInst/uartTxInst/SLICE_22:
+      Source Clock Path PIN_CLK_X1 to mcuResourcesInst/UARTInst/uartTxInst/SLICE_13:
 
    Name    Fanout   Delay (ns)          Site               Resource
-ROUTE       213     0.888       C8.PADDI to    R23C31B.CLK PIN_CLK_X1_c
+ROUTE       201     0.907       C8.PADDI to      R6C6B.CLK PIN_CLK_X1_c
                   --------
-                    0.888   (0.0% logic, 100.0% route), 0 logic levels.
+                    0.907   (0.0% logic, 100.0% route), 0 logic levels.
 
-      Destination Clock Path PIN_CLK_X1 to mcuResourcesInst/UARTInst/uartTxInst/SLICE_22:
+      Destination Clock Path PIN_CLK_X1 to mcuResourcesInst/UARTInst/uartTxInst/SLICE_13:
 
    Name    Fanout   Delay (ns)          Site               Resource
-ROUTE       213     0.888       C8.PADDI to    R23C31B.CLK PIN_CLK_X1_c
+ROUTE       201     0.907       C8.PADDI to      R6C6B.CLK PIN_CLK_X1_c
                   --------
-                    0.888   (0.0% logic, 100.0% route), 0 logic levels.
+                    0.907   (0.0% logic, 100.0% route), 0 logic levels.
+
+
+Passed: The following path meets requirements by 0.379ns
+
+ Logical Details:  Cell type  Pin type       Cell/ASIC name  (clock net +/-)
+
+   Source:         FF         Q              mcuResourcesInst/UARTInst/uartTxInst/r_Clock_Count[12]  (from PIN_CLK_X1_c +)
+   Destination:    FF         Data in        mcuResourcesInst/UARTInst/uartTxInst/r_Clock_Count[12]  (to PIN_CLK_X1_c +)
+
+   Delay:               0.366ns  (63.9% logic, 36.1% route), 2 logic levels.
+
+ Constraint Details:
+
+      0.366ns physical path delay mcuResourcesInst/UARTInst/uartTxInst/SLICE_12 to mcuResourcesInst/UARTInst/uartTxInst/SLICE_12 meets
+     -0.013ns DIN_HLD and
+      0.000ns delay constraint less
+      0.000ns skew requirement (totaling -0.013ns) by 0.379ns
+
+ Physical Path Details:
+
+      Data path mcuResourcesInst/UARTInst/uartTxInst/SLICE_12 to mcuResourcesInst/UARTInst/uartTxInst/SLICE_12:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+REG_DEL     ---     0.133      R6C6C.CLK to       R6C6C.Q1 mcuResourcesInst/UARTInst/uartTxInst/SLICE_12 (from PIN_CLK_X1_c)
+ROUTE         2     0.132       R6C6C.Q1 to       R6C6C.A1 mcuResourcesInst/UARTInst/uartTxInst/r_Clock_Count[12]
+CTOF_DEL    ---     0.101       R6C6C.A1 to       R6C6C.F1 mcuResourcesInst/UARTInst/uartTxInst/SLICE_12
+ROUTE         1     0.000       R6C6C.F1 to      R6C6C.DI1 mcuResourcesInst/UARTInst/uartTxInst/un1_r_Clock_Count_cry_11_0_S1_0 (to PIN_CLK_X1_c)
+                  --------
+                    0.366   (63.9% logic, 36.1% route), 2 logic levels.
+
+ Clock Skew Details: 
+
+      Source Clock Path PIN_CLK_X1 to mcuResourcesInst/UARTInst/uartTxInst/SLICE_12:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE       201     0.907       C8.PADDI to      R6C6C.CLK PIN_CLK_X1_c
+                  --------
+                    0.907   (0.0% logic, 100.0% route), 0 logic levels.
+
+      Destination Clock Path PIN_CLK_X1 to mcuResourcesInst/UARTInst/uartTxInst/SLICE_12:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+ROUTE       201     0.907       C8.PADDI to      R6C6C.CLK PIN_CLK_X1_c
+                  --------
+                    0.907   (0.0% logic, 100.0% route), 0 logic levels.
 
 
 Passed: The following path meets requirements by 0.379ns
@@ -1587,128 +1417,38 @@ Passed: The following path meets requirements by 0.379ns
 
  Constraint Details:
 
-      0.366ns physical path delay mcuResourcesInst/UARTInst/uartTxInst/SLICE_24 to mcuResourcesInst/UARTInst/uartTxInst/SLICE_24 meets
+      0.366ns physical path delay mcuResourcesInst/UARTInst/uartTxInst/SLICE_15 to mcuResourcesInst/UARTInst/uartTxInst/SLICE_15 meets
      -0.013ns DIN_HLD and
       0.000ns delay constraint less
       0.000ns skew requirement (totaling -0.013ns) by 0.379ns
 
  Physical Path Details:
 
-      Data path mcuResourcesInst/UARTInst/uartTxInst/SLICE_24 to mcuResourcesInst/UARTInst/uartTxInst/SLICE_24:
+      Data path mcuResourcesInst/UARTInst/uartTxInst/SLICE_15 to mcuResourcesInst/UARTInst/uartTxInst/SLICE_15:
 
    Name    Fanout   Delay (ns)          Site               Resource
-REG_DEL     ---     0.133    R23C30D.CLK to     R23C30D.Q0 mcuResourcesInst/UARTInst/uartTxInst/SLICE_24 (from PIN_CLK_X1_c)
-ROUTE         2     0.132     R23C30D.Q0 to     R23C30D.A0 mcuResourcesInst/UARTInst/uartTxInst/r_Clock_Count[5]
-CTOF_DEL    ---     0.101     R23C30D.A0 to     R23C30D.F0 mcuResourcesInst/UARTInst/uartTxInst/SLICE_24
-ROUTE         1     0.000     R23C30D.F0 to    R23C30D.DI0 mcuResourcesInst/UARTInst/uartTxInst/un1_r_Clock_Count_cry_5_0_S0_0 (to PIN_CLK_X1_c)
+REG_DEL     ---     0.133      R6C5D.CLK to       R6C5D.Q0 mcuResourcesInst/UARTInst/uartTxInst/SLICE_15 (from PIN_CLK_X1_c)
+ROUTE         2     0.132       R6C5D.Q0 to       R6C5D.A0 mcuResourcesInst/UARTInst/uartTxInst/r_Clock_Count[5]
+CTOF_DEL    ---     0.101       R6C5D.A0 to       R6C5D.F0 mcuResourcesInst/UARTInst/uartTxInst/SLICE_15
+ROUTE         1     0.000       R6C5D.F0 to      R6C5D.DI0 mcuResourcesInst/UARTInst/uartTxInst/un1_r_Clock_Count_cry_5_0_S0_0 (to PIN_CLK_X1_c)
                   --------
                     0.366   (63.9% logic, 36.1% route), 2 logic levels.
 
  Clock Skew Details: 
 
-      Source Clock Path PIN_CLK_X1 to mcuResourcesInst/UARTInst/uartTxInst/SLICE_24:
+      Source Clock Path PIN_CLK_X1 to mcuResourcesInst/UARTInst/uartTxInst/SLICE_15:
 
    Name    Fanout   Delay (ns)          Site               Resource
-ROUTE       213     0.888       C8.PADDI to    R23C30D.CLK PIN_CLK_X1_c
+ROUTE       201     0.907       C8.PADDI to      R6C5D.CLK PIN_CLK_X1_c
                   --------
-                    0.888   (0.0% logic, 100.0% route), 0 logic levels.
+                    0.907   (0.0% logic, 100.0% route), 0 logic levels.
 
-      Destination Clock Path PIN_CLK_X1 to mcuResourcesInst/UARTInst/uartTxInst/SLICE_24:
+      Destination Clock Path PIN_CLK_X1 to mcuResourcesInst/UARTInst/uartTxInst/SLICE_15:
 
    Name    Fanout   Delay (ns)          Site               Resource
-ROUTE       213     0.888       C8.PADDI to    R23C30D.CLK PIN_CLK_X1_c
+ROUTE       201     0.907       C8.PADDI to      R6C5D.CLK PIN_CLK_X1_c
                   --------
-                    0.888   (0.0% logic, 100.0% route), 0 logic levels.
-
-
-Passed: The following path meets requirements by 0.379ns
-
- Logical Details:  Cell type  Pin type       Cell/ASIC name  (clock net +/-)
-
-   Source:         FF         Q              mcuResourcesInst/UARTInst/uartTxInst/r_Clock_Count[13]  (from PIN_CLK_X1_c +)
-   Destination:    FF         Data in        mcuResourcesInst/UARTInst/uartTxInst/r_Clock_Count[13]  (to PIN_CLK_X1_c +)
-
-   Delay:               0.366ns  (63.9% logic, 36.1% route), 2 logic levels.
-
- Constraint Details:
-
-      0.366ns physical path delay mcuResourcesInst/UARTInst/uartTxInst/SLICE_20 to mcuResourcesInst/UARTInst/uartTxInst/SLICE_20 meets
-     -0.013ns DIN_HLD and
-      0.000ns delay constraint less
-      0.000ns skew requirement (totaling -0.013ns) by 0.379ns
-
- Physical Path Details:
-
-      Data path mcuResourcesInst/UARTInst/uartTxInst/SLICE_20 to mcuResourcesInst/UARTInst/uartTxInst/SLICE_20:
-
-   Name    Fanout   Delay (ns)          Site               Resource
-REG_DEL     ---     0.133    R23C31D.CLK to     R23C31D.Q0 mcuResourcesInst/UARTInst/uartTxInst/SLICE_20 (from PIN_CLK_X1_c)
-ROUTE         2     0.132     R23C31D.Q0 to     R23C31D.A0 mcuResourcesInst/UARTInst/uartTxInst/r_Clock_Count[13]
-CTOF_DEL    ---     0.101     R23C31D.A0 to     R23C31D.F0 mcuResourcesInst/UARTInst/uartTxInst/SLICE_20
-ROUTE         1     0.000     R23C31D.F0 to    R23C31D.DI0 mcuResourcesInst/UARTInst/uartTxInst/un1_r_Clock_Count_cry_13_0_S0_0 (to PIN_CLK_X1_c)
-                  --------
-                    0.366   (63.9% logic, 36.1% route), 2 logic levels.
-
- Clock Skew Details: 
-
-      Source Clock Path PIN_CLK_X1 to mcuResourcesInst/UARTInst/uartTxInst/SLICE_20:
-
-   Name    Fanout   Delay (ns)          Site               Resource
-ROUTE       213     0.888       C8.PADDI to    R23C31D.CLK PIN_CLK_X1_c
-                  --------
-                    0.888   (0.0% logic, 100.0% route), 0 logic levels.
-
-      Destination Clock Path PIN_CLK_X1 to mcuResourcesInst/UARTInst/uartTxInst/SLICE_20:
-
-   Name    Fanout   Delay (ns)          Site               Resource
-ROUTE       213     0.888       C8.PADDI to    R23C31D.CLK PIN_CLK_X1_c
-                  --------
-                    0.888   (0.0% logic, 100.0% route), 0 logic levels.
-
-
-Passed: The following path meets requirements by 0.379ns
-
- Logical Details:  Cell type  Pin type       Cell/ASIC name  (clock net +/-)
-
-   Source:         FF         Q              mcuResourcesInst/UARTInst/uartTxInst/r_Clock_Count[15]  (from PIN_CLK_X1_c +)
-   Destination:    FF         Data in        mcuResourcesInst/UARTInst/uartTxInst/r_Clock_Count[15]  (to PIN_CLK_X1_c +)
-
-   Delay:               0.366ns  (63.9% logic, 36.1% route), 2 logic levels.
-
- Constraint Details:
-
-      0.366ns physical path delay mcuResourcesInst/UARTInst/uartTxInst/SLICE_19 to mcuResourcesInst/UARTInst/uartTxInst/SLICE_19 meets
-     -0.013ns DIN_HLD and
-      0.000ns delay constraint less
-      0.000ns skew requirement (totaling -0.013ns) by 0.379ns
-
- Physical Path Details:
-
-      Data path mcuResourcesInst/UARTInst/uartTxInst/SLICE_19 to mcuResourcesInst/UARTInst/uartTxInst/SLICE_19:
-
-   Name    Fanout   Delay (ns)          Site               Resource
-REG_DEL     ---     0.133    R23C32A.CLK to     R23C32A.Q0 mcuResourcesInst/UARTInst/uartTxInst/SLICE_19 (from PIN_CLK_X1_c)
-ROUTE         2     0.132     R23C32A.Q0 to     R23C32A.A0 mcuResourcesInst/UARTInst/uartTxInst/r_Clock_Count[15]
-CTOF_DEL    ---     0.101     R23C32A.A0 to     R23C32A.F0 mcuResourcesInst/UARTInst/uartTxInst/SLICE_19
-ROUTE         1     0.000     R23C32A.F0 to    R23C32A.DI0 mcuResourcesInst/UARTInst/uartTxInst/un1_r_Clock_Count_s_15_0_S0_0 (to PIN_CLK_X1_c)
-                  --------
-                    0.366   (63.9% logic, 36.1% route), 2 logic levels.
-
- Clock Skew Details: 
-
-      Source Clock Path PIN_CLK_X1 to mcuResourcesInst/UARTInst/uartTxInst/SLICE_19:
-
-   Name    Fanout   Delay (ns)          Site               Resource
-ROUTE       213     0.888       C8.PADDI to    R23C32A.CLK PIN_CLK_X1_c
-                  --------
-                    0.888   (0.0% logic, 100.0% route), 0 logic levels.
-
-      Destination Clock Path PIN_CLK_X1 to mcuResourcesInst/UARTInst/uartTxInst/SLICE_19:
-
-   Name    Fanout   Delay (ns)          Site               Resource
-ROUTE       213     0.888       C8.PADDI to    R23C32A.CLK PIN_CLK_X1_c
-                  --------
-                    0.888   (0.0% logic, 100.0% route), 0 logic levels.
+                    0.907   (0.0% logic, 100.0% route), 0 logic levels.
 
 Report Summary
 --------------
@@ -1730,10 +1470,10 @@ Clock Domains Analysis
 
 Found 2 clocks:
 
-Clock Domain: PIN_RESETN_c   Source: PIN_RESETN.PAD   Loads: 74
+Clock Domain: PIN_RESETN_c   Source: PIN_RESETN.PAD   Loads: 65
    No transfer within this clock domain is found
 
-Clock Domain: PIN_CLK_X1_c   Source: PIN_CLK_X1.PAD   Loads: 213
+Clock Domain: PIN_CLK_X1_c   Source: PIN_CLK_X1.PAD   Loads: 201
    Covered under: FREQUENCY PORT "PIN_CLK_X1" 12.000000 MHz ;
 
    Data transfers from:
@@ -1749,7 +1489,7 @@ Timing summary (Hold):
 Timing errors: 0  Score: 0
 Cumulative negative slack: 0
 
-Constraints cover 2147483647 paths, 1 nets, and 7529 connections (95.73% coverage)
+Constraints cover 2147483647 paths, 1 nets, and 7727 connections (95.98% coverage)
 
 
 

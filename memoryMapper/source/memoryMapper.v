@@ -67,21 +67,21 @@ wire GPIO_MAP;
 * RAM 0x2000 to 0x6000 
 *   16'b 0010 0000 0000 0000
 *   16'b 0110 0000 0000 0000
-* UART is at 0xfff0 - 0xfff3
-* INT  is at 0xfff4 - 0xfff7
-* GPIO is at 0xfff8 - 0xfff9
+* UART is at 0xffe0 - 0xffe7 0 - Status, 2 - Data, 4 - RXDIV, 6 - TXDIV
+* INT  is at 0xffe8 - 0xffef
+* GPIO is at 0xfff0 - 0xfff3
 * 
 ************************************************/
 assign ROM_MAP   = (ADDR[15:13] == 3'b000);
 assign RAM_MAP   = (ADDR[15:13] == 3'b001 || ADDR[15:13] == 3'b010  || ADDR[15:13] == 3'b011 || ADDR[15:13] == 3'b010 );
-assign UART_MAP  = (ADDR >= 16'hfff0 && ADDR <= 16'hfff3);
-assign INT_MAP   = (ADDR >= 16'hfff4 && ADDR <= 16'hfff7);
-assign GPIO_MAP  = (ADDR >= 16'hfff8 && ADDR <= 16'hfff9);
+assign UART_MAP  = (ADDR >= 16'hffe0 && ADDR <= 16'hffe7);
+assign INT_MAP   = (ADDR >= 16'hffe8 && ADDR <= 16'hffef);
+assign GPIO_MAP  = (ADDR >= 16'hfff0 && ADDR <= 16'hfff3);
 assign WRITE     = (WR0N == 0 || WR1N == 0);
 assign READ      = ~RDN;
-assign ADDR_UART = ADDR[1:0];
-assign ADDR_INT  = ADDR[1:0];
-assign ADDR_GPIO = ADDR[0];
+assign ADDR_UART = ADDR[2:1];
+assign ADDR_INT  = ADDR[2:1];
+assign ADDR_GPIO = ADDR[1];
 
 // Select the data source
 always @(*) begin

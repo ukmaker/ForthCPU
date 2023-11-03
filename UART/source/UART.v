@@ -4,7 +4,7 @@
 * Wrap the UART IP so that:
 * The data available flag is latched and reset on a read
 * There is a status register
-* Addr 0 => Read       Status
+* Addr 0 => Read/write Status
 * Addr 1 => Read/write Data
 * Addr 2 => Read/write RX CLK_DIV
 * Addr 3 => Read/write TX CLK_DIV
@@ -12,6 +12,16 @@
 * Status  0 - RX Data Available
 *         1 - TX Active
 *         2 - TX Done
+*         3 - TXI
+*         4 - RXI
+*
+* Reading the Data register clears the RXI interrupt
+* Writing the Status register (any value) clears the TXI
+* Writing the Data register clears the TXA and TXD flags
+* After RESET, TXD is true, RXI and TXI are false
+*
+* Default baud rate is 115,000 
+* so divider is 12000000/115200 = 104
 *********************************************************/
 
 module UART(
@@ -42,6 +52,8 @@ wire TX_ACTIVE;
 reg DATA_AVAILABLE_R;
 reg TX_ACTIVE_R;
 reg TX_COMPLETE_R;
+reg RXI_R;
+reg TXI_R;
 
 reg START_TX;
 
@@ -54,8 +66,10 @@ assign RESETN = ~RESET;
 
 assign STATUS = 16'h0000 
   | (DATA_AVAILABLE_R ? `UART_STATUS_DATA_AVAILABLE : 0) 
-  | (TX_ACTIVE_R      ? `UART_STATUS_TX_ACTIVE : 0) 
-  | (TX_COMPLETE_R    ? `UART_STATUS_TX_COMPLETE : 0) ;
+  | (TX_ACTIVE_R      ? `UART_STATUS_TX_ACTIVE      : 0) 
+  | (TX_COMPLETE_R    ? `UART_STATUS_TX_COMPLETE    : 0) 
+  | (RXI_R            ? `UART_STATUS_RX_INTERRUPT   : 0)
+  | (TXI_R            ? `UART_STATUS_TX_INTERRUPT   : 0);
 
 UART_RX uartRXInst(
    .i_Clock(CLK),
@@ -77,27 +91,31 @@ UART_TX uartTxInst(
 );
 
 always @(*) begin
-	UART_INT = STATUS[`UART_STATUS_DATA_AVAILABLE] | STATUS[`UART_STATUS_TX_COMPLETE];
+	UART_INT = STATUS[`UART_STATUS_RX_INTERRUPT] | STATUS[`UART_STATUS_TX_INTERRUPT];
 end
 
 always @(posedge CLK or posedge RESET) begin
 	if(RESET) begin
 		START_TX         <= 0;
-		RX_CLK_DIV       <= 16'd217;
-		TX_CLK_DIV       <= 16'd217;
+		RX_CLK_DIV       <= 16'd104;
+		TX_CLK_DIV       <= 16'd104;
 		DATA_AVAILABLE_R <= 0;
 		TX_ACTIVE_R      <= 0;
-		TX_COMPLETE_R    <= 0;
+		TX_COMPLETE_R    <= 1;
+		RXI_R            <= 0;
+		TXI_R            <= 0;
 	end else if(CLK) begin
 		// latch completions
 		if(DATA_AVAILABLE) begin
 			DATA_AVAILABLE_R <= 1;
+			RXI_R            <= 1;
 		end
 		
 		TX_ACTIVE_R <= TX_ACTIVE;
 		
 		if(TX_DONE) begin
 			TX_COMPLETE_R <= 1;
+			TXI_R         <= 1;
 		end
 			
 		if(TX_ACTIVE) begin
@@ -111,8 +129,9 @@ always @(posedge CLK or posedge RESET) begin
 				end
 				
 				2'b01: begin // Read data, reset flag
-					DOUT <= RX_BYTE;
+					DOUT             <= RX_BYTE;
 					DATA_AVAILABLE_R <= 0;
+					RXI_R            <= 0;
 				end
 				
 				2'b10: begin // Read RX_CLK_DIV
@@ -127,10 +146,13 @@ always @(posedge CLK or posedge RESET) begin
 			
 		if(WR) begin
 			case(ADDR)
-				2'b00: begin end // Ignore status writes
+				2'b00: begin     // Clear the TXI flag
+					TXI_R <= 0;
+				end
 				2'b01: begin     // Write data, clear sent flag
 					START_TX <= 1;
 					TX_COMPLETE_R <= 0;
+					TXI_R <= 0;
 				end
 				2'b10: begin     // RX_CLK_DIV
 					RX_CLK_DIV <= DIN;

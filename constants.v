@@ -120,7 +120,7 @@
 **/
 `define REGA_DINX_DIN       2'b00
 `define REGA_DINX_BYTE      2'b01
-`define REGA_DINX_PC_A_NEXT 2'b10
+`define REGA_DINX_HERE      2'b10
 `define REGA_DINX_ALU_R     2'b11
 
 `define REGA_BYTEX_LOW      1'b0
@@ -235,8 +235,8 @@
 
 // Jumps
 `define MODE_JMP_ABS_REG  2'b00
-`define MODE_JMP_ABS_HERE 2'b01
-`define MODE_JMP_IND_REG  2'b10
+`define MODE_JMP_IND_REG  2'b01
+`define MODE_JMP_ABS_HERE 2'b10
 `define MODE_JMP_REL_HERE 2'b11
 
 /**
@@ -280,9 +280,11 @@
 /*******************************************
 * UART definitions
 ********************************************/
-`define UART_STATUS_DATA_AVAILABLE 1
-`define UART_STATUS_TX_ACTIVE      2
-`define UART_STATUS_TX_COMPLETE    4
+`define UART_STATUS_DATA_AVAILABLE 16'h0001
+`define UART_STATUS_TX_ACTIVE      16'h0002
+`define UART_STATUS_TX_COMPLETE    16'h0004
+`define UART_STATUS_RX_INTERRUPT   16'h0008
+`define UART_STATUS_TX_INTERRUPT   16'h0010
 
 `define UART_REG_STATUS      2'b00
 `define UART_REG_DATA        2'b01

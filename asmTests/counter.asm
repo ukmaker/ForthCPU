@@ -12,7 +12,13 @@
 #INTV1: 0x0008
 
 #HALTED: 0xAAAA
-#LEDS:   0xfff9
+#LEDS:   0xfff2
+
+#UART_STATUS:     0xffe0
+#UART_DATA:       0xffe2
+#UART_RX_CLK_DIV: 0xffe4
+#UART_TX_CLK_DIV: 0xffe6
+
 
 .ORG #COLD
     JR COLD_BOOT
@@ -43,7 +49,28 @@ COLD_BOOT:
 DELAY:
     SUBI R3,1
     JR[NZ] DELAY
+
+HELLO:
+    JPL PRINTIT
+    ." Hello world!"
+PRINTIT:
+    LD R4,12 ; Length of string
+    LD R5,#UART_DATA
+    LD R7,#UART_STATUS
+PRINTCHAR:
+    LD_B R6,(RL++)
+    ST_B (R5),R6
+    
+    LD RA,(R7)
+    ; Wait for ready
+    AND RA,4
+    JR[Z] PRINTCHAR
+
+
+    SUB R4,1
+    JR[NZ] PRINTCHAR
     JR BLINK
+
 
 ;;;;
 ; That's all folks

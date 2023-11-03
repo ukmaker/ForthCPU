@@ -47,6 +47,7 @@ module opxMultiplexer(
 	input [1:0]  JMP_ADDR_BUSX,
 	input [2:0]  JMP_ALUB_SRCX,
 	input         JMP_RDX,
+	input [1:0]  JMP_REGA_DINX,
 	input [1:0]  JMP_REGA_ADDRX,
 	input [2:0]  JMP_REGB_ADDRX,
 	input         JMP_REGA_EN,
@@ -142,7 +143,7 @@ always @(*) begin
 			REGA_WEN      = JMP_REGA_WEN;
 			REGA_ADDRX    = JMP_REGA_ADDRX;
 			REGA_BYTE_ENX = `REG_BYTE_ENX_BOTH;
-			REGA_DINX     = `REGA_DINX_DIN;
+			REGA_DINX     = JMP_REGA_DINX;
 			REGB_EN       = JMP_REGB_EN;
 			REGB_WEN      = `REG_WEN_NONE;
 			REGB_ADDRX    = JMP_REGB_ADDRX;

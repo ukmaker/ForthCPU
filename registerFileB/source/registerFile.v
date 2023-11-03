@@ -10,7 +10,7 @@ module registerFile(
 	**/
 	input [15:0] ALU_R,
 	input [15:0] DIN,
-	input [15:0] PC_A_NEXT,
+	input [15:0] HERE,
 	
 	/**
 	* Port A controls
@@ -78,7 +78,7 @@ always @(*) begin
 	case(REGA_DINX)
 		`REGA_DINX_DIN:          DINA = DIN;
 		`REGA_DINX_BYTE:         DINA = DIN_BYTE;
-		`REGA_DINX_PC_A_NEXT:    DINA = PC_A_NEXT;
+		`REGA_DINX_HERE:         DINA = HERE;
 		default:                 DINA = ALU_R;
 	endcase
 	

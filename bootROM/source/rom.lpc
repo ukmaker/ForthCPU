@@ -16,8 +16,8 @@ CoreRevision=2.8
 ModuleName=rom
 SourceFormat=Verilog HDL
 ParameterFileVersion=1.0
-Date=11/02/2023
-Time=21:59:45
+Date=11/03/2023
+Time=17:18:46
 
 [Parameters]
 Verilog=1
@@ -27,7 +27,7 @@ Destination=Synplicity
 Expression=BusA(0 to 7)
 Order=Big Endian [MSB:LSB]
 IO=0
-Addresses=64
+Addresses=128
 Data=16
 LUT=0
 MemFile=c:/users/duncan/git/forthcpu/bootrom/source/blink.mem
@@ -37,4 +37,4 @@ MemFormat=orca
 c:/users/duncan/git/forthcpu/bootrom/source/blink.mem=mem
 
 [Command]
-cmd_line= -w -n rom -lang verilog -synth synplify -bus_exp 7 -bb -arch xo3c00a -dram -type romblk -addr_width 6 -num_words 64 -data_width 16 -outdata UNREGISTERED -memfile c:/users/duncan/git/forthcpu/bootrom/source/blink.mem -memformat orca
+cmd_line= -w -n rom -lang verilog -synth synplify -bus_exp 7 -bb -arch xo3c00a -dram -type romblk -addr_width 7 -num_words 128 -data_width 16 -outdata UNREGISTERED -memfile c:/users/duncan/git/forthcpu/bootrom/source/blink.mem -memformat orca
