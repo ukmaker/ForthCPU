@@ -72,8 +72,8 @@ wire GPIO_MAP;
 * GPIO is at 0xfff0 - 0xfff3
 * 
 ************************************************/
-assign ROM_MAP   = (ADDR[15:13] == 3'b000);
-assign RAM_MAP   = (ADDR[15:13] == 3'b001 || ADDR[15:13] == 3'b010  || ADDR[15:13] == 3'b011 || ADDR[15:13] == 3'b010 );
+assign ROM_MAP   = (ADDR >= 16'h0000 && ADDR < 16'h2000);
+assign RAM_MAP   = (ADDR >= 16'h2000 && ADDR < 16'h6000 );
 assign UART_MAP  = (ADDR >= 16'hffe0 && ADDR <= 16'hffe7);
 assign INT_MAP   = (ADDR >= 16'hffe8 && ADDR <= 16'hffef);
 assign GPIO_MAP  = (ADDR >= 16'hfff0 && ADDR <= 16'hfff3);

@@ -142,6 +142,8 @@ always @(posedge CLK or posedge RESET) begin
 					DOUT <= TX_CLK_DIV;
 				end
 			endcase
+		end else begin
+			DOUT <= 16'h0000;
 		end
 			
 		if(WR) begin

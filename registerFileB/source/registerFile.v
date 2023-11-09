@@ -40,8 +40,8 @@ module registerFile(
 * internal wires
 **/
 reg [15:0] DINA;
-wire [15:0] DIN_BYTE_LOW;
-wire [15:0] DIN_BYTE_HIGH;
+reg [15:0] DIN_BYTE_LOW;
+reg [15:0] DIN_BYTE_HIGH;
 reg [15:0] DIN_BYTE;
 reg [3:0] ADDRA;
 reg [3:0] ADDRB;
@@ -72,7 +72,7 @@ always @(*) begin
 		
 	case(REGA_BYTEX)
 		`REGA_BYTEX_HIGH:   DIN_BYTE = DIN_BYTE_HIGH;
-		default:                 DIN_BYTE = DIN_BYTE_LOW;
+		default:            DIN_BYTE = DIN_BYTE_LOW;
 	endcase
 	
 	case(REGA_DINX)

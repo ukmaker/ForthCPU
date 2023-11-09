@@ -8,6 +8,7 @@ module aluGroupDecoderTests;
 	reg          RESET;
 	wire         FETCH, DECODE, EXECUTE, COMMIT;
 	reg  [15:0] DIN;
+	reg PC_ENX;
 	wire [15:0] INSTRUCTION;
 	
 	/** 
@@ -42,9 +43,6 @@ module aluGroupDecoderTests;
 	**/
 	wire [3:0] ARGA_X;
 	wire [3:0] ARGB_X;
-	wire [1:0] LDSINCF;
-	
-	wire PC_ENX;
 
 instructionPhaseDecoder decoder(
 	.CLK(CLK),
@@ -80,9 +78,7 @@ aluGroupDecoder inst(
 	.ALUB_SRCX(ALUB_SRCX),
 
 	.ARGA_X(ARGA_X),
-	.ARGB_X(ARGB_X),
-	.LDSINCF(LDSINCF)
-
+	.ARGB_X(ARGB_X)
 );
 
 // clk gen
@@ -94,6 +90,7 @@ initial begin
 	#90
 	CLK = 0; 
 	 RESET = 1;
+	 PC_ENX = 1;
 	 DIN = 16'h0000;
 	 `TICKTOCK;
 	 `TICKTOCK;
@@ -154,7 +151,7 @@ initial begin
 	
 	 $display("[T=%09t] %d - FETCH", $realtime, 9);	
 	`TICK;
-	DIN = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_AND,`MODE_ALU_REGB_U8,8'b10100101};
+	DIN = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_AND,`MODE_ALU_REGA_U8,8'b10100101};
 	`TICK;
 	$display("[T=%09t] %d - DECODE", $realtime, 10);	
 	`TICKTOCK;
@@ -183,7 +180,7 @@ initial begin
 	`assert("REGA_WEN",   0, REGA_WEN)
 	`assert("REG_B_WEN",  0, REGB_WEN)
 	`assert("CCL_LD",     0, CCL_LD)
-	 DIN = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_MOV,`MODE_ALU_REGA_U8RB,8'b10100101};
+	 DIN = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_MOV,`MODE_ALU_REGA_S8,8'b10100101};
 	 `TICK;
 	$display("[T=%09t] %d - DECODE", $realtime, 14);	
 	`TICKTOCK;
@@ -196,7 +193,7 @@ initial begin
 	`assert("REG_B_WEN",  0, REGB_WEN)
 	`assert("CCL_LD",     0, CCL_LD)
 	`assert("ALUA_SRCX", `ALUA_SRCX_REG_A, ALUA_SRCX)
-	`assert("ALUB_SRCX", `ALUB_SRCX_U8H, ALUB_SRCX)
+	`assert("ALUB_SRCX", `ALUB_SRCX_S8, ALUB_SRCX)
 	$display("[T=%09t] %d - COMMMIT", $realtime, 16);	
 	`TICKTOCK;
 	`assert("REGA_EN", 1, REGA_EN)

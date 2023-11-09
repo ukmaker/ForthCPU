@@ -9,7 +9,6 @@ module aluBMuxTests;
 	
 	reg [3:0] ARGA_X;
 	reg [3:0] ARGB_X;
-	reg [1:0] LDSINCF;
 	
 	wire [15:0] ALUB_DATA;
 	
@@ -21,7 +20,6 @@ aluBMux testInstance(
 	.ALUB_SRCX(ALUB_SRCX),
 	.ARGA_X(ARGA_X),
 	.ARGB_X(ARGB_X),
-	.LDSINCF(LDSINCF),
 	.ALUB_DATA(ALUB_DATA)
 );
 
@@ -42,7 +40,6 @@ initial begin
 	ALUB_SRCX = 3'b000;
 	ARGA_X = 4'b1010;
 	ARGB_X = 4'b0101;
-	LDSINCF = 2'b10;
 	
 	ALUB_SRCX = `ALUB_SRCX_REG_B;
 	`TICKTOCK;

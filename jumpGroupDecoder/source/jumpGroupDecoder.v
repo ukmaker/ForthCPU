@@ -167,39 +167,37 @@ always @(*) begin
 	REGB_EN    = 0;
 	RD_M = 0;
 	
-	if(JLF == `JLF_LINK) begin
-		REGA_EN  = 1;
-		REGA_WEN = 1;
-	end
-	
-	case(JPF)
-		`MODE_JMP_ABS_REG: begin
-			REGB_EN    = 1;
+	if(CC_APPLY)  begin
+		if(JLF == `JLF_LINK) begin
+			REGA_EN  = 1;
+			REGA_WEN = 1;
 		end
 		
-		`MODE_JMP_ABS_HERE: begin
-			RD_M = 1;	
-		end
+		case(JPF)
+			`MODE_JMP_ABS_REG: begin
+				REGB_EN    = 1;
+			end
+			
+			`MODE_JMP_ABS_HERE: begin
+				RD_M = 1;	
+			end
 
-		`MODE_JMP_IND_REG: begin
-			ALUB_SRCX = `ALUB_SRCX_S8;
-			REGA_ADDRX = `REGA_ADDRX_RL;
-			REGB_ADDRX = `REGB_ADDRX_ARGB;
-			REGA_EN  = 0;
-			REGA_WEN = 0;
-			REGB_EN  = 1;
-		end
+			`MODE_JMP_IND_REG: begin
+				ALUB_SRCX = `ALUB_SRCX_S8;
+				REGA_ADDRX = `REGA_ADDRX_RL;
+				REGB_ADDRX = `REGB_ADDRX_ARGB;
+				REGB_EN  = 1;
+			end
 
-		`MODE_JMP_REL_HERE: begin
-			ALUB_SRCX = `ALUB_SRCX_U8H;
-			REGA_ADDRX = `REGA_ADDRX_RL;
-			REGB_ADDRX = `REGB_ADDRX_RB;
-			REGA_EN  = 0;
-			REGA_WEN = 0;
-			REGB_EN  = 1;
-			RD_M = 1;	
-		end
-	endcase
+			`MODE_JMP_REL_HERE: begin
+				ALUB_SRCX = `ALUB_SRCX_U8H;
+				REGA_ADDRX = `REGA_ADDRX_RL;
+				REGB_ADDRX = `REGB_ADDRX_RB;
+				REGB_EN  = 1;
+				RD_M = 1;	
+			end
+		endcase
+	end
 end
 
 

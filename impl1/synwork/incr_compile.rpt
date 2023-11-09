@@ -14,23 +14,45 @@ Hostname: EDAWIN
 Implementation : impl1
 Synopsys HDL compiler and linker, Version comp202103synp2, Build 093R, Built Aug 10 2021 09:15:36, @
 
-Modified Files: 1
+Modified Files: 4
 FID:  path (prevtimestamp, timestamp)
-26       C:\Users\Duncan\git\ForthCPU\mcuResources\source\mcuResources.v (2023-11-03 12:19:15, 2023-11-03 17:45:27)
+3        C:\Users\Duncan\git\ForthCPU\UART\source\UART.v (2023-11-03 17:28:13, 2023-11-09 17:49:07)
+11       C:\Users\Duncan\git\ForthCPU\bootROM\source\rom.v (2023-11-09 16:45:28, 2023-11-09 16:49:52)
+23       C:\Users\Duncan\git\ForthCPU\jumpGroupDecoder\source\jumpGroupDecoder.v (2023-11-09 15:55:55, 2023-11-09 18:41:57)
+34       C:\Users\Duncan\git\ForthCPU\registerFileB\source\registerFile.v (2023-11-03 15:47:33, 2023-11-09 17:23:50)
 
 *******************************************************************
-Modules that may have changed as a result of file changes: 1
+Modules that may have changed as a result of file changes: 11
 MID:  lib.cell.view
-13       work.generalGroupDecoder.verilog may have changed because the following files changed:
-                        C:\Users\Duncan\git\ForthCPU\mcuResources\source\mcuResources.v (2023-11-03 12:19:15, 2023-11-03 17:45:27) <-- (module definition)
+0        work.RAM.verilog may have changed because the following files changed:
+                        C:\Users\Duncan\git\ForthCPU\UART\source\UART.v (2023-11-03 17:28:13, 2023-11-09 17:49:07) <-- (may instantiate this module)
+1        work.UART.verilog may have changed because the following files changed:
+                        C:\Users\Duncan\git\ForthCPU\UART\source\UART.v (2023-11-03 17:28:13, 2023-11-09 17:49:07) <-- (may instantiate this module)
+2        work.UART_RX.verilog may have changed because the following files changed:
+                        C:\Users\Duncan\git\ForthCPU\UART\source\UART.v (2023-11-03 17:28:13, 2023-11-09 17:49:07) <-- (may instantiate this module)
+3        work.UART_TX.verilog may have changed because the following files changed:
+                        C:\Users\Duncan\git\ForthCPU\UART\source\UART.v (2023-11-03 17:28:13, 2023-11-09 17:49:07) <-- (may instantiate this module)
+9        work.busController.verilog may have changed because the following files changed:
+                        C:\Users\Duncan\git\ForthCPU\bootROM\source\rom.v (2023-11-09 16:45:28, 2023-11-09 16:49:52) <-- (module definition)
+15       work.interruptMaskRegister.verilog may have changed because the following files changed:
+                        C:\Users\Duncan\git\ForthCPU\UART\source\UART.v (2023-11-03 17:28:13, 2023-11-09 17:49:07) <-- (may instantiate this module)
+17       work.jumpGroupDecoder.verilog may have changed because the following files changed:
+                        C:\Users\Duncan\git\ForthCPU\registerFileB\source\registerFile.v (2023-11-03 15:47:33, 2023-11-09 17:23:50) <-- (module definition)
+20       work.mcuResources.verilog may have changed because the following files changed:
+                        C:\Users\Duncan\git\ForthCPU\UART\source\UART.v (2023-11-03 17:28:13, 2023-11-09 17:49:07) <-- (module definition)
+21       work.memoryMapper.verilog may have changed because the following files changed:
+                        C:\Users\Duncan\git\ForthCPU\UART\source\UART.v (2023-11-03 17:28:13, 2023-11-09 17:49:07) <-- (may instantiate this module)
+24       work.programCounter.verilog may have changed because the following files changed:
+                        C:\Users\Duncan\git\ForthCPU\jumpGroupDecoder\source\jumpGroupDecoder.v (2023-11-09 15:55:55, 2023-11-09 18:41:57) <-- (module definition)
+27       work.rom.verilog may have changed because the following files changed:
+                        C:\Users\Duncan\git\ForthCPU\UART\source\UART.v (2023-11-03 17:28:13, 2023-11-09 17:49:07) <-- (may instantiate this module)
 
 *******************************************************************
-Unmodified files: 43
+Unmodified files: 40
 FID:  path (timestamp)
 0        C:/Users/Duncan/git/ForthCPU/constants.v (2023-11-03 15:46:24)
 1        C:\Users\Duncan\git\ForthCPU\RAM\source\RAM.v (2023-10-25 16:18:23)
 2        C:\Users\Duncan\git\ForthCPU\UART\source\../../constants.v (2023-11-03 15:46:24)
-3        C:\Users\Duncan\git\ForthCPU\UART\source\UART.v (2023-11-03 17:28:13)
 4        C:\Users\Duncan\git\ForthCPU\UART\source\receiver.v (2023-10-26 19:24:23)
 5        C:\Users\Duncan\git\ForthCPU\UART\source\transmitter.v (2023-10-27 19:03:26)
 6        C:\Users\Duncan\git\ForthCPU\aluB\source\alu.v (2023-10-30 18:29:17)
@@ -38,7 +60,6 @@ FID:  path (timestamp)
 8        C:\Users\Duncan\git\ForthCPU\aluB\source\aluBMux.v (2023-11-01 17:24:28)
 9        C:\Users\Duncan\git\ForthCPU\aluB\source\fullALU.v (2023-11-01 17:24:59)
 10       C:\Users\Duncan\git\ForthCPU\aluGroupDecoder\source\aluGroupDecoder.v (2023-11-01 17:26:00)
-11       C:\Users\Duncan\git\ForthCPU\bootROM\source\rom.v (2023-11-03 17:18:46)
 12       C:\Users\Duncan\git\ForthCPU\branchLogic\source\branchLogic.v (2023-11-02 15:54:48)
 13       C:\Users\Duncan\git\ForthCPU\busController\source\../../constants.v (2023-11-03 15:46:24)
 14       C:\Users\Duncan\git\ForthCPU\busController\source\busController.v (2023-11-03 17:03:11)
@@ -53,16 +74,15 @@ FID:  path (timestamp)
 20       C:\Users\Duncan\git\ForthCPU\interruptLogic\source\../../constants.v (2023-11-03 15:46:24)
 21       C:\Users\Duncan\git\ForthCPU\interruptLogic\source\interruptMaskRegister.v (2023-10-31 10:38:07)
 22       C:\Users\Duncan\git\ForthCPU\interruptLogic\source\interruptStateMachine.v (2023-10-30 15:59:03)
-23       C:\Users\Duncan\git\ForthCPU\jumpGroupDecoder\source\jumpGroupDecoder.v (2023-11-03 15:47:01)
 24       C:\Users\Duncan\git\ForthCPU\loadStoreGroupDecoder\source\loadStoreGroupDecoder.v (2023-11-03 17:31:16)
 25       C:\Users\Duncan\git\ForthCPU\mcuResources\source\../../constants.v (2023-11-03 15:46:24)
+26       C:\Users\Duncan\git\ForthCPU\mcuResources\source\mcuResources.v (2023-11-09 14:49:37)
 27       C:\Users\Duncan\git\ForthCPU\memoryMapper\source\../../constants.v (2023-11-03 15:46:24)
-28       C:\Users\Duncan\git\ForthCPU\memoryMapper\source\memoryMapper.v (2023-11-03 17:14:32)
+28       C:\Users\Duncan\git\ForthCPU\memoryMapper\source\memoryMapper.v (2023-11-09 15:06:41)
 29       C:\Users\Duncan\git\ForthCPU\opxMultiplexer\source\../../constants.v (2023-11-03 15:46:24)
 30       C:\Users\Duncan\git\ForthCPU\opxMultiplexer\source\opxMultiplexer.v (2023-11-03 15:50:12)
 32       C:\Users\Duncan\git\ForthCPU\processorCore\source\core.v (2023-11-03 15:54:18)
 33       C:\Users\Duncan\git\ForthCPU\programCounter\source\programCounter.v (2023-11-02 20:11:28)
-34       C:\Users\Duncan\git\ForthCPU\registerFileB\source\registerFile.v (2023-11-03 15:47:33)
 35       C:\Users\Duncan\git\ForthCPU\registerFileB\source\registers.v (2023-10-30 15:49:58)
 36       C:\lscc\diamond\3.12\synpbase\lib\lucent\machxo3l.v (2021-08-10 09:11:08)
 37       C:\lscc\diamond\3.12\synpbase\lib\lucent\pmi_def.v (2021-08-10 09:11:08)
@@ -72,32 +92,22 @@ FID:  path (timestamp)
 41       C:\lscc\diamond\3.12\synpbase\lib\vlog\umr_capim.v (2021-08-10 09:07:02)
 
 *******************************************************************
-Unchanged modules: 27
+Unchanged modules: 17
 MID:  lib.cell.view
-0        work.RAM.verilog
-1        work.UART.verilog
-2        work.UART_RX.verilog
-3        work.UART_TX.verilog
 4        work.alu.verilog
 5        work.aluAMux.verilog
 6        work.aluBMux.verilog
 7        work.aluGroupDecoder.verilog
 29       work.blinkTests.verilog
 8        work.branchLogic.verilog
-9        work.busController.verilog
 10       work.core.verilog
 28       work.devBoard.verilog
 12       work.fullALU.verilog
+13       work.generalGroupDecoder.verilog
 14       work.instructionPhaseDecoder.verilog
-15       work.interruptMaskRegister.verilog
 16       work.interruptStateMachine.verilog
-17       work.jumpGroupDecoder.verilog
 18       work.loadStoreGroupDecoder.verilog
 19       work.mcu.verilog
-20       work.mcuResources.verilog
-21       work.memoryMapper.verilog
 22       work.opxMultiplexer.verilog
-24       work.programCounter.verilog
 25       work.registerFile.verilog
 26       work.registers.verilog
-27       work.rom.verilog

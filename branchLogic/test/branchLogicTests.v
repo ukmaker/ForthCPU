@@ -105,8 +105,8 @@ initial begin
 	CC_APPLYX = 1;
 	`TICKTOCK;
 	IDX = 7;
-	`assert("PC_OFFSETX", `PC_OFFSETX_2,  PC_OFFSETX)
-	`assert("PC_BASEX",   `PC_BASEX_PC_A, PC_BASEX)
+	`assert("PC_OFFSETX", `PC_OFFSETX_DIN,  PC_OFFSETX)
+	`assert("PC_BASEX",   `PC_BASEX_0, PC_BASEX)
 	
 	CCZ = 1;
 	`TICKTOCK;

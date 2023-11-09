@@ -16,7 +16,7 @@ module fullALUTests;
 	
 	reg [3:0] ARGA_X;
 	reg [3:0] ARGB_X;
-	reg [1:0] LDSINCF;
+	reg B5;
 
 	reg CCL_LD;
 	
@@ -38,7 +38,7 @@ fullALU testInstance(
 	.ALUB_SRCX(ALUB_SRCX),
 	.ARGA_X(ARGA_X),
 	.ARGB_X(ARGB_X),
-	.LDSINCF(LDSINCF),
+	.B5(B5),
 	.CCL_LD(CCL_LD),
 	.ALU_R(ALU_R),
 	.CC_ZERO(CC_ZERO),
@@ -68,7 +68,7 @@ initial begin
 	ALUB_SRCX = `ALUB_SRCX_REG_B;
 	ARGA_X = 4'b0101;
 	ARGB_X = 4'b1010;
-	LDSINCF = 2'b10;
+	B5 = 0;
 	
 	`TICK;
 	`TICK;
@@ -106,9 +106,9 @@ initial begin
 	// CC Result should be latched through
 	`assert("ALU_R",      16'hfffe, ALU_R)
 	`assert("CC_ZERO",        1'b0, CC_ZERO)
-	`assert("CC_CARRY",       1'b0, CC_CARRY)
+	`assert("CC_CARRY",       1'b1, CC_CARRY)
 	`assert("CC_SIGN",        1'b1, CC_SIGN)
-	`assert("CC_PARITY",      1'b1, CC_PARITY)
+	`assert("CC_PARITY",      1'b0, CC_PARITY)
 	
 end
 

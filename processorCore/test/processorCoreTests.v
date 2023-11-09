@@ -21,7 +21,8 @@ reg  [15:0] DIN;
 
 wire RD;
 wire WR;
-PUR PUR_INST(.PUR(1'b1));
+
+PUR PUR_INST(.PUR(1'b1));
 GSR GSR_INST(.GSR(1'b1));
 	
 	
@@ -50,7 +51,7 @@ core testInstance(
 );
 
 reg [15:0] INSTR;
-
+	
 
 // clk gen
 always begin

@@ -91,7 +91,7 @@ memoryMapper memoryMapperInst(
 );
 
 rom ROMInst(
-	.Address({ADDR[6:1], 1'b0}),
+	.Address({ADDR[9:1], 1'b0}),
 	.Q(DIN_ROM)
 );
 

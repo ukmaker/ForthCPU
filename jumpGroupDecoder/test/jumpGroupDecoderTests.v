@@ -23,13 +23,23 @@ module jumpGroupDecoderTests;
 	
 	wire [1:0] REGA_ADDRX;
 	wire [2:0] REGB_ADDRX;
+	wire [1:0] REGA_DINX;
 	wire        REGA_EN;
 	wire        REGA_WEN;
 	wire        REGB_EN;
 	wire [2:0] ALUB_SRCX;
+	wire [1:0] ADDR_BUSX;
+	wire RDX;
 	
 	
 jumpGroupDecoder testInstance(
+
+	.CLK(CLK),
+	.RESET(RESET),
+	
+	.DECODE(DECODE),
+	.EXECUTE(EXECUTE),
+	.COMMIT(COMMIT),
 
 	.GROUPF(INSTRUCTION[15:14]),
 	.SKIPF(INSTRUCTION[13:12]),
@@ -47,11 +57,14 @@ jumpGroupDecoder testInstance(
 	
 	.REGA_ADDRX(REGA_ADDRX),
 	.REGB_ADDRX(REGB_ADDRX),
+	.REGA_DINX(REGA_DINX),
 	.REGA_EN(REGA_EN),
 	.REGA_WEN(REGA_WEN),
 	.REGB_EN(REGB_EN),
 	
-	.ALUB_SRCX(ALUB_SRCX)
+	.ALUB_SRCX(ALUB_SRCX),
+	.ADDR_BUSX(ADDR_BUSX),
+	.RDX(RDX)
 );
 
 
@@ -94,8 +107,8 @@ initial begin
 	`TICKTOCK;  
 	`TICKTOCK;
 	`mark(1)	
-	`assert("PC_OFFSETX", `PC_OFFSETX_2,    PC_OFFSETX)
-	`assert("PC_BASEX",   `PC_BASEX_PC_A,   PC_BASEX)
+	`assert("PC_OFFSETX", `PC_OFFSETX_0,    PC_OFFSETX)
+	`assert("PC_BASEX",   `PC_BASEX_REGB_DOUT,   PC_BASEX)
 	`assert("REGA_ADDRX", `REGA_ADDRX_RL,   REGA_ADDRX)
 	`assert("REGB_ADDRX", `REGB_ADDRX_ARGB, REGB_ADDRX)
 	`assert("REGA_EN",    0,                REGA_EN)
@@ -115,7 +128,7 @@ initial begin
 	`assert("REGB_ADDRX", `REGB_ADDRX_ARGB, REGB_ADDRX)
 	`assert("REGA_EN",    0,                REGA_EN)
 	`assert("REGA_WEN",   0,                REGA_WEN)
-	`assert("REGB_EN",    1,                REGB_EN)
+	`assert("REGB_EN",    0,                REGB_EN)
 	`assert("ALUB_SRCX",  `ALUB_SRCX_REG_B, ALUB_SRCX)
 	`TICKTOCK; 
 	`TICKTOCK;  
@@ -124,8 +137,8 @@ initial begin
 	`TICKTOCK;  
 	`TICKTOCK;
 	`mark(3)	
-	`assert("PC_OFFSETX", `PC_OFFSETX_DIN,  PC_OFFSETX)
-	`assert("PC_BASEX",   `PC_BASEX_0,      PC_BASEX)
+	`assert("PC_OFFSETX", `PC_OFFSETX_0,  PC_OFFSETX)
+	`assert("PC_BASEX",   `PC_BASEX_REGB_DOUT,      PC_BASEX)
 	`assert("REGA_ADDRX", `REGA_ADDRX_RL,   REGA_ADDRX)
 	`assert("REGB_ADDRX", `REGB_ADDRX_ARGB, REGB_ADDRX)
 	`assert("REGA_EN",    0,                REGA_EN)
@@ -146,7 +159,7 @@ initial begin
 	`assert("REGB_ADDRX", `REGB_ADDRX_ARGB, REGB_ADDRX)
 	`assert("REGA_EN",    0,                REGA_EN)
 	`assert("REGA_WEN",   0,                REGA_WEN)
-	`assert("REGB_EN",    1,                REGB_EN)
+	`assert("REGB_EN",    0,                REGB_EN)
 	`assert("ALUB_SRCX",  `ALUB_SRCX_REG_B, ALUB_SRCX)
 	`TICKTOCK; 
 	`TICKTOCK;  
@@ -163,9 +176,9 @@ initial begin
 	`assert("PC_BASEX",   `PC_BASEX_PC_A,   PC_BASEX)
 	`assert("REGA_ADDRX", `REGA_ADDRX_RL,   REGA_ADDRX)
 	`assert("REGB_ADDRX", `REGB_ADDRX_ARGB, REGB_ADDRX)
-	`assert("REGA_EN",    1,                REGA_EN)
-	`assert("REGA_WEN",   1,                REGA_WEN)
-	`assert("REGB_EN",    1,                REGB_EN)
+	`assert("REGA_EN",    0,                REGA_EN)
+	`assert("REGA_WEN",   0,                REGA_WEN)
+	`assert("REGB_EN",    0,                REGB_EN)
 	`assert("ALUB_SRCX",  `ALUB_SRCX_REG_B, ALUB_SRCX)
 	`TICKTOCK; 
 	`TICKTOCK;  
