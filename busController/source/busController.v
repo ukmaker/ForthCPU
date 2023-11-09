@@ -42,12 +42,17 @@ module busController(
 	
 );
 
-reg  [15:0] DOUT_W;
-wire [15:0] DOUT_L;
+reg [15:0] DOUT_W;
+reg [15:0] DOUT_L;
 
-assign DOUT_L = {DOUT_W[7:0], 8'h00};
+
 
 always @(*) begin
+	case(DATA_BUSX)
+		`DATA_BUSX_REGA_DOUT:  DOUT_W = REGA_DOUT;
+		default:               DOUT_W = ALU_R;
+	endcase
+	DOUT_L = {DOUT_W[7:0], 8'h00};
 	HIGH_BYTEX = BYTEX & ADDR_BUF[0];
 	DOUT_BUF   = HIGH_BYTEX ? DOUT_L : DOUT_W;
 end
@@ -61,12 +66,6 @@ always @(*) begin
 	endcase
 end
 	
-always @(*) begin
-	case(DATA_BUSX)
-		`DATA_BUSX_REGA_DOUT:  DOUT_W = REGA_DOUT;
-		default:               DOUT_W = ALU_R;
-	endcase
-end
 
 always @(posedge CLK) begin
 	WRN0_BUF <= ~WRX | (BYTEX &  ADDR_BUF[0]);

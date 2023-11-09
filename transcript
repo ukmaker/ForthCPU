@@ -1,9 +1,9 @@
 # Reading pref.tcl
-# do {C:/Users/Duncan/git/ForthCPU/UART/test/UARTTestbench/UARTTestbench.mdo}
-# Loading project UARTTestbench
-# Compile of UART.v was successful.
-# vsim -L work -L pmi_work -L ovi_machxo3l UARTTests 
-# Start time: 18:58:34 on Nov 09,2023
+# do {C:/Users/Duncan/git/ForthCPU/impl1/test/blinkTestbench/blinkTestbench.mdo}
+# Loading project blinkTestbench
+# Compile of core.v was successful.
+# vsim -L work -L pmi_work -L ovi_machxo3l blinkTests 
+# Start time: 21:21:23 on Nov 09,2023
 # //  ModelSim - Lattice FPGA Edition 2020.3 Oct 14 2020
 # //
 # //  Copyright 1991-2020 Mentor Graphics Corporation
@@ -17,15 +17,493 @@
 # //  is prohibited from disclosure under the Trade Secrets Act,
 # //  18 U.S.C. Section 1905.
 # //
-# Loading work.UARTTests
+# Loading work.blinkTests
+# Loading work.mcu
+# Loading ovi_machxo3l.PUR
+# Loading ovi_machxo3l.GSR
+# Loading work.devBoard
+# Loading work.core
+# Loading work.instructionPhaseDecoder
+# Loading work.fullALU
+# Loading work.alu
+# Loading work.aluAMux
+# Loading work.aluBMux
+# Loading work.registerFile
+# Loading work.registers
+# Loading ovi_machxo3l.DP8KC
+# Loading ovi_machxo3l.VLO
+# Loading work.busController
+# Loading work.programCounter
+# Loading work.interruptStateMachine
+# Loading work.aluGroupDecoder
+# Loading work.loadStoreGroupDecoder
+# Loading work.jumpGroupDecoder
+# Loading work.generalGroupDecoder
+# Loading work.opxMultiplexer
+# Loading work.mcuResources
+# Loading work.memoryMapper
+# Loading work.rom
+# Loading ovi_machxo3l.ROM256X1A
+# Loading ovi_machxo3l.MUX41
+# Loading work.RAM
+# Loading ovi_machxo3l.INV
+# Loading ovi_machxo3l.AND2
+# Loading ovi_machxo3l.VHI
+# Loading ovi_machxo3l.FD1P3DX
+# Loading ovi_machxo3l.MUX81
 # Loading work.UART
 # Loading work.UART_RX
 # Loading work.UART_TX
+# Loading work.interruptMaskRegister
+# Loading ovi_machxo3l.UDFDL5E_UDP_X
 # .main_pane.wave.interior.cs.body.pw.wf
 run 1ms
+add wave -position end  sim:/blinkTests/mcuInst/mcuResourcesInst/UARTInst/DIN
+add wave -position 22  sim:/blinkTests/mcuInst/mcuResourcesInst/UARTInst/RD
+add wave -position 23  sim:/blinkTests/mcuInst/mcuResourcesInst/UARTInst/WR
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+run 1ms
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+add wave -position 7  sim:/blinkTests/mcuInst/mcuResourcesInst/ROMInst/Q
+restart
+run 1ms
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+add wave -position 8  sim:/blinkTests/mcuInst/mcuResourcesInst/CPU_DIN
+restart
+run 1ms
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+add wave -position 9  sim:/blinkTests/mcuInst/mcuResourcesInst/CPU_DOUT
+restart
+run 1ms
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# Compile of interruptMaskRegister.v was successful.
+# Compile of transmitter.v was successful.
+# Compile of receiver.v was successful.
+# Compile of UART.v was successful.
+# Compile of RAM.v was successful.
+# Compile of memoryMapper.v was successful.
+# Compile of mcuResources.v was successful.
+# Compile of opxMultiplexer.v was successful.
+# Compile of generalGroupDecoder.v was successful.
+# Compile of jumpGroupDecoder.v was successful.
+# Compile of loadStoreGroupDecoder.v was successful.
+# Compile of aluGroupDecoder.v was successful.
+# Compile of interruptStateMachine.v was successful.
+# Compile of programCounter.v was successful.
+# Compile of busController.v was successful.
+# Compile of registerFile.v was successful.
+# Compile of aluBMux.v was successful.
+# Compile of aluAMux.v was successful.
+# Compile of alu.v was successful.
+# Compile of fullALU.v was successful.
+# Compile of instructionPhaseDecoder.v was successful.
+# Compile of core.v was successful.
+# Compile of devBoard.v was successful.
+# Compile of mcu.v was successful.
+# Compile of blinkTest.v was successful.
+# Compile of branchLogic.v was successful.
+# Compile of constants.v was successful.
+# Compile of rom.v was successful.
+# Compile of registers.v was successful.
+# 29 compiles, 0 failed with no errors.
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.blinkTests
+# Loading work.mcu
+# Loading work.devBoard
+# Loading work.core
+# Loading work.instructionPhaseDecoder
+# Loading work.fullALU
+# Loading work.alu
+# Loading work.aluAMux
+# Loading work.aluBMux
+# Loading work.registerFile
+# Loading work.registers
+# Loading work.busController
+# Loading work.programCounter
+# Loading work.interruptStateMachine
+# Loading work.aluGroupDecoder
+# Loading work.loadStoreGroupDecoder
+# Loading work.jumpGroupDecoder
+# Loading work.generalGroupDecoder
+# Loading work.opxMultiplexer
+# Loading work.mcuResources
+# Loading work.memoryMapper
+# Loading work.rom
+# Loading work.RAM
+# Loading work.UART
+# Loading work.UART_RX
+# Loading work.UART_TX
+# Loading work.interruptMaskRegister
+run 1ms
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# Compile of interruptMaskRegister.v was successful.
+# Compile of transmitter.v was successful.
+# Compile of receiver.v was successful.
+# Compile of UART.v was successful.
+# Compile of RAM.v was successful.
+# Compile of memoryMapper.v was successful.
+# Compile of mcuResources.v was successful.
+# Compile of opxMultiplexer.v was successful.
+# Compile of generalGroupDecoder.v was successful.
+# Compile of jumpGroupDecoder.v was successful.
+# Compile of loadStoreGroupDecoder.v was successful.
+# Compile of aluGroupDecoder.v was successful.
+# Compile of interruptStateMachine.v was successful.
+# Compile of programCounter.v was successful.
+# Compile of busController.v was successful.
+# Compile of registerFile.v was successful.
+# Compile of aluBMux.v was successful.
+# Compile of aluAMux.v was successful.
+# Compile of alu.v was successful.
+# Compile of fullALU.v was successful.
+# Compile of instructionPhaseDecoder.v was successful.
+# Compile of core.v was successful.
+# Compile of devBoard.v was successful.
+# Compile of mcu.v was successful.
+# Compile of blinkTest.v was successful.
+# Compile of branchLogic.v was successful.
+# Compile of constants.v was successful.
+# Compile of rom.v was successful.
+# Compile of registers.v was successful.
+# 29 compiles, 0 failed with no errors.
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.blinkTests
+# Loading work.mcu
+# Loading work.devBoard
+# Loading work.core
+# Loading work.instructionPhaseDecoder
+# Loading work.fullALU
+# Loading work.alu
+# Loading work.aluAMux
+# Loading work.aluBMux
+# Loading work.registerFile
+# Loading work.registers
+# Loading work.busController
+# Loading work.programCounter
+# Loading work.interruptStateMachine
+# Loading work.aluGroupDecoder
+# Loading work.loadStoreGroupDecoder
+# Loading work.jumpGroupDecoder
+# Loading work.generalGroupDecoder
+# Loading work.opxMultiplexer
+# Loading work.mcuResources
+# Loading work.memoryMapper
+# Loading work.rom
+# Loading work.RAM
+# Loading work.UART
+# Loading work.UART_RX
+# Loading work.UART_TX
+# Loading work.interruptMaskRegister
+run 1ms
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# Compile of interruptMaskRegister.v was successful.
+# Compile of transmitter.v was successful.
+# Compile of receiver.v was successful.
+# Compile of UART.v was successful.
+# Compile of RAM.v was successful.
+# Compile of memoryMapper.v was successful.
+# Compile of mcuResources.v was successful.
+# Compile of opxMultiplexer.v was successful.
+# Compile of generalGroupDecoder.v was successful.
+# Compile of jumpGroupDecoder.v was successful.
+# Compile of loadStoreGroupDecoder.v was successful.
+# Compile of aluGroupDecoder.v was successful.
+# Compile of interruptStateMachine.v was successful.
+# Compile of programCounter.v was successful.
+# Compile of busController.v was successful.
+# Compile of registerFile.v was successful.
+# Compile of aluBMux.v was successful.
+# Compile of aluAMux.v was successful.
+# Compile of alu.v was successful.
+# Compile of fullALU.v was successful.
+# Compile of instructionPhaseDecoder.v was successful.
+# Compile of core.v was successful.
+# Compile of devBoard.v was successful.
+# Compile of mcu.v was successful.
+# Compile of blinkTest.v was successful.
+# Compile of branchLogic.v was successful.
+# Compile of constants.v was successful.
+# Compile of rom.v was successful.
+# Compile of registers.v was successful.
+# 29 compiles, 0 failed with no errors.
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.blinkTests
+# Loading work.mcu
+# Loading work.devBoard
+# Loading work.core
+# Loading work.instructionPhaseDecoder
+# Loading work.fullALU
+# Loading work.alu
+# Loading work.aluAMux
+# Loading work.aluBMux
+# Loading work.registerFile
+# Loading work.registers
+# Loading work.busController
+# Loading work.programCounter
+# Loading work.interruptStateMachine
+# Loading work.aluGroupDecoder
+# Loading work.loadStoreGroupDecoder
+# Loading work.jumpGroupDecoder
+# Loading work.generalGroupDecoder
+# Loading work.opxMultiplexer
+# Loading work.mcuResources
+# Loading work.memoryMapper
+# Loading work.rom
+# Loading work.RAM
+# Loading work.UART
+# Loading work.UART_RX
+# Loading work.UART_TX
+# Loading work.interruptMaskRegister
+run 1ms
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+add wave -position end  sim:/blinkTests/mcuInst/coreInst/busControllerInst/DOUT_W
+add wave -position end  sim:/blinkTests/mcuInst/coreInst/busControllerInst/DOUT_L
+restart
+run 1ms
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# Compile of interruptMaskRegister.v was successful.
+# Compile of transmitter.v was successful.
+# Compile of receiver.v was successful.
+# Compile of UART.v was successful.
+# Compile of RAM.v was successful.
+# Compile of memoryMapper.v was successful.
+# Compile of mcuResources.v was successful.
+# Compile of opxMultiplexer.v was successful.
+# Compile of generalGroupDecoder.v was successful.
+# Compile of jumpGroupDecoder.v was successful.
+# Compile of loadStoreGroupDecoder.v was successful.
+# Compile of aluGroupDecoder.v was successful.
+# Compile of interruptStateMachine.v was successful.
+# Compile of programCounter.v was successful.
+# Compile of busController.v was successful.
+# Compile of registerFile.v was successful.
+# Compile of aluBMux.v was successful.
+# Compile of aluAMux.v was successful.
+# Compile of alu.v was successful.
+# Compile of fullALU.v was successful.
+# Compile of instructionPhaseDecoder.v was successful.
+# Compile of core.v was successful.
+# Compile of devBoard.v was successful.
+# Compile of mcu.v was successful.
+# Compile of blinkTest.v was successful.
+# Compile of branchLogic.v was successful.
+# Compile of constants.v was successful.
+# Compile of rom.v was successful.
+# Compile of registers.v was successful.
+# 29 compiles, 0 failed with no errors.
+restart
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.blinkTests
+# Loading work.mcu
+# Loading work.devBoard
+# Loading work.core
+# Loading work.instructionPhaseDecoder
+# Loading work.fullALU
+# Loading work.alu
+# Loading work.aluAMux
+# Loading work.aluBMux
+# Loading work.registerFile
+# Loading work.registers
+# Loading work.busController
+# Loading work.programCounter
+# Loading work.interruptStateMachine
+# Loading work.aluGroupDecoder
+# Loading work.loadStoreGroupDecoder
+# Loading work.jumpGroupDecoder
+# Loading work.generalGroupDecoder
+# Loading work.opxMultiplexer
+# Loading work.mcuResources
+# Loading work.memoryMapper
+# Loading work.rom
+# Loading work.RAM
+# Loading work.UART
+# Loading work.UART_RX
+# Loading work.UART_TX
+# Loading work.interruptMaskRegister
+run 1ms
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+add wave -position end  sim:/blinkTests/mcuInst/coreInst/busControllerInst/REGA_DOUT
+add wave -position end  sim:/blinkTests/mcuInst/coreInst/busControllerInst/ALU_R
+restart ; run 1ms
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+add wave -position 31  sim:/blinkTests/mcuInst/coreInst/registerFileInst/REGB_DOUT
+restart ; run 1ms
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+add wave -position end  sim:/blinkTests/mcuInst/coreInst/registerFileInst/REGA_BYTE_EN
+add wave -position end  sim:/blinkTests/mcuInst/coreInst/registerFileInst/REGA_EN
+add wave -position end  sim:/blinkTests/mcuInst/coreInst/registerFileInst/REGA_WEN
+restart ; run 1ms
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+add wave -position 30  sim:/blinkTests/mcuInst/coreInst/registerFileInst/regs/DataInA
+add wave -position 32  sim:/blinkTests/mcuInst/coreInst/registerFileInst/regs/DataInB
+restart ; run 1ms
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+add wave -position 30  sim:/blinkTests/mcuInst/coreInst/registerFileInst/ADDRA
+add wave -position 33  sim:/blinkTests/mcuInst/coreInst/registerFileInst/ADDRB
+restart;run 1ms
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+add wave -position end  sim:/blinkTests/mcuInst/coreInst/registerFileInst/REGB_EN
+add wave -position end  sim:/blinkTests/mcuInst/coreInst/registerFileInst/REGB_WEN
+restart;run 1ms
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# Compile of interruptMaskRegister.v was successful.
+# Compile of transmitter.v was successful.
+# Compile of receiver.v was successful.
+# Compile of UART.v was successful.
+# Compile of RAM.v was successful.
+# Compile of memoryMapper.v was successful.
+# Compile of mcuResources.v was successful.
+# Compile of opxMultiplexer.v was successful.
+# Compile of generalGroupDecoder.v was successful.
+# Compile of jumpGroupDecoder.v was successful.
+# Compile of loadStoreGroupDecoder.v was successful.
+# Compile of aluGroupDecoder.v was successful.
+# Compile of interruptStateMachine.v was successful.
+# Compile of programCounter.v was successful.
+# Compile of busController.v was successful.
+# Compile of registerFile.v was successful.
+# Compile of aluBMux.v was successful.
+# Compile of aluAMux.v was successful.
+# Compile of alu.v was successful.
+# Compile of fullALU.v was successful.
+# Compile of instructionPhaseDecoder.v was successful.
+# Compile of core.v was successful.
+# Compile of devBoard.v was successful.
+# Compile of mcu.v was successful.
+# Compile of blinkTest.v was successful.
+# Compile of branchLogic.v was successful.
+# Compile of constants.v was successful.
+# Compile of rom.v was successful.
+# Compile of registers.v was successful.
+# 29 compiles, 0 failed with no errors.
+restart;run 1ms
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.blinkTests
+# Loading work.mcu
+# Loading work.devBoard
+# Loading work.core
+# Loading work.instructionPhaseDecoder
+# Loading work.fullALU
+# Loading work.alu
+# Loading work.aluAMux
+# Loading work.aluBMux
+# Loading work.registerFile
+# Loading work.registers
+# Loading work.busController
+# Loading work.programCounter
+# Loading work.interruptStateMachine
+# Loading work.aluGroupDecoder
+# Loading work.loadStoreGroupDecoder
+# Loading work.jumpGroupDecoder
+# Loading work.generalGroupDecoder
+# Loading work.opxMultiplexer
+# Loading work.mcuResources
+# Loading work.memoryMapper
+# Loading work.rom
+# Loading work.RAM
+# Loading work.UART
+# Loading work.UART_RX
+# Loading work.UART_TX
+# Loading work.interruptMaskRegister
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# Compile of interruptMaskRegister.v was successful.
+# Compile of transmitter.v was successful.
+# Compile of receiver.v was successful.
+# Compile of UART.v was successful.
+# Compile of RAM.v was successful.
+# Compile of memoryMapper.v was successful.
+# Compile of mcuResources.v was successful.
+# Compile of opxMultiplexer.v was successful.
+# Compile of generalGroupDecoder.v was successful.
+# Compile of jumpGroupDecoder.v was successful.
+# Compile of loadStoreGroupDecoder.v was successful.
+# Compile of aluGroupDecoder.v was successful.
+# Compile of interruptStateMachine.v was successful.
+# Compile of programCounter.v was successful.
+# Compile of busController.v was successful.
+# Compile of registerFile.v was successful.
+# Compile of aluBMux.v was successful.
+# Compile of aluAMux.v was successful.
+# Compile of alu.v was successful.
+# Compile of fullALU.v was successful.
+# Compile of instructionPhaseDecoder.v was successful.
+# Compile of core.v was successful.
+# Compile of devBoard.v was successful.
+# Compile of mcu.v was successful.
+# Compile of blinkTest.v was successful.
+# Compile of branchLogic.v was successful.
+# Compile of constants.v was successful.
+# Compile of rom.v was successful.
+# Compile of registers.v was successful.
+# 29 compiles, 0 failed with no errors.
+restart;run 1ms
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.blinkTests
+# Loading work.mcu
+# Loading work.devBoard
+# Loading work.core
+# Loading work.instructionPhaseDecoder
+# Loading work.fullALU
+# Loading work.alu
+# Loading work.aluAMux
+# Loading work.aluBMux
+# Loading work.registerFile
+# Loading work.registers
+# Loading work.busController
+# Loading work.programCounter
+# Loading work.interruptStateMachine
+# Loading work.aluGroupDecoder
+# Loading work.loadStoreGroupDecoder
+# Loading work.jumpGroupDecoder
+# Loading work.generalGroupDecoder
+# Loading work.opxMultiplexer
+# Loading work.mcuResources
+# Loading work.memoryMapper
+# Loading work.rom
+# Loading work.RAM
+# Loading work.UART
+# Loading work.UART_RX
+# Loading work.UART_TX
+# Loading work.interruptMaskRegister
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
 run 10ms
 restart
 # ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-run 100us
-# End time: 19:00:34 on Nov 09,2023, Elapsed time: 0:02:00
-# Errors: 0, Warnings: 1
