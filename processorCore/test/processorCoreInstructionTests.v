@@ -76,14 +76,14 @@ initial begin
 	* ALU Group - Operations
 	***************************************************************************/
 	// Setup R0 as the base address 0xfaaf
-	`LD_HERE_STEP(3, 16'h000, 16'hfaaf, `R0)
+	`LD_HERE_STEP(0, 16'h000, 16'hfaaf, `R0)
 	
 	// Load an 8-bit value
 	INSTR = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_MOV,`MODE_ALU_REGA_S8,8'haf};
-	`ALU_STEP(  1, 16'h0004,   INSTR, "MOV RA,0xaf")
+	`ALU_STEP(  1, 16'h0004,   INSTR, "MOVAS 0xaf")
 	// Check the value  
 	INSTR = {`GROUP_LOAD_STORE,1'b0,`LDSOPF_ST,`MODE_LDS_REG_REG,`RA,`R0};	 
-	`ST_STEP(   2, 16'h0006,   INSTR, 16'hfaaf, 16'hffaf, "ST (R0),RA")	
+	`ST_STEP(   2, 16'h0006,   INSTR, 16'hfaaf, 16'hffaf, "ST RA,R0")	
 	
 	INSTR = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_MOV,`MODE_ALU_REGA_U8,8'hfa};	 
 	`ALU_STEP(  3, 16'h0008,  INSTR, "MOV RA,0xfa")
@@ -108,8 +108,32 @@ initial begin
 	INSTR = {`GROUP_LOAD_STORE,1'b0,`LDSOPF_ST,`MODE_LDS_REG_REG,`R3,`R0};	 
 	`ST_STEP(  11, 16'h0018,   INSTR, 16'hfaaf, 16'h0005, "ST (R0),R3")	
 	INSTR = {`GROUP_LOAD_STORE,1'b0,`LDSOPF_ST,`MODE_LDS_REG_REG,`R4,`R0};	 
-	`ST_STEP(  12, 16'h001a,   INSTR, 16'hfaaf, 16'h0007, "ST (R0),R4")	
+	`ST_STEP(  12, 16'h001a,   INSTR, 16'hfaaf, 16'h0007, "ST (R0),R4")
 	
+	// POP	
+	INSTR = {`GROUP_LOAD_STORE,1'b0,`LDSOPF_LD,`MODE_LDS_REG_REG_INC,`R4,`R0};	 
+	`LD_STEP(  13, 16'h001c,   INSTR, 16'hfaaf, 16'h0007, "POP R4,R0")
+	`LD_STEP(  14, 16'h001e,   INSTR, 16'hfab1, 16'h0007, "POP R4,R0")
+	// POPR
+	INSTR = {`GROUP_LOAD_STORE,1'b0,`LDSOPF_LD,`MODE_LDS_REG_REG_DEC,`R4,`R0};	 
+	`LD_STEP(  15, 16'h0020,   INSTR, 16'hfab1, 16'h0007, "POPR R4,R0")
+	`LD_STEP(  16, 16'h0022,   INSTR, 16'hfaaf, 16'h0007, "POPR R4,R0")
+
+	// Setup R0 as the base address 0x1000
+	`LD_HERE_STEP(17, 16'h0024, 16'h1000, `R0)
+	// LD_B
+	INSTR = {`GROUP_LOAD_STORE,1'b0,`LDSOPF_LDB,`MODE_LDS_REG_REG,`R4,`R0};	 
+	`LD_STEP(  18, 16'h0028,   INSTR, 16'h1000, 16'h0007, "POP R4,R0")
+	// POP_B
+	INSTR = {`GROUP_LOAD_STORE,1'b0,`LDSOPF_LDB,`MODE_LDS_REG_REG_INC,`R4,`R0};	 
+	`LD_STEP(  19, 16'h002a,   INSTR, 16'h1000, 16'h0007, "POP R4,R0")
+	`LD_STEP(  20, 16'h002c,   INSTR, 16'h1001, 16'h3579, "POP R4,R0")
+	
+	// PUSH_B
+	INSTR = {`GROUP_LOAD_STORE,1'b0,`LDSOPF_STB,`MODE_LDS_REG_REG_DEC,`R4,`R0};	 
+	`ST_HIGH_STEP(  21, 16'h002e,   INSTR, 16'h1001, 16'h3500, "PUSH_B R4,R0")	
+	`ST_LOW_STEP(  22, 16'h0030,   INSTR, 16'h1000, 16'h0035, "PUSH_B R4,R0")	
+
 	
 end
 

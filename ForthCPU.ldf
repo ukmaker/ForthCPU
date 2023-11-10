@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<BaliProject version="3.2" title="ForthCPU" device="LCMXO3L-6900C-5BG256C" default_implementation="impl1">
+<BaliProject version="3.2" title="ForthCPU" device="LCMXO3L-6900C-5BG256C" default_implementation="mcuTestbench">
     <Options/>
     <Implementation title="RAM" dir="RAM" description="RAM" synthesis="synplify" default_strategy="Area">
         <Options def_top="RAM"/>
@@ -193,24 +193,6 @@
             <Options/>
         </Source>
     </Implementation>
-    <Implementation title="branchLogic" dir="branchLogic" description="branchLogic" synthesis="synplify" default_strategy="Area">
-        <Options def_top="branchLogicTests"/>
-        <Source name="constants.v" type="Verilog" type_short="Verilog">
-            <Options/>
-        </Source>
-        <Source name="branchLogic/source/branchLogic.v" type="Verilog" type_short="Verilog">
-            <Options/>
-        </Source>
-        <Source name="branchLogic/test/branchLogicTests.v" type="Verilog" type_short="Verilog">
-            <Options top_module="branchLogicTests"/>
-        </Source>
-        <Source name="branchLogic/test/branchLogicTestbench/branchLogicTestbench.spf" type="Simulation Project File" type_short="SPF">
-            <Options/>
-        </Source>
-        <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">
-            <Options/>
-        </Source>
-    </Implementation>
     <Implementation title="busController" dir="busController" description="busController" synthesis="synplify" default_strategy="Area">
         <Options def_top="busControllerTests"/>
         <Source name="busController/source/busController.v" type="Verilog" type_short="Verilog">
@@ -233,12 +215,12 @@
         </Source>
     </Implementation>
     <Implementation title="dataBusController" dir="dataBusController" description="dataBusController" synthesis="synplify" default_strategy="Area">
-        <Options def_top="dataBusController"/>
+        <Options/>
         <Source name="constants.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
         <Source name="dataBusController/source/dataBusController.v" type="Verilog" type_short="Verilog">
-            <Options top_module="dataBusController"/>
+            <Options/>
         </Source>
         <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">
             <Options/>
@@ -532,6 +514,108 @@
             <Options/>
         </Source>
     </Implementation>
+    <Implementation title="mcuTestbench" dir="mcuTestbench" description="mcuTestbench" synthesis="synplify" default_strategy="Area">
+        <Options def_top="registerFileTestROM"/>
+        <Source name="constants.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="processorCore/source/core.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="aluGroupDecoder/source/aluGroupDecoder.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="loadStoreGroupDecoder/source/loadStoreGroupDecoder.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="instructionPhaseDecoder/source/instructionPhaseDecoder.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="programCounter/source/programCounter.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="jumpGroupDecoder/source/jumpGroupDecoder.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="registerFileB/source/registerFile.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="registerFileB/source/registers.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="registerFileB/source/registers.ipx" type="IPX_Module" type_short="IPX">
+            <Options/>
+        </Source>
+        <Source name="aluB/source/alu.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="aluB/source/fullALU.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="aluB/source/aluBMux.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="aluB/source/aluAMux.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="opxMultiplexer/source/opxMultiplexer.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="interruptLogic/source/interruptStateMachine.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="interruptLogic/source/interruptMaskRegister.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="branchLogic/source/branchLogic.v" type="Verilog" type_short="Verilog">
+            <Options top_module="branchLogic"/>
+        </Source>
+        <Source name="busController/source/busController.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="generalGroupDecoder/source/generalGroupDecoder.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="memoryMapper/source/memoryMapper.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="RAM/source/RAM.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="UART/source/receiver.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="UART/source/transmitter.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="UART/source/UART.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="mcuTestbench/source/protoBoard.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="mcuTestbench/source/registerFileTests.v" type="Verilog" type_short="Verilog">
+            <Options top_module="registerFileTests"/>
+        </Source>
+        <Source name="mcuTestbench/source/testArticle.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="mcuTestbench/source/testResources.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="mcuTestbench/source/registerFileTestROM.v" type="Verilog" type_short="Verilog">
+            <Options top_module="registerFileTestROM"/>
+        </Source>
+        <Source name="mcuTestbench/source/registerFileTestROM.ipx" type="IPX_Module" type_short="IPX">
+            <Options/>
+        </Source>
+        <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">
+            <Options/>
+        </Source>
+        <Source name="mcuTestbench/tests/registerFileTests/registerFileTests.spf" type="Simulation Project File" type_short="SPF">
+            <Options/>
+        </Source>
+    </Implementation>
     <Implementation title="memory" dir="memory" description="memory" synthesis="synplify" default_strategy="Area">
         <Options def_top="processorCoreTests"/>
         <Source name="memory/source/memory.v" type="Verilog" type_short="Verilog">
@@ -674,7 +758,7 @@
         </Source>
     </Implementation>
     <Implementation title="programCounter" dir="programCounter" description="programCounter" synthesis="synplify" default_strategy="Area">
-        <Options def_top="programCounterTestbench"/>
+        <Options def_top="instructionPhaseDecoder"/>
         <Source name="constants.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
@@ -688,13 +772,13 @@
             <Options top_module="prescaler"/>
         </Source>
         <Source name="programCounter/test/programCounterTestbench.v" type="Verilog" type_short="Verilog">
-            <Options top_module="programCounterTestbench"/>
+            <Options/>
         </Source>
         <Source name="programCounter/source/programCounter.v" type="Verilog" type_short="Verilog">
-            <Options/>
+            <Options top_module="programCounter"/>
         </Source>
         <Source name="instructionPhaseDecoder/source/instructionPhaseDecoder.v" type="Verilog" type_short="Verilog">
-            <Options/>
+            <Options top_module="instructionPhaseDecoder"/>
         </Source>
         <Source name="testSetup.v" type="Verilog" type_short="Verilog">
             <Options/>

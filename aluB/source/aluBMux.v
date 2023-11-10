@@ -29,7 +29,7 @@ always @(*) begin
 		end
 		`ALUB_SRCX_U4:    ALUB_DATA = {12'h000,ARGB_X};
 		`ALUB_SRCX_U4_0:  ALUB_DATA = {11'h000,ARGB_X,1'b0};
-		default:          ALUB_DATA =  REGB_DOUT;
+		default:          ALUB_DATA =  16'h0000;
 	endcase
 end
 

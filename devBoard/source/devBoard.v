@@ -87,6 +87,8 @@ always @(*) begin
 		BPIN_WR0N = 1'b1;
 		BPIN_WR1N = 1'b1;
 		BPIN_TXD  = 1'b0;
+		DIN       = BPIN_DBUS;
+		DIN_GPIO[7:0] = {4'h0,DIPSW_R};
 	end else begin
 		BPIN_ADDR = ADDR;
 		BPIN_RDN  = RDN;

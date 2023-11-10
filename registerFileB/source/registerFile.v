@@ -65,11 +65,13 @@ registers regs(
 	.QB( REGB_DOUT )
 );
 
-assign DIN_BYTE_LOW  = {8'h00,DIN[7:0]};
-assign DIN_BYTE_HIGH = {8'h00,DIN[15:8]};
+
 
 always @(*) begin
-		
+	
+	DIN_BYTE_LOW  = {8'h00,DIN[7:0]};
+	DIN_BYTE_HIGH = {8'h00,DIN[15:8]};	
+	
 	case(REGA_BYTEX)
 		`REGA_BYTEX_HIGH:   DIN_BYTE = DIN_BYTE_HIGH;
 		default:            DIN_BYTE = DIN_BYTE_LOW;

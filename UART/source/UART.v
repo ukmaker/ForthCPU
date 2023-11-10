@@ -97,8 +97,8 @@ end
 always @(posedge CLK or posedge RESET) begin
 	if(RESET) begin
 		START_TX         <= 0;
-		RX_CLK_DIV       <= 16'd104;
-		TX_CLK_DIV       <= 16'd104;
+		RX_CLK_DIV       <= 16'd2;
+		TX_CLK_DIV       <= 16'd2;
 		DATA_AVAILABLE_R <= 0;
 		TX_ACTIVE_R      <= 0;
 		TX_COMPLETE_R    <= 1;

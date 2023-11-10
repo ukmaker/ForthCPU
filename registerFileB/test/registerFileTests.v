@@ -12,7 +12,7 @@ module registerFileTests;
 	**/
 	reg [15:0] ALU_R;
 	reg [15:0] DIN;
-	reg [15:0] PC_A_NEXT;
+	reg [15:0] HERE;
 	
 	/**
 	* Port A controls
@@ -41,7 +41,7 @@ module registerFileTests;
 		.CLK(CLK),
 		.RESET(RESET),
 		.ALU_R(ALU_R),
-		.PC_A_NEXT(PC_A_NEXT),
+		.HERE(HERE),
 		.DIN(DIN),
 		.REGA_EN(REGA_EN),
 		.REGA_WEN(REGA_WEN),
@@ -80,7 +80,7 @@ initial begin
 	`TICKTOCK;
 	 
 	ALU_R        = 16'h1234;
-	PC_A_NEXT    = 16'h2345;
+	HERE         = 16'h2345;
 	DIN          = 16'h5678;
 	ARGA_X       = 4'b0000;
 	ARGB_X       = 4'b0100;
@@ -125,7 +125,7 @@ initial begin
 	`mark(2)
 	`assert("QA", 16'h0056, REGA_DOUT)
 	
-	REGA_DINX = `REGA_DINX_PC_A_NEXT;
+	REGA_DINX = `REGA_DINX_HERE;
 	ARGA_X  = `RB;
 	`TICKTOCK;
 	`mark(3)

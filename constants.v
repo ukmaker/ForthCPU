@@ -163,6 +163,7 @@
 `define ALUB_SRCX_S8     3'b011
 `define ALUB_SRCX_U4     3'b100
 `define ALUB_SRCX_U4_0   3'b101
+`define ALUB_SRCX_ZERO   3'b110
 
 /** 
 * Address bus sources

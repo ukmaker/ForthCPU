@@ -1,0 +1,40 @@
+[Device]
+Family=machxo3l
+PartType=LCMXO3L-6900C
+PartName=LCMXO3L-6900C-5BG256C
+SpeedGrade=5
+Package=CABGA256
+OperatingCondition=COM
+Status=S
+
+[IP]
+VendorName=Lattice Semiconductor Corporation
+CoreType=LPM
+CoreStatus=Demo
+CoreName=Distributed_ROM
+CoreRevision=2.8
+ModuleName=registerFileTestROM
+SourceFormat=Verilog HDL
+ParameterFileVersion=1.0
+Date=11/10/2023
+Time=17:30:58
+
+[Parameters]
+Verilog=1
+VHDL=0
+EDIF=1
+Destination=Synplicity
+Expression=BusA(0 to 7)
+Order=Big Endian [MSB:LSB]
+IO=0
+Addresses=2048
+Data=16
+LUT=0
+MemFile=c:/users/duncan/git/forthcpu/mcutestbench/source/registerfiletest.mem
+MemFormat=orca
+
+[FilesGenerated]
+c:/users/duncan/git/forthcpu/mcutestbench/source/registerfiletest.mem=mem
+
+[Command]
+cmd_line= -w -n registerFileTestROM -lang verilog -synth synplify -bus_exp 7 -bb -arch xo3c00a -dram -type romblk -addr_width 11 -num_words 2048 -data_width 16 -outdata UNREGISTERED -memfile c:/users/duncan/git/forthcpu/mcutestbench/source/registerfiletest.mem -memformat orca
