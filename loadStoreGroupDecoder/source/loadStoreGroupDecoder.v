@@ -96,10 +96,7 @@ module loadStoreGroupDecoder(
 	/**
 	* Register file
 	**/
-	output reg REGA_EN,
-	output reg REGB_EN,
-	output reg REGA_WEN,
-	output reg REGB_WEN,
+	output reg [2:0] REG_SEQX,
 	
 	/**
 	* ALU
@@ -115,8 +112,6 @@ module loadStoreGroupDecoder(
 	output reg [1:0] REGA_DINX,
 	output reg [1:0] REGA_ADDRX,
 	output reg [2:0] REGB_ADDRX,
-	output reg [1:0] REGA_BYTE_ENX,
-	output reg [1:0] REGB_BYTE_ENX,
 	
 	/**
 	* Program counter
@@ -133,7 +128,7 @@ module loadStoreGroupDecoder(
 	output reg [1:0] ADDR_BUSX
 );
 
-reg RD_A, RD_B, WR_A, WR_B, RD_M, WR_M, BYTE_OP;
+reg RD_M, WR_M, BYTE_OP;
 
 // Combinational logic
 // Setup the data sources
@@ -141,41 +136,30 @@ always @(*) begin
 	
 	ALUA_SRCX = `ALUA_SRCX_REG_A;
 	ALUB_SRCX = `ALUB_SRCX_REG_B;
-	RD_A = 0; RD_B = 0; WR_A = 0; WR_B = 0;
 	RD_M = 0; WR_M = 0; BYTE_OP = 0;
 	ALU_OPX       = `ALU_OPX_ADD;
 	ADDR_BUSX     = 0;
 	DATA_BUSX     = 0;
+	REG_SEQX      = `REG_SEQX_NONE;
 	REGA_DINX     = `REGA_DINX_DIN;
 	REGA_ADDRX    = `REGA_ADDRX_ARGA;
 	REGB_ADDRX    = `REGB_ADDRX_ARGB;
-	REGA_BYTE_ENX = 2'b11;
-	REGB_BYTE_ENX = 2'b11;
 	PC_OFFSETX    = `PC_OFFSETX_2;
 	
 	// What operation is this?
 	case(OPF) 
 		`LDSOPF_LD: begin // LD Ra,(Rb) 
-			WR_A = 1;
-			RD_B = 1;
 			RD_M = 1;
 		end
 		`LDSOPF_LDB: begin // LD_B x,(y)
-			WR_A = 1;
-			RD_B = 1;
-			RD_M = 1;
 			BYTE_OP = 1;
 			REGA_DINX  = `REGA_DINX_BYTE;
 		end
 		`LDSOPF_ST: begin // ST (Ra),Rb
-			RD_A = 1;
-			RD_B = 1;
 			WR_M = 1;
 			DATA_BUSX = `DATA_BUSX_REGA_DOUT;
 		end
 		`LDSOPF_STB: begin // ST_B (Ra),Rb
-			RD_A = 1;
-			RD_B = 1;
 			WR_M = 1;
 			DATA_BUSX = `DATA_BUSX_REGA_DOUT;
 			BYTE_OP = 1;
@@ -184,20 +168,12 @@ always @(*) begin
 			
 	case(MODEF)
 		`MODE_LDS_REG_REG: begin // LD x,(y) ; LD_B ; ST ; ST_B
-			// Address from the register
-			ADDR_BUSX = `ADDR_BUSX_ALUB_DATA;
-			// Before the adder
-			ALUA_SRCX = `ALUA_SRCX_ZERO;
-			// No writeback
+			ADDR_BUSX   = `ADDR_BUSX_ALUB_DATA;
 		end
 		
 		`MODE_LDS_REG_HERE: begin
-			// Address from the register
-			ADDR_BUSX = `ADDR_BUSX_HERE;
-			// Before the adder
-			ALUA_SRCX = `ALUA_SRCX_ZERO;
-			// No writeback
-			PC_OFFSETX    = `PC_OFFSETX_4;
+			ADDR_BUSX   = `ADDR_BUSX_HERE;
+			PC_OFFSETX  = `PC_OFFSETX_4;
 		end
 		
 		`MODE_LDS_REG_REG_INC: begin
@@ -206,8 +182,6 @@ always @(*) begin
 			// Before the adder
 			ALUA_SRCX = BYTE_OP ? `ALUA_SRCX_ONE : `ALUA_SRCX_TWO;
 			ALUB_SRCX = `ALUB_SRCX_REG_B;
-			// write the address back to PortB
-			WR_B = 1;
 			// Operation is +2
 			ALU_OPX = `ALU_OPX_ADD;
 		end
@@ -218,8 +192,6 @@ always @(*) begin
 			// After the adder
 			ALUA_SRCX = BYTE_OP ? `ALUA_SRCX_MINUS_ONE : `ALUA_SRCX_MINUS_TWO;
 			ALUB_SRCX = `ALUB_SRCX_REG_B;
-			// write the address back to PortB
-			WR_B = 1;
 			// Operation is -2
 			ALU_OPX = `ALU_OPX_ADD;
 		end
@@ -297,43 +269,50 @@ always @(*) begin
 	endcase
 end
 
+// ENCODE reg_seqx
+always @(*) begin
+	if(OPF == `LDSOPF_LD || OPF == `LDSOPF_LDB) begin
+		case(MODEF) 
+			`MODE_LDS_REG_REG:      REG_SEQX = `REG_SEQX_LDA_RDB;
+			`MODE_LDS_REG_HERE:     REG_SEQX = `REG_SEQX_LDA_RDB;
+			`MODE_LDS_REG_REG_INC:  REG_SEQX = `REG_SEQX_LDA_UPB;
+			`MODE_LDS_REG_REG_DEC:  REG_SEQX = `REG_SEQX_LDA_UPB;
+			`MODE_LDS_REG_RB:       REG_SEQX = `REG_SEQX_LDA_RDB;
+			`MODE_LDS_REG_FP:       REG_SEQX = `REG_SEQX_LDA_RDB;
+			`MODE_LDS_REG_SP:       REG_SEQX = `REG_SEQX_LDA_RDB;
+			`MODE_LDS_REG_RS:       REG_SEQX = `REG_SEQX_LDA_RDB;
+		endcase
+	end else begin
+		case(MODEF) 
+			`MODE_LDS_REG_REG:      REG_SEQX = `REG_SEQX_RDA_RDB;
+			`MODE_LDS_REG_HERE:     REG_SEQX = `REG_SEQX_RDA_RDB;
+			`MODE_LDS_REG_REG_INC:  REG_SEQX = `REG_SEQX_RDA_UPB;
+			`MODE_LDS_REG_REG_DEC:  REG_SEQX = `REG_SEQX_RDA_UPB;
+			`MODE_LDS_REG_RB:       REG_SEQX = `REG_SEQX_RDA_RDB;
+			`MODE_LDS_REG_FP:       REG_SEQX = `REG_SEQX_RDA_RDB;
+			`MODE_LDS_REG_SP:       REG_SEQX = `REG_SEQX_RDA_RDB;
+			`MODE_LDS_REG_RS:       REG_SEQX = `REG_SEQX_RDA_RDB;
+		endcase
+	end
+end
+
 always @(posedge CLK or posedge RESET) begin
 	
 	if(RESET) begin
-		REGA_EN <= 0;
-		REGB_EN <= 0;
-		REGA_WEN <= 0;
-		REGB_WEN <= 0;	
 		RDX <= 0;
 		WRX <= 0;
 		BYTEX <= 0;
 	end else begin
 		
-		//if(DECODE) begin
-		//	REGA_EN <= WR_A | RD_A;
-		//	REGB_EN <= WR_B | RD_B;
-		//	RDX <= RD_M;
-		//	BYTEX <= BYTE_OP;
-		//end else 
 		if(EXECUTE) begin
-			REGA_EN <= WR_A | RD_A;
-			REGB_EN <= WR_B | RD_B;
 			RDX <= RD_M;
 			BYTEX <= BYTE_OP;
 			WRX <= WR_M;
 		end else if(COMMIT) begin
-			REGA_EN <= WR_A | RD_A;
-			REGB_EN <= WR_B | RD_B;
 			RDX <= RD_M;
 			BYTEX <= BYTE_OP;
 			WRX <= 0;
-			REGA_WEN <= WR_A;
-			REGB_WEN <= WR_B;
 		end else begin
-			REGA_EN <= 0;
-			REGB_EN <= 0;
-			REGA_WEN <= 0;
-			REGB_WEN <= 0;
 			RDX <= 0;
 			WRX <= 0;
 			BYTEX <= 0;

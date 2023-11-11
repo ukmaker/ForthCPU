@@ -12,7 +12,7 @@ module registerSequencerTests;
 	wire EXECUTE;
 	wire COMMIT;
 	
-	reg [1:0] REG_SEQX;
+	reg [2:0] REG_SEQX;
 	reg BYTEX;
 	reg A0;
 	wire [1:0] REGA_BYTE_EN;
@@ -183,7 +183,7 @@ initial begin
 	`assert("REGB_WEN",     0, REGB_WEN)
 	
 	
-	REG_SEQX = `REG_SEQX_UPA_RDB;
+	REG_SEQX = `REG_SEQX_LDA_RDB;
 	BYTEX    = `BYTEX_WORD;
 	// Should update RA word
 	// Fetch cycle
@@ -218,7 +218,7 @@ initial begin
 	`assert("REGA_WEN",     1, REGA_WEN)
 	`assert("REGB_EN",      1, REGB_EN)
 	`assert("REGB_WEN",     0, REGB_WEN)
-	REG_SEQX = `REG_SEQX_UPA_RDB;
+	REG_SEQX = `REG_SEQX_LDA_RDB;
 	BYTEX    = `BYTEX_BYTE;
 	A0 = 0;
 	// Should update RA low byte
@@ -255,7 +255,7 @@ initial begin
 	`assert("REGB_EN",      1, REGB_EN)
 	`assert("REGB_WEN",     0, REGB_WEN)
 
-	REG_SEQX = `REG_SEQX_UPA_RDB;
+	REG_SEQX = `REG_SEQX_LDA_RDB;
 	BYTEX    = `BYTEX_BYTE;
 	A0 = 1;
 	// Should update RA high byte
@@ -292,7 +292,7 @@ initial begin
 	`assert("REGB_EN",      1, REGB_EN)
 	`assert("REGB_WEN",     0, REGB_WEN)
 
-	REG_SEQX = `REG_SEQX_WRA_UPB;
+	REG_SEQX = `REG_SEQX_LDA_UPB;
 	BYTEX    = `BYTEX_WORD;
 	A0 = 0;
 	// Should update RA and RB word
@@ -329,7 +329,7 @@ initial begin
 	`assert("REGB_EN",      1, REGB_EN)
 	`assert("REGB_WEN",     1, REGB_WEN)
 
-	REG_SEQX = `REG_SEQX_WRA_UPB;
+	REG_SEQX = `REG_SEQX_LDA_UPB;
 	BYTEX    = `BYTEX_BYTE;
 	A0 = 0;
 	// Should update RA low byte and RB word
@@ -366,7 +366,7 @@ initial begin
 	`assert("REGB_EN",      1, REGB_EN)
 	`assert("REGB_WEN",     1, REGB_WEN)
 
-	REG_SEQX = `REG_SEQX_WRA_UPB;
+	REG_SEQX = `REG_SEQX_LDA_UPB;
 	BYTEX    = `BYTEX_BYTE;
 	A0 = 1;
 	// Should update RA high byte and RB word
@@ -402,6 +402,83 @@ initial begin
 	`assert("REGA_WEN",     1, REGA_WEN)
 	`assert("REGB_EN",      1, REGB_EN)
 	`assert("REGB_WEN",     1, REGB_WEN)
+
+
+	REG_SEQX = `REG_SEQX_RDA_UPB;
+	BYTEX    = `BYTEX_WORD;
+	A0 = 1;
+	// Should read RA and update RB
+	// Fetch cycle
+	`mark(37)
+	`TICKTOCK;
+	`assert("REGA_BYTE_EN", `REG_BYTE_ENX_NONE, REGA_BYTE_EN)
+	`assert("REGA_EN",      0, REGA_EN)
+	`assert("REGA_WEN",     0, REGA_WEN)
+	`assert("REGB_EN",      0, REGB_EN)
+	`assert("REGB_WEN",     0, REGB_WEN)
+	// Decode
+	`mark(38)
+	`TICKTOCK;
+	`assert("REGA_BYTE_EN", `REG_BYTE_ENX_NONE, REGA_BYTE_EN)
+	`assert("REGA_EN",      0, REGA_EN)
+	`assert("REGA_WEN",     0, REGA_WEN)
+	`assert("REGB_EN",      0, REGB_EN)
+	`assert("REGB_WEN",     0, REGB_WEN)
+	//Execute
+	`mark(39)
+	`TICKTOCK;
+	`assert("REGA_BYTE_EN", `REG_BYTE_ENX_BOTH, REGA_BYTE_EN)
+	`assert("REGA_EN",      1, REGA_EN)
+	`assert("REGA_WEN",     0, REGA_WEN)
+	`assert("REGB_EN",      1, REGB_EN)
+	`assert("REGB_WEN",     0, REGB_WEN)
+	// Commit
+	`mark(40)
+	`TICKTOCK;
+	`assert("REGA_BYTE_EN", `REG_BYTE_ENX_BOTH, REGA_BYTE_EN)
+	`assert("REGA_EN",      1, REGA_EN)
+	`assert("REGA_WEN",     0, REGA_WEN)
+	`assert("REGB_EN",      1, REGB_EN)
+	`assert("REGB_WEN",     1, REGB_WEN)
+
+
+
+	REG_SEQX = `REG_SEQX_LDA_IMM;
+	BYTEX    = `BYTEX_WORD;
+	A0 = 1;
+	// Should write A
+	// Fetch cycle
+	`mark(41)
+	`TICKTOCK;
+	`assert("REGA_BYTE_EN", `REG_BYTE_ENX_NONE, REGA_BYTE_EN)
+	`assert("REGA_EN",      0, REGA_EN)
+	`assert("REGA_WEN",     0, REGA_WEN)
+	`assert("REGB_EN",      0, REGB_EN)
+	`assert("REGB_WEN",     0, REGB_WEN)
+	// Decode
+	`mark(42)
+	`TICKTOCK;
+	`assert("REGA_BYTE_EN", `REG_BYTE_ENX_NONE, REGA_BYTE_EN)
+	`assert("REGA_EN",      0, REGA_EN)
+	`assert("REGA_WEN",     0, REGA_WEN)
+	`assert("REGB_EN",      0, REGB_EN)
+	`assert("REGB_WEN",     0, REGB_WEN)
+	//Execute
+	`mark(43)
+	`TICKTOCK;
+	`assert("REGA_BYTE_EN", `REG_BYTE_ENX_BOTH, REGA_BYTE_EN)
+	`assert("REGA_EN",      1, REGA_EN)
+	`assert("REGA_WEN",     0, REGA_WEN)
+	`assert("REGB_EN",      0, REGB_EN)
+	`assert("REGB_WEN",     0, REGB_WEN)
+	// Commit
+	`mark(44)
+	`TICKTOCK;
+	`assert("REGA_BYTE_EN", `REG_BYTE_ENX_BOTH, REGA_BYTE_EN)
+	`assert("REGA_EN",      1, REGA_EN)
+	`assert("REGA_WEN",     1, REGA_WEN)
+	`assert("REGB_EN",      0, REGB_EN)
+	`assert("REGB_WEN",     0, REGB_WEN)
 
 
 end

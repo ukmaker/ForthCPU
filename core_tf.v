@@ -34,7 +34,6 @@ module core_tf();
     wire [15:0] DOUT_BUF;
     wire RDN_BUF;
     wire ABUS_OEN;
-    wire DBUS_OEN;
     wire WRN0_BUF;
     wire WRN1_BUF;
 
@@ -58,7 +57,6 @@ module core_tf();
         .INT1(INT1), 
         .RDN_BUF(RDN_BUF), 
         .ABUS_OEN(ABUS_OEN), 
-        .DBUS_OEN(DBUS_OEN), 
         .WRN0_BUF(WRN0_BUF), 
         .WRN1_BUF(WRN1_BUF)
         );

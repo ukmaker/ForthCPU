@@ -39,7 +39,7 @@ module registerSequencer(
 	input EXECUTE,
 	input COMMIT,
 	
-	input [1:0] REG_SEQX,
+	input [2:0] REG_SEQX,
 	
 	input BYTEX,
 	input A0,
@@ -60,7 +60,7 @@ reg REGB_WEN_R;
 	
 // byte decoding
 always @(*) begin
-	if(REG_SEQX == `REG_SEQX_UPA_RDB || REG_SEQX == `REG_SEQX_WRA_UPB) begin
+	if(REG_SEQX == `REG_SEQX_LDA_RDB || REG_SEQX == `REG_SEQX_LDA_UPB) begin
 		if(BYTEX == `BYTEX_WORD) begin
 			REGA_BYTE_EN_R = `REG_BYTE_ENX_BOTH;
 		end else begin
@@ -95,18 +95,32 @@ always @(*) begin
 			REGB_WEN_R = 0;						
 		end	
 
-		`REG_SEQX_UPA_RDB: begin
+		`REG_SEQX_LDA_RDB: begin
 			REGA_EN_R  = 1;
 			REGA_WEN_R = 1;
 			REGB_EN_R  = 1;
 			REGB_WEN_R = 0;						
 		end
 			
-		`REG_SEQX_WRA_UPB: begin
+		`REG_SEQX_LDA_UPB: begin
 			REGA_EN_R  = 1;
 			REGA_WEN_R = 1;
 			REGB_EN_R  = 1;
 			REGB_WEN_R = 1;			
+		end
+		
+		`REG_SEQX_RDA_UPB: begin
+			REGA_EN_R  = 1;
+			REGA_WEN_R = 0;
+			REGB_EN_R  = 1;
+			REGB_WEN_R = 1;		
+		end
+	
+		`REG_SEQX_LDA_IMM: begin
+			REGA_EN_R  = 1;
+			REGA_WEN_R = 1;
+			REGB_EN_R  = 0;
+			REGB_WEN_R = 0;		
 		end
 	
 		default: begin

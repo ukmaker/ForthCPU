@@ -19,11 +19,8 @@ module opxMultiplexer(
 	input [2:0]  ALU_ALUA_SRCX,
 	input [2:0]  ALU_ALUB_SRCX,
 	input [1:0]  ALU_REGA_ADDRX,
-	input         ALU_REGA_EN,
 	input [2:0]  ALU_REGB_ADDRX,
-	input         ALU_REGB_EN,
-	input         ALU_REGA_WEN,
-	input         ALU_REGB_WEN,
+	input [2:0]  ALU_REG_SEQX,
 
 	input [1:0]  LDS_ADDR_BUSX,
 	input [3:0]  LDS_ALU_OPX,
@@ -33,29 +30,23 @@ module opxMultiplexer(
 	input [1:0]  LDS_DATA_BUSX,	
 	input [1:0]  LDS_PC_OFFSETX,
 	input         LDS_RDX,
-	input         LDS_REGA_EN,
-	input         LDS_REGA_WEN,
+	input [2:0]  LDS_REG_SEQX,
 	input [1:0]  LDS_REGA_ADDRX,
-	input [1:0]  LDS_REGA_BYTE_ENX,
 	input [1:0]  LDS_REGA_DINX,
-	input         LDS_REGB_EN,
-	input         LDS_REGB_WEN,
 	input [2:0]  LDS_REGB_ADDRX,
-	input [1:0]  LDS_REGB_BYTE_ENX,
 	input         LDS_WRX,
 
 	input [1:0]  JMP_ADDR_BUSX,
 	input [2:0]  JMP_ALUB_SRCX,
+	input [1:0]  JMP_PC_BASEX,
+	input [1:0]  JMP_PC_OFFSETX,
 	input         JMP_RDX,
+	input [2:0]  JMP_REG_SEQX,
 	input [1:0]  JMP_REGA_DINX,
 	input [1:0]  JMP_REGA_ADDRX,
 	input [2:0]  JMP_REGB_ADDRX,
-	input         JMP_REGA_EN,
-	input         JMP_REGA_WEN,
-	input         JMP_REGB_EN,
-	
-	input [1:0]  JMP_PC_BASEX,
-	input [1:0]  JMP_PC_OFFSETX,
+
+
 	
 	/*********************************************
 	* Combined outputs
@@ -69,15 +60,10 @@ module opxMultiplexer(
 	output reg [1:0]  PC_BASEX,
 	output reg [1:0]  PC_OFFSETX,
 	output reg	       RDX,
-	output reg         REGA_EN,
-	output reg         REGA_WEN,
 	output reg [1:0]  REGA_ADDRX,
-	output reg [1:0]  REGA_BYTE_ENX,
 	output reg [1:0]  REGA_DINX,
-	output reg         REGB_EN,
-	output reg         REGB_WEN,
+	output reg [2:0]  REG_SEQX,
 	output reg [2:0]  REGB_ADDRX,
-	output reg [1:0]  REGB_BYTE_ENX,
 	output reg	       WRX
 
 );
@@ -97,15 +83,10 @@ always @(*) begin
 			PC_BASEX_R    = `PC_BASEX_PC_A;
 			PC_OFFSETX_R  = `PC_OFFSETX_2;
 			RDX           = `RDX_NONE;
-			REGA_EN       = `REG_EN_NONE;
-			REGA_WEN      = `REG_WEN_NONE;
+			REG_SEQX      = `REG_SEQX_NONE;
 			REGA_ADDRX    = `REGA_ADDRX_ARGA;
-			REGA_BYTE_ENX = `REG_BYTE_ENX_NONE;
 			REGA_DINX     = `REGA_DINX_DIN;
-			REGB_EN       = `REG_EN_NONE;
-			REGB_WEN      = `REG_WEN_NONE;
 			REGB_ADDRX    = `REGB_ADDRX_ARGB;
-			REGB_BYTE_ENX = `REG_BYTE_ENX_NONE;
 			WRX           = `WRX_NONE;
 		end
 			
@@ -118,15 +99,10 @@ always @(*) begin
 			PC_BASEX_R    = `PC_BASEX_PC_A;
 			PC_OFFSETX_R  = LDS_PC_OFFSETX;
 			RDX           = LDS_RDX;
-			REGA_EN       = LDS_REGA_EN;
-			REGA_WEN      = LDS_REGA_WEN;
+			REG_SEQX      = LDS_REG_SEQX;
 			REGA_ADDRX    = LDS_REGA_ADDRX;
-			REGA_BYTE_ENX = LDS_REGA_BYTE_ENX;
 			REGA_DINX     = LDS_REGA_DINX;
-			REGB_EN       = LDS_REGB_EN;
-			REGB_WEN      = LDS_REGB_WEN;
 			REGB_ADDRX    = LDS_REGB_ADDRX;
-			REGB_BYTE_ENX = LDS_REGB_BYTE_ENX;
 			WRX           = LDS_WRX;
 		end
 		
@@ -139,15 +115,10 @@ always @(*) begin
 			PC_BASEX_R    = JMP_PC_BASEX;
 			PC_OFFSETX_R  = JMP_PC_OFFSETX;
 			RDX           = JMP_RDX;
-			REGA_EN       = JMP_REGA_EN;
-			REGA_WEN      = JMP_REGA_WEN;
+			REG_SEQX      = JMP_REG_SEQX;
 			REGA_ADDRX    = JMP_REGA_ADDRX;
-			REGA_BYTE_ENX = `REG_BYTE_ENX_BOTH;
 			REGA_DINX     = JMP_REGA_DINX;
-			REGB_EN       = JMP_REGB_EN;
-			REGB_WEN      = `REG_WEN_NONE;
 			REGB_ADDRX    = JMP_REGB_ADDRX;
-			REGB_BYTE_ENX = `REG_BYTE_ENX_BOTH;
 			WRX           = `WRX_NONE;
 		end
 		
@@ -160,15 +131,10 @@ always @(*) begin
 			PC_BASEX_R    = `PC_BASEX_PC_A;
 			PC_OFFSETX_R  = `PC_OFFSETX_2;
 			RDX           = `RDX_NONE;
-			REGA_EN       = ALU_REGA_EN;
-			REGA_WEN      = ALU_REGA_WEN;
+			REG_SEQX      = ALU_REG_SEQX;
 			REGA_ADDRX    = ALU_REGA_ADDRX;
-			REGA_BYTE_ENX = `REG_BYTE_ENX_BOTH;
 			REGA_DINX     = `REGA_DINX_ALU_R;
-			REGB_EN       = ALU_REGB_EN;
-			REGB_WEN      = ALU_REGB_WEN;
 			REGB_ADDRX    = ALU_REGB_ADDRX;
-			REGB_BYTE_ENX = `REG_BYTE_ENX_BOTH;
 			WRX           = `WRX_NONE;
 		end	
 endcase

@@ -117,16 +117,19 @@
 `define REG_BYTE_ENX_BOTH 2'b11
 
 // registers not used
-`define REG_SEQX_NONE 2'b00
+`define REG_SEQX_NONE 3'b000
 // CMP instruction (no register write)
 // ST
-`define REG_SEQX_RDA_RDB 2'b01
+`define REG_SEQX_RDA_RDB 3'b001
 // ALU ops
 // LD
-`define REG_SEQX_UPA_RDB 2'b10
-// PUSH/POP
-`define REG_SEQX_WRA_UPB 2'b11
-
+`define REG_SEQX_LDA_RDB 3'b010
+// POP
+`define REG_SEQX_LDA_UPB 3'b011
+// PUSH
+`define REG_SEQX_RDA_UPB 3'b100
+// ALU immediate (MOVI R0,U4...)
+`define REG_SEQX_LDA_IMM 3'b101
 
 /**
 * Register A load sources
