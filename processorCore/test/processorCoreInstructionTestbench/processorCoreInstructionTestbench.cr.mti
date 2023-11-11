@@ -99,12 +99,12 @@ Model Technology ModelSim - Lattice FPGA Edition vlog 2020.3 Compiler 2020.10 Oc
 ** Error: (vlog-13069) C:/Users/Duncan/git/ForthCPU/processorCore/test/processorCoreTests.v(175): near ",": syntax error, unexpected ','.
 ** Error: C:/Users/Duncan/git/ForthCPU/processorCore/test/processorCoreTests.v(175): (vlog-2163) Macro `MODE_LDS_REG_MEM is undefined.
 
-} {4.0 28.0} {}} C:/Users/Duncan/git/ForthCPU/aluB/source/alu.v {1 {vlog -work work -stats=none C:/Users/Duncan/git/ForthCPU/aluB/source/alu.v
+} {4.0 28.0} {}} C:/Users/Duncan/git/ForthCPU/processorCore/test/processorCoreInstructionTests.v {1 {vlog -work work -stats=none C:/Users/Duncan/git/ForthCPU/processorCore/test/processorCoreInstructionTests.v
 Model Technology ModelSim - Lattice FPGA Edition vlog 2020.3 Compiler 2020.10 Oct 14 2020
--- Compiling module alu
+-- Compiling module processorCoreInstructionTests
 
 Top level modules:
-	alu
+	processorCoreInstructionTests
 
 } {} {}} C:/Users/Duncan/git/ForthCPU/jumpGroupDecoder/source/jumpGroupDecoder.v {1 {vlog -work work -stats=none C:/Users/Duncan/git/ForthCPU/jumpGroupDecoder/source/jumpGroupDecoder.v
 Model Technology ModelSim - Lattice FPGA Edition vlog 2020.3 Compiler 2020.10 Oct 14 2020
@@ -113,15 +113,12 @@ Model Technology ModelSim - Lattice FPGA Edition vlog 2020.3 Compiler 2020.10 Oc
 Top level modules:
 	jumpGroupDecoder
 
-} {} {}} C:/Users/Duncan/git/ForthCPU/constants.v {1 {vlog -work work -stats=none C:/Users/Duncan/git/ForthCPU/constants.v
+} {} {}} C:/Users/Duncan/git/ForthCPU/aluB/source/alu.v {1 {vlog -work work -stats=none C:/Users/Duncan/git/ForthCPU/aluB/source/alu.v
 Model Technology ModelSim - Lattice FPGA Edition vlog 2020.3 Compiler 2020.10 Oct 14 2020
-
-} {} {}} C:/Users/Duncan/git/ForthCPU/processorCore/test/processorCoreInstructionTests.v {1 {vlog -work work -stats=none C:/Users/Duncan/git/ForthCPU/processorCore/test/processorCoreInstructionTests.v
-Model Technology ModelSim - Lattice FPGA Edition vlog 2020.3 Compiler 2020.10 Oct 14 2020
--- Compiling module processorCoreInstructionTests
+-- Compiling module alu
 
 Top level modules:
-	processorCoreInstructionTests
+	alu
 
 } {} {}} C:/Users/Duncan/git/ForthCPU/registerFileB/source/registers.v {1 {vlog -work work -stats=none C:/Users/Duncan/git/ForthCPU/registerFileB/source/registers.v
 Model Technology ModelSim - Lattice FPGA Edition vlog 2020.3 Compiler 2020.10 Oct 14 2020
@@ -130,13 +127,6 @@ Model Technology ModelSim - Lattice FPGA Edition vlog 2020.3 Compiler 2020.10 Oc
 Top level modules:
 	registers
 
-} {} {}} C:/Users/Duncan/git/ForthCPU/branchLogic/source/branchLogic.v {1 {vlog -work work -stats=none C:/Users/Duncan/git/ForthCPU/branchLogic/source/branchLogic.v
-Model Technology ModelSim - Lattice FPGA Edition vlog 2020.3 Compiler 2020.10 Oct 14 2020
--- Compiling module branchLogic
-
-Top level modules:
-	branchLogic
-
 } {} {}} C:/Users/Duncan/git/ForthCPU/programCounter/source/programCounter.v {1 {vlog -work work -stats=none C:/Users/Duncan/git/ForthCPU/programCounter/source/programCounter.v
 Model Technology ModelSim - Lattice FPGA Edition vlog 2020.3 Compiler 2020.10 Oct 14 2020
 -- Compiling module programCounter
@@ -144,15 +134,19 @@ Model Technology ModelSim - Lattice FPGA Edition vlog 2020.3 Compiler 2020.10 Oc
 Top level modules:
 	programCounter
 
-} {} {}} C:/Users/Duncan/git/ForthCPU/testSetup.v {1 {vlog -work work -stats=none C:/Users/Duncan/git/ForthCPU/testSetup.v
+} {} {}} C:/Users/Duncan/git/ForthCPU/branchLogic/source/branchLogic.v {1 {vlog -work work -stats=none C:/Users/Duncan/git/ForthCPU/branchLogic/source/branchLogic.v
 Model Technology ModelSim - Lattice FPGA Edition vlog 2020.3 Compiler 2020.10 Oct 14 2020
-
-} {} {}} C:/Users/Duncan/git/ForthCPU/generalGroupDecoder/source/generalGroupDecoder.v {1 {vlog -work work -stats=none C:/Users/Duncan/git/ForthCPU/generalGroupDecoder/source/generalGroupDecoder.v
-Model Technology ModelSim - Lattice FPGA Edition vlog 2020.3 Compiler 2020.10 Oct 14 2020
--- Compiling module generalGroupDecoder
+-- Compiling module branchLogic
 
 Top level modules:
-	generalGroupDecoder
+	branchLogic
+
+} {} {}} C:/Users/Duncan/git/ForthCPU/instructionPhaseDecoder/source/instructionPhaseDecoder.v {1 {vlog -work work -stats=none C:/Users/Duncan/git/ForthCPU/instructionPhaseDecoder/source/instructionPhaseDecoder.v
+Model Technology ModelSim - Lattice FPGA Edition vlog 2020.3 Compiler 2020.10 Oct 14 2020
+-- Compiling module instructionPhaseDecoder
+
+Top level modules:
+	instructionPhaseDecoder
 
 } {} {}} C:/Users/Duncan/git/ForthCPU/aluB/source/aluBMux.v {1 {vlog -work work -stats=none C:/Users/Duncan/git/ForthCPU/aluB/source/aluBMux.v
 Model Technology ModelSim - Lattice FPGA Edition vlog 2020.3 Compiler 2020.10 Oct 14 2020
@@ -161,11 +155,14 @@ Model Technology ModelSim - Lattice FPGA Edition vlog 2020.3 Compiler 2020.10 Oc
 Top level modules:
 	aluBMux
 
-} {} {}} C:/Users/Duncan/git/ForthCPU/instructionPhaseDecoder/source/instructionPhaseDecoder.v {1 {vlog -work work -stats=none C:/Users/Duncan/git/ForthCPU/instructionPhaseDecoder/source/instructionPhaseDecoder.v
+} {} {}} C:/Users/Duncan/git/ForthCPU/generalGroupDecoder/source/generalGroupDecoder.v {1 {vlog -work work -stats=none C:/Users/Duncan/git/ForthCPU/generalGroupDecoder/source/generalGroupDecoder.v
 Model Technology ModelSim - Lattice FPGA Edition vlog 2020.3 Compiler 2020.10 Oct 14 2020
--- Compiling module instructionPhaseDecoder
+-- Compiling module generalGroupDecoder
 
 Top level modules:
-	instructionPhaseDecoder
+	generalGroupDecoder
+
+} {} {}} C:/Users/Duncan/git/ForthCPU/testSetup.v {1 {vlog -work work -stats=none C:/Users/Duncan/git/ForthCPU/testSetup.v
+Model Technology ModelSim - Lattice FPGA Edition vlog 2020.3 Compiler 2020.10 Oct 14 2020
 
 } {} {}}

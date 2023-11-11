@@ -110,10 +110,23 @@
 `define REG_EN_EN         1'b1
 `define REG_WEN_NONE      1'b0
 `define REG_WEN_EN        1'b1
+
 `define REG_BYTE_ENX_NONE 2'b00
 `define REG_BYTE_ENX_LOW  2'b01
 `define REG_BYTE_ENX_HIGH 2'b10
 `define REG_BYTE_ENX_BOTH 2'b11
+
+// registers not used
+`define REG_SEQX_NONE 2'b00
+// CMP instruction (no register write)
+// ST
+`define REG_SEQX_RDA_RDB 2'b01
+// ALU ops
+// LD
+`define REG_SEQX_UPA_RDB 2'b10
+// PUSH/POP
+`define REG_SEQX_WRA_UPB 2'b11
+
 
 /**
 * Register A load sources

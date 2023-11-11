@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<BaliProject version="3.2" title="ForthCPU" device="LCMXO3L-6900C-5BG256C" default_implementation="impl1">
+<BaliProject version="3.2" title="ForthCPU" device="LCMXO3L-6900C-5BG256C" default_implementation="registerSequencer">
     <Options/>
     <Implementation title="RAM" dir="RAM" description="RAM" synthesis="synplify" default_strategy="Area">
         <Options def_top="RAM"/>
@@ -883,6 +883,30 @@
             <Options/>
         </Source>
         <Source name="registerFileB/test/registerFileTests/registerFileTests.spf" type="Simulation Project File" type_short="SPF">
+            <Options/>
+        </Source>
+    </Implementation>
+    <Implementation title="registerSequencer" dir="registerSequencer" description="registerSequencer" synthesis="synplify" default_strategy="Area">
+        <Options def_top="registerSequencerTests"/>
+        <Source name="loadStoreGroupDecoder/source/loadStoreGroupDecoder.v" type="Verilog" type_short="Verilog">
+            <Options top_module="loadStoreGroupDecoder"/>
+        </Source>
+        <Source name="registerSequencer/source/registerSequencer.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="constants.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="registerSequencer/test/registerSequencerTests.v" type="Verilog" type_short="Verilog">
+            <Options top_module="registerSequencerTests"/>
+        </Source>
+        <Source name="instructionPhaseDecoder/source/instructionPhaseDecoder.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">
+            <Options/>
+        </Source>
+        <Source name="registerSequencer/test/registerSequencerTestbench/registerSequencerTestbench.spf" type="Simulation Project File" type_short="SPF">
             <Options/>
         </Source>
     </Implementation>

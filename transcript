@@ -1,11 +1,40 @@
 # Reading pref.tcl
-# do {C:/Users/Duncan/git/ForthCPU/impl1/test/blinkTestbench/blinkTestbench.mdo}
-# Loading project blinkTestbench
-# Compile of loadStoreGroupDecoder.v was successful.
-# Compile of devBoard.v was successful.
-# 2 compiles, 0 failed with no errors.
-# vsim -L work -L pmi_work -L ovi_machxo3l blinkTests 
-# Start time: 18:19:02 on Nov 10,2023
+# do {C:/Users/Duncan/git/ForthCPU/registerSequencer/test/registerSequencerTestbench/registerSequencerTestbench.mdo}
+# Loading project registerSequencerTestbench
+# Model Technology ModelSim - Lattice FPGA Edition vlog 2020.3 Compiler 2020.10 Oct 14 2020
+# Start time: 17:23:47 on Nov 11,2023
+# vlog -reportprogress 300 "+incdir+C:/Users/Duncan/git/ForthCPU/instructionPhaseDecoder/source" -work work C:/Users/Duncan/git/ForthCPU/instructionPhaseDecoder/source/instructionPhaseDecoder.v 
+# -- Compiling module instructionPhaseDecoder
+# 
+# Top level modules:
+# 	instructionPhaseDecoder
+# End time: 17:23:47 on Nov 11,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Lattice FPGA Edition vlog 2020.3 Compiler 2020.10 Oct 14 2020
+# Start time: 17:23:47 on Nov 11,2023
+# vlog -reportprogress 300 "+incdir+C:/Users/Duncan/git/ForthCPU/registerSequencer/source" -work work C:/Users/Duncan/git/ForthCPU/registerSequencer/source/registerSequencer.v 
+# -- Compiling module registerSequencer
+# 
+# Top level modules:
+# 	registerSequencer
+# End time: 17:23:47 on Nov 11,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Lattice FPGA Edition vlog 2020.3 Compiler 2020.10 Oct 14 2020
+# Start time: 17:23:47 on Nov 11,2023
+# vlog -reportprogress 300 "+incdir+C:/Users/Duncan/git/ForthCPU/registerSequencer/test" -work work C:/Users/Duncan/git/ForthCPU/registerSequencer/test/registerSequencerTests.v 
+# -- Compiling module registerSequencerTests
+# 
+# Top level modules:
+# 	registerSequencerTests
+# End time: 17:23:47 on Nov 11,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Lattice FPGA Edition vlog 2020.3 Compiler 2020.10 Oct 14 2020
+# Start time: 17:23:47 on Nov 11,2023
+# vlog -reportprogress 300 "+incdir+C:/Users/Duncan/git/ForthCPU" -work work C:/Users/Duncan/git/ForthCPU/constants.v 
+# End time: 17:23:47 on Nov 11,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -L work -L pmi_work -L ovi_machxo3l registerSequencerTests 
+# Start time: 17:23:47 on Nov 11,2023
 # //  ModelSim - Lattice FPGA Edition 2020.3 Oct 14 2020
 # //
 # //  Copyright 1991-2020 Mentor Graphics Corporation
@@ -19,61 +48,496 @@
 # //  is prohibited from disclosure under the Trade Secrets Act,
 # //  18 U.S.C. Section 1905.
 # //
-# Loading work.blinkTests
-# Loading work.mcu
-# Loading ovi_machxo3l.PUR
-# Loading ovi_machxo3l.GSR
-# Loading work.devBoard
-# Loading work.core
+# Loading work.registerSequencerTests
+# Loading work.registerSequencer
 # Loading work.instructionPhaseDecoder
-# Loading work.fullALU
-# Loading work.alu
-# Loading work.aluAMux
-# Loading work.aluBMux
-# Loading work.registerFile
-# Loading work.registers
-# Loading ovi_machxo3l.DP8KC
-# Loading ovi_machxo3l.VLO
-# Loading work.busController
-# Loading work.programCounter
-# Loading work.interruptStateMachine
-# Loading work.aluGroupDecoder
-# Loading work.loadStoreGroupDecoder
-# Loading work.jumpGroupDecoder
-# Loading work.generalGroupDecoder
-# Loading work.opxMultiplexer
-# Loading work.mcuResources
-# Loading work.memoryMapper
-# Loading work.rom
-# Loading ovi_machxo3l.ROM256X1A
-# Loading ovi_machxo3l.MUX41
-# Loading work.RAM
-# Loading ovi_machxo3l.INV
-# Loading ovi_machxo3l.AND2
-# Loading ovi_machxo3l.VHI
-# Loading ovi_machxo3l.FD1P3DX
-# Loading ovi_machxo3l.MUX81
-# Loading work.UART
-# Loading work.UART_RX
-# Loading work.UART_TX
-# Loading work.interruptMaskRegister
-# Loading ovi_machxo3l.UDFDL5E_UDP_X
 # .main_pane.wave.interior.cs.body.pw.wf
-run 1ms
-add wave -position end  sim:/blinkTests/mcuInst/coreInst/registerFileInst/REGA_DOUT
-add wave -position end  sim:/blinkTests/mcuInst/coreInst/registerFileInst/REGB_DOUT
+run 10us
+# Compile of instructionPhaseDecoder.v was successful.
+# Compile of registerSequencer.v was successful.
+# Compile of registerSequencerTests.v was successful.
+# Compile of constants.v was successful.
+# 4 compiles, 0 failed with no errors.
+restart;run 10us
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.registerSequencerTests
+# Loading work.registerSequencer
+# Loading work.instructionPhaseDecoder
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# Compile of instructionPhaseDecoder.v was successful.
+# Compile of registerSequencer.v was successful.
+# Compile of registerSequencerTests.v was successful.
+# Compile of constants.v was successful.
+# 4 compiles, 0 failed with no errors.
+restart;run 1us
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.registerSequencerTests
+# Loading work.registerSequencer
+# Loading work.instructionPhaseDecoder
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# Compile of instructionPhaseDecoder.v was successful.
+# Compile of registerSequencer.v was successful.
+# Compile of registerSequencerTests.v was successful.
+# Compile of constants.v was successful.
+# 4 compiles, 0 failed with no errors.
+restart;run 1us
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.registerSequencerTests
+# Loading work.registerSequencer
+# Loading work.instructionPhaseDecoder
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# Compile of instructionPhaseDecoder.v was successful.
+# Compile of registerSequencer.v was successful.
+# Compile of registerSequencerTests.v was successful.
+# Compile of constants.v was successful.
+# 4 compiles, 0 failed with no errors.
+restart;run 50us
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.registerSequencerTests
+# Loading work.registerSequencer
+# Loading work.instructionPhaseDecoder
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# [T=955] FAILED in registerSequencerTests: REGA_BYTE_EN expected 00 != actual 11
+# [T=955] FAILED in registerSequencerTests: REGA_EN expected 00000000000000000000000000000000 != actual 1
+# [T=955] FAILED in registerSequencerTests: REGB_EN expected 00000000000000000000000000000000 != actual 1
+# [T=1055] FAILED in registerSequencerTests: REGA_BYTE_EN expected 00 != actual 11
+# [T=1055] FAILED in registerSequencerTests: REGA_EN expected 00000000000000000000000000000000 != actual 1
+# [T=1055] FAILED in registerSequencerTests: REGB_EN expected 00000000000000000000000000000000 != actual 1
+# [T=1155] FAILED in registerSequencerTests: REGA_BYTE_EN expected 00 != actual 11
+# [T=1155] FAILED in registerSequencerTests: REGA_EN expected 00000000000000000000000000000000 != actual 1
+# [T=1155] FAILED in registerSequencerTests: REGB_EN expected 00000000000000000000000000000000 != actual 1
+# Compile of instructionPhaseDecoder.v was successful.
+# Compile of registerSequencer.v was successful.
+# Compile of registerSequencerTests.v was successful.
+# Compile of constants.v was successful.
+# 4 compiles, 0 failed with no errors.
+restart;run 50us
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.registerSequencerTests
+# Loading work.registerSequencer
+# Loading work.instructionPhaseDecoder
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# [T=955] FAILED in registerSequencerTests: REGA_BYTE_EN expected 00 != actual 11
+# [T=955] FAILED in registerSequencerTests: REGA_EN expected 00000000000000000000000000000000 != actual 1
+# [T=955] FAILED in registerSequencerTests: REGB_EN expected 00000000000000000000000000000000 != actual 1
+# [T=1055] FAILED in registerSequencerTests: REGA_BYTE_EN expected 00 != actual 11
+# [T=1155] FAILED in registerSequencerTests: REGA_BYTE_EN expected 00 != actual 11
+# Compile of instructionPhaseDecoder.v was successful.
+# Compile of registerSequencer.v was successful.
+# Compile of registerSequencerTests.v was successful.
+# Compile of constants.v was successful.
+# 4 compiles, 0 failed with no errors.
+restart;run 10us
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.registerSequencerTests
+# Loading work.registerSequencer
+# Loading work.instructionPhaseDecoder
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# [T=955] FAILED in registerSequencerTests: REGA_EN expected 00000000000000000000000000000000 != actual 1
+# [T=955] FAILED in registerSequencerTests: REGB_EN expected 00000000000000000000000000000000 != actual 1
+# Compile of instructionPhaseDecoder.v was successful.
+# Compile of registerSequencer.v was successful.
+# Compile of registerSequencerTests.v was successful.
+# Compile of constants.v was successful.
+# 4 compiles, 0 failed with no errors.
+restart;run 10us
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.registerSequencerTests
+# Loading work.registerSequencer
+# Loading work.instructionPhaseDecoder
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# Compile of instructionPhaseDecoder.v was successful.
+# Compile of registerSequencer.v was successful.
+# Compile of registerSequencerTests.v was successful.
+# Compile of constants.v was successful.
+# 4 compiles, 0 failed with no errors.
+restart;run 10us
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.registerSequencerTests
+# Loading work.registerSequencer
+# Loading work.instructionPhaseDecoder
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+run 10us
+# Compile of instructionPhaseDecoder.v was successful.
+# Compile of registerSequencer.v was successful.
+# Compile of registerSequencerTests.v was successful.
+# Compile of constants.v was successful.
+# 4 compiles, 0 failed with no errors.
 restart;run 20us
 # ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-add wave -position 7  sim:/blinkTests/mcuInst/coreInst/instructionPhaseDecoderInst/INSTRUCTION
+# Loading work.registerSequencerTests
+# Loading work.registerSequencer
+# Loading work.instructionPhaseDecoder
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# [T=1855] FAILED in registerSequencerTests: REGA_BYTE_EN expected 00 != actual 11
+# [T=1955] FAILED in registerSequencerTests: REGA_BYTE_EN expected 00 != actual 11
+# Compile of instructionPhaseDecoder.v was successful.
+# Compile of registerSequencer.v was successful.
+# Compile of registerSequencerTests.v was successful.
+# Compile of constants.v was successful.
+# 4 compiles, 0 failed with no errors.
 restart;run 20us
-add wave -position 23  sim:/blinkTests/mcuInst/coreInst/registerFileInst/regs/DataInA
-add wave -position 25  sim:/blinkTests/mcuInst/coreInst/registerFileInst/regs/DataInB
-add wave -position 23  sim:/blinkTests/mcuInst/coreInst/registerFileInst/regs/ByteEnA
-add wave -position 26  sim:/blinkTests/mcuInst/coreInst/registerFileInst/regs/ByteEnB
-add wave -position 23  sim:/blinkTests/mcuInst/coreInst/registerFileInst/regs/AddressA
-add wave -position 27  sim:/blinkTests/mcuInst/coreInst/registerFileInst/regs/AddressB
-add wave -position 23  sim:/blinkTests/mcuInst/coreInst/registerFileInst/regs/ClockEnA
-add wave -position 24  sim:/blinkTests/mcuInst/coreInst/registerFileInst/regs/WrA
-add wave -position 29  sim:/blinkTests/mcuInst/coreInst/registerFileInst/regs/ClockEnB
-add wave -position 30  sim:/blinkTests/mcuInst/coreInst/registerFileInst/regs/WrB
-restart;run 15us
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.registerSequencerTests
+# Loading work.registerSequencer
+# Loading work.instructionPhaseDecoder
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# [T=855] FAILED in registerSequencerTests: REGA_BYTE_EN expected 11 != actual 00
+# [T=955] FAILED in registerSequencerTests: REGA_BYTE_EN expected 11 != actual 00
+# [T=1055] FAILED in registerSequencerTests: REGA_BYTE_EN expected 11 != actual 00
+# [T=1155] FAILED in registerSequencerTests: REGA_BYTE_EN expected 11 != actual 00
+# [T=1255] FAILED in registerSequencerTests: REGA_BYTE_EN expected 11 != actual 00
+# [T=1355] FAILED in registerSequencerTests: REGA_BYTE_EN expected 11 != actual 00
+# [T=1455] FAILED in registerSequencerTests: REGA_BYTE_EN expected 11 != actual 00
+# [T=1555] FAILED in registerSequencerTests: REGA_BYTE_EN expected 11 != actual 00
+# [T=1655] FAILED in registerSequencerTests: REGA_BYTE_EN expected 11 != actual 00
+# [T=1755] FAILED in registerSequencerTests: REGA_BYTE_EN expected 11 != actual 00
+# Compile of instructionPhaseDecoder.v was successful.
+# Compile of registerSequencer.v was successful.
+# Compile of registerSequencerTests.v was successful.
+# Compile of constants.v was successful.
+# 4 compiles, 0 failed with no errors.
+restart;run 20us
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.registerSequencerTests
+# Loading work.registerSequencer
+# Loading work.instructionPhaseDecoder
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# [T=1055] FAILED in registerSequencerTests: REGA_BYTE_EN expected 11 != actual 00
+# [T=1155] FAILED in registerSequencerTests: REGA_BYTE_EN expected 11 != actual 00
+# [T=1455] FAILED in registerSequencerTests: REGA_BYTE_EN expected 11 != actual 00
+# [T=1555] FAILED in registerSequencerTests: REGA_BYTE_EN expected 11 != actual 00
+# Compile of instructionPhaseDecoder.v was successful.
+# Compile of registerSequencer.v was successful.
+# Compile of registerSequencerTests.v was successful.
+# Compile of constants.v was successful.
+# 4 compiles, 0 failed with no errors.
+restart;run 20us
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.registerSequencerTests
+# Loading work.registerSequencer
+# Loading work.instructionPhaseDecoder
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# [T=      355]           1
+# [T=      455]           2
+# [T=      555]           3
+# [T=      655]           4
+# [T=      755]           5
+# [T=      855]           6
+# [T=      955]           7
+# [T=1055] FAILED in registerSequencerTests: REGA_BYTE_EN expected 11 != actual 00
+# [T=     1055]           8
+# [T=1155] FAILED in registerSequencerTests: REGA_BYTE_EN expected 11 != actual 00
+# [T=     1155]           9
+# [T=     1255]          10
+# [T=     1355]          11
+# [T=1455] FAILED in registerSequencerTests: REGA_BYTE_EN expected 11 != actual 00
+# [T=     1455]          12
+# [T=1555] FAILED in registerSequencerTests: REGA_BYTE_EN expected 11 != actual 00
+# [T=     1555]          13
+# [T=     1655]          14
+# [T=     1755]          15
+# [T=     1855]          16
+# Compile of instructionPhaseDecoder.v was successful.
+# Compile of registerSequencer.v was successful.
+# Compile of registerSequencerTests.v was successful.
+# Compile of constants.v was successful.
+# 4 compiles, 0 failed with no errors.
+restart;run 20us
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.registerSequencerTests
+# Loading work.registerSequencer
+# Loading work.instructionPhaseDecoder
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# [T=      355]           1
+# [T=      455]           2
+# [T=      555]           3
+# [T=      655]           4
+# [T=      755]           5
+# [T=      855]           6
+# [T=      955]           7
+# [T=     1055]           8
+# [T=     1155]           9
+# [T=     1255]          10
+# [T=     1355]          11
+# [T=     1455]          12
+# [T=     1555]          13
+# [T=     1655]          14
+# [T=     1755]          15
+# [T=     1855]          16
+# WARNING: No extended dataflow license exists
+# Error: invalid command name "::.main_pane.dataflow.interior.cs.body.pw.df.c"
+# Compile of instructionPhaseDecoder.v was successful.
+# Compile of registerSequencer.v was successful.
+# Compile of registerSequencerTests.v was successful.
+# Compile of constants.v was successful.
+# 4 compiles, 0 failed with no errors.
+
+# Compile of instructionPhaseDecoder.v was successful.
+# Compile of registerSequencer.v was successful.
+# Compile of registerSequencerTests.v was successful.
+# Compile of constants.v was successful.
+# 4 compiles, 0 failed with no errors.
+restart;run 20us
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.registerSequencerTests
+# Loading work.registerSequencer
+# Loading work.instructionPhaseDecoder
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# [T=      355]           1
+# [T=      455]           2
+# [T=      555]           3
+# [T=      655]           4
+# [T=      755]           5
+# [T=      855]           6
+# [T=      955]           7
+# [T=     1055]           8
+# [T=     1155]           9
+# [T=     1255]          10
+# [T=     1355]          11
+# [T=     1455]          12
+# [T=     1555]          13
+# [T=     1655]          14
+# [T=     1755]          15
+# [T=     1855]          16
+# [T=     1955]          17
+# [T=     2055]          18
+# [T=     2155]          19
+# [T=2255] FAILED in registerSequencerTests: REGA_BYTE_EN expected 01 != actual 10
+# [T=     2255]          20
+# [T=2355] FAILED in registerSequencerTests: REGA_BYTE_EN expected 01 != actual 10
+# Compile of instructionPhaseDecoder.v was successful.
+# Compile of registerSequencer.v was successful.
+# Compile of registerSequencerTests.v was successful.
+# Compile of constants.v was successful.
+# 4 compiles, 0 failed with no errors.
+restart;run 20us
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.registerSequencerTests
+# Loading work.registerSequencer
+# Loading work.instructionPhaseDecoder
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# [T=      355]           1
+# [T=      455]           2
+# [T=      555]           3
+# [T=      655]           4
+# [T=      755]           5
+# [T=      855]           6
+# [T=      955]           7
+# [T=     1055]           8
+# [T=     1155]           9
+# [T=     1255]          10
+# [T=     1355]          11
+# [T=     1455]          12
+# [T=     1555]          13
+# [T=     1655]          14
+# [T=     1755]          15
+# [T=     1855]          16
+# [T=     1955]          17
+# [T=     2055]          18
+# [T=     2155]          19
+# [T=     2255]          20
+# Compile of instructionPhaseDecoder.v was successful.
+# Compile of registerSequencer.v was successful.
+# Compile of registerSequencerTests.v was successful.
+# Compile of constants.v was successful.
+# 4 compiles, 0 failed with no errors.
+restart;run 20us
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.registerSequencerTests
+# Loading work.registerSequencer
+# Loading work.instructionPhaseDecoder
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# [T=      355]           1
+# [T=      455]           2
+# [T=      555]           3
+# [T=      655]           4
+# [T=      755]           5
+# [T=      855]           6
+# [T=      955]           7
+# [T=     1055]           8
+# [T=     1155]           9
+# [T=     1255]          10
+# [T=     1355]          11
+# [T=     1455]          12
+# [T=     1555]          13
+# [T=     1655]          14
+# [T=     1755]          15
+# [T=     1855]          16
+# [T=     1955]          17
+# [T=     2055]          18
+# [T=     2155]          19
+# [T=     2255]          20
+# [T=     2355]          21
+# [T=     2455]          22
+# [T=     2555]          23
+# [T=     2655]          24
+# Compile of instructionPhaseDecoder.v was successful.
+# Compile of registerSequencer.v was successful.
+# Compile of registerSequencerTests.v was successful.
+# Compile of constants.v was successful.
+# 4 compiles, 0 failed with no errors.
+restart;run 20us
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.registerSequencerTests
+# Loading work.registerSequencer
+# Loading work.instructionPhaseDecoder
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# [T=      355]           1
+# [T=      455]           2
+# [T=      555]           3
+# [T=      655]           4
+# [T=      755]           5
+# [T=      855]           6
+# [T=      955]           7
+# [T=     1055]           8
+# [T=     1155]           9
+# [T=     1255]          10
+# [T=     1355]          11
+# [T=     1455]          12
+# [T=     1555]          13
+# [T=     1655]          14
+# [T=     1755]          15
+# [T=     1855]          16
+# [T=     1955]          17
+# [T=     2055]          18
+# [T=     2155]          19
+# [T=     2255]          20
+# [T=     2355]          21
+# [T=     2455]          22
+# [T=     2555]          23
+# [T=     2655]          24
+# [T=     2755]          25
+# [T=     2855]          26
+# [T=     2955]          27
+# [T=     3055]          28
+# Compile of instructionPhaseDecoder.v was successful.
+# Compile of registerSequencer.v was successful.
+# Compile of registerSequencerTests.v was successful.
+# Compile of constants.v was successful.
+# 4 compiles, 0 failed with no errors.
+restart;run 20us
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.registerSequencerTests
+# Loading work.registerSequencer
+# Loading work.instructionPhaseDecoder
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# [T=      355]           1
+# [T=      455]           2
+# [T=      555]           3
+# [T=      655]           4
+# [T=      755]           5
+# [T=      855]           6
+# [T=      955]           7
+# [T=     1055]           8
+# [T=     1155]           9
+# [T=     1255]          10
+# [T=     1355]          11
+# [T=     1455]          12
+# [T=     1555]          13
+# [T=     1655]          14
+# [T=     1755]          15
+# [T=     1855]          16
+# [T=     1955]          17
+# [T=     2055]          18
+# [T=     2155]          19
+# [T=     2255]          20
+# [T=     2355]          21
+# [T=     2455]          22
+# [T=     2555]          23
+# [T=     2655]          24
+# [T=     2755]          25
+# [T=     2855]          26
+# [T=     2955]          27
+# [T=     3055]          28
+# [T=     3155]          29
+# [T=     3255]          30
+# [T=     3355]          31
+# [T=     3455]          32
+# Compile of instructionPhaseDecoder.v was successful.
+# Compile of registerSequencer.v was successful.
+# Compile of registerSequencerTests.v was successful.
+# Compile of constants.v was successful.
+# 4 compiles, 0 failed with no errors.
+restart;run 20us
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.registerSequencerTests
+# Loading work.registerSequencer
+# Loading work.instructionPhaseDecoder
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
+# [T=      355]           1
+# [T=      455]           2
+# [T=      555]           3
+# [T=      655]           4
+# [T=      755]           5
+# [T=      855]           6
+# [T=      955]           7
+# [T=     1055]           8
+# [T=     1155]           9
+# [T=     1255]          10
+# [T=     1355]          11
+# [T=     1455]          12
+# [T=     1555]          13
+# [T=     1655]          14
+# [T=     1755]          15
+# [T=     1855]          16
+# [T=     1955]          17
+# [T=     2055]          18
+# [T=     2155]          19
+# [T=     2255]          20
+# [T=     2355]          21
+# [T=     2455]          22
+# [T=     2555]          23
+# [T=     2655]          24
+# [T=     2755]          25
+# [T=     2855]          26
+# [T=     2955]          27
+# [T=     3055]          28
+# [T=     3155]          29
+# [T=     3255]          30
+# [T=     3355]          31
+# [T=     3455]          32
+# [T=     3555]          33
+# [T=     3655]          34
+# [T=     3755]          35
+# [T=     3855]          36
+# End time: 18:03:55 on Nov 11,2023, Elapsed time: 0:40:08
+# Errors: 0, Warnings: 1

@@ -309,12 +309,13 @@ always @(posedge CLK or posedge RESET) begin
 		BYTEX <= 0;
 	end else begin
 		
-		if(DECODE) begin
-			REGA_EN <= WR_A | RD_A;
-			REGB_EN <= WR_B | RD_B;
-			RDX <= RD_M;
-			BYTEX <= BYTE_OP;
-		end else if(EXECUTE) begin
+		//if(DECODE) begin
+		//	REGA_EN <= WR_A | RD_A;
+		//	REGB_EN <= WR_B | RD_B;
+		//	RDX <= RD_M;
+		//	BYTEX <= BYTE_OP;
+		//end else 
+		if(EXECUTE) begin
 			REGA_EN <= WR_A | RD_A;
 			REGB_EN <= WR_B | RD_B;
 			RDX <= RD_M;
