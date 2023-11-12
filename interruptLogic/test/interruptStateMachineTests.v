@@ -19,6 +19,11 @@ module interruptStateMachineTests;
 	wire PC_LD_INT0;
 	wire PC_LD_INT1;
 	
+	wire [1:0] CC_REGX;
+	wire CCL_ENRX;
+	wire CCL_EN0X;
+	wire CCL_EN1X;
+	
 interruptStateMachine testInstance(
 	.CLK(CLK),
 	.RESET(RESET),
@@ -30,7 +35,11 @@ interruptStateMachine testInstance(
 	.DIX(DIX),
 	.PC_NEXTX(PC_NEXTX),
 	.PC_LD_INT0(PC_LD_INT0),
-	.PC_LD_INT1(PC_LD_INT1)
+	.PC_LD_INT1(PC_LD_INT1),
+	.CC_REGX(CC_REGX),
+	.CCL_ENRX(CCL_ENRX),
+	.CCL_EN0X(CCL_EN0X),
+	.CCL_EN1X(CCL_EN1X)
 );
 
 

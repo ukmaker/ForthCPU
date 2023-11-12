@@ -35,7 +35,7 @@ module aluGroupDecoder(
 	
 	input CLK,
 	input RESET,
-	input [15:0] INSTRUCTION,
+	input [13:0] INSTRUCTION,
 	
 	input FETCH,
 	input DECODE,
@@ -76,9 +76,7 @@ module aluGroupDecoder(
 );
 
 wire [1:0] ARGF;
-wire [1:0] GROUPX;
 
-assign GROUPX  = INSTRUCTION[15:14];
 assign ALU_OPX = INSTRUCTION[13:10];
 assign ARGF    = INSTRUCTION[9:8];
 assign ARGA_X  = INSTRUCTION[7:4];

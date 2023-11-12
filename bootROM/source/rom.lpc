@@ -16,8 +16,8 @@ CoreRevision=2.8
 ModuleName=rom
 SourceFormat=Verilog HDL
 ParameterFileVersion=1.0
-Date=11/10/2023
-Time=15:57:07
+Date=11/12/2023
+Time=18:09:36
 
 [Parameters]
 Verilog=1
@@ -27,14 +27,14 @@ Destination=Synplicity
 Expression=BusA(0 to 7)
 Order=Big Endian [MSB:LSB]
 IO=0
-Addresses=1024
+Addresses=2048
 Data=16
 LUT=0
-MemFile=c:/users/duncan/git/forthcpu/bootrom/source/test.mem
+MemFile=c:/users/duncan/git/forthcpu/mcutestbench/source/registerfiletest.mem
 MemFormat=orca
 
 [FilesGenerated]
-c:/users/duncan/git/forthcpu/bootrom/source/test.mem=mem
+c:/users/duncan/git/forthcpu/mcutestbench/source/registerfiletest.mem=mem
 
 [Command]
-cmd_line= -w -n rom -lang verilog -synth synplify -bus_exp 7 -bb -arch xo3c00a -dram -type romblk -addr_width 10 -num_words 1024 -data_width 16 -outdata UNREGISTERED -memfile c:/users/duncan/git/forthcpu/bootrom/source/test.mem -memformat orca
+cmd_line= -w -n rom -lang verilog -synth synplify -bus_exp 7 -bb -arch xo3c00a -dram -type romblk -addr_width 11 -num_words 2048 -data_width 16 -outdata UNREGISTERED -memfile c:/users/duncan/git/forthcpu/mcutestbench/source/registerfiletest.mem -memformat orca

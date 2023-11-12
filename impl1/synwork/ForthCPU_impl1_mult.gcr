@@ -1,14 +1,15 @@
 i PIN_CLK_X1
 m 0 0
-u 113 304
+u 104 304
 p {p:PIN_CLK_X1}{t:boardInst.BPIN_CLK_X1}{p:boardInst.BPIN_CLK_X1}{t:boardInst.BPIN_LED[7:0].C}
 e ckid0_0 {t:boardInst.BPIN_LED[7:0].C} dffre
 c ckid0_0 {p:PIN_CLK_X1} port Unsupported/too complex instance on clock path
-i PIN_RESETN
+i coreInst.instructionPhaseDecoderInst.EXECUTE_i
 m 0 0
-u 24 24
-p {p:PIN_RESETN}{t:boardInst.BPIN_RESETN}{p:boardInst.BPIN_RESETN}{t:boardInst.DIN_GPIO[7].C}
-e ckid0_1 {t:boardInst.DIN_GPIO[7].C} lat
-c ckid0_1 {p:PIN_RESETN} port Unsupported/too complex instance on clock path
+u 4 4
+n ckid0_1 {t:coreInst.registerSequencerInst.REGA_BYTE_EN[1].C} Derived clock on input (not legal for GCC)
+p {t:coreInst.instructionPhaseDecoderInst.EXECUTE.Q[0]}{t:coreInst.instructionPhaseDecoderInst.EXECUTE_derived_clock.I[0]}{t:coreInst.instructionPhaseDecoderInst.EXECUTE_derived_clock.OUT[0]}{p:coreInst.instructionPhaseDecoderInst.EXECUTE}{t:coreInst.instructionPhaseDecoderInst.EXECUTE}{t:coreInst.registerSequencerInst.EXECUTE}{p:coreInst.registerSequencerInst.EXECUTE}{t:coreInst.registerSequencerInst.REGA_BYTE_EN[1].C}
+e ckid0_1 {t:coreInst.registerSequencerInst.REGA_BYTE_EN[1].C} latr
+d ckid0_2 {t:coreInst.instructionPhaseDecoderInst.EXECUTE.Q[0]} dffe Derived clock on input (not legal for GCC)
 l 0 0 0 0 0 0
 r 0 0 0 0 0 0 0 0

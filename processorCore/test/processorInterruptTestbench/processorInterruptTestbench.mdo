@@ -1,5 +1,6 @@
 if {![file exists "C:/Users/Duncan/git/ForthCPU/processorCore/test/processorInterruptTestbench/processorInterruptTestbench.mpf"]} { 
 	project new "C:/Users/Duncan/git/ForthCPU/processorCore/test/processorInterruptTestbench" processorInterruptTestbench
+	project addfile "C:/Users/Duncan/git/ForthCPU/registerSequencer/source/registerSequencer.v"
 	project addfile "C:/Users/Duncan/git/ForthCPU/opxMultiplexer/source/opxMultiplexer.v"
 	project addfile "C:/Users/Duncan/git/ForthCPU/generalGroupDecoder/source/generalGroupDecoder.v"
 	project addfile "C:/Users/Duncan/git/ForthCPU/jumpGroupDecoder/source/jumpGroupDecoder.v"
@@ -10,6 +11,7 @@ if {![file exists "C:/Users/Duncan/git/ForthCPU/processorCore/test/processorInte
 	project addfile "C:/Users/Duncan/git/ForthCPU/busController/source/busController.v"
 	project addfile "C:/Users/Duncan/git/ForthCPU/registerFileB/source/registers.v"
 	project addfile "C:/Users/Duncan/git/ForthCPU/registerFileB/source/registerFile.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/aluB/source/ccRegisters.v"
 	project addfile "C:/Users/Duncan/git/ForthCPU/aluB/source/aluBMux.v"
 	project addfile "C:/Users/Duncan/git/ForthCPU/aluB/source/aluAMux.v"
 	project addfile "C:/Users/Duncan/git/ForthCPU/aluB/source/alu.v"
@@ -17,14 +19,15 @@ if {![file exists "C:/Users/Duncan/git/ForthCPU/processorCore/test/processorInte
 	project addfile "C:/Users/Duncan/git/ForthCPU/instructionPhaseDecoder/source/instructionPhaseDecoder.v"
 	project addfile "C:/Users/Duncan/git/ForthCPU/processorCore/source/core.v"
 	project addfile "C:/Users/Duncan/git/ForthCPU/processorCore/test/processorCoreInterruptTests.v"
-	project addfile "C:/Users/Duncan/git/ForthCPU/core_tf.v"
 	project addfile "C:/Users/Duncan/git/ForthCPU/constants.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/testSetup.v"
 	project addfile "C:/Users/Duncan/git/ForthCPU/instructionTestSetup.v"
 	project addfile "C:/Users/Duncan/git/ForthCPU/registerFileB/source/registers.v"
 	project addfile "C:/Users/Duncan/git/ForthCPU/registerFileB/source/registers.v"
 	vlib  work
 	vdel -lib work -all 
 	vlib work
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/registerSequencer/source  -work work  "C:/Users/Duncan/git/ForthCPU/registerSequencer/source/registerSequencer.v"
 	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/opxMultiplexer/source  -work work  "C:/Users/Duncan/git/ForthCPU/opxMultiplexer/source/opxMultiplexer.v"
 	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/generalGroupDecoder/source  -work work  "C:/Users/Duncan/git/ForthCPU/generalGroupDecoder/source/generalGroupDecoder.v"
 	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/jumpGroupDecoder/source  -work work  "C:/Users/Duncan/git/ForthCPU/jumpGroupDecoder/source/jumpGroupDecoder.v"
@@ -35,6 +38,7 @@ if {![file exists "C:/Users/Duncan/git/ForthCPU/processorCore/test/processorInte
 	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/busController/source  -work work  "C:/Users/Duncan/git/ForthCPU/busController/source/busController.v"
 	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/registerFileB/source  -work work  "C:/Users/Duncan/git/ForthCPU/registerFileB/source/registers.v"
 	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/registerFileB/source  -work work  "C:/Users/Duncan/git/ForthCPU/registerFileB/source/registerFile.v"
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/aluB/source  -work work  "C:/Users/Duncan/git/ForthCPU/aluB/source/ccRegisters.v"
 	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/aluB/source  -work work  "C:/Users/Duncan/git/ForthCPU/aluB/source/aluBMux.v"
 	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/aluB/source  -work work  "C:/Users/Duncan/git/ForthCPU/aluB/source/aluAMux.v"
 	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/aluB/source  -work work  "C:/Users/Duncan/git/ForthCPU/aluB/source/alu.v"
@@ -42,8 +46,8 @@ if {![file exists "C:/Users/Duncan/git/ForthCPU/processorCore/test/processorInte
 	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/instructionPhaseDecoder/source  -work work  "C:/Users/Duncan/git/ForthCPU/instructionPhaseDecoder/source/instructionPhaseDecoder.v"
 	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/processorCore/source  -work work  "C:/Users/Duncan/git/ForthCPU/processorCore/source/core.v"
 	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/processorCore/test  -work work  "C:/Users/Duncan/git/ForthCPU/processorCore/test/processorCoreInterruptTests.v"
-	vlog  +incdir+C:/Users/Duncan/git/ForthCPU  -work work  "C:/Users/Duncan/git/ForthCPU/core_tf.v"
 	vlog  +incdir+C:/Users/Duncan/git/ForthCPU  -work work  "C:/Users/Duncan/git/ForthCPU/constants.v"
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU  -work work  "C:/Users/Duncan/git/ForthCPU/testSetup.v"
 	vlog  +incdir+C:/Users/Duncan/git/ForthCPU  -work work  "C:/Users/Duncan/git/ForthCPU/instructionTestSetup.v"
 	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/registerFileB/source  -work work  "C:/Users/Duncan/git/ForthCPU/registerFileB/source/registers.v"
 	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/registerFileB/source  -work work  "C:/Users/Duncan/git/ForthCPU/registerFileB/source/registers.v"

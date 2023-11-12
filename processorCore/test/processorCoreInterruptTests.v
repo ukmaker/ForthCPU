@@ -90,7 +90,7 @@ initial begin
 	// Address of interpreter in R1
 	`LD_HERE_STEP(    1, 16'h0000, 16'h0100, `R1)
 	`TICK;
-	DIN = {`GROUP_JUMP,      `SKIPF_NONE,`CC_SELECTX_Z,`MODE_JMP_ABS_REG,`R0,`R1};	 
+	DIN = {`GROUP_JUMP,      `SKIPF_NONE,`CC_SELECTX_Z,`MODE_JMP_ABS_REG,`R1,`R1};	 
 	`assert("  2 ADDR_BUF", 16'h0004, ADDR_BUF)
 	`TOCK;
 	`TICKTOCK;
@@ -143,7 +143,7 @@ initial begin
 
 	// Now enable the interrupt and try again
 	INSTR = {`GROUP_SYSTEM,  3'b000, `GEN_OP_EI, 8'b00000000};	 
-	`SYS_STEP(  18, 16'h0120,   INSTR, 16'h011c, 16'h0002, "EI")	
+	`SYS_STEP(  18, 16'h0120,   INSTR, 16'h0120, 16'h0002, "EI")	
 	// inc
 	INSTR = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_ADD,`MODE_ALU_REG_REG,`RA,`RB};
 	`ALU_STEP(  19, 16'h0122,   INSTR, "ADD RA,RB")

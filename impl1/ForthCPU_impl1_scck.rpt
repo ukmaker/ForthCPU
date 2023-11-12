@@ -13,7 +13,7 @@ Hostname: EDAWIN
 
 Implementation : impl1
 
-# Written on Fri Nov 10 15:25:05 2023
+# Written on Sun Nov 12 18:10:01 2023
 
 ##### FILES SYNTAX CHECKED ##############################################
 Constraint File(s):      (none)
@@ -30,26 +30,20 @@ No issues found in constraint syntax.
 Clock Summary
 *************
 
-          Start              Requested     Requested     Clock        Clock                   Clock
-Level     Clock              Frequency     Period        Type         Group                   Load 
----------------------------------------------------------------------------------------------------
-0 -       System             100.0 MHz     10.000        system       system_clkgroup         0    
-                                                                                                   
-0 -       mcu|PIN_CLK_X1     100.0 MHz     10.000        inferred     Inferred_clkgroup_0     304  
-                                                                                                   
-0 -       mcu|PIN_RESETN     100.0 MHz     10.000        inferred     Inferred_clkgroup_1     24   
-===================================================================================================
+          Start                                               Requested     Requested     Clock                             Clock                   Clock
+Level     Clock                                               Frequency     Period        Type                              Group                   Load 
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+0 -       mcu|PIN_CLK_X1                                      100.0 MHz     10.000        inferred                          Inferred_clkgroup_0     304  
+1 .         instructionPhaseDecoder|EXECUTE_derived_clock     100.0 MHz     10.000        derived (from mcu|PIN_CLK_X1)     Inferred_clkgroup_0     4    
+=========================================================================================================================================================
 
 
 Clock Load Summary
 ******************
 
-                   Clock     Source               Clock Pin                                                      Non-clock Pin                                                  Non-clock Pin                                              
-Clock              Load      Pin                  Seq Example                                                    Seq Example                                                    Comb Example                                               
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-System             0         -                    -                                                              -                                                              -                                                          
-                                                                                                                                                                                                                                           
-mcu|PIN_CLK_X1     304       PIN_CLK_X1(port)     mcuResourcesInst.interruptMaskRegisterInst.INTS_REG[7:1].C     -                                                              coreInst.busControllerInst.un1_CLK.I[0](inv)               
-                                                                                                                                                                                                                                           
-mcu|PIN_RESETN     24        PIN_RESETN(port)     boardInst.DIN[0].C                                             mcuResourcesInst.interruptMaskRegisterInst.MASK_REG[7:0].E     mcuResourcesInst.interruptMaskRegisterInst.DOUT18.I[0](inv)
-===========================================================================================================================================================================================================================================
+                                                  Clock     Source                                                      Clock Pin                                                      Non-clock Pin                                   Non-clock Pin                                   
+Clock                                             Load      Pin                                                         Seq Example                                                    Seq Example                                     Comb Example                                    
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+mcu|PIN_CLK_X1                                    304       PIN_CLK_X1(port)                                            mcuResourcesInst.interruptMaskRegisterInst.INTS_REG[7:1].C     -                                               coreInst.busControllerInst.un1_CLK.I[0](inv)    
+instructionPhaseDecoder|EXECUTE_derived_clock     4         coreInst.instructionPhaseDecoderInst.EXECUTE.Q[0](dffe)     coreInst.registerSequencerInst.REGA_EN.C                       coreInst.opxMultiplexerInst.PC_BASEX[1:0].E     coreInst.opxMultiplexerInst.un1_EXECUTE.I[0](or)
+=======================================================================================================================================================================================================================================================================================

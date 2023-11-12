@@ -19,6 +19,10 @@ module fullALUTests;
 	reg B5;
 
 	reg CCL_LD;
+	reg CCL_ENRX;
+	reg CCL_EN0X;
+	reg CCL_EN1X;
+	reg [1:0] CC_REGX;
 	
 	wire [15:0] ALUA_DATA;
 	wire [15:0] ALUB_DATA;
@@ -40,6 +44,10 @@ fullALU testInstance(
 	.ARGB_X(ARGB_X),
 	.B5(B5),
 	.CCL_LD(CCL_LD),
+	.CCL_ENRX(CCL_ENRX),
+	.CCL_EN0X(CCL_EN0X),
+	.CCL_EN1X(CCL_EN1X),
+	.CC_REGX(CC_REGX),
 	.ALU_R(ALU_R),
 	.CC_ZERO(CC_ZERO),
 	.CC_CARRY(CC_CARRY),
@@ -60,6 +68,10 @@ initial begin
 	CLK = 0; 
 	`TICK;
 	CCL_LD = 0;
+	CCL_ENRX = 1;
+	CCL_EN0X = 0;
+	CCL_EN1X = 0;
+	CC_REGX = `CC_REGX_RUN;
 	RESET = 1;
 	REGA_DOUT = 16'h1234;
 	REGB_DOUT = 16'h4321;

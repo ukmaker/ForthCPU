@@ -30,6 +30,11 @@
 `define CC_APPLYX_NONE  1'b0
 `define CC_APPLYX_APPLY 1'b1
 
+
+`define CC_REGX_RUN  2'b00
+`define CC_REGX_INT0 2'b01
+`define CC_REGX_INT1 2'b10
+
 `define CC_SELECTX_Z 2'b00
 `define CC_SELECTX_C 2'b01
 `define CC_SELECTX_S 2'b10
@@ -81,17 +86,17 @@
 `define INTV0 16'h0004
 `define INTV1 16'h0008
 
-`define INT_STATE_RUN     4'b0000
-`define INT_STATE_RUN_E   4'b0001
+`define INT_STATE_RUN      4'b0000
+`define INT_STATE_RUN_E    4'b0001
 `define INT_STATE_VEC1     4'b0010
 `define INT_STATE_VEC0     4'b0011
 `define INT_STATE_VEC1_0   4'b0100
 `define INT_STATE_RUN1     4'b0101
 `define INT_STATE_RUN0     4'b0110
 `define INT_STATE_RUN1_0   4'b0111
-`define INT_STATE_RETI1   4'b1000
-`define INT_STATE_RETI0   4'b1001
-`define INT_STATE_RETI1_0 4'b1010
+`define INT_STATE_RETI1    4'b1000
+`define INT_STATE_RETI0    4'b1001
+`define INT_STATE_RETI1_0  4'b1010
 
 /**************************************
 * Bus interface
@@ -130,6 +135,8 @@
 `define REG_SEQX_RDA_UPB 3'b100
 // ALU immediate (MOVI R0,U4...)
 `define REG_SEQX_LDA_IMM 3'b101
+// JMP Rb
+`define REG_SEQX_RDB     3'b110
 
 /**
 * Register A load sources
@@ -302,6 +309,12 @@
 `define UART_STATUS_TX_COMPLETE    16'h0004
 `define UART_STATUS_RX_INTERRUPT   16'h0008
 `define UART_STATUS_TX_INTERRUPT   16'h0010
+
+`define UART_STATUS_DATA_AVAILABLE_BIT 0
+`define UART_STATUS_TX_ACTIVE_BIT      1
+`define UART_STATUS_TX_COMPLETE_BIT    2
+`define UART_STATUS_RX_INTERRUPT_BIT   3
+`define UART_STATUS_TX_INTERRUPT_BIT   4
 
 `define UART_REG_STATUS      2'b00
 `define UART_REG_DATA        2'b01

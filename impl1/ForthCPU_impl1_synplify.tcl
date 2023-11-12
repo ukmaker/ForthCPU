@@ -78,6 +78,8 @@ add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/UART/source/trans
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/UART/source/UART.v}
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/devBoard/source/devBoard.v}
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/impl1/test/blinkTest.v}
+add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/aluB/source/ccRegisters.v}
+add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/registerSequencer/source/registerSequencer.v}
 
 #-- top module name
 set_option -top_module mcu

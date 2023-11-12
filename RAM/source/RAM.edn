@@ -4,24 +4,13 @@
   (keywordMap (keywordLevel 0))
   (status
     (written
-      (timestamp 2023 10 25 16 18 23)
+      (timestamp 2023 11 12 15 44 0)
       (program "SCUBA" (version "Diamond (64-bit) 3.12.1.454"))))
-      (comment "C:\lscc\diamond\3.12\ispfpga\bin\nt64\scuba.exe -w -n RAM -lang verilog -synth synplify -bus_exp 7 -bb -arch xo3c00a -type bram -wp 10 -rp 1000 -addr_width 13 -data_width 16 -num_rows 8192 -byte 8 -outdata REGISTERED -cascade -1 -resetmode SYNC -sync_reset -mem_init0 -writemode NORMAL ")
+      (comment "C:\lscc\diamond\3.12\ispfpga\bin\nt64\scuba.exe -w -n RAM -lang verilog -synth synplify -bus_exp 7 -bb -arch xo3c00a -type bram -wp 10 -rp 1000 -addr_width 13 -data_width 16 -num_rows 8192 -byte 8 -cascade -1 -mem_init0 -writemode WRITETHROUGH ")
   (library ORCLIB
     (edifLevel 0)
     (technology
       (numberDefinition))
-    (cell AND2
-      (cellType GENERIC)
-      (view view1
-        (viewType NETLIST)
-        (interface
-          (port A
-            (direction INPUT))
-          (port B
-            (direction INPUT))
-          (port Z
-            (direction OUTPUT)))))
     (cell FD1P3DX
       (cellType GENERIC)
       (view view1
@@ -36,15 +25,6 @@
           (port CD
             (direction INPUT))
           (port Q
-            (direction OUTPUT)))))
-    (cell INV
-      (cellType GENERIC)
-      (view view1
-        (viewType NETLIST)
-        (interface
-          (port A
-            (direction INPUT))
-          (port Z
             (direction OUTPUT)))))
     (cell MUX81
       (cellType GENERIC)
@@ -273,12 +253,6 @@
             (direction OUTPUT)))
         (property NGD_DRC_MASK (integer 1))
         (contents
-          (instance INV_0
-            (viewRef view1 
-              (cellRef INV)))
-          (instance AND2_t0
-            (viewRef view1 
-              (cellRef AND2)))
           (instance RAM_0_0_15
             (viewRef view1 
               (cellRef DP8KC))
@@ -361,15 +335,15 @@
             (property WRITEMODE_B
               (string "NORMAL"))
             (property WRITEMODE_A
-              (string "NORMAL"))
+              (string "WRITETHROUGH"))
             (property GSR
               (string "ENABLED"))
             (property RESETMODE
-              (string "SYNC"))
+              (string "ASYNC"))
             (property REGMODE_B
               (string "NOREG"))
             (property REGMODE_A
-              (string "OUTREG"))
+              (string "NOREG"))
             (property DATA_WIDTH_B
               (string "9"))
             (property DATA_WIDTH_A
@@ -456,15 +430,15 @@
             (property WRITEMODE_B
               (string "NORMAL"))
             (property WRITEMODE_A
-              (string "NORMAL"))
+              (string "WRITETHROUGH"))
             (property GSR
               (string "ENABLED"))
             (property RESETMODE
-              (string "SYNC"))
+              (string "ASYNC"))
             (property REGMODE_B
               (string "NOREG"))
             (property REGMODE_A
-              (string "OUTREG"))
+              (string "NOREG"))
             (property DATA_WIDTH_B
               (string "9"))
             (property DATA_WIDTH_A
@@ -551,15 +525,15 @@
             (property WRITEMODE_B
               (string "NORMAL"))
             (property WRITEMODE_A
-              (string "NORMAL"))
+              (string "WRITETHROUGH"))
             (property GSR
               (string "ENABLED"))
             (property RESETMODE
-              (string "SYNC"))
+              (string "ASYNC"))
             (property REGMODE_B
               (string "NOREG"))
             (property REGMODE_A
-              (string "OUTREG"))
+              (string "NOREG"))
             (property DATA_WIDTH_B
               (string "9"))
             (property DATA_WIDTH_A
@@ -646,15 +620,15 @@
             (property WRITEMODE_B
               (string "NORMAL"))
             (property WRITEMODE_A
-              (string "NORMAL"))
+              (string "WRITETHROUGH"))
             (property GSR
               (string "ENABLED"))
             (property RESETMODE
-              (string "SYNC"))
+              (string "ASYNC"))
             (property REGMODE_B
               (string "NOREG"))
             (property REGMODE_A
-              (string "OUTREG"))
+              (string "NOREG"))
             (property DATA_WIDTH_B
               (string "9"))
             (property DATA_WIDTH_A
@@ -741,15 +715,15 @@
             (property WRITEMODE_B
               (string "NORMAL"))
             (property WRITEMODE_A
-              (string "NORMAL"))
+              (string "WRITETHROUGH"))
             (property GSR
               (string "ENABLED"))
             (property RESETMODE
-              (string "SYNC"))
+              (string "ASYNC"))
             (property REGMODE_B
               (string "NOREG"))
             (property REGMODE_A
-              (string "OUTREG"))
+              (string "NOREG"))
             (property DATA_WIDTH_B
               (string "9"))
             (property DATA_WIDTH_A
@@ -836,15 +810,15 @@
             (property WRITEMODE_B
               (string "NORMAL"))
             (property WRITEMODE_A
-              (string "NORMAL"))
+              (string "WRITETHROUGH"))
             (property GSR
               (string "ENABLED"))
             (property RESETMODE
-              (string "SYNC"))
+              (string "ASYNC"))
             (property REGMODE_B
               (string "NOREG"))
             (property REGMODE_A
-              (string "OUTREG"))
+              (string "NOREG"))
             (property DATA_WIDTH_B
               (string "9"))
             (property DATA_WIDTH_A
@@ -931,15 +905,15 @@
             (property WRITEMODE_B
               (string "NORMAL"))
             (property WRITEMODE_A
-              (string "NORMAL"))
+              (string "WRITETHROUGH"))
             (property GSR
               (string "ENABLED"))
             (property RESETMODE
-              (string "SYNC"))
+              (string "ASYNC"))
             (property REGMODE_B
               (string "NOREG"))
             (property REGMODE_A
-              (string "OUTREG"))
+              (string "NOREG"))
             (property DATA_WIDTH_B
               (string "9"))
             (property DATA_WIDTH_A
@@ -1026,15 +1000,15 @@
             (property WRITEMODE_B
               (string "NORMAL"))
             (property WRITEMODE_A
-              (string "NORMAL"))
+              (string "WRITETHROUGH"))
             (property GSR
               (string "ENABLED"))
             (property RESETMODE
-              (string "SYNC"))
+              (string "ASYNC"))
             (property REGMODE_B
               (string "NOREG"))
             (property REGMODE_A
-              (string "OUTREG"))
+              (string "NOREG"))
             (property DATA_WIDTH_B
               (string "9"))
             (property DATA_WIDTH_A
@@ -1121,15 +1095,15 @@
             (property WRITEMODE_B
               (string "NORMAL"))
             (property WRITEMODE_A
-              (string "NORMAL"))
+              (string "WRITETHROUGH"))
             (property GSR
               (string "ENABLED"))
             (property RESETMODE
-              (string "SYNC"))
+              (string "ASYNC"))
             (property REGMODE_B
               (string "NOREG"))
             (property REGMODE_A
-              (string "OUTREG"))
+              (string "NOREG"))
             (property DATA_WIDTH_B
               (string "9"))
             (property DATA_WIDTH_A
@@ -1216,15 +1190,15 @@
             (property WRITEMODE_B
               (string "NORMAL"))
             (property WRITEMODE_A
-              (string "NORMAL"))
+              (string "WRITETHROUGH"))
             (property GSR
               (string "ENABLED"))
             (property RESETMODE
-              (string "SYNC"))
+              (string "ASYNC"))
             (property REGMODE_B
               (string "NOREG"))
             (property REGMODE_A
-              (string "OUTREG"))
+              (string "NOREG"))
             (property DATA_WIDTH_B
               (string "9"))
             (property DATA_WIDTH_A
@@ -1311,15 +1285,15 @@
             (property WRITEMODE_B
               (string "NORMAL"))
             (property WRITEMODE_A
-              (string "NORMAL"))
+              (string "WRITETHROUGH"))
             (property GSR
               (string "ENABLED"))
             (property RESETMODE
-              (string "SYNC"))
+              (string "ASYNC"))
             (property REGMODE_B
               (string "NOREG"))
             (property REGMODE_A
-              (string "OUTREG"))
+              (string "NOREG"))
             (property DATA_WIDTH_B
               (string "9"))
             (property DATA_WIDTH_A
@@ -1406,15 +1380,15 @@
             (property WRITEMODE_B
               (string "NORMAL"))
             (property WRITEMODE_A
-              (string "NORMAL"))
+              (string "WRITETHROUGH"))
             (property GSR
               (string "ENABLED"))
             (property RESETMODE
-              (string "SYNC"))
+              (string "ASYNC"))
             (property REGMODE_B
               (string "NOREG"))
             (property REGMODE_A
-              (string "OUTREG"))
+              (string "NOREG"))
             (property DATA_WIDTH_B
               (string "9"))
             (property DATA_WIDTH_A
@@ -1501,15 +1475,15 @@
             (property WRITEMODE_B
               (string "NORMAL"))
             (property WRITEMODE_A
-              (string "NORMAL"))
+              (string "WRITETHROUGH"))
             (property GSR
               (string "ENABLED"))
             (property RESETMODE
-              (string "SYNC"))
+              (string "ASYNC"))
             (property REGMODE_B
               (string "NOREG"))
             (property REGMODE_A
-              (string "OUTREG"))
+              (string "NOREG"))
             (property DATA_WIDTH_B
               (string "9"))
             (property DATA_WIDTH_A
@@ -1596,15 +1570,15 @@
             (property WRITEMODE_B
               (string "NORMAL"))
             (property WRITEMODE_A
-              (string "NORMAL"))
+              (string "WRITETHROUGH"))
             (property GSR
               (string "ENABLED"))
             (property RESETMODE
-              (string "SYNC"))
+              (string "ASYNC"))
             (property REGMODE_B
               (string "NOREG"))
             (property REGMODE_A
-              (string "OUTREG"))
+              (string "NOREG"))
             (property DATA_WIDTH_B
               (string "9"))
             (property DATA_WIDTH_A
@@ -1691,15 +1665,15 @@
             (property WRITEMODE_B
               (string "NORMAL"))
             (property WRITEMODE_A
-              (string "NORMAL"))
+              (string "WRITETHROUGH"))
             (property GSR
               (string "ENABLED"))
             (property RESETMODE
-              (string "SYNC"))
+              (string "ASYNC"))
             (property REGMODE_B
               (string "NOREG"))
             (property REGMODE_A
-              (string "OUTREG"))
+              (string "NOREG"))
             (property DATA_WIDTH_B
               (string "9"))
             (property DATA_WIDTH_A
@@ -1789,34 +1763,19 @@
             (property WRITEMODE_B
               (string "NORMAL"))
             (property WRITEMODE_A
-              (string "NORMAL"))
+              (string "WRITETHROUGH"))
             (property GSR
               (string "ENABLED"))
             (property RESETMODE
-              (string "SYNC"))
+              (string "ASYNC"))
             (property REGMODE_B
               (string "NOREG"))
             (property REGMODE_A
-              (string "OUTREG"))
+              (string "NOREG"))
             (property DATA_WIDTH_B
               (string "9"))
             (property DATA_WIDTH_A
               (string "9")))
-          (instance FF_5
-            (viewRef view1 
-              (cellRef FD1P3DX))
-            (property GSR
-              (string "ENABLED")))
-          (instance FF_4
-            (viewRef view1 
-              (cellRef FD1P3DX))
-            (property GSR
-              (string "ENABLED")))
-          (instance FF_3
-            (viewRef view1 
-              (cellRef FD1P3DX))
-            (property GSR
-              (string "ENABLED")))
           (instance FF_2
             (viewRef view1 
               (cellRef FD1P3DX))
@@ -1883,10 +1842,6 @@
           (instance mux_0
             (viewRef view1 
               (cellRef MUX81)))
-          (net wren_inv
-            (joined
-              (portRef A (instanceRef AND2_t0))
-              (portRef Z (instanceRef INV_0))))
           (net mdout0_0_8
             (joined
               (portRef DOA8 (instanceRef RAM_0_0_15))))
@@ -1970,20 +1925,6 @@
               (portRef CEB (instanceRef RAM_7_0_1))
               (portRef OCEB (instanceRef RAM_7_1_0))
               (portRef CEB (instanceRef RAM_7_1_0))))
-          (net wren_inv_g
-            (joined
-              (portRef SP (instanceRef FF_3))
-              (portRef Z (instanceRef AND2_t0))
-              (portRef SP (instanceRef FF_5))
-              (portRef SP (instanceRef FF_4))))
-          (net addr10_ff
-            (joined
-              (portRef D (instanceRef FF_2))
-              (portRef Q (instanceRef FF_5))))
-          (net addr11_ff
-            (joined
-              (portRef D (instanceRef FF_1))
-              (portRef Q (instanceRef FF_4))))
           (net scuba_vlo
             (joined
               (portRef Z (instanceRef scuba_vlo_inst))
@@ -2483,16 +2424,9 @@
               (portRef DIB2 (instanceRef RAM_7_1_0))
               (portRef DIB1 (instanceRef RAM_7_1_0))
               (portRef DIB0 (instanceRef RAM_7_1_0))
-              (portRef CD (instanceRef FF_5))
-              (portRef CD (instanceRef FF_4))
-              (portRef CD (instanceRef FF_3))
               (portRef CD (instanceRef FF_2))
               (portRef CD (instanceRef FF_1))
               (portRef CD (instanceRef FF_0))))
-          (net addr12_ff
-            (joined
-              (portRef D (instanceRef FF_0))
-              (portRef Q (instanceRef FF_3))))
           (net mdout0_7_0
             (joined
               (portRef D7 (instanceRef mux_15))
@@ -2973,7 +2907,7 @@
             (joined
               (portRef D0 (instanceRef mux_1))
               (portRef DOA6 (instanceRef RAM_0_1_14))))
-          (net addr12_ff2
+          (net addr12_ff
             (joined
               (portRef SD3 (instanceRef mux_0))
               (portRef Q (instanceRef FF_0))
@@ -2992,7 +2926,7 @@
               (portRef SD3 (instanceRef mux_3))
               (portRef SD3 (instanceRef mux_2))
               (portRef SD3 (instanceRef mux_1))))
-          (net addr11_ff2
+          (net addr11_ff
             (joined
               (portRef SD2 (instanceRef mux_0))
               (portRef Q (instanceRef FF_1))
@@ -3011,7 +2945,7 @@
               (portRef SD2 (instanceRef mux_3))
               (portRef SD2 (instanceRef mux_2))
               (portRef SD2 (instanceRef mux_1))))
-          (net addr10_ff2
+          (net addr10_ff
             (joined
               (portRef SD1 (instanceRef mux_0))
               (portRef Q (instanceRef FF_2))
@@ -3321,7 +3255,7 @@
               (portRef CSA2 (instanceRef RAM_6_1_2))
               (portRef CSA2 (instanceRef RAM_7_0_1))
               (portRef CSA2 (instanceRef RAM_7_1_0))
-              (portRef D (instanceRef FF_3))))
+              (portRef D (instanceRef FF_0))))
           (net addr11
             (joined
               (portRef (member Address 1))
@@ -3341,7 +3275,7 @@
               (portRef CSA1 (instanceRef RAM_6_1_2))
               (portRef CSA1 (instanceRef RAM_7_0_1))
               (portRef CSA1 (instanceRef RAM_7_1_0))
-              (portRef D (instanceRef FF_4))))
+              (portRef D (instanceRef FF_1))))
           (net addr10
             (joined
               (portRef (member Address 2))
@@ -3361,7 +3295,7 @@
               (portRef CSA0 (instanceRef RAM_6_1_2))
               (portRef CSA0 (instanceRef RAM_7_0_1))
               (portRef CSA0 (instanceRef RAM_7_1_0))
-              (portRef D (instanceRef FF_5))))
+              (portRef D (instanceRef FF_2))))
           (net addr9
             (joined
               (portRef (member Address 3))
@@ -3555,7 +3489,6 @@
           (net wren
             (joined
               (portRef WE)
-              (portRef A (instanceRef INV_0))
               (portRef WEA (instanceRef RAM_0_0_15))
               (portRef WEA (instanceRef RAM_0_1_14))
               (portRef WEA (instanceRef RAM_1_0_13))
@@ -3616,7 +3549,6 @@
           (net ClockEn
             (joined
               (portRef ClockEn)
-              (portRef B (instanceRef AND2_t0))
               (portRef OCEA (instanceRef RAM_0_0_15))
               (portRef CEA (instanceRef RAM_0_0_15))
               (portRef OCEA (instanceRef RAM_0_1_14))
@@ -3671,9 +3603,6 @@
               (portRef CLKA (instanceRef RAM_6_1_2))
               (portRef CLKA (instanceRef RAM_7_0_1))
               (portRef CLKA (instanceRef RAM_7_1_0))
-              (portRef CK (instanceRef FF_5))
-              (portRef CK (instanceRef FF_4))
-              (portRef CK (instanceRef FF_3))
               (portRef CK (instanceRef FF_2))
               (portRef CK (instanceRef FF_1))
               (portRef CK (instanceRef FF_0))))))))

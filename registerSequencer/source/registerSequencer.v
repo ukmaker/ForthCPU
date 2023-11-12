@@ -122,6 +122,13 @@ always @(*) begin
 			REGB_EN_R  = 0;
 			REGB_WEN_R = 0;		
 		end
+		
+		`REG_SEQX_RDB: begin
+			REGA_EN_R  = 0;
+			REGA_WEN_R = 0;
+			REGB_EN_R  = 1;
+			REGB_WEN_R = 0;				
+		end
 	
 		default: begin
 			REGA_EN_R  = 0;
@@ -135,23 +142,13 @@ end
 // sequence control
 always @(posedge CLK or posedge RESET) begin
 	if(RESET) begin
-		REGA_EN  <= 0;
 		REGA_WEN <= 0;
-		REGB_EN  <= 0;
 		REGB_WEN <= 0;
-		REGA_EN_R  <= 0;
-		REGA_WEN_R <= 0;
-		REGB_EN_R  <= 0;
-		REGB_WEN_R <= 0;
-		REGA_BYTE_EN <= `REG_BYTE_ENX_NONE;
-		REGA_BYTE_EN_R <= `REG_BYTE_ENX_NONE;
 	end else begin
 		if(FETCH) begin
-			REGA_EN  <= 0;
 			REGA_WEN <= 0;
-			REGB_EN  <= 0;
 			REGB_WEN <= 0;
-			REGA_BYTE_EN <= `REG_BYTE_ENX_NONE;
+
 		end else if(COMMIT) begin
 			// wen high on posedge COMMIT
 			REGA_WEN <= REGA_WEN_R;
@@ -160,9 +157,18 @@ always @(posedge CLK or posedge RESET) begin
 	end
 end
 			
-always @(negedge CLK) begin
-	if(EXECUTE) begin
-		// activate EN and BYTEX
+always @(*) begin
+	if(RESET) begin
+		REGA_BYTE_EN   <= `REG_BYTE_ENX_NONE;
+		REGA_EN        <= 0;
+		REGB_EN        <= 0;		
+	end else if(DECODE) begin
+		REGA_BYTE_EN   <= `REG_BYTE_ENX_NONE;
+		REGA_EN        <= 0;
+		REGB_EN        <= 0;	
+	end else if(EXECUTE) begin 
+		// i.e. halfway through a decode cycle
+		// activate EN and BYTEX ready for EXECUTE
 		REGA_BYTE_EN <= REGA_BYTE_EN_R;
 		REGA_EN      <= REGA_EN_R;
 		REGB_EN      <= REGB_EN_R;

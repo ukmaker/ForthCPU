@@ -23,12 +23,16 @@ module fullALU(
 	input        B5,
 
 	input CCL_LD,
+	input CCL_ENRX,
+	input CCL_EN0X,
+	input CCL_EN1X,
+	input [1:0] CC_REGX,
 	
 	output wire [15:0] ALU_R,
-	output reg CC_ZERO,
-	output reg CC_CARRY,
-	output reg CC_SIGN,
-	output reg CC_PARITY,
+	output wire CC_ZERO,
+	output wire CC_CARRY,
+	output wire CC_SIGN,
+	output wire CC_PARITY,
 	output wire [15:0] ALUA_DATA,
 	output wire [15:0] ALUB_DATA
 );
@@ -65,18 +69,16 @@ aluBMux muxB(
 
 );
 
-always @(posedge CLK or posedge RESET) begin
-	if(RESET) begin
-		CC_ZERO <= 0;
-		CC_CARRY <= 0;
-		CC_SIGN <= 0;
-		CC_PARITY <= 0;
-	end else if(CCL_LD == 1'b1) begin
-		CC_ZERO   <= CC_Z;
-		CC_CARRY  <= CC_C;
-		CC_SIGN   <= CC_S;
-		CC_PARITY <= CC_P;
-	end
-end
+ccRegisters ccRegs(
+	.CLK(CLK),
+	.RESET(RESET),
+	.CCL_LD(CCL_LD),
+	.CCL_ENRX(CCL_ENRX),
+	.CCL_EN0X(CCL_EN0X),
+	.CCL_EN1X(CCL_EN1X),
+	.CC_REGX(CC_REGX),
+	.CCIN({CC_S,CC_C,CC_Z,CC_P}),
+	.CCOUT({CC_SIGN,CC_CARRY,CC_ZERO,CC_PARITY})
+);
 
 endmodule

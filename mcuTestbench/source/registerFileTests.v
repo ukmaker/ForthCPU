@@ -30,7 +30,7 @@ module registerFileTests;
 	reg [3:0] PIN_DIPSW;
 	wire [7:0] PIN_LED;
 	wire [15:0] ROM_ADDR;
-	reg  [15:0] ROM_DOUT;
+	wire [15:0] ROM_DOUT;
 
 testArticle mcuInst(
 	.PIN_CLK_X1(PIN_CLK_X1),
@@ -56,6 +56,11 @@ testArticle mcuInst(
 	.ROM_DOUT(ROM_DOUT)
 );
 
+registerFileTestROM rom(
+	.Address(ROM_ADDR[10:0]),
+	.Q(ROM_DOUT) 
+);
+
 always begin
 	#50 PIN_CLK_X1 = ~PIN_CLK_X1;
 end
@@ -63,13 +68,10 @@ end
 initial begin
 	PIN_CLK_X1 = 0;
 	PIN_RESETN = 0;
-	ROM_DOUT = 16'h0000;
 	`TICKTOCK;
 	`TICKTOCK;
 	PIN_RESETN = 1;
 	`TICKTOCK;
-	
-	
 	
 end
 

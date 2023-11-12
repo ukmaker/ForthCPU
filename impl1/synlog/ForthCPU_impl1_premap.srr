@@ -1,4 +1,4 @@
-# Fri Nov 10 15:25:04 2023
+# Sun Nov 12 18:10:01 2023
 
 
 Copyright (C) 1994-2021 Synopsys, Inc.
@@ -20,7 +20,7 @@ Synopsys Lattice Technology Pre-mapping, Version map202103lat, Build 070R, Built
 Mapper Startup Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 117MB peak: 117MB)
 
 
-Done reading skeleton netlist (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 122MB peak: 129MB)
+Done reading skeleton netlist (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 121MB peak: 129MB)
 
 @A: MF827 |No constraint file specified.
 @L: C:\Users\Duncan\git\ForthCPU\impl1\ForthCPU_impl1_scck.rpt 
@@ -44,7 +44,6 @@ Finished loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h
 @W: FX474 |User-specified initial value defined for some sequential elements which can prevent optimum synthesis results from being achieved. 
 @N: FX493 |Applying initial value "0" on instance r_RX_DV.
 @N: FX493 |Applying initial value "000" on instance r_SM_Main[2:0].
-@W: BN132 :"c:\users\duncan\git\forthcpu\uart\source\uart.v":97:0:97:5|Removing sequential instance mcuResourcesInst.UARTInst.DATA_AVAILABLE_R because it is equivalent to instance mcuResourcesInst.UARTInst.RXI_R. To keep the instance, apply constraint syn_preserve=1 on the instance.
 Encoding state machine PHASE[4:0] (in view: work.instructionPhaseDecoder(verilog))
 original code -> new code
    000 -> 000
@@ -78,10 +77,10 @@ Starting clock optimization phase (Real Time elapsed 0h:00m:01s; CPU Time elapse
 Finished clock optimization phase (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 178MB peak: 178MB)
 
 
-Starting clock optimization report phase (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 178MB peak: 179MB)
+Starting clock optimization report phase (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 178MB peak: 178MB)
 
 
-Finished clock optimization report phase (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 178MB peak: 179MB)
+Finished clock optimization report phase (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 178MB peak: 178MB)
 
 @N: FX1184 |Applying syn_allowed_resources blockrams=240 on top level netlist mcu 
 
@@ -92,33 +91,26 @@ Finished netlist restructuring (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0
 Clock Summary
 ******************
 
-          Start              Requested     Requested     Clock        Clock                   Clock
-Level     Clock              Frequency     Period        Type         Group                   Load 
----------------------------------------------------------------------------------------------------
-0 -       System             100.0 MHz     10.000        system       system_clkgroup         0    
-                                                                                                   
-0 -       mcu|PIN_CLK_X1     100.0 MHz     10.000        inferred     Inferred_clkgroup_0     304  
-                                                                                                   
-0 -       mcu|PIN_RESETN     100.0 MHz     10.000        inferred     Inferred_clkgroup_1     24   
-===================================================================================================
+          Start                                               Requested     Requested     Clock                             Clock                   Clock
+Level     Clock                                               Frequency     Period        Type                              Group                   Load 
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+0 -       mcu|PIN_CLK_X1                                      100.0 MHz     10.000        inferred                          Inferred_clkgroup_0     304  
+1 .         instructionPhaseDecoder|EXECUTE_derived_clock     100.0 MHz     10.000        derived (from mcu|PIN_CLK_X1)     Inferred_clkgroup_0     4    
+=========================================================================================================================================================
 
 
 
 Clock Load Summary
 ***********************
 
-                   Clock     Source               Clock Pin                                                      Non-clock Pin                                                  Non-clock Pin                                              
-Clock              Load      Pin                  Seq Example                                                    Seq Example                                                    Comb Example                                               
--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-System             0         -                    -                                                              -                                                              -                                                          
-                                                                                                                                                                                                                                           
-mcu|PIN_CLK_X1     304       PIN_CLK_X1(port)     mcuResourcesInst.interruptMaskRegisterInst.INTS_REG[7:1].C     -                                                              coreInst.busControllerInst.un1_CLK.I[0](inv)               
-                                                                                                                                                                                                                                           
-mcu|PIN_RESETN     24        PIN_RESETN(port)     boardInst.DIN[0].C                                             mcuResourcesInst.interruptMaskRegisterInst.MASK_REG[7:0].E     mcuResourcesInst.interruptMaskRegisterInst.DOUT18.I[0](inv)
-===========================================================================================================================================================================================================================================
+                                                  Clock     Source                                                      Clock Pin                                                      Non-clock Pin                                   Non-clock Pin                                   
+Clock                                             Load      Pin                                                         Seq Example                                                    Seq Example                                     Comb Example                                    
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+mcu|PIN_CLK_X1                                    304       PIN_CLK_X1(port)                                            mcuResourcesInst.interruptMaskRegisterInst.INTS_REG[7:1].C     -                                               coreInst.busControllerInst.un1_CLK.I[0](inv)    
+instructionPhaseDecoder|EXECUTE_derived_clock     4         coreInst.instructionPhaseDecoderInst.EXECUTE.Q[0](dffe)     coreInst.registerSequencerInst.REGA_EN.C                       coreInst.opxMultiplexerInst.PC_BASEX[1:0].E     coreInst.opxMultiplexerInst.un1_EXECUTE.I[0](or)
+=======================================================================================================================================================================================================================================================================================
 
-@W: MT529 :"c:\users\duncan\git\forthcpu\devboard\source\devboard.v":111:0:111:5|Found inferred clock mcu|PIN_CLK_X1 which controls 304 sequential elements including boardInst.BPIN_LED[7:0]. This clock has no specified timing constraint which may prevent conversion of gated or generated clocks and may adversely impact design performance. 
-@W: MT529 :"c:\users\duncan\git\forthcpu\devboard\source\devboard.v":84:1:84:2|Found inferred clock mcu|PIN_RESETN which controls 24 sequential elements including boardInst.DIN_GPIO[7]. This clock has no specified timing constraint which may prevent conversion of gated or generated clocks and may adversely impact design performance. 
+@W: MT529 :"c:\users\duncan\git\forthcpu\devboard\source\devboard.v":113:0:113:5|Found inferred clock mcu|PIN_CLK_X1 which controls 304 sequential elements including boardInst.BPIN_LED[7:0]. This clock has no specified timing constraint which may prevent conversion of gated or generated clocks and may adversely impact design performance. 
 
 ICG Latch Removal Summary:
 Number of ICG latches removed: 0
@@ -132,16 +124,20 @@ For details review file gcc_ICG_report.rpt
 
 #### START OF PREMAP CLOCK OPTIMIZATION REPORT #####[
 
-2 non-gated/non-generated clock tree(s) driving 328 clock pin(s) of sequential element(s)
-0 gated/generated clock tree(s) driving 0 clock pin(s) of sequential element(s)
-0 instances converted, 0 sequential instances remain driven by gated/generated clocks
+1 non-gated/non-generated clock tree(s) driving 304 clock pin(s) of sequential element(s)
+1 gated/generated clock tree(s) driving 4 clock pin(s) of sequential element(s)
+0 instances converted, 4 sequential instances remain driven by gated/generated clocks
 
 =============================== Non-Gated/Non-Generated Clocks ================================
 Clock Tree ID     Driving Element     Drive Element Type     Fanout     Sample Instance        
 -----------------------------------------------------------------------------------------------
 @KP:ckid0_0       PIN_CLK_X1          port                   304        boardInst.BPIN_LED[7:0]
-@KP:ckid0_1       PIN_RESETN          port                   24         boardInst.DIN_GPIO[7]  
 ===============================================================================================
+============================================================================================= Gated/Generated Clocks ==============================================================================================
+Clock Tree ID     Driving Element                                       Drive Element Type     Unconverted Fanout     Sample Instance                                    Explanation                               
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+@KP:ckid0_1       coreInst.instructionPhaseDecoderInst.EXECUTE.Q[0]     dffe                   4                      coreInst.registerSequencerInst.REGA_BYTE_EN[1]     Derived clock on input (not legal for GCC)
+===================================================================================================================================================================================================================
 
 
 ##### END OF CLOCK OPTIMIZATION REPORT ######
@@ -152,16 +148,16 @@ Finished Pre Mapping Phase.
 Starting constraint checker (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 179MB peak: 179MB)
 
 
-Finished constraint checker preprocessing (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 179MB peak: 180MB)
+Finished constraint checker preprocessing (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 179MB peak: 179MB)
 
 
 Finished constraint checker (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:02s; Memory used current: 180MB peak: 180MB)
 
 Pre-mapping successful!
 
-At Mapper Exit (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:02s; Memory used current: 96MB peak: 180MB)
+At Mapper Exit (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:02s; Memory used current: 93MB peak: 180MB)
 
 Process took 0h:00m:02s realtime, 0h:00m:02s cputime
-# Fri Nov 10 15:25:07 2023
+# Sun Nov 12 18:10:03 2023
 
 ###########################################################]

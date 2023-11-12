@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<BaliProject version="3.2" title="ForthCPU" device="LCMXO3L-6900C-5BG256C" default_implementation="mcuTestbench">
+<BaliProject version="3.2" title="ForthCPU" device="LCMXO3L-6900C-5BG256C" default_implementation="impl1">
     <Options/>
     <Implementation title="RAM" dir="RAM" description="RAM" synthesis="synplify" default_strategy="Area">
-        <Options def_top="RAM"/>
+        <Options def_top="loadStoreGroupDecoderTests"/>
         <Source name="RAM/source/RAM.ipx" type="IPX_Module" type_short="IPX">
-            <Options top_module="RAM"/>
+            <Options/>
         </Source>
         <Source name="RAM/source/RAM.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
+        <Source name="RAM/test/ramTests.v" type="Verilog" type_short="Verilog">
+            <Options top_module="loadStoreGroupDecoderTests"/>
+        </Source>
         <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">
+            <Options/>
+        </Source>
+        <Source name="RAM/test/ramTestbench/ramTestbench.spf" type="Simulation Project File" type_short="SPF">
             <Options/>
         </Source>
     </Implementation>
@@ -131,6 +137,9 @@
         </Source>
         <Source name="aluB/test/fullALUTests.v" type="Verilog" type_short="Verilog">
             <Options top_module="fullALUTests"/>
+        </Source>
+        <Source name="aluB/source/ccRegisters.v" type="Verilog" type_short="Verilog">
+            <Options/>
         </Source>
         <Source name="aluB/test/aluBMuxTests/aluBMuxTests.spf" type="Simulation Project File" type_short="SPF">
             <Options/>
@@ -384,6 +393,12 @@
         <Source name="impl1/test/blinkTest.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
+        <Source name="aluB/source/ccRegisters.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="registerSequencer/source/registerSequencer.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
         <Source name="../../Desktop/MachXO3L_Starter_Kit/project/impl1/impl1.xcf" type="Programming Project File" type_short="Programming">
             <Options/>
         </Source>
@@ -515,7 +530,7 @@
         </Source>
     </Implementation>
     <Implementation title="mcuTestbench" dir="mcuTestbench" description="mcuTestbench" synthesis="synplify" default_strategy="Area">
-        <Options def_top="registerFileTestROM"/>
+        <Options def_top="registerFileTests"/>
         <Source name="constants.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
@@ -604,9 +619,15 @@
             <Options/>
         </Source>
         <Source name="mcuTestbench/source/registerFileTestROM.v" type="Verilog" type_short="Verilog">
-            <Options top_module="registerFileTestROM"/>
+            <Options/>
         </Source>
         <Source name="mcuTestbench/source/registerFileTestROM.ipx" type="IPX_Module" type_short="IPX">
+            <Options/>
+        </Source>
+        <Source name="aluB/source/ccRegisters.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="registerSequencer/source/registerSequencer.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
         <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">
@@ -735,9 +756,6 @@
         <Source name="generalGroupDecoder/source/generalGroupDecoder.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
-        <Source name="core_tf.v" type="Verilog" type_short="Verilog" syn_sim="SimOnly">
-            <Options/>
-        </Source>
         <Source name="processorCore/test/processorCoreInstructionTests.v" type="Verilog" type_short="Verilog">
             <Options top_module="processorCoreInstructionTests"/>
         </Source>
@@ -746,6 +764,12 @@
         </Source>
         <Source name="processorCore/test/processorCoreInterruptTests.v" type="Verilog" type_short="Verilog">
             <Options top_module="processorCoreInterruptTests"/>
+        </Source>
+        <Source name="registerSequencer/source/registerSequencer.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="aluB/source/ccRegisters.v" type="Verilog" type_short="Verilog">
+            <Options/>
         </Source>
         <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">
             <Options/>
@@ -883,6 +907,30 @@
             <Options/>
         </Source>
         <Source name="registerFileB/test/registerFileTests/registerFileTests.spf" type="Simulation Project File" type_short="SPF">
+            <Options/>
+        </Source>
+    </Implementation>
+    <Implementation title="registerSequencer" dir="registerSequencer" description="registerSequencer" synthesis="synplify" default_strategy="Area">
+        <Options def_top="registerSequencerTests"/>
+        <Source name="loadStoreGroupDecoder/source/loadStoreGroupDecoder.v" type="Verilog" type_short="Verilog">
+            <Options top_module="loadStoreGroupDecoder"/>
+        </Source>
+        <Source name="registerSequencer/source/registerSequencer.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="constants.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="registerSequencer/test/registerSequencerTests.v" type="Verilog" type_short="Verilog">
+            <Options top_module="registerSequencerTests"/>
+        </Source>
+        <Source name="instructionPhaseDecoder/source/instructionPhaseDecoder.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">
+            <Options/>
+        </Source>
+        <Source name="registerSequencer/test/registerSequencerTestbench/registerSequencerTestbench.spf" type="Simulation Project File" type_short="SPF">
             <Options/>
         </Source>
     </Implementation>

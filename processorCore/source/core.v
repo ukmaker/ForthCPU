@@ -36,19 +36,19 @@ wire [2:0]  ALUB_SRCX;
 wire [3:0]  ARGA_X;
 wire [3:0]  ARGB_X;
 wire         CCL_LD;
+wire         CCL_ENRX;
+wire         CCL_EN0X;
+wire         CCL_EN1X;
+wire [1:0]  CC_REGX;
 wire         CC_ZERO;
 wire         CC_CARRY;
 wire         CC_PARITY;
 wire         CC_SIGN;
-wire         CC_APPLYX;
-wire         CC_INVERTX;
-wire [1:0]  CC_SELECTX;
 wire [1:0]  DATA_BUSX;
 wire         DIX;
 wire         EIX;
 wire [15:0] HERE;
 wire [15:0] INSTRUCTION;
-wire [1:0]  LDSINCF;
 wire [15:0] PC_A;
 wire [15:0] PC_A_NEXT;
 wire [1:0]  PC_BASEX;
@@ -88,7 +88,6 @@ wire [2:0]  LDS_ALUB_SRCX;
 wire [3:0]  LDS_ALU_OPX;
 wire         LDS_BYTEX;
 wire [1:0]  LDS_DATA_BUSX;
-wire [1:0]  LDS_PC_BASEX;
 wire [1:0]  LDS_PC_OFFSETX;
 wire         LDS_RDX;
 wire [2:0]  LDS_REG_SEQX;
@@ -145,6 +144,10 @@ fullALU fullALUInst(
 	.B5(INSTRUCTION[13]),
 	
 	.CCL_LD(CCL_LD),
+	.CCL_ENRX(CCL_ENRX),
+	.CCL_EN0X(CCL_EN0X),
+	.CCL_EN1X(CCL_EN1X),
+	.CC_REGX(CC_REGX),
 	.ALU_R(ALU_R),
 	.CC_ZERO(CC_ZERO),
 	.CC_SIGN(CC_SIGN),
@@ -239,7 +242,11 @@ interruptStateMachine interruptStateMachineInst(
 	.INT1(INT1),
 	.PC_NEXTX(PC_NEXTX),
 	.PC_LD_INT0(PC_LD_INT0X),
-	.PC_LD_INT1(PC_LD_INT1X)
+	.PC_LD_INT1(PC_LD_INT1X),
+	.CCL_ENRX(CCL_ENRX),
+	.CCL_EN0X(CCL_EN0X),
+	.CCL_EN1X(CCL_EN1X),
+	.CC_REGX(CC_REGX)
 );
 
 /***************************************
@@ -248,12 +255,12 @@ interruptStateMachine interruptStateMachineInst(
 aluGroupDecoder aluGroupDecoderInst(
 	.CLK(CLK),
 	.RESET(RESET),
-	.INSTRUCTION(INSTRUCTION),
+	.INSTRUCTION(INSTRUCTION[13:0]),
 	.FETCH(FETCH),
 	.DECODE(DECODE),
 	.EXECUTE(EXECUTE),
 	.COMMIT(COMMIT),
-	.REG_SEQX(REG_SEQX),
+	.REG_SEQX(ALU_REG_SEQX),
 	.REGA_ADDRX(ALU_REGA_ADDRX),
 	.REGB_ADDRX(ALU_REGB_ADDRX),
 	.ALU_OPX(ALU_ALU_OPX),
@@ -318,9 +325,7 @@ jumpGroupDecoder jumpGroupDecoderInst(
 	.REGA_DINX(JMP_REGA_DINX),
 	.REGA_ADDRX(JMP_REGA_ADDRX),
 	.REGB_ADDRX(JMP_REGB_ADDRX),
-	.REGA_EN(JMP_REGA_EN),
-	.REGB_EN(JMP_REGB_EN),
-	.REGA_WEN(JMP_REGA_WEN),
+	.REG_SEQX(JMP_REG_SEQX),
 	.ALUB_SRCX(JMP_ALUB_SRCX)
 );
 
@@ -419,7 +424,7 @@ registerSequencer registerSequencerInst(
 	
 	.REG_SEQX(REG_SEQX),
 	.BYTEX(BYTEX),
-	.A0(A0),
+	.A0(ADDR_BUF[0]),
 	.REGA_BYTE_EN(REGA_BYTE_ENX),
 	.REGA_EN(REGA_EN),
 	.REGA_WEN(REGA_WEN),

@@ -23,7 +23,7 @@ module interruptMaskRegisterTests;
 	interruptMaskRegister testInst(
 		.CLK(CLK),
 		.RESET(RESET),
-		.DIN(DIN),
+		.DIN(DIN[7:0]),
 		.RD(RD),
 		.WR(WR),
 		.ADDR(ADDR),
