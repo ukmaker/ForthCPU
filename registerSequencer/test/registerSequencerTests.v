@@ -15,7 +15,6 @@ module registerSequencerTests;
 	reg [2:0] REG_SEQX;
 	reg BYTEX;
 	reg A0;
-	wire [1:0] REGA_BYTE_EN;
 	wire REGA_EN;
 	wire REGA_WEN;
 	wire REGB_EN;
@@ -36,7 +35,6 @@ registerSequencer testInst(
 	.REG_SEQX(REG_SEQX),
 	.BYTEX(BYTEX),
 	.A0(A0),
-	.REGA_BYTE_EN(REGA_BYTE_EN),
 	.REGA_EN(REGA_EN),
 	.REGA_WEN(REGA_WEN),
 	.REGB_EN(REGB_EN),
@@ -80,7 +78,6 @@ initial begin
 	// Fetch cycle
 	`mark(1)
 	`TICKTOCK;
-	`assert("REGA_BYTE_EN", `REG_BYTE_ENX_NONE, REGA_BYTE_EN)
 	`assert("REGA_EN",      0, REGA_EN)
 	`assert("REGA_WEN",     0, REGA_WEN)
 	`assert("REGB_EN",      0, REGB_EN)
@@ -88,7 +85,6 @@ initial begin
 	// Decode
 	`mark(2)
 	`TICKTOCK;
-	`assert("REGA_BYTE_EN", `REG_BYTE_ENX_NONE, REGA_BYTE_EN)
 	`assert("REGA_EN",      0, REGA_EN)
 	`assert("REGA_WEN",     0, REGA_WEN)
 	`assert("REGB_EN",      0, REGB_EN)
@@ -96,7 +92,6 @@ initial begin
 	//Execute
 	`mark(3)
 	`TICKTOCK;
-	`assert("REGA_BYTE_EN", `REG_BYTE_ENX_NONE, REGA_BYTE_EN)
 	`assert("REGA_EN",      0, REGA_EN)
 	`assert("REGA_WEN",     0, REGA_WEN)
 	`assert("REGB_EN",      0, REGB_EN)
@@ -104,7 +99,6 @@ initial begin
 	// Commit
 	`mark(4)
 	`TICKTOCK;
-	`assert("REGA_BYTE_EN", `REG_BYTE_ENX_NONE, REGA_BYTE_EN)
 	`assert("REGA_EN",      0, REGA_EN)
 	`assert("REGA_WEN",     0, REGA_WEN)
 	`assert("REGB_EN",      0, REGB_EN)
@@ -116,7 +110,6 @@ initial begin
 	// Fetch cycle
 	`mark(5)
 	`TICKTOCK;
-	`assert("REGA_BYTE_EN", `REG_BYTE_ENX_NONE, REGA_BYTE_EN)
 	`assert("REGA_EN",      0, REGA_EN)
 	`assert("REGA_WEN",     0, REGA_WEN)
 	`assert("REGB_EN",      0, REGB_EN)
@@ -124,7 +117,6 @@ initial begin
 	// Decode
 	`mark(6)
 	`TICKTOCK;
-	`assert("REGA_BYTE_EN", `REG_BYTE_ENX_BOTH, REGA_BYTE_EN)
 	`assert("REGA_EN",      1, REGA_EN)
 	`assert("REGA_WEN",     0, REGA_WEN)
 	`assert("REGB_EN",      1, REGB_EN)
@@ -132,7 +124,6 @@ initial begin
 	//Execute
 	`mark(7)
 	`TICKTOCK;
-	`assert("REGA_BYTE_EN", `REG_BYTE_ENX_BOTH, REGA_BYTE_EN)
 	`assert("REGA_EN",      1, REGA_EN)
 	`assert("REGA_WEN",     0, REGA_WEN)
 	`assert("REGB_EN",      1, REGB_EN)
@@ -140,7 +131,6 @@ initial begin
 	// Commit
 	`mark(8)
 	`TICKTOCK;
-	`assert("REGA_BYTE_EN", `REG_BYTE_ENX_BOTH, REGA_BYTE_EN)
 	`assert("REGA_EN",      1, REGA_EN)
 	`assert("REGA_WEN",     0, REGA_WEN)
 	`assert("REGB_EN",      1, REGB_EN)
@@ -152,7 +142,6 @@ initial begin
 	// Fetch cycle
 	`mark(9)
 	`TICKTOCK;
-	`assert("REGA_BYTE_EN", `REG_BYTE_ENX_NONE, REGA_BYTE_EN)
 	`assert("REGA_EN",      0, REGA_EN)
 	`assert("REGA_WEN",     0, REGA_WEN)
 	`assert("REGB_EN",      0, REGB_EN)
@@ -160,7 +149,6 @@ initial begin
 	// Decode
 	`mark(10)
 	`TICKTOCK;
-	`assert("REGA_BYTE_EN", `REG_BYTE_ENX_BOTH, REGA_BYTE_EN)
 	`assert("REGA_EN",      1, REGA_EN)
 	`assert("REGA_WEN",     0, REGA_WEN)
 	`assert("REGB_EN",      1, REGB_EN)
@@ -168,7 +156,6 @@ initial begin
 	//Execute
 	`mark(11)
 	`TICKTOCK;
-	`assert("REGA_BYTE_EN", `REG_BYTE_ENX_BOTH, REGA_BYTE_EN)
 	`assert("REGA_EN",      1, REGA_EN)
 	`assert("REGA_WEN",     0, REGA_WEN)
 	`assert("REGB_EN",      1, REGB_EN)
@@ -176,7 +163,6 @@ initial begin
 	// Commit
 	`mark(12)
 	`TICKTOCK;
-	`assert("REGA_BYTE_EN", `REG_BYTE_ENX_BOTH, REGA_BYTE_EN)
 	`assert("REGA_EN",      1, REGA_EN)
 	`assert("REGA_WEN",     0, REGA_WEN)
 	`assert("REGB_EN",      1, REGB_EN)
@@ -189,7 +175,6 @@ initial begin
 	// Fetch cycle
 	`mark(13)
 	`TICKTOCK;
-	`assert("REGA_BYTE_EN", `REG_BYTE_ENX_NONE, REGA_BYTE_EN)
 	`assert("REGA_EN",      0, REGA_EN)
 	`assert("REGA_WEN",     0, REGA_WEN)
 	`assert("REGB_EN",      0, REGB_EN)
@@ -197,7 +182,6 @@ initial begin
 	// Decode
 	`mark(14)
 	`TICKTOCK;
-	`assert("REGA_BYTE_EN", `REG_BYTE_ENX_BOTH, REGA_BYTE_EN)
 	`assert("REGA_EN",      1, REGA_EN)
 	`assert("REGA_WEN",     0, REGA_WEN)
 	`assert("REGB_EN",      1, REGB_EN)
@@ -205,7 +189,6 @@ initial begin
 	//Execute
 	`mark(15)
 	`TICKTOCK;
-	`assert("REGA_BYTE_EN", `REG_BYTE_ENX_BOTH, REGA_BYTE_EN)
 	`assert("REGA_EN",      1, REGA_EN)
 	`assert("REGA_WEN",     0, REGA_WEN)
 	`assert("REGB_EN",      1, REGB_EN)
@@ -213,7 +196,6 @@ initial begin
 	// Commit
 	`mark(16)
 	`TICKTOCK;
-	`assert("REGA_BYTE_EN", `REG_BYTE_ENX_BOTH, REGA_BYTE_EN)
 	`assert("REGA_EN",      1, REGA_EN)
 	`assert("REGA_WEN",     1, REGA_WEN)
 	`assert("REGB_EN",      1, REGB_EN)
@@ -225,7 +207,6 @@ initial begin
 	// Fetch cycle
 	`mark(17)
 	`TICKTOCK;
-	`assert("REGA_BYTE_EN", `REG_BYTE_ENX_NONE, REGA_BYTE_EN)
 	`assert("REGA_EN",      0, REGA_EN)
 	`assert("REGA_WEN",     0, REGA_WEN)
 	`assert("REGB_EN",      0, REGB_EN)
@@ -233,7 +214,6 @@ initial begin
 	// Decode
 	`mark(18)
 	`TICKTOCK;
-	`assert("REGA_BYTE_EN", `REG_BYTE_ENX_LOW, REGA_BYTE_EN)
 	`assert("REGA_EN",      1, REGA_EN)
 	`assert("REGA_WEN",     0, REGA_WEN)
 	`assert("REGB_EN",      1, REGB_EN)
@@ -241,7 +221,6 @@ initial begin
 	//Execute
 	`mark(19)
 	`TICKTOCK;
-	`assert("REGA_BYTE_EN", `REG_BYTE_ENX_LOW, REGA_BYTE_EN)
 	`assert("REGA_EN",      1, REGA_EN)
 	`assert("REGA_WEN",     0, REGA_WEN)
 	`assert("REGB_EN",      1, REGB_EN)
@@ -249,7 +228,6 @@ initial begin
 	// Commit
 	`mark(20)
 	`TICKTOCK;
-	`assert("REGA_BYTE_EN", `REG_BYTE_ENX_LOW, REGA_BYTE_EN)
 	`assert("REGA_EN",      1, REGA_EN)
 	`assert("REGA_WEN",     1, REGA_WEN)
 	`assert("REGB_EN",      1, REGB_EN)
@@ -262,7 +240,6 @@ initial begin
 	// Fetch cycle
 	`mark(21)
 	`TICKTOCK;
-	`assert("REGA_BYTE_EN", `REG_BYTE_ENX_NONE, REGA_BYTE_EN)
 	`assert("REGA_EN",      0, REGA_EN)
 	`assert("REGA_WEN",     0, REGA_WEN)
 	`assert("REGB_EN",      0, REGB_EN)
@@ -270,7 +247,6 @@ initial begin
 	// Decode
 	`mark(22)
 	`TICKTOCK;
-	`assert("REGA_BYTE_EN", `REG_BYTE_ENX_HIGH, REGA_BYTE_EN)
 	`assert("REGA_EN",      1, REGA_EN)
 	`assert("REGA_WEN",     0, REGA_WEN)
 	`assert("REGB_EN",      1, REGB_EN)
@@ -278,7 +254,6 @@ initial begin
 	//Execute
 	`mark(23)
 	`TICKTOCK;
-	`assert("REGA_BYTE_EN", `REG_BYTE_ENX_HIGH, REGA_BYTE_EN)
 	`assert("REGA_EN",      1, REGA_EN)
 	`assert("REGA_WEN",     0, REGA_WEN)
 	`assert("REGB_EN",      1, REGB_EN)
@@ -286,7 +261,6 @@ initial begin
 	// Commit
 	`mark(24)
 	`TICKTOCK;
-	`assert("REGA_BYTE_EN", `REG_BYTE_ENX_HIGH, REGA_BYTE_EN)
 	`assert("REGA_EN",      1, REGA_EN)
 	`assert("REGA_WEN",     1, REGA_WEN)
 	`assert("REGB_EN",      1, REGB_EN)
@@ -299,7 +273,6 @@ initial begin
 	// Fetch cycle
 	`mark(25)
 	`TICKTOCK;
-	`assert("REGA_BYTE_EN", `REG_BYTE_ENX_NONE, REGA_BYTE_EN)
 	`assert("REGA_EN",      0, REGA_EN)
 	`assert("REGA_WEN",     0, REGA_WEN)
 	`assert("REGB_EN",      0, REGB_EN)
@@ -307,7 +280,6 @@ initial begin
 	// Decode
 	`mark(26)
 	`TICKTOCK;
-	`assert("REGA_BYTE_EN", `REG_BYTE_ENX_BOTH, REGA_BYTE_EN)
 	`assert("REGA_EN",      1, REGA_EN)
 	`assert("REGA_WEN",     0, REGA_WEN)
 	`assert("REGB_EN",      1, REGB_EN)
@@ -315,7 +287,6 @@ initial begin
 	//Execute
 	`mark(27)
 	`TICKTOCK;
-	`assert("REGA_BYTE_EN", `REG_BYTE_ENX_BOTH, REGA_BYTE_EN)
 	`assert("REGA_EN",      1, REGA_EN)
 	`assert("REGA_WEN",     0, REGA_WEN)
 	`assert("REGB_EN",      1, REGB_EN)
@@ -323,7 +294,6 @@ initial begin
 	// Commit
 	`mark(28)
 	`TICKTOCK;
-	`assert("REGA_BYTE_EN", `REG_BYTE_ENX_BOTH, REGA_BYTE_EN)
 	`assert("REGA_EN",      1, REGA_EN)
 	`assert("REGA_WEN",     1, REGA_WEN)
 	`assert("REGB_EN",      1, REGB_EN)
@@ -336,7 +306,6 @@ initial begin
 	// Fetch cycle
 	`mark(29)
 	`TICKTOCK;
-	`assert("REGA_BYTE_EN", `REG_BYTE_ENX_NONE, REGA_BYTE_EN)
 	`assert("REGA_EN",      0, REGA_EN)
 	`assert("REGA_WEN",     0, REGA_WEN)
 	`assert("REGB_EN",      0, REGB_EN)
@@ -344,7 +313,6 @@ initial begin
 	// Decode
 	`mark(30)
 	`TICKTOCK;
-	`assert("REGA_BYTE_EN", `REG_BYTE_ENX_LOW, REGA_BYTE_EN)
 	`assert("REGA_EN",      1, REGA_EN)
 	`assert("REGA_WEN",     0, REGA_WEN)
 	`assert("REGB_EN",      1, REGB_EN)
@@ -352,7 +320,6 @@ initial begin
 	//Execute
 	`mark(31)
 	`TICKTOCK;
-	`assert("REGA_BYTE_EN", `REG_BYTE_ENX_LOW, REGA_BYTE_EN)
 	`assert("REGA_EN",      1, REGA_EN)
 	`assert("REGA_WEN",     0, REGA_WEN)
 	`assert("REGB_EN",      1, REGB_EN)
@@ -360,7 +327,6 @@ initial begin
 	// Commit
 	`mark(32)
 	`TICKTOCK;
-	`assert("REGA_BYTE_EN", `REG_BYTE_ENX_LOW, REGA_BYTE_EN)
 	`assert("REGA_EN",      1, REGA_EN)
 	`assert("REGA_WEN",     1, REGA_WEN)
 	`assert("REGB_EN",      1, REGB_EN)
@@ -373,7 +339,6 @@ initial begin
 	// Fetch cycle
 	`mark(33)
 	`TICKTOCK;
-	`assert("REGA_BYTE_EN", `REG_BYTE_ENX_NONE, REGA_BYTE_EN)
 	`assert("REGA_EN",      0, REGA_EN)
 	`assert("REGA_WEN",     0, REGA_WEN)
 	`assert("REGB_EN",      0, REGB_EN)
@@ -381,7 +346,6 @@ initial begin
 	// Decode
 	`mark(34)
 	`TICKTOCK;
-	`assert("REGA_BYTE_EN", `REG_BYTE_ENX_HIGH, REGA_BYTE_EN)
 	`assert("REGA_EN",      1, REGA_EN)
 	`assert("REGA_WEN",     0, REGA_WEN)
 	`assert("REGB_EN",      1, REGB_EN)
@@ -389,7 +353,6 @@ initial begin
 	//Execute
 	`mark(35)
 	`TICKTOCK;
-	`assert("REGA_BYTE_EN", `REG_BYTE_ENX_HIGH, REGA_BYTE_EN)
 	`assert("REGA_EN",      1, REGA_EN)
 	`assert("REGA_WEN",     0, REGA_WEN)
 	`assert("REGB_EN",      1, REGB_EN)
@@ -397,7 +360,6 @@ initial begin
 	// Commit
 	`mark(36)
 	`TICKTOCK;
-	`assert("REGA_BYTE_EN", `REG_BYTE_ENX_HIGH, REGA_BYTE_EN)
 	`assert("REGA_EN",      1, REGA_EN)
 	`assert("REGA_WEN",     1, REGA_WEN)
 	`assert("REGB_EN",      1, REGB_EN)
@@ -411,7 +373,6 @@ initial begin
 	// Fetch cycle
 	`mark(37)
 	`TICKTOCK;
-	`assert("REGA_BYTE_EN", `REG_BYTE_ENX_NONE, REGA_BYTE_EN)
 	`assert("REGA_EN",      0, REGA_EN)
 	`assert("REGA_WEN",     0, REGA_WEN)
 	`assert("REGB_EN",      0, REGB_EN)
@@ -419,7 +380,6 @@ initial begin
 	// Decode
 	`mark(38)
 	`TICKTOCK;
-	`assert("REGA_BYTE_EN", `REG_BYTE_ENX_BOTH, REGA_BYTE_EN)
 	`assert("REGA_EN",      1, REGA_EN)
 	`assert("REGA_WEN",     0, REGA_WEN)
 	`assert("REGB_EN",      1, REGB_EN)
@@ -427,7 +387,6 @@ initial begin
 	//Execute
 	`mark(39)
 	`TICKTOCK;
-	`assert("REGA_BYTE_EN", `REG_BYTE_ENX_BOTH, REGA_BYTE_EN)
 	`assert("REGA_EN",      1, REGA_EN)
 	`assert("REGA_WEN",     0, REGA_WEN)
 	`assert("REGB_EN",      1, REGB_EN)
@@ -435,7 +394,6 @@ initial begin
 	// Commit
 	`mark(40)
 	`TICKTOCK;
-	`assert("REGA_BYTE_EN", `REG_BYTE_ENX_BOTH, REGA_BYTE_EN)
 	`assert("REGA_EN",      1, REGA_EN)
 	`assert("REGA_WEN",     0, REGA_WEN)
 	`assert("REGB_EN",      1, REGB_EN)
@@ -450,7 +408,6 @@ initial begin
 	// Fetch cycle
 	`mark(41)
 	`TICKTOCK;
-	`assert("REGA_BYTE_EN", `REG_BYTE_ENX_NONE, REGA_BYTE_EN)
 	`assert("REGA_EN",      0, REGA_EN)
 	`assert("REGA_WEN",     0, REGA_WEN)
 	`assert("REGB_EN",      0, REGB_EN)
@@ -458,7 +415,6 @@ initial begin
 	// Decode
 	`mark(42)
 	`TICKTOCK;
-	`assert("REGA_BYTE_EN", `REG_BYTE_ENX_BOTH, REGA_BYTE_EN)
 	`assert("REGA_EN",      1, REGA_EN)
 	`assert("REGA_WEN",     0, REGA_WEN)
 	`assert("REGB_EN",      0, REGB_EN)
@@ -466,7 +422,6 @@ initial begin
 	//Execute
 	`mark(43)
 	`TICKTOCK;
-	`assert("REGA_BYTE_EN", `REG_BYTE_ENX_BOTH, REGA_BYTE_EN)
 	`assert("REGA_EN",      1, REGA_EN)
 	`assert("REGA_WEN",     0, REGA_WEN)
 	`assert("REGB_EN",      0, REGB_EN)
@@ -474,7 +429,6 @@ initial begin
 	// Commit
 	`mark(44)
 	`TICKTOCK;
-	`assert("REGA_BYTE_EN", `REG_BYTE_ENX_BOTH, REGA_BYTE_EN)
 	`assert("REGA_EN",      1, REGA_EN)
 	`assert("REGA_WEN",     1, REGA_WEN)
 	`assert("REGB_EN",      0, REGB_EN)

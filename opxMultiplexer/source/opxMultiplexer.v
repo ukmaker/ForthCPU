@@ -20,7 +20,7 @@ module opxMultiplexer(
 	input [2:0]  ALU_ALUB_SRCX,
 	input [1:0]  ALU_REGA_ADDRX,
 	input [2:0]  ALU_REGB_ADDRX,
-	input [2:0]  ALU_REG_SEQX,
+	input [3:0]  ALU_REG_SEQX,
 
 	input [1:0]  LDS_ADDR_BUSX,
 	input [3:0]  LDS_ALU_OPX,
@@ -30,7 +30,7 @@ module opxMultiplexer(
 	input [1:0]  LDS_DATA_BUSX,	
 	input [1:0]  LDS_PC_OFFSETX,
 	input         LDS_RDX,
-	input [2:0]  LDS_REG_SEQX,
+	input [3:0]  LDS_REG_SEQX,
 	input [1:0]  LDS_REGA_ADDRX,
 	input [1:0]  LDS_REGA_DINX,
 	input [2:0]  LDS_REGB_ADDRX,
@@ -41,7 +41,7 @@ module opxMultiplexer(
 	input [1:0]  JMP_PC_BASEX,
 	input [1:0]  JMP_PC_OFFSETX,
 	input         JMP_RDX,
-	input [2:0]  JMP_REG_SEQX,
+	input [3:0]  JMP_REG_SEQX,
 	input [1:0]  JMP_REGA_DINX,
 	input [1:0]  JMP_REGA_ADDRX,
 	input [2:0]  JMP_REGB_ADDRX,
@@ -62,7 +62,7 @@ module opxMultiplexer(
 	output reg	       RDX,
 	output reg [1:0]  REGA_ADDRX,
 	output reg [1:0]  REGA_DINX,
-	output reg [2:0]  REG_SEQX,
+	output reg [3:0]  REG_SEQX,
 	output reg [2:0]  REGB_ADDRX,
 	output reg	       WRX
 

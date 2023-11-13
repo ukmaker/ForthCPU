@@ -2,7 +2,7 @@
 `include "C:/Users/Duncan/git/ForthCPU/constants.v"
 `include "C:/Users/Duncan/git/ForthCPU/testSetup.v"
 
-module loadStoreGroupDecoderTests;
+module ramTests;
 	
 	
 	reg CLK;

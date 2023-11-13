@@ -58,7 +58,7 @@ module jumpGroupDecoder(
 	output reg[1:0] REGA_DINX,
 	output reg[1:0] REGA_ADDRX,
 	output reg[2:0] REGB_ADDRX,
-	output reg [2:0] REG_SEQX,
+	output reg [3:0] REG_SEQX,
 	
 	/**
 	* ALU control

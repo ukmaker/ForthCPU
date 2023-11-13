@@ -1,6 +1,6 @@
 `timescale 1 ns / 1 ns
 `include "C:/Users/Duncan/git/ForthCPU/constants.v"
-`include "C:/Users/Duncan/git/ForthCPU/instructionTestSetup.v"
+`include "C:/Users/Duncan/git/ForthCPU/instructionTestSetup.sv"
 
 module processorCoreInstructionTests;
 	
@@ -112,6 +112,39 @@ initial begin
 	
 	INSTR = {`GROUP_LOAD_STORE,1'b0,`LDSOPF_ST,`MODE_LDS_REG_REG,`R4,`R0};	 
 	`ST_STEP(  12, 16'h001a,   INSTR, 16'hfaaf, 16'h0007, "ST R4,R0")
+	
+	// REG_SEQX_LDA_RDB
+	// MOVI RL,4040
+	`MOV(13, 16'h001c, 4'h0, 4'h1)
+	
+	// REG_SEQX_LDA_IMM
+	// MOVI R0,a ; ST R0,RL
+	// MOVI R0,5 ; ST R0,RL
+	// MOVAI aa ; ST RA,RL
+	// MOVAI 55 ; ST RA,RL
+	// MOVAS aa ; ST RA,RL
+	// MOVAS 55 ; ST RA,RL
+	//
+	// ADD   :: REG_SEQX_UPA_RDB
+	// LDI R0,4444 ; LDI R1,1111 ; ADD  R0,R1  ; ST R0,RL
+	
+	// ADDI  :: REG_SEQX_UPA_IMM
+	// LDI R0,4444 ;             ; ADDI R0,1   ; ST R0,RL
+	
+	// ADDAI :: REG_SEQX_UPA_IMM
+	// LDI RA,4444 ;             ; ADDAI aa    ; ST R0,RL
+	
+	// ADDAS :: REG_SEQX_UPA_IMM
+	// LDI RA,4444 ;             ; ADDAS aa    ; ST R0,RL
+	
+	// REG_SEQX_RDA_RDB
+	// LDI R0,0 ; LDI R1,1 ; CMP  R0,R1 ; JRI[Z] 2 ; JRI[C] 2, JRI[M],2 ; JRI[P],2
+	// REG_SEQX_RDA_IMM
+	// LDI R0,0 ;            CMPI R0,1  ; JRI[Z] 2 ; JRI[C] 2, JRI[M],2 ; JRI[P],2
+	// REG_SEQX_RDA_IMM
+	// LDI RA,0 ;            CMPAI    1 ; JRI[Z] 2 ; JRI[C] 2, JRI[M],2 ; JRI[P],2
+	// REG_SEQX_RDA_IMM
+	// LDI RA,0 ;            CMPAS 0xff ; JRI[Z] 2 ; JRI[C] 2, JRI[M],2 ; JRI[P],2
 	
 	// POP	
 	INSTR = {`GROUP_LOAD_STORE,1'b0,`LDSOPF_LD,`MODE_LDS_REG_REG_INC,`R4,`R0};	 

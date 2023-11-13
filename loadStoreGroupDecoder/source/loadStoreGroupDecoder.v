@@ -96,7 +96,7 @@ module loadStoreGroupDecoder(
 	/**
 	* Register file
 	**/
-	output reg [2:0] REG_SEQX,
+	output reg [3:0] REG_SEQX,
 	
 	/**
 	* ALU
@@ -273,7 +273,7 @@ always @(*) begin
 	if(OPF == `LDSOPF_LD || OPF == `LDSOPF_LDB) begin
 		case(MODEF) 
 			`MODE_LDS_REG_REG:      REG_SEQX = `REG_SEQX_LDA_RDB;
-			`MODE_LDS_REG_HERE:     REG_SEQX = `REG_SEQX_LDA_RDB;
+			`MODE_LDS_REG_HERE:     REG_SEQX = `REG_SEQX_LDA_IMM;
 			`MODE_LDS_REG_REG_INC:  REG_SEQX = `REG_SEQX_LDA_UPB;
 			`MODE_LDS_REG_REG_DEC:  REG_SEQX = `REG_SEQX_LDA_UPB;
 			`MODE_LDS_REG_RB:       REG_SEQX = `REG_SEQX_LDA_RDB;

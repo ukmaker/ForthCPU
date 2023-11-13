@@ -1,6 +1,6 @@
 `timescale 1 ns / 1 ns
 `include "C:/Users/Duncan/git/ForthCPU/constants.v"
-`include "C:/Users/Duncan/git/ForthCPU/instructionTestSetup.v"
+`include "C:/Users/Duncan/git/ForthCPU/instructionTestSetup.sv"
 
 module processorCoreInterruptTests;
 	

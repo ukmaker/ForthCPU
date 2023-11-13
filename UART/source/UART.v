@@ -150,6 +150,7 @@ always @(posedge CLK or posedge RESET) begin
 					START_TX <= 1;
 					TX_COMPLETE_R <= 0;
 					TXI_R <= 0;
+					$display("UART TX: %c", DIN);
 				end
 				2'b10: begin     // RX_CLK_DIV
 					RX_CLK_DIV <= DIN;

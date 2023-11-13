@@ -167,6 +167,10 @@
 	`assert("WRN0_BUF", 1, WRN0_BUF) \
 	`assert("WRN1_BUF", 1, WRN1_BUF) \
 	`TOCK;
+
+`define MOV(n, addr, a, b) \
+	INSTR = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_MOV,`MODE_ALU_REG_REG, a, b}; \
+	`ALU_STEP(  n, addr,   INSTR, $sformatf("MOV R%2x,R%2x", a, b))
 	
-	
+
 	

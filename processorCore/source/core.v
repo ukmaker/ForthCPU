@@ -57,9 +57,8 @@ wire         PC_LD_INT1X;
 wire [2:0]  PC_NEXTX;
 wire [1:0]  PC_OFFSETX;
 wire         PC_ENX;
-wire [2:0]  REG_SEQX;
+wire [3:0]  REG_SEQX;
 wire [1:0]  REGA_ADDRX;
-wire [1:0]  REGA_BYTE_ENX;
 wire [1:0]  REGA_DINX;
 wire [15:0] REGA_DOUT;
 wire         REGA_EN;
@@ -77,7 +76,7 @@ wire         RETIX;
 wire [3:0]  ALU_ALU_OPX;
 wire [2:0]  ALU_ALUA_SRCX;
 wire [2:0]  ALU_ALUB_SRCX;
-wire [2:0]  ALU_REG_SEQX;
+wire [3:0]  ALU_REG_SEQX;
 wire [1:0]  ALU_REGA_ADDRX;
 wire [2:0]  ALU_REGB_ADDRX;
 
@@ -90,7 +89,7 @@ wire         LDS_BYTEX;
 wire [1:0]  LDS_DATA_BUSX;
 wire [1:0]  LDS_PC_OFFSETX;
 wire         LDS_RDX;
-wire [2:0]  LDS_REG_SEQX;
+wire [3:0]  LDS_REG_SEQX;
 wire [1:0]  LDS_REGA_ADDRX;
 wire [1:0]  LDS_REGA_DINX;
 wire [2:0]  LDS_REGB_ADDRX;
@@ -103,7 +102,7 @@ wire         JMP_RDX;
 wire [1:0]  JMP_REGA_DINX;
 wire [1:0]  JMP_REGA_ADDRX;
 wire [2:0]  JMP_REGB_ADDRX;
-wire [2:0]  JMP_REG_SEQX;
+wire [3:0]  JMP_REG_SEQX;
 wire [2:0]  JMP_ALUB_SRCX;
 
 /**
@@ -170,7 +169,7 @@ registerFile registerFileInst(
 	.REGA_WEN(REGA_WEN),
 	.REGB_EN(REGB_EN),
 	.REGB_WEN(REGB_WEN),
-	.REGA_BYTE_EN(REGA_BYTE_ENX),
+	.REGA_BYTE_EN(2'b11),
 	.REGB_BYTE_EN(2'b11),
 	.ARGA_X(ARGA_X),
 	.ARGB_X(ARGB_X),
@@ -425,7 +424,6 @@ registerSequencer registerSequencerInst(
 	.REG_SEQX(REG_SEQX),
 	.BYTEX(BYTEX),
 	.A0(ADDR_BUF[0]),
-	.REGA_BYTE_EN(REGA_BYTE_ENX),
 	.REGA_EN(REGA_EN),
 	.REGA_WEN(REGA_WEN),
 	.REGB_EN(REGB_EN),
