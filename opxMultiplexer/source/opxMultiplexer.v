@@ -18,6 +18,7 @@ module opxMultiplexer(
 	input [3:0]  ALU_ALU_OPX,
 	input [2:0]  ALU_ALUA_SRCX,
 	input [2:0]  ALU_ALUB_SRCX,
+	input         ALU_CCL_LD,
 	input [1:0]  ALU_REGA_ADDRX,
 	input [2:0]  ALU_REGB_ADDRX,
 	input [3:0]  ALU_REG_SEQX,
@@ -56,6 +57,7 @@ module opxMultiplexer(
 	output reg [2:0]  ALUA_SRCX,
 	output reg [2:0]  ALUB_SRCX,
 	output reg	       BYTEX,
+	output reg         CCL_LD,
 	output reg [1:0]  DATA_BUSX,
 	output reg [1:0]  PC_BASEX,
 	output reg [1:0]  PC_OFFSETX,
@@ -79,6 +81,7 @@ always @(*) begin
 			ALUA_SRCX     = `ALUA_SRCX_REG_A;
 			ALUB_SRCX     = `ALUB_SRCX_REG_B;
 			BYTEX         = `BYTEX_WORD;
+			CCL_LD        = 0;
 			DATA_BUSX     = `DATA_BUSX_REGA_DOUT;
 			PC_BASEX_R    = `PC_BASEX_PC_A;
 			PC_OFFSETX_R  = `PC_OFFSETX_2;
@@ -95,6 +98,7 @@ always @(*) begin
 			ALUA_SRCX     = LDS_ALUA_SRCX;
 			ALUB_SRCX     = LDS_ALUB_SRCX;
 			BYTEX         = LDS_BYTEX;
+			CCL_LD        = 0;
 			DATA_BUSX     = LDS_DATA_BUSX;
 			PC_BASEX_R    = `PC_BASEX_PC_A;
 			PC_OFFSETX_R  = LDS_PC_OFFSETX;
@@ -111,6 +115,7 @@ always @(*) begin
 			ALUA_SRCX     = `ALUA_SRCX_REG_A;
 			ALUB_SRCX     = JMP_ALUB_SRCX;
 			BYTEX         = `BYTEX_WORD;
+			CCL_LD        = 0;
 			DATA_BUSX     = `DATA_BUSX_REGA_DOUT;
 			PC_BASEX_R    = JMP_PC_BASEX;
 			PC_OFFSETX_R  = JMP_PC_OFFSETX;
@@ -127,6 +132,7 @@ always @(*) begin
 			ALUA_SRCX     = ALU_ALUA_SRCX;
 			ALUB_SRCX     = ALU_ALUB_SRCX;
 			BYTEX         = `BYTEX_WORD;
+			CCL_LD        = ALU_CCL_LD;
 			DATA_BUSX     = `DATA_BUSX_ALU_R;
 			PC_BASEX_R    = `PC_BASEX_PC_A;
 			PC_OFFSETX_R  = `PC_OFFSETX_2;

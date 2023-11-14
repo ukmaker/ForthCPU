@@ -10,6 +10,7 @@ module fullALU(
 	
 	input CLK,
 	input RESET,
+	input FETCH,
 	
 	input [15:0] REGA_DOUT,
 	input [15:0] REGB_DOUT,
@@ -72,6 +73,7 @@ aluBMux muxB(
 ccRegisters ccRegs(
 	.CLK(CLK),
 	.RESET(RESET),
+	.FETCH(FETCH),
 	.CCL_LD(CCL_LD),
 	.CCL_ENRX(CCL_ENRX),
 	.CCL_EN0X(CCL_EN0X),

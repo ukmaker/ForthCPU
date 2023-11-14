@@ -76,6 +76,7 @@ wire         RETIX;
 wire [3:0]  ALU_ALU_OPX;
 wire [2:0]  ALU_ALUA_SRCX;
 wire [2:0]  ALU_ALUB_SRCX;
+wire         ALU_CCL_LD;
 wire [3:0]  ALU_REG_SEQX;
 wire [1:0]  ALU_REGA_ADDRX;
 wire [2:0]  ALU_REGB_ADDRX;
@@ -131,6 +132,7 @@ instructionPhaseDecoder instructionPhaseDecoderInst(
 fullALU fullALUInst(
 	.CLK(CLK),
 	.RESET(RESET),
+	.FETCH(FETCH),
 	.REGA_DOUT(REGA_DOUT),
 	.REGB_DOUT(REGB_DOUT),
 	
@@ -263,7 +265,7 @@ aluGroupDecoder aluGroupDecoderInst(
 	.REGA_ADDRX(ALU_REGA_ADDRX),
 	.REGB_ADDRX(ALU_REGB_ADDRX),
 	.ALU_OPX(ALU_ALU_OPX),
-	.CCL_LD(CCL_LD),
+	.CCL_LD(ALU_CCL_LD),
 	.ALUA_SRCX(ALU_ALUA_SRCX),
 	.ALUB_SRCX(ALU_ALUB_SRCX),
 	.ARGA_X(ARGA_X),
@@ -361,6 +363,7 @@ opxMultiplexer opxMultiplexerInst(
 	.ALU_ALU_OPX(ALU_ALU_OPX),
 	.ALU_ALUA_SRCX(ALU_ALUA_SRCX),
 	.ALU_ALUB_SRCX(ALU_ALUB_SRCX),
+	.ALU_CCL_LD(ALU_CCL_LD),
 	.ALU_REG_SEQX(ALU_REG_SEQX),
 	.ALU_REGA_ADDRX(ALU_REGA_ADDRX),
 	.ALU_REGB_ADDRX(ALU_REGB_ADDRX),
@@ -398,6 +401,7 @@ opxMultiplexer opxMultiplexerInst(
 	.ALUA_SRCX(ALUA_SRCX),
 	.ALUB_SRCX(ALUB_SRCX),
 	.BYTEX(BYTEX),
+	.CCL_LD(CCL_LD),
 	.DATA_BUSX(DATA_BUSX),
 	.PC_BASEX(PC_BASEX),
 	.PC_OFFSETX(PC_OFFSETX),	

@@ -8,6 +8,7 @@ module ccRegisters(
 	
 	input CLK,
 	input RESET,
+	input FETCH,
 	input CCL_LD,
 	input CCL_ENRX,
 	input CCL_EN0X,
@@ -40,7 +41,7 @@ always @(posedge CLK or posedge RESET) begin
 		CC_INT0_REG <= 4'b0000;
 		CC_INT1_REG <= 4'b0000;
 	end else begin
-		if(CCL_LD) begin
+		if(FETCH & CCL_LD) begin
 			if(CCL_ENRX) CC_RUN_REG  <= CCIN;
 			if(CCL_EN0X) CC_INT0_REG <= CCIN;
 			if(CCL_EN1X) CC_INT1_REG <= CCIN;

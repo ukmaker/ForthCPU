@@ -112,68 +112,63 @@ initial begin
 	
 	INSTR = {`GROUP_LOAD_STORE,1'b0,`LDSOPF_ST,`MODE_LDS_REG_REG,`R4,`R0};	 
 	`ST_STEP(  12, 16'h001a,   INSTR, 16'hfaaf, 16'h0007, "ST R4,R0")
-	
-	// REG_SEQX_LDA_RDB
-	// MOVI RL,4040
-	`MOVAS(13, 16'h001c, 8'h1)
-	`MOVAI(13, 16'h001c, 8'h1)
-	`MOVI(13, 16'h001c, 4'h0, 4'h1)
-	`MOV( 14, 16'h001c, 4'h0, 4'h1)
-	
-	`LD(15, 16'h0022, 16'h0044, 16'haaaa, 4'h0, 4'h1)
-	
-	// REG_SEQX_LDA_IMM
-	// MOVI R0,a ; ST R0,RL
-	// MOVI R0,5 ; ST R0,RL
-	// MOVAI aa ; ST RA,RL
-	// MOVAI 55 ; ST RA,RL
-	// MOVAS aa ; ST RA,RL
-	// MOVAS 55 ; ST RA,RL
-	//
-	// ADD   :: REG_SEQX_UPA_RDB
-	// LDI R0,4444 ; LDI R1,1111 ; ADD  R0,R1  ; ST R0,RL
-	
-	// ADDI  :: REG_SEQX_UPA_IMM
-	// LDI R0,4444 ;             ; ADDI R0,1   ; ST R0,RL
-	 
-	// ADDAI :: REG_SEQX_UPA_IMM
-	// LDI RA,4444 ;             ; ADDAI aa    ; ST R0,RL
-	
-	// ADDAS :: REG_SEQX_UPA_IMM
-	// LDI RA,4444 ;             ; ADDAS aa    ; ST R0,RL
-	
-	// REG_SEQX_RDA_RDB
-	// LDI R0,0 ; LDI R1,1 ; CMP  R0,R1 ; JRI[Z] 2 ; JRI[C] 2, JRI[M],2 ; JRI[P],2
-	// REG_SEQX_RDA_IMM
-	// LDI R0,0 ;            CMPI R0,1  ; JRI[Z] 2 ; JRI[C] 2, JRI[M],2 ; JRI[P],2
-	// REG_SEQX_RDA_IMM
-	// LDI RA,0 ;            CMPAI    1 ; JRI[Z] 2 ; JRI[C] 2, JRI[M],2 ; JRI[P],2
-	// REG_SEQX_RDA_IMM
-	// LDI RA,0 ;            CMPAS 0xff ; JRI[Z] 2 ; JRI[C] 2, JRI[M],2 ; JRI[P],2
-	
-	// POP	
-	INSTR = {`GROUP_LOAD_STORE,1'b0,`LDSOPF_LD,`MODE_LDS_REG_REG_INC,`R4,`R0};	 
-	`LD_STEP(  13, 16'h001c,   INSTR, 16'hfaaf, 16'h0007, "POP R4,R0")
-	`LD_STEP(  14, 16'h001e,   INSTR, 16'hfab1, 16'h0007, "POP R4,R0")
-	// POPR
-	INSTR = {`GROUP_LOAD_STORE,1'b0,`LDSOPF_LD,`MODE_LDS_REG_REG_DEC,`R4,`R0};	 
-	`LD_STEP(  15, 16'h0020,   INSTR, 16'hfab1, 16'h0007, "POPR R4,R0")
-	`LD_STEP(  16, 16'h0022,   INSTR, 16'hfaaf, 16'h0007, "POPR R4,R0")
 
-	// Setup R1 as the base address 0x1000
-	`LD_HERE_STEP(17, 16'h0024, 16'h1000, `R1)
-	// LD_B
-	INSTR = {`GROUP_LOAD_STORE,1'b0,`LDSOPF_LDB,`MODE_LDS_REG_REG,`R5,`R1};	 
-	`LD_STEP(  18, 16'h0028,   INSTR, 16'h1000, 16'h0007, "LD_B R5,R1")
-	// POP_B
-	INSTR = {`GROUP_LOAD_STORE,1'b0,`LDSOPF_LDB,`MODE_LDS_REG_REG_INC,`R6,`R1};	 
-	`LD_STEP(  19, 16'h002a,   INSTR, 16'h1000, 16'h0007, "POP_B R6,R1")
-	`LD_STEP(  20, 16'h002c,   INSTR, 16'h1001, 16'h3579, "POP_B R6,R1")
 	
-	// PUSH_B
-	INSTR = {`GROUP_LOAD_STORE,1'b0,`LDSOPF_STB,`MODE_LDS_REG_REG_DEC,`R6,`R1};	 
-	`ST_HIGH_STEP(  21, 16'h002e,   INSTR, 16'h1001, 16'h3500, "PUSH_B R6,R1")	
-	`ST_LOW_STEP(   22, 16'h0030,   INSTR, 16'h1000, 16'h0035, "PUSH_B R6,R1")	
+	// Target of jumps in RL
+	`LDI(13, 16'h001c, 16'h4040, `RL)
+	
+	// Test the various MOV options - Ra is LD
+	`MOVI(14, 16'h0020, `R0, 4'ha)
+	`ST(  15, 16'h0022, 16'h4040, 16'h000a, `R0, `RL)
+	
+	`MOVAI(16, 16'h0024, 8'haa)
+	`ST(   17, 16'h0026, 16'h4040, 16'h00aa, `RA, `RL)
+	
+	`MOVAS(18, 16'h0028, 8'hbb)
+	`ST(   19, 16'h002a, 16'h4040, 16'hffbb, `RA, `RL)
+	
+	// ADD operations - Ra is RMW
+	`LDI(  20, 16'h002c, 16'h1111, `R1)
+	`LDI(  21, 16'h0030, 16'h4444, `R0)
+	`ADD(  22, 16'h0034, `R0, `R1)
+	`ST(   23, 16'h0036, 16'h4040, 16'h5555, `R0, `RL)
+	
+	`LDI(  24, 16'h0038, 16'h4444, `R0)
+	`ADDI( 25, 16'h003c, `R0, 4'h5)
+	`ST(   26, 16'h003e, 16'h4040, 16'h4449, `R0, `RL)
+	
+	`LDI(  25, 16'h0040, 16'h4444, `RA)
+	`ADDAI(26, 16'h0044,  8'h22)
+	`ST(   27, 16'h0046, 16'h4040, 16'h4466, `RA, `RL)
+	
+	`LDI(  28, 16'h0048, 16'h4444, `RA)
+	`ADDAS(29, 16'h004c,  8'h82)
+	`ST(   30, 16'h004e, 16'h4040, 16'h43c6, `RA, `RL)
+	
+	// CMP operations - Ra is RD
+	`LDI(  31, 16'h0050, 16'h1111, `R1)
+	`LDI(  32, 16'h0054, 16'h4444, `RA)
+	`CMP(  33, 16'h0058, `RA, `R1)
+	`ST(   34, 16'h005a, 16'h4040, 16'h4444, `RA, `RL)
+	
+	`CMPI( 35, 16'h005c, `RA, 4'ha)
+	`ST(   36, 16'h005e, 16'h4040, 16'h4444, `RA, `RL)
+	
+	`CMPAI(37, 16'h0060, 8'haa)
+	`ST(   38, 16'h0062, 16'h4040, 16'h4444, `RA, `RL)
+	
+	`CMPAS(39, 16'h0064, 8'hff)
+	`ST(   40, 16'h0066, 16'h4040, 16'h4444, `RA, `RL)
+	
+	// Test flags on subtract
+	`LDI(  41, 16'h0068, 16'h1111, `RA)
+	`LDI(  42, 16'h006c, 16'h4444, `R1)
+	`SUB(  43, 16'h0070, `RA, `R1)
+	`ST(   44, 16'h0072, 16'h4040, 16'hcccd, `RA, `RL)
+	`JPI_N(45, 16'h0074, 16'h3333, `SKIPF_SKIP, `CC_SELECTX_Z)
+	`JPI_N(46, 16'h0078, 16'h3333, `SKIPF_NOT_SKIP, `CC_SELECTX_C)
+	`JPI_N(47, 16'h007c, 16'h3333, `SKIPF_NOT_SKIP, `CC_SELECTX_S)
+	`JPI_N(48, 16'h0080, 16'h3333, `SKIPF_NOT_SKIP, `CC_SELECTX_P)
 
 
 end

@@ -172,7 +172,7 @@ always @(*) begin
 			end
 			
 			`MODE_JMP_ABS_HERE: begin
-				REG_SEQX = JLF ? `REG_SEQX_LDA_RDB : `REG_SEQX_NONE;
+				REG_SEQX = JLF ? `REG_SEQX_LDA_RDB : `REG_SEQX_RDB;
 				RD_M = 1;	
 			end
 
@@ -187,7 +187,7 @@ always @(*) begin
 				ALUB_SRCX  = `ALUB_SRCX_U8H;
 				REGA_ADDRX = `REGA_ADDRX_RL;
 				REGB_ADDRX = `REGB_ADDRX_RB;
-				REG_SEQX   = JLF ? `REG_SEQX_LDA_RDB : `REG_SEQX_NONE;
+				REG_SEQX   = JLF ? `REG_SEQX_LDA_RDB : `REG_SEQX_RDB;
 				RD_M = 1;	
 			end
 		endcase
