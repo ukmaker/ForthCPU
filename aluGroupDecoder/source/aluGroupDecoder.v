@@ -98,7 +98,7 @@ begin
 	CCL_LD  = ALU_OPX != `ALU_OPX_MOV;
 	IMM     = ARGF    != `MODE_ALU_REG_REG;
 	
-	if(ALU_OPX == `ALU_OPX_CMP) begin
+	if(ALU_OPX == `ALU_OPX_CMP || ALU_OPX == `ALU_OPX_BIT) begin
 		
 		REG_SEQX = IMM ? `REG_SEQX_RDA_IMM : `REG_SEQX_RDA_RDB;
 		

@@ -13,7 +13,7 @@ Hostname: EDAWIN
 
 Implementation : impl1
 
-# Written on Sun Nov 12 18:10:03 2023
+# Written on Wed Nov 15 19:10:00 2023
 
 ##### DESIGN INFO #######################################################
 
@@ -35,12 +35,12 @@ Found 0 issues in 0 out of 0 constraints
 Clock Relationships
 *******************
 
-Starting                                          Ending                                            |     rise to rise     |     fall to fall     |     rise to fall     |     fall to rise                     
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-mcu|PIN_CLK_X1                                    mcu|PIN_CLK_X1                                    |     10.000           |     No paths         |     5.000            |     5.000                            
-mcu|PIN_CLK_X1                                    instructionPhaseDecoder|EXECUTE_derived_clock     |     10.000           |     No paths         |     5.000            |     No paths                         
-instructionPhaseDecoder|EXECUTE_derived_clock     mcu|PIN_CLK_X1                                    |     No paths         |     No paths         |     No paths         |     5.000                            
-===============================================================================================================================================================================================================
+Starting           Ending             |     rise to rise     |     fall to fall     |     rise to fall     |     fall to rise                     
+-------------------------------------------------------------------------------------------------------------------------------------------------
+System             mcu|PIN_CLK_X1     |     No paths         |     No paths         |     No paths         |     10.000                           
+mcu|PIN_CLK_X1     System             |     10.000           |     No paths         |     10.000           |     No paths                         
+mcu|PIN_CLK_X1     mcu|PIN_CLK_X1     |     10.000           |     No paths         |     5.000            |     5.000                            
+=================================================================================================================================================
  Note: 'No paths' indicates there are no paths in the design for that pair of clock edges.
        'Diff grp' indicates that paths exist but the starting clock and ending clock are in different clock groups.
 
@@ -50,6 +50,7 @@ Unconstrained Start/End Points
 
 p:COMMIT
 p:DECODE
+p:EXECUTE
 p:FETCH
 p:PIN_ADDR_BUS[0]
 p:PIN_ADDR_BUS[1]

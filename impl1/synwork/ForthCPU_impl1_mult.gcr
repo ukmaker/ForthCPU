@@ -4,12 +4,21 @@ u 104 304
 p {p:PIN_CLK_X1}{t:boardInst.BPIN_CLK_X1}{p:boardInst.BPIN_CLK_X1}{t:boardInst.BPIN_LED[7:0].C}
 e ckid0_0 {t:boardInst.BPIN_LED[7:0].C} dffre
 c ckid0_0 {p:PIN_CLK_X1} port Unsupported/too complex instance on clock path
-i coreInst.instructionPhaseDecoderInst.EXECUTE_i
+i coreInst.registerSequencerInst.un1_FETCH_1_buf
 m 0 0
-u 4 4
-n ckid0_1 {t:coreInst.registerSequencerInst.REGA_BYTE_EN[1].C} Derived clock on input (not legal for GCC)
-p {t:coreInst.instructionPhaseDecoderInst.EXECUTE.Q[0]}{t:coreInst.instructionPhaseDecoderInst.EXECUTE_derived_clock.I[0]}{t:coreInst.instructionPhaseDecoderInst.EXECUTE_derived_clock.OUT[0]}{p:coreInst.instructionPhaseDecoderInst.EXECUTE}{t:coreInst.instructionPhaseDecoderInst.EXECUTE}{t:coreInst.registerSequencerInst.EXECUTE}{p:coreInst.registerSequencerInst.EXECUTE}{t:coreInst.registerSequencerInst.REGA_BYTE_EN[1].C}
-e ckid0_1 {t:coreInst.registerSequencerInst.REGA_BYTE_EN[1].C} latr
-d ckid0_2 {t:coreInst.instructionPhaseDecoderInst.EXECUTE.Q[0]} dffe Derived clock on input (not legal for GCC)
+u 2 2
+n ckid0_1 {t:coreInst.registerSequencerInst.REGB_EN.C} Clock source is invalid for GCC
+p {t:coreInst.registerSequencerInst.un1_FETCH_1.OUT}{t:coreInst.registerSequencerInst.REGB_EN.C}
+e ckid0_1 {t:coreInst.registerSequencerInst.REGB_EN.C} latr
+d ckid0_1 {t:coreInst.registerSequencerInst.un1_FETCH_1.OUT} or Unable to find a clock in input cone
+i coreInst.instructionPhaseDecoderInst.EXECUTE
+m 0 0
+u 0 0
+i coreInst.instructionPhaseDecoderInst.COMMIT
+m 0 0
+u 0 0
+i coreInst.instructionPhaseDecoderInst.FETCH
+m 0 0
+u 0 0
 l 0 0 0 0 0 0
 r 0 0 0 0 0 0 0 0

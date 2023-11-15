@@ -92,7 +92,7 @@ always @ (*)
 					end
 					
 				`ALU_OPX_CMP: begin // CMP just a SUB, but no write-back of the result
-					RESULT = ARGA - ARGB;
+					{CARRY,RESULT} = ARGA - ARGB;
 					arithmetic = 1;
 					end
 					
