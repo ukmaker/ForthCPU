@@ -91,8 +91,11 @@ memoryMapper memoryMapperInst(
 );
 
 rom ROMInst(
-	.Address({ADDR[10:1], 1'b0}),
-	.Q(DIN_ROM)
+	.Address({ADDR[12:1], 1'b0}),
+	.Q(DIN_ROM),
+	.OutClock(!CLK),
+	.OutClockEn(1'b1),
+	.Reset(RESET)
 );
 
 RAM RAMInst(

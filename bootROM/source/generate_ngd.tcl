@@ -51,7 +51,7 @@ set Para(FPGAPath) "[file join $Para(install_dir) ispfpga bin $platformpath]"
 set Para(bin_dir) "[file join $Para(install_dir) bin $platformpath]"
 
 set Para(ModuleName) "rom"
-set Para(Module) "Distributed_ROM"
+set Para(Module) "ROM"
 set Para(libname) machxo3l
 set Para(arch_name) xo3c00a
 set Para(PartType) "LCMXO3L-6900C"

@@ -1,8 +1,11 @@
 # Reading pref.tcl
 # do {C:/Users/Duncan/git/ForthCPU/impl1/test/blinkTestbench/blinkTestbench.mdo}
 # Loading project blinkTestbench
+# Compile of mcuResources.v was successful.
+# Compile of rom.v was successful.
+# 2 compiles, 0 failed with no errors.
 # vsim -L work -L pmi_work -L ovi_machxo3l blinkTests 
-# Start time: 16:31:52 on Nov 15,2023
+# Start time: 17:16:00 on Nov 19,2023
 # //  ModelSim - Lattice FPGA Edition 2020.3 Oct 14 2020
 # //
 # //  Copyright 1991-2020 Mentor Graphics Corporation
@@ -44,42 +47,32 @@
 # Loading work.mcuResources
 # Loading work.memoryMapper
 # Loading work.rom
-# Loading ovi_machxo3l.ROM256X1A
-# Loading ovi_machxo3l.MUX81
-# Loading work.RAM
 # Loading ovi_machxo3l.VHI
+# Loading work.RAM
 # Loading ovi_machxo3l.FD1P3DX
+# Loading ovi_machxo3l.MUX81
 # Loading work.UART
 # Loading work.UART_RX
 # Loading work.UART_TX
 # Loading work.interruptMaskRegister
 # Loading ovi_machxo3l.UDFDL5E_UDP_X
 # .main_pane.wave.interior.cs.body.pw.wf
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: Duncan  Hostname: EDAWIN  ProcessID: 1412
+#           Attempting to use alternate WLF file "./wlft2j1ggk".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlft2j1ggk
 run 1ms
-# UART TX: 7
-# UART TX: 0
-# UART TX:  
-# UART TX: -
-# UART TX: 3
-# UART TX: 2
-# UART TX: 7
-add wave -position end  sim:/blinkTests/mcuInst/mcuResourcesInst/UARTInst/RD
-add wave -position end  sim:/blinkTests/mcuInst/mcuResourcesInst/UARTInst/WR
-add wave -position end  sim:/blinkTests/mcuInst/mcuResourcesInst/UARTInst/UART_INT
-add wave -position end  sim:/blinkTests/mcuInst/mcuResourcesInst/UARTInst/ADDR
-add wave -position end  sim:/blinkTests/mcuInst/mcuResourcesInst/UARTInst/DIN
-add wave -position end  sim:/blinkTests/mcuInst/mcuResourcesInst/UARTInst/DOUT
-restart;run1ms
+add wave -position 7  sim:/blinkTests/mcuInst/mcuResourcesInst/ROMInst/Address
+add wave -position 8  sim:/blinkTests/mcuInst/mcuResourcesInst/ROMInst/OutClock
+add wave -position 9  sim:/blinkTests/mcuInst/mcuResourcesInst/ROMInst/OutClockEn
+add wave -position 10  sim:/blinkTests/mcuInst/mcuResourcesInst/ROMInst/Reset
+add wave -position 11  sim:/blinkTests/mcuInst/mcuResourcesInst/ROMInst/Q
+restart;run 10us
 # ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# invalid command name "run1ms"
-restart;run 1ms
-# UART TX: 7
-# UART TX: 0
-# UART TX:  
-# UART TX: -
-# UART TX: 3
-# UART TX: 2
-# UART TX: 7
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
 # Compile of interruptMaskRegister.v was successful.
 # Compile of transmitter.v was successful.
 # Compile of receiver.v was successful.
@@ -112,7 +105,7 @@ restart;run 1ms
 # Compile of rom.v was successful.
 # Compile of registers.v was successful.
 # 31 compiles, 0 failed with no errors.
-restart;run 1ms
+restart;run 10us
 # ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
 # Loading work.blinkTests
 # Loading work.mcu
@@ -143,338 +136,19 @@ restart;run 1ms
 # Loading work.UART_RX
 # Loading work.UART_TX
 # Loading work.interruptMaskRegister
-# [T=71250000] UART TX: 7
-# [T=177250000] UART TX: 0
-# [T=283250000] UART TX:  
-# [T=389650000] UART TX: -
-# [T=689250000] UART TX: 3
-# [T=795650000] UART TX: 2
-# [T=902050000] UART TX: 7
-# Compile of interruptMaskRegister.v was successful.
-# Compile of transmitter.v was successful.
-# Compile of receiver.v was successful.
-# Compile of UART.v was successful.
-# Compile of RAM.v was successful.
-# Compile of memoryMapper.v was successful.
-# Compile of mcuResources.v was successful.
-# Compile of registerSequencer.v was successful.
-# Compile of opxMultiplexer.v was successful.
-# Compile of generalGroupDecoder.v was successful.
-# Compile of jumpGroupDecoder.v was successful.
-# Compile of loadStoreGroupDecoder.v was successful.
-# Compile of aluGroupDecoder.v was successful.
-# Compile of interruptStateMachine.v was successful.
-# Compile of programCounter.v was successful.
-# Compile of busController.v was successful.
-# Compile of registerFile.v was successful.
-# Compile of ccRegisters.v was successful.
-# Compile of aluBMux.v was successful.
-# Compile of aluAMux.v was successful.
-# Compile of alu.v was successful.
-# Compile of fullALU.v was successful.
-# Compile of instructionPhaseDecoder.v was successful.
-# Compile of core.v was successful.
-# Compile of devBoard.v was successful.
-# Compile of mcu.v was successful.
-# Compile of blinkTest.v was successful.
-# Compile of branchLogic.v was successful.
-# Compile of constants.v was successful.
-# Compile of rom.v was successful.
-# Compile of registers.v was successful.
-# 31 compiles, 0 failed with no errors.
-restart;run 1ms
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.blinkTests
-# Loading work.mcu
-# Loading work.devBoard
-# Loading work.core
-# Loading work.instructionPhaseDecoder
-# Loading work.fullALU
-# Loading work.alu
-# Loading work.aluAMux
-# Loading work.aluBMux
-# Loading work.ccRegisters
-# Loading work.registerFile
-# Loading work.registers
-# Loading work.busController
-# Loading work.programCounter
-# Loading work.interruptStateMachine
-# Loading work.aluGroupDecoder
-# Loading work.loadStoreGroupDecoder
-# Loading work.jumpGroupDecoder
-# Loading work.generalGroupDecoder
-# Loading work.opxMultiplexer
-# Loading work.registerSequencer
-# Loading work.mcuResources
-# Loading work.memoryMapper
-# Loading work.rom
-# Loading work.RAM
-# Loading work.UART
-# Loading work.UART_RX
-# Loading work.UART_TX
-# Loading work.interruptMaskRegister
-# [T=71250000] UART TX: 7
-# [T=262850000] UART TX: 2
-# [T=369250000] UART TX: 5
-# [T=475650000] UART TX: 5
-# [T=581650000] UART TX:  
-# [T=687650000] UART TX: -
-# [T=987250000] UART TX: 3
+# GetModuleFileName: The specified module could not be found.
+# 
+# 
 run 1ms
-# [T=1093650000] UART TX: 2
-# [T=1200050000] UART TX: 7
-# [T=1306450000] UART TX: 6
-# [T=1412850000] UART TX: 8
-# [T=1518850000] UART TX: 
-# 
-# [T=1708050000] UART TX: 2
-# [T=1814450000] UART TX: 5
-# [T=1920850000] UART TX: 4
-# A time value could not be extracted from the current line
-# A time value could not be extracted from the current line
-# A time value could not be extracted from the current line
-# A time value could not be extracted from the current line
-add wave -position end  sim:/blinkTests/mcuInst/coreInst/fullALUInst/ALU_OPX
-add wave -position end  sim:/blinkTests/mcuInst/coreInst/fullALUInst/ALU_R
-add wave -position end  sim:/blinkTests/mcuInst/coreInst/fullALUInst/CC_ZERO
-add wave -position end  sim:/blinkTests/mcuInst/coreInst/fullALUInst/CC_CARRY
-add wave -position end  sim:/blinkTests/mcuInst/coreInst/fullALUInst/CC_SIGN
-add wave -position end  sim:/blinkTests/mcuInst/coreInst/fullALUInst/CC_PARITY
-add wave -position end  sim:/blinkTests/mcuInst/coreInst/fullALUInst/ALUA_DATA
-add wave -position end  sim:/blinkTests/mcuInst/coreInst/fullALUInst/ALUB_DATA
-restart;run 1ms
-# [T=71250000] UART TX: 7
-# [T=262850000] UART TX: 2
-# [T=369250000] UART TX: 5
-# [T=475650000] UART TX: 5
-# [T=581650000] UART TX:  
-# [T=687650000] UART TX: -
-# [T=987250000] UART TX: 3
-add wave -position end  sim:/blinkTests/mcuInst/coreInst/fullALUInst/aluInst/SIGN
-add wave -position end  sim:/blinkTests/mcuInst/coreInst/fullALUInst/aluInst/CARRY
-add wave -position end  sim:/blinkTests/mcuInst/coreInst/fullALUInst/aluInst/ZERO
-add wave -position end  sim:/blinkTests/mcuInst/coreInst/fullALUInst/aluInst/PARITY
-restart;run 1ms
-# [T=71250000] UART TX: 7
-# [T=262850000] UART TX: 2
-# [T=369250000] UART TX: 5
-# [T=475650000] UART TX: 5
-# [T=581650000] UART TX:  
-# [T=687650000] UART TX: -
-# [T=987250000] UART TX: 3
-# Compile of interruptMaskRegister.v was successful.
-# Compile of transmitter.v was successful.
-# Compile of receiver.v was successful.
-# Compile of UART.v was successful.
-# Compile of RAM.v was successful.
-# Compile of memoryMapper.v was successful.
-# Compile of mcuResources.v was successful.
-# Compile of registerSequencer.v was successful.
-# Compile of opxMultiplexer.v was successful.
-# Compile of generalGroupDecoder.v was successful.
-# Compile of jumpGroupDecoder.v was successful.
-# Compile of loadStoreGroupDecoder.v was successful.
-# Compile of aluGroupDecoder.v was successful.
-# Compile of interruptStateMachine.v was successful.
-# Compile of programCounter.v was successful.
-# Compile of busController.v was successful.
-# Compile of registerFile.v was successful.
-# Compile of ccRegisters.v was successful.
-# Compile of aluBMux.v was successful.
-# Compile of aluAMux.v was successful.
-# Compile of alu.v was successful.
-# Compile of fullALU.v was successful.
-# Compile of instructionPhaseDecoder.v was successful.
-# Compile of core.v was successful.
-# Compile of devBoard.v was successful.
-# Compile of mcu.v was successful.
-# Compile of blinkTest.v was successful.
-# Compile of branchLogic.v was successful.
-# Compile of constants.v was successful.
-# Compile of rom.v was successful.
-# Compile of registers.v was successful.
-# 31 compiles, 0 failed with no errors.
-restart;run 1ms
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.blinkTests
-# Loading work.mcu
-# Loading work.devBoard
-# Loading work.core
-# Loading work.instructionPhaseDecoder
-# Loading work.fullALU
-# Loading work.alu
-# Loading work.aluAMux
-# Loading work.aluBMux
-# Loading work.ccRegisters
-# Loading work.registerFile
-# Loading work.registers
-# Loading work.busController
-# Loading work.programCounter
-# Loading work.interruptStateMachine
-# Loading work.aluGroupDecoder
-# Loading work.loadStoreGroupDecoder
-# Loading work.jumpGroupDecoder
-# Loading work.generalGroupDecoder
-# Loading work.opxMultiplexer
-# Loading work.registerSequencer
-# Loading work.mcuResources
-# Loading work.memoryMapper
-# Loading work.rom
-# Loading work.RAM
-# Loading work.UART
-# Loading work.UART_RX
-# Loading work.UART_TX
-# Loading work.interruptMaskRegister
-# [T=71250000] UART TX: 7
-# [T=262850000] UART TX: 2
-# [T=369250000] UART TX: 5
-# [T=475650000] UART TX: 5
-# [T=581650000] UART TX:  
-# [T=687650000] UART TX: -
-# [T=793650000] UART TX: 1
-# [T=899650000] UART TX: 
-# 
-# Compile of interruptMaskRegister.v was successful.
-# Compile of transmitter.v was successful.
-# Compile of receiver.v was successful.
-# Compile of UART.v was successful.
-# Compile of RAM.v was successful.
-# Compile of memoryMapper.v was successful.
-# Compile of mcuResources.v was successful.
-# Compile of registerSequencer.v was successful.
-# Compile of opxMultiplexer.v was successful.
-# Compile of generalGroupDecoder.v was successful.
-# Compile of jumpGroupDecoder.v was successful.
-# Compile of loadStoreGroupDecoder.v was successful.
-# Compile of aluGroupDecoder.v was successful.
-# Compile of interruptStateMachine.v was successful.
-# Compile of programCounter.v was successful.
-# Compile of busController.v was successful.
-# Compile of registerFile.v was successful.
-# Compile of ccRegisters.v was successful.
-# Compile of aluBMux.v was successful.
-# Compile of aluAMux.v was successful.
-# Compile of alu.v was successful.
-# Compile of fullALU.v was successful.
-# Compile of instructionPhaseDecoder.v was successful.
-# Compile of core.v was successful.
-# Compile of devBoard.v was successful.
-# Compile of mcu.v was successful.
-# Compile of blinkTest.v was successful.
-# Compile of branchLogic.v was successful.
-# Compile of constants.v was successful.
-# Compile of rom.v was successful.
-# Compile of registers.v was successful.
-# 31 compiles, 0 failed with no errors.
-restart;run 1ms
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.blinkTests
-# Loading work.mcu
-# Loading work.devBoard
-# Loading work.core
-# Loading work.instructionPhaseDecoder
-# Loading work.fullALU
-# Loading work.alu
-# Loading work.aluAMux
-# Loading work.aluBMux
-# Loading work.ccRegisters
-# Loading work.registerFile
-# Loading work.registers
-# Loading work.busController
-# Loading work.programCounter
-# Loading work.interruptStateMachine
-# Loading work.aluGroupDecoder
-# Loading work.loadStoreGroupDecoder
-# Loading work.jumpGroupDecoder
-# Loading work.generalGroupDecoder
-# Loading work.opxMultiplexer
-# Loading work.registerSequencer
-# Loading work.mcuResources
-# Loading work.memoryMapper
-# Loading work.rom
-# Loading work.RAM
-# Loading work.UART
-# Loading work.UART_RX
-# Loading work.UART_TX
-# Loading work.interruptMaskRegister
-# [T=130850000] UART TX: 5
-# [T=237250000] UART TX: 7
-# [T=343250000] UART TX:  
-# [T=449250000] UART TX: -
-# [T=555250000] UART TX: 1
-# [T=661250000] UART TX: 
-# 
-# [T=790850000] UART TX: 5
-# [T=897250000] UART TX: 6
-# Compile of interruptMaskRegister.v was successful.
-# Compile of transmitter.v was successful.
-# Compile of receiver.v was successful.
-# Compile of UART.v was successful.
-# Compile of RAM.v was successful.
-# Compile of memoryMapper.v was successful.
-# Compile of mcuResources.v was successful.
-# Compile of registerSequencer.v was successful.
-# Compile of opxMultiplexer.v was successful.
-# Compile of generalGroupDecoder.v was successful.
-# Compile of jumpGroupDecoder.v was successful.
-# Compile of loadStoreGroupDecoder.v was successful.
-# Compile of aluGroupDecoder.v was successful.
-# Compile of interruptStateMachine.v was successful.
-# Compile of programCounter.v was successful.
-# Compile of busController.v was successful.
-# Compile of registerFile.v was successful.
-# Compile of ccRegisters.v was successful.
-# Compile of aluBMux.v was successful.
-# Compile of aluAMux.v was successful.
-# Compile of alu.v was successful.
-# Compile of fullALU.v was successful.
-# Compile of instructionPhaseDecoder.v was successful.
-# Compile of core.v was successful.
-# Compile of devBoard.v was successful.
-# Compile of mcu.v was successful.
-# Compile of blinkTest.v was successful.
-# Compile of branchLogic.v was successful.
-# Compile of constants.v was successful.
-# Compile of rom.v was successful.
-# Compile of registers.v was successful.
-# 31 compiles, 0 failed with no errors.
-restart;run 1ms
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.blinkTests
-# Loading work.mcu
-# Loading work.devBoard
-# Loading work.core
-# Loading work.instructionPhaseDecoder
-# Loading work.fullALU
-# Loading work.alu
-# Loading work.aluAMux
-# Loading work.aluBMux
-# Loading work.ccRegisters
-# Loading work.registerFile
-# Loading work.registers
-# Loading work.busController
-# Loading work.programCounter
-# Loading work.interruptStateMachine
-# Loading work.aluGroupDecoder
-# Loading work.loadStoreGroupDecoder
-# Loading work.jumpGroupDecoder
-# Loading work.generalGroupDecoder
-# Loading work.opxMultiplexer
-# Loading work.registerSequencer
-# Loading work.mcuResources
-# Loading work.memoryMapper
-# Loading work.rom
-# Loading work.RAM
-# Loading work.UART
-# Loading work.UART_RX
-# Loading work.UART_TX
-# Loading work.interruptMaskRegister
-# [T=130850000] UART TX: 5
-# [T=237250000] UART TX: 7
-# [T=343250000] UART TX:  
-# [T=449650000] UART TX: 9
-# [T=555650000] UART TX: 
-# 
-# [T=685250000] UART TX: 5
-# [T=791650000] UART TX: 6
-# [T=897650000] UART TX:  
+# [T=30450000] UART TX: H
+# [T=136450000] UART TX: e
+# [T=242450000] UART TX: l
+# [T=348450000] UART TX: l
+# [T=454450000] UART TX: o
+# [T=560450000] UART TX: !
+# [T=666450000] UART TX:  
+# [T=772450000] UART TX: I
+# [T=878450000] UART TX: '
+# [T=984450000] UART TX: m
+# End time: 18:07:18 on Nov 19,2023, Elapsed time: 0:51:18
+# Errors: 0, Warnings: 1
