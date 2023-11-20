@@ -12,6 +12,7 @@ module busControllerTests;
 	reg [15:0] PC_A;
 	reg [15:0] ALU_R;
 	reg [15:0] ALUB_DATA;
+	reg [15:0] HERE;
 	
 	reg [1:0] ADDR_BUSX;
 	
@@ -20,7 +21,7 @@ module busControllerTests;
 	/**
 	* Data
 	**/
-	reg [15:0] ALUA_DATA;
+	reg [15:0] REGA_DOUT;
 	reg [1:0] DATA_BUSX;
 	reg BYTEX;
 	reg WRX;
@@ -34,7 +35,9 @@ module busControllerTests;
 	wire WRN0_BUF;
 	wire WRN1_BUF;
 
-	
+	reg          PC_ENX;
+	reg  [15:0] DIN;
+	wire [15:0] INSTRUCTION;
 
 instructionPhaseDecoder decoder(
 	.CLK(CLK),
@@ -42,25 +45,29 @@ instructionPhaseDecoder decoder(
 	.FETCH(FETCH),
 	.DECODE(DECODE),
 	.EXECUTE(EXECUTE),
-	.COMMIT(COMMIT)
+	.COMMIT(COMMIT),
+	.DIN(DIN),
+	.PC_ENX(PC_ENX),
+	.INSTRUCTION(INSTRUCTION)
 );
 
 busController testInstance(
 	.CLK(CLK),
-	.RESET(RESET),
+	.DECODE(DECODE),
+	.COMMIT(COMMIT),
 	.PC_A(PC_A),
 	.ALU_R(ALU_R),
 	.ALUB_DATA(ALUB_DATA),
+	.HERE(HERE),
 	.ADDR_BUSX(ADDR_BUSX),
 	.ADDR_BUF(ADDR_BUF),
-	.ALUA_DATA(ALUA_DATA),
+	.REGA_DOUT(REGA_DOUT),
 	.DATA_BUSX(DATA_BUSX),
 	.BYTEX(BYTEX),
 	.WRX(WRX),
 	.RDX(RDX),
 	.DOUT_BUF(DOUT_BUF),
 	.HIGH_BYTEX(HIGH_BYTEX),
-	.DBUS_OEN(DBUS_OEN),
 	.RDN_BUF(RDN_BUF),
 	.WRN0_BUF(WRN0_BUF),
 	.WRN1_BUF(WRN1_BUF)
@@ -77,13 +84,15 @@ initial begin
 	RESET = 1;
 	PC_A = 16'haaaa;
 	ALU_R = 16'hbbbb;
-	ALUA_DATA = 16'hcccc;
+	REGA_DOUT = 16'hcccc;
 	ALUB_DATA = 16'hdddd;
 	ADDR_BUSX = `ADDR_BUSX_PC_A;
-	DATA_BUSX = `DATA_BUSX_ALUA_DATA;
+	DATA_BUSX = `DATA_BUSX_REGA_DOUT;
 	BYTEX = 0;
 	WRX = 0;
 	RDX = 0;
+	PC_ENX = 1;
+	DIN = 16'h0000;
 
 	`TICKTOCK;
 	`TICKTOCK;	 

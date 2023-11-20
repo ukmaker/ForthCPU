@@ -6,120 +6,7 @@
 -->
 </STYLE>
 </HEAD>
-<PRE><A name="pn230915191410"></A><B><U><big>pn230915191410</big></U></B>
-#Start recording tcl command: 9/12/2023 17:41:05
-#Project Location: C:/Users/Duncan/git/ForthCPU; Project name: ForthCPU
-prj_project open "C:/Users/Duncan/git/ForthCPU/ForthCPU.ldf"
-prj_run Synthesis -impl programCounter
-prj_run Translate -impl programCounter
-prj_run Map -impl programCounter
-prj_run PAR -impl programCounter
-prj_run Export -impl programCounter
-pgr_project save "C:/Users/Duncan/git/ForthCPU/programCounter/programCounter.xcf"
-prj_src add -exclude "C:/Users/Duncan/git/ForthCPU/programCounter/programCounter.xcf"
-prj_src enable "C:/Users/Duncan/git/ForthCPU/programCounter/programCounter.xcf"
-pgr_program run
-pgr_program run
-prj_run Synthesis -impl programCounter
-prj_run Translate -impl programCounter
-prj_run Map -impl programCounter
-prj_run PAR -impl programCounter
-prj_run Export -impl programCounter
-pgr_program run
-prj_run Synthesis -impl programCounter
-prj_run Translate -impl programCounter
-prj_run Map -impl programCounter
-prj_run PAR -impl programCounter
-prj_run Export -impl programCounter
-pgr_program run
-prj_run Synthesis -impl programCounter
-prj_run Synthesis -impl programCounter
-prj_run Translate -impl programCounter
-prj_run Map -impl programCounter
-prj_run PAR -impl programCounter
-prj_run Export -impl programCounter
-pgr_program run
-prj_run Synthesis -impl programCounter
-prj_run Translate -impl programCounter
-prj_run Map -impl programCounter
-prj_run PAR -impl programCounter
-prj_run Export -impl programCounter
-pgr_program run
-prj_src add "C:/Users/Duncan/git/ForthCPU/prescaler.v"
-prj_run Synthesis -impl programCounter
-prj_run Translate -impl programCounter
-prj_run Map -impl programCounter
-prj_run PAR -impl programCounter
-prj_run Export -impl programCounter
-pgr_program run
-prj_run Synthesis -impl programCounter
-prj_run Translate -impl programCounter
-prj_run Map -impl programCounter
-prj_run PAR -impl programCounter
-prj_run Export -impl programCounter
-pgr_program run
-pgr_project save "C:/Users/Duncan/git/ForthCPU/programCounter/programCounter.xcf"
-prj_impl active "impl2"
-pgr_project close
-prj_impl active "registerFile"
-prj_impl active "impl2"
-prj_impl active "impl1"
-prj_impl delete "impl2"
-prj_impl active "dataSourcesDecoder"
-prj_impl active "dataSourcesController"
-prj_impl active "dataSourcesDecoder"
-prj_impl active "dataSourcesController"
-prj_impl active "dataSourcesDecoder"
-prj_impl active "dataSourcesController"
-prj_impl delete "dataSourcesDecoder"
-prj_impl active "programCounter"
-prj_impl active "dataSourcesController"
-prj_impl active "programCounter"
-prj_impl active "dataSourcesController"
-prj_src add "C:/Users/Duncan/git/ForthCPU//data_sources_tests/data_sources_tests.spf"
-prj_impl new "instructionPhaseDecoder" -dir "instructionPhaseDecoder" -strategy "Area" -synthesis "synplify"
-prj_impl active "instructionPhaseDecoder"
-prj_src add "C:/Users/Duncan/git/ForthCPU/instructionPhaseDecoder.v"
-prj_impl active "programCounter"
-prj_impl active "instructionPhaseDecoder"
-prj_impl active "impl1"
-file copy -force -- "C:/Users/Duncan/git/ForthCPU/instructionPhaseDecoder.v" "C:/Users/Duncan/git/ForthCPU/impl1/source"
-prj_src add "C:/Users/Duncan/git/ForthCPU/impl1/source/instructionPhaseDecoder.v"
-file copy -force -- "C:/Users/Duncan/git/ForthCPU/dataSourcesDecoder.v" "C:/Users/Duncan/git/ForthCPU/impl1/source"
-prj_src add "C:/Users/Duncan/git/ForthCPU/impl1/source/dataSourcesDecoder.v"
-prj_src remove "C:/Users/Duncan/git/ForthCPU/impl1/source/dataSourcesDecoder.v"
-file copy -force -- "C:/Users/Duncan/git/ForthCPU/program_counter.v" "C:/Users/Duncan/git/ForthCPU/impl1/source"
-prj_src add "C:/Users/Duncan/git/ForthCPU/impl1/source/program_counter.v"
-prj_impl active "instructionPhaseDecoder"
-prj_impl active "impl1"
-prj_impl active "instructionPhaseDecoder"
-pwc_command new -project "C:/Users/Duncan/git/ForthCPU/instructionPhaseDecoderTestbench.pcf"
-prj_src add -exclude "C:/Users/Duncan/git/ForthCPU/instructionPhaseDecoderTestbench.pcf"
-prj_src enable "C:/Users/Duncan/git/ForthCPU/instructionPhaseDecoderTestbench.pcf"
-prj_src remove "C:/Users/Duncan/git/ForthCPU/instructionPhaseDecoderTestbench.pcf"
-prj_src add "C:/Users/Duncan/git/ForthCPU/instructionPhaseDecoderTestbench.v"
-prj_src add "C:/Users/Duncan/git/ForthCPU/instructionPhaseDecoderTests/instructionPhaseDecoderTests.spf"
-prj_impl active "impl1"
-pwc_command exit
-prj_src add "C:/Users/Duncan/git/ForthCPU/aluGroupDecoder.v"
-file copy -force -- "C:/Users/Duncan/git/ForthCPU/register_file.v" "C:/Users/Duncan/git/ForthCPU/impl1/source"
-prj_src add "C:/Users/Duncan/git/ForthCPU/impl1/source/register_file.v"
-prj_src remove "C:/Users/Duncan/git/ForthCPU/impl1/source/register_file.v"
-prj_impl active "registerFile"
-prj_impl active "impl1"
-file copy -force -- "C:/Users/Duncan/git/ForthCPU/registerFile/source/register_file.v" "C:/Users/Duncan/git/ForthCPU/impl1/source"
-prj_src add "C:/Users/Duncan/git/ForthCPU/impl1/source/register_file.v"
-prj_impl new "aluGroupDecoder" -dir "aluGroupDecoder" -strategy "Area" -synthesis "synplify"
-prj_impl active "aluGroupDecoder"
-file copy -force -- "C:/Users/Duncan/git/ForthCPU/aluGroupDecoder.v" "C:/Users/Duncan/git/ForthCPU/aluGroupDecoder/source"
-prj_src add "C:/Users/Duncan/git/ForthCPU/aluGroupDecoder/source/aluGroupDecoder.v"
-prj_src add "C:/Users/Duncan/git/ForthCPU/program_counter.v"
-prj_src add "C:/Users/Duncan/git/ForthCPU/dataSourcesDecoder.v"
-#Stop recording: 9/15/2023 19:14:10
-
-
-
-<A name="pn230916104747"></A><B><U><big>pn230916104747</big></U></B>
+<PRE><A name="pn230916104747"></A><B><U><big>pn230916104747</big></U></B>
 #Start recording tcl command: 9/16/2023 10:47:06
 #Project Location: C:/Users/Duncan/git/ForthCPU; Project name: ForthCPU
 prj_project open "C:/Users/Duncan/git/ForthCPU/ForthCPU.ldf"
@@ -305,6 +192,21 @@ prj_src add "C:/Users/Duncan/git/ForthCPU/instructionTestSetup.sv"
 prj_impl active "impl1"
 prj_impl active "processorCore"
 #Stop recording: 11/14/2023 17:15:49
+
+
+
+<A name="pn231119180726"></A><B><U><big>pn231119180726</big></U></B>
+#Start recording tcl command: 11/19/2023 17:08:16
+#Project Location: C:/Users/Duncan/git/ForthCPU; Project name: ForthCPU
+prj_project open "C:/Users/Duncan/git/ForthCPU/ForthCPU.ldf"
+prj_impl active "bootROM"
+prj_src remove "C:/Users/Duncan/git/ForthCPU/bootROM/source/rom.lpc"
+prj_impl active "impl1"
+prj_impl active "processorCore"
+prj_impl active "mcuTestbench"
+prj_impl active "impl1"
+prj_run Export -impl impl1
+#Stop recording: 11/19/2023 18:07:26
 
 
 
