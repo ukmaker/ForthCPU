@@ -100,6 +100,14 @@
 /*******************************************
 * Debugging interface
 ********************************************/
+`define DEBUG_ADDRX_OPX   3'b000
+`define DEBUG_ADDRX_SELX  3'b001
+`define DEBUG_ADDRX_MAL   3'b010
+`define DEBUG_ADDRX_MAH   3'b011
+`define DEBUG_ADDRX_MDL   3'b100
+`define DEBUG_ADDRX_MDH   3'b101
+`define DEBUG_ADDRX_DATAX 3'b110
+
 `define DEBUG_INCX_NONE 1'b0
 `define DEBUG_INCX_INC  1'b1
 
