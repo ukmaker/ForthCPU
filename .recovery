@@ -251,12 +251,12 @@
         </Source>
     </Implementation>
     <Implementation title="debugPort" dir="debugPort" description="debugPort" synthesis="synplify" default_strategy="Area">
-        <Options def_top="upCounterTest"/>
+        <Options def_top="register"/>
         <Source name="constants.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
         <Source name="debugPort/source/debugPort.v" type="Verilog" type_short="Verilog">
-            <Options top_module="debugPort"/>
+            <Options/>
         </Source>
         <Source name="debugPort/source/upCounter.v" type="Verilog" type_short="Verilog">
             <Options/>
@@ -265,7 +265,10 @@
             <Options top_module="upCounterTest"/>
         </Source>
         <Source name="debugPort/source/oneOfEightDecoder.v" type="Verilog" type_short="Verilog">
-            <Options/>
+            <Options top_module="oneOfEightDecoder"/>
+        </Source>
+        <Source name="debugPort/source/register.v" type="Verilog" type_short="Verilog">
+            <Options top_module="register"/>
         </Source>
         <Source name="debugPort/tests/upCounterTestbench/upCounterTestbench.spf" type="Simulation Project File" type_short="SPF">
             <Options/>

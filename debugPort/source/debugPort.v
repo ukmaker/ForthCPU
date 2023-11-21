@@ -25,30 +25,31 @@ module debugPort(
 	input [2:0]      DEBUG_ADDR,
 	input             DEBUG_RD,
 	input             DEBUG_WR,
+	
 	output [15:0]    DEBUG_MEM_ADDR,
 	output [15:0]    DEBUG_MEM_DATA_OUT,
 	input [15:0]     DEBUG_MEM_DATA_IN,
 	input             DEBUG_INCX,
+	input             DEBUG_LDX,
+	output            DEBUG_REQX,
+	output            DEBUG_WRX,
+
 	output [2:0]     DEBUG_OPX,
-	output            DEBUG_TRIG_WR,
-	output            DEBUG_TRIG_RD,
 	output [3:0]     DEBUG_REGX,
 	output [1:0]     DEBUG_PCX,
 	output [1:0]     DEBUG_CCX,
+	
 	input [15:0]     DEBUG_DIN_DIN,
 	input [15:0]     DEBUG_REGA_DATA,
 	input [15:0]     DEBUG_CC_DATA,
-	input [15:0]     DEBUG_PC_A_NEXT,
-	input             DEBUG_DOUT_LDX
+	input [15:0]     DEBUG_PC_A_NEXT
 	
 );
 
 /***************************************************
 * Intermodule wiring
 ****************************************************/
-wire EN0, EN1, EN2, EN3, EN4, EN5, EN6, EN7;
-wire ROL, ROH;
-wire [1:0]  DEBUG_DATAX;
+wire EN_STATUS, EN_SELX, EN_MAL, EN_MAH, EN_MDL, EN_MDH, EN_DATAX, EN_OPX;
 
 
 /***************************************************
@@ -62,29 +63,28 @@ reg [1:0]  DEBUG_PCX_R;
 reg [1:0]  DEBUG_CCX_R;
 reg [1:0]  DEBUG_DATAX_R;
 reg [15:0] DEBUG_DOUT_R;
-reg [15:0] DEBUG_DATA;
 
 /***************************************************
 * Instances
 ****************************************************/
 oneOfEightDecoder decoder(
 	DEBUG_ADDR,
-	EN0,
-	EN1,
-	EN2,
-	EN3,
-	EN4,
-	EN5,
-	EN6,
-	EN7
+	EN_STATUS,
+	EN_SELX,
+	EN_MAL,
+	EN_MAH,
+	EN_MDL,
+	EN_MDH,
+	EN_DATAX,
+	EN_OPX
 );
 
 // Memory address counters
-upCounter memL(
+upCounter memAL(
 	.CLK(CLK),
 	.RESET(RESET),
 	.CP(DEBUG_INCX),
-	.EN(EN0),
+	.EN(EN_MAL),
 	.LD(DEBUG_WR),
 	.DIN(DEBUG_DIN),
 	.DOUT(DEBUG_MEM_ADDR[7:0]),
@@ -92,16 +92,25 @@ upCounter memL(
 	.RO(ROL)
 );
 	
-upCounter memH(
+upCounter memAH(
 	.CLK(CLK),
 	.RESET(RESET),
 	.CP(DEBUG_INCX),
-	.EN(EN1),
+	.EN(EN_MAH),
 	.LD(DEBUG_WR),
 	.DIN(DEBUG_DIN),
 	.DOUT(DEBUG_MEM_ADDR[15:8]),
 	.RI(ROL),
 	.RO(ROH)
+);
+
+register memDL(
+	.CLK(CLK),
+	.RESET(RESET),
+	.DIN(DEBUG_DIN),
+	.DOUT(DEBUG_MEM_DATA_OUT[7:0]),
+	.LD(DEBUG_WR),
+	.EN(EN_MDL)
 );
 	
 
