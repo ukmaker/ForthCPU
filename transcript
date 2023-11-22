@@ -1,11 +1,76 @@
 # Reading pref.tcl
-# do {C:/Users/Duncan/git/ForthCPU/debugPort/tests/upCounterTestbench/upCounterTestbench.mdo}
-# Loading project upCounterTestbench
-# Compile of upCounter.v was successful.
-# Compile of upCounterTest.v was successful.
-# 2 compiles, 0 failed with no errors.
-# vsim -L work -L pmi_work -L ovi_machxo3l upCounterTest 
-# Start time: 20:05:30 on Nov 20,2023
+# do {C:/Users/Duncan/git/ForthCPU/debugPort/tests/debugPortTestbench/debugPortTestbench.mdo}
+# Loading project debugPortTestbench
+# Model Technology ModelSim - Lattice FPGA Edition vlog 2020.3 Compiler 2020.10 Oct 14 2020
+# Start time: 18:52:44 on Nov 22,2023
+# vlog -reportprogress 300 "+incdir+C:/Users/Duncan/git/ForthCPU/debugPort/source" -work work C:/Users/Duncan/git/ForthCPU/debugPort/source/register.v 
+# -- Compiling module register
+# 
+# Top level modules:
+# 	register
+# End time: 18:52:44 on Nov 22,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Lattice FPGA Edition vlog 2020.3 Compiler 2020.10 Oct 14 2020
+# Start time: 18:52:44 on Nov 22,2023
+# vlog -reportprogress 300 "+incdir+C:/Users/Duncan/git/ForthCPU/debugPort/source" -work work C:/Users/Duncan/git/ForthCPU/debugPort/source/upCounter.v 
+# -- Compiling module upCounter
+# 
+# Top level modules:
+# 	upCounter
+# End time: 18:52:44 on Nov 22,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Lattice FPGA Edition vlog 2020.3 Compiler 2020.10 Oct 14 2020
+# Start time: 18:52:44 on Nov 22,2023
+# vlog -reportprogress 300 "+incdir+C:/Users/Duncan/git/ForthCPU/debugPort/source" -work work C:/Users/Duncan/git/ForthCPU/debugPort/source/requestGenerator.v 
+# -- Compiling module requestGenerator
+# 
+# Top level modules:
+# 	requestGenerator
+# End time: 18:52:44 on Nov 22,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Lattice FPGA Edition vlog 2020.3 Compiler 2020.10 Oct 14 2020
+# Start time: 18:52:44 on Nov 22,2023
+# vlog -reportprogress 300 "+incdir+C:/Users/Duncan/git/ForthCPU/debugPort/source" -work work C:/Users/Duncan/git/ForthCPU/debugPort/source/oneOfEightDecoder.v 
+# -- Compiling module oneOfEightDecoder
+# 
+# Top level modules:
+# 	oneOfEightDecoder
+# End time: 18:52:44 on Nov 22,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Lattice FPGA Edition vlog 2020.3 Compiler 2020.10 Oct 14 2020
+# Start time: 18:52:44 on Nov 22,2023
+# vlog -reportprogress 300 "+incdir+C:/Users/Duncan/git/ForthCPU/debugPort/source" -work work C:/Users/Duncan/git/ForthCPU/debugPort/source/debugPort.v 
+# -- Compiling module debugPort
+# 
+# Top level modules:
+# 	debugPort
+# End time: 18:52:45 on Nov 22,2023, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Lattice FPGA Edition vlog 2020.3 Compiler 2020.10 Oct 14 2020
+# Start time: 18:52:46 on Nov 22,2023
+# vlog -reportprogress 300 "+incdir+C:/Users/Duncan/git/ForthCPU/debugPort/tests" -work work C:/Users/Duncan/git/ForthCPU/debugPort/tests/debugPortTests.v 
+# -- Compiling module debugPortTests
+# 
+# Top level modules:
+# 	debugPortTests
+# End time: 18:52:46 on Nov 22,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Lattice FPGA Edition vlog 2020.3 Compiler 2020.10 Oct 14 2020
+# Start time: 18:52:46 on Nov 22,2023
+# vlog -reportprogress 300 "+incdir+C:/Users/Duncan/git/ForthCPU" -work work C:/Users/Duncan/git/ForthCPU/constants.v 
+# End time: 18:52:46 on Nov 22,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim - Lattice FPGA Edition vlog 2020.3 Compiler 2020.10 Oct 14 2020
+# Start time: 18:52:46 on Nov 22,2023
+# vlog -reportprogress 300 "+incdir+C:/Users/Duncan/git/ForthCPU/debugPort/source" -work work C:/Users/Duncan/git/ForthCPU/debugPort/source/stopSynchroniser.v 
+# -- Compiling module stopSynchroniser
+# 
+# Top level modules:
+# 	stopSynchroniser
+# End time: 18:52:46 on Nov 22,2023, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim -L work -L pmi_work -L ovi_machxo3l debugPortTests 
+# Start time: 18:52:46 on Nov 22,2023
 # //  ModelSim - Lattice FPGA Edition 2020.3 Oct 14 2020
 # //
 # //  Copyright 1991-2020 Mentor Graphics Corporation
@@ -19,32 +84,96 @@
 # //  is prohibited from disclosure under the Trade Secrets Act,
 # //  18 U.S.C. Section 1905.
 # //
-# Loading work.upCounterTest
+# Loading work.debugPortTests
+# Loading work.debugPort
+# Loading work.oneOfEightDecoder
+# Loading work.requestGenerator
+# Loading work.stopSynchroniser
+# Loading work.register
 # Loading work.upCounter
 # .main_pane.wave.interior.cs.body.pw.wf
+# [T=400] DEBUG WRITE 01 -> 7
+
+run 50us
+# [T=1900] FAILED in debugPortTests: DEBUG_STOPX expected 1 != actual 0
+# [T=1900] DEBUG WRITE 56 -> 3
+# [T=3100] DEBUG WRITE 78 -> 2
+# [T=4300] DEBUG WRITE 12 -> 5
+# [T=5500] DEBUG WRITE 34 -> 4
+# [T=6700] DEBUG WRITE 06 -> 0
+# TEST DTYPE
+# [T=8400] DEBUG WRITE a7 -> 1
+# TEST DIN
+# [T=9600] DEBUG WRITE 00 -> 6
+# [T=10800] DEBUG WRITE 02 -> 0
+# ACK DIN
+# READ DIN
+# TEST DIN
+# [T=13800] DEBUG WRITE 01 -> 6
+# [T=15000] DEBUG WRITE 02 -> 0
+# ACK DIN
+# READ DIN
+# TEST DIN
+# [T=18000] DEBUG WRITE 02 -> 6
+# [T=19200] DEBUG WRITE 02 -> 0
+# ACK DIN
+# READ DIN
+# TEST DIN
+# [T=22200] DEBUG WRITE 03 -> 6
+# [T=23400] DEBUG WRITE 02 -> 0
+# ACK DIN
+# READ DIN
+# Compile of register.v was successful.
 # Compile of upCounter.v was successful.
-# Compile of upCounterTest.v was successful.
+# Compile of requestGenerator.v was successful.
+# Compile of oneOfEightDecoder.v was successful.
 # Compile of debugPort.v was successful.
+# Compile of debugPortTests.v was successful.
 # Compile of constants.v was successful.
-# 4 compiles, 0 failed with no errors.
-restart ; run 5us
+# Compile of stopSynchroniser.v was successful.
+# 8 compiles, 0 failed with no errors.
+restart;runn 50us
 # ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.upCounterTest
+# Loading work.debugPortTests
+# Loading work.debugPort
+# Loading work.oneOfEightDecoder
+# Loading work.requestGenerator
+# Loading work.stopSynchroniser
+# Loading work.register
 # Loading work.upCounter
+# invalid command name "runn"
+
+run 50us
 # GetModuleFileName: The specified module could not be found.
 # 
 # 
-# Compile of upCounter.v was successful.
-# Compile of upCounterTest.v was successful.
-# Compile of debugPort.v was successful.
-# Compile of constants.v was successful.
-# 4 compiles, 0 failed with no errors.
-restart ; run 5us
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.upCounterTest
-# Loading work.upCounter
-# GetModuleFileName: The specified module could not be found.
-# 
-# 
-# End time: 14:37:41 on Nov 21,2023, Elapsed time: 18:32:11
+# [T=400] DEBUG WRITE 01 -> 7
+# [T=1900] DEBUG WRITE 56 -> 3
+# [T=3100] DEBUG WRITE 78 -> 2
+# [T=4300] DEBUG WRITE 12 -> 5
+# [T=5500] DEBUG WRITE 34 -> 4
+# [T=6700] DEBUG WRITE 06 -> 0
+# TEST DTYPE
+# [T=8400] DEBUG WRITE a7 -> 1
+# TEST DIN
+# [T=9600] DEBUG WRITE 00 -> 6
+# [T=10800] DEBUG WRITE 02 -> 0
+# ACK DIN
+# READ DIN
+# TEST DIN
+# [T=13800] DEBUG WRITE 01 -> 6
+# [T=15000] DEBUG WRITE 02 -> 0
+# ACK DIN
+# READ DIN
+# TEST DIN
+# [T=18000] DEBUG WRITE 02 -> 6
+# [T=19200] DEBUG WRITE 02 -> 0
+# ACK DIN
+# READ DIN
+# TEST DIN
+# [T=22200] DEBUG WRITE 03 -> 6
+# [T=23400] DEBUG WRITE 02 -> 0
+# ACK DIN
+# READ DIN
+# End time: 18:54:59 on Nov 22,2023, Elapsed time: 0:02:13
 # Errors: 0, Warnings: 1

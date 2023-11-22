@@ -1,15 +1,17 @@
 `include "C:/Users/Duncan/git/ForthCPU/constants.v"
 `timescale 1 ns / 1 ns
 module instructionPhaseDecoder(
-	input CLK,
-	input RESET,
-	input [15:0] DIN,
-	input      PC_ENX,
-	output reg FETCH,
-	output reg DECODE,
-	output reg EXECUTE,
-	output reg COMMIT,
-	output reg [15:0] INSTRUCTION
+	input               CLK,
+	input               RESET,
+	input [15:0]       DIN,
+	input               PC_ENX,
+	input               DEBUG_STOPX,
+	output reg          STOPPED,
+	output reg          FETCH,
+	output reg          DECODE,
+	output reg          EXECUTE,
+	output reg          COMMIT,
+	output reg [15:0]  INSTRUCTION
 );
 
 // Internal state
@@ -21,44 +23,53 @@ begin
 		PHASE <= 0;
 	end else if(PC_ENX) begin
 		case (PHASE)
-			0: begin
+			`PHI_STOPPED: begin
+				STOPPED <= 1;
 				FETCH <= 0;
 				DECODE <= 0;
 				EXECUTE <= 0;
 				COMMIT <= 0;
-				PHASE <= 1;
+				if(!DEBUG_STOPX) PHASE <= `PHI_FETCH;
 				end
 
-			1: begin
+			`PHI_FETCH: begin
+				STOPPED <= 0;
 				FETCH <= 1;
 				DECODE <= 0;
 				EXECUTE <= 0;
 				COMMIT <= 0;
-				PHASE  <= 2;
+				PHASE  <= `PHI_DECODE;
 				end
 
-			2: begin
+			`PHI_DECODE: begin
+				STOPPED <= 0;
 				FETCH <= 0;
 				DECODE <= 1;
 				EXECUTE <= 0;
 				COMMIT <= 0;	
-				PHASE <= 3;
+				PHASE <= `PHI_EXECUTE;
 			end
 
-			3: begin
+			`PHI_EXECUTE: begin
+				STOPPED <= 0;
 				FETCH <= 0;
 				DECODE <= 0;
 				EXECUTE <= 1;
 				COMMIT <= 0;
-				PHASE <= 4;
+				PHASE <= `PHI_COMMIT;
 			end
 
-			4: begin
+			`PHI_COMMIT: begin
+				STOPPED <= 0;
 				FETCH <= 0;
 				DECODE <= 0;
 				EXECUTE <= 0;
 				COMMIT <= 1;
-				PHASE <= 1;
+				if(DEBUG_STOPX) begin
+					PHASE <= `PHI_STOPPED;
+				end else begin
+					PHASE <= `PHI_FETCH;
+				end
 			end
 
 		endcase

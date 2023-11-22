@@ -13,6 +13,7 @@ module opxMultiplexer(
 	
 	input FETCH,
 	input EXECUTE,
+	input STOPPED,
 
 	
 	input [3:0]  ALU_ALU_OPX,
@@ -22,6 +23,24 @@ module opxMultiplexer(
 	input [1:0]  ALU_REGA_ADDRX,
 	input [2:0]  ALU_REGB_ADDRX,
 	input [3:0]  ALU_REG_SEQX,
+	
+	input [2:0]  DEBUG_OPX,
+	input [3:0]  DEBUG_REGA_ADDRX,
+	input [2:0]  DEBUG_PC_NEXTX,
+	input [1:0]  DEBUG_CC_REGX,
+
+	input [1:0]  INT_CC_REGX,
+	input [2:0]  INT_PC_NEXTX,
+
+	input [1:0]  JMP_ADDR_BUSX,
+	input [2:0]  JMP_ALUB_SRCX,
+	input [1:0]  JMP_PC_BASEX,
+	input [1:0]  JMP_PC_OFFSETX,
+	input         JMP_RDX,
+	input [3:0]  JMP_REG_SEQX,
+	input [1:0]  JMP_REGA_DINX,
+	input [1:0]  JMP_REGA_ADDRX,
+	input [2:0]  JMP_REGB_ADDRX,
 
 	input [1:0]  LDS_ADDR_BUSX,
 	input [3:0]  LDS_ALU_OPX,
@@ -36,18 +55,6 @@ module opxMultiplexer(
 	input [1:0]  LDS_REGA_DINX,
 	input [2:0]  LDS_REGB_ADDRX,
 	input         LDS_WRX,
-
-	input [1:0]  JMP_ADDR_BUSX,
-	input [2:0]  JMP_ALUB_SRCX,
-	input [1:0]  JMP_PC_BASEX,
-	input [1:0]  JMP_PC_OFFSETX,
-	input         JMP_RDX,
-	input [3:0]  JMP_REG_SEQX,
-	input [1:0]  JMP_REGA_DINX,
-	input [1:0]  JMP_REGA_ADDRX,
-	input [2:0]  JMP_REGB_ADDRX,
-
-
 	
 	/*********************************************
 	* Combined outputs
@@ -58,6 +65,7 @@ module opxMultiplexer(
 	output reg [2:0]  ALUB_SRCX,
 	output reg	       BYTEX,
 	output reg         CCL_LD,
+	output reg [1:0]  CC_REGX,
 	output reg [1:0]  DATA_BUSX,
 	output reg [1:0]  PC_BASEX,
 	output reg [1:0]  PC_OFFSETX,
@@ -74,76 +82,100 @@ reg [1:0] PC_BASEX_R;
 reg [1:0] PC_OFFSETX_R;
 
 always @(*) begin
-			
-	case(INSTRUCTION_GROUP)
-		`GROUP_SYSTEM: begin
-			ALU_OPX       = `ALU_OPX_MOV;
-			ALUA_SRCX     = `ALUA_SRCX_REG_A;
-			ALUB_SRCX     = `ALUB_SRCX_REG_B;
-			BYTEX         = `BYTEX_WORD;
-			CCL_LD        = 0;
-			DATA_BUSX     = `DATA_BUSX_REGA_DOUT;
-			PC_BASEX_R    = `PC_BASEX_PC_A;
-			PC_OFFSETX_R  = `PC_OFFSETX_2;
-			RDX           = `RDX_NONE;
-			REG_SEQX      = `REG_SEQX_NONE;
-			REGA_ADDRX    = `REGA_ADDRX_ARGA;
-			REGA_DINX     = `REGA_DINX_DIN;
-			REGB_ADDRX    = `REGB_ADDRX_ARGB;
-			WRX           = `WRX_NONE;
-		end
-			
-		`GROUP_LOAD_STORE: begin
-			ALU_OPX       = LDS_ALU_OPX;
-			ALUA_SRCX     = LDS_ALUA_SRCX;
-			ALUB_SRCX     = LDS_ALUB_SRCX;
-			BYTEX         = LDS_BYTEX;
-			CCL_LD        = 0;
-			DATA_BUSX     = LDS_DATA_BUSX;
-			PC_BASEX_R    = `PC_BASEX_PC_A;
-			PC_OFFSETX_R  = LDS_PC_OFFSETX;
-			RDX           = LDS_RDX;
-			REG_SEQX      = LDS_REG_SEQX;
-			REGA_ADDRX    = LDS_REGA_ADDRX;
-			REGA_DINX     = LDS_REGA_DINX;
-			REGB_ADDRX    = LDS_REGB_ADDRX;
-			WRX           = LDS_WRX;
-		end
+	
+	if(STOPPED) begin
+		ALU_OPX       = `ALU_OPX_MOV;
+		ALUA_SRCX     = `ALUA_SRCX_REG_A;
+		ALUB_SRCX     = `ALUB_SRCX_REG_B;
+		BYTEX         = `BYTEX_WORD;
+		CCL_LD        = 0;
+		CC_REGX       = DEBUG_CC_REGX;
+		DATA_BUSX     = `DATA_BUSX_REGA_DOUT;
+		PC_BASEX_R    = `PC_BASEX_PC_A;
+		PC_NEXTX      = DEBUG_PC_NEXTX;
+		PC_OFFSETX_R  = `PC_OFFSETX_2;
+		RDX           = `RDX_NONE;
+		REG_SEQX      = `REG_SEQX_NONE;
+		REGA_ADDRX    = DEBUG_REGA_ADDRX;
+		REGA_DINX     = `REGA_DINX_DIN;
+		REGB_ADDRX    = `REGB_ADDRX_ARGB;
+		WRX           = `WRX_NONE;		
 		
-		`GROUP_JUMP: begin
-			ALU_OPX       = `ALU_OPX_MOV;
-			ALUA_SRCX     = `ALUA_SRCX_REG_A;
-			ALUB_SRCX     = JMP_ALUB_SRCX;
-			BYTEX         = `BYTEX_WORD;
-			CCL_LD        = 0;
-			DATA_BUSX     = `DATA_BUSX_REGA_DOUT;
-			PC_BASEX_R    = JMP_PC_BASEX;
-			PC_OFFSETX_R  = JMP_PC_OFFSETX;
-			RDX           = JMP_RDX;
-			REG_SEQX      = JMP_REG_SEQX;
-			REGA_ADDRX    = JMP_REGA_ADDRX;
-			REGA_DINX     = JMP_REGA_DINX;
-			REGB_ADDRX    = JMP_REGB_ADDRX;
-			WRX           = `WRX_NONE;
-		end
+	end else begin
 		
-		`GROUP_ARITHMETIC_LOGIC: begin
-			ALU_OPX       = ALU_ALU_OPX;
-			ALUA_SRCX     = ALU_ALUA_SRCX;
-			ALUB_SRCX     = ALU_ALUB_SRCX;
-			BYTEX         = `BYTEX_WORD;
-			CCL_LD        = ALU_CCL_LD;
-			DATA_BUSX     = `DATA_BUSX_ALU_R;
-			PC_BASEX_R    = `PC_BASEX_PC_A;
-			PC_OFFSETX_R  = `PC_OFFSETX_2;
-			RDX           = `RDX_NONE;
-			REG_SEQX      = ALU_REG_SEQX;
-			REGA_ADDRX    = ALU_REGA_ADDRX;
-			REGA_DINX     = `REGA_DINX_ALU_R;
-			REGB_ADDRX    = ALU_REGB_ADDRX;
-			WRX           = `WRX_NONE;
-		end	
-endcase
+		CC_REGX       = INT_CC_REGX;
+		PC_NEXTX      = INT_PC_NEXTX;	
+		
+		case(INSTRUCTION_GROUP)
+			`GROUP_SYSTEM: begin
+				ALU_OPX       = `ALU_OPX_MOV;
+				ALUA_SRCX     = `ALUA_SRCX_REG_A;
+				ALUB_SRCX     = `ALUB_SRCX_REG_B;
+				BYTEX         = `BYTEX_WORD;
+				CCL_LD        = 0;
+				DATA_BUSX     = `DATA_BUSX_REGA_DOUT;
+				PC_BASEX_R    = `PC_BASEX_PC_A;
+				PC_OFFSETX_R  = `PC_OFFSETX_2;
+				RDX           = `RDX_NONE;
+				REG_SEQX      = `REG_SEQX_NONE;
+				REGA_ADDRX    = `REGA_ADDRX_ARGA;
+				REGA_DINX     = `REGA_DINX_DIN;
+				REGB_ADDRX    = `REGB_ADDRX_ARGB;
+				WRX           = `WRX_NONE;
+			end
+				
+			`GROUP_LOAD_STORE: begin
+				ALU_OPX       = LDS_ALU_OPX;
+				ALUA_SRCX     = LDS_ALUA_SRCX;
+				ALUB_SRCX     = LDS_ALUB_SRCX;
+				BYTEX         = LDS_BYTEX;
+				CCL_LD        = 0;
+				DATA_BUSX     = LDS_DATA_BUSX;
+				PC_BASEX_R    = `PC_BASEX_PC_A;
+				PC_OFFSETX_R  = LDS_PC_OFFSETX;
+				RDX           = LDS_RDX;
+				REG_SEQX      = LDS_REG_SEQX;
+				REGA_ADDRX    = LDS_REGA_ADDRX;
+				REGA_DINX     = LDS_REGA_DINX;
+				REGB_ADDRX    = LDS_REGB_ADDRX;
+				WRX           = LDS_WRX;
+			end
+			
+			`GROUP_JUMP: begin
+				ALU_OPX       = `ALU_OPX_MOV;
+				ALUA_SRCX     = `ALUA_SRCX_REG_A;
+				ALUB_SRCX     = JMP_ALUB_SRCX;
+				BYTEX         = `BYTEX_WORD;
+				CCL_LD        = 0;
+				DATA_BUSX     = `DATA_BUSX_REGA_DOUT;
+				PC_BASEX_R    = JMP_PC_BASEX;
+				PC_OFFSETX_R  = JMP_PC_OFFSETX;
+				RDX           = JMP_RDX;
+				REG_SEQX      = JMP_REG_SEQX;
+				REGA_ADDRX    = JMP_REGA_ADDRX;
+				REGA_DINX     = JMP_REGA_DINX;
+				REGB_ADDRX    = JMP_REGB_ADDRX;
+				WRX           = `WRX_NONE;
+			end
+			
+			`GROUP_ARITHMETIC_LOGIC: begin
+				ALU_OPX       = ALU_ALU_OPX;
+				ALUA_SRCX     = ALU_ALUA_SRCX;
+				ALUB_SRCX     = ALU_ALUB_SRCX;
+				BYTEX         = `BYTEX_WORD;
+				CCL_LD        = ALU_CCL_LD;
+				DATA_BUSX     = `DATA_BUSX_ALU_R;
+				PC_BASEX_R    = `PC_BASEX_PC_A;
+				PC_OFFSETX_R  = `PC_OFFSETX_2;
+				RDX           = `RDX_NONE;
+				REG_SEQX      = ALU_REG_SEQX;
+				REGA_ADDRX    = ALU_REGA_ADDRX;
+				REGA_DINX     = `REGA_DINX_ALU_R;
+				REGB_ADDRX    = ALU_REGB_ADDRX;
+				WRX           = `WRX_NONE;
+			end	
+		endcase
+	end
 end
 
 

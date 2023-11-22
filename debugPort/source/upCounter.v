@@ -2,13 +2,13 @@
 /***********************************************
 * Up-counter with ripple carry input and output
 ************************************************/
-module upCounter(
+module upCounter #(parameter BUS_WIDTH = 8)(
 	
 	input CLK,
 	input RESET,
 	
-	input [7:0] DIN,
-	output reg [7:0] DOUT,
+	input [BUS_WIDTH-1:0] DIN,
+	output reg [BUS_WIDTH-1:0] DOUT,
 	
 	input LD,
 	input EN,
@@ -20,7 +20,7 @@ module upCounter(
 always @(posedge CLK or posedge RESET) begin
 	
 	if(RESET) begin
-		DOUT <= 8'h00;
+		DOUT <= 0;
 		RO   <= 1'b0;
 	end else begin
 		
@@ -33,7 +33,7 @@ always @(posedge CLK or posedge RESET) begin
 end
 
 always @(*) begin
-	if(DOUT == 8'hff) begin
+	if(DOUT == {BUS_WIDTH{1'b1}}) begin
 		RO = RI; 
 	end else begin
 		RO = 0;
