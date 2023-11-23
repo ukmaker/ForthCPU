@@ -200,7 +200,7 @@
         </Source>
     </Implementation>
     <Implementation title="busController" dir="busController" description="busController" synthesis="synplify" default_strategy="Area">
-        <Options def_top="busControllerTests"/>
+        <Options def_top="busSequencerTests"/>
         <Source name="busController/source/busController.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
@@ -213,7 +213,16 @@
         <Source name="instructionPhaseDecoder/source/instructionPhaseDecoder.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
+        <Source name="busController/source/busSequencer.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="busController/test/busSequencerTests.v" type="Verilog" type_short="Verilog">
+            <Options top_module="busSequencerTests"/>
+        </Source>
         <Source name="busController/test/busControllerTestbench/busControllerTestbench.spf" type="Simulation Project File" type_short="SPF">
+            <Options/>
+        </Source>
+        <Source name="busController/test/busSequencerTestbench/busSequencerTestbench.spf" type="Simulation Project File" type_short="SPF">
             <Options/>
         </Source>
         <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">
@@ -737,7 +746,7 @@
         </Source>
     </Implementation>
     <Implementation title="processorCore" dir="processorCore" description="processorCore" synthesis="synplify" default_strategy="Area">
-        <Options def_top="upCounter"/>
+        <Options def_top="processorCoreInstructionTests"/>
         <Source name="constants.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
@@ -817,19 +826,19 @@
             <Options/>
         </Source>
         <Source name="debugPort/source/oneOfEightDecoder.v" type="Verilog" type_short="Verilog">
-            <Options top_module="oneOfEightDecoder"/>
+            <Options/>
         </Source>
         <Source name="debugPort/source/register.v" type="Verilog" type_short="Verilog">
-            <Options top_module="register"/>
+            <Options/>
         </Source>
         <Source name="debugPort/source/requestGenerator.v" type="Verilog" type_short="Verilog">
-            <Options top_module="requestGenerator"/>
+            <Options/>
         </Source>
         <Source name="debugPort/source/stopSynchroniser.v" type="Verilog" type_short="Verilog">
-            <Options top_module="stopSynchroniser"/>
+            <Options/>
         </Source>
         <Source name="debugPort/source/upCounter.v" type="Verilog" type_short="Verilog">
-            <Options top_module="upCounter"/>
+            <Options/>
         </Source>
         <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">
             <Options/>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<BaliProject version="3.2" title="ForthCPU" device="LCMXO3L-6900C-5BG256C" default_implementation="impl1">
+<BaliProject version="3.2" title="ForthCPU" device="LCMXO3L-6900C-5BG256C" default_implementation="processorCore">
     <Options/>
     <Implementation title="RAM" dir="RAM" description="RAM" synthesis="synplify" default_strategy="Area">
         <Options def_top="ramTests"/>
@@ -244,6 +244,54 @@
             <Options/>
         </Source>
         <Source name="dataSourcesController/sim/sim.spf" type="Simulation Project File" type_short="SPF">
+            <Options/>
+        </Source>
+        <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">
+            <Options/>
+        </Source>
+    </Implementation>
+    <Implementation title="debugPort" dir="debugPort" description="debugPort" synthesis="synplify" default_strategy="Area">
+        <Options def_top="debugPortTests"/>
+        <Source name="constants.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="debugPort/source/debugPort.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="debugPort/source/upCounter.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="debugPort/tests/upCounterTest.v" type="Verilog" type_short="Verilog">
+            <Options top_module="upCounterTest"/>
+        </Source>
+        <Source name="debugPort/source/oneOfEightDecoder.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="debugPort/source/register.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="debugPort/source/requestGenerator.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="debugPort/tests/requestGeneratorTests.v" type="Verilog" type_short="Verilog">
+            <Options top_module="requestGeneratorTests"/>
+        </Source>
+        <Source name="debugPort/tests/debugPortTests.v" type="Verilog" type_short="Verilog">
+            <Options top_module="debugPortTests"/>
+        </Source>
+        <Source name="instructionTestSetup.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="debugPort/source/stopSynchroniser.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="debugPort/tests/debugPortTestbench/debugPortTestbench.spf" type="Simulation Project File" type_short="SPF">
+            <Options/>
+        </Source>
+        <Source name="debugPort/tests/requestGeneratorTestbench/requestGeneratorTestbench.spf" type="Simulation Project File" type_short="SPF">
+            <Options/>
+        </Source>
+        <Source name="debugPort/tests/upCounterTestbench/upCounterTestbench.spf" type="Simulation Project File" type_short="SPF">
             <Options/>
         </Source>
         <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">
@@ -689,7 +737,7 @@
         </Source>
     </Implementation>
     <Implementation title="processorCore" dir="processorCore" description="processorCore" synthesis="synplify" default_strategy="Area">
-        <Options def_top="processorCoreInstructionTests"/>
+        <Options def_top="upCounter"/>
         <Source name="constants.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
@@ -764,6 +812,24 @@
         </Source>
         <Source name="instructionTestSetup.sv" type="Verilog" type_short="Verilog">
             <Options VerilogStandard="System Verilog"/>
+        </Source>
+        <Source name="debugPort/source/debugPort.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="debugPort/source/oneOfEightDecoder.v" type="Verilog" type_short="Verilog">
+            <Options top_module="oneOfEightDecoder"/>
+        </Source>
+        <Source name="debugPort/source/register.v" type="Verilog" type_short="Verilog">
+            <Options top_module="register"/>
+        </Source>
+        <Source name="debugPort/source/requestGenerator.v" type="Verilog" type_short="Verilog">
+            <Options top_module="requestGenerator"/>
+        </Source>
+        <Source name="debugPort/source/stopSynchroniser.v" type="Verilog" type_short="Verilog">
+            <Options top_module="stopSynchroniser"/>
+        </Source>
+        <Source name="debugPort/source/upCounter.v" type="Verilog" type_short="Verilog">
+            <Options top_module="upCounter"/>
         </Source>
         <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">
             <Options/>

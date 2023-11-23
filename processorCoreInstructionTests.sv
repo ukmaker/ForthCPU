@@ -7,6 +7,7 @@ module processorCoreInstructionTests;
 reg CLK;
 reg RESET;
 	
+wire STOPPED;
 wire FETCH;
 wire DECODE;
 wire EXECUTE;
@@ -31,6 +32,7 @@ core testInstance(
 	.CLK(CLK),
 	.RESET(RESET),
 	
+	.STOPPED(STOPPED),
 	.FETCH(FETCH), 
 	.DECODE(DECODE),
 	.EXECUTE(EXECUTE),

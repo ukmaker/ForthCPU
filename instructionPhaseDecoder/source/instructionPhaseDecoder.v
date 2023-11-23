@@ -15,7 +15,7 @@ module instructionPhaseDecoder(
 );
 
 // Internal state
-reg [2:0] PHASE;
+reg [3:0] PHASE;
 
 always @ (posedge CLK or posedge RESET)
 begin

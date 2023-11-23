@@ -10,7 +10,11 @@ module busController(
 	
 	input CLK,
 	input DECODE,
-	input COMMIT,	
+	input COMMIT,
+	/**
+	* Bus cycle
+	**/
+	input [1:0] BUS_SEQX,
 	
 	/**
 	* Address
@@ -19,9 +23,7 @@ module busController(
 	input [15:0] ALU_R,
 	input [15:0] ALUB_DATA,
 	input [15:0] HERE,
-	
 	input [1:0] ADDR_BUSX,
-	
 	output reg [15:0] ADDR_BUF,
 
 	/**
@@ -30,20 +32,32 @@ module busController(
 	input [15:0] REGA_DOUT,
 	input [1:0] DATA_BUSX,
 	input BYTEX,
-	input WRX,
-	input RDX,
-
 	output reg[15:0]DOUT_BUF,
 	
 	output reg HIGH_BYTEX,
-	output reg RDN_BUF,
-	output reg WRN0_BUF,
-	output reg WRN1_BUF
+	output RDN_BUF,
+	output WRN0_BUF,
+	output WRN1_BUF
 	
 );
 
+	
 reg [15:0] DOUT_W;
 reg [15:0] DOUT_L;
+
+busSequencer sequencer(
+	.CLK(CLK),
+	.RESET(RESET),
+	.DECODE(DECODE),
+	.COMMIT(COMMIT),
+	.A0(ADDR_BUF[0]),
+	.BYTEX(BYTEX),
+	.BUS_SEQX(BUS_SEQX),
+	.RDN_BUF(RDN_BUF),
+	.WRN0_BUF(WRN0_BUF),
+	.WRN1_BUF(WRN1_BUF)
+);
+
 
 
 
@@ -64,22 +78,6 @@ always @(*) begin
 		`ADDR_BUSX_ALUB_DATA: ADDR_BUF = ALUB_DATA;
 		default:              ADDR_BUF = HERE;
 	endcase
-end
-	
-
-always @(posedge CLK) begin
-	WRN0_BUF <= ~WRX | (BYTEX &  ADDR_BUF[0]);
-	WRN1_BUF <= ~WRX | (BYTEX & ~ADDR_BUF[0]);
-end
-
-always @(negedge CLK) begin
-	if(DECODE) begin
-		RDN_BUF <= 0;
-	end else if(COMMIT) begin 
-		RDN_BUF  <= ~RDX;
-	end else begin
-		RDN_BUF <= 1;
-	end
 end
 
 endmodule

@@ -5,7 +5,10 @@
 module busControllerTests;
 	
 	reg CLK, RESET;
-	wire FETCH, DECODE, EXECUTE, COMMIT;
+	wire STOPPED,FETCH, DECODE, EXECUTE, COMMIT;
+	
+	reg [1:0] BUS_SEQX;
+	
 	/**
 	* Address
 	**/
@@ -15,6 +18,7 @@ module busControllerTests;
 	reg [15:0] HERE;
 	
 	reg [1:0] ADDR_BUSX;
+	reg DEBUG_STOPX;
 	
 	wire [15:0] ADDR_BUF;
 
@@ -24,9 +28,6 @@ module busControllerTests;
 	reg [15:0] REGA_DOUT;
 	reg [1:0] DATA_BUSX;
 	reg BYTEX;
-	reg WRX;
-	reg RDX;
-
 	wire [15:0]DOUT_BUF;
 	
 	wire HIGH_BYTEX;
@@ -41,12 +42,14 @@ module busControllerTests;
 
 instructionPhaseDecoder decoder(
 	.CLK(CLK),
+	.STOPPED(STOPPED),
 	.RESET(RESET),
 	.FETCH(FETCH),
 	.DECODE(DECODE),
 	.EXECUTE(EXECUTE),
 	.COMMIT(COMMIT),
 	.DIN(DIN),
+	.DEBUG_STOPX(DEBUG_STOPX),
 	.PC_ENX(PC_ENX),
 	.INSTRUCTION(INSTRUCTION)
 );
@@ -64,13 +67,12 @@ busController testInstance(
 	.REGA_DOUT(REGA_DOUT),
 	.DATA_BUSX(DATA_BUSX),
 	.BYTEX(BYTEX),
-	.WRX(WRX),
-	.RDX(RDX),
 	.DOUT_BUF(DOUT_BUF),
 	.HIGH_BYTEX(HIGH_BYTEX),
 	.RDN_BUF(RDN_BUF),
 	.WRN0_BUF(WRN0_BUF),
-	.WRN1_BUF(WRN1_BUF)
+	.WRN1_BUF(WRN1_BUF),
+	.BUS_SEQX(BUS_SEQX)
 );
 
 // clk gen
@@ -89,24 +91,27 @@ initial begin
 	ADDR_BUSX = `ADDR_BUSX_PC_A;
 	DATA_BUSX = `DATA_BUSX_REGA_DOUT;
 	BYTEX = 0;
-	WRX = 0;
-	RDX = 0;
+	BUS_SEQX = 2'b00;
 	PC_ENX = 1;
 	DIN = 16'h0000;
+	DEBUG_STOPX = 0;
 
 	`TICKTOCK;
 	`TICKTOCK;	 
 	RESET = 0;  
 	`TICKTOCK; // 
+	`TICKTOCK; //	
+	`TICKTOCK; //
+	`TICKTOCK; //	
 	`TICKTOCK; //
 	
 	/******************************************************************
 	* Word read cycles
 	******************************************************************/
 	`TICKTOCK; // FETCH
-	RDX = 1;
+	BUS_SEQX = `BUS_SEQX_FETCH;
 	`TICKTOCK; // DECODE
-	RDX = 0;
+	BUS_SEQX = `BUS_SEQX_NONE;
 	`TICKTOCK; // EXECUTE - Control signals become valid here
 	`mark(1)
 	`assert("ADDR_BUF", 16'haaaa, ADDR_BUF)
@@ -131,9 +136,9 @@ initial begin
 	`TICKTOCK; // COMMIT
 	
 	`TICKTOCK; // FETCH
-	RDX = 1;
+	BUS_SEQX = `BUS_SEQX_FETCH;
 	`TICKTOCK; // DECODE
-	RDX = 0;
+	BUS_SEQX = `BUS_SEQX_NONE;
 	`TICKTOCK; // EXECUTE - Control signals become valid here
 
 	ADDR_BUSX = `ADDR_BUSX_ALUB_DATA;
@@ -150,9 +155,9 @@ initial begin
 	* Byte addressing
 	******************************************************************/
 	`TICKTOCK; // FETCH
-	RDX = 1;
+	BUS_SEQX = `BUS_SEQX_FETCH;
 	`TICKTOCK; // DECODE
-	RDX = 0;
+	BUS_SEQX = `BUS_SEQX_NONE;
 	`TICKTOCK; // EXECUTE - Control signals become valid here
 
 	ADDR_BUSX = `ADDR_BUSX_PC_A;
@@ -167,9 +172,9 @@ initial begin
 	`TICKTOCK; // COMMIT
 
 	`TICKTOCK; // FETCH
-	RDX = 1;
+	BUS_SEQX = `BUS_SEQX_FETCH;
 	`TICKTOCK; // DECODE
-	RDX = 0;
+	BUS_SEQX = `BUS_SEQX_NONE;
 	`TICKTOCK; // EXECUTE - Control signals become valid here
 
 	ADDR_BUSX = `ADDR_BUSX_ALU_R;
@@ -187,14 +192,14 @@ initial begin
 	* Byte addressing, writes
 	******************************************************************/
 	`TICKTOCK; // FETCH
-	RDX = 1;
+	BUS_SEQX = `BUS_SEQX_FETCH;
 	`TICKTOCK; // DECODE
-	RDX = 0;
+	BUS_SEQX = `BUS_SEQX_NONE;
 	`TICKTOCK; // EXECUTE - Control signals become valid here
 
 	ADDR_BUSX = `ADDR_BUSX_PC_A;
 	BYTEX = 1;
-	WRX = 1;
+	BUS_SEQX = `BUS_SEQX_WRITE;
 	#10
 	`mark(6)
 	`assert("ADDR_BUF", 16'haaaa, ADDR_BUF)
@@ -204,19 +209,17 @@ initial begin
 	`assert("HIGH_BYTEX", 0, HIGH_BYTEX)
 	`TICKTOCK; // COMMIT
 
-	WRX = 0;
-
 	`assert("WRN0_BUF", 0, WRN0_BUF)
 	`assert("WRN1_BUF", 1, WRN1_BUF)
 
 	`TICKTOCK; // FETCH
-	RDX = 1;
+	BUS_SEQX = `BUS_SEQX_FETCH;
 	`TICKTOCK; // DECODE
-	RDX = 0;
+	BUS_SEQX = `BUS_SEQX_NONE;
 	`TICKTOCK; // EXECUTE - Control signals become valid here
 
 	ADDR_BUSX = `ADDR_BUSX_ALU_R;
-	WRX = 1;
+	BUS_SEQX = `BUS_SEQX_WRITE;
 	#10
 	`mark(7)
 	`assert("ADDR_BUF", 16'hbbbb, ADDR_BUF)
@@ -225,8 +228,6 @@ initial begin
 	`assert("WRN1_BUF", 1, WRN1_BUF)
 	`assert("HIGH_BYTEX", 1, HIGH_BYTEX)
 	`TICKTOCK; // COMMIT
-
-	WRX = 0;
 
 	`assert("WRN0_BUF", 1, WRN0_BUF)
 	`assert("WRN1_BUF", 0, WRN1_BUF)

@@ -74,6 +74,14 @@
 `define ALU_OPX_SEX 4'b1111
 
 /*******************************************
+* Bus sequencer
+*******************************************/
+`define BUS_SEQX_NONE  2'b00
+`define BUS_SEQX_FETCH 2'b01
+`define BUS_SEQX_READ  2'b10
+`define BUS_SEQX_WRITE 2'b11
+
+/*******************************************
 * Branch logic control fields
 *******************************************/
 `define CC_INVERTX_NONE   1'b0

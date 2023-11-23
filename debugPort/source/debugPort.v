@@ -197,11 +197,11 @@ register #(.BUS_WIDTH(2)) dataXReg(
 	.EN(EN_DATAX)
 );
 	
-register #(.BUS_WIDTH(6)) opXReg(
+register #(.BUS_WIDTH(7)) opXReg(
 	.CLK(DEBUG_WR),
 	.RESET(RESET),
-	.DIN(DEBUG_DIN[2:0]),
-	.DOUT({DEBUG_REGA_ADDRX,,DEBUG_OPX}),
+	.DIN(DEBUG_DIN[6:0]),
+	.DOUT({DEBUG_REGA_ADDRX,DEBUG_OPX}),
 	.LD(EN_OPX),
 	.EN(EN_OPX)
 );	
@@ -209,7 +209,7 @@ register #(.BUS_WIDTH(6)) opXReg(
 register #(.BUS_WIDTH(5)) dataSourcesReg(
 	.CLK(DEBUG_WR),
 	.RESET(RESET),
-	.DIN(DEBUG_DIN),
+	.DIN(DEBUG_DIN[4:0]),
 	.DOUT({DEBUG_PC_NEXTX,DEBUG_CC_REGX}),
 	.LD(EN_SOURCEX),
 	.EN(EN_SOURCEX)

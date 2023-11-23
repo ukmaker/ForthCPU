@@ -68,6 +68,7 @@ module opxMultiplexer(
 	output reg [1:0]  CC_REGX,
 	output reg [1:0]  DATA_BUSX,
 	output reg [1:0]  PC_BASEX,
+	output reg [2:0]  PC_NEXTX,
 	output reg [1:0]  PC_OFFSETX,
 	output reg	       RDX,
 	output reg [1:0]  REGA_ADDRX,
