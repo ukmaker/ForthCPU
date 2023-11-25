@@ -8,10 +8,15 @@ module jumpGroupDecoderTests;
 		
 	reg          CLK;
 	reg          RESET;
-	wire         FETCH, DECODE, EXECUTE, COMMIT;
+	wire         STOPPED, FETCH, DECODE, EXECUTE, COMMIT;
 	reg  [15:0] DIN;
 	wire [15:0] INSTRUCTION;
-	reg          PC_ENX;
+	reg          HALTX;
+	wire         PC_ENX;
+	reg          DEBUG_STOPX;
+	reg          DEBUG_STEP_REQ;
+	wire         DEBUG_STEP_ACK;
+	wire         DEBUG_ACTIVE;
 	
 	reg CC_ZERO;
 	reg CC_CARRY;
@@ -24,12 +29,10 @@ module jumpGroupDecoderTests;
 	wire [1:0] REGA_ADDRX;
 	wire [2:0] REGB_ADDRX;
 	wire [1:0] REGA_DINX;
-	wire        REGA_EN;
-	wire        REGA_WEN;
-	wire        REGB_EN;
+	wire [3:0] REG_SEQX;
 	wire [2:0] ALUB_SRCX;
-	wire [1:0] ADDR_BUSX;
-	wire RDX;
+	wire [2:0] ADDR_BUSX;
+	wire [1:0] BUS_SEQX;
 	
 	
 jumpGroupDecoder testInstance(
@@ -58,13 +61,11 @@ jumpGroupDecoder testInstance(
 	.REGA_ADDRX(REGA_ADDRX),
 	.REGB_ADDRX(REGB_ADDRX),
 	.REGA_DINX(REGA_DINX),
-	.REGA_EN(REGA_EN),
-	.REGA_WEN(REGA_WEN),
-	.REGB_EN(REGB_EN),
 	
 	.ALUB_SRCX(ALUB_SRCX),
 	.ADDR_BUSX(ADDR_BUSX),
-	.RDX(RDX)
+	.REG_SEQX(REG_SEQX),
+	.BUS_SEQX(BUS_SEQX)
 );
 
 
@@ -72,12 +73,18 @@ instructionPhaseDecoder decoder(
 	.CLK(CLK),
 	.RESET(RESET),
 	.DIN(DIN),
-	.PC_ENX(PC_ENX),
+	.STOPPED(STOPPED),
 	.FETCH(FETCH),
 	.DECODE(DECODE),
 	.EXECUTE(EXECUTE),
 	.COMMIT(COMMIT),
-	.INSTRUCTION(INSTRUCTION)
+	.INSTRUCTION(INSTRUCTION),
+	.HALTX(HALTX),
+	.PC_ENX(PC_ENX),
+	.DEBUG_STOPX(DEBUG_STOPX),
+	.DEBUG_STEP_REQ(DEBUG_STEP_REQ),
+	.DEBUG_STEP_ACK(DEBUG_STEP_ACK),
+	.DEBUG_ACTIVE(DEBUG_ACTIVE)
 );	
 
 // clk gen
@@ -89,7 +96,9 @@ initial begin
 	#10
 	CLK = 0; 
 	`TICK;
-	PC_ENX = 1;
+	HALTX = 0;
+	DEBUG_STOPX = 0;
+	DEBUG_STEP_REQ = 0;
 	RESET = 1;
 	DIN = 16'h0000;
 	`TICK;
@@ -111,10 +120,9 @@ initial begin
 	`assert("PC_BASEX",   `PC_BASEX_REGB_DOUT,   PC_BASEX)
 	`assert("REGA_ADDRX", `REGA_ADDRX_RL,   REGA_ADDRX)
 	`assert("REGB_ADDRX", `REGB_ADDRX_ARGB, REGB_ADDRX)
-	`assert("REGA_EN",    0,                REGA_EN)
-	`assert("REGA_WEN",   0,                REGA_WEN)
-	`assert("REGB_EN",    1,                REGB_EN)
 	`assert("ALUB_SRCX",  `ALUB_SRCX_REG_B, ALUB_SRCX)
+	`assert("REG_SEQX",   `REG_SEQX_RDB,    REG_SEQX)
+	`assert("BUS_SEQX",   `BUS_SEQX_NONE,   BUS_SEQX)
 	`TICKTOCK; 
 	`TICKTOCK;  
 
@@ -126,9 +134,8 @@ initial begin
 	`assert("PC_BASEX",   `PC_BASEX_PC_A,   PC_BASEX)
 	`assert("REGA_ADDRX", `REGA_ADDRX_RL,   REGA_ADDRX)
 	`assert("REGB_ADDRX", `REGB_ADDRX_ARGB, REGB_ADDRX)
-	`assert("REGA_EN",    0,                REGA_EN)
-	`assert("REGA_WEN",   0,                REGA_WEN)
-	`assert("REGB_EN",    0,                REGB_EN)
+	`assert("REG_SEQX",   `REG_SEQX_NONE,   REG_SEQX)
+	`assert("BUS_SEQX",   `BUS_SEQX_NONE,   BUS_SEQX)
 	`assert("ALUB_SRCX",  `ALUB_SRCX_REG_B, ALUB_SRCX)
 	`TICKTOCK; 
 	`TICKTOCK;  
@@ -141,9 +148,8 @@ initial begin
 	`assert("PC_BASEX",   `PC_BASEX_REGB_DOUT,      PC_BASEX)
 	`assert("REGA_ADDRX", `REGA_ADDRX_RL,   REGA_ADDRX)
 	`assert("REGB_ADDRX", `REGB_ADDRX_ARGB, REGB_ADDRX)
-	`assert("REGA_EN",    0,                REGA_EN)
-	`assert("REGA_WEN",   0,                REGA_WEN)
-	`assert("REGB_EN",    1,                REGB_EN)
+	`assert("REG_SEQX",   `REG_SEQX_RDB,    REG_SEQX)
+	`assert("BUS_SEQX",   `BUS_SEQX_NONE,   BUS_SEQX)
 	`assert("ALUB_SRCX",  `ALUB_SRCX_REG_B, ALUB_SRCX)
 	`TICKTOCK; 
 	`TICKTOCK;  
@@ -157,9 +163,8 @@ initial begin
 	`assert("PC_BASEX",   `PC_BASEX_PC_A,   PC_BASEX)
 	`assert("REGA_ADDRX", `REGA_ADDRX_RL,   REGA_ADDRX)
 	`assert("REGB_ADDRX", `REGB_ADDRX_ARGB, REGB_ADDRX)
-	`assert("REGA_EN",    0,                REGA_EN)
-	`assert("REGA_WEN",   0,                REGA_WEN)
-	`assert("REGB_EN",    0,                REGB_EN)
+	`assert("REG_SEQX",   `REG_SEQX_NONE,   REG_SEQX)
+	`assert("BUS_SEQX",   `BUS_SEQX_NONE,   BUS_SEQX)
 	`assert("ALUB_SRCX",  `ALUB_SRCX_REG_B, ALUB_SRCX)
 	`TICKTOCK; 
 	`TICKTOCK;  
@@ -176,9 +181,8 @@ initial begin
 	`assert("PC_BASEX",   `PC_BASEX_PC_A,   PC_BASEX)
 	`assert("REGA_ADDRX", `REGA_ADDRX_RL,   REGA_ADDRX)
 	`assert("REGB_ADDRX", `REGB_ADDRX_ARGB, REGB_ADDRX)
-	`assert("REGA_EN",    0,                REGA_EN)
-	`assert("REGA_WEN",   0,                REGA_WEN)
-	`assert("REGB_EN",    0,                REGB_EN)
+	`assert("REG_SEQX",   `REG_SEQX_NONE,   REG_SEQX)
+	`assert("BUS_SEQX",   `BUS_SEQX_NONE,   BUS_SEQX)
 	`assert("ALUB_SRCX",  `ALUB_SRCX_REG_B, ALUB_SRCX)
 	`TICKTOCK; 
 	`TICKTOCK;  

@@ -7,21 +7,29 @@ module registerSequencerTests;
 	reg CLK;
 	reg RESET;
 	
+	wire STOPPED;
 	wire FETCH;
 	wire DECODE;
 	wire EXECUTE;
 	wire COMMIT;
 	
-	reg [2:0] REG_SEQX;
+	reg [3:0] REG_SEQX;
 	reg BYTEX;
 	reg A0;
+	reg HALTX;
+	reg DEBUG_STOPX;
+	reg DEBUG_STEP_REQ;
+	
+	wire DEBUG_ACTIVE;
+	wire DEBUG_STEP_ACK;
+	
 	wire REGA_EN;
 	wire REGA_WEN;
 	wire REGB_EN;
 	wire REGB_WEN;
 
 	reg  [15:0] DIN;
-	reg          PC_ENX;
+	wire         PC_ENX;
 	wire [15:0] INSTRUCTION;
 
 	
@@ -44,12 +52,18 @@ registerSequencer testInst(
 instructionPhaseDecoder decoder(
 	.CLK(CLK),
 	.RESET(RESET),
+	.DIN(DIN),
+	.HALTX(HALTX),
+	.PC_ENX(PC_ENX),
+	.DEBUG_STOPX(DEBUG_STOPX),
+	.DEBUG_STEP_REQ(DEBUG_STEP_REQ),
+	.DEBUG_STEP_ACK(DEBUG_STEP_ACK),
+	.DEBUG_ACTIVE(DEBUG_ACTIVE),
+	.STOPPED(STOPPED),
 	.FETCH(FETCH),
 	.DECODE(DECODE),
 	.EXECUTE(EXECUTE),
 	.COMMIT(COMMIT),
-	.DIN(DIN),
-	.PC_ENX(PC_ENX),
 	.INSTRUCTION(INSTRUCTION)
 );
 
@@ -65,19 +79,25 @@ initial begin
 	`TICK;
 	RESET = 1;
 	DIN = 16'h0000;
-	PC_ENX = 1;
+	DEBUG_STOPX = 0;
+	HALTX = 0;
+	DEBUG_STEP_REQ = 0;
 	REG_SEQX = `REG_SEQX_NONE;
 	BYTEX = `BYTEX_WORD;
 	A0 = 0;
 	
 	`TICKTOCK;
-	#5 RESET = 0;
-	`TICKTOCK;
-	`TICKTOCK;
+	RESET = 0;
+	
+	#95;
+	`mark(0)
+	`assert("FETCH cycle", 1, FETCH)
 	
 	// Fetch cycle
-	`mark(1)
 	`TICKTOCK;
+	`mark(1)
+	`assert("END of FETCH cycle", 0, FETCH)
+	`assert("END of FETCH cycle", 1, DECODE)
 	`assert("REGA_EN",      0, REGA_EN)
 	`assert("REGA_WEN",     0, REGA_WEN)
 	`assert("REGB_EN",      0, REGB_EN)
@@ -124,16 +144,16 @@ initial begin
 	//Execute
 	`mark(7)
 	`TICKTOCK;
-	`assert("REGA_EN",      1, REGA_EN)
+	`assert("REGA_EN",      0, REGA_EN)
 	`assert("REGA_WEN",     0, REGA_WEN)
-	`assert("REGB_EN",      1, REGB_EN)
+	`assert("REGB_EN",      0, REGB_EN)
 	`assert("REGB_WEN",     0, REGB_WEN)
 	// Commit
 	`mark(8)
 	`TICKTOCK;
-	`assert("REGA_EN",      1, REGA_EN)
+	`assert("REGA_EN",      0, REGA_EN)
 	`assert("REGA_WEN",     0, REGA_WEN)
-	`assert("REGB_EN",      1, REGB_EN)
+	`assert("REGB_EN",      0, REGB_EN)
 	`assert("REGB_WEN",     0, REGB_WEN)
 	
 	REG_SEQX = `REG_SEQX_RDA_RDB;
@@ -156,16 +176,16 @@ initial begin
 	//Execute
 	`mark(11)
 	`TICKTOCK;
-	`assert("REGA_EN",      1, REGA_EN)
+	`assert("REGA_EN",      0, REGA_EN)
 	`assert("REGA_WEN",     0, REGA_WEN)
-	`assert("REGB_EN",      1, REGB_EN)
+	`assert("REGB_EN",      0, REGB_EN)
 	`assert("REGB_WEN",     0, REGB_WEN)
 	// Commit
 	`mark(12)
 	`TICKTOCK;
-	`assert("REGA_EN",      1, REGA_EN)
+	`assert("REGA_EN",      0, REGA_EN)
 	`assert("REGA_WEN",     0, REGA_WEN)
-	`assert("REGB_EN",      1, REGB_EN)
+	`assert("REGB_EN",      0, REGB_EN)
 	`assert("REGB_WEN",     0, REGB_WEN)
 	
 	
@@ -182,23 +202,24 @@ initial begin
 	// Decode
 	`mark(14)
 	`TICKTOCK;
-	`assert("REGA_EN",      1, REGA_EN)
+	`TICK;
+	`assert("REGA_EN",      0, REGA_EN)
 	`assert("REGA_WEN",     0, REGA_WEN)
 	`assert("REGB_EN",      1, REGB_EN)
 	`assert("REGB_WEN",     0, REGB_WEN)
 	//Execute
 	`mark(15)
-	`TICKTOCK;
-	`assert("REGA_EN",      1, REGA_EN)
+	`TOCK;
+	`assert("REGA_EN",      0, REGA_EN)
 	`assert("REGA_WEN",     0, REGA_WEN)
-	`assert("REGB_EN",      1, REGB_EN)
+	`assert("REGB_EN",      0, REGB_EN)
 	`assert("REGB_WEN",     0, REGB_WEN)
 	// Commit
 	`mark(16)
 	`TICKTOCK;
 	`assert("REGA_EN",      1, REGA_EN)
 	`assert("REGA_WEN",     1, REGA_WEN)
-	`assert("REGB_EN",      1, REGB_EN)
+	`assert("REGB_EN",      0, REGB_EN)
 	`assert("REGB_WEN",     0, REGB_WEN)
 	REG_SEQX = `REG_SEQX_LDA_RDB;
 	BYTEX    = `BYTEX_BYTE;
@@ -214,23 +235,24 @@ initial begin
 	// Decode
 	`mark(18)
 	`TICKTOCK;
-	`assert("REGA_EN",      1, REGA_EN)
+	`TICK;
+	`assert("REGA_EN",      0, REGA_EN)
 	`assert("REGA_WEN",     0, REGA_WEN)
 	`assert("REGB_EN",      1, REGB_EN)
 	`assert("REGB_WEN",     0, REGB_WEN)
 	//Execute
 	`mark(19)
-	`TICKTOCK;
-	`assert("REGA_EN",      1, REGA_EN)
+	`TOCK;
+	`assert("REGA_EN",      0, REGA_EN)
 	`assert("REGA_WEN",     0, REGA_WEN)
-	`assert("REGB_EN",      1, REGB_EN)
+	`assert("REGB_EN",      0, REGB_EN)
 	`assert("REGB_WEN",     0, REGB_WEN)
 	// Commit
 	`mark(20)
 	`TICKTOCK;
 	`assert("REGA_EN",      1, REGA_EN)
 	`assert("REGA_WEN",     1, REGA_WEN)
-	`assert("REGB_EN",      1, REGB_EN)
+	`assert("REGB_EN",      0, REGB_EN)
 	`assert("REGB_WEN",     0, REGB_WEN)
 
 	REG_SEQX = `REG_SEQX_LDA_RDB;
@@ -247,23 +269,24 @@ initial begin
 	// Decode
 	`mark(22)
 	`TICKTOCK;
-	`assert("REGA_EN",      1, REGA_EN)
+	`TICK;
+	`assert("REGA_EN",      0, REGA_EN)
 	`assert("REGA_WEN",     0, REGA_WEN)
 	`assert("REGB_EN",      1, REGB_EN)
 	`assert("REGB_WEN",     0, REGB_WEN)
 	//Execute
 	`mark(23)
-	`TICKTOCK;
-	`assert("REGA_EN",      1, REGA_EN)
+	`TOCK;
+	`assert("REGA_EN",      0, REGA_EN)
 	`assert("REGA_WEN",     0, REGA_WEN)
-	`assert("REGB_EN",      1, REGB_EN)
+	`assert("REGB_EN",      0, REGB_EN)
 	`assert("REGB_WEN",     0, REGB_WEN)
 	// Commit
 	`mark(24)
 	`TICKTOCK;
 	`assert("REGA_EN",      1, REGA_EN)
 	`assert("REGA_WEN",     1, REGA_WEN)
-	`assert("REGB_EN",      1, REGB_EN)
+	`assert("REGB_EN",      0, REGB_EN)
 	`assert("REGB_WEN",     0, REGB_WEN)
 
 	REG_SEQX = `REG_SEQX_LDA_UPB;
@@ -280,16 +303,17 @@ initial begin
 	// Decode
 	`mark(26)
 	`TICKTOCK;
-	`assert("REGA_EN",      1, REGA_EN)
+	`TICK;
+	`assert("REGA_EN",      0, REGA_EN)
 	`assert("REGA_WEN",     0, REGA_WEN)
 	`assert("REGB_EN",      1, REGB_EN)
 	`assert("REGB_WEN",     0, REGB_WEN)
 	//Execute
 	`mark(27)
-	`TICKTOCK;
-	`assert("REGA_EN",      1, REGA_EN)
+	`TOCK;
+	`assert("REGA_EN",      0, REGA_EN)
 	`assert("REGA_WEN",     0, REGA_WEN)
-	`assert("REGB_EN",      1, REGB_EN)
+	`assert("REGB_EN",      0, REGB_EN)
 	`assert("REGB_WEN",     0, REGB_WEN)
 	// Commit
 	`mark(28)
@@ -313,16 +337,17 @@ initial begin
 	// Decode
 	`mark(30)
 	`TICKTOCK;
-	`assert("REGA_EN",      1, REGA_EN)
+	`TICK;
+	`assert("REGA_EN",      0, REGA_EN)
 	`assert("REGA_WEN",     0, REGA_WEN)
 	`assert("REGB_EN",      1, REGB_EN)
 	`assert("REGB_WEN",     0, REGB_WEN)
 	//Execute
 	`mark(31)
-	`TICKTOCK;
-	`assert("REGA_EN",      1, REGA_EN)
+	`TOCK;
+	`assert("REGA_EN",      0, REGA_EN)
 	`assert("REGA_WEN",     0, REGA_WEN)
-	`assert("REGB_EN",      1, REGB_EN)
+	`assert("REGB_EN",      0, REGB_EN)
 	`assert("REGB_WEN",     0, REGB_WEN)
 	// Commit
 	`mark(32)
@@ -346,16 +371,17 @@ initial begin
 	// Decode
 	`mark(34)
 	`TICKTOCK;
-	`assert("REGA_EN",      1, REGA_EN)
+	`TICK;
+	`assert("REGA_EN",      0, REGA_EN)
 	`assert("REGA_WEN",     0, REGA_WEN)
 	`assert("REGB_EN",      1, REGB_EN)
 	`assert("REGB_WEN",     0, REGB_WEN)
 	//Execute
 	`mark(35)
-	`TICKTOCK;
-	`assert("REGA_EN",      1, REGA_EN)
+	`TOCK;
+	`assert("REGA_EN",      0, REGA_EN)
 	`assert("REGA_WEN",     0, REGA_WEN)
-	`assert("REGB_EN",      1, REGB_EN)
+	`assert("REGB_EN",      0, REGB_EN)
 	`assert("REGB_WEN",     0, REGB_WEN)
 	// Commit
 	`mark(36)
@@ -380,21 +406,22 @@ initial begin
 	// Decode
 	`mark(38)
 	`TICKTOCK;
+	`TICK;
 	`assert("REGA_EN",      1, REGA_EN)
 	`assert("REGA_WEN",     0, REGA_WEN)
 	`assert("REGB_EN",      1, REGB_EN)
 	`assert("REGB_WEN",     0, REGB_WEN)
 	//Execute
 	`mark(39)
-	`TICKTOCK;
-	`assert("REGA_EN",      1, REGA_EN)
+	`TOCK;
+	`assert("REGA_EN",      0, REGA_EN)
 	`assert("REGA_WEN",     0, REGA_WEN)
-	`assert("REGB_EN",      1, REGB_EN)
+	`assert("REGB_EN",      0, REGB_EN)
 	`assert("REGB_WEN",     0, REGB_WEN)
 	// Commit
 	`mark(40)
 	`TICKTOCK;
-	`assert("REGA_EN",      1, REGA_EN)
+	`assert("REGA_EN",      0, REGA_EN)
 	`assert("REGA_WEN",     0, REGA_WEN)
 	`assert("REGB_EN",      1, REGB_EN)
 	`assert("REGB_WEN",     1, REGB_WEN)
@@ -415,14 +442,15 @@ initial begin
 	// Decode
 	`mark(42)
 	`TICKTOCK;
-	`assert("REGA_EN",      1, REGA_EN)
+	`TICK;
+	`assert("REGA_EN",      0, REGA_EN)
 	`assert("REGA_WEN",     0, REGA_WEN)
 	`assert("REGB_EN",      0, REGB_EN)
 	`assert("REGB_WEN",     0, REGB_WEN)
 	//Execute
 	`mark(43)
-	`TICKTOCK;
-	`assert("REGA_EN",      1, REGA_EN)
+	`TOCK;
+	`assert("REGA_EN",      0, REGA_EN)
 	`assert("REGA_WEN",     0, REGA_WEN)
 	`assert("REGB_EN",      0, REGB_EN)
 	`assert("REGB_WEN",     0, REGB_WEN)

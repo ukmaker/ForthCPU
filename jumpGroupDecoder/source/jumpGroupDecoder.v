@@ -50,7 +50,7 @@ module jumpGroupDecoder(
 	**/
 	output reg [1:0] PC_OFFSETX,
 	output reg [1:0] PC_BASEX,
-	output reg [1:0] ADDR_BUSX,
+	output reg [2:0] ADDR_BUSX,
 	
 	/**
 	* Register file control
@@ -68,7 +68,7 @@ module jumpGroupDecoder(
 	/**
 	* Bus control
 	**/
-	output reg        RDX
+	output reg [1:0] BUS_SEQX
 );
 
 reg RD_M;
@@ -198,20 +198,10 @@ end
 always @(posedge CLK or posedge RESET) begin
 	
 	if(RESET) begin
-		RDX <= 0;
+		BUS_SEQX <= `BUS_SEQX_NONE;
 	end else begin
-		
-		if(DECODE) begin
-			RDX <= RD_M;
-		end else if(EXECUTE) begin
-			RDX <= RD_M;
-		end else if(COMMIT) begin
-			RDX <= RD_M;
-		end else begin
-			RDX <= 0;
-		end
+		BUS_SEQX <= RD_M ? `BUS_SEQX_READ : `BUS_SEQX_NONE;
 	end
-	
 end
 	
 endmodule

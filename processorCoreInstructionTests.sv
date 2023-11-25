@@ -20,8 +20,18 @@ wire [15:0] ADDR_BUF;
 wire [15:0] DOUT_BUF;
 reg  [15:0] DIN;
 
-wire RD;
-wire WR;
+wire RDN_BUF;
+wire ABUS_OEN;
+wire WRN0_BUF;
+wire WRN1_BUF;
+
+// Debugger interface
+reg  [7:0]  DEBUG_DIN;
+wire [7:0]  DEBUG_DOUT;
+reg [2:0]   DEBUG_ADDR;
+reg          DEBUG_RD;
+reg          DEBUG_WR;
+
 PUR PUR_INST(.PUR(1'b1));
 GSR GSR_INST(.GSR(1'b1));
 	
@@ -48,7 +58,13 @@ core testInstance(
 	.WRN0_BUF(WRN0_BUF),
 	.WRN1_BUF(WRN1_BUF),
 	
-	.ABUS_OEN(ABUS_OEN)
+	.ABUS_OEN(ABUS_OEN),
+	
+	.DEBUG_DIN(DEBUG_DIN),
+	.DEBUG_DOUT(DEBUG_DOUT),
+	.DEBUG_ADDR(DEBUG_ADDR),
+	.DEBUG_RD(DEBUG_RD),
+	.DEBUG_WR(DEBUG_WR)
 );
 
 reg [15:0] INSTR;
@@ -66,6 +82,10 @@ initial begin
 	`TICK;
 	RESET = 1;
 	DIN = 16'h0000;
+	DEBUG_DIN = 8'h00;
+	DEBUG_RD = 0;
+	DEBUG_WR = 0;
+	DEBUG_ADDR = 0;
 	INT0 = 0;
 	INT1 = 0;
 	`TICKTOCK;

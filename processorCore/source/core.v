@@ -24,9 +24,9 @@ module core(
 	// Debugger interface
 	input  [7:0]  DEBUG_DIN,
 	output [7:0]  DEBUG_DOUT,
-	input [2:0]      DEBUG_ADDR,
-	input             DEBUG_RD,
-	input             DEBUG_WR
+	input [2:0]   DEBUG_ADDR,
+	input          DEBUG_RD,
+	input          DEBUG_WR
 );
 
 /***************************************
@@ -41,6 +41,7 @@ wire [15:0] ALUB_DATA;
 wire [2:0]  ALUB_SRCX;
 wire [3:0]  ARGA_X;
 wire [3:0]  ARGB_X;
+wire [1:0]  BUS_SEQX;
 wire         CCL_LD;
 wire         CCL_ENRX;
 wire         CCL_EN0X;
@@ -51,23 +52,6 @@ wire         CC_CARRY;
 wire         CC_PARITY;
 wire         CC_SIGN;
 wire [1:0]  DATA_BUSX;
-
-wire [15:0] DEBUG_MEM_ADDR;
-wire [15:0] DEBUG_MEM_DATA_OUT;
-wire         DEBUG_ADDR_INCX;
-wire         DEBUG_ADDR_LDX;
-wire         DEBUG_STOPX;
-wire         DEBUG_REQX;
-wire         DEBUG_ACKX;
-wire [2:0]  DEBUG_OPX;
-wire [3:0]  DEBUG_REGA_ADDRX;
-wire [2:0]  DEBUG_PC_NEXTX;
-wire [1:0]  DEBUG_CC_REGX;
-wire [15:0] DEBUG_DIN_DIN;
-wire [15:0] DEBUG_REGA_DATA;
-wire [15:0] DEBUG_CC_DATA;
-wire [15:0] DEBUG_PC_A_NEXT;
-wire        DEBUG_DOUT_LDX;
 
 wire         DIX;
 wire         EIX;
@@ -104,9 +88,22 @@ wire [3:0]  ALU_REG_SEQX;
 wire [1:0]  ALU_REGA_ADDRX;
 wire [2:0]  ALU_REGB_ADDRX;
 
-wire [3:0]  DEBUG_REGA_ADDRX;
-wire [2:0]  DEBUG_PC_NEXTX;
+wire         DEBUG_ACKX;
+wire         DEBUG_ADDR_INCX;
+wire         DEBUG_ADDR_LDX;
 wire [1:0]  DEBUG_CC_REGX;
+wire [15:0] DEBUG_CC_DATA;
+wire [15:0] DEBUG_DIN_DIN;
+wire         DEBUG_DOUT_LDX;
+wire [15:0] DEBUG_MEM_ADDR;
+wire [15:0] DEBUG_MEM_DATA_OUT;
+wire [2:0]  DEBUG_OPX;
+wire [15:0] DEBUG_PC_A_NEXT;
+wire [2:0]  DEBUG_PC_NEXTX;
+wire [3:0]  DEBUG_REGA_ADDRX;
+wire [15:0] DEBUG_REGA_DATA;
+wire         DEBUG_REQX;
+wire         DEBUG_STOPX;
 
 wire [1:0]  INT_CC_REGX;
 wire [2:0]  INT_PC_NEXTX;
@@ -159,7 +156,7 @@ debugPort debugger(
 	.DEBUG_REQX(DEBUG_REQX),
 	.DEBUG_ACKX(DEBUG_ACKX),
 	.DEBUG_OPX(DEBUG_OPX),
-	.DEBUG_REGX(DEBUG_REGX),
+	.DEBUG_REGA_ADDRX(DEBUG_REGA_ADDRX),
 	.DEBUG_PC_NEXTX(DEBUG_PC_NEXTX),
 	.DEBUG_CC_REGX(DEBUG_CC_REGX),
 	.DEBUG_DIN_DIN(DEBUG_DIN_DIN),
@@ -250,6 +247,7 @@ busController busControllerInst(
 	.CLK(CLK),
 	.DECODE(DECODE),
 	.COMMIT(COMMIT),
+	.BUS_SEQX(BUS_SEQX),
 	.PC_A(PC_A),
 	.ALU_R(ALU_R),
 	.ALUB_DATA(ALUB_DATA),
@@ -258,8 +256,6 @@ busController busControllerInst(
 	.REGA_DOUT(REGA_DOUT),
 	.DATA_BUSX(DATA_BUSX),
 	.BYTEX(BYTEX),
-	.WRX(WRX),
-	.RDX(RDX),
 	.DOUT_BUF(DOUT_BUF),
 	.HERE(HERE),
 	.HIGH_BYTEX(HIGH_BYTEX),

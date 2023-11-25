@@ -47,10 +47,11 @@
 /*******************************************
 * Address bus sources
 *******************************************/
-`define ADDR_BUSX_PC_A      2'b00
-`define ADDR_BUSX_ALU_R     2'b01
-`define ADDR_BUSX_ALUB_DATA 2'b10
-`define ADDR_BUSX_HERE      2'b11
+`define ADDR_BUSX_PC_A      3'b000
+`define ADDR_BUSX_ALU_R     3'b001
+`define ADDR_BUSX_ALUB_DATA 3'b010
+`define ADDR_BUSX_HERE      3'b011
+`define ADDR_BUSX_DEBUG     3'b100
 
 
 /*******************************************
@@ -117,8 +118,11 @@
 `define DEBUG_ADDRX_DATAX   3'b110
 `define DEBUG_ADDRX_STOP    3'b111
 
-`define DEBUG_INCX_NONE 1'b0
-`define DEBUG_INCX_INC  1'b1
+`define DEBUG_ADDR_INCX_NONE 1'b0
+`define DEBUG_ADDR_INCX_INC  1'b1
+
+`define DEBUG_ADDR_LDX_NONE  1'b0
+`define DEBUG_ADDR_LDX_LD    1'b1
 
 `define DEBUG_OPX_NONE   3'b000
 `define DEBUG_OPX_STOP   3'b001
@@ -281,11 +285,17 @@
 /**
 * Phase
 **/
-`define PHI_STOPPED 4'b0000
-`define PHI_FETCH   4'b0001
-`define PHI_DECODE  4'b0010
-`define PHI_EXECUTE 4'b0100
-`define PHI_COMMIT  4'b1000
+`define PHI_STOPPED       4'b0000
+`define PHI_FETCH         4'b0001
+`define PHI_DECODE        4'b0010
+`define PHI_EXECUTE       4'b0011
+`define PHI_COMMIT        4'b0100
+`define PHI_DEBUG_STOPPED 4'b1000
+`define PHI_DEBUG_FETCH   4'b1001
+`define PHI_DEBUG_DECODE  4'b1010
+`define PHI_DEBUG_EXECUTE 4'b1011
+`define PHI_DEBUG_COMMIT  4'b1100
+`define PHI_DEBUG_ACK     4'b1101
 
 /**
 * Instruction group

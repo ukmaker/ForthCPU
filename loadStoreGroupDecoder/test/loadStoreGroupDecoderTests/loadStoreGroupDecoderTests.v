@@ -8,6 +8,7 @@ module loadStoreGroupDecoderTests;
 	reg CLK;
 	reg RESET;
 	
+	wire STOPPED;
 	wire FETCH;
 	wire DECODE;
 	wire EXECUTE;
@@ -22,7 +23,7 @@ module loadStoreGroupDecoderTests;
 	/**
 	* Register file
 	**/
-	wire [2:0] REG_SEQX;
+	wire [3:0] REG_SEQX;
 	
 	/**
 	* ALU
@@ -44,8 +45,8 @@ module loadStoreGroupDecoderTests;
 	* Bus control
 	**/
 	wire [1:0] DATA_BUSX;
+	wire [1:0] BUS_SEQX;
 	wire       RDX;
-	wire       WRX;
 	wire       BYTEX;
 	wire [1:0] ADDR_BUSX;
 	
@@ -54,7 +55,11 @@ module loadStoreGroupDecoderTests;
 	wire [15:0] INSTRUCTION;
 	wire [1:0] OPF;
 	wire [2:0] MODEF;
-	reg PC_ENX;
+	wire PC_ENX;
+	
+	wire DEBUG_STEP_ACK;
+	wire DEBUG_ACTIVE;
+	
 	
 loadStoreGroupDecoder testInstance(
 	.CLK(CLK),
@@ -73,8 +78,7 @@ loadStoreGroupDecoder testInstance(
 	.REGA_ADDRX(REGA_ADDRX),
 	.REGB_ADDRX(REGB_ADDRX),
 	.DATA_BUSX(DATA_BUSX),
-	.RDX(RDX),
-	.WRX(WRX),
+	.BUS_SEQX(BUS_SEQX),
 	.BYTEX(BYTEX),
 	.ADDR_BUSX(ADDR_BUSX),
 	.PC_OFFSETX(PC_OFFSETX)
@@ -83,13 +87,21 @@ loadStoreGroupDecoder testInstance(
 instructionPhaseDecoder decoder(
 	.CLK(CLK),
 	.RESET(RESET),
+	.DIN(DIN),
+	.HALTX(1'b0),
+	.PC_ENX(PC_ENX),
+	.DEBUG_STOPX(1'b0),
+	.DEBUG_STEP_REQ(1'b0),
+	.DEBUG_STEP_ACK(DEBUG_STEP_ACK),
+	.DEBUG_ACTIVE(DEBUG_ACTIVE),
+	
+	.STOPPED(STOPPED),
 	.FETCH(FETCH),
 	.DECODE(DECODE),
 	.EXECUTE(EXECUTE),
 	.COMMIT(COMMIT),
-	.DIN(DIN),
-	.INSTRUCTION(INSTRUCTION),
-	.PC_ENX(PC_ENX)
+
+	.INSTRUCTION(INSTRUCTION)
 );	
 
 assign OPF  = INSTRUCTION[12:11];
@@ -103,7 +115,6 @@ end
 initial begin
 	#10
 	CLK = 0; 
-	PC_ENX = 1;
 	`TICK;
 	 RESET = 1;
 	 DIN = 16'h0000;
@@ -111,6 +122,8 @@ initial begin
 	 `TICK;
 	 
 	 RESET = 0;  
+	 `TICKTOCK;
+	 `TICKTOCK;
 	 `TICKTOCK;
 	 `TICKTOCK;
 	 `TICKTOCK;
@@ -155,7 +168,7 @@ initial begin
 	// Control outputs become valid here
 	#10
 	`mark(3)
-	`assert("REG_SEQX",    `REG_SEQX_LDA_RDB,    REG_SEQX)
+	`assert("REG_SEQX",    `REG_SEQX_LDA_IMM,    REG_SEQX)
 	`assert("ALUA_SRCX",   `ALUA_SRCX_REG_A,     ALUA_SRCX)
 	`assert("ALUB_SRCX",   `ALUB_SRCX_REG_B,     ALUB_SRCX)
 	`assert("ALU_OPX",     `ALU_OPX_ADD,         ALU_OPX)
@@ -166,7 +179,7 @@ initial begin
 	// COMMIT
 	`TICKTOCK;
 	`mark(4)
-	`assert("REG_SEQX",    `REG_SEQX_LDA_RDB,    REG_SEQX)
+	`assert("REG_SEQX",    `REG_SEQX_LDA_IMM,    REG_SEQX)
 	
 	
 	`TICKTOCK
