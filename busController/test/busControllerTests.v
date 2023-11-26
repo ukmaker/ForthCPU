@@ -12,13 +12,14 @@ module busControllerTests;
 	/**
 	* OPX
 	**/
-	reg [2:0]  ADDR_BUSX_MUX;
-	reg [1:0]  PC_BASEX_MUX;
-	reg [1:0]  PC_OFFSETX_MUX;
+	reg [2:0]  ADDR_BUSX;
+	reg [1:0]  PC_BASEX;
+	reg [1:0]  PC_OFFSETX;
 	
 	/**
 	* Address
 	**/
+	reg [15:0] DEBUG_MA;
 	reg [15:0] PC_A;
 	reg [15:0] ALU_R;
 	reg [15:0] ALUB_DATA;
@@ -28,6 +29,7 @@ module busControllerTests;
 	/**
 	* Data
 	**/
+	reg [15:0]  DEBUG_MD;
 	reg [15:0]  REGA_DOUT;
 	reg [1:0]   DATA_BUSX;
 	reg          BYTEX;
@@ -75,10 +77,12 @@ busController testInstance(
 	.EXECUTE(EXECUTE),
 	.COMMIT(COMMIT),
 	.DEBUG_ACTIVE(DEBUG_ACTIVE),
+	.DEBUG_MA(DEBUG_MA),
+	.DEBUG_MD(DEBUG_MD),
 	.BUS_SEQX(BUS_SEQX),
-	.ADDR_BUSX_MUX(ADDR_BUSX_MUX),
-	.PC_BASEX_MUX(PC_BASEX_MUX),
-	.PC_OFFSETX_MUX(PC_OFFSETX_MUX),
+	.ADDR_BUSX(ADDR_BUSX),
+	.PC_BASEX(PC_BASEX),
+	.PC_OFFSETX(PC_OFFSETX),
 	
 	.PC_A(PC_A),
 	.ALU_R(ALU_R),
@@ -106,17 +110,21 @@ initial begin
 	CLK = 0; 
 	`TICK;
 	RESET = 1;
-	PC_A = 16'haaaa;
-	ALU_R = 16'hbbbb;
+	DEBUG_MA  = 16'h2525;
+	HERE      = 16'h3636;
+	PC_A      = 16'haaaa;
+	ALU_R     = 16'hbbbb;
+	DEBUG_MD  = 16'h7b7b;
 	REGA_DOUT = 16'hcccc;
 	ALUB_DATA = 16'hdddd;
-	ADDR_BUSX_MUX = `ADDR_BUSX_PC_A;
+	ADDR_BUSX = `ADDR_BUSX_PC_A;
 	DATA_BUSX = `DATA_BUSX_REGA_DOUT;
 	BYTEX = 0;
 	BUS_SEQX = 2'b00;
 	HALTX = 1;
 	DIN = 16'h0000;
 	DEBUG_STOPX = 0;
+	DEBUG_STEP_REQ = 0;
 
 	`TICKTOCK;
 	`TICKTOCK;	 
@@ -148,7 +156,7 @@ initial begin
 	`TICKTOCK; // DECODE
 	`TICKTOCK; // EXECUTE - Control signals become valid here
 
-	ADDR_BUSX_MUX = `ADDR_BUSX_ALU_R;
+	ADDR_BUSX = `ADDR_BUSX_ALU_R;
 	#10
 	`mark(2)
 	`assert("ADDR_BUF", 16'hbbbb, ADDR_BUF)
@@ -164,7 +172,7 @@ initial begin
 	BUS_SEQX = `BUS_SEQX_NONE;
 	`TICKTOCK; // EXECUTE - Control signals become valid here
 
-	ADDR_BUSX_MUX = `ADDR_BUSX_ALUB_DATA;
+	ADDR_BUSX = `ADDR_BUSX_ALUB_DATA;
 	#10
 	`mark(3)
 	`assert("ADDR_BUF", 16'hdddd, ADDR_BUF)
@@ -174,7 +182,30 @@ initial begin
 	`assert("HIGH_BYTEX", 0, HIGH_BYTEX)
 	`TICKTOCK; // COMMIT
 		
-	/******************************************************************
+
+	`TICKTOCK; // FETCH
+	BUS_SEQX = `BUS_SEQX_FETCH;
+	`TICKTOCK; // DECODE
+	BUS_SEQX = `BUS_SEQX_WRITE;
+	`TICKTOCK; // EXECUTE - Control signals become valid here
+
+	ADDR_BUSX = `ADDR_BUSX_DEBUG;
+	#10
+	`mark(4)
+	`assert("ADDR_BUF", 16'h2525, ADDR_BUF)
+	`assert("DOUT_BUF", 16'hcccc, DOUT_BUF)
+	`assert("WRN0_BUF", 1, WRN0_BUF)
+	`assert("WRN1_BUF", 1, WRN1_BUF)
+	`assert("HIGH_BYTEX", 0, HIGH_BYTEX)
+	`TICKTOCK; // COMMIT
+	`assert("ADDR_BUF", 16'h2525, ADDR_BUF)
+	`assert("DOUT_BUF", 16'hcccc, DOUT_BUF)
+	`assert("WRN0_BUF", 0, WRN0_BUF)
+	`assert("WRN1_BUF", 0, WRN1_BUF)
+	`assert("HIGH_BYTEX", 0, HIGH_BYTEX)
+		
+
+/******************************************************************
 	* Byte addressing
 	******************************************************************/
 	`TICKTOCK; // FETCH
@@ -183,10 +214,10 @@ initial begin
 	BUS_SEQX = `BUS_SEQX_NONE;
 	`TICKTOCK; // EXECUTE - Control signals become valid here
 
-	ADDR_BUSX_MUX = `ADDR_BUSX_PC_A;
+	ADDR_BUSX = `ADDR_BUSX_PC_A;
 	BYTEX = 1;
 	#10
-	`mark(4)
+	`mark(5)
 	`assert("ADDR_BUF", 16'haaaa, ADDR_BUF)
 	`assert("DOUT_BUF", 16'hcccc, DOUT_BUF)
 	`assert("WRN0_BUF", 1, WRN0_BUF)
@@ -200,9 +231,9 @@ initial begin
 	BUS_SEQX = `BUS_SEQX_NONE;
 	`TICKTOCK; // EXECUTE - Control signals become valid here
 
-	ADDR_BUSX_MUX = `ADDR_BUSX_ALU_R;
+	ADDR_BUSX = `ADDR_BUSX_ALU_R;
 	#10
-	`mark(5)
+	`mark(6)
 	`assert("ADDR_BUF", 16'hbbbb, ADDR_BUF)
 	`assert("DOUT_BUF", 16'hcc00, DOUT_BUF)
 	`assert("WRN0_BUF", 1, WRN0_BUF)
@@ -220,11 +251,11 @@ initial begin
 	BUS_SEQX = `BUS_SEQX_NONE;
 	`TICKTOCK; // EXECUTE - Control signals become valid here
 
-	ADDR_BUSX_MUX = `ADDR_BUSX_PC_A;
+	ADDR_BUSX = `ADDR_BUSX_PC_A;
 	BYTEX = 1;
 	BUS_SEQX = `BUS_SEQX_WRITE;
 	#10
-	`mark(6)
+	`mark(7)
 	`assert("ADDR_BUF", 16'haaaa, ADDR_BUF)
 	`assert("DOUT_BUF", 16'hcccc, DOUT_BUF)
 	`assert("WRN0_BUF", 1, WRN0_BUF)
@@ -241,10 +272,10 @@ initial begin
 	BUS_SEQX = `BUS_SEQX_NONE;
 	`TICKTOCK; // EXECUTE - Control signals become valid here
 
-	ADDR_BUSX_MUX = `ADDR_BUSX_ALU_R;
+	ADDR_BUSX = `ADDR_BUSX_ALU_R;
 	BUS_SEQX = `BUS_SEQX_WRITE;
 	#10
-	`mark(7)
+	`mark(8)
 	`assert("ADDR_BUF", 16'hbbbb, ADDR_BUF)
 	`assert("DOUT_BUF", 16'hcc00, DOUT_BUF)
 	`assert("WRN0_BUF", 1, WRN0_BUF)

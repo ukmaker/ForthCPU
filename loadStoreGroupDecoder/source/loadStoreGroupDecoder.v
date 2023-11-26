@@ -124,7 +124,7 @@ module loadStoreGroupDecoder(
 	output reg [1:0] DATA_BUSX,
 	output reg [1:0] BUS_SEQX,
 	output reg        BYTEX,
-	output reg [1:0] ADDR_BUSX
+	output reg [2:0] ADDR_BUSX
 );
 
 reg BUS_SEQX_R, BYTE_OP;

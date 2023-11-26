@@ -13,7 +13,6 @@ module busController(
 	input DECODE,
 	input EXECUTE,
 	input COMMIT,
-	input DEBUG_ACTIVE,
 	/**
 	* Bus cycle
 	**/
@@ -22,13 +21,12 @@ module busController(
 	/**
 	* OPX
 	**/
-	input [2:0]  ADDR_BUSX_MUX,
-	input [1:0]  PC_BASEX_MUX,
-	input [1:0]  PC_OFFSETX_MUX,
+	input [2:0]  ADDR_BUSX,
 	
 	/**
 	* Address
 	**/
+	input [15:0]      DEBUG_MA,
 	input [15:0]      PC_A,
 	input [15:0]      ALU_R,
 	input [15:0]      ALUB_DATA,
@@ -38,6 +36,7 @@ module busController(
 	/**
 	* Data
 	**/
+	input [15:0]     DEBUG_MD,
 	input [15:0]     REGA_DOUT,
 	input [1:0]      DATA_BUSX,
 	input             BYTEX,
@@ -49,11 +48,6 @@ module busController(
 	output WRN1_BUF
 	
 );
-
-wire [2:0] ADDR_BUSX;
-wire [1:0] PC_BASEX;
-wire [1:0] PC_OFFSETX;
-
 	
 reg [15:0] DOUT_W;
 reg [15:0] DOUT_L;
@@ -65,18 +59,9 @@ busSequencer sequencer(
 	.DECODE(DECODE),
 	.EXECUTE(EXECUTE),
 	.COMMIT(COMMIT),
-	.DEBUG_ACTIVE(DEBUG_ACTIVE),
 	
 	.A0(ADDR_BUF[0]),
 	.BYTEX(BYTEX),
-	
-	.ADDR_BUSX_MUX(ADDR_BUSX_MUX),
-	.PC_BASEX_MUX(PC_BASEX_MUX),
-	.PC_OFFSETX_MUX(PC_OFFSETX_MUX),
-	
-	.ADDR_BUSX(ADDR_BUSX),
-	.PC_BASEX(PC_BASEX),
-	.PC_OFFSETX(PC_OFFSETX),
 	
 	.BUS_SEQX(BUS_SEQX),
 	.RDN_BUF(RDN_BUF),
@@ -84,11 +69,10 @@ busSequencer sequencer(
 	.WRN1_BUF(WRN1_BUF)
 );
 
-
-
-
 always @(*) begin
 	case(DATA_BUSX)
+		`DATA_BUSX_ALU_R:      DOUT_W = ALU_R;
+		`DATA_BUSX_DEBUG:      DOUT_W = DEBUG_MD;
 		`DATA_BUSX_REGA_DOUT:  DOUT_W = REGA_DOUT;
 		default:               DOUT_W = ALU_R;
 	endcase
@@ -102,6 +86,8 @@ always @(*) begin
 		`ADDR_BUSX_PC_A:      ADDR_BUF = PC_A;
 		`ADDR_BUSX_ALU_R:     ADDR_BUF = ALU_R;
 		`ADDR_BUSX_ALUB_DATA: ADDR_BUF = ALUB_DATA;
+		`ADDR_BUSX_DEBUG:     ADDR_BUF = DEBUG_MA;
+		`ADDR_BUSX_HERE:      ADDR_BUF = HERE;
 		default:              ADDR_BUF = HERE;
 	endcase
 end

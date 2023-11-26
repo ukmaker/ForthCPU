@@ -103,8 +103,9 @@
 /*******************************************
 * Data bus sources
 *******************************************/
-`define DATA_BUSX_REGA_DOUT  1'b0
-`define DATA_BUSX_ALU_R      1'b1
+`define DATA_BUSX_REGA_DOUT  2'b00
+`define DATA_BUSX_ALU_R      2'b01
+`define DATA_BUSX_DEBUG      2'b10
 
 /*******************************************
 * Debugging interface
@@ -133,7 +134,7 @@
 `define DEBUG_OPX_WR_MEM 3'b110
 
 `define DEBUG_DATAX_DIN       2'b00
-`define DEBUG_DATAX_REGA_DATA 2'b01
+`define DEBUG_DATAX_REGB_DATA 2'b01
 `define DEBUG_DATAX_CC_DATA   2'b10
 `define DEBUG_DATAX_PC_A_NEXT 2'b11
 

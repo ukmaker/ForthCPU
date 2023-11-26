@@ -32,7 +32,7 @@ module core(
 /***************************************
 * Wiring
 ****************************************/
-wire [1:0]  ADDR_BUSX;
+wire [2:0]  ADDR_BUSX;
 wire [3:0]  ALU_OPX;
 wire [15:0] ALU_R;
 wire [15:0] ALUA_DATA;
@@ -52,9 +52,10 @@ wire         CC_CARRY;
 wire         CC_PARITY;
 wire         CC_SIGN;
 wire [1:0]  DATA_BUSX;
-
+wire         DEBUG_ACTIVE;
 wire         DIX;
 wire         EIX;
+wire         HALTX;
 wire [15:0] HERE;
 wire [15:0] INSTRUCTION;
 wire [15:0] PC_A;
@@ -91,8 +92,11 @@ wire [2:0]  ALU_REGB_ADDRX;
 wire         DEBUG_ACKX;
 wire         DEBUG_ADDR_INCX;
 wire         DEBUG_ADDR_LDX;
+wire [3:0]  DEBUG_ARGX;
+wire [1:0]  DEBUG_BUS_SEQX;
 wire [1:0]  DEBUG_CC_REGX;
 wire [15:0] DEBUG_CC_DATA;
+wire [1:0]  DEBUG_DATAX;
 wire [15:0] DEBUG_DIN_DIN;
 wire         DEBUG_DOUT_LDX;
 wire [15:0] DEBUG_MEM_ADDR;
@@ -100,18 +104,19 @@ wire [15:0] DEBUG_MEM_DATA_OUT;
 wire [2:0]  DEBUG_OPX;
 wire [15:0] DEBUG_PC_A_NEXT;
 wire [2:0]  DEBUG_PC_NEXTX;
-wire [3:0]  DEBUG_REGA_ADDRX;
-wire [15:0] DEBUG_REGA_DATA;
+wire [3:0]  DEBUG_REG_SEQX;
+wire [15:0] DEBUG_REGB_DATA;
 wire         DEBUG_REQX;
 wire         DEBUG_STOPX;
 
 wire [1:0]  INT_CC_REGX;
 wire [2:0]  INT_PC_NEXTX;
 
-wire [1:0]  LDS_ADDR_BUSX;
+wire [2:0]  LDS_ADDR_BUSX;
 wire [2:0]  LDS_ALUA_SRCX;
 wire [2:0]  LDS_ALUB_SRCX;
 wire [3:0]  LDS_ALU_OPX;
+wire [1:0]  LDS_BUS_SEQX;
 wire         LDS_BYTEX;
 wire [1:0]  LDS_DATA_BUSX;
 wire [1:0]  LDS_PC_OFFSETX;
@@ -122,7 +127,8 @@ wire [1:0]  LDS_REGA_DINX;
 wire [2:0]  LDS_REGB_ADDRX;
 wire         LDS_WRX;
 
-wire [1:0]  JMP_ADDR_BUSX;
+wire [2:0]  JMP_ADDR_BUSX;
+wire [1:0]  JMP_BUS_SEQX;
 wire [1:0]  JMP_PC_BASEX;
 wire [1:0]  JMP_PC_OFFSETX;
 wire         JMP_RDX;
@@ -138,7 +144,7 @@ wire [2:0]  JMP_ALUB_SRCX;
 assign ABUS_OEN = 0;
 
 /***************************************
-* Debug controller
+* Debugging external interface
 ****************************************/
 debugPort debugger(
 	.CLK(CLK),
@@ -152,20 +158,40 @@ debugPort debugger(
 	.DEBUG_MEM_DATA_OUT(DEBUG_MEM_DATA_OUT),
 	.DEBUG_ADDR_INCX(DEBUG_ADDR_INCX),
 	.DEBUG_ADDR_LDX(DEBUG_ADDR_LDX),
-	.DEBUG_STOPX(DEBUG_STOPX),
-	.DEBUG_REQX(DEBUG_REQX),
-	.DEBUG_ACKX(DEBUG_ACKX),
+	.DEBUG_DOUT_LDX(DEBUG_DOUT_LDX),
+	.DEBUG_DATAX(DEBUG_DATAX),
 	.DEBUG_OPX(DEBUG_OPX),
-	.DEBUG_REGA_ADDRX(DEBUG_REGA_ADDRX),
-	.DEBUG_PC_NEXTX(DEBUG_PC_NEXTX),
-	.DEBUG_CC_REGX(DEBUG_CC_REGX),
+	.DEBUG_ARGX(DEBUG_ARGX),
 	.DEBUG_DIN_DIN(DEBUG_DIN_DIN),
-	.DEBUG_REGA_DATA(DEBUG_REGA_DATA),
+	.DEBUG_REGB_DATA(DEBUG_REGB_DATA),
 	.DEBUG_CC_DATA(DEBUG_CC_DATA),
 	.DEBUG_PC_A_NEXT(DEBUG_PC_A_NEXT),
-	.DEBUG_DOUT_LDX(DEBUG_DOUT_LDX)
+	
+	.DEBUG_REQX(DEBUG_REQX),
+	.DEBUG_ACKX(DEBUG_ACKX)
+
 );
 
+/***************************************
+* Debugging operation decoder
+****************************************/
+debugDecoder debugDecoderInst(
+	.DEBUG_OPX(DEBUG_OPX),
+	.DEBUG_ARGX(DEBUG_ARGX),
+
+	.DEBUG_ADDR_INCX(DEBUG_ADDR_INCX),
+	.DEBUG_ADDR_LDX(DEBUG_ADDR_LDX),
+	.DEBUG_DOUT_LDX(DEBUG_DOUT_LDX),
+	.DEBUG_DATAX(DEBUG_DATAX),
+
+	.DEBUG_BUS_SEQX(DEBUG_BUS_SEQX),
+	.DEBUG_REG_SEQX(DEBUG_REG_SEQX),
+
+	.DEBUG_CC_REGX(DEBUG_CC_REGX),
+	.DEBUG_PC_NEXTX(DEBUG_PC_NEXTX),
+
+	.DEBUG_STOPX(DEBUG_STOPX)
+);
 /***************************************
 * Instruction Phase Decoder
 ****************************************/
@@ -180,7 +206,11 @@ instructionPhaseDecoder instructionPhaseDecoderInst(
 	.DIN(DIN),
 	.INSTRUCTION(INSTRUCTION),
 	.PC_ENX(PC_ENX),
-	.DEBUG_STOPX(1'b0)
+	.DEBUG_ACTIVE(DEBUG_ACTIVE),
+	.DEBUG_STOPX(DEBUG_STOPX),
+	.DEBUG_STEP_REQ(DEBUG_REQX),
+	.DEBUG_STEP_ACK(DEBUG_ACKX),
+	.HALTX(HALTX)
 );
 
 /***************************************
@@ -245,9 +275,13 @@ registerFile registerFileInst(
 ****************************************/
 busController busControllerInst(
 	.CLK(CLK),
+	.FETCH(FETCH),
 	.DECODE(DECODE),
+	.EXECUTE(EXECUTE),
 	.COMMIT(COMMIT),
 	.BUS_SEQX(BUS_SEQX),
+	.DEBUG_MA(DEBUG_MEM_ADDR),
+	.DEBUG_MD(DEBUG_MEM_DATA_OUT),
 	.PC_A(PC_A),
 	.ALU_R(ALU_R),
 	.ALUB_DATA(ALUB_DATA),
@@ -343,6 +377,7 @@ loadStoreGroupDecoder loadStoreGroupDecoderInst(
 	.ALUA_SRCX(LDS_ALUA_SRCX),
 	.ALUB_SRCX(LDS_ALUB_SRCX),
 	.ALU_OPX(LDS_ALU_OPX),
+	.BUS_SEQX(LDS_BUS_SEQX),
 	.REG_SEQX(LDS_REG_SEQX),
 	.REGA_DINX(LDS_REGA_DINX),
 	.REGA_ADDRX(LDS_REGA_ADDRX),
@@ -350,8 +385,6 @@ loadStoreGroupDecoder loadStoreGroupDecoderInst(
 	.DATA_BUSX(LDS_DATA_BUSX),
 	.BYTEX(LDS_BYTEX),
 	.PC_OFFSETX(LDS_PC_OFFSETX),
-	.WRX(LDS_WRX),
-	.RDX(LDS_RDX),
 	.ADDR_BUSX(LDS_ADDR_BUSX)
 );
 
@@ -378,12 +411,12 @@ jumpGroupDecoder jumpGroupDecoderInst(
 	.PC_OFFSETX(JMP_PC_OFFSETX),
 	.PC_BASEX(JMP_PC_BASEX),
 	.ADDR_BUSX(JMP_ADDR_BUSX),
-	.RDX(JMP_RDX),
 	.REGA_DINX(JMP_REGA_DINX),
 	.REGA_ADDRX(JMP_REGA_ADDRX),
 	.REGB_ADDRX(JMP_REGB_ADDRX),
 	.REG_SEQX(JMP_REG_SEQX),
-	.ALUB_SRCX(JMP_ALUB_SRCX)
+	.ALUB_SRCX(JMP_ALUB_SRCX),
+	.BUS_SEQX(JMP_BUS_SEQX)
 );
 
 /***************************************
@@ -401,7 +434,7 @@ generalGroupDecoder generalGroupDecoderInst(
 	.EIX(EIX),
 	.DIX(DIX),
 	.RETIX(RETIX),
-	.PC_ENX(PC_ENX)
+	.HALTX(HALTX)
 );
 
 /***************************************
@@ -409,13 +442,8 @@ generalGroupDecoder generalGroupDecoderInst(
 ****************************************/
 opxMultiplexer opxMultiplexerInst(
 
-	.CLK(CLK),
-	.RESET(RESET),
 	.INSTRUCTION_GROUP(INSTRUCTION[15:14]),
-
-	.STOPPED(STOPPED),
-	.FETCH(FETCH),
-	.EXECUTE(EXECUTE),
+	.INSTRUCTION_ARGBX(INSTRUCTION[3:0]),
 
 	.ALU_ALU_OPX(ALU_ALU_OPX),
 	.ALU_ALUA_SRCX(ALU_ALUA_SRCX),
@@ -425,11 +453,13 @@ opxMultiplexer opxMultiplexerInst(
 	.ALU_REGA_ADDRX(ALU_REGA_ADDRX),
 	.ALU_REGB_ADDRX(ALU_REGB_ADDRX),
 	
-	.DEBUG_OPX(DEBUG_OPX),
-	.DEBUG_REGA_ADDRX(DEBUG_REGA_ADDRX),
-	.DEBUG_PC_NEXTX(DEBUG_PC_NEXTX),
+	.DEBUG_ARGX(DEBUG_ARGX),
+	.DEBUG_BUS_SEQX(DEBUG_BUS_SEQX),
 	.DEBUG_CC_REGX(DEBUG_CC_REGX),
-
+	.DEBUG_OPX(DEBUG_OPX),
+	.DEBUG_PC_NEXTX(DEBUG_PC_NEXTX),
+	.DEBUG_REG_SEQX(DEBUG_REG_SEQX),
+	
 	.INT_CC_REGX(INT_CC_REGX),
 	.INT_PC_NEXTX(INT_PC_NEXTX),
 	
@@ -438,18 +468,17 @@ opxMultiplexer opxMultiplexerInst(
 	.LDS_ALUA_SRCX(LDS_ALUA_SRCX),
 	.LDS_ALUB_SRCX(LDS_ALUB_SRCX),
 	.LDS_BYTEX(LDS_BYTEX),	
+	.LDS_BUS_SEQX(LDS_BUS_SEQX),
 	.LDS_DATA_BUSX(LDS_DATA_BUSX),	
 	.LDS_PC_OFFSETX(LDS_PC_OFFSETX),
-	.LDS_RDX(LDS_RDX),
 	.LDS_REG_SEQX(LDS_REG_SEQX),
 	.LDS_REGA_ADDRX(LDS_REGA_ADDRX),
 	.LDS_REGA_DINX(LDS_REGA_DINX),
 	.LDS_REGB_ADDRX(LDS_REGB_ADDRX),
-	.LDS_WRX(LDS_WRX),
 
 	.JMP_ADDR_BUSX(JMP_ADDR_BUSX),
 	.JMP_ALUB_SRCX(JMP_ALUB_SRCX),
-	.JMP_RDX(JMP_RDX),
+	.JMP_BUS_SEQX(JMP_BUS_SEQX),
 	.JMP_REG_SEQX(JMP_REG_SEQX),
 	.JMP_REGA_DINX(JMP_REGA_DINX),
 	.JMP_REGA_ADDRX(JMP_REGA_ADDRX),
@@ -464,20 +493,20 @@ opxMultiplexer opxMultiplexerInst(
 	.ALU_OPX(ALU_OPX),
 	.ALUA_SRCX(ALUA_SRCX),
 	.ALUB_SRCX(ALUB_SRCX),
+	.ARGBX(ARGB_X),
+	.BUS_SEQX(BUS_SEQX),
 	.BYTEX(BYTEX),
 	.CCL_LD(CCL_LD),
 	.CC_REGX(CC_REGX),
 	.DATA_BUSX(DATA_BUSX),
+	.DEBUG_ACTIVE(DEBUG_ACTIVE),
 	.PC_BASEX(PC_BASEX),
 	.PC_OFFSETX(PC_OFFSETX),	
 	.PC_NEXTX(PC_NEXTX),
-	.RDX(RDX),
 	.REG_SEQX(REG_SEQX),
 	.REGA_ADDRX(REGA_ADDRX),
 	.REGA_DINX(REGA_DINX),
-	.REGB_ADDRX(REGB_ADDRX),
-	.WRX(WRX)
-
+	.REGB_ADDRX(REGB_ADDRX)
 );
 
 /*********************************************

@@ -6,66 +6,114 @@
 **************************************************/
 module debugDecoder(
 	
-	input CLK,
-	input RESET,
-	input STOPPED, FETCH, DECODE, EXECUTE, COMMIT,
+	input [2:0]       DEBUG_OPX,
+	input [3:0]       DEBUG_ARGX,
 	
-	input [2:0]DEBUG_OPX,
+	output reg        DEBUG_ADDR_INCX,
+	output reg        DEBUG_ADDR_LDX,
+	output reg        DEBUG_DOUT_LDX,
+	output reg [1:0] DEBUG_DATAX,
 	
-	output reg DEBUG_ADDR_INCX,
-	output reg DEBUG_ADDR_LDX,
-	output reg DEBUG_STOPX,
-	output reg DEBUG_ACKX,
+	output reg [1:0]  DEBUG_BUS_SEQX,
+	output reg [3:0]  DEBUG_REG_SEQX,
 	
-	output reg [1:0] BUS_SEQX,
-	output reg [2:0] REG_SEQX
+	output reg [1:0]  DEBUG_CC_REGX,
+	output reg [2:0]  DEBUG_PC_NEXTX,
+	
+	output reg         DEBUG_STOPX
 
 );
 
-always @(posedge CLK or posedge RESET) begin
+always @(*) begin
 	
-	if(RESET) begin
-			DEBUG_STOPX     <= 1;
-			DEBUG_OPX       <= `DEBUG_OPX_NONE;
-			DEBUG_ADDR_INCX <= `DEBUG_ADDR_INCX_NONE;
-			DEBUG_ADDR_LDX  <= `DEBUG_ADDR_LDX_NONE;
-			BUS_SEQX        <= `BUS_SEQX_NONE;
-			REG_SEQX        <= `REG_SEQX_NONE;		
-	end else begin
-		
-		if(FETCH) begin
-			
-		
 	case(DEBUG_OPX)
+		`DEBUG_OPX_NONE: begin
+			DEBUG_STOPX      = `DEBUG_STOPX_RUN;
+			DEBUG_BUS_SEQX   = `BUS_SEQX_NONE;
+			DEBUG_REG_SEQX   = `REG_SEQX_NONE;
+			DEBUG_ADDR_INCX  = `DEBUG_ADDR_INCX_NONE;
+			DEBUG_ADDR_LDX   = `DEBUG_ADDR_LDX_NONE;
+			DEBUG_DATAX      = `DEBUG_DATAX_DIN;
+			DEBUG_CC_REGX    = `CC_REGX_RUN;
+			DEBUG_PC_NEXTX   = `PC_NEXTX_NEXT;
+		end
+		
 		`DEBUG_OPX_STOP: begin
-			DEBUG_STOPX     <= 1;
-			BUS_SEQX        <= `BUS_SEQX_NONE;
-			REG_SEQX        <= `REG_SEQX_NONE;
+			DEBUG_STOPX      = `DEBUG_STOPX_STOP;
+			DEBUG_BUS_SEQX   = `BUS_SEQX_NONE;
+			DEBUG_REG_SEQX   = `REG_SEQX_NONE;
+			DEBUG_ADDR_INCX  = `DEBUG_ADDR_INCX_NONE;
+			DEBUG_ADDR_LDX   = `DEBUG_ADDR_LDX_NONE;
+			DEBUG_DATAX      = `DEBUG_DATAX_DIN;
+			DEBUG_CC_REGX    = `CC_REGX_RUN;
+			DEBUG_PC_NEXTX   = `PC_NEXTX_NEXT;
 		end
 		
 		`DEBUG_OPX_RD_REG: begin
-			DEBUG_STOPX     <= 1;
+			DEBUG_STOPX      = `DEBUG_STOPX_STOP;
+			DEBUG_BUS_SEQX   = `BUS_SEQX_NONE;
+			DEBUG_REG_SEQX   = `REG_SEQX_RDB;
+			DEBUG_ADDR_INCX  = `DEBUG_ADDR_INCX_NONE;
+			DEBUG_ADDR_LDX   = `DEBUG_ADDR_LDX_NONE;
+			DEBUG_DATAX      = `DEBUG_DATAX_REGB_DATA;
+			DEBUG_CC_REGX    = `CC_REGX_RUN;
+			DEBUG_PC_NEXTX   = `PC_NEXTX_NEXT;
 		end
 		
 		`DEBUG_OPX_RD_CC: begin
-			DEBUG_STOPX     <= 1;
+			DEBUG_STOPX      = `DEBUG_STOPX_STOP;
+			DEBUG_BUS_SEQX   = `BUS_SEQX_NONE;
+			DEBUG_REG_SEQX   = `REG_SEQX_NONE;
+			DEBUG_ADDR_INCX  = `DEBUG_ADDR_INCX_NONE;
+			DEBUG_ADDR_LDX   = `DEBUG_ADDR_LDX_NONE;
+			DEBUG_DATAX      = `DEBUG_DATAX_DIN;
+			DEBUG_CC_REGX    = DEBUG_ARGX[1:0];
+			DEBUG_PC_NEXTX   = `PC_NEXTX_NEXT;
 		end
 		
 		`DEBUG_OPX_RD_PC: begin
-			DEBUG_STOPX     <= 1;
+			DEBUG_STOPX      = `DEBUG_STOPX_STOP;
+			DEBUG_BUS_SEQX   = `BUS_SEQX_NONE;
+			DEBUG_REG_SEQX   = `REG_SEQX_NONE;
+			DEBUG_ADDR_INCX  = `DEBUG_ADDR_INCX_NONE;
+			DEBUG_ADDR_LDX   = `DEBUG_ADDR_LDX_NONE;
+			DEBUG_DATAX      = `DEBUG_DATAX_DIN;
+			DEBUG_CC_REGX    = `CC_REGX_RUN;
+			DEBUG_PC_NEXTX   = DEBUG_ARGX[2:0];
 		end
 		
 		`DEBUG_OPX_RD_MEM: begin
-			DEBUG_STOPX     <= 1;
+			DEBUG_STOPX      = `DEBUG_STOPX_STOP;
+			DEBUG_BUS_SEQX   = `BUS_SEQX_READ;
+			DEBUG_REG_SEQX   = `REG_SEQX_NONE;
+			DEBUG_ADDR_INCX  = `DEBUG_ADDR_INCX_INC;
+			DEBUG_ADDR_LDX   = `DEBUG_ADDR_LDX_LD;
+			DEBUG_DATAX      = `DEBUG_DATAX_DIN;
+			DEBUG_CC_REGX    = `CC_REGX_RUN;
+			DEBUG_PC_NEXTX   = `PC_NEXTX_NEXT;
 		end
 		
 		`DEBUG_OPX_WR_MEM: begin
-			DEBUG_STOPX     <= 1;
+			DEBUG_STOPX      = `DEBUG_STOPX_STOP;
+			DEBUG_BUS_SEQX   = `BUS_SEQX_WRITE;
+			DEBUG_REG_SEQX   = `REG_SEQX_NONE;
+			DEBUG_ADDR_INCX  = `DEBUG_ADDR_INCX_INC;
+			DEBUG_ADDR_LDX   = `DEBUG_ADDR_LDX_LD;
+			DEBUG_DATAX      = `DEBUG_DATAX_DIN;
+			DEBUG_CC_REGX    = `CC_REGX_RUN;
+			DEBUG_PC_NEXTX   = `PC_NEXTX_NEXT;
 		end
 		
-		// `DEBUG_OPX_NONE:
+
 		default: begin
-			DEBUG_STOPX     <= 0;
+			DEBUG_STOPX      = `DEBUG_STOPX_STOP;
+			DEBUG_BUS_SEQX   = `BUS_SEQX_NONE;
+			DEBUG_REG_SEQX   = `REG_SEQX_NONE;
+			DEBUG_ADDR_INCX  = `DEBUG_ADDR_INCX_NONE;
+			DEBUG_ADDR_LDX   = `DEBUG_ADDR_LDX_NONE;
+			DEBUG_DATAX      = `DEBUG_DATAX_DIN;
+			DEBUG_CC_REGX    = `CC_REGX_RUN;
+			DEBUG_PC_NEXTX   = `PC_NEXTX_NEXT;
 		end
 	endcase
 end

@@ -20,7 +20,7 @@ module generalGroupDecoder(
 	output reg EIX,
 	output reg DIX,
 	output reg RETIX,
-	output reg PC_ENX
+	output reg HALTX
 );
 
 reg GEN, EI, DI, RETI, HALT;
@@ -48,7 +48,7 @@ end
 always @(posedge CLK or posedge RESET) begin
 	
 	if(RESET) begin
-		PC_ENX <= 1;
+		HALTX <= 0;
 		EIX <= 0;
 		DIX <= 0;
 		RETIX <= 0;
@@ -57,7 +57,7 @@ always @(posedge CLK or posedge RESET) begin
 		DIX <= DI;
 		RETIX <= RETI;
 	end else if(COMMIT) begin
-		PC_ENX <= ~HALT;
+		HALTX <= HALT;
 	end
 end
 		

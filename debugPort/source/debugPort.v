@@ -31,30 +31,27 @@ module debugPort(
 
 	input             DEBUG_ADDR_INCX,
 	input             DEBUG_ADDR_LDX,
-	output            DEBUG_STOPX,
-	output            DEBUG_REQX,
-	input             DEBUG_ACKX,
-
+	input             DEBUG_DOUT_LDX,
+	input [1:0]      DEBUG_DATAX,
+	
 	// 
 	output [2:0]     DEBUG_OPX,
-	output [3:0]     DEBUG_REGA_ADDRX,
-	
-	output [2:0]     DEBUG_PC_NEXTX,
-	output [1:0]     DEBUG_CC_REGX,
+	output [3:0]     DEBUG_ARGX,
 	
 	input [15:0]     DEBUG_DIN_DIN,
-	input [15:0]     DEBUG_REGA_DATA,
+	input [15:0]     DEBUG_REGB_DATA,
 	input [15:0]     DEBUG_CC_DATA,
 	input [15:0]     DEBUG_PC_A_NEXT,
-	input             DEBUG_DOUT_LDX
+
+	output            DEBUG_REQX,
+	input             DEBUG_ACKX
 	
 );
 
 /***************************************************
 * Register selects
 ****************************************************/
-wire EN_STATUS, EN_SOURCEX, EN_MAL, EN_MAH, EN_MDL, EN_MDH, EN_DATAX, EN_OPX;
-wire [1:0] DEBUG_DOUTX;
+wire EN_STATUS, EN_SOURCEX, EN_MAL, EN_MAH, EN_MDL, EN_MDH, EN_DATAX, EN_OPX, EN_UNUSED;
 
 wire [7:0] MAH_BUF;
 wire [7:0] MAL_BUF;
@@ -93,7 +90,7 @@ oneOfEightDecoder decoder(
 	EN_MDL,
 	EN_MDH,
 	EN_DATAX,
-	EN_STOP
+	EN_UNUSED
 );
 
 requestGenerator requestGen(
@@ -105,15 +102,6 @@ requestGenerator requestGen(
 	.EN_OP(EN_OPX),
 	.EN_MDH(EN_MDH),
 	.REQX(DEBUG_REQX)
-);
-
-stopSynchroniser stopper(
-	.CLK(CLK),
-	.RESET(RESET),
-	.WR(DEBUG_WR),
-	.D0(DEBUG_DIN[0]),
-	.EN_STOP(EN_STOP),
-	.STOPX(DEBUG_STOPX)
 );
 
 // Memory address buffer registers
@@ -188,40 +176,23 @@ register #(.BUS_WIDTH(16)) dataOutReg(
 	.EN(1'b1)
 );
 
-register #(.BUS_WIDTH(2)) dataXReg(
-	.CLK(DEBUG_WR),
-	.RESET(RESET),
-	.DIN(DEBUG_DIN[1:0]),
-	.DOUT(DEBUG_DOUTX),
-	.LD(DEBUG_WR),
-	.EN(EN_DATAX)
-);
-	
 register #(.BUS_WIDTH(7)) opXReg(
 	.CLK(DEBUG_WR),
 	.RESET(RESET),
 	.DIN(DEBUG_DIN[6:0]),
-	.DOUT({DEBUG_REGA_ADDRX,DEBUG_OPX}),
+	.DOUT({DEBUG_ARGX,DEBUG_OPX}),
 	.LD(EN_OPX),
 	.EN(EN_OPX)
 );	
 
-register #(.BUS_WIDTH(5)) dataSourcesReg(
-	.CLK(DEBUG_WR),
-	.RESET(RESET),
-	.DIN(DEBUG_DIN[4:0]),
-	.DOUT({DEBUG_PC_NEXTX,DEBUG_CC_REGX}),
-	.LD(EN_SOURCEX),
-	.EN(EN_SOURCEX)
-);
 
 /**
 * Data multiplexer
 **/
 always @(*) begin
-	case(DEBUG_DOUTX)
+	case(DEBUG_DATAX)
 		`DEBUG_DATAX_DIN:       DEBUG_DATA_MUX_OUT = DEBUG_DIN_DIN;
-		`DEBUG_DATAX_REGA_DATA: DEBUG_DATA_MUX_OUT = DEBUG_REGA_DATA;
+		`DEBUG_DATAX_REGB_DATA: DEBUG_DATA_MUX_OUT = DEBUG_REGB_DATA;
 		`DEBUG_DATAX_CC_DATA:   DEBUG_DATA_MUX_OUT = DEBUG_CC_DATA;
 		`DEBUG_DATAX_PC_A_NEXT: DEBUG_DATA_MUX_OUT = DEBUG_PC_A_NEXT;
 	endcase
