@@ -127,15 +127,13 @@ module loadStoreGroupDecoder(
 	output reg [2:0] ADDR_BUSX
 );
 
-reg BUS_SEQX_R, BYTE_OP;
-
 // Combinational logic
 // Setup the data sources
 always @(*) begin
 	
 	ALUA_SRCX     = `ALUA_SRCX_REG_A;
 	ALUB_SRCX     = `ALUB_SRCX_REG_B;
-	BYTE_OP       = 0;
+	BYTEX         = 0;
 	BUS_SEQX      = `BUS_SEQX_NONE;
 	ALU_OPX       = `ALU_OPX_ADD;
 	ADDR_BUSX     = `ADDR_BUSX_ALU_R;
@@ -148,21 +146,21 @@ always @(*) begin
 	// What operation is this?
 	case(OPF) 
 		`LDSOPF_LD: begin // LD Ra,(Rb) 
-			BUS_SEQX_R = `BUS_SEQX_READ;
+			BUS_SEQX   = `BUS_SEQX_READ;
 		end
 		`LDSOPF_LDB: begin // LD_B x,(y)
-			BUS_SEQX_R = `BUS_SEQX_READ;
-			BYTE_OP    = 1;
+			BUS_SEQX   = `BUS_SEQX_READ;
+			BYTEX      = 1;
 			REGA_DINX  = `REGA_DINX_BYTE;
 		end
 		`LDSOPF_ST: begin // ST (Ra),Rb
-			BUS_SEQX_R = `BUS_SEQX_WRITE;
+			BUS_SEQX   = `BUS_SEQX_WRITE;
 			DATA_BUSX  = `DATA_BUSX_REGA_DOUT;
 		end
 		`LDSOPF_STB: begin // ST_B (Ra),Rb
-			BUS_SEQX_R = `BUS_SEQX_WRITE;
+			BUS_SEQX   = `BUS_SEQX_WRITE;
 			DATA_BUSX  = `DATA_BUSX_REGA_DOUT;
-			BYTE_OP    = 1;
+			BYTEX      = 1;
 		end
 	endcase
 			
@@ -180,7 +178,7 @@ always @(*) begin
 			// Address from the register
 			ADDR_BUSX = `ADDR_BUSX_ALUB_DATA;
 			// Before the adder
-			ALUA_SRCX = BYTE_OP ? `ALUA_SRCX_ONE : `ALUA_SRCX_TWO;
+			ALUA_SRCX = BYTEX ? `ALUA_SRCX_ONE : `ALUA_SRCX_TWO;
 			ALUB_SRCX = `ALUB_SRCX_REG_B;
 			// Operation is +2
 			ALU_OPX = `ALU_OPX_ADD;
@@ -190,7 +188,7 @@ always @(*) begin
 			// Address from the ALU
 			ADDR_BUSX = `ADDR_BUSX_ALU_R;
 			// After the adder
-			ALUA_SRCX = BYTE_OP ? `ALUA_SRCX_MINUS_ONE : `ALUA_SRCX_MINUS_TWO;
+			ALUA_SRCX = BYTEX ? `ALUA_SRCX_MINUS_ONE : `ALUA_SRCX_MINUS_TWO;
 			ALUB_SRCX = `ALUB_SRCX_REG_B;
 			// Operation is -2
 			ALU_OPX = `ALU_OPX_ADD;
@@ -293,17 +291,6 @@ always @(*) begin
 			`MODE_LDS_REG_SP:       REG_SEQX = `REG_SEQX_RDA_RDB;
 			`MODE_LDS_REG_RS:       REG_SEQX = `REG_SEQX_RDA_RDB;
 		endcase
-	end
-end
-
-always @(posedge CLK or posedge RESET) begin
-	
-	if(RESET) begin
-		BUS_SEQX <= `BUS_SEQX_NONE;
-		BYTEX    <= 0;
-	end else begin
-		BUS_SEQX <= BUS_SEQX_R;
-		BYTEX    <= BYTE_OP;
 	end
 end
 

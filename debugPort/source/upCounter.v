@@ -17,12 +17,16 @@ module upCounter #(parameter BUS_WIDTH = 8)(
 	output reg RO
 );
 
+reg RO_R;
+
 always @(posedge CLK or posedge RESET) begin
 	
 	if(RESET) begin
 		DOUT <= 0;
 		RO   <= 1'b0;
 	end else begin
+		
+		RO <= RO_R;
 		
 		if(LD & EN) begin
 			DOUT <= DIN;
@@ -34,9 +38,9 @@ end
 
 always @(*) begin
 	if(DOUT == {BUS_WIDTH{1'b1}}) begin
-		RO = RI; 
+		RO_R = RI; 
 	end else begin
-		RO = 0;
+		RO_R = 0;
 	end
 end
 

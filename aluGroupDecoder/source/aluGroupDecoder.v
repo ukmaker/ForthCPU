@@ -65,13 +65,7 @@ module aluGroupDecoder(
 	* Data Sources
 	**/
 	output reg [2:0] ALUA_SRCX,
-	output reg [2:0] ALUB_SRCX,
-	
-	/**
-	* Arguments
-	**/
-	output wire [3:0] ARGA_X,
-	output wire [3:0] ARGB_X
+	output reg [2:0] ALUB_SRCX
 
 );
 
@@ -81,8 +75,6 @@ reg         IMM;
 
 assign ALU_OPX = INSTRUCTION[13:10];
 assign ARGF    = INSTRUCTION[9:8];
-assign ARGA_X  = INSTRUCTION[7:4];
-assign ARGB_X  = INSTRUCTION[3:0];
 
 // Combinational logic
 // Setup the data sources

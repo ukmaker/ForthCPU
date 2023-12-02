@@ -102,13 +102,13 @@ initial begin
 	`TICKTOCK;
 	#5 RESET = 0;
 	`TICKTOCK;
-	`TICKTOCK;
-	
+	`TICKTOCK;	
 	/**************************************************************************
 	* Boot - jump to the interpreter
 	***************************************************************************/
 	// Address of interpreter in R1
 	`LD_HERE_STEP(    1, 16'h0000, 16'h0100, `R1)
+	$display("2 JMP R1");
 	`TICK;
 	DIN = {`GROUP_JUMP,      `SKIPF_NONE,`CC_SELECTX_Z,`MODE_JMP_ABS_REG,`R1,`R1};	 
 	`assert("  2 ADDR_BUF", 16'h0004, ADDR_BUF)

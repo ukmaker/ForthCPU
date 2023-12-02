@@ -60,6 +60,7 @@ add_file -verilog -vlog_std v2001 {C:/Users/Duncan/git/ForthCPU/registerFileB/so
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/aluB/source/alu.v}
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/aluB/source/aluAMux.v}
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/aluB/source/aluBMux.v}
+add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/aluB/source/ccRegisters.v}
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/aluB/source/fullALU.v}
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/opxMultiplexer/source/opxMultiplexer.v}
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/interruptLogic/source/interruptStateMachine.v}
@@ -78,8 +79,16 @@ add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/UART/source/trans
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/UART/source/UART.v}
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/devBoard/source/devBoard.v}
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/impl1/test/blinkTest.v}
-add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/aluB/source/ccRegisters.v}
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/registerSequencer/source/registerSequencer.v}
+add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/debugPort/source/debugDecoder.v}
+add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/debugPort/source/debugPort.v}
+add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/debugPort/source/oneOfEightDecoder.v}
+add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/debugPort/source/register.v}
+add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/debugPort/source/requestGenerator.v}
+add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/debugPort/source/stopSynchroniser.v}
+add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/debugPort/source/upCounter.v}
+add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/busController/source/busSequencer.v}
+add_file -verilog -vlog_std v2001 {C:/Users/Duncan/git/ForthCPU/RAM/source/RAM.v}
 
 #-- top module name
 set_option -top_module mcu

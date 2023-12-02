@@ -13,7 +13,7 @@ Hostname: EDAWIN
 
 Implementation : impl1
 
-# Written on Sun Nov 19 17:21:06 2023
+# Written on Sat Dec  2 19:27:37 2023
 
 ##### FILES SYNTAX CHECKED ##############################################
 Constraint File(s):      (none)
@@ -33,9 +33,9 @@ Clock Summary
           Start              Requested     Requested     Clock        Clock                   Clock
 Level     Clock              Frequency     Period        Type         Group                   Load 
 ---------------------------------------------------------------------------------------------------
-0 -       System             100.0 MHz     10.000        system       system_clkgroup         2    
+0 -       System             100.0 MHz     10.000        system       system_clkgroup         4    
                                                                                                    
-0 -       mcu|PIN_CLK_X1     100.0 MHz     10.000        inferred     Inferred_clkgroup_0     320  
+0 -       mcu|PIN_CLK_X1     100.0 MHz     10.000        inferred     Inferred_clkgroup_0     328  
 ===================================================================================================
 
 
@@ -45,7 +45,7 @@ Clock Load Summary
                    Clock     Source               Clock Pin                                                      Non-clock Pin     Non-clock Pin                     
 Clock              Load      Pin                  Seq Example                                                    Seq Example       Comb Example                      
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
-System             2         -                    coreInst.registerSequencerInst.REGA_EN.C                       -                 -                                 
+System             4         -                    coreInst.instructionPhaseDecoderInst.PHASE_NEXT[0].C           -                 -                                 
                                                                                                                                                                      
-mcu|PIN_CLK_X1     320       PIN_CLK_X1(port)     mcuResourcesInst.interruptMaskRegisterInst.INTS_REG[7:1].C     -                 mcuResourcesInst.un1_CLK.I[0](inv)
+mcu|PIN_CLK_X1     328       PIN_CLK_X1(port)     mcuResourcesInst.interruptMaskRegisterInst.INTS_REG[7:1].C     -                 mcuResourcesInst.un1_CLK.I[0](inv)
 =====================================================================================================================================================================

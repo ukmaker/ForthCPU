@@ -84,6 +84,7 @@ wire         RETIX;
 wire [3:0]  ALU_ALU_OPX;
 wire [2:0]  ALU_ALUA_SRCX;
 wire [2:0]  ALU_ALUB_SRCX;
+wire [3:0]  ALU_ARGB_X;
 wire         ALU_CCL_LD;
 wire [3:0]  ALU_REG_SEQX;
 wire [1:0]  ALU_REGA_ADDRX;
@@ -331,13 +332,13 @@ interruptStateMachine interruptStateMachineInst(
 	.DIX(DIX),
 	.INT0(INT0),
 	.INT1(INT1),
-	.PC_NEXTX(PC_NEXTX),
+	.PC_NEXTX(INT_PC_NEXTX),
 	.PC_LD_INT0(PC_LD_INT0X),
 	.PC_LD_INT1(PC_LD_INT1X),
 	.CCL_ENRX(CCL_ENRX),
 	.CCL_EN0X(CCL_EN0X),
 	.CCL_EN1X(CCL_EN1X),
-	.CC_REGX(CC_REGX)
+	.CC_REGX(INT_CC_REGX)
 );
 
 /***************************************
@@ -357,9 +358,7 @@ aluGroupDecoder aluGroupDecoderInst(
 	.ALU_OPX(ALU_ALU_OPX),
 	.CCL_LD(ALU_CCL_LD),
 	.ALUA_SRCX(ALU_ALUA_SRCX),
-	.ALUB_SRCX(ALU_ALUB_SRCX),
-	.ARGA_X(ARGA_X),
-	.ARGB_X(ARGB_X)
+	.ALUB_SRCX(ALU_ALUB_SRCX)
 );
 
 /***************************************
@@ -519,10 +518,10 @@ registerSequencer registerSequencerInst(
 	.DECODE(DECODE),
 	.EXECUTE(EXECUTE),
 	.COMMIT(COMMIT),
+	.STOPPED(STOPPED),
 	
 	.REG_SEQX(REG_SEQX),
-	.BYTEX(BYTEX),
-	.A0(ADDR_BUF[0]),
+
 	.REGA_EN(REGA_EN),
 	.REGA_WEN(REGA_WEN),
 	.REGB_EN(REGB_EN),

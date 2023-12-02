@@ -18,6 +18,9 @@ module busSequencer(
 	input BYTEX,
 
 	input [1:0]  BUS_SEQX,
+	
+	input  [2:0] ADDR_BUSX,
+	output reg [2:0] ADDR_BUSX_R,
 
 	output reg RDN_BUF,
 	output reg WRN0_BUF,
@@ -40,7 +43,7 @@ always @(posedge CLK or posedge RESET) begin
 	end
 end
 
-always @(posedge NCLK or posedge RESET) begin
+always @(negedge CLK or posedge RESET) begin
 	if(RESET) begin
 		RDN_BUF <= 1;
 	end else begin
@@ -51,6 +54,20 @@ always @(posedge NCLK or posedge RESET) begin
 			RDN_BUF <= 0;
 		end else begin
 			RDN_BUF <= 1;
+		end
+	end
+end
+
+
+always @(posedge CLK or posedge RESET) begin
+	if(RESET) begin
+		ADDR_BUSX_R <= `ADDR_BUSX_PC_A;
+	end else begin
+		if(FETCH | DECODE) begin
+			// Instruction fetch next
+			ADDR_BUSX_R <= `ADDR_BUSX_PC_A;
+		end else begin
+			ADDR_BUSX_R <= ADDR_BUSX;
 		end
 	end
 end

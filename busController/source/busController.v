@@ -51,6 +51,7 @@ module busController(
 	
 reg [15:0] DOUT_W;
 reg [15:0] DOUT_L;
+wire[2:0]  ADDR_BUSX_R;
 
 busSequencer sequencer(
 	.CLK(CLK),
@@ -62,6 +63,8 @@ busSequencer sequencer(
 	
 	.A0(ADDR_BUF[0]),
 	.BYTEX(BYTEX),
+	.ADDR_BUSX(ADDR_BUSX),
+	.ADDR_BUSX_R(ADDR_BUSX_R),
 	
 	.BUS_SEQX(BUS_SEQX),
 	.RDN_BUF(RDN_BUF),
@@ -82,7 +85,7 @@ always @(*) begin
 end
 
 always @(*) begin
-	case(ADDR_BUSX)
+	case(ADDR_BUSX_R)
 		`ADDR_BUSX_PC_A:      ADDR_BUF = PC_A;
 		`ADDR_BUSX_ALU_R:     ADDR_BUF = ALU_R;
 		`ADDR_BUSX_ALUB_DATA: ADDR_BUF = ALUB_DATA;

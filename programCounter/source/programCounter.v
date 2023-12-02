@@ -48,19 +48,25 @@ reg [15:0] PC_NEXT;
 
 // The input muxes and adder
 always @(*) begin
-	case(PC_OFFSETX)
-		`PC_OFFSETX_0: ARGA = ZERO;
-		`PC_OFFSETX_2: ARGA = TWO;
-		`PC_OFFSETX_4: ARGA = FOUR;
-		default:       ARGA = DIN;
-	endcase
-	
-	case(PC_BASEX)
-		`PC_BASEX_PC_A:      ARGB = PC_A;
-		`PC_BASEX_REGB_DOUT: ARGB = REGB_DOUT;
-		`PC_BASEX_0:         ARGB = ZERO;
- 		default:             ARGB = PC_A;
-	endcase
+	if(DECODE) begin
+		// Calculate PC+2 for HERE
+		ARGA = TWO;
+		ARGB = PC_A;
+	end else begin
+		case(PC_OFFSETX)
+			`PC_OFFSETX_0: ARGA = ZERO;
+			`PC_OFFSETX_2: ARGA = TWO;
+			`PC_OFFSETX_4: ARGA = FOUR;
+			default:       ARGA = DIN;
+		endcase
+		
+		case(PC_BASEX)
+			`PC_BASEX_PC_A:      ARGB = PC_A;
+			`PC_BASEX_REGB_DOUT: ARGB = REGB_DOUT;
+			`PC_BASEX_0:         ARGB = ZERO;
+			default:             ARGB = PC_A;
+		endcase
+	end
 
 	SUM = ARGA + ARGB;
 end

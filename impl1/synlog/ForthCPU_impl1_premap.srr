@@ -1,4 +1,4 @@
-# Sun Nov 19 17:21:06 2023
+# Sat Dec  2 19:27:37 2023
 
 
 Copyright (C) 1994-2021 Synopsys, Inc.
@@ -20,7 +20,7 @@ Synopsys Lattice Technology Pre-mapping, Version map202103lat, Build 070R, Built
 Mapper Startup Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 117MB peak: 117MB)
 
 
-Done reading skeleton netlist (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 121MB peak: 129MB)
+Done reading skeleton netlist (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 122MB peak: 129MB)
 
 @A: MF827 |No constraint file specified.
 @L: C:\Users\Duncan\git\ForthCPU\impl1\ForthCPU_impl1_scck.rpt 
@@ -29,28 +29,40 @@ See clock summary report "C:\Users\Duncan\git\ForthCPU\impl1\ForthCPU_impl1_scck
 @N: MF248 |Running in 64-bit mode.
 @N: MF666 |Clock conversion enabled. (Command "set_option -fix_gated_and_generated_clocks 1" in the project file.)
 
-Design Input Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 130MB peak: 130MB)
+Design Input Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 131MB)
 
 
-Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 130MB peak: 131MB)
+Mapper Initialization Complete (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 131MB peak: 131MB)
 
 
-Start loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 142MB peak: 142MB)
+Start loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 143MB peak: 143MB)
 
 
-Finished loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 143MB peak: 144MB)
+Finished loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h:00m:00s; Memory used current: 143MB peak: 145MB)
 
 @N: FX493 |Applying initial value "00000000" on instance r_RX_Byte[7:0].
 @W: FX474 |User-specified initial value defined for some sequential elements which can prevent optimum synthesis results from being achieved. 
 @N: FX493 |Applying initial value "0" on instance r_RX_DV.
 @N: FX493 |Applying initial value "000" on instance r_SM_Main[2:0].
-Encoding state machine PHASE[4:0] (in view: work.instructionPhaseDecoder(verilog))
-original code -> new code
-   000 -> 000
-   001 -> 001
-   010 -> 010
-   011 -> 011
-   100 -> 100
+@N: MO111 :"c:\users\duncan\git\forthcpu\buscontroller\source\buscontroller.v":58:8:58:12|Tristate driver RESET (in view: work.busController(verilog)) on net RESET (in view: work.busController(verilog)) has its enable tied to GND.
+@N: MO111 :"c:\users\duncan\git\forthcpu\processorcore\source\core.v":257:7:257:22|Tristate driver ARGA_X (in view: work.core(verilog)) on net ARGA_X (in view: work.core(verilog)) has its enable tied to GND.
+@N: MO111 :"c:\users\duncan\git\forthcpu\processorcore\source\core.v":257:7:257:22|Tristate driver DEBUG_CC_DATA (in view: work.core(verilog)) on net DEBUG_CC_DATA (in view: work.core(verilog)) has its enable tied to GND.
+@N: MO111 :"c:\users\duncan\git\forthcpu\processorcore\source\core.v":257:7:257:22|Tristate driver DEBUG_DIN_DIN (in view: work.core(verilog)) on net DEBUG_DIN_DIN (in view: work.core(verilog)) has its enable tied to GND.
+@N: MO111 :"c:\users\duncan\git\forthcpu\processorcore\source\core.v":257:7:257:22|Tristate driver DEBUG_PC_A_NEXT (in view: work.core(verilog)) on net DEBUG_PC_A_NEXT (in view: work.core(verilog)) has its enable tied to GND.
+@N: MO111 :"c:\users\duncan\git\forthcpu\processorcore\source\core.v":257:7:257:22|Tristate driver DEBUG_REGB_DATA (in view: work.core(verilog)) on net DEBUG_REGB_DATA (in view: work.core(verilog)) has its enable tied to GND.
+@N: BN362 :"c:\users\duncan\git\forthcpu\debugport\source\requestgenerator.v":47:0:47:5|Removing sequential instance REQ_PHI0 (in view: work.requestGenerator(verilog)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
+@N: BN362 :"c:\users\duncan\git\forthcpu\debugport\source\register.v":14:0:14:5|Removing sequential instance DOUT[15:0] (in view: work.register_16s(verilog)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
+@N: BN115 :"c:\users\duncan\git\forthcpu\debugport\source\debugport.v":84:18:84:24|Removing instance decoder (in view: work.debugPort(verilog)) of type view:work.oneOfEightDecoder(verilog) because it does not drive other instances.
+@N: BN115 :"c:\users\duncan\git\forthcpu\debugport\source\debugport.v":108:9:108:19|Removing instance memALBufReg (in view: work.debugPort(verilog)) of type view:work.register_3(verilog) because it does not drive other instances.
+@N: BN115 :"c:\users\duncan\git\forthcpu\debugport\source\debugport.v":117:9:117:19|Removing instance memAHBufReg (in view: work.debugPort(verilog)) of type view:work.register_2(verilog) because it does not drive other instances.
+@N: BN115 :"c:\users\duncan\git\forthcpu\debugport\source\debugport.v":160:9:160:16|Removing instance memDHReg (in view: work.debugPort(verilog)) of type view:work.register_0(verilog) because it does not drive other instances.
+@N: BN115 :"c:\users\duncan\git\forthcpu\debugport\source\debugport.v":151:9:151:16|Removing instance memDLReg (in view: work.debugPort(verilog)) of type view:work.register_1(verilog) because it does not drive other instances.
+@N: BN115 :"c:\users\duncan\git\forthcpu\debugport\source\debugport.v":179:26:179:31|Removing instance opXReg (in view: work.debugPort(verilog)) of type view:work.register_7s(verilog) because it does not drive other instances.
+@N: BN115 :"c:\users\duncan\git\forthcpu\debugport\source\debugport.v":170:27:170:36|Removing instance dataOutReg (in view: work.debugPort(verilog)) of type view:work.register_16s(verilog) because it does not drive other instances.
+@N: BN115 :"c:\users\duncan\git\forthcpu\debugport\source\debugport.v":96:17:96:26|Removing instance requestGen (in view: work.debugPort(verilog)) of type view:work.requestGenerator(verilog) because it does not drive other instances.
+@N: BN115 :"c:\users\duncan\git\forthcpu\processorcore\source\core.v":179:13:179:28|Removing instance debugDecoderInst (in view: work.core(verilog)) of type view:work.debugDecoder(verilog) because it does not drive other instances.
+@N: BN362 :"c:\users\duncan\git\forthcpu\debugport\source\upcounter.v":22:0:22:5|Removing sequential instance RO (in view: work.upCounter_7s(verilog)) of type view:PrimLib.dffr(prim) because it does not drive other instances.
+@N: BN362 :"c:\users\duncan\git\forthcpu\debugport\source\upcounter.v":22:0:22:5|Removing sequential instance RO (in view: work.upCounter(verilog)) of type view:PrimLib.dffr(prim) because it does not drive other instances.
 Encoding state machine STATE[9:0] (in view: work.interruptStateMachine(verilog))
 original code -> new code
    0000 -> 0000000001
@@ -71,21 +83,22 @@ original code -> new code
    011 -> 11
 @N: MO225 :"c:\users\duncan\git\forthcpu\uart\source\transmitter.v":38:2:38:7|There are no possible illegal states for state machine r_SM_Main[3:0] (in view: work.UART_TX(verilog)); safe FSM implementation is not required.
 
-Starting clock optimization phase (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 178MB peak: 178MB)
+Starting clock optimization phase (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:00s; Memory used current: 179MB peak: 179MB)
 
+@N: MF578 |Incompatible asynchronous control logic preventing generated clock conversion.
 
-Finished clock optimization phase (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 178MB peak: 178MB)
+Finished clock optimization phase (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 179MB peak: 179MB)
 
 @W: BZ101 |Potential glitch can occur at the output of 2 instances  
 
-Starting clock optimization report phase (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 178MB peak: 179MB)
+Starting clock optimization report phase (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 179MB peak: 180MB)
 
 
-Finished clock optimization report phase (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 178MB peak: 179MB)
+Finished clock optimization report phase (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 179MB peak: 180MB)
 
 @N: FX1184 |Applying syn_allowed_resources blockrams=240 on top level netlist mcu 
 
-Finished netlist restructuring (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 178MB peak: 179MB)
+Finished netlist restructuring (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 179MB peak: 180MB)
 
 
 
@@ -95,9 +108,9 @@ Clock Summary
           Start              Requested     Requested     Clock        Clock                   Clock
 Level     Clock              Frequency     Period        Type         Group                   Load 
 ---------------------------------------------------------------------------------------------------
-0 -       System             100.0 MHz     10.000        system       system_clkgroup         2    
+0 -       System             100.0 MHz     10.000        system       system_clkgroup         4    
                                                                                                    
-0 -       mcu|PIN_CLK_X1     100.0 MHz     10.000        inferred     Inferred_clkgroup_0     320  
+0 -       mcu|PIN_CLK_X1     100.0 MHz     10.000        inferred     Inferred_clkgroup_0     328  
 ===================================================================================================
 
 
@@ -108,13 +121,13 @@ Clock Load Summary
                    Clock     Source               Clock Pin                                                      Non-clock Pin     Non-clock Pin                     
 Clock              Load      Pin                  Seq Example                                                    Seq Example       Comb Example                      
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------
-System             2         -                    coreInst.registerSequencerInst.REGA_EN.C                       -                 -                                 
+System             4         -                    coreInst.instructionPhaseDecoderInst.PHASE_NEXT[0].C           -                 -                                 
                                                                                                                                                                      
-mcu|PIN_CLK_X1     320       PIN_CLK_X1(port)     mcuResourcesInst.interruptMaskRegisterInst.INTS_REG[7:1].C     -                 mcuResourcesInst.un1_CLK.I[0](inv)
+mcu|PIN_CLK_X1     328       PIN_CLK_X1(port)     mcuResourcesInst.interruptMaskRegisterInst.INTS_REG[7:1].C     -                 mcuResourcesInst.un1_CLK.I[0](inv)
 =====================================================================================================================================================================
 
-@W: MT531 :"c:\users\duncan\git\forthcpu\registersequencer\source\registersequencer.v":161:1:161:2|Found signal identified as System clock which controls 2 sequential elements including coreInst.registerSequencerInst.REGB_EN.  Using this clock, which has no specified timing constraint, can prevent conversion of gated or generated clocks and can adversely impact design performance. 
-@W: MT529 :"c:\users\duncan\git\forthcpu\devboard\source\devboard.v":113:0:113:5|Found inferred clock mcu|PIN_CLK_X1 which controls 320 sequential elements including boardInst.BPIN_LED[7:0]. This clock has no specified timing constraint which may prevent conversion of gated or generated clocks and may adversely impact design performance. 
+@W: MT531 :"c:\users\duncan\git\forthcpu\instructionphasedecoder\source\instructionphasedecoder.v":55:1:55:4|Found signal identified as System clock which controls 4 sequential elements including coreInst.instructionPhaseDecoderInst.PHASE_NEXT[3].  Using this clock, which has no specified timing constraint, can prevent conversion of gated or generated clocks and can adversely impact design performance. 
+@W: MT529 :"c:\users\duncan\git\forthcpu\devboard\source\devboard.v":113:0:113:5|Found inferred clock mcu|PIN_CLK_X1 which controls 328 sequential elements including boardInst.BPIN_LED[7:0]. This clock has no specified timing constraint which may prevent conversion of gated or generated clocks and may adversely impact design performance. 
 
 ICG Latch Removal Summary:
 Number of ICG latches removed: 0
@@ -128,20 +141,20 @@ For details review file gcc_ICG_report.rpt
 
 #### START OF PREMAP CLOCK OPTIMIZATION REPORT #####[
 
-1 non-gated/non-generated clock tree(s) driving 320 clock pin(s) of sequential element(s)
-1 gated/generated clock tree(s) driving 2 clock pin(s) of sequential element(s)
-0 instances converted, 2 sequential instances remain driven by gated/generated clocks
+1 non-gated/non-generated clock tree(s) driving 328 clock pin(s) of sequential element(s)
+1 gated/generated clock tree(s) driving 4 clock pin(s) of sequential element(s)
+0 instances converted, 4 sequential instances remain driven by gated/generated clocks
 
 =============================== Non-Gated/Non-Generated Clocks ================================
 Clock Tree ID     Driving Element     Drive Element Type     Fanout     Sample Instance        
 -----------------------------------------------------------------------------------------------
-@KP:ckid0_0       PIN_CLK_X1          port                   320        boardInst.BPIN_LED[7:0]
+@KP:ckid0_0       PIN_CLK_X1          port                   328        boardInst.BPIN_LED[7:0]
 ===============================================================================================
-================================================================================== Gated/Generated Clocks ===================================================================================
-Clock Tree ID     Driving Element                                    Drive Element Type     Unconverted Fanout     Sample Instance                            Explanation                    
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-@KP:ckid0_1       coreInst.registerSequencerInst.un1_FETCH_1.OUT     or                     2                      coreInst.registerSequencerInst.REGB_EN     Clock source is invalid for GCC
-=============================================================================================================================================================================================
+=============================================================================================== Gated/Generated Clocks ================================================================================================
+Clock Tree ID     Driving Element                                                  Drive Element Type     Unconverted Fanout     Sample Instance                                        Explanation                    
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+@KP:ckid0_1       coreInst.instructionPhaseDecoderInst.PHASE_NEXT_2_sqmuxa.OUT     and                    4                      coreInst.instructionPhaseDecoderInst.PHASE_NEXT[3]     Clock source is invalid for GCC
+=======================================================================================================================================================================================================================
 
 
 ##### END OF CLOCK OPTIMIZATION REPORT ######
@@ -149,19 +162,19 @@ Clock Tree ID     Driving Element                                    Drive Eleme
 @N: FX1143 |Skipping assigning INTERNAL_VREF to iobanks, because the table of mapping from pin to iobank is not initialized.
 Finished Pre Mapping Phase.
 
-Starting constraint checker (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 179MB peak: 179MB)
+Starting constraint checker (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 180MB peak: 180MB)
 
 
-Finished constraint checker preprocessing (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 179MB peak: 179MB)
+Finished constraint checker preprocessing (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 180MB peak: 180MB)
 
 
-Finished constraint checker (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:01s; Memory used current: 180MB peak: 180MB)
+Finished constraint checker (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 180MB peak: 180MB)
 
 Pre-mapping successful!
 
-At Mapper Exit (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:01s; Memory used current: 94MB peak: 180MB)
+At Mapper Exit (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 97MB peak: 181MB)
 
-Process took 0h:00m:02s realtime, 0h:00m:01s cputime
-# Sun Nov 19 17:21:08 2023
+Process took 0h:00m:02s realtime, 0h:00m:02s cputime
+# Sat Dec  2 19:27:39 2023
 
 ###########################################################]

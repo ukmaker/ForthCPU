@@ -144,12 +144,11 @@
 	$display("%04d EXECUTE [T=%09t]", n, $realtime); \
 	`TICKTOCK; \
 	$display("%04d COMMIT  [T=%09t]", n, $realtime); \
-	`TICK; \
 	DIN = ld_data; \
 	`asserth("ADDR_BUF", addr+2, ADDR_BUF) \
 	`assert("WRN0_BUF", 1,      WRN0_BUF) \
 	`assert("WRN1_BUF", 1,      WRN1_BUF) \
-	`TOCK;
+	`TICKTOCK;
 	
 `define JMP_STEP(n, pc_addr, instruction, dest, taken, m) \
 	$display("%04d FETCH   [T=%09t] {%04x} :: {%04x} %s", n, $realtime, pc_addr, instruction, m); \

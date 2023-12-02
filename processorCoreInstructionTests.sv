@@ -92,7 +92,7 @@ initial begin
 	#5 RESET = 0;
 	`TICKTOCK;
 	`TICKTOCK;
-	`TICKTOCK;
+
 	
 	/**************************************************************************
 	* ALU Group - Operations

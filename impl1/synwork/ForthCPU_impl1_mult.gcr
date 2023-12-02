@@ -1,23 +1,29 @@
 i PIN_CLK_X1
 m 0 0
-u 120 320
+u 112 328
 p {p:PIN_CLK_X1}{t:boardInst.BPIN_CLK_X1}{p:boardInst.BPIN_CLK_X1}{t:boardInst.BPIN_LED[7:0].C}
 e ckid0_0 {t:boardInst.BPIN_LED[7:0].C} dffre
 c ckid0_0 {p:PIN_CLK_X1} port Unsupported/too complex instance on clock path
-i coreInst.registerSequencerInst.un1_FETCH_1_buf
+i coreInst.instructionPhaseDecoderInst.PHASE_NEXT_2_sqmuxa
 m 0 0
-u 2 2
-n ckid0_1 {t:coreInst.registerSequencerInst.REGB_EN.C} Clock source is invalid for GCC
-p {t:coreInst.registerSequencerInst.un1_FETCH_1.OUT}{t:coreInst.registerSequencerInst.REGB_EN.C}
-e ckid0_1 {t:coreInst.registerSequencerInst.REGB_EN.C} latr
-d ckid0_1 {t:coreInst.registerSequencerInst.un1_FETCH_1.OUT} or Unable to find a clock in input cone
-i coreInst.instructionPhaseDecoderInst.EXECUTE
-m 0 0
-u 0 0
-i coreInst.instructionPhaseDecoderInst.COMMIT
+u 4 4
+n ckid0_1 {t:coreInst.instructionPhaseDecoderInst.PHASE_NEXT[3].C} Clock source is invalid for GCC
+p {t:coreInst.instructionPhaseDecoderInst.PHASE_NEXT_2_sqmuxa.OUT}{t:coreInst.instructionPhaseDecoderInst.PHASE_NEXT_2_sqmuxa_buf_i.I[0]}{t:coreInst.instructionPhaseDecoderInst.PHASE_NEXT_2_sqmuxa_buf_i.OUT[0]}{t:coreInst.instructionPhaseDecoderInst.PHASE_NEXT[3].C}
+e ckid0_1 {t:coreInst.instructionPhaseDecoderInst.PHASE_NEXT[3].C} lat
+d ckid0_1 {t:coreInst.instructionPhaseDecoderInst.PHASE_NEXT_2_sqmuxa.OUT} and Unable to find a clock in input cone
+i coreInst.instructionPhaseDecoderInst.PHASE_R[3]
 m 0 0
 u 0 0
-i coreInst.instructionPhaseDecoderInst.FETCH
+i coreInst.instructionPhaseDecoderInst.PHASE_R[2]
+m 0 0
+u 0 0
+i coreInst.instructionPhaseDecoderInst.PHASE_R[1]
+m 0 0
+u 0 0
+i coreInst.instructionPhaseDecoderInst.PHASE_R[0]
+m 0 0
+u 0 0
+i coreInst.generalGroupDecoderInst.HALTX
 m 0 0
 u 0 0
 l 0 0 0 0 0 0

@@ -16,8 +16,8 @@ CoreRevision=7.5
 ModuleName=RAM
 SourceFormat=Verilog HDL
 ParameterFileVersion=1.0
-Date=11/13/2023
-Time=13:11:48
+Date=12/02/2023
+Time=17:43:06
 
 [Parameters]
 Verilog=1
@@ -27,7 +27,7 @@ Destination=Synplicity
 Expression=BusA(0 to 7)
 Order=Big Endian [MSB:LSB]
 IO=0
-Address=8192
+Address=4096
 Data=16
 enByte=1
 ByteSize=8
@@ -49,4 +49,4 @@ no_init=0
 =mem
 
 [Command]
-cmd_line= -w -n RAM -lang verilog -synth synplify -bus_exp 7 -bb -arch xo3c00a -type ramdq -device LCMXO3L-6900C -addr_width 13 -data_width 16 -num_words 8192 -byte 8 -cascade -1 -mem_init0 -writemode WRITETHROUGH
+cmd_line= -w -n RAM -lang verilog -synth synplify -bus_exp 7 -bb -arch xo3c00a -type ramdq -device LCMXO3L-6900C -addr_width 12 -data_width 16 -num_words 4096 -byte 8 -cascade -1 -mem_init0 -writemode WRITETHROUGH

@@ -38,11 +38,9 @@ module registerSequencer(
 	input DECODE,
 	input EXECUTE,
 	input COMMIT,
+	input STOPPED,
 	
 	input [3:0] REG_SEQX,
-	
-	input BYTEX,
-	input A0,
 	
 	output reg REGA_EN,
 	output reg REGA_WEN,
@@ -56,121 +54,114 @@ reg REGA_WEN_R;
 reg REGB_EN_R;
 reg REGB_WEN_R;
 
-reg RD_EN; // Gated clock signals
-reg WR_EN;
 
-// enables decoding
-always @(posedge CLK or posedge RESET) begin
-	
-	if(FETCH | RESET) begin
+// Decode the sequence type
+always @(*) begin
+
+	case(REG_SEQX)
+		`REG_SEQX_NONE: begin
 			REGA_EN_R  <= 0;
 			REGA_WEN_R <= 0;
 			REGB_EN_R  <= 0;
-			REGB_WEN_R <= 0;	
-	end else if(DECODE) begin
+			REGB_WEN_R <= 0;						
+		end
+			
+		`REG_SEQX_RDA_RDB: begin
+			REGA_EN_R  <= 1;
+			REGA_WEN_R <= 0;
+			REGB_EN_R  <= 1;
+			REGB_WEN_R <= 0;						
+		end	
 
-		case(REG_SEQX)
-			`REG_SEQX_NONE: begin
-				REGA_EN_R  <= 0;
-				REGA_WEN_R <= 0;
-				REGB_EN_R  <= 0;
-				REGB_WEN_R <= 0;						
-			end
-				
-			`REG_SEQX_RDA_RDB: begin
-				REGA_EN_R  <= 1;
-				REGA_WEN_R <= 0;
-				REGB_EN_R  <= 1;
-				REGB_WEN_R <= 0;						
-			end	
+		`REG_SEQX_LDA_RDB: begin
+			REGA_EN_R  <= 1;
+			REGA_WEN_R <= 1;
+			REGB_EN_R  <= 1;
+			REGB_WEN_R <= 0;						
+		end
+			
+		`REG_SEQX_LDA_UPB: begin
+			REGA_EN_R  <= 1;
+			REGA_WEN_R <= 1;
+			REGB_EN_R  <= 1;
+			REGB_WEN_R <= 1;			
+		end
+		
+		`REG_SEQX_RDA_UPB: begin
+			REGA_EN_R  <= 1;
+			REGA_WEN_R <= 0;
+			REGB_EN_R  <= 1;
+			REGB_WEN_R <= 1;		
+		end
 
-			`REG_SEQX_LDA_RDB: begin
-				REGA_EN_R  <= 0;
-				REGA_WEN_R <= 1;
-				REGB_EN_R  <= 1;
-				REGB_WEN_R <= 0;						
-			end
-				
-			`REG_SEQX_LDA_UPB: begin
-				REGA_EN_R  <= 0;
-				REGA_WEN_R <= 1;
-				REGB_EN_R  <= 1;
-				REGB_WEN_R <= 1;			
-			end
-			
-			`REG_SEQX_RDA_UPB: begin
-				REGA_EN_R  <= 1;
-				REGA_WEN_R <= 0;
-				REGB_EN_R  <= 1;
-				REGB_WEN_R <= 1;		
-			end
+		`REG_SEQX_LDA_IMM: begin
+			REGA_EN_R  <= 1;
+			REGA_WEN_R <= 1;
+			REGB_EN_R  <= 0;
+			REGB_WEN_R <= 0;		
+		end
 		
-			`REG_SEQX_LDA_IMM: begin
-				REGA_EN_R  <= 0;
-				REGA_WEN_R <= 1;
-				REGB_EN_R  <= 0;
-				REGB_WEN_R <= 0;		
-			end
-			
-			`REG_SEQX_RDA_IMM: begin
-				REGA_EN_R  <= 1;
-				REGA_WEN_R <= 0;
-				REGB_EN_R  <= 0;
-				REGB_WEN_R <= 0;		
-			end
-			
-			`REG_SEQX_UPA_RDB: begin
-				REGA_EN_R  <= 1;
-				REGA_WEN_R <= 1;
-				REGB_EN_R  <= 1;
-				REGB_WEN_R <= 0;		
-			end
-			
-			`REG_SEQX_UPA_IMM: begin
-				REGA_EN_R  <= 1;
-				REGA_WEN_R <= 1;
-				REGB_EN_R  <= 0;
-				REGB_WEN_R <= 0;		
-			end
-			
-			`REG_SEQX_RDB: begin
-				REGA_EN_R  <= 0;
-				REGA_WEN_R <= 0;
-				REGB_EN_R  <= 1;
-				REGB_WEN_R <= 0;				
-			end
+		`REG_SEQX_RDA_IMM: begin
+			REGA_EN_R  <= 1;
+			REGA_WEN_R <= 0;
+			REGB_EN_R  <= 0;
+			REGB_WEN_R <= 0;		
+		end
 		
-			default: begin
-				REGA_EN_R  <= 0;
-				REGA_WEN_R <= 0;
-				REGB_EN_R  <= 0;
-				REGB_WEN_R <= 0;			
-			end
-		endcase
+		`REG_SEQX_UPA_RDB: begin
+			REGA_EN_R  <= 1;
+			REGA_WEN_R <= 1;
+			REGB_EN_R  <= 1;
+			REGB_WEN_R <= 0;		
+		end
+		
+		`REG_SEQX_UPA_IMM: begin
+			REGA_EN_R  <= 1;
+			REGA_WEN_R <= 1;
+			REGB_EN_R  <= 0;
+			REGB_WEN_R <= 0;		
+		end
+		
+		`REG_SEQX_RDB: begin
+			REGA_EN_R  <= 0;
+			REGA_WEN_R <= 0;
+			REGB_EN_R  <= 1;
+			REGB_WEN_R <= 0;				
+		end
+
+		default: begin
+			REGA_EN_R  <= 0;
+			REGA_WEN_R <= 0;
+			REGB_EN_R  <= 0;
+			REGB_WEN_R <= 0;			
+		end
+	endcase
+end
+
+
+always @(posedge CLK or posedge RESET) begin
+	if(RESET) begin
+		REGA_EN  <= 1'b0;
+		REGB_EN  <= 1'b0;
+		REGA_WEN <= 1'b0;
+		REGB_WEN <= 1'b0;
+	end else begin
+		if(FETCH | DECODE | STOPPED) begin
+			// Everything idle during a fetch cycle
+			REGA_EN  <= 1'b0;
+			REGB_EN  <= 1'b0;
+			REGA_WEN <= 1'b0;
+			REGB_WEN <= 1'b0;	
+		end else if(EXECUTE) begin
+			// 
+			REGA_EN <= REGA_EN_R;
+			REGB_EN <= REGB_EN_R;
+		end else if(COMMIT) begin
+			
+			REGA_WEN <= REGA_WEN_R;
+			REGB_WEN <= REGB_WEN_R;
+		end
 	end
-end
-
-always @(negedge CLK) begin
-	RD_EN <= EXECUTE;
-end
-
-// sequence control
-// Read REG_EN go high on the falling edge of CLK during DECODE
-// i.e. while EXECUTE is high
-// then low again during CLK low in COMMIT
-// Write REG_EN and REG_WEN go high on the rising edge of CLK 
-// during COMMIT (while FETCH is high)
-always @(*) begin
-	// It doesn't matter if these signals glitch a bit
-	// since everything is ultimately synced to the 
-	// rising egde of CLK
-	WR_EN = FETCH;
-	
-	REGA_EN = (RD_EN & REGA_EN_R) | (WR_EN & REGA_WEN_R);
-	REGB_EN = (RD_EN & REGB_EN_R) | (WR_EN & REGB_WEN_R);
-	REGA_WEN = WR_EN & REGA_WEN_R;
-	REGB_WEN = WR_EN & REGB_WEN_R;
-
 end
 
 endmodule

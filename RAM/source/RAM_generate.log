@@ -3,7 +3,7 @@ Starting process: Module
 Starting process: 
 
 SCUBA, Version Diamond (64-bit) 3.12.1.454
-Mon Nov 13 13:11:48 2023
+Sat Dec 02 17:43:06 2023
 
 Copyright (c) 1991-1994 by NeoCAD Inc. All rights reserved.
 Copyright (c) 1995 AT&T Corp.   All rights reserved.
@@ -13,12 +13,12 @@ Copyright (c) 2002-2020 Lattice Semiconductor Corporation,  All rights reserved.
 
 BEGIN SCUBA Module Synthesis
 
-    Issued command   : C:\lscc\diamond\3.12\ispfpga\bin\nt64\scuba.exe -w -n RAM -lang verilog -synth synplify -bus_exp 7 -bb -arch xo3c00a -type ramdq -device LCMXO3L-6900C -addr_width 13 -data_width 16 -num_words 8192 -byte 8 -cascade -1 -mem_init0 -writemode WRITETHROUGH 
+    Issued command   : C:\lscc\diamond\3.12\ispfpga\bin\nt64\scuba.exe -w -n RAM -lang verilog -synth synplify -bus_exp 7 -bb -arch xo3c00a -type ramdq -device LCMXO3L-6900C -addr_width 12 -data_width 16 -num_words 4096 -byte 8 -cascade -1 -mem_init0 -writemode WRITETHROUGH 
     Circuit name     : RAM
     Module type      : RAM_DQ
     Module Version   : 7.5
     Ports            : 
-	Inputs       : Clock, ClockEn, Reset, ByteEn[1:0], WE, Address[12:0], Data[15:0]
+	Inputs       : Clock, ClockEn, Reset, ByteEn[1:0], WE, Address[11:0], Data[15:0]
 	Outputs      : Q[15:0]
     I/O buffer       : not inserted
     Memory file      : INIT_ALL_0s
@@ -30,9 +30,9 @@ BEGIN SCUBA Module Synthesis
     Bus notation     : big endian
     Report output    : RAM.srp
     Estimated Resource Usage:
-            LUT : 32
-            EBR : 16
-            Reg : 3
+            LUT : 16
+            EBR : 8
+            Reg : 2
 
 END   SCUBA Module Synthesis
 
