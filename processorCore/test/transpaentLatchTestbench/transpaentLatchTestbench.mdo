@@ -1,0 +1,19 @@
+if {![file exists "C:/Users/Duncan/git/ForthCPU/processorCore/test/transpaentLatchTestbench/transpaentLatchTestbench.mpf"]} { 
+	project new "C:/Users/Duncan/git/ForthCPU/processorCore/test/transpaentLatchTestbench" transpaentLatchTestbench
+	project addfile "C:/Users/Duncan/git/ForthCPU/processorCore/source/transparentLatchTests.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/processorCore/source/transparentLatch.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/constants.v"
+	vlib  work
+	vdel -lib work -all 
+	vlib work
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/processorCore/source  -work work  "C:/Users/Duncan/git/ForthCPU/processorCore/source/transparentLatchTests.v"
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/processorCore/source  -work work  "C:/Users/Duncan/git/ForthCPU/processorCore/source/transparentLatch.v"
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU  -work work  "C:/Users/Duncan/git/ForthCPU/constants.v"
+} else {
+	project open "C:/Users/Duncan/git/ForthCPU/processorCore/test/transpaentLatchTestbench/transpaentLatchTestbench"
+	project compileoutofdate
+}
+vsim -L work -L pmi_work -L ovi_machxo3l  transparentLatchTests
+view wave
+add wave /*
+run 1000ns

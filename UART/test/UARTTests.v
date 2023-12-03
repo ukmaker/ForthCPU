@@ -87,14 +87,14 @@ initial begin
 	WR0 = 1;
 	WR1 = 1;
 	DIN = 16'h0004;
-	`TICKTOCK;
+	`step(1, "Set clock divider TX")
 	WR0 = 0;
 	WR1 = 0;
 	`TICKTOCK;
 	ADDR = 2'b11;
 	WR0 = 1;
 	WR1 = 1;
-	`TICKTOCK;
+	`step(2, "Set clock divider RX")
 	WR0 = 0;
 	WR1 = 0;
 	
@@ -102,33 +102,54 @@ initial begin
 	WR0 = 1;
 	ADDR = 2'b01;
 	DIN = 16'habcd;
-	`TICKTOCK;
+	`step(3, "Send a byte")
 	WR0 = 0;
+	`TICKTOCK;
+	`TICKTOCK;
+		
+	// Check the transmitter is transmitting
+	ADDR = `UART_REG_STATUS;
+	RD0 = 1;
+	`step(4, "Transmit a byte - check status running")
+	`assert("STATUS", `UART_STATUS_TX_ACTIVE, DOUT0)
+	RD1 = 1;
+	`TICKTOCK;
+
+
 	// delay by 10+2 clock cycles
 	#4400
 	// Now the data should be available in the receiver
 	// start by checking for the flag in the status register
 	// Expect RXI=1 , TXC=1 (no transmit from this instance yet, so still 
 	// at 1 after reset)
-	ADDR = 2'b00;
+	ADDR = `UART_REG_STATUS;
 	RD1 = 1;
-	`TICKTOCK;
-	`assert("STATUS", 16'h000d, DOUT1)
+	`step(5, "Receive a byte - check status")
+	`assert("STATUS", (`UART_STATUS_TX_COMPLETE | `UART_STATUS_DATA_AVAILABLE | `UART_STATUS_RX_INTERRUPT), DOUT1)
 	RD1 = 0;
 	`TICKTOCK;
-	ADDR = 2'b01;
+	ADDR = `UART_REG_DATA;
 	RD1 = 1;
-	`TICKTOCK;
+	`step(6, "Receive a byte - check data")
 	`assert("DATA", 16'h00cd, DOUT1)
 	RD1 = 0;
 	`TICKTOCK;
 	// Re-read the status register and check that the RXI has been cleared
-	ADDR = 2'b00;
+	ADDR = `UART_REG_STATUS;
 	RD1 = 1;
-	`TICKTOCK;
+	`step(7, "Receive a byte - check status clear")
 	`assert("STATUS", `UART_STATUS_TX_COMPLETE, DOUT1)
 	RD1 = 0;
 	`TICKTOCK;
+	
+	// Check the transmitter
+	ADDR = `UART_REG_STATUS;
+	RD0 = 1;
+	`step(8, "Transmit a byte - check status complete")
+	`assert("STATUS", (`UART_STATUS_TX_COMPLETE | `UART_STATUS_TX_INTERRUPT), DOUT0)
+	RD1 = 1;
+	`TICKTOCK;
+	
 
 
 end

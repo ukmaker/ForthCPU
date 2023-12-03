@@ -3,12 +3,12 @@ package require simulation_generation
 set ::bali::simulation::Para(DEVICEFAMILYNAME) {MachXO3L}
 set ::bali::simulation::Para(PROJECT) {UARTTestbench}
 set ::bali::simulation::Para(PROJECTPATH) {C:/Users/Duncan/git/ForthCPU/UART/test}
-set ::bali::simulation::Para(FILELIST) {"C:/Users/Duncan/git/ForthCPU/UART/source/transmitter.v" "C:/Users/Duncan/git/ForthCPU/UART/source/receiver.v" "C:/Users/Duncan/git/ForthCPU/UART/source/UART.v" "C:/Users/Duncan/git/ForthCPU/UART/test/UARTTests.v" }
+set ::bali::simulation::Para(FILELIST) {"C:/Users/Duncan/git/ForthCPU/UART/source/transmitter.v" "C:/Users/Duncan/git/ForthCPU/UART/source/receiver.v" "C:/Users/Duncan/git/ForthCPU/UART/source/UART.v" "C:/Users/Duncan/git/ForthCPU/UART/test/UARTTests.v" "C:/Users/Duncan/git/ForthCPU/constants.v" }
 set ::bali::simulation::Para(GLBINCLIST) {}
-set ::bali::simulation::Para(INCLIST) {"none" "none" "none" "none"}
-set ::bali::simulation::Para(WORKLIBLIST) {"work" "work" "work" "work" }
-set ::bali::simulation::Para(COMPLIST) {"VERILOG" "VERILOG" "VERILOG" "VERILOG" }
-set ::bali::simulation::Para(LANGSTDLIST) {"Verilog 2001" "Verilog 2001" "Verilog 2001" "Verilog 2001" }
+set ::bali::simulation::Para(INCLIST) {"none" "none" "none" "none" "none"}
+set ::bali::simulation::Para(WORKLIBLIST) {"work" "work" "work" "work" "work" }
+set ::bali::simulation::Para(COMPLIST) {"VERILOG" "VERILOG" "VERILOG" "VERILOG" "VERILOG" }
+set ::bali::simulation::Para(LANGSTDLIST) {"Verilog 2001" "Verilog 2001" "Verilog 2001" "Verilog 2001" "Verilog 2001" }
 set ::bali::simulation::Para(SIMLIBLIST) {pmi_work ovi_machxo3l}
 set ::bali::simulation::Para(MACROLIST) {}
 set ::bali::simulation::Para(SIMULATIONTOPMODULE) {UARTTests}

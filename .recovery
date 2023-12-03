@@ -417,6 +417,9 @@
         <Source name="busController/source/busController.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
+        <Source name="busController/source/busSequencer.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
         <Source name="generalGroupDecoder/source/generalGroupDecoder.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
@@ -480,10 +483,10 @@
         <Source name="debugPort/source/upCounter.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
-        <Source name="busController/source/busSequencer.v" type="Verilog" type_short="Verilog">
+        <Source name="RAM/source/RAM.ipx" type="IPX_Module" type_short="IPX">
             <Options/>
         </Source>
-        <Source name="RAM/source/RAM.ipx" type="IPX_Module" type_short="IPX">
+        <Source name="processorCore/source/transparentLatch.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
         <Source name="../../Desktop/MachXO3L_Starter_Kit/project/impl1/impl1.xcf" type="Programming Project File" type_short="Programming">
@@ -623,7 +626,7 @@
         </Source>
     </Implementation>
     <Implementation title="mcuTestbench" dir="mcuTestbench" description="mcuTestbench" synthesis="synplify" default_strategy="Area">
-        <Options def_top="registerFileTests"/>
+        <Options def_top="stopSynchroniser"/>
         <Source name="constants.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
@@ -723,6 +726,30 @@
         <Source name="registerSequencer/source/registerSequencer.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
+        <Source name="debugPort/source/debugDecoder.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="debugPort/source/debugPort.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="debugPort/source/oneOfEightDecoder.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="debugPort/source/register.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="debugPort/source/requestGenerator.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="debugPort/source/stopSynchroniser.v" type="Verilog" type_short="Verilog">
+            <Options top_module="stopSynchroniser"/>
+        </Source>
+        <Source name="debugPort/source/upCounter.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="busController/source/busSequencer.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
         <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">
             <Options/>
         </Source>
@@ -785,7 +812,7 @@
         </Source>
     </Implementation>
     <Implementation title="processorCore" dir="processorCore" description="processorCore" synthesis="synplify" default_strategy="Area">
-        <Options def_top="processorCoreInstructionTests"/>
+        <Options def_top="transparentLatchTests"/>
         <Source name="constants.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
@@ -885,16 +912,22 @@
         <Source name="registerSequencer/source/registerSequencer.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
+        <Source name="processorCore/source/transparentLatch.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="processorCore/source/transparentLatchTests.v" type="Verilog" type_short="Verilog">
+            <Options top_module="transparentLatchTests"/>
+        </Source>
         <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">
             <Options/>
         </Source>
         <Source name="processorCore/test/processorCoreInstructionTestbench/processorCoreInstructionTestbench.spf" type="Simulation Project File" type_short="SPF">
             <Options/>
         </Source>
-        <Source name="processorCore/test/processorCoreInstTests/processorCoreInstTests.spf" type="Simulation Project File" type_short="SPF">
+        <Source name="processorCore/test/processorInterruptTestbench/processorInterruptTestbench.spf" type="Simulation Project File" type_short="SPF">
             <Options/>
         </Source>
-        <Source name="processorCore/test/processorInterruptTestbench/processorInterruptTestbench.spf" type="Simulation Project File" type_short="SPF">
+        <Source name="processorCore/test/transpaentLatchTestbench/transpaentLatchTestbench.spf" type="Simulation Project File" type_short="SPF">
             <Options/>
         </Source>
     </Implementation>
@@ -1055,12 +1088,24 @@
         </Source>
     </Implementation>
     <Implementation title="timingModel" dir="timingModel" description="timingModel" synthesis="synplify" default_strategy="Area">
-        <Options def_top="timingModel"/>
+        <Options def_top="loadStoreGroupDecoder"/>
         <Source name="timingModel/source/timingModel.v" type="Verilog" type_short="Verilog">
             <Options top_module="timingModel"/>
         </Source>
         <Source name="testSetup.v" type="Verilog" type_short="Verilog">
             <Options/>
+        </Source>
+        <Source name="busController/source/busSequencer.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="registerSequencer/source/registerSequencer.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="constants.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="loadStoreGroupDecoder/source/loadStoreGroupDecoder.v" type="Verilog" type_short="Verilog">
+            <Options top_module="loadStoreGroupDecoder"/>
         </Source>
         <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">
             <Options/>

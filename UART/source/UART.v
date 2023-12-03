@@ -65,6 +65,7 @@ assign RESETN = ~RESET;
 
 assign STATUS = 16'h0000 
   | (DATA_AVAILABLE_R ? `UART_STATUS_DATA_AVAILABLE : 0) 
+  | (DATA_AVAILABLE_R ? `UART_STATUS_RX_INTERRUPT   : 0) 
   | (TX_ACTIVE_R      ? `UART_STATUS_TX_ACTIVE      : 0) 
   | (TX_COMPLETE_R    ? `UART_STATUS_TX_COMPLETE    : 0) 
   | (TXI_R            ? `UART_STATUS_TX_INTERRUPT   : 0);
@@ -101,7 +102,7 @@ always @(posedge CLK or posedge RESET) begin
 		TX_ACTIVE_R      <= 0;
 		TX_COMPLETE_R    <= 1;
 		TXI_R            <= 0;
-	end else if(CLK) begin
+	end else begin
 		// latch completions
 		if(DATA_AVAILABLE) begin
 			DATA_AVAILABLE_R <= 1;

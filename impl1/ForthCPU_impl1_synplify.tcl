@@ -66,6 +66,7 @@ add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/opxMultiplexer/so
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/interruptLogic/source/interruptStateMachine.v}
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/branchLogic/source/branchLogic.v}
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/busController/source/busController.v}
+add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/busController/source/busSequencer.v}
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/generalGroupDecoder/source/generalGroupDecoder.v}
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/impl1/source/mcu.v}
 add_file -verilog -vlog_std v2001 {C:/Users/Duncan/git/ForthCPU/bootROM/source/rom.v}
@@ -87,7 +88,6 @@ add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/debugPort/source/
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/debugPort/source/requestGenerator.v}
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/debugPort/source/stopSynchroniser.v}
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/debugPort/source/upCounter.v}
-add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/busController/source/busSequencer.v}
 add_file -verilog -vlog_std v2001 {C:/Users/Duncan/git/ForthCPU/RAM/source/RAM.v}
 
 #-- top module name

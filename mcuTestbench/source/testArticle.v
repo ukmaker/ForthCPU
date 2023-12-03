@@ -10,7 +10,7 @@ module testArticle(
 	input PIN_CLK_X1,
 	input PIN_RESETN,
 	
-	output wire FETCH, DECODE, EXECUTE, COMMIT,
+	output wire STOPPED, FETCH, DECODE, EXECUTE, COMMIT,
 	
 	output wire [15:0] PIN_ADDR_BUS,
 	inout  wire [15:0] PIN_DATA_BUS,
@@ -51,6 +51,7 @@ wire [15:0] DIN_GPIO;
 wire [15:0] CPU_DIN;
 wire CLK;
 wire RESET;
+wire [7:0] DEBUG_DOUT;
 
 assign DIN_GPIO[15:8] = 8'h00;
 
@@ -111,7 +112,7 @@ core coreInst(
 	.CLK(CLK),
 	.RESET(RESET),
 	
-	.FETCH(FETCH), .DECODE(DECODE), .EXECUTE(EXECUTE), .COMMIT(COMMIT),
+	.STOPPED(STOPPED), .FETCH(FETCH), .DECODE(DECODE), .EXECUTE(EXECUTE), .COMMIT(COMMIT),
 	
 	.ADDR_BUF(ADDR_BUF),
 	.DOUT_BUF(DOUT_BUF),
@@ -122,7 +123,13 @@ core coreInst(
 	.RDN_BUF(RDN_BUF), 
 	.ABUS_OEN(ABUS_OEN),
 	.WRN0_BUF(WRN0_BUF), 
-	.WRN1_BUF(WRN1_BUF)
+	.WRN1_BUF(WRN1_BUF),
+	
+	.DEBUG_DIN(8'h00),
+	.DEBUG_DOUT(DEBUG_DOUT),
+	.DEBUG_ADDR(3'b000),
+	.DEBUG_RD(1'b0),
+	.DEBUG_WR(1'b0)
 );
 
 testResources mcuResourcesInst(

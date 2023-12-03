@@ -13,6 +13,10 @@
 
 `define mark(n)  \
 	$display("[T=%09t] %d", $realtime, n);
+
+`define step(n,comment) \
+	$display("[T=%09t] %d %s", $realtime, n, comment); \
+	`TICKTOCK;
 	
 `define FETCH(n, addr, instruction, m) \
 	$display("FETCH   [T=%09t] %04d {%04x} :: {%04x} %s", $realtime, n, addr, instruction, m); \
