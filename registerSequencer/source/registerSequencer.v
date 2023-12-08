@@ -141,25 +141,33 @@ end
 
 always @(posedge CLK or posedge RESET) begin
 	if(RESET) begin
-		REGA_EN  <= 1'b0;
-		REGB_EN  <= 1'b0;
 		REGA_WEN <= 1'b0;
 		REGB_WEN <= 1'b0;
 	end else begin
-		if(FETCH | DECODE | STOPPED) begin
-			// Everything idle during a fetch cycle
-			REGA_EN  <= 1'b0;
-			REGB_EN  <= 1'b0;
-			REGA_WEN <= 1'b0;
-			REGB_WEN <= 1'b0;	
-		end else if(EXECUTE) begin
-			// 
-			REGA_EN <= REGA_EN_R;
-			REGB_EN <= REGB_EN_R;
-		end else if(COMMIT) begin
-			
+		if(COMMIT) begin
 			REGA_WEN <= REGA_WEN_R;
 			REGB_WEN <= REGB_WEN_R;
+		end else begin
+			REGA_WEN <= 1'b0;
+			REGB_WEN <= 1'b0;
+		end
+	end
+end
+
+
+
+always @(negedge CLK or posedge RESET) begin
+	if(RESET) begin
+		REGA_EN  <= 1'b0;
+		REGB_EN  <= 1'b0;
+	end else begin
+		if(COMMIT | FETCH | EXECUTE) begin
+			REGA_EN <= REGA_EN_R;
+			REGB_EN <= REGB_EN_R;
+		end else begin
+			// Everything idle
+			REGA_EN  <= 1'b0;
+			REGB_EN  <= 1'b0;
 		end
 	end
 end

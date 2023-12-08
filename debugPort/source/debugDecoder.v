@@ -20,7 +20,8 @@ module debugDecoder(
 	output reg [1:0]  DEBUG_CC_REGX,
 	output reg [2:0]  DEBUG_PC_NEXTX,
 	
-	output reg         DEBUG_STOPX
+	output reg         DEBUG_STOPX,
+	output reg         DEBUG_STEPX
 
 );
 
@@ -28,6 +29,7 @@ always @(*) begin
 	
 	case(DEBUG_OPX)
 		`DEBUG_OPX_NONE: begin
+			DEBUG_STEPX      = `DEBUG_STEPX_NONE;
 			DEBUG_STOPX      = `DEBUG_STOPX_RUN;
 			DEBUG_BUS_SEQX   = `BUS_SEQX_NONE;
 			DEBUG_REG_SEQX   = `REG_SEQX_NONE;
@@ -38,18 +40,8 @@ always @(*) begin
 			DEBUG_PC_NEXTX   = `PC_NEXTX_NEXT;
 		end
 		
-		`DEBUG_OPX_STOP: begin
-			DEBUG_STOPX      = `DEBUG_STOPX_STOP;
-			DEBUG_BUS_SEQX   = `BUS_SEQX_NONE;
-			DEBUG_REG_SEQX   = `REG_SEQX_NONE;
-			DEBUG_ADDR_INCX  = `DEBUG_ADDR_INCX_NONE;
-			DEBUG_ADDR_LDX   = `DEBUG_ADDR_LDX_NONE;
-			DEBUG_DATAX      = `DEBUG_DATAX_DIN;
-			DEBUG_CC_REGX    = `CC_REGX_RUN;
-			DEBUG_PC_NEXTX   = `PC_NEXTX_NEXT;
-		end
-		
 		`DEBUG_OPX_RD_REG: begin
+			DEBUG_STEPX      = `DEBUG_STEPX_NONE;
 			DEBUG_STOPX      = `DEBUG_STOPX_STOP;
 			DEBUG_BUS_SEQX   = `BUS_SEQX_NONE;
 			DEBUG_REG_SEQX   = `REG_SEQX_RDB;
@@ -61,6 +53,7 @@ always @(*) begin
 		end
 		
 		`DEBUG_OPX_RD_CC: begin
+			DEBUG_STEPX      = `DEBUG_STEPX_NONE;
 			DEBUG_STOPX      = `DEBUG_STOPX_STOP;
 			DEBUG_BUS_SEQX   = `BUS_SEQX_NONE;
 			DEBUG_REG_SEQX   = `REG_SEQX_NONE;
@@ -72,6 +65,7 @@ always @(*) begin
 		end
 		
 		`DEBUG_OPX_RD_PC: begin
+			DEBUG_STEPX      = `DEBUG_STEPX_NONE;
 			DEBUG_STOPX      = `DEBUG_STOPX_STOP;
 			DEBUG_BUS_SEQX   = `BUS_SEQX_NONE;
 			DEBUG_REG_SEQX   = `REG_SEQX_NONE;
@@ -83,6 +77,7 @@ always @(*) begin
 		end
 		
 		`DEBUG_OPX_RD_MEM: begin
+			DEBUG_STEPX      = `DEBUG_STEPX_NONE;
 			DEBUG_STOPX      = `DEBUG_STOPX_STOP;
 			DEBUG_BUS_SEQX   = `BUS_SEQX_READ;
 			DEBUG_REG_SEQX   = `REG_SEQX_NONE;
@@ -94,6 +89,7 @@ always @(*) begin
 		end
 		
 		`DEBUG_OPX_WR_MEM: begin
+			DEBUG_STEPX      = `DEBUG_STEPX_NONE;
 			DEBUG_STOPX      = `DEBUG_STOPX_STOP;
 			DEBUG_BUS_SEQX   = `BUS_SEQX_WRITE;
 			DEBUG_REG_SEQX   = `REG_SEQX_NONE;
@@ -106,6 +102,7 @@ always @(*) begin
 		
 
 		default: begin
+			DEBUG_STEPX      = `DEBUG_STEPX_NONE;
 			DEBUG_STOPX      = `DEBUG_STOPX_STOP;
 			DEBUG_BUS_SEQX   = `BUS_SEQX_NONE;
 			DEBUG_REG_SEQX   = `REG_SEQX_NONE;

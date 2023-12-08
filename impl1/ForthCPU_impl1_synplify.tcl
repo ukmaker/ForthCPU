@@ -67,6 +67,7 @@ add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/interruptLogic/so
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/branchLogic/source/branchLogic.v}
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/busController/source/busController.v}
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/busController/source/busSequencer.v}
+add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/registerSequencer/source/registerSequencer.v}
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/generalGroupDecoder/source/generalGroupDecoder.v}
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/impl1/source/mcu.v}
 add_file -verilog -vlog_std v2001 {C:/Users/Duncan/git/ForthCPU/bootROM/source/rom.v}
@@ -80,7 +81,6 @@ add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/UART/source/trans
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/UART/source/UART.v}
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/devBoard/source/devBoard.v}
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/impl1/test/blinkTest.v}
-add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/registerSequencer/source/registerSequencer.v}
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/debugPort/source/debugDecoder.v}
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/debugPort/source/debugPort.v}
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/debugPort/source/oneOfEightDecoder.v}
@@ -89,6 +89,7 @@ add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/debugPort/source/
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/debugPort/source/stopSynchroniser.v}
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/debugPort/source/upCounter.v}
 add_file -verilog -vlog_std v2001 {C:/Users/Duncan/git/ForthCPU/RAM/source/RAM.v}
+add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/processorCore/source/transparentLatch.v}
 
 #-- top module name
 set_option -top_module mcu

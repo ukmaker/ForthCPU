@@ -110,36 +110,35 @@
 /*******************************************
 * Debugging interface
 ********************************************/
-`define DEBUG_ADDRX_OPX     3'b000
-`define DEBUG_ADDRX_SOURCEX 3'b001
+`define DEBUG_ADDRX_MODE    3'b000
+`define DEBUG_ADDRX_OP      3'b001
 `define DEBUG_ADDRX_MAL     3'b010
 `define DEBUG_ADDRX_MAH     3'b011
-`define DEBUG_ADDRX_MDL     3'b100
-`define DEBUG_ADDRX_MDH     3'b101
-`define DEBUG_ADDRX_DATAX   3'b110
-`define DEBUG_ADDRX_STOP    3'b111
+`define DEBUG_ADDRX_DL      3'b100
+`define DEBUG_ADDRX_DH      3'b101
 
 `define DEBUG_ADDR_INCX_NONE 1'b0
 `define DEBUG_ADDR_INCX_INC  1'b1
 
-`define DEBUG_ADDR_LDX_NONE  1'b0
-`define DEBUG_ADDR_LDX_LD    1'b1
+`define DEBUG_LD_DATAX_NONE  1'b0
+`define DEBUG_LD_DATAX_LD    1'b1
 
 `define DEBUG_OPX_NONE   3'b000
-`define DEBUG_OPX_STOP   3'b001
-`define DEBUG_OPX_RD_REG 3'b010
-`define DEBUG_OPX_RD_CC  3'b011
-`define DEBUG_OPX_RD_PC  3'b100
-`define DEBUG_OPX_RD_MEM 3'b101
-`define DEBUG_OPX_WR_MEM 3'b110
+`define DEBUG_OPX_RD_MEM 3'b001
+`define DEBUG_OPX_WR_MEM 3'b010
+`define DEBUG_OPX_RD_REG 3'b011
+`define DEBUG_OPX_WR_REG 3'b100
+`define DEBUG_OPX_RD_CC  3'b101
+`define DEBUG_OPX_RD_PC  3'b110
 
 `define DEBUG_DATAX_DIN       2'b00
 `define DEBUG_DATAX_REGB_DATA 2'b01
 `define DEBUG_DATAX_CC_DATA   2'b10
 `define DEBUG_DATAX_PC_A_NEXT 2'b11
 
-`define DEBUG_STOPX_RUN  1'b0
-`define DEBUG_STOPX_STOP 1'b1
+`define DEBUG_MODEX_STOP  3'b001
+`define DEBUG_MODEX_DEBUG 3'b010
+`define DEBUG_MODEX_REQ   3'b100
 
 /*******************************************
 * Program counter control inputs

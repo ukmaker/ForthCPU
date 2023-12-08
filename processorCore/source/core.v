@@ -52,7 +52,6 @@ wire         CC_CARRY;
 wire         CC_PARITY;
 wire         CC_SIGN;
 wire [1:0]  DATA_BUSX;
-wire         DEBUG_ACTIVE;
 wire [15:0] DIN_LATCHED;
 wire         DIX;
 wire         EIX;
@@ -149,8 +148,11 @@ assign ARGA_X = INSTRUCTION[7:4];
 /***************************************
 * Latch for input data
 ****************************************/
-transparentLatch dinLatch(
+register #(.BUS_WIDTH(16)) dinLatch(
+	.CLK(CLK),
+	.RESET(RESET),
 	.LD(~RDN_BUF),
+	.EN(DECODE),
 	.DIN(DIN),
 	.DOUT(DIN_LATCHED)
 );
@@ -215,7 +217,7 @@ instructionPhaseDecoder instructionPhaseDecoderInst(
 	.DECODE(DECODE),
 	.EXECUTE(EXECUTE),
 	.COMMIT(COMMIT),
-	.DIN(DIN_LATCHED),
+	.DIN(DIN),
 	.INSTRUCTION(INSTRUCTION),
 	.PC_ENX(PC_ENX),
 	.DEBUG_ACTIVE(DEBUG_ACTIVE),
@@ -264,7 +266,7 @@ registerFile registerFileInst(
 	.CLK(CLK),
 	.RESET(RESET),
 	.ALU_R(ALU_R),
-	.DIN(DIN_LATCHED),
+	.DIN(DIN),
 	.HERE(HERE + 16'h0002),
 	.REGA_EN(REGA_EN),
 	.REGA_WEN(REGA_WEN),
@@ -324,7 +326,7 @@ programCounter programCounterInst(
 	.PC_BASEX(PC_BASEX),
 	.PC_OFFSETX(PC_OFFSETX),
 	.REGB_DOUT(ALUB_DATA),
-	.DIN(DIN_LATCHED),
+	.DIN(DIN),
 	.PC_NEXTX(PC_NEXTX),
 	.HERE(HERE),
 	.PC_A_NEXT(PC_A_NEXT),

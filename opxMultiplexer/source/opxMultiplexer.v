@@ -5,8 +5,11 @@
 * for the current instruction group
 *
 *                     +--------------------+
-*   DEBUG_STOPX ----->|                    |
+*   DEBUG_STEPX ----->|                    |
+*	                  |                    |
+*	DEBUG_MODEX ----->|                    |
 *	GROUPX      ----->|                    |
+*                     |                    |
 *                     |                    |
 *                     |                    |
 *   DEBUG_OPX   ----->|                    |-----> ALU_OPX
@@ -26,7 +29,8 @@ module opxMultiplexer(
 	input [1:0] INSTRUCTION_GROUP,
 	input [3:0] INSTRUCTION_ARGBX,
 	
-	input DEBUG_ACTIVE,
+	input DEBUG_MODEX,
+	input DEBUG_STEPX,
 	
 	input [3:0]  ALU_ALU_OPX,
 	input [2:0]  ALU_ALUA_SRCX,
@@ -36,10 +40,9 @@ module opxMultiplexer(
 	input [2:0]  ALU_REGB_ADDRX,
 	input [3:0]  ALU_REG_SEQX,
 	
-	input [3:0]  DEBUG_ARGX,
+	input [3:0]  DEBUG_ARGBX,
 	input [1:0]  DEBUG_BUS_SEQX,
 	input [1:0]  DEBUG_CC_REGX,
-	input [2:0]  DEBUG_OPX,
 	input [2:0]  DEBUG_PC_NEXTX,
 	input [3:0]  DEBUG_REG_SEQX,
 	
@@ -94,12 +97,12 @@ module opxMultiplexer(
 
 always @(*) begin
 	
-	if(DEBUG_ACTIVE) begin
+	if(DEBUG_MODEX & ~DEBUG_STEPX) begin
 		ADDR_BUSX     = `ADDR_BUSX_DEBUG;
 		ALU_OPX       = `ALU_OPX_MOV;
 		ALUA_SRCX     = `ALUA_SRCX_REG_A;
 		ALUB_SRCX     = `ALUB_SRCX_REG_B;
-		ARGBX         = DEBUG_ARGX;
+		ARGBX         = DEBUG_ARGBX;
 		BUS_SEQX      = DEBUG_BUS_SEQX;
 		BYTEX         = `BYTEX_WORD;
 		CCL_LD        = 0;

@@ -107,8 +107,7 @@ always @(posedge CLK or posedge RESET) begin
 		PC_ENX <= 1;
 		DEBUG_ACTIVE <= 0;
 	end else begin
-		PC_ENX <= ~(DEBUG_ACTIVE_NEXT | HALTX);
-		DEBUG_ACTIVE <= DEBUG_ACTIVE_NEXT;
+		PC_ENX <= ~HALTX;
 	end
 end
 		
@@ -136,10 +135,10 @@ always @(posedge CLK or posedge RESET) begin
 	end
 end
 
-always @(posedge CLK or posedge RESET) begin
+always @(negedge CLK or posedge RESET) begin
 	if(RESET) begin
 		INSTRUCTION <= 0;
-	end else if(DECODE) begin
+	end else if(EXECUTE) begin
 		INSTRUCTION <= DIN;
 	end
 end

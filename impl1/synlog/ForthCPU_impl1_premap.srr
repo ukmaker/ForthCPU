@@ -1,4 +1,4 @@
-# Sun Dec  3 12:53:21 2023
+# Mon Dec  4 13:26:09 2023
 
 
 Copyright (C) 1994-2021 Synopsys, Inc.
@@ -45,10 +45,10 @@ Finished loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h
 @N: FX493 |Applying initial value "0" on instance r_RX_DV.
 @N: FX493 |Applying initial value "000" on instance r_SM_Main[2:0].
 @N: MO111 :"c:\users\duncan\git\forthcpu\buscontroller\source\buscontroller.v":58:8:58:12|Tristate driver RESET (in view: work.busController(verilog)) on net RESET (in view: work.busController(verilog)) has its enable tied to GND.
-@N: MO111 :"c:\users\duncan\git\forthcpu\processorcore\source\core.v":258:7:258:22|Tristate driver DEBUG_CC_DATA (in view: work.core(verilog)) on net DEBUG_CC_DATA (in view: work.core(verilog)) has its enable tied to GND.
-@N: MO111 :"c:\users\duncan\git\forthcpu\processorcore\source\core.v":258:7:258:22|Tristate driver DEBUG_DIN_DIN (in view: work.core(verilog)) on net DEBUG_DIN_DIN (in view: work.core(verilog)) has its enable tied to GND.
-@N: MO111 :"c:\users\duncan\git\forthcpu\processorcore\source\core.v":258:7:258:22|Tristate driver DEBUG_PC_A_NEXT (in view: work.core(verilog)) on net DEBUG_PC_A_NEXT (in view: work.core(verilog)) has its enable tied to GND.
-@N: MO111 :"c:\users\duncan\git\forthcpu\processorcore\source\core.v":258:7:258:22|Tristate driver DEBUG_REGB_DATA (in view: work.core(verilog)) on net DEBUG_REGB_DATA (in view: work.core(verilog)) has its enable tied to GND.
+@N: MO111 :"c:\users\duncan\git\forthcpu\processorcore\source\core.v":271:7:271:22|Tristate driver DEBUG_CC_DATA (in view: work.core(verilog)) on net DEBUG_CC_DATA (in view: work.core(verilog)) has its enable tied to GND.
+@N: MO111 :"c:\users\duncan\git\forthcpu\processorcore\source\core.v":271:7:271:22|Tristate driver DEBUG_DIN_DIN (in view: work.core(verilog)) on net DEBUG_DIN_DIN (in view: work.core(verilog)) has its enable tied to GND.
+@N: MO111 :"c:\users\duncan\git\forthcpu\processorcore\source\core.v":271:7:271:22|Tristate driver DEBUG_PC_A_NEXT (in view: work.core(verilog)) on net DEBUG_PC_A_NEXT (in view: work.core(verilog)) has its enable tied to GND.
+@N: MO111 :"c:\users\duncan\git\forthcpu\processorcore\source\core.v":271:7:271:22|Tristate driver DEBUG_REGB_DATA (in view: work.core(verilog)) on net DEBUG_REGB_DATA (in view: work.core(verilog)) has its enable tied to GND.
 @N: BN362 :"c:\users\duncan\git\forthcpu\debugport\source\requestgenerator.v":47:0:47:5|Removing sequential instance REQ_PHI0 (in view: work.requestGenerator(verilog)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
 @N: BN362 :"c:\users\duncan\git\forthcpu\debugport\source\register.v":14:0:14:5|Removing sequential instance DOUT[15:0] (in view: work.register_16s(verilog)) of type view:PrimLib.dffre(prim) because it does not drive other instances.
 @N: BN115 :"c:\users\duncan\git\forthcpu\debugport\source\debugport.v":84:18:84:24|Removing instance decoder (in view: work.debugPort(verilog)) of type view:work.oneOfEightDecoder(verilog) because it does not drive other instances.
@@ -59,7 +59,7 @@ Finished loading timing files (Real Time elapsed 0h:00m:00s; CPU Time elapsed 0h
 @N: BN115 :"c:\users\duncan\git\forthcpu\debugport\source\debugport.v":179:26:179:31|Removing instance opXReg (in view: work.debugPort(verilog)) of type view:work.register_7s(verilog) because it does not drive other instances.
 @N: BN115 :"c:\users\duncan\git\forthcpu\debugport\source\debugport.v":170:27:170:36|Removing instance dataOutReg (in view: work.debugPort(verilog)) of type view:work.register_16s(verilog) because it does not drive other instances.
 @N: BN115 :"c:\users\duncan\git\forthcpu\debugport\source\debugport.v":96:17:96:26|Removing instance requestGen (in view: work.debugPort(verilog)) of type view:work.requestGenerator(verilog) because it does not drive other instances.
-@N: BN115 :"c:\users\duncan\git\forthcpu\processorcore\source\core.v":180:13:180:28|Removing instance debugDecoderInst (in view: work.core(verilog)) of type view:work.debugDecoder(verilog) because it does not drive other instances.
+@N: BN115 :"c:\users\duncan\git\forthcpu\processorcore\source\core.v":193:13:193:28|Removing instance debugDecoderInst (in view: work.core(verilog)) of type view:work.debugDecoder(verilog) because it does not drive other instances.
 @N: BN362 :"c:\users\duncan\git\forthcpu\debugport\source\upcounter.v":22:0:22:5|Removing sequential instance RO (in view: work.upCounter_7s(verilog)) of type view:PrimLib.dffr(prim) because it does not drive other instances.
 @N: BN362 :"c:\users\duncan\git\forthcpu\debugport\source\upcounter.v":22:0:22:5|Removing sequential instance RO (in view: work.upCounter(verilog)) of type view:PrimLib.dffr(prim) because it does not drive other instances.
 Encoding state machine STATE[9:0] (in view: work.interruptStateMachine(verilog))
@@ -90,7 +90,7 @@ Finished clock optimization phase (Real Time elapsed 0h:00m:01s; CPU Time elapse
 
 @W: BZ101 |Potential glitch can occur at the output of 2 instances  
 
-Starting clock optimization report phase (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 179MB peak: 179MB)
+Starting clock optimization report phase (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 179MB peak: 180MB)
 
 
 Finished clock optimization report phase (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 179MB peak: 180MB)
@@ -167,13 +167,13 @@ Starting constraint checker (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:0
 Finished constraint checker preprocessing (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 180MB peak: 180MB)
 
 
-Finished constraint checker (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 180MB peak: 180MB)
+Finished constraint checker (Real Time elapsed 0h:00m:01s; CPU Time elapsed 0h:00m:01s; Memory used current: 181MB peak: 181MB)
 
 Pre-mapping successful!
 
-At Mapper Exit (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:01s; Memory used current: 93MB peak: 180MB)
+At Mapper Exit (Real Time elapsed 0h:00m:02s; CPU Time elapsed 0h:00m:02s; Memory used current: 93MB peak: 181MB)
 
 Process took 0h:00m:02s realtime, 0h:00m:02s cputime
-# Sun Dec  3 12:53:23 2023
+# Mon Dec  4 13:26:11 2023
 
 ###########################################################]
