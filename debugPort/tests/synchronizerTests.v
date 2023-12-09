@@ -7,6 +7,7 @@ module synchronizerTests;
 	
 	reg         SLOWCLK;
 	reg         RESET;
+	reg         CLR;
 	reg         FASTCLK;
 	reg         EN;
 	reg         LD;
@@ -18,6 +19,7 @@ synchronizer testArticle(
 	.SLOWCLK(SLOWCLK),
 	.FASTCLK(FASTCLK),
 	.RESET(RESET),
+	.CLR(CLR),
 	.EN(EN),
 	.LD(LD),
 	.D(D),
@@ -45,6 +47,7 @@ initial begin
 	FASTCLK = 0;
 	SLOWCLK = 0;
 	RESET = 0;
+	CLR = 0;
 	EN = 0;
 	LD = 0;
 	D = 8'h00;
@@ -65,6 +68,10 @@ initial begin
 	#3000;
 	LD = 0;
 	#3000;
+	CLR = 1;
+	#1000;
+	CLR = 0;
+	#1000;
 
 end
 

@@ -6,24 +6,35 @@ module requestGeneratorTests;
 	
 	reg CLK;
 	reg RESET;
-	reg WR;
-	reg RD;
-	reg ACKX;
 	
-	reg EN_OP;
-	reg EN_MDH;
+	reg DEBUG_WRN;
+	reg DEBUG_RDN;
 	
-	wire REQX;
+	reg EN_MODE;
+	reg DEBUG_DIN_REQ;
+
+	reg EN_DH;
+	reg DEBUG_INCX;
+	
+	reg DEBUG_ACK;
+	wire DEBUG_REQ;
 	
 requestGenerator testInstance(
+	
 	.CLK(CLK),
 	.RESET(RESET),
-	.WR(WR),
-	.RD(RD),
-	.ACKX(ACKX),
-	.EN_OP(EN_OP),
-	.EN_MDH(EN_MDH),
-	.REQX(REQX)
+	
+	.DEBUG_WRN(DEBUG_WRN),
+	.DEBUG_RDN(DEBUG_RDN),
+	
+	.EN_MODE(EN_MODE),
+	.DEBUG_DIN_REQ(DEBUG_DIN_REQ),
+
+	.EN_DH(EN_DH),
+	.DEBUG_INCX(DEBUG_INCX),
+	
+	.DEBUG_ACK(DEBUG_ACK),
+	.DEBUG_REQ(DEBUG_REQ)
 );
 	
 always begin
@@ -32,75 +43,56 @@ end
 
 initial begin
 
-	CLK     = 1'b1;
-	RESET   = 1'b1;
-	WR      = 1'b0;
-	RD      = 1'b0;
-	ACKX    = 1'b0;
-	EN_OP   = 1'b0;
-	EN_MDH  = 1'b0;
+	CLK           = 1'b1;
+	RESET         = 1'b0;
+	DEBUG_WRN     = 1'b1;
+	DEBUG_RDN     = 1'b1;
+	EN_MODE       = 1'b0;
+	DEBUG_DIN_REQ = 1'b0;
+	EN_DH         = 1'b0;
+	DEBUG_INCX    = 1'b0;
+	DEBUG_ACK     = 1'b0;
+	#100;
+	RESET = 1;
+	#100;
+	RESET=0;
+	#100;
+	/**********************
+	* DH toggled request
+	* INCX not set
+	* => no request
+	***********************/
+	EN_DH = 1;
+	#100;
+	DEBUG_WRN = 0;
+	#100;
+	DEBUG_WRN = 1;
+	#200;
+	`assert("REQ", 0, DEBUG_REQ)
+	#100;
+	/**********************
+	* DH toggled request
+	* INCX set
+	* => request
+	***********************/
+	DEBUG_INCX = 1;
+	EN_DH = 1;
+	#100;
+	DEBUG_WRN = 0;
+	#100;
+	DEBUG_WRN = 1;
+	#210;
+	`assert("REQ", 1, DEBUG_REQ)
+	#100;
+	// ACK the request
+	DEBUG_ACK = 1;
+	#100;
+	DEBUG_ACK = 0;
+	`assert("REQ", 0, DEBUG_REQ)
 	
-	`TICKTOCK;
-	RESET = 1'b0;
-	`TICKTOCK;
-	`assert("REQX", 1'b0, REQX)
 	
-	WR = 1'b1;
-	`TICKTOCK;
-	`assert("REQX", 1'b0, REQX)
-	WR = 1'b0;
-	`TICKTOCK;
-	`assert("REQX", 1'b0, REQX)
-	EN_OP = 1'b1;
-	`TICKTOCK;
-	`assert("REQX", 1'b0, REQX)
-	WR = 1'b1;
-	`TICKTOCK;
-	`assert("REQX", 1'b0, REQX)
-	WR = 1'b0;
-	EN_OP = 1'b0;
-	`TICKTOCK;
-	`TICKTOCK;
-	`assert("REQX", 1'b1, REQX)
-	`TICK;
-	ACKX = 1'b1;
-	`TOCK;
-	`TICKTOCK;
-	ACKX = 1'b0;
-	`TICKTOCK;
-	`assert("REQX", 1'b0, REQX)
-		
 
-	`TICKTOCK;
-	RD = 1'b1;
-	`TICKTOCK;
-	`assert("REQX", 1'b0, REQX)
-	RD = 1'b0;
-	`TICKTOCK;
-	`assert("REQX", 1'b0, REQX)
-	EN_MDH = 1'b1;
-	`TICKTOCK;
-	`assert("REQX", 1'b0, REQX)
-	RD = 1'b1;
-	`TICK;
-	`assert("REQX", 1'b0, REQX)
-	RD = 1'b0;
-	`TOCK;
-	`assert("REQX", 1'b0, REQX)
-	`TICKTOCK;
-	`TICKTOCK;
-	`assert("REQX", 1'b1, REQX)
-	`TICKTOCK;
-	EN_MDH = 1'b0;
-	`assert("REQX", 1'b1, REQX)
-	`TICKTOCK;
-	`TICK;
-	ACKX = 1'b1;
-	`TOCK;
-	`TICKTOCK;
-	ACKX = 1'b0;
-	`TICKTOCK;
-	`assert("REQX", 1'b0, REQX)
+
 		
 end
 

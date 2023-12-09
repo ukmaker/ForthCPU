@@ -112,10 +112,10 @@
 ********************************************/
 `define DEBUG_ADDRX_MODE    3'b000
 `define DEBUG_ADDRX_OP      3'b001
-`define DEBUG_ADDRX_MAL     3'b010
-`define DEBUG_ADDRX_MAH     3'b011
-`define DEBUG_ADDRX_DL      3'b100
-`define DEBUG_ADDRX_DH      3'b101
+`define DEBUG_ADDRX_DL      3'b010
+`define DEBUG_ADDRX_DH      3'b011
+`define DEBUG_ADDRX_AL      3'b100
+`define DEBUG_ADDRX_AH      3'b101
 
 `define DEBUG_ADDR_INCX_NONE 1'b0
 `define DEBUG_ADDR_INCX_INC  1'b1

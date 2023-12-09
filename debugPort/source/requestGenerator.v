@@ -1,57 +1,73 @@
 `include "C:/Users/Duncan/git/ForthCPU/constants.v"
 
+/**********************************************************
+* Generate a debug request due to
+* - writing the DEBUG_REQ bit high in the MODE register
+* - a read or write to the DH register when 
+*   DEBUG_INC bit is set in the OP register
+**********************************************************/
+
 module requestGenerator(
 	
 	input CLK,
 	input RESET,
-	input WR,
-	input RD,
-	input ACKX,
 	
-	input EN_OP,
-	input EN_MDH,
+	input DEBUG_WRN,
+	input DEBUG_RDN,
 	
-	output reg REQX
+	input EN_MODE,
+	input DEBUG_DIN_REQ,
+
+	input EN_DH,
+	input DEBUG_INCX,
+	
+	input DEBUG_ACK,
+	output reg DEBUG_REQ
 );
 
-reg RD_REQ_R;
-reg WR_REQ_R;
-reg REQ_PHI0;
+/****************************************
+* Internal wiring
+*****************************************/
+wire DEBUG_MODE_REQ;
+wire DEBUG_INC_REQ;
 
-/****************
-* Read latch
-*****************/
-always @(negedge RD or posedge RESET or posedge ACKX) begin
-	if(RESET | ACKX) begin
-		RD_REQ_R <= 0;
-	end else begin
-		RD_REQ_R <= EN_MDH;
-	end
+/****************************************
+* Synchronizer for the DEBUG_MODE_REQ bit
+*****************************************/
+synchronizer #(.BUS_WIDTH(1)) modeReqReg(
+
+	.RESET(RESET),
+	.SLOWCLK(DEBUG_WRN),
+	.EN(EN_MODE),
+	.LD(1'b1),
+	
+	.FASTCLK(CLK),
+	.CLR(DEBUG_ACK),
+	
+	.D(DEBUG_DIN_REQ),
+	.Q(DEBUG_MODE_REQ)
+);
+
+/****************************************
+* Synchronizer for the RD/WRD DH requests
+*****************************************/
+synchronizer #(.BUS_WIDTH(1)) dhReqReg(
+
+	.RESET(RESET),
+	.SLOWCLK(DEBUG_WRN & DEBUG_RDN),
+	.EN(EN_DH),
+	.LD(1'b1),
+	
+	.FASTCLK(CLK),
+	.CLR(DEBUG_ACK),
+	
+	.D(DEBUG_INCX),
+	.Q(DEBUG_INC_REQ)
+);
+
+always @(*) begin
+	DEBUG_REQ = DEBUG_INC_REQ | DEBUG_MODE_REQ;
 end
 
-
-/****************
-* Write latch
-*****************/
-always @(posedge WR or posedge RESET or posedge ACKX) begin
-	if(RESET | ACKX) begin
-		WR_REQ_R <= 0;
-	end else begin
-		WR_REQ_R <= EN_OP;
-	end
-end
-
-/****************
-* Resynchronizer
-*****************/
-always @(posedge CLK or posedge RESET or posedge ACKX) begin
-	if(RESET | ACKX) begin
-		REQ_PHI0 <= 0;
-		REQX <= 0;
-	end else if((WR_REQ_R | RD_REQ_R)) begin
-		REQ_PHI0 <= 1;
-		REQX <= REQ_PHI0;
-	end
-end
 
 endmodule

@@ -18,172 +18,189 @@
 
 module debugPort(
 	
-	input             CLK,
-	input             RESET,
+	/***************************************
+	* Interface signals
+	****************************************/
 	input [7:0]      DEBUG_DIN,
 	output reg [7:0] DEBUG_DOUT,
 	input [2:0]      DEBUG_ADDR,
-	input             DEBUG_RD,
-	input             DEBUG_WR,
+	input             DEBUG_RDN,
+	input             DEBUG_WRN,
 	
-	output [15:0]    DEBUG_MEM_ADDR,
-	output [15:0]    DEBUG_MEM_DATA_OUT,
+	/***************************************
+	* Signals to the CPU
+	****************************************/
+	input             CLK,
+	input             RESET,
+	
+	output [2:0]     DEBUG_OP,
+	output [15:0]    DEBUG_ADDR_OUT,
+	output [7:0]     DEBUG_ARGX_OUT,
+	output [15:0]    DEBUG_DATA_OUT,
 
 	input             DEBUG_ADDR_INCX,
-	input             DEBUG_ADDR_LDX,
-	input             DEBUG_DOUT_LDX,
+	
+	input             DEBUG_LD_DATAX,
 	input [1:0]      DEBUG_DATAX,
-	
-	// 
-	output [2:0]     DEBUG_OPX,
-	output [3:0]     DEBUG_ARGX,
-	
 	input [15:0]     DEBUG_DIN_DIN,
 	input [15:0]     DEBUG_REGB_DATA,
 	input [15:0]     DEBUG_CC_DATA,
 	input [15:0]     DEBUG_PC_A_NEXT,
 
+	output            DEBUG_STOP,
+	output            DEBUG_MODE,
 	output            DEBUG_REQX,
 	input             DEBUG_ACKX
 	
 );
 
 /***************************************************
+* Internal wiring
+****************************************************/
+assign DEBUG_ARGX_OUT = DEBUG_ADDR_OUT[8:1];
+assign DEBUG_DIN_REQ  = DEBUG_DIN[2];
+/***************************************************
 * Register selects
 ****************************************************/
-wire EN_STATUS, EN_SOURCEX, EN_MAL, EN_MAH, EN_MDL, EN_MDH, EN_DATAX, EN_OPX, EN_UNUSED;
-
-wire [7:0] MAH_BUF;
-wire [7:0] MAL_BUF;
+wire EN_MODE, EN_OP, EN_DL, EN_DH, EN_AL, EN_AH, EN_UNUSED0, EN_UNUSED1;
+wire EN_INC_REQ;
 
 /***************************************************
 * Internal muxes
 ****************************************************/
-reg [15:0] DEBUG_DATA_MUX_OUT;
-
 wire [7:0]  DEBUG_READ_MUX_IN_L;
 wire [7:0]  DEBUG_READ_MUX_IN_H;
 wire [7:0]  DEBUG_READ_MUX_OUT;
-wire [15:0] DEBUG_DOUT_REG;
+reg  [15:0] DEBUG_DATA_MUX_OUT;
 
 /***************************************************
 * Internal registers
 ****************************************************/
-reg [7:0]  DEBUG_MDL_R;
-reg [7:0]  DEBUG_MDH_R;
-reg [7:0]  DEBUG_OPX_R;
-
-reg [1:0]  DEBUG_DATAX_R;
-
-
-assign DEBUG_MEM_ADDR[0] = 1'b0;
+wire AL_RO;
+wire AH_RO; // unused
+/***************************************************
+* Internal control signals
+****************************************************/
+wire DEBUG_INCX;
 
 /***************************************************
 * Instances
 ****************************************************/
 oneOfEightDecoder decoder(
 	DEBUG_ADDR,
-	EN_OPX,
-	EN_SOURCEX,
-	EN_MAL,
-	EN_MAH,
-	EN_MDL,
-	EN_MDH,
-	EN_DATAX,
-	EN_UNUSED
+	EN_MODE,
+	EN_OP,
+	EN_DL,
+	EN_DH,
+	EN_AL,
+	EN_AH,
+	EN_UNUSED0,
+	EN_UNUSED1
 );
 
 requestGenerator requestGen(
 	.CLK(CLK),
 	.RESET(RESET),
-	.WR(DEBUG_WR),
-	.RD(DEBUG_RD),
-	.ACKX(DEBUG_ACKX),
-	.EN_OP(EN_OPX),
-	.EN_MDH(EN_MDH),
-	.REQX(DEBUG_REQX)
-);
-
-// Memory address buffer registers
-register memALBufReg(
-	.CLK(DEBUG_WR),
-	.RESET(RESET),
-	.DIN(DEBUG_DIN),
-	.DOUT(MAL_BUF),
-	.LD(EN_MAL),
-	.EN(EN_MAL)
-);
+	.DEBUG_WRN(DEBUG_WRN),
+	.DEBUG_RDN(DEBUG_RDN),
 	
-register memAHBufReg(
-	.CLK(DEBUG_WR),
-	.RESET(RESET),
-	.DIN(DEBUG_DIN),
-	.DOUT(MAH_BUF),
-	.LD(EN_MAH),
-	.EN(EN_MAH)
+	.EN_MODE(EN_MODE),
+	.DEBUG_DIN_REQ(DEBUG_DIN_REQ),
+	
+	.EN_DH(EN_DH),
+	.DEBUG_INCX(DEBUG_INCX),
+	
+	.DEBUG_ACK(DEBUG_ACKX),
+	.DEBUG_REQ(DEBUG_REQX)
 );
 
-// Memory address counters
-upCounter memALReg(
-	.CLK(CLK),
+assign DEBUG_ADDR_OUT[0] = 1'b0;
+
+// Address synchronized counters
+synchronizedCounter #(.BUS_WIDTH(7)) addrL(
+
+	.SLOWCLK(DEBUG_WRN),
 	.RESET(RESET),
-	.CP(DEBUG_ADDR_INCX),
-	.EN(DEBUG_ADDR_LDX),
-	.LD(DEBUG_ADDR_LDX),
-	.DIN({MAH_BUF[0],MAL_BUF[7:1]}),
-	.DOUT(DEBUG_MEM_ADDR[8:1]),
+	.FASTCLK(CLK),
+	.EN(EN_AL),
+	.LD(1'b1),
+	.COUNT(DEBUG_ADDR_INCX),
 	.RI(1'b1),
-	.RO(ROL)
-);
-	
-upCounter #(.BUS_WIDTH(7)) memAHReg(
-	.CLK(CLK),
-	.RESET(RESET),
-	.CP(DEBUG_ADDR_INCX),
-	.EN(DEBUG_ADDR_LDX),
-	.LD(DEBUG_ADDR_LDX),
-	.DIN(MAH_BUF[7:1]),
-	.DOUT(DEBUG_MEM_ADDR[15:9]),
-	.RI(ROL),
-	.RO(ROH)
+	.RO(AL_RO),
+	.D(DEBUG_DIN[7:1]),
+	.Q(DEBUG_ADDR_OUT[7:1])
 );
 
-register memDLReg(
-	.CLK(CLK),
+synchronizedCounter #(.BUS_WIDTH(8)) addrH(
+
+	.SLOWCLK(DEBUG_WRN),
 	.RESET(RESET),
-	.DIN(DEBUG_DIN),
-	.DOUT(DEBUG_MEM_DATA_OUT[7:0]),
-	.LD(DEBUG_WR),
-	.EN(EN_MDL)
+	.FASTCLK(CLK),
+	.EN(EN_AH),
+	.LD(1'b1),
+	.COUNT(DEBUG_ADDR_INCX),
+	.RI(AL_RO),
+	.RO(AH_RO),
+	.D(DEBUG_DIN),
+	.Q(DEBUG_ADDR_OUT[15:8])
 );
-	
-register memDHReg(
+
+// Data synchronized registers
+synchronizer #(.BUS_WIDTH(8)) dataL(
+
+	.RESET(RESET),
+	.SLOWCLK(DEBUG_WRN),
+	.EN(EN_DL),
+	.LD(1'b1),
+	.FASTCLK(CLK),
+	.CLR(RESET),
+	.D(DEBUG_DIN),
+	.Q(DEBUG_DATA_OUT[7:0])
+);
+
+synchronizer #(.BUS_WIDTH(8)) dataH(
+
+	.RESET(RESET),
+	.SLOWCLK(DEBUG_WRN),
+	.EN(EN_DH),
+	.LD(1'b1),
+	.FASTCLK(CLK),
+	.CLR(RESET),
+	.D(DEBUG_DIN),
+	.Q(DEBUG_DATA_OUT[15:8])
+);
+
+// Read data register
+register #(.BUS_WIDTH(16)) dataR(
+
 	.CLK(CLK),
 	.RESET(RESET),
-	.DIN(DEBUG_DIN),
-	.DOUT(DEBUG_MEM_DATA_OUT[15:8]),
-	.LD(DEBUG_WR),
-	.EN(EN_MDH)
+	.LD(DEBUG_LD_DATAX),
+	.EN(1'b1),
+	.DIN(DEBUG_DATA_MUX_OUT),
+	.DOUT({DEBUG_READ_MUX_IN_H, DEBUG_READ_MUX_IN_L})
 );
 
 // Control registers
-register #(.BUS_WIDTH(16)) dataOutReg(
-	.CLK(CLK),
+register #(.BUS_WIDTH(4)) opReg(
+	.CLK(DEBUG_WRN),
 	.RESET(RESET),
-	.DIN(DEBUG_DATA_MUX_OUT),
-	.DOUT(DEBUG_DOUT_REG),
-	.LD(DEBUG_DOUT_LDX),
-	.EN(1'b1)
-);
-
-register #(.BUS_WIDTH(7)) opXReg(
-	.CLK(DEBUG_WR),
-	.RESET(RESET),
-	.DIN(DEBUG_DIN[6:0]),
-	.DOUT({DEBUG_ARGX,DEBUG_OPX}),
-	.LD(EN_OPX),
-	.EN(EN_OPX)
+	.DIN(DEBUG_DIN[3:0]),
+	.DOUT({DEBUG_OP, DEBUG_INCX}),
+	.LD(1'b1),
+	.EN(EN_OP)
 );	
+
+register #(.BUS_WIDTH(2)) modeReg(
+	.CLK(DEBUG_WRN),
+	.RESET(RESET),
+	.DIN(DEBUG_DIN[1:0]),
+	.DOUT({DEBUG_STOP, DEBUG_MODE}),
+	.LD(1'b1),
+	.EN(EN_MODE)
+);	
+
+
 
 
 /**
@@ -202,10 +219,10 @@ end
 * Register read
 **/
 always @(*) begin
-	if(EN_MDH) begin
-		DEBUG_DOUT = DEBUG_DOUT_REG[15:8];
+	if(EN_DH) begin
+		DEBUG_DOUT = DEBUG_READ_MUX_IN_H;
 	end else begin
-		DEBUG_DOUT = DEBUG_DOUT_REG[7:0];
+		DEBUG_DOUT = DEBUG_READ_MUX_IN_L;
 	end
 end
 

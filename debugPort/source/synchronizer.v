@@ -2,12 +2,15 @@
 
 module synchronizer #(parameter BUS_WIDTH = 8)(
 	
-	input SLOWCLK,
 	input RESET,
-	input FASTCLK,
+	
+	input SLOWCLK,
 	input EN,
 	input LD,
-	input [BUS_WIDTH-1:0] D,
+	input FASTCLK,
+	input CLR,
+
+	input [BUS_WIDTH-1:0] D,
 	output reg [BUS_WIDTH-1:0] Q
 
 );
@@ -19,8 +22,8 @@ reg [BUS_WIDTH-1:0] Q_PHI0;
 /****************
 * Write latch
 *****************/
-always @(posedge SLOWCLK or posedge RESET) begin
-	if(RESET) begin
+always @(posedge SLOWCLK or posedge RESET or posedge CLR) begin
+	if(CLR | RESET) begin
 		Q_R <= 0;
 	end else if(LD & EN) begin
 		Q_R <= D;
@@ -30,8 +33,8 @@ end
 /****************
 * Resynchronizer
 *****************/
-always @(posedge FASTCLK or posedge RESET) begin
-	if(RESET) begin
+always @(posedge FASTCLK or posedge RESET or posedge CLR) begin
+	if(CLR | RESET) begin
 		Q_PHI0 <= 0;
 		Q      <= 0;
 	end else begin

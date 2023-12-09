@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<BaliProject version="3.2" title="ForthCPU" device="LCMXO3L-6900C-5BG256C" default_implementation="debugPort">
+<BaliProject version="3.2" title="ForthCPU" device="LCMXO3L-6900C-5BG256C" default_implementation="processorCore">
     <Options/>
     <Implementation title="RAM" dir="RAM" description="RAM" synthesis="synplify" default_strategy="Area">
         <Options def_top="ramTests"/>
@@ -268,7 +268,7 @@
             <Options/>
         </Source>
         <Source name="debugPort/source/debugPort.v" type="Verilog" type_short="Verilog">
-            <Options top_module="debugPort"/>
+            <Options/>
         </Source>
         <Source name="debugPort/source/upCounter.v" type="Verilog" type_short="Verilog">
             <Options/>
@@ -289,13 +289,13 @@
             <Options top_module="requestGeneratorTests"/>
         </Source>
         <Source name="debugPort/tests/debugPortTests.v" type="Verilog" type_short="Verilog">
-            <Options/>
+            <Options top_module="debugPortTests"/>
         </Source>
         <Source name="instructionTestSetup.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
         <Source name="debugPort/source/debugDecoder.v" type="Verilog" type_short="Verilog">
-            <Options/>
+            <Options top_module="debugDecoder"/>
         </Source>
         <Source name="debugPort/source/synchronizer.v" type="Verilog" type_short="Verilog">
             <Options/>
@@ -873,11 +873,8 @@
         <Source name="debugPort/source/requestGenerator.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
-        <Source name="debugPort/source/stopSynchroniser.v" type="Verilog" type_short="Verilog">
-            <Options top_module="stopSynchroniser"/>
-        </Source>
         <Source name="debugPort/source/upCounter.v" type="Verilog" type_short="Verilog">
-            <Options/>
+            <Options top_module="upCounter"/>
         </Source>
         <Source name="generalGroupDecoder/source/generalGroupDecoder.v" type="Verilog" type_short="Verilog">
             <Options/>

@@ -1,30 +1,30 @@
 if {![file exists "C:/Users/Duncan/git/ForthCPU/debugPort/tests/debugPortTestbench/debugPortTestbench.mpf"]} { 
 	project new "C:/Users/Duncan/git/ForthCPU/debugPort/tests/debugPortTestbench" debugPortTestbench
 	project addfile "C:/Users/Duncan/git/ForthCPU/debugPort/source/register.v"
-	project addfile "C:/Users/Duncan/git/ForthCPU/debugPort/source/upCounter.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/debugPort/source/synchronizer.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/debugPort/source/synchronizedCounter.v"
 	project addfile "C:/Users/Duncan/git/ForthCPU/debugPort/source/requestGenerator.v"
 	project addfile "C:/Users/Duncan/git/ForthCPU/debugPort/source/oneOfEightDecoder.v"
 	project addfile "C:/Users/Duncan/git/ForthCPU/debugPort/source/debugPort.v"
 	project addfile "C:/Users/Duncan/git/ForthCPU/debugPort/tests/debugPortTests.v"
-	project addfile "C:/Users/Duncan/git/ForthCPU/debugPort/tests/upCounterTest.v"
-	project addfile "C:/Users/Duncan/git/ForthCPU/debugPort/source/stopSynchroniser.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/debugPort/source/upCounter.v"
 	project addfile "C:/Users/Duncan/git/ForthCPU/debugPort/source/debugDecoder.v"
-	project addfile "C:/Users/Duncan/git/ForthCPU/constants.v"
 	project addfile "C:/Users/Duncan/git/ForthCPU/instructionTestSetup.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/constants.v"
 	vlib  work
 	vdel -lib work -all 
 	vlib work
 	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/debugPort/source  -work work  "C:/Users/Duncan/git/ForthCPU/debugPort/source/register.v"
-	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/debugPort/source  -work work  "C:/Users/Duncan/git/ForthCPU/debugPort/source/upCounter.v"
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/debugPort/source  -work work  "C:/Users/Duncan/git/ForthCPU/debugPort/source/synchronizer.v"
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/debugPort/source  -work work  "C:/Users/Duncan/git/ForthCPU/debugPort/source/synchronizedCounter.v"
 	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/debugPort/source  -work work  "C:/Users/Duncan/git/ForthCPU/debugPort/source/requestGenerator.v"
 	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/debugPort/source  -work work  "C:/Users/Duncan/git/ForthCPU/debugPort/source/oneOfEightDecoder.v"
 	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/debugPort/source  -work work  "C:/Users/Duncan/git/ForthCPU/debugPort/source/debugPort.v"
 	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/debugPort/tests  -work work  "C:/Users/Duncan/git/ForthCPU/debugPort/tests/debugPortTests.v"
-	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/debugPort/tests  -work work  "C:/Users/Duncan/git/ForthCPU/debugPort/tests/upCounterTest.v"
-	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/debugPort/source  -work work  "C:/Users/Duncan/git/ForthCPU/debugPort/source/stopSynchroniser.v"
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/debugPort/source  -work work  "C:/Users/Duncan/git/ForthCPU/debugPort/source/upCounter.v"
 	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/debugPort/source  -work work  "C:/Users/Duncan/git/ForthCPU/debugPort/source/debugDecoder.v"
-	vlog  +incdir+C:/Users/Duncan/git/ForthCPU  -work work  "C:/Users/Duncan/git/ForthCPU/constants.v"
 	vlog  +incdir+C:/Users/Duncan/git/ForthCPU  -work work  "C:/Users/Duncan/git/ForthCPU/instructionTestSetup.v"
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU  -work work  "C:/Users/Duncan/git/ForthCPU/constants.v"
 } else {
 	project open "C:/Users/Duncan/git/ForthCPU/debugPort/tests/debugPortTestbench/debugPortTestbench"
 	project compileoutofdate

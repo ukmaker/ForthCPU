@@ -2,19 +2,18 @@ onerror {resume}
 quietly WaveActivateNextPane {} 0
 add wave -noupdate /requestGeneratorTests/CLK
 add wave -noupdate /requestGeneratorTests/RESET
-add wave -noupdate /requestGeneratorTests/WR
-add wave -noupdate /requestGeneratorTests/RD
-add wave -noupdate /requestGeneratorTests/ACKX
-add wave -noupdate /requestGeneratorTests/EN_OP
-add wave -noupdate /requestGeneratorTests/EN_MDH
-add wave -noupdate /requestGeneratorTests/REQX
-add wave -noupdate /requestGeneratorTests/testInstance/RD_REQ_R
-add wave -noupdate /requestGeneratorTests/testInstance/WR_REQ_R
-add wave -noupdate /requestGeneratorTests/testInstance/REQ_PHI0
+add wave -noupdate /requestGeneratorTests/DEBUG_WRN
+add wave -noupdate /requestGeneratorTests/DEBUG_RDN
+add wave -noupdate /requestGeneratorTests/EN_MODE
+add wave -noupdate /requestGeneratorTests/DEBUG_DIN_REQ
+add wave -noupdate /requestGeneratorTests/EN_DH
+add wave -noupdate /requestGeneratorTests/DEBUG_INCX
+add wave -noupdate /requestGeneratorTests/DEBUG_ACK
+add wave -noupdate /requestGeneratorTests/DEBUG_REQ
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {1584 ns} 0}
+WaveRestoreCursors {{Cursor 1} {1495 ns} 0}
 quietly wave cursor active 1
-configure wave -namecolwidth 359
+configure wave -namecolwidth 276
 configure wave -valuecolwidth 100
 configure wave -justifyvalue left
 configure wave -signalnamewidth 0
@@ -28,4 +27,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ns
 update
-WaveRestoreZoom {0 ns} {4925 ns}
+WaveRestoreZoom {0 ns} {5024 ns}
