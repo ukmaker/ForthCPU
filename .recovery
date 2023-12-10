@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<BaliProject version="3.2" title="ForthCPU" device="LCMXO3L-6900C-5BG256C" default_implementation="mcuTestbench">
+<BaliProject version="3.2" title="ForthCPU" device="LCMXO3L-6900C-5BG256C" default_implementation="impl1">
     <Options/>
     <Implementation title="RAM" dir="RAM" description="RAM" synthesis="synplify" default_strategy="Area">
         <Options def_top="ramTests"/>
@@ -377,7 +377,7 @@
         </Source>
     </Implementation>
     <Implementation title="impl1" dir="impl1" description="impl1" synthesis="synplify" default_strategy="Strategy1">
-        <Options VerilogStandard="System Verilog" top="mcu"/>
+        <Options VerilogStandard="System Verilog" def_top="transparentLatch" top="mcu"/>
         <Source name="constants.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
@@ -501,9 +501,6 @@
         <Source name="debugPort/source/requestGenerator.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
-        <Source name="debugPort/source/stopSynchroniser.v" type="Verilog" type_short="Verilog">
-            <Options/>
-        </Source>
         <Source name="debugPort/source/upCounter.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
@@ -511,6 +508,18 @@
             <Options/>
         </Source>
         <Source name="processorCore/source/transparentLatch.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="instructionLatch/source/instructionLatch.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="debugPort/source/synchronizedCounter.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="debugPort/source/synchronizer.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="debugPort/source/debugSequencer.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
         <Source name="../../Desktop/MachXO3L_Starter_Kit/project/impl1/impl1.xcf" type="Programming Project File" type_short="Programming">
@@ -783,13 +792,22 @@
         <Source name="debugPort/source/requestGenerator.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
-        <Source name="debugPort/source/stopSynchroniser.v" type="Verilog" type_short="Verilog">
-            <Options/>
-        </Source>
         <Source name="debugPort/source/upCounter.v" type="Verilog" type_short="Verilog">
             <Options top_module="upCounter"/>
         </Source>
         <Source name="busController/source/busSequencer.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="instructionLatch/source/instructionLatch.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="debugPort/source/debugSequencer.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="debugPort/source/synchronizedCounter.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="debugPort/source/synchronizer.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
         <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">

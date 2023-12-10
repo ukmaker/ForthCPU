@@ -1,37 +1,37 @@
 ----------------------------------------------------------------------
 Report for cell mcu.verilog
 
-Register bits: 287 of 54912 (1%)
+Register bits: 247 of 54912 (0%)
 Latch bits:      4
 PIC Latch:       0
-I/O cells:       63
+I/O cells:       49
                                           Cell usage:
                                cell       count    Res Usage(%)
-                                 BB       16       100.0
                               CCU2D      272       100.0
                               DP8KC       26       100.0
-                            FD1P3AX       23       100.0
+                            FD1P3AX       16       100.0
                             FD1P3BX       23       100.0
-                            FD1P3DX      147       100.0
-                            FD1P3IX        8       100.0
+                            FD1P3DX      122       100.0
+                            FD1P3IX       15       100.0
                             FD1S1AY        4       100.0
-                            FD1S3AX        9       100.0
+                            FD1S3AX        8       100.0
                             FD1S3BX        2       100.0
-                            FD1S3DX       30       100.0
+                            FD1S3DX       19       100.0
                             FD1S3IX       39       100.0
                                 GSR        1       100.0
-                                 IB       14       100.0
-                           IFS1P3DX        5       100.0
-                                INV        3       100.0
-                            L6MUX21       13       100.0
+                                 IB        3       100.0
+                           IFS1P3DX        1       100.0
+                                INV        4       100.0
+                            L6MUX21       16       100.0
                               MUX41       16       100.0
-                                 OB       33       100.0
-                           OFS1P3BX        1       100.0
-                           ORCALUT4     1317       100.0
+                                 OB       14       100.0
+                                OBZ       32       100.0
+                           OFS1P3BX        2       100.0
+                           ORCALUT4     1170       100.0
                               PFUMX      141       100.0
                                 PUR        1       100.0
-                                VHI       28       100.0
-                                VLO       28       100.0
+                                VHI       29       100.0
+                                VLO       29       100.0
 SUB MODULES 
                                 RAM        1       100.0
                                UART        1       100.0
@@ -45,13 +45,14 @@ SUB MODULES
                        busSequencer        1       100.0
                         ccRegisters        1       100.0
                                core        1       100.0
-                           devBoard        1       100.0
                             fullALU        1       100.0
                 generalGroupDecoder        1       100.0
+                   instructionLatch        1       100.0
             instructionPhaseDecoder        1       100.0
               interruptMaskRegister        1       100.0
               interruptStateMachine        1       100.0
                    jumpGroupDecoder        1       100.0
+              loadStoreGroupDecoder        1       100.0
                        mcuResources        1       100.0
                        memoryMapper        1       100.0
                      opxMultiplexer        1       100.0
@@ -61,7 +62,7 @@ SUB MODULES
                           registers        1       100.0
                                 rom        1       100.0
                             
-                         TOTAL          2227           
+                         TOTAL          2033           
 ----------------------------------------------------------------------
 Report for cell mcuResources.netlist
      Instance path:  mcuResourcesInst
@@ -69,21 +70,20 @@ Report for cell mcuResources.netlist
                                cell       count    Res Usage(%)
                               CCU2D       63        23.2
                               DP8KC       24        92.3
-                            FD1P3AX       23       100.0
+                            FD1P3AX       16       100.0
                             FD1P3BX        7        30.4
-                            FD1P3DX       40        27.2
-                            FD1P3IX        8       100.0
-                            FD1S3AX        4        44.4
-                            FD1S3BX        1        50.0
-                            FD1S3DX       15        50.0
+                            FD1P3DX       40        32.8
+                            FD1P3IX       15       100.0
+                            FD1S3AX        4        50.0
+                            FD1S3DX        5        26.3
                             FD1S3IX       38        97.4
-                                INV        1        33.3
-                            L6MUX21        1         7.7
+                                INV        1        25.0
+                            L6MUX21        1         6.3
                               MUX41       16       100.0
-                           ORCALUT4      288        21.9
-                              PFUMX        8         5.7
-                                VHI        8        28.6
-                                VLO        8        28.6
+                           ORCALUT4      206        17.6
+                              PFUMX       16        11.3
+                                VHI        8        27.6
+                                VLO        8        27.6
 SUB MODULES 
                                 RAM        1       100.0
                                UART        1       100.0
@@ -93,87 +93,85 @@ SUB MODULES
                        memoryMapper        1       100.0
                                 rom        1       100.0
                             
-                         TOTAL           560           
+                         TOTAL           475           
 ----------------------------------------------------------------------
 Report for cell interruptMaskRegister.netlist
      Instance path:  mcuResourcesInst.interruptMaskRegisterInst
                                           Cell usage:
                                cell       count    Res Usage(%)
-                            FD1P3DX        8         5.4
-                            FD1S3DX       11        36.7
-                           ORCALUT4       23         1.7
-                                VHI        1         3.6
-                                VLO        1         3.6
+                            FD1P3DX        8         6.6
+                            FD1S3DX        1         5.3
+                           ORCALUT4       10         0.9
+                                VHI        1         3.4
+                                VLO        1         3.4
                             
-                         TOTAL            44           
+                         TOTAL            21           
 ----------------------------------------------------------------------
 Report for cell UART.netlist
      Instance path:  mcuResourcesInst.UARTInst
                                           Cell usage:
                                cell       count    Res Usage(%)
                               CCU2D       63        23.2
-                            FD1P3AX       23       100.0
+                            FD1P3AX       16       100.0
                             FD1P3BX        7        30.4
-                            FD1P3DX       30        20.4
-                            FD1P3IX        8       100.0
-                            FD1S3AX        4        44.4
-                            FD1S3BX        1        50.0
-                            FD1S3DX        4        13.3
+                            FD1P3DX       30        24.6
+                            FD1P3IX       15       100.0
+                            FD1S3AX        4        50.0
+                            FD1S3DX        4        21.1
                             FD1S3IX       38        97.4
-                                INV        1        33.3
-                            L6MUX21        1         7.7
-                           ORCALUT4      111         8.4
+                                INV        1        25.0
+                            L6MUX21        1         6.3
+                           ORCALUT4      101         8.6
                               PFUMX        7         5.0
-                                VHI        3        10.7
-                                VLO        3        10.7
+                                VHI        3        10.3
+                                VLO        3        10.3
 SUB MODULES 
                             UART_RX        1       100.0
                             UART_TX        1       100.0
                             
-                         TOTAL           306           
+                         TOTAL           295           
 ----------------------------------------------------------------------
 Report for cell UART_TX.netlist
      Instance path:  mcuResourcesInst.UARTInst.uartTxInst
                                           Cell usage:
                                cell       count    Res Usage(%)
                               CCU2D       28        10.3
-                            FD1P3AX        8        34.8
-                            FD1P3DX        1         0.7
-                            FD1S3BX        1        50.0
-                            FD1S3DX        3        10.0
+                            FD1P3AX        8        50.0
+                            FD1P3DX        1         0.8
+                            FD1S3DX        3        15.8
                             FD1S3IX       19        48.7
-                                INV        1        33.3
-                            L6MUX21        1         7.7
-                           ORCALUT4       20         1.5
+                                INV        1        25.0
+                            L6MUX21        1         6.3
+                           ORCALUT4       20         1.7
                               PFUMX        2         1.4
-                                VHI        1         3.6
-                                VLO        1         3.6
+                                VHI        1         3.4
+                                VLO        1         3.4
                             
-                         TOTAL            86           
+                         TOTAL            85           
 ----------------------------------------------------------------------
 Report for cell UART_RX.netlist
      Instance path:  mcuResourcesInst.UARTInst.uartRXInst
                                           Cell usage:
                                cell       count    Res Usage(%)
                               CCU2D       35        12.9
-                            FD1P3AX        7        30.4
-                            FD1S3AX        4        44.4
+                            FD1P3AX        7        43.8
+                            FD1S3AX        4        50.0
                             FD1S3IX       19        48.7
-                           ORCALUT4       48         3.6
-                                VHI        1         3.6
-                                VLO        1         3.6
+                           ORCALUT4       44         3.8
+                                VHI        1         3.4
+                                VLO        1         3.4
                             
-                         TOTAL           115           
+                         TOTAL           111           
 ----------------------------------------------------------------------
 Report for cell RAM.netlist
      Instance path:  mcuResourcesInst.RAMInst
                                           Cell usage:
                                cell       count    Res Usage(%)
                               DP8KC        8        30.8
-                            FD1P3DX        2         1.4
+                            FD1P3DX        2         1.6
                               MUX41       16       100.0
-                                VHI        1         3.6
-                                VLO        1         3.6
+                                VHI        1         3.4
+                                VLO        1         3.4
                             
                          TOTAL            28           
 ----------------------------------------------------------------------
@@ -182,8 +180,8 @@ Report for cell rom.netlist
                                           Cell usage:
                                cell       count    Res Usage(%)
                               DP8KC       16        61.5
-                                VHI        1         3.6
-                                VLO        1         3.6
+                                VHI        1         3.4
+                                VLO        1         3.4
                             
                          TOTAL            18           
 ----------------------------------------------------------------------
@@ -191,12 +189,12 @@ Report for cell memoryMapper.netlist
      Instance path:  mcuResourcesInst.memoryMapperInst
                                           Cell usage:
                                cell       count    Res Usage(%)
-                           ORCALUT4      154        11.7
-                              PFUMX        1         0.7
-                                VHI        1         3.6
-                                VLO        1         3.6
+                           ORCALUT4       95         8.1
+                              PFUMX        9         6.4
+                                VHI        1         3.4
+                                VLO        1         3.4
                             
-                         TOTAL           157           
+                         TOTAL           106           
 ----------------------------------------------------------------------
 Report for cell core.netlist
      Instance path:  coreInst
@@ -205,17 +203,18 @@ Report for cell core.netlist
                               CCU2D      209        76.8
                               DP8KC        2         7.7
                             FD1P3BX       16        69.6
-                            FD1P3DX       99        67.3
+                            FD1P3DX       82        67.2
                             FD1S1AY        4       100.0
-                            FD1S3AX        5        55.6
-                            FD1S3BX        1        50.0
-                            FD1S3DX       15        50.0
+                            FD1S3AX        4        50.0
+                            FD1S3BX        2       100.0
+                            FD1S3DX       14        73.7
                             FD1S3IX        1         2.6
-                            L6MUX21       12        92.3
-                           ORCALUT4      997        75.7
-                              PFUMX      133        94.3
-                                VHI       18        64.3
-                                VLO       18        64.3
+                                INV        1        25.0
+                            L6MUX21       15        93.8
+                           ORCALUT4      964        82.4
+                              PFUMX      125        88.7
+                                VHI       20        69.0
+                                VLO       20        69.0
 SUB MODULES 
                                 alu        1       100.0
                             aluAMux        1       100.0
@@ -226,47 +225,50 @@ SUB MODULES
                         ccRegisters        1       100.0
                             fullALU        1       100.0
                 generalGroupDecoder        1       100.0
+                   instructionLatch        1       100.0
             instructionPhaseDecoder        1       100.0
               interruptStateMachine        1       100.0
                    jumpGroupDecoder        1       100.0
+              loadStoreGroupDecoder        1       100.0
                      opxMultiplexer        1       100.0
                      programCounter        1       100.0
                        registerFile        1       100.0
                   registerSequencer        1       100.0
                           registers        1       100.0
                             
-                         TOTAL          1547           
+                         TOTAL          1498           
 ----------------------------------------------------------------------
 Report for cell registerSequencer.netlist
      Instance path:  coreInst.registerSequencerInst
                                           Cell usage:
                                cell       count    Res Usage(%)
-                            FD1S3DX        4        13.3
-                           ORCALUT4       12         0.9
-                                VHI        1         3.6
-                                VLO        1         3.6
+                            FD1S3DX        4        21.1
+                           ORCALUT4       10         0.9
+                                VHI        1         3.4
+                                VLO        1         3.4
                             
-                         TOTAL            18           
+                         TOTAL            16           
 ----------------------------------------------------------------------
 Report for cell opxMultiplexer.netlist
      Instance path:  coreInst.opxMultiplexerInst
                                           Cell usage:
                                cell       count    Res Usage(%)
-                           ORCALUT4       41         3.1
-                              PFUMX        1         0.7
-                                VHI        1         3.6
-                                VLO        1         3.6
+                           ORCALUT4       67         5.7
+                              PFUMX        2         1.4
+                                VHI        1         3.4
+                                VLO        1         3.4
                             
-                         TOTAL            44           
+                         TOTAL            71           
 ----------------------------------------------------------------------
 Report for cell generalGroupDecoder.netlist
      Instance path:  coreInst.generalGroupDecoderInst
                                           Cell usage:
                                cell       count    Res Usage(%)
-                            FD1P3DX        4         2.7
-                           ORCALUT4        6         0.5
-                                VHI        1         3.6
-                                VLO        1         3.6
+                            FD1P3DX        4         3.3
+                                INV        1        25.0
+                           ORCALUT4        5         0.4
+                                VHI        1         3.4
+                                VLO        1         3.4
                             
                          TOTAL            12           
 ----------------------------------------------------------------------
@@ -274,21 +276,31 @@ Report for cell jumpGroupDecoder.netlist
      Instance path:  coreInst.jumpGroupDecoderInst
                                           Cell usage:
                                cell       count    Res Usage(%)
-                            FD1S3DX        1         3.3
-                           ORCALUT4       12         0.9
-                              PFUMX        3         2.1
-                                VHI        1         3.6
-                                VLO        1         3.6
+                            FD1S3DX        1         5.3
+                           ORCALUT4       10         0.9
+                              PFUMX        2         1.4
+                                VHI        1         3.4
+                                VLO        1         3.4
                             
-                         TOTAL            18           
+                         TOTAL            15           
+----------------------------------------------------------------------
+Report for cell loadStoreGroupDecoder.netlist
+     Instance path:  coreInst.loadStoreGroupDecoderInst
+                                          Cell usage:
+                               cell       count    Res Usage(%)
+                           ORCALUT4        1         0.1
+                                VHI        1         3.4
+                                VLO        1         3.4
+                            
+                         TOTAL             3           
 ----------------------------------------------------------------------
 Report for cell aluGroupDecoder.netlist
      Instance path:  coreInst.aluGroupDecoderInst
                                           Cell usage:
                                cell       count    Res Usage(%)
                            ORCALUT4        1         0.1
-                                VHI        1         3.6
-                                VLO        1         3.6
+                                VHI        1         3.4
+                                VLO        1         3.4
                             
                          TOTAL             3           
 ----------------------------------------------------------------------
@@ -297,12 +309,12 @@ Report for cell interruptStateMachine.netlist
                                           Cell usage:
                                cell       count    Res Usage(%)
                             FD1P3BX        1         4.3
-                            FD1P3DX       13         8.8
-                           ORCALUT4       18         1.4
-                                VHI        1         3.6
-                                VLO        1         3.6
+                            FD1P3DX        4         3.3
+                           ORCALUT4        6         0.5
+                                VHI        1         3.4
+                                VLO        1         3.4
                             
-                         TOTAL            34           
+                         TOTAL            13           
 ----------------------------------------------------------------------
 Report for cell programCounter.netlist
      Instance path:  coreInst.programCounterInst
@@ -310,151 +322,149 @@ Report for cell programCounter.netlist
                                cell       count    Res Usage(%)
                               CCU2D        9         3.3
                             FD1P3BX       15        65.2
-                            FD1P3DX       49        33.3
-                           ORCALUT4       79         6.0
-                                VHI        1         3.6
-                                VLO        1         3.6
+                            FD1P3DX       33        27.0
+                           ORCALUT4       45         3.8
+                                VHI        1         3.4
+                                VLO        1         3.4
                             
-                         TOTAL           154           
+                         TOTAL           104           
 ----------------------------------------------------------------------
 Report for cell busController.netlist
      Instance path:  coreInst.busControllerInst
                                           Cell usage:
                                cell       count    Res Usage(%)
-                            FD1S3AX        5        55.6
+                            FD1S3AX        4        50.0
                             FD1S3IX        1         2.6
-                           ORCALUT4      107         8.1
-                              PFUMX       15        10.6
-                                VHI        2         7.1
-                                VLO        2         7.1
+                           ORCALUT4      102         8.7
+                              PFUMX       11         7.8
+                                VHI        2         6.9
+                                VLO        2         6.9
 SUB MODULES 
                        busSequencer        1       100.0
                             
-                         TOTAL           133           
+                         TOTAL           123           
 ----------------------------------------------------------------------
 Report for cell busSequencer.netlist
      Instance path:  coreInst.busControllerInst.sequencer
                                           Cell usage:
                                cell       count    Res Usage(%)
-                            FD1S3AX        5        55.6
+                            FD1S3AX        4        50.0
                             FD1S3IX        1         2.6
-                           ORCALUT4       14         1.1
-                                VHI        1         3.6
-                                VLO        1         3.6
+                           ORCALUT4       11         0.9
+                                VHI        1         3.4
+                                VLO        1         3.4
                             
-                         TOTAL            22           
+                         TOTAL            18           
 ----------------------------------------------------------------------
 Report for cell registerFile.netlist
      Instance path:  coreInst.registerFileInst
                                           Cell usage:
                                cell       count    Res Usage(%)
-                              CCU2D        8         2.9
                               DP8KC        2         7.7
-                           ORCALUT4       51         3.9
-                              PFUMX       14         9.9
-                                VHI        2         7.1
-                                VLO        2         7.1
+                           ORCALUT4       49         4.2
+                              PFUMX        6         4.3
+                                VHI        2         6.9
+                                VLO        2         6.9
 SUB MODULES 
                           registers        1       100.0
                             
-                         TOTAL            80           
+                         TOTAL            62           
 ----------------------------------------------------------------------
 Report for cell registers.netlist
      Instance path:  coreInst.registerFileInst.regs
                                           Cell usage:
                                cell       count    Res Usage(%)
                               DP8KC        2         7.7
-                           ORCALUT4        1         0.1
-                                VHI        1         3.6
-                                VLO        1         3.6
+                           ORCALUT4        4         0.3
+                                VHI        1         3.4
+                                VLO        1         3.4
                             
-                         TOTAL             5           
+                         TOTAL             8           
 ----------------------------------------------------------------------
 Report for cell fullALU.netlist
      Instance path:  coreInst.fullALUInst
                                           Cell usage:
                                cell       count    Res Usage(%)
                               CCU2D      192        70.6
-                            FD1P3DX       12         8.2
-                            L6MUX21       12        92.3
-                           ORCALUT4      651        49.4
-                              PFUMX      100        70.9
-                                VHI        5        17.9
-                                VLO        5        17.9
+                            FD1P3DX       12         9.8
+                            L6MUX21       15        93.8
+                           ORCALUT4      651        55.6
+                              PFUMX      104        73.8
+                                VHI        5        17.2
+                                VLO        5        17.2
 SUB MODULES 
                                 alu        1       100.0
                             aluAMux        1       100.0
                             aluBMux        1       100.0
                         ccRegisters        1       100.0
                             
-                         TOTAL           981           
+                         TOTAL           988           
 ----------------------------------------------------------------------
 Report for cell ccRegisters.netlist
      Instance path:  coreInst.fullALUInst.ccRegs
                                           Cell usage:
                                cell       count    Res Usage(%)
-                            FD1P3DX       12         8.2
-                           ORCALUT4        7         0.5
-                                VHI        1         3.6
-                                VLO        1         3.6
+                            FD1P3DX       12         9.8
+                           ORCALUT4        9         0.8
+                                VHI        1         3.4
+                                VLO        1         3.4
                             
-                         TOTAL            21           
+                         TOTAL            23           
 ----------------------------------------------------------------------
 Report for cell aluBMux.netlist
      Instance path:  coreInst.fullALUInst.muxB
                                           Cell usage:
                                cell       count    Res Usage(%)
-                           ORCALUT4       49         3.7
-                                VHI        1         3.6
-                                VLO        1         3.6
+                           ORCALUT4       40         3.4
+                              PFUMX        8         5.7
+                                VHI        1         3.4
+                                VLO        1         3.4
                             
-                         TOTAL            51           
+                         TOTAL            50           
 ----------------------------------------------------------------------
 Report for cell aluAMux.netlist
      Instance path:  coreInst.fullALUInst.muxA
                                           Cell usage:
                                cell       count    Res Usage(%)
-                           ORCALUT4       23         1.7
+                           ORCALUT4       24         2.1
                               PFUMX        5         3.5
-                                VHI        1         3.6
-                                VLO        1         3.6
+                                VHI        1         3.4
+                                VLO        1         3.4
                             
-                         TOTAL            30           
+                         TOTAL            31           
 ----------------------------------------------------------------------
 Report for cell alu.netlist
      Instance path:  coreInst.fullALUInst.aluInst
                                           Cell usage:
                                cell       count    Res Usage(%)
                               CCU2D      192        70.6
-                            L6MUX21       12        92.3
-                           ORCALUT4      572        43.4
-                              PFUMX       95        67.4
-                                VHI        1         3.6
-                                VLO        1         3.6
+                            L6MUX21       15        93.8
+                           ORCALUT4      578        49.4
+                              PFUMX       91        64.5
+                                VHI        1         3.4
+                                VLO        1         3.4
                             
-                         TOTAL           873           
+                         TOTAL           878           
+----------------------------------------------------------------------
+Report for cell instructionLatch.netlist
+     Instance path:  coreInst.instructionLatchInst
+                                          Cell usage:
+                               cell       count    Res Usage(%)
+                            FD1P3DX       29        23.8
+                                VHI        1         3.4
+                                VLO        1         3.4
+                            
+                         TOTAL            31           
 ----------------------------------------------------------------------
 Report for cell instructionPhaseDecoder.netlist
      Instance path:  coreInst.instructionPhaseDecoderInst
                                           Cell usage:
                                cell       count    Res Usage(%)
-                            FD1P3DX       21        14.3
                             FD1S1AY        4       100.0
-                            FD1S3BX        1        50.0
-                            FD1S3DX       10        33.3
-                           ORCALUT4       19         1.4
-                                VHI        1         3.6
-                                VLO        1         3.6
+                            FD1S3BX        2       100.0
+                            FD1S3DX        9        47.4
+                           ORCALUT4       17         1.5
+                                VHI        1         3.4
+                                VLO        1         3.4
                             
-                         TOTAL            57           
-----------------------------------------------------------------------
-Report for cell devBoard.netlist
-     Instance path:  boardInst
-                                          Cell usage:
-                               cell       count    Res Usage(%)
-                            FD1P3DX        8         5.4
-                           ORCALUT4       32         2.4
-                                VHI        1         3.6
-                                VLO        1         3.6
-                            
-                         TOTAL            42           
+                         TOTAL            34           

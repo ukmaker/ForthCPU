@@ -13,7 +13,7 @@ Hostname: EDAWIN
 
 Implementation : impl1
 
-# Written on Mon Dec  4 13:26:11 2023
+# Written on Sun Dec 10 18:23:45 2023
 
 ##### DESIGN INFO #######################################################
 
@@ -35,12 +35,16 @@ Found 0 issues in 0 out of 0 constraints
 Clock Relationships
 *******************
 
-Starting           Ending             |     rise to rise     |     fall to fall     |     rise to fall     |     fall to rise                     
--------------------------------------------------------------------------------------------------------------------------------------------------
-System             mcu|PIN_CLK_X1     |     No paths         |     No paths         |     No paths         |     10.000                           
-mcu|PIN_CLK_X1     System             |     No paths         |     No paths         |     10.000           |     No paths                         
-mcu|PIN_CLK_X1     mcu|PIN_CLK_X1     |     10.000           |     10.000           |     5.000            |     5.000                            
-=================================================================================================================================================
+Starting                           Ending                             |     rise to rise     |     fall to fall     |     rise to fall     |     fall to rise                     
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+System                             mcu|PIN_CLK_X1                     |     No paths         |     No paths         |     No paths         |     10.000                           
+mcu|PIN_CLK_X1                     System                             |     No paths         |     No paths         |     10.000           |     No paths                         
+mcu|PIN_CLK_X1                     mcu|PIN_CLK_X1                     |     10.000           |     10.000           |     5.000            |     5.000                            
+mcu|PIN_CLK_X1                     mcu|DEBUG_WRN_1_inferred_clock     |     Diff grp         |     No paths         |     No paths         |     No paths                         
+mcu|DEBUG_WRN_1_inferred_clock     System                             |     No paths         |     No paths         |     10.000           |     No paths                         
+mcu|DEBUG_WRN_1_inferred_clock     mcu|PIN_CLK_X1                     |     Diff grp         |     No paths         |     Diff grp         |     No paths                         
+mcu|DEBUG_WRN_1_inferred_clock     mcu|DEBUG_WRN_1_inferred_clock     |     10.000           |     No paths         |     No paths         |     No paths                         
+=================================================================================================================================================================================
  Note: 'No paths' indicates there are no paths in the design for that pair of clock edges.
        'Diff grp' indicates that paths exist but the starting clock and ending clock are in different clock groups.
 
@@ -49,6 +53,27 @@ Unconstrained Start/End Points
 ******************************
 
 p:COMMIT
+p:DEBUG_ADDR[0]
+p:DEBUG_ADDR[1]
+p:DEBUG_ADDR[2]
+p:DEBUG_DATA[0] (bidir end point)
+p:DEBUG_DATA[0] (bidir start point)
+p:DEBUG_DATA[1] (bidir end point)
+p:DEBUG_DATA[1] (bidir start point)
+p:DEBUG_DATA[2] (bidir end point)
+p:DEBUG_DATA[2] (bidir start point)
+p:DEBUG_DATA[3] (bidir end point)
+p:DEBUG_DATA[3] (bidir start point)
+p:DEBUG_DATA[4] (bidir end point)
+p:DEBUG_DATA[4] (bidir start point)
+p:DEBUG_DATA[5] (bidir end point)
+p:DEBUG_DATA[5] (bidir start point)
+p:DEBUG_DATA[6] (bidir end point)
+p:DEBUG_DATA[6] (bidir start point)
+p:DEBUG_DATA[7] (bidir end point)
+p:DEBUG_DATA[7] (bidir start point)
+p:DEBUG_RDN
+p:DEBUG_WRN
 p:DECODE
 p:EXECUTE
 p:FETCH
@@ -68,38 +93,22 @@ p:PIN_ADDR_BUS[12]
 p:PIN_ADDR_BUS[13]
 p:PIN_ADDR_BUS[14]
 p:PIN_ADDR_BUS[15]
-p:PIN_DATA_BUS[0] (bidir end point)
-p:PIN_DATA_BUS[0] (bidir start point)
-p:PIN_DATA_BUS[1] (bidir end point)
-p:PIN_DATA_BUS[1] (bidir start point)
-p:PIN_DATA_BUS[2] (bidir end point)
-p:PIN_DATA_BUS[2] (bidir start point)
-p:PIN_DATA_BUS[3] (bidir end point)
-p:PIN_DATA_BUS[3] (bidir start point)
-p:PIN_DATA_BUS[4] (bidir end point)
-p:PIN_DATA_BUS[4] (bidir start point)
-p:PIN_DATA_BUS[5] (bidir end point)
-p:PIN_DATA_BUS[5] (bidir start point)
-p:PIN_DATA_BUS[6] (bidir end point)
-p:PIN_DATA_BUS[6] (bidir start point)
-p:PIN_DATA_BUS[7] (bidir end point)
-p:PIN_DATA_BUS[7] (bidir start point)
-p:PIN_DATA_BUS[8] (bidir end point)
-p:PIN_DATA_BUS[8] (bidir start point)
-p:PIN_DATA_BUS[9] (bidir end point)
-p:PIN_DATA_BUS[9] (bidir start point)
-p:PIN_DATA_BUS[10] (bidir end point)
-p:PIN_DATA_BUS[10] (bidir start point)
-p:PIN_DATA_BUS[11] (bidir end point)
-p:PIN_DATA_BUS[11] (bidir start point)
-p:PIN_DATA_BUS[12] (bidir end point)
-p:PIN_DATA_BUS[12] (bidir start point)
-p:PIN_DATA_BUS[13] (bidir end point)
-p:PIN_DATA_BUS[13] (bidir start point)
-p:PIN_DATA_BUS[14] (bidir end point)
-p:PIN_DATA_BUS[14] (bidir start point)
-p:PIN_DATA_BUS[15] (bidir end point)
-p:PIN_DATA_BUS[15] (bidir start point)
+p:PIN_DATA_BUS[0]
+p:PIN_DATA_BUS[1]
+p:PIN_DATA_BUS[2]
+p:PIN_DATA_BUS[3]
+p:PIN_DATA_BUS[4]
+p:PIN_DATA_BUS[5]
+p:PIN_DATA_BUS[6]
+p:PIN_DATA_BUS[7]
+p:PIN_DATA_BUS[8]
+p:PIN_DATA_BUS[9]
+p:PIN_DATA_BUS[10]
+p:PIN_DATA_BUS[11]
+p:PIN_DATA_BUS[12]
+p:PIN_DATA_BUS[13]
+p:PIN_DATA_BUS[14]
+p:PIN_DATA_BUS[15]
 p:PIN_DIPSW[0]
 p:PIN_DIPSW[1]
 p:PIN_DIPSW[2]

@@ -30,7 +30,12 @@ module mcu(
 	output PIN_TXD,
 	
 	input [3:0] PIN_DIPSW,
-	output wire [7:0] PIN_LED
+	output wire [7:0] PIN_LED,
+	
+	inout wire [7:0] DEBUG_DATA,
+	output wire DEBUG_WRN,
+	output wire DEBUG_RDN,
+	output wire [2:0] DEBUG_ADDR
 	
 );
 
@@ -47,56 +52,15 @@ wire RESET;
 
 assign DIN_GPIO[15:8] = 8'h00;
 
-devBoard boardInst(
+wire [7:0] DEBUG_DIN;
+wire [7:0] DEBUG_DOUT;
 
-	// Pins
-	.BPIN_CLK_X1(PIN_CLK_X1),
-	.BPIN_RESETN(PIN_RESETN),
-	.BPIN_LED(PIN_LED),
-	.BPIN_DIPSW(PIN_DIPSW),
-	.BPIN_RDN(PIN_RDN),
-	.BPIN_WR0N(PIN_WR0N),
-	.BPIN_WR1N(PIN_WR1N),
-	.BPIN_DBUS(PIN_DATA_BUS),
-	.BPIN_ADDR(PIN_ADDR_BUS),
-	.BPIN_RXD(PIN_RXD),
-	.BPIN_TXD(PIN_TXD),
-	.BPIN_INT0(PIN_INT0),
-	.BPIN_INT1(PIN_INT1),
-	.BPIN_INT2(PIN_INT2),
-	.BPIN_INT3(PIN_INT3),
-	.BPIN_INT4(PIN_INT4),
-	.BPIN_INT5(PIN_INT5),
-	.BPIN_INT6(PIN_INT6),
-	
-	// Internal signals
-	.CLK(CLK),
-	.RESET(RESET),
-	.ADDR(ADDR_BUF),
-	.DOUT(DOUT_BUF),
-	.DIN(DIN_BUS),
-	.INTS0(INTS0),
-	.INTS1(INTS1),
-	.INTS2(INTS2),
-	.INTS3(INTS3),
-	.INTS4(INTS4),
-	.INTS5(INTS5),
-	.INTS6(INTS6),
-	
-	.RDN(RDN_BUF),
-	.WR0N(WRN0_BUF),
-	.WR1N(WRN1_BUF),
-	
-	.UART_RXD(UART_RXD),
-	.UART_TXD(UART_TXD),
-
-	.RD_GPIO(RD_GPIO),
-	.WR_GPIO(WR_GPIO),
-	.ADDR_GPIO(ADDR_GPIO),
-	.DIN_GPIO(DIN_GPIO[7:0])
-);
-
-
+assign DEBUG_DATA = DEBUG_RDN ? 8'hzz : DEBUG_DOUT;
+assign DEBUG_DIN = DEBUG_DATA;
+assign UART_RXD = PIN_RXD;
+assign PIN_TXD = UART_TXD;
+assign RESET = ~PIN_RESETN;
+assign CLK = PIN_CLK_X1;
 core coreInst(
 	
 	.CLK(CLK),
@@ -114,10 +78,11 @@ core coreInst(
 	.ABUS_OEN(ABUS_OEN),
 	.WRN0_BUF(WRN0_BUF), 
 	.WRN1_BUF(WRN1_BUF),
-	.DEBUG_DIN(8'h00),
-	.DEBUG_ADDR(3'b000),
-	.DEBUG_WR(1'b0),
-	.DEBUG_RD(1'b0)
+	.DEBUG_DIN(DEBUG_DIN),
+	.DEBUG_DOUT(DEBUG_DOUT),
+	.DEBUG_ADDR(DEBUG_ADDR),
+	.DEBUG_WRN(DEBUG_WRN),
+	.DEBUG_RDN(DEBUG_RDN)
 );
 
 mcuResources mcuResourcesInst(

@@ -1,17 +1,26 @@
 i PIN_CLK_X1
 m 0 0
-u 112 328
-p {p:PIN_CLK_X1}{t:boardInst.BPIN_CLK_X1}{p:boardInst.BPIN_CLK_X1}{t:boardInst.BPIN_LED[7:0].C}
-e ckid0_0 {t:boardInst.BPIN_LED[7:0].C} dffre
+u 124 349
+p {p:PIN_CLK_X1}{t:mcuResourcesInst.CLK}{p:mcuResourcesInst.CLK}{t:mcuResourcesInst.interruptMaskRegisterInst.CLK}{p:mcuResourcesInst.interruptMaskRegisterInst.CLK}{t:mcuResourcesInst.interruptMaskRegisterInst.PRI_REG[2:0].C}
+e ckid0_0 {t:mcuResourcesInst.interruptMaskRegisterInst.PRI_REG[2:0].C} dffr
 c ckid0_0 {p:PIN_CLK_X1} port Unsupported/too complex instance on clock path
-i coreInst.instructionPhaseDecoderInst.PHASE_NEXT_2_sqmuxa
+i coreInst.instructionPhaseDecoderInst.un1_PHASE_NEXT_1_sqmuxa_buf
 m 0 0
 u 4 4
 n ckid0_1 {t:coreInst.instructionPhaseDecoderInst.PHASE_NEXT[3].C} Clock source is invalid for GCC
-p {t:coreInst.instructionPhaseDecoderInst.PHASE_NEXT_2_sqmuxa.OUT}{t:coreInst.instructionPhaseDecoderInst.PHASE_NEXT_2_sqmuxa_buf_i.I[0]}{t:coreInst.instructionPhaseDecoderInst.PHASE_NEXT_2_sqmuxa_buf_i.OUT[0]}{t:coreInst.instructionPhaseDecoderInst.PHASE_NEXT[3].C}
+p {t:coreInst.instructionPhaseDecoderInst.un1_PHASE_NEXT_1_sqmuxa.OUT}{t:coreInst.instructionPhaseDecoderInst.un1_PHASE_NEXT_1_sqmuxa_buf_i.I[0]}{t:coreInst.instructionPhaseDecoderInst.un1_PHASE_NEXT_1_sqmuxa_buf_i.OUT[0]}{t:coreInst.instructionPhaseDecoderInst.PHASE_NEXT[3].C}
 e ckid0_1 {t:coreInst.instructionPhaseDecoderInst.PHASE_NEXT[3].C} lat
-d ckid0_1 {t:coreInst.instructionPhaseDecoderInst.PHASE_NEXT_2_sqmuxa.OUT} and Unable to find a clock in input cone
-i coreInst.instructionPhaseDecoderInst.PHASE_R[3]
+d ckid0_1 {t:coreInst.instructionPhaseDecoderInst.un1_PHASE_NEXT_1_sqmuxa.OUT} or Unable to find a clock in input cone
+i coreInst.debugger.requestGen.un1_DEBUG_WRN_i
+m 0 0
+u 1 1
+p {t:coreInst.debugger.requestGen.un1_DEBUG_WRN.OUT}{t:coreInst.debugger.requestGen.un1_DEBUG_WRN_inferred_clock.I[0]}{t:coreInst.debugger.requestGen.un1_DEBUG_WRN_inferred_clock.OUT[0]}{t:coreInst.debugger.requestGen.dhReqReg.SLOWCLK}{p:coreInst.debugger.requestGen.dhReqReg.SLOWCLK}{t:coreInst.debugger.requestGen.dhReqReg.Q_R[0].C}
+e ckid0_2 {t:coreInst.debugger.requestGen.dhReqReg.Q_R[0].C} dffre
+c ckid0_2 {t:coreInst.debugger.requestGen.un1_DEBUG_WRN.OUT} and Clock source is constant
+i DEBUG_WRN_1
+m 0 0
+u 0 0
+i DEBUG_WRN_1_i
 m 0 0
 u 0 0
 i coreInst.instructionPhaseDecoderInst.PHASE_R[2]
@@ -23,7 +32,19 @@ u 0 0
 i coreInst.instructionPhaseDecoderInst.PHASE_R[0]
 m 0 0
 u 0 0
+i coreInst.instructionPhaseDecoderInst.PHASE_R[3]
+m 0 0
+u 0 0
+i coreInst.debugger.requestGen.modeReqReg.Q[0]
+m 0 0
+u 0 0
+i coreInst.debugger.requestGen.dhReqReg.Q[0]
+m 0 0
+u 0 0
 i coreInst.generalGroupDecoderInst.HALTX
+m 0 0
+u 0 0
+i coreInst.instructionPhaseDecoderInst.DEBUG_STEP_ACK
 m 0 0
 u 0 0
 l 0 0 0 0 0 0

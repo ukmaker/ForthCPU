@@ -25,8 +25,8 @@ module core(
 	input  [7:0]  DEBUG_DIN,
 	output [7:0]  DEBUG_DOUT,
 	input [2:0]   DEBUG_ADDR,
-	input          DEBUG_RD,
-	input          DEBUG_WR
+	input          DEBUG_RDN,
+	input          DEBUG_WRN
 );
 
 /***************************************

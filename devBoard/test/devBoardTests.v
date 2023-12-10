@@ -5,30 +5,30 @@
 module devBoardTests;
 	
        // inputs
-        reg         PIN_CLK_X1;     // 12M clock from FTDI/X1 crystal
-        reg         PIN_RESETN;       // from SW1 pushbutton
-        reg [3:0]  PIN_DIPSW;      // from SW2 DIP switches
+        reg         BPIN_CLK_X1;     // 12M clock from FTDI/X1 crystal
+        reg         BPIN_RESETN;       // from SW1 pushbutton
+        reg [3:0]  BPIN_DIPSW;      // from SW2 DIP switches
         
         // outputs
-        wire [7:0]  PIN_LED;         // to LEDs (D2-D9)
-		wire         PIN_RDN;
-		wire         PIN_WR0N;
-		wire         PIN_WR1N;
-		wire [15:0] PIN_DBUS;
-		wire [15:0] PIN_ADDR;
+        wire [7:0]  BPIN_LED;         // to LEDs (D2-D9)
+		wire         BPIN_RDN;
+		wire         BPIN_WR0N;
+		wire         BPIN_WR1N;
+		wire [15:0] BPIN_DBUS;
+		wire [15:0] BPIN_ADDR;
 		
 		// UART I/O
-		reg PIN_RXD;
-		wire PIN_TXD;
+		reg BPIN_RXD;
+		wire BPIN_TXD;
 		
 		// Interrupts
-		reg PIN_INT0;
-		reg PIN_INT1;
-		reg PIN_INT2;
-		reg PIN_INT3;
-		reg PIN_INT4;
-		reg PIN_INT5;
-		reg PIN_INT6;
+		reg BPIN_INT0;
+		reg BPIN_INT1;
+		reg BPIN_INT2;
+		reg BPIN_INT3;
+		reg BPIN_INT4;
+		reg BPIN_INT5;
+		reg BPIN_INT6;
 		
 		/********************************
 		* Internal signals
@@ -62,29 +62,29 @@ module devBoardTests;
 		reg ADDR_GPIO;
 		
 devBoard testInst(
-        .PIN_CLK_X1(PIN_CLK_X1),    // 12M clock from FTDI/X1 crystal
-        .PIN_RESETN(PIN_RESETN),       // from SW1 pushbutton
-        .PIN_DIPSW(PIN_DIPSW),      // from SW2 DIP switches
+        .BPIN_CLK_X1(BPIN_CLK_X1),    // 12M clock from FTDI/X1 crystal
+        .BPIN_RESETN(BPIN_RESETN),       // from SW1 pushbutton
+        .BPIN_DIPSW(BPIN_DIPSW),      // from SW2 DIP switches
         
         // outputs
-        .PIN_LED(PIN_LED),         // to LEDs (D2-D9)
-		.PIN_RDN(PIN_RDN),
-		.PIN_WR0N(PIN_WR0N),
-		.PIN_WR1N(PIN_WR1N),
-		.PIN_DBUS(PIN_DBUS),
-		.PIN_ADDR(PIN_ADDR),
+        .BPIN_LED(BPIN_LED),         // to LEDs (D2-D9)
+		.BPIN_RDN(BPIN_RDN),
+		.BPIN_WR0N(BPIN_WR0N),
+		.BPIN_WR1N(BPIN_WR1N),
+		.BPIN_DBUS(BPIN_DBUS),
+		.BPIN_ADDR(BPIN_ADDR),
 		
 		// UART I/O
-		.PIN_RXD(PIN_RXD),
-		.PIN_TXD(PIN_TXD),
+		.BPIN_RXD(BPIN_RXD),
+		.BPIN_TXD(BPIN_TXD),
 		// Interrupts
-		.PIN_INT0(PIN_INT0),
-		.PIN_INT1(PIN_INT1),
-		.PIN_INT2(PIN_INT2),
-		.PIN_INT3(PIN_INT3),
-		.PIN_INT4(PIN_INT4),
-		.PIN_INT5(PIN_INT5),
-		.PIN_INT6(PIN_INT6),
+		.BPIN_INT0(BPIN_INT0),
+		.BPIN_INT1(BPIN_INT1),
+		.BPIN_INT2(BPIN_INT2),
+		.BPIN_INT3(BPIN_INT3),
+		.BPIN_INT4(BPIN_INT4),
+		.BPIN_INT5(BPIN_INT5),
+		.BPIN_INT6(BPIN_INT6),
 
 		
 		/********************************
@@ -120,27 +120,27 @@ devBoard testInst(
 		.ADDR_GPIO(ADDR_GPIO)
 );
 
-reg [15:0] PIN_DBUS_IN;
+reg [15:0] BPIN_DBUS_IN;
 
 always begin
-	#50 PIN_CLK_X1 = ~PIN_CLK_X1;
+	#50 BPIN_CLK_X1 = ~BPIN_CLK_X1;
 end
 
-assign PIN_DBUS = PIN_DBUS_IN;
+assign BPIN_DBUS = BPIN_DBUS_IN;
 
 initial begin
-	PIN_CLK_X1 = 0;
-	PIN_RESETN = 0;
-	PIN_DIPSW = 4'b0000;
-	PIN_DBUS_IN = 16'h1234;
-	PIN_RXD = 1'b0;
-	PIN_INT0 = 1'b0;
-	PIN_INT1 = 1'b0;
-	PIN_INT2 = 1'b0;
-	PIN_INT3 = 1'b0;
-	PIN_INT4 = 1'b0;
-	PIN_INT5 = 1'b0;
-	PIN_INT6 = 1'b0;
+	BPIN_CLK_X1 = 0;
+	BPIN_RESETN = 0;
+	BPIN_DIPSW = 4'b0000;
+	BPIN_DBUS_IN = 16'h1234;
+	BPIN_RXD = 1'b0;
+	BPIN_INT0 = 1'b0;
+	BPIN_INT1 = 1'b0;
+	BPIN_INT2 = 1'b0;
+	BPIN_INT3 = 1'b0;
+	BPIN_INT4 = 1'b0;
+	BPIN_INT5 = 1'b0;
+	BPIN_INT6 = 1'b0;
 	
 	ADDR = 16'h0000;
 	DOUT = 16'h0000;
@@ -154,21 +154,21 @@ initial begin
 	ADDR_GPIO = 1'b0;
 	
 	`TICKTOCK;
-	PIN_RESETN = 1;
+	BPIN_RESETN = 1;
 	`TICKTOCK;
 	
 	// Write to the LEDs - incorrect address so no write
 	DOUT = 16'haaaa;
 	WR_GPIO = 1;
 	`TICKTOCK;
-	`assert("LEDS", 8'h00, PIN_LED)
+	`assert("LEDS", 8'h00, BPIN_LED)
 	
 	// Write to the LEDs - correct address
 	ADDR_GPIO = 1'b1;
 	DOUT = 16'haaaa;
 	WR_GPIO = 1;
 	`TICKTOCK;
-	`assert("LEDS", 8'haa, PIN_LED)
+	`assert("LEDS", 8'haa, BPIN_LED)
 	// Read them  back
 	WR_GPIO = 1'b0;
 	RD_GPIO = 1'b1;
@@ -181,7 +181,7 @@ initial begin
 	RD_GPIO = 1'b0;
 	WR_GPIO = 1'b1;
 	`TICKTOCK;
-	`assert("LEDS", 8'h55, PIN_LED)
+	`assert("LEDS", 8'h55, BPIN_LED)
 	// Read them  back
 	WR_GPIO = 1'b0;
 	RD_GPIO = 1'b1;
