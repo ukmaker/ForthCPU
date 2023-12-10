@@ -52,12 +52,23 @@ wire         CC_CARRY;
 wire         CC_PARITY;
 wire         CC_SIGN;
 wire [1:0]  DATA_BUSX;
+
+wire [15:0] DEBUG_ADDR_OUT;
+wire [15:0] DEBUG_DATA_OUT;
+wire [7:0]  DEBUG_INSTRUCTION;
+wire [3:0]  DEBUG_OP;
+wire         DEBUG_MODEX;
+wire         DEBUG_STOPX;
+wire         DEBUG_REQ;
+wire         DEBUG_ACK;
+
 wire [15:0] DIN_LATCHED;
 wire         DIX;
 wire         EIX;
 wire         HALTX;
+wire [1:0]  GROUPX;
 wire [15:0] HERE;
-wire [15:0] INSTRUCTION;
+wire [13:0] INSTRUCTION;
 wire [15:0] PC_A;
 wire [15:0] PC_A_NEXT;
 wire [1:0]  PC_BASEX;
@@ -90,25 +101,16 @@ wire [3:0]  ALU_REG_SEQX;
 wire [1:0]  ALU_REGA_ADDRX;
 wire [2:0]  ALU_REGB_ADDRX;
 
-wire         DEBUG_ACKX;
-wire         DEBUG_ADDR_INCX;
-wire         DEBUG_ADDR_LDX;
-wire [3:0]  DEBUG_ARGX;
+// Outputs
+wire [3:0]  DEBUG_ARGX_OUT;
 wire [1:0]  DEBUG_BUS_SEQX;
 wire [1:0]  DEBUG_CC_REGX;
-wire [15:0] DEBUG_CC_DATA;
-wire [1:0]  DEBUG_DATAX;
-wire [15:0] DEBUG_DIN_DIN;
-wire         DEBUG_DOUT_LDX;
-wire [15:0] DEBUG_MEM_ADDR;
-wire [15:0] DEBUG_MEM_DATA_OUT;
-wire [2:0]  DEBUG_OPX;
-wire [15:0] DEBUG_PC_A_NEXT;
 wire [2:0]  DEBUG_PC_NEXTX;
 wire [3:0]  DEBUG_REG_SEQX;
-wire [15:0] DEBUG_REGB_DATA;
-wire         DEBUG_REQX;
-wire         DEBUG_STOPX;
+wire         DEBUG_ADDR_INCX;
+wire         DEBUG_LD_DATAX;
+wire [1:0]  DEBUG_DATAX;
+
 
 wire [1:0]  INT_CC_REGX;
 wire [2:0]  INT_PC_NEXTX;
@@ -139,6 +141,14 @@ wire [2:0]  JMP_REGB_ADDRX;
 wire [3:0]  JMP_REG_SEQX;
 wire [2:0]  JMP_ALUB_SRCX;
 
+/******************************************
+* Data routing to the debugger
+*******************************************/
+wire [15:0] DEBUG_DIN_DIN   = DIN_LATCHED;
+wire [15:0] DEBUG_REGB_DATA = REGB_DOUT;
+wire [15:0] DEBUG_CC_DATA   = {12'h000,CC_SIGN,CC_CARRY,CC_ZERO,CC_PARITY};
+wire [15:0] DEBUG_PC_A_NEXT = PC_A_NEXT;
+
 /**
 * No ABUS tristate control yet
 **/
@@ -166,23 +176,29 @@ debugPort debugger(
 	.DEBUG_DIN(DEBUG_DIN),
 	.DEBUG_DOUT(DEBUG_DOUT),
 	.DEBUG_ADDR(DEBUG_ADDR),
-	.DEBUG_RD(DEBUG_RD),
-	.DEBUG_WR(DEBUG_WR),
-	.DEBUG_MEM_ADDR(DEBUG_MEM_ADDR),
-	.DEBUG_MEM_DATA_OUT(DEBUG_MEM_DATA_OUT),
-	.DEBUG_ADDR_INCX(DEBUG_ADDR_INCX),
-	.DEBUG_ADDR_LDX(DEBUG_ADDR_LDX),
-	.DEBUG_DOUT_LDX(DEBUG_DOUT_LDX),
+	.DEBUG_RDN(DEBUG_RDN),
+	.DEBUG_WRN(DEBUG_WRN),
+	
+	.DEBUG_OP(DEBUG_OP),
+	.DEBUG_MODE(DEBUG_MODE),	
+	.DEBUG_ADDR_OUT(DEBUG_ADDR_OUT),
+	.DEBUG_ARGX_OUT(DEBUG_ARGX_OUT),
+	
+	.DEBUG_DATA_OUT(DEBUG_DATA_OUT),
+	.DEBUG_ADDR_INC_EN(DEBUG_ADDR_INC_EN),
+	
+	.DEBUG_LD_DATA_EN(DEBUG_LD_DATA_EN),
 	.DEBUG_DATAX(DEBUG_DATAX),
-	.DEBUG_OPX(DEBUG_OPX),
-	.DEBUG_ARGX(DEBUG_ARGX),
+
 	.DEBUG_DIN_DIN(DEBUG_DIN_DIN),
 	.DEBUG_REGB_DATA(DEBUG_REGB_DATA),
 	.DEBUG_CC_DATA(DEBUG_CC_DATA),
 	.DEBUG_PC_A_NEXT(DEBUG_PC_A_NEXT),
 	
-	.DEBUG_REQX(DEBUG_REQX),
-	.DEBUG_ACKX(DEBUG_ACKX)
+	// Signals to the instruction phase decoder
+	.DEBUG_STOP(DEBUG_STOP),
+	.DEBUG_REQ(DEBUG_REQ),
+	.DEBUG_ACK(DEBUG_ACK)
 
 );
 
@@ -190,41 +206,67 @@ debugPort debugger(
 * Debugging operation decoder
 ****************************************/
 debugDecoder debugDecoderInst(
-	.DEBUG_OPX(DEBUG_OPX),
-	.DEBUG_ARGX(DEBUG_ARGX),
+	.DEBUG_INSTRUCTION(DEBUG_INSTRUCTION),
 
 	.DEBUG_ADDR_INCX(DEBUG_ADDR_INCX),
-	.DEBUG_ADDR_LDX(DEBUG_ADDR_LDX),
-	.DEBUG_DOUT_LDX(DEBUG_DOUT_LDX),
+	.DEBUG_LD_DATAX(DEBUG_LD_DATAX),
 	.DEBUG_DATAX(DEBUG_DATAX),
 
 	.DEBUG_BUS_SEQX(DEBUG_BUS_SEQX),
 	.DEBUG_REG_SEQX(DEBUG_REG_SEQX),
 
 	.DEBUG_CC_REGX(DEBUG_CC_REGX),
-	.DEBUG_PC_NEXTX(DEBUG_PC_NEXTX),
-
-	.DEBUG_STOPX(DEBUG_STOPX)
+	.DEBUG_PC_NEXTX(DEBUG_PC_NEXTX)
 );
+/***************************************
+* Debugging latches sequencer
+****************************************/
+debugSequencer debugSequencerInst(	
+	.CLK(CLK),
+	.RESET(RESET),
+	.COMMIT(COMMIT),
+	.DEBUG_ADDR_INCX(DEBUG_ADDR_INCX),
+	.DEBUG_LD_DATAX(DEBUG_LD_DATAX),
+	.DEBUG_ADDR_INC_EN(DEBUG_ADDR_INC_EN),
+	.DEBUG_LD_DATA_EN(DEBUG_LD_DATA_EN)
+);
+
 /***************************************
 * Instruction Phase Decoder
 ****************************************/
 instructionPhaseDecoder instructionPhaseDecoderInst(
 	.CLK(CLK),
 	.RESET(RESET),
+	.HALTX(HALTX),
+	.DEBUG_STOP(DEBUG_STOP),
+	.DEBUG_STEP_REQ(DEBUG_REQ),
+	
 	.STOPPED(STOPPED),
 	.FETCH(FETCH),
 	.DECODE(DECODE),
 	.EXECUTE(EXECUTE),
 	.COMMIT(COMMIT),
-	.DIN(DIN),
-	.INSTRUCTION(INSTRUCTION),
-	.PC_ENX(PC_ENX),
+
+	.DEBUG_STEP_ACK(DEBUG_ACK),
 	.DEBUG_ACTIVE(DEBUG_ACTIVE),
-	.DEBUG_STOPX(DEBUG_STOPX),
-	.DEBUG_STEP_REQ(DEBUG_REQX),
-	.DEBUG_STEP_ACK(DEBUG_ACKX),
-	.HALTX(HALTX)
+	.PC_ENX(PC_ENX)
+);
+
+/***************************************
+* Instruction Latch
+****************************************/
+instructionLatch instructionLatchInst(
+	.CLK(CLK),
+	.RESET(RESET),
+	.EXECUTE(EXECUTE),
+	.DIN(DIN),
+	.DEBUG_OP(DEBUG_OP),
+	.DEBUG_ARG(DEBUG_ARGX_OUT),
+	.DEBUG_MODE(DEBUG_MODE),
+	.INSTRUCTION(INSTRUCTION),
+	.GROUPX(GROUPX),
+	.DEBUG_INSTRUCTION(DEBUG_INSTRUCTION),
+	.DEBUG_MODEX(DEBUG_MODEX)
 );
 
 /***************************************
@@ -294,8 +336,8 @@ busController busControllerInst(
 	.EXECUTE(EXECUTE),
 	.COMMIT(COMMIT),
 	.BUS_SEQX(BUS_SEQX),
-	.DEBUG_MA(DEBUG_MEM_ADDR),
-	.DEBUG_MD(DEBUG_MEM_DATA_OUT),
+	.DEBUG_MA(DEBUG_ADDR_OUT),
+	.DEBUG_MD(DEBUG_DATA_OUT),
 	.PC_A(PC_A),
 	.ALU_R(ALU_R),
 	.ALUB_DATA(ALUB_DATA),
@@ -409,7 +451,7 @@ jumpGroupDecoder jumpGroupDecoderInst(
 	.DECODE(DECODE),
 	.EXECUTE(EXECUTE),
 	.COMMIT(COMMIT),
-	.GROUPF(INSTRUCTION[15:14]),
+	.GROUPF(GROUPX),
 	.SKIPF(INSTRUCTION[13:12]),
 	.CCF(INSTRUCTION[11:10]),
 	.JPF(INSTRUCTION[9:8]),
@@ -440,7 +482,7 @@ generalGroupDecoder generalGroupDecoderInst(
 	.RESET(RESET),
 	.EXECUTE(EXECUTE), 
 	.COMMIT(COMMIT),
-	.INSTRUCTION_GROUP(INSTRUCTION[15:14]),
+	.INSTRUCTION_GROUP(GROUPX),
 	.INSTRUCTION_OP(INSTRUCTION[10:8]),
 	
 	.EIX(EIX),
@@ -454,7 +496,7 @@ generalGroupDecoder generalGroupDecoderInst(
 ****************************************/
 opxMultiplexer opxMultiplexerInst(
 
-	.INSTRUCTION_GROUP(INSTRUCTION[15:14]),
+	.INSTRUCTION_GROUP(GROUPX),
 	.INSTRUCTION_ARGBX(INSTRUCTION[3:0]),
 
 	.ALU_ALU_OPX(ALU_ALU_OPX),
@@ -465,10 +507,10 @@ opxMultiplexer opxMultiplexerInst(
 	.ALU_REGA_ADDRX(ALU_REGA_ADDRX),
 	.ALU_REGB_ADDRX(ALU_REGB_ADDRX),
 	
-	.DEBUG_ARGX(DEBUG_ARGX),
+	.DEBUG_ARGBX(DEBUG_ARGX_OUT),
+	.DEBUG_MODEX(DEBUG_MODE),
 	.DEBUG_BUS_SEQX(DEBUG_BUS_SEQX),
 	.DEBUG_CC_REGX(DEBUG_CC_REGX),
-	.DEBUG_OPX(DEBUG_OPX),
 	.DEBUG_PC_NEXTX(DEBUG_PC_NEXTX),
 	.DEBUG_REG_SEQX(DEBUG_REG_SEQX),
 	
@@ -511,7 +553,6 @@ opxMultiplexer opxMultiplexerInst(
 	.CCL_LD(CCL_LD),
 	.CC_REGX(CC_REGX),
 	.DATA_BUSX(DATA_BUSX),
-	.DEBUG_ACTIVE(DEBUG_ACTIVE),
 	.PC_BASEX(PC_BASEX),
 	.PC_OFFSETX(PC_OFFSETX),	
 	.PC_NEXTX(PC_NEXTX),

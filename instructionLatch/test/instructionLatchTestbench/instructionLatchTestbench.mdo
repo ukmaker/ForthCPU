@@ -1,0 +1,19 @@
+if {![file exists "C:/Users/Duncan/git/ForthCPU/instructionLatch/test/instructionLatchTestbench/instructionLatchTestbench.mpf"]} { 
+	project new "C:/Users/Duncan/git/ForthCPU/instructionLatch/test/instructionLatchTestbench" instructionLatchTestbench
+	project addfile "C:/Users/Duncan/git/ForthCPU/instructionLatch/source/instructionLatch.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/instructionLatch/test/instructionLatchTests.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/instructionPhaseDecoder/source/instructionPhaseDecoder.v"
+	vlib  work
+	vdel -lib work -all 
+	vlib work
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/instructionLatch/source  -work work  "C:/Users/Duncan/git/ForthCPU/instructionLatch/source/instructionLatch.v"
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/instructionLatch/test  -work work  "C:/Users/Duncan/git/ForthCPU/instructionLatch/test/instructionLatchTests.v"
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/instructionPhaseDecoder/source  -work work  "C:/Users/Duncan/git/ForthCPU/instructionPhaseDecoder/source/instructionPhaseDecoder.v"
+} else {
+	project open "C:/Users/Duncan/git/ForthCPU/instructionLatch/test/instructionLatchTestbench/instructionLatchTestbench"
+	project compileoutofdate
+}
+vsim -L work -L pmi_work -L ovi_machxo3l  instructionLatchTests
+view wave
+add wave /*
+run 1000ns

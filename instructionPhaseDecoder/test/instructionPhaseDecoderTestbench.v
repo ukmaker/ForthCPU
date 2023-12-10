@@ -11,7 +11,6 @@ parameter CLOCK_CYCLE = 20;
 wire STOPPED, FETCH, DECODE, EXECUTE, COMMIT;
 
 reg CLK, RESET;
-reg [15:0] DIN;
 
 reg HALTX;
 wire PC_ENX;
@@ -20,13 +19,10 @@ reg DEBUG_STEP_REQ;
 wire DEBUG_ACTIVE;
 wire DEBUG_STEP_ACK;
 
-wire [15:0] INSTRUCTION;
 
 instructionPhaseDecoder ipd(
 	.CLK(CLK),
 	.RESET(RESET),
-	
-	.DIN(DIN),
 	
 	.HALTX(HALTX),
 	.PC_ENX(PC_ENX),
@@ -40,9 +36,7 @@ instructionPhaseDecoder ipd(
 	.FETCH(FETCH),
 	.DECODE(DECODE),
 	.EXECUTE(EXECUTE),
-	.COMMIT(COMMIT),
-
-	.INSTRUCTION(INSTRUCTION)
+	.COMMIT(COMMIT)
 );
 
 // clk gen
@@ -53,7 +47,6 @@ initial begin
 	
 	CLK = 0;
 	RESET = 0;
-	DIN = 16'h0000;
 	HALTX = 0;
 	DEBUG_STOPX = 0;
 	DEBUG_STEP_REQ = 0;
@@ -71,14 +64,16 @@ initial begin
 	`assert("COMMIT", 1'b1, COMMIT)
 	`TICKTOCK;
 	`assert("FETCH", 1'b1, FETCH)
+	`TICKTOCK;
 	// ignore debug stop until end of the cycle
 	DEBUG_STOPX = 1;
-	`TICKTOCK;
 	`assert("DECODE", 1'b1, DECODE)
 	`TICKTOCK;
 	`assert("EXECUTE", 1'b1, EXECUTE)
 	`TICKTOCK;
 	`assert("COMMIT", 1'b1, COMMIT)
+	`TICKTOCK;
+	`assert("FETCH", 1'b1, FETCH)
 	`TICKTOCK;
 	`assert("STOPPED", 1'b1, STOPPED)
 	`TICKTOCK;
@@ -89,13 +84,13 @@ initial begin
 	// Run a debug cycle
 	DEBUG_STEP_REQ = 1;
 	`TICKTOCK;
-	`assert("FETCH", 1'b1, FETCH)
-	`TICKTOCK;
 	`assert("DECODE", 1'b1, DECODE)
 	`TICKTOCK;
 	`assert("EXECUTE", 1'b1, EXECUTE)
 	`TICKTOCK;
 	`assert("COMMIT", 1'b1, COMMIT)
+	`TICKTOCK;
+	`assert("FETCH", 1'b1, FETCH)
 	`TICKTOCK;
 	`assert("DEBUG_STEP_ACK", 1'b1, DEBUG_STEP_ACK)
 	`assert("STOPPED", 1'b1, STOPPED)
@@ -110,8 +105,6 @@ initial begin
 	DEBUG_STOPX = 0;
 	`TICKTOCK;
 	`assert("STOPPED", 1'b1, STOPPED)
-	`TICKTOCK;
-	`assert("FETCH", 1'b1, FETCH)
 	`TICKTOCK;
 	`assert("DECODE", 1'b1, DECODE)
 	`TICKTOCK;

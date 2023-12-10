@@ -6,24 +6,22 @@
 **************************************************/
 module debugDecoder(
 	
-	input [3:0]       DEBUG_OP,
-	input [3:0]       DEBUG_ARGX,
+	input [7:0]       DEBUG_INSTRUCTION,
 	
 	output reg        DEBUG_ADDR_INCX,
-
 	output reg        DEBUG_LD_DATAX,
 	output reg [1:0] DEBUG_DATAX,
 	
 	output reg [1:0]  DEBUG_BUS_SEQX,
-	output reg [3:0]  DEBUG_REG_SEQX,
-	
 	output reg [1:0]  DEBUG_CC_REGX,
-	output reg [2:0]  DEBUG_PC_NEXTX
-
+	output reg [2:0]  DEBUG_PC_NEXTX,
+	output reg [3:0]  DEBUG_REG_SEQX
 );
 
-wire DEBUG_ADDR_INC   = DEBUG_OP[0];
-wire [2:0] DEBUG_OPX = DEBUG_OP[3:1];
+wire [3:0] DEBUG_OP   = DEBUG_INSTRUCTION[3:0];
+wire [3:0] DEBUG_ARGX = DEBUG_INSTRUCTION[7:4];
+wire DEBUG_ADDR_INC    = DEBUG_OP[0];
+wire [2:0] DEBUG_OPX  = DEBUG_OP[3:1];
 
 always @(*) begin
 	

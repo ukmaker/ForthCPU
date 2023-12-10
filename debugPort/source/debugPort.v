@@ -33,14 +33,15 @@ module debugPort(
 	input             CLK,
 	input             RESET,
 	
-	output [2:0]     DEBUG_OP,
+	output [3:0]     DEBUG_OP,
+	output            DEBUG_MODE,
 	output [15:0]    DEBUG_ADDR_OUT,
-	output [7:0]     DEBUG_ARGX_OUT,
+	output [3:0]     DEBUG_ARGX_OUT,
 	output [15:0]    DEBUG_DATA_OUT,
 
-	input             DEBUG_ADDR_INCX,
+	input             DEBUG_ADDR_INC_EN,
 	
-	input             DEBUG_LD_DATAX,
+	input             DEBUG_LD_DATA_EN,
 	input [1:0]      DEBUG_DATAX,
 	input [15:0]     DEBUG_DIN_DIN,
 	input [15:0]     DEBUG_REGB_DATA,
@@ -48,16 +49,15 @@ module debugPort(
 	input [15:0]     DEBUG_PC_A_NEXT,
 
 	output            DEBUG_STOP,
-	output            DEBUG_MODE,
-	output            DEBUG_REQX,
-	input             DEBUG_ACKX
+	output            DEBUG_REQ,
+	input             DEBUG_ACK
 	
 );
 
 /***************************************************
 * Internal wiring
 ****************************************************/
-assign DEBUG_ARGX_OUT = DEBUG_ADDR_OUT[8:1];
+assign DEBUG_ARGX_OUT = DEBUG_ADDR_OUT[4:1];
 assign DEBUG_DIN_REQ  = DEBUG_DIN[2];
 /***************************************************
 * Register selects
@@ -81,7 +81,7 @@ wire AH_RO; // unused
 /***************************************************
 * Internal control signals
 ****************************************************/
-wire DEBUG_INCX;
+wire DEBUG_INCX = DEBUG_OP[0];
 
 /***************************************************
 * Instances
@@ -110,8 +110,8 @@ requestGenerator requestGen(
 	.EN_DH(EN_DH),
 	.DEBUG_INCX(DEBUG_INCX),
 	
-	.DEBUG_ACK(DEBUG_ACKX),
-	.DEBUG_REQ(DEBUG_REQX)
+	.DEBUG_ACK(DEBUG_ACK),
+	.DEBUG_REQ(DEBUG_REQ)
 );
 
 assign DEBUG_ADDR_OUT[0] = 1'b0;
@@ -124,7 +124,7 @@ synchronizedCounter #(.BUS_WIDTH(7)) addrL(
 	.FASTCLK(CLK),
 	.EN(EN_AL),
 	.LD(1'b1),
-	.COUNT(DEBUG_ADDR_INCX),
+	.COUNT(DEBUG_ADDR_INC_EN),
 	.RI(1'b1),
 	.RO(AL_RO),
 	.D(DEBUG_DIN[7:1]),
@@ -138,7 +138,7 @@ synchronizedCounter #(.BUS_WIDTH(8)) addrH(
 	.FASTCLK(CLK),
 	.EN(EN_AH),
 	.LD(1'b1),
-	.COUNT(DEBUG_ADDR_INCX),
+	.COUNT(DEBUG_ADDR_INC_EN),
 	.RI(AL_RO),
 	.RO(AH_RO),
 	.D(DEBUG_DIN),
@@ -175,7 +175,7 @@ register #(.BUS_WIDTH(16)) dataR(
 
 	.CLK(CLK),
 	.RESET(RESET),
-	.LD(DEBUG_LD_DATAX),
+	.LD(DEBUG_LD_DATA_EN),
 	.EN(1'b1),
 	.DIN(DEBUG_DATA_MUX_OUT),
 	.DOUT({DEBUG_READ_MUX_IN_H, DEBUG_READ_MUX_IN_L})
@@ -186,7 +186,7 @@ register #(.BUS_WIDTH(4)) opReg(
 	.CLK(DEBUG_WRN),
 	.RESET(RESET),
 	.DIN(DEBUG_DIN[3:0]),
-	.DOUT({DEBUG_OP, DEBUG_INCX}),
+	.DOUT(DEBUG_OP),
 	.LD(1'b1),
 	.EN(EN_OP)
 );	

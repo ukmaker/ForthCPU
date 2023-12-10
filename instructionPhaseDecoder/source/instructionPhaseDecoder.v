@@ -9,7 +9,7 @@
 *                              - PC_ENX <= 0
 *      0        0      RUN     - normal run state
 *                              - PC_ENX <= 1
-*      1        x      STOPPED - phases halted on STOPPED
+*      1        x      STOPPED - phases halted on STOPPED after FETCH
 *                              - DEBUG_ACTIVE = 1
 *                              - PC_ENX <= 0
 *                              - A positive edge on DEBUG_STEP_REQ
@@ -20,26 +20,28 @@
 							  
 module instructionPhaseDecoder(
 	input               CLK,
-	input               DEBUG_STOPX,
-	input               DEBUG_STEP_REQ,
-	input [15:0]       DIN,
-	input               HALTX,
 	input               RESET,
+	input               HALTX,
+	input               DEBUG_STOP,
+	input               DEBUG_STEP_REQ,
 	
+	output reg          STOPPED,
+	output reg          FETCH,
+	output reg          EXECUTE,
 	output reg          COMMIT,
 	output reg          DECODE,
+	
 	output reg          DEBUG_STEP_ACK,
 	output reg          DEBUG_ACTIVE,
-	output reg          EXECUTE,
-	output reg          FETCH,
-	output reg [15:0]  INSTRUCTION,
-	output reg          PC_ENX,
-	output reg          STOPPED
+
+	output reg          PC_ENX
+
 );
 
 // Internal state
 reg [3:0] PHASE_R;
 reg [3:0] PHASE_NEXT;
+reg RESET_R;
 
 wire DEBUG_ACTIVE_NEXT;
 
@@ -54,36 +56,37 @@ assign DEBUG_ACTIVE_NEXT =
 always @(*) begin
 	case(PHASE_R)
 		`PHI_STOPPED: begin
-			if(DEBUG_STOPX) begin
+			if(DEBUG_STOP) begin
 				PHASE_NEXT = `PHI_DEBUG_STOPPED;
 			end else if(!HALTX) begin
-				PHASE_NEXT = `PHI_FETCH;
+				PHASE_NEXT = RESET_R ? `PHI_FETCH : `PHI_DECODE;
 			end
 		end
 		
-		`PHI_FETCH:   PHASE_NEXT = `PHI_DECODE;
-		`PHI_DECODE:  PHASE_NEXT = `PHI_EXECUTE;
-		`PHI_EXECUTE: PHASE_NEXT = `PHI_COMMIT;
-		`PHI_COMMIT:  begin
-			if(DEBUG_STOPX) begin
+		`PHI_FETCH: begin
+			if(DEBUG_STOP) begin
 				PHASE_NEXT = `PHI_DEBUG_STOPPED;
 			end else begin
-				PHASE_NEXT = `PHI_FETCH;
+				PHASE_NEXT = `PHI_DECODE;
 			end
-		end
+		end		
+		
+		`PHI_DECODE:  PHASE_NEXT = `PHI_EXECUTE;
+		`PHI_EXECUTE: PHASE_NEXT = `PHI_COMMIT;
+		`PHI_COMMIT:  PHASE_NEXT = `PHI_FETCH;
 		
 		`PHI_DEBUG_STOPPED: begin
 			if(DEBUG_STEP_REQ) begin
-				PHASE_NEXT = `PHI_DEBUG_FETCH;
-			end else if(!DEBUG_STOPX) begin
+				PHASE_NEXT = `PHI_DEBUG_DECODE;
+			end else if(!DEBUG_STOP) begin
 				PHASE_NEXT = `PHI_STOPPED;
 			end
 		end
 		
-		`PHI_DEBUG_FETCH:  PHASE_NEXT = `PHI_DEBUG_DECODE;
 		`PHI_DEBUG_DECODE: PHASE_NEXT = `PHI_DEBUG_EXECUTE;
 		`PHI_DEBUG_EXECUTE:PHASE_NEXT = `PHI_DEBUG_COMMIT;
-		`PHI_DEBUG_COMMIT: PHASE_NEXT = `PHI_DEBUG_ACK;
+		`PHI_DEBUG_COMMIT: PHASE_NEXT = `PHI_DEBUG_FETCH;
+		`PHI_DEBUG_FETCH:  PHASE_NEXT = `PHI_DEBUG_ACK;
 		
 		`PHI_DEBUG_ACK: begin
 			// Wait for REQ to go low
@@ -106,7 +109,9 @@ always @(posedge CLK or posedge RESET) begin
 	if(RESET) begin
 		PC_ENX <= 1;
 		DEBUG_ACTIVE <= 0;
+		RESET_R <= 1;
 	end else begin
+		RESET_R <= 0;
 		PC_ENX <= ~HALTX;
 	end
 end
@@ -132,14 +137,6 @@ always @(posedge CLK or posedge RESET) begin
 		COMMIT  <= PHASE_NEXT == `PHI_COMMIT  || PHASE_NEXT == `PHI_DEBUG_COMMIT;
 		DEBUG_STEP_ACK <= PHASE_NEXT == `PHI_DEBUG_ACK;
 		PHASE_R <= PHASE_NEXT;
-	end
-end
-
-always @(negedge CLK or posedge RESET) begin
-	if(RESET) begin
-		INSTRUCTION <= 0;
-	end else if(EXECUTE) begin
-		INSTRUCTION <= DIN;
 	end
 end
 

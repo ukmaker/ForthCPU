@@ -1,0 +1,19 @@
+if {![file exists "C:/Users/Duncan/git/ForthCPU/debugPort/tests/debugSequencerTestbench/debugSequencerTestbench.mpf"]} { 
+	project new "C:/Users/Duncan/git/ForthCPU/debugPort/tests/debugSequencerTestbench" debugSequencerTestbench
+	project addfile "C:/Users/Duncan/git/ForthCPU/debugPort/source/debugSequencer.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/debugPort/tests/debugSequencerTests.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/constants.v"
+	vlib  work
+	vdel -lib work -all 
+	vlib work
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/debugPort/source  -work work  "C:/Users/Duncan/git/ForthCPU/debugPort/source/debugSequencer.v"
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/debugPort/tests  -work work  "C:/Users/Duncan/git/ForthCPU/debugPort/tests/debugSequencerTests.v"
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU  -work work  "C:/Users/Duncan/git/ForthCPU/constants.v"
+} else {
+	project open "C:/Users/Duncan/git/ForthCPU/debugPort/tests/debugSequencerTestbench/debugSequencerTestbench"
+	project compileoutofdate
+}
+vsim -L work -L pmi_work -L ovi_machxo3l  debugSequencerTests
+view wave
+add wave /*
+run 1000ns
