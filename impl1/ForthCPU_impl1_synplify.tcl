@@ -47,6 +47,8 @@ set_option -seqshift_no_replicate 0
 #-- add_file options
 set_option -include_path {C:/Users/Duncan/git/ForthCPU}
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/constants.v}
+add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/impl1/source/mcu.v}
+add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/impl1/test/blinkTest.v}
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/registerSequencer/source/registerSequencer.v}
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/busController/source/busSequencer.v}
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/processorCore/source/core.v}
@@ -69,7 +71,6 @@ add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/interruptLogic/so
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/branchLogic/source/branchLogic.v}
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/busController/source/busController.v}
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/generalGroupDecoder/source/generalGroupDecoder.v}
-add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/impl1/source/mcu.v}
 add_file -verilog -vlog_std v2001 {C:/Users/Duncan/git/ForthCPU/bootROM/source/rom.v}
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/bootROM/source/rom.v}
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/memoryMapper/source/memoryMapper.v}
@@ -79,8 +80,6 @@ add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/interruptLogic/so
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/UART/source/receiver.v}
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/UART/source/transmitter.v}
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/UART/source/UART.v}
-add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/devBoard/source/devBoard.v}
-add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/impl1/test/blinkTest.v}
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/debugPort/source/debugDecoder.v}
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/debugPort/source/debugPort.v}
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/debugPort/source/oneOfEightDecoder.v}

@@ -191,15 +191,16 @@ register #(.BUS_WIDTH(4)) opReg(
 	.EN(EN_OP)
 );	
 
-register #(.BUS_WIDTH(2)) modeReg(
-	.CLK(DEBUG_WRN),
+synchronizer #(.BUS_WIDTH(2)) modeReg(
+	.SLOWCLK(DEBUG_WRN),
+	.FASTCLK(CLK),
 	.RESET(RESET),
-	.DIN(DEBUG_DIN[1:0]),
-	.DOUT({DEBUG_STOP, DEBUG_MODE}),
+	.D(DEBUG_DIN[1:0]),
+	.Q({DEBUG_MODE, DEBUG_STOP}),
+	.CLR(RESET),
 	.LD(1'b1),
 	.EN(EN_MODE)
-);	
-
+);
 
 
 
