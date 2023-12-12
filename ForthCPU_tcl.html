@@ -6,15 +6,7 @@
 -->
 </STYLE>
 </HEAD>
-<PRE><A name="pn230916104747"></A><B><U><big>pn230916104747</big></U></B>
-#Start recording tcl command: 9/16/2023 10:47:06
-#Project Location: C:/Users/Duncan/git/ForthCPU; Project name: ForthCPU
-prj_project open "C:/Users/Duncan/git/ForthCPU/ForthCPU.ldf"
-#Stop recording: 9/16/2023 10:47:47
-
-
-
-<A name="pn231030125929"></A><B><U><big>pn231030125929</big></U></B>
+<PRE><A name="pn231030125929"></A><B><U><big>pn231030125929</big></U></B>
 #Start recording tcl command: 10/29/2023 17:38:55
 #Project Location: C:/Users/Duncan/git/ForthCPU; Project name: ForthCPU
 prj_project open "C:/Users/Duncan/git/ForthCPU/ForthCPU.ldf"
@@ -207,6 +199,209 @@ prj_impl active "mcuTestbench"
 prj_impl active "impl1"
 prj_run Export -impl impl1
 #Stop recording: 11/19/2023 18:07:26
+
+
+
+<A name="pn231212184407"></A><B><U><big>pn231212184407</big></U></B>
+#Start recording tcl command: 12/3/2023 17:15:14
+#Project Location: C:/Users/Duncan/git/ForthCPU; Project name: ForthCPU
+prj_project open "C:/Users/Duncan/git/ForthCPU/ForthCPU.ldf"
+prj_impl active "mcuTestbench"
+prj_impl active "impl1"
+prj_src add "C:/Users/Duncan/git/ForthCPU/processorCore/source/transparentLatch.v"
+prj_run Synthesis -impl impl1 -task Synplify_Synthesis
+prj_run Translate -impl impl1
+prj_run Map -impl impl1
+pgr_project open "C:/Users/Duncan/Desktop/MachXO3L_Starter_Kit/project/impl1/impl1.xcf"
+pgr_program set -port FTUSB-0
+pgr_program set -port FTUSB-1
+pgr_program run
+prj_run Export -impl impl1
+prj_run Export -impl impl1
+pgr_project save "C:/Users/Duncan/Desktop/MachXO3L_Starter_Kit/project/impl1/impl1.xcf"
+pgr_project close
+pgr_project open "C:/Users/Duncan/Desktop/MachXO3L_Starter_Kit/project/impl1/impl1.xcf"
+pgr_program run
+prj_run Export -impl impl1
+pgr_project save "C:/Users/Duncan/Desktop/MachXO3L_Starter_Kit/project/impl1/impl1.xcf"
+pgr_project close
+pgr_project open "C:/Users/Duncan/Desktop/MachXO3L_Starter_Kit/project/impl1/impl1.xcf"
+pgr_program run
+pgr_program run
+pgr_program set -port FTUSB-0
+pgr_program run
+prj_run Export -impl impl1
+pgr_project save "C:/Users/Duncan/Desktop/MachXO3L_Starter_Kit/project/impl1/impl1.xcf"
+pgr_project close
+pgr_project open "C:/Users/Duncan/Desktop/MachXO3L_Starter_Kit/project/impl1/impl1.xcf"
+pgr_program run
+prj_run Export -impl impl1
+pgr_project save "C:/Users/Duncan/Desktop/MachXO3L_Starter_Kit/project/impl1/impl1.xcf"
+pgr_project close
+pgr_project open "C:/Users/Duncan/Desktop/MachXO3L_Starter_Kit/project/impl1/impl1.xcf"
+pgr_program run
+prj_run Export -impl impl1
+pgr_project save "C:/Users/Duncan/Desktop/MachXO3L_Starter_Kit/project/impl1/impl1.xcf"
+pgr_project close
+pgr_project open "C:/Users/Duncan/Desktop/MachXO3L_Starter_Kit/project/impl1/impl1.xcf"
+pgr_program run
+pgr_program set -port FTUSB-1
+pgr_program run
+pgr_project save "C:/Users/Duncan/Desktop/MachXO3L_Starter_Kit/project/impl1/impl1.xcf"
+prj_impl active "debugPort"
+pgr_project close
+prj_impl active "instructionPhaseDecoder"
+prj_impl active "impl1"
+prj_impl active "debugPort"
+prj_src add "C:/Users/Duncan/git/ForthCPU/debugPort/source/synchronizer.v"
+prj_src add "C:/Users/Duncan/git/ForthCPU/debugPort/tests/synchronizerTests.v"
+prj_src add "C:/Users/Duncan/git/ForthCPU/debugPort/tests/synchronizerTestbench/synchronizerTestbench.spf"
+prj_src remove "C:/Users/Duncan/git/ForthCPU/debugPort/source/stopSynchroniser.v"
+prj_src add "C:/Users/Duncan/git/ForthCPU/debugPort/source/synchronizedCounter.v"
+prj_src add "C:/Users/Duncan/git/ForthCPU/debugPort/tests/synchronizedRegisterTests.v"
+prj_src remove "C:/Users/Duncan/git/ForthCPU/debugPort/tests/synchronizedRegisterTests.v"
+prj_src add "C:/Users/Duncan/git/ForthCPU/debugPort/tests/synchronizedCounterTests.v"
+prj_src add "C:/Users/Duncan/git/ForthCPU/debugPort/tests/synchronizedCounterTestbench/synchronizedCounterTestbench.spf"
+prj_impl active "processorCore"
+prj_src remove "C:/Users/Duncan/git/ForthCPU/debugPort/source/stopSynchroniser.v"
+prj_impl active "instructionPhaseDecoder"
+prj_impl active "debugPort"
+prj_src add "C:/Users/Duncan/git/ForthCPU/debugPort/source/debugSequencer.v"
+prj_src add "C:/Users/Duncan/git/ForthCPU/registerSequencer/source/registerSequencer.v"
+prj_src add "C:/Users/Duncan/git/ForthCPU/dataBusController/source/dataBusController.v"
+prj_src add "C:/Users/Duncan/git/ForthCPU/busController/source/busSequencer.v"
+prj_src remove "C:/Users/Duncan/git/ForthCPU/registerSequencer/source/registerSequencer.v" "C:/Users/Duncan/git/ForthCPU/dataBusController/source/dataBusController.v" "C:/Users/Duncan/git/ForthCPU/busController/source/busSequencer.v"
+prj_src add "C:/Users/Duncan/git/ForthCPU/debugPort/tests/debugSequencerTests.v"
+prj_src add "C:/Users/Duncan/git/ForthCPU/debugPort/tests/debugSequencerTestbench/debugSequencerTestbench.spf"
+prj_impl active "processorCore"
+prj_src add "C:/Users/Duncan/git/ForthCPU/debugPort/source/debugSequencer.v" "C:/Users/Duncan/git/ForthCPU/debugPort/source/synchronizedCounter.v" "C:/Users/Duncan/git/ForthCPU/debugPort/source/synchronizer.v"
+prj_impl new "instructionLatch" -dir "instructionLatch" -strategy "Area" -synthesis "synplify"
+prj_impl active "instructionLatch"
+prj_src add "C:/Users/Duncan/git/ForthCPU/instructionLatch/source/instructionLatch.v"
+prj_src add "C:/Users/Duncan/git/ForthCPU/instructionPhaseDecoder/source/instructionPhaseDecoder.v"
+prj_src add "C:/Users/Duncan/git/ForthCPU/instructionLatch/test/instructionLatchTests.v"
+prj_src add "C:/Users/Duncan/git/ForthCPU/instructionPhaseDecoder/test/instructionPhaseDecoderTestbench.v"
+prj_src add "C:/Users/Duncan/git/ForthCPU/debugPort/tests/debugPortTests.v"
+prj_src remove "C:/Users/Duncan/git/ForthCPU/debugPort/tests/debugPortTests.v"
+prj_src add "C:/Users/Duncan/git/ForthCPU/debugPort/tests/requestGeneratorTests.v"
+prj_src remove "C:/Users/Duncan/git/ForthCPU/debugPort/tests/requestGeneratorTests.v"
+prj_src add "C:/Users/Duncan/git/ForthCPU/debugPort/tests/debugSequencerTests.v"
+prj_src remove "C:/Users/Duncan/git/ForthCPU/instructionPhaseDecoder/test/instructionPhaseDecoderTestbench.v" "C:/Users/Duncan/git/ForthCPU/debugPort/tests/debugSequencerTests.v"
+prj_src add "C:/Users/Duncan/git/ForthCPU/instructionLatch/test/instructionLatchTestbench/instructionLatchTestbench.spf"
+prj_impl active "instructionPhaseDecoder"
+prj_impl active "processorCore"
+prj_src add "C:/Users/Duncan/git/ForthCPU/instructionLatch/source/instructionLatch.v"
+prj_impl active "instructionLatch"
+prj_impl active "processorCore"
+prj_impl active "mcuTestbench"
+prj_src add "C:/Users/Duncan/git/ForthCPU/instructionLatch/source/instructionLatch.v"
+prj_src add "C:/Users/Duncan/git/ForthCPU/debugPort/source/debugSequencer.v" "C:/Users/Duncan/git/ForthCPU/debugPort/source/synchronizedCounter.v" "C:/Users/Duncan/git/ForthCPU/debugPort/source/synchronizer.v" "C:/Users/Duncan/git/ForthCPU/debugPort/source/requestGenerator.v"
+prj_src remove "C:/Users/Duncan/git/ForthCPU/debugPort/source/stopSynchroniser.v"
+prj_impl active "impl1"
+prj_src add "C:/Users/Duncan/git/ForthCPU/instructionLatch/source/instructionLatch.v"
+prj_src add "C:/Users/Duncan/git/ForthCPU/debugPort/source/synchronizedCounter.v" "C:/Users/Duncan/git/ForthCPU/debugPort/source/synchronizer.v" "C:/Users/Duncan/git/ForthCPU/debugPort/source/debugDecoder.v"
+prj_src add "C:/Users/Duncan/git/ForthCPU/debugPort/source/debugSequencer.v"
+prj_src remove "C:/Users/Duncan/git/ForthCPU/impl1/test/blinkTestbench/blinkTestbench.spf"
+prj_src remove "C:/Users/Duncan/git/ForthCPU/debugPort/source/stopSynchroniser.v"
+prj_src add "C:/Users/Duncan/git/ForthCPU/impl1/test/blinkTestbench/blinkTestbench.spf"
+prj_impl active "devBoard"
+prj_impl active "impl1"
+prj_run Synthesis -impl impl1
+prj_run Translate -impl impl1
+prj_run Map -impl impl1
+prj_run PAR -impl impl1
+prj_impl active "bootROM"
+prj_impl active "impl1"
+prj_run Export -impl impl1
+pgr_project open "C:/Users/Duncan/Desktop/MachXO3L_Starter_Kit/project/impl1/impl1.xcf"
+pgr_program run
+prj_run Map -impl impl1
+prj_run PAR -impl impl1
+pgr_project save "C:/Users/Duncan/Desktop/MachXO3L_Starter_Kit/project/impl1/impl1.xcf"
+pgr_project close
+prj_run Synthesis -impl impl1
+pgr_project open "C:/Users/Duncan/Desktop/MachXO3L_Starter_Kit/project/impl1/impl1.xcf"
+pgr_project close
+prj_impl active "processorCore"
+prj_impl active "impl1"
+prj_run Synthesis -impl impl1
+prj_run Translate -impl impl1
+prj_run Map -impl impl1
+prj_run PAR -impl impl1
+prj_run Export -impl impl1
+pgr_project open "C:/Users/Duncan/Desktop/MachXO3L_Starter_Kit/project/impl1/impl1.xcf"
+pgr_program run
+prj_run Export -impl impl1
+pgr_project save "C:/Users/Duncan/Desktop/MachXO3L_Starter_Kit/project/impl1/impl1.xcf"
+pgr_project close
+pgr_project open "C:/Users/Duncan/Desktop/MachXO3L_Starter_Kit/project/impl1/impl1.xcf"
+pgr_program run
+prj_run Export -impl impl1
+prj_run Export -impl impl1
+pgr_project save "C:/Users/Duncan/Desktop/MachXO3L_Starter_Kit/project/impl1/impl1.xcf"
+pgr_project close
+pgr_project open "C:/Users/Duncan/Desktop/MachXO3L_Starter_Kit/project/impl1/impl1.xcf"
+pgr_program run
+pgr_program run
+prj_run Export -impl impl1
+pgr_project save "C:/Users/Duncan/Desktop/MachXO3L_Starter_Kit/project/impl1/impl1.xcf"
+pgr_project close
+pgr_project open "C:/Users/Duncan/Desktop/MachXO3L_Starter_Kit/project/impl1/impl1.xcf"
+pgr_program run
+pgr_program run
+prj_run Export -impl impl1
+pgr_project save "C:/Users/Duncan/Desktop/MachXO3L_Starter_Kit/project/impl1/impl1.xcf"
+pgr_project close
+pgr_project open "C:/Users/Duncan/Desktop/MachXO3L_Starter_Kit/project/impl1/impl1.xcf"
+pgr_program run
+prj_run Export -impl impl1
+pgr_project save "C:/Users/Duncan/Desktop/MachXO3L_Starter_Kit/project/impl1/impl1.xcf"
+pgr_project close
+pgr_project open "C:/Users/Duncan/Desktop/MachXO3L_Starter_Kit/project/impl1/impl1.xcf"
+pgr_program run
+prj_run Export -impl impl1
+pgr_project save "C:/Users/Duncan/Desktop/MachXO3L_Starter_Kit/project/impl1/impl1.xcf"
+pgr_project close
+pgr_project open "C:/Users/Duncan/Desktop/MachXO3L_Starter_Kit/project/impl1/impl1.xcf"
+pgr_program run
+prj_run Export -impl impl1
+pgr_project save "C:/Users/Duncan/Desktop/MachXO3L_Starter_Kit/project/impl1/impl1.xcf"
+pgr_project close
+pgr_project open "C:/Users/Duncan/Desktop/MachXO3L_Starter_Kit/project/impl1/impl1.xcf"
+pgr_program run
+prj_src remove "C:/Users/Duncan/git/ForthCPU/devBoard/source/devBoard.v"
+prj_run Export -impl impl1
+pgr_project save "C:/Users/Duncan/Desktop/MachXO3L_Starter_Kit/project/impl1/impl1.xcf"
+pgr_project close
+pgr_project open "C:/Users/Duncan/Desktop/MachXO3L_Starter_Kit/project/impl1/impl1.xcf"
+pgr_program run
+prj_run Export -impl impl1
+pgr_project save "C:/Users/Duncan/Desktop/MachXO3L_Starter_Kit/project/impl1/impl1.xcf"
+pgr_project close
+pgr_project open "C:/Users/Duncan/Desktop/MachXO3L_Starter_Kit/project/impl1/impl1.xcf"
+pgr_program run
+prj_src add "C:/Users/Duncan/git/ForthCPU/devBoard/source/devBoard.v"
+prj_src remove "C:/Users/Duncan/git/ForthCPU/devBoard/source/devBoard.v"
+prj_run Export -impl impl1
+pgr_project save "C:/Users/Duncan/Desktop/MachXO3L_Starter_Kit/project/impl1/impl1.xcf"
+pgr_project close
+pgr_project open "C:/Users/Duncan/Desktop/MachXO3L_Starter_Kit/project/impl1/impl1.xcf"
+pgr_program run
+prj_src add "C:/Users/Duncan/git/ForthCPU/instructionTestSetup.v"
+prj_run Export -impl impl1
+pgr_project save "C:/Users/Duncan/Desktop/MachXO3L_Starter_Kit/project/impl1/impl1.xcf"
+pgr_project close
+pgr_project open "C:/Users/Duncan/Desktop/MachXO3L_Starter_Kit/project/impl1/impl1.xcf"
+pgr_program set -cable 
+pgr_program set -port FTUSB-0
+pgr_program set -port FTUSB-1
+pgr_program run
+pgr_project save "C:/Users/Duncan/Desktop/MachXO3L_Starter_Kit/project/impl1/impl1.xcf"
+pgr_project close
+pgr_project open "C:/Users/Duncan/Desktop/MachXO3L_Starter_Kit/project/impl1/impl1.xcf"
+pgr_program run
+pgr_project close
+#Stop recording: 12/12/2023 18:44:07
 
 
 

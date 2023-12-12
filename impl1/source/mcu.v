@@ -127,9 +127,9 @@ mcuResources mcuResourcesInst(
 	.ADDR(ADDR),
 	.CPU_DIN(CPU_DIN),
 	.CPU_DOUT(DOUT),
-	.RDN(RDN),
-	.WR0N(WRN0),
-	.WR1N(WRN1),
+	.RDN(PIN_RDN),
+	.WR0N(PIN_WRN0),
+	.WR1N(PIN_WRN1),
 	.DIN_BUS(DIN),
 	// GPIO
 	.DIN_GPIO(PIN_DIN_GPIO),

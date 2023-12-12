@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<BaliProject version="3.2" title="ForthCPU" device="LCMXO3L-6900C-5BG256C" default_implementation="processorCore">
+<BaliProject version="3.2" title="ForthCPU" device="LCMXO3L-6900C-5BG256C" default_implementation="impl1">
     <Options/>
     <Implementation title="RAM" dir="RAM" description="RAM" synthesis="synplify" default_strategy="Area">
         <Options def_top="ramTests"/>
@@ -263,7 +263,7 @@
         </Source>
     </Implementation>
     <Implementation title="debugPort" dir="debugPort" description="debugPort" synthesis="synplify" default_strategy="Area">
-        <Options def_top="debugDecoder"/>
+        <Options def_top="debugSequencerTests"/>
         <Source name="constants.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
@@ -294,16 +294,40 @@
         <Source name="instructionTestSetup.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
-        <Source name="debugPort/source/stopSynchroniser.v" type="Verilog" type_short="Verilog">
-            <Options top_module="stopSynchroniser"/>
-        </Source>
         <Source name="debugPort/source/debugDecoder.v" type="Verilog" type_short="Verilog">
             <Options top_module="debugDecoder"/>
+        </Source>
+        <Source name="debugPort/source/synchronizer.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="debugPort/tests/synchronizerTests.v" type="Verilog" type_short="Verilog">
+            <Options top_module="synchronizerTests"/>
+        </Source>
+        <Source name="debugPort/source/synchronizedCounter.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="debugPort/tests/synchronizedCounterTests.v" type="Verilog" type_short="Verilog">
+            <Options top_module="synchronizedCounterTests"/>
+        </Source>
+        <Source name="debugPort/source/debugSequencer.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="debugPort/tests/debugSequencerTests.v" type="Verilog" type_short="Verilog">
+            <Options top_module="debugSequencerTests"/>
         </Source>
         <Source name="debugPort/tests/debugPortTestbench/debugPortTestbench.spf" type="Simulation Project File" type_short="SPF">
             <Options/>
         </Source>
+        <Source name="debugPort/tests/debugSequencerTestbench/debugSequencerTestbench.spf" type="Simulation Project File" type_short="SPF">
+            <Options/>
+        </Source>
         <Source name="debugPort/tests/requestGeneratorTestbench/requestGeneratorTestbench.spf" type="Simulation Project File" type_short="SPF">
+            <Options/>
+        </Source>
+        <Source name="debugPort/tests/synchronizedCounterTestbench/synchronizedCounterTestbench.spf" type="Simulation Project File" type_short="SPF">
+            <Options/>
+        </Source>
+        <Source name="debugPort/tests/synchronizerTestbench/synchronizerTestbench.spf" type="Simulation Project File" type_short="SPF">
             <Options/>
         </Source>
         <Source name="debugPort/tests/upCounterTestbench/upCounterTestbench.spf" type="Simulation Project File" type_short="SPF">
@@ -353,8 +377,20 @@
         </Source>
     </Implementation>
     <Implementation title="impl1" dir="impl1" description="impl1" synthesis="synplify" default_strategy="Strategy1">
-        <Options VerilogStandard="System Verilog" def_top="stopSynchroniser" top="mcu"/>
+        <Options VerilogStandard="System Verilog" def_top="transparentLatch" top="mcu"/>
         <Source name="constants.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="impl1/source/mcu.v" type="Verilog" type_short="Verilog">
+            <Options top_module="mcu"/>
+        </Source>
+        <Source name="impl1/test/blinkTest.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="registerSequencer/source/registerSequencer.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="busController/source/busSequencer.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
         <Source name="processorCore/source/core.v" type="Verilog" type_short="Verilog">
@@ -417,14 +453,8 @@
         <Source name="busController/source/busController.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
-        <Source name="busController/source/busSequencer.v" type="Verilog" type_short="Verilog">
-            <Options/>
-        </Source>
         <Source name="generalGroupDecoder/source/generalGroupDecoder.v" type="Verilog" type_short="Verilog">
             <Options/>
-        </Source>
-        <Source name="impl1/source/mcu.v" type="Verilog" type_short="Verilog">
-            <Options top_module="mcu"/>
         </Source>
         <Source name="bootROM/source/rom.ipx" type="IPX_Module" type_short="IPX">
             <Options/>
@@ -453,15 +483,6 @@
         <Source name="UART/source/UART.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
-        <Source name="devBoard/source/devBoard.v" type="Verilog" type_short="Verilog">
-            <Options/>
-        </Source>
-        <Source name="impl1/test/blinkTest.v" type="Verilog" type_short="Verilog">
-            <Options/>
-        </Source>
-        <Source name="registerSequencer/source/registerSequencer.v" type="Verilog" type_short="Verilog">
-            <Options/>
-        </Source>
         <Source name="debugPort/source/debugDecoder.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
@@ -477,13 +498,28 @@
         <Source name="debugPort/source/requestGenerator.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
-        <Source name="debugPort/source/stopSynchroniser.v" type="Verilog" type_short="Verilog">
-            <Options/>
-        </Source>
         <Source name="debugPort/source/upCounter.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
         <Source name="RAM/source/RAM.ipx" type="IPX_Module" type_short="IPX">
+            <Options/>
+        </Source>
+        <Source name="processorCore/source/transparentLatch.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="instructionLatch/source/instructionLatch.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="debugPort/source/synchronizedCounter.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="debugPort/source/synchronizer.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="debugPort/source/debugSequencer.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="instructionTestSetup.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
         <Source name="../../Desktop/MachXO3L_Starter_Kit/project/impl1/impl1.xcf" type="Programming Project File" type_short="Programming">
@@ -493,6 +529,24 @@
             <Options/>
         </Source>
         <Source name="impl1/test/blinkTestbench/blinkTestbench.spf" type="Simulation Project File" type_short="SPF">
+            <Options/>
+        </Source>
+    </Implementation>
+    <Implementation title="instructionLatch" dir="instructionLatch" description="instructionLatch" synthesis="synplify" default_strategy="Area">
+        <Options def_top="instructionLatchTests"/>
+        <Source name="instructionLatch/source/instructionLatch.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="instructionPhaseDecoder/source/instructionPhaseDecoder.v" type="Verilog" type_short="Verilog">
+            <Options top_module="instructionPhaseDecoder"/>
+        </Source>
+        <Source name="instructionLatch/test/instructionLatchTests.v" type="Verilog" type_short="Verilog">
+            <Options top_module="instructionLatchTests"/>
+        </Source>
+        <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">
+            <Options/>
+        </Source>
+        <Source name="instructionLatch/test/instructionLatchTestbench/instructionLatchTestbench.spf" type="Simulation Project File" type_short="SPF">
             <Options/>
         </Source>
     </Implementation>
@@ -623,7 +677,7 @@
         </Source>
     </Implementation>
     <Implementation title="mcuTestbench" dir="mcuTestbench" description="mcuTestbench" synthesis="synplify" default_strategy="Area">
-        <Options def_top="stopSynchroniser"/>
+        <Options def_top="upCounter"/>
         <Source name="constants.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
@@ -738,13 +792,22 @@
         <Source name="debugPort/source/requestGenerator.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
-        <Source name="debugPort/source/stopSynchroniser.v" type="Verilog" type_short="Verilog">
-            <Options top_module="stopSynchroniser"/>
-        </Source>
         <Source name="debugPort/source/upCounter.v" type="Verilog" type_short="Verilog">
-            <Options/>
+            <Options top_module="upCounter"/>
         </Source>
         <Source name="busController/source/busSequencer.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="instructionLatch/source/instructionLatch.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="debugPort/source/debugSequencer.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="debugPort/source/synchronizedCounter.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="debugPort/source/synchronizer.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
         <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">
@@ -840,10 +903,10 @@
         <Source name="busController/source/busSequencer.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
-        <Source name="debugPort/source/debugDecoder.v" type="Verilog" type_short="Verilog">
+        <Source name="debugPort/source/debugPort.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
-        <Source name="debugPort/source/debugPort.v" type="Verilog" type_short="Verilog">
+        <Source name="debugPort/source/debugDecoder.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
         <Source name="debugPort/source/oneOfEightDecoder.v" type="Verilog" type_short="Verilog">
@@ -855,16 +918,25 @@
         <Source name="debugPort/source/requestGenerator.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
-        <Source name="debugPort/source/stopSynchroniser.v" type="Verilog" type_short="Verilog">
-            <Options top_module="stopSynchroniser"/>
+        <Source name="debugPort/source/synchronizer.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="debugPort/source/synchronizedCounter.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="debugPort/source/debugSequencer.v" type="Verilog" type_short="Verilog">
+            <Options/>
         </Source>
         <Source name="debugPort/source/upCounter.v" type="Verilog" type_short="Verilog">
-            <Options/>
+            <Options top_module="upCounter"/>
         </Source>
         <Source name="generalGroupDecoder/source/generalGroupDecoder.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
         <Source name="instructionPhaseDecoder/source/instructionPhaseDecoder.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="instructionLatch/source/instructionLatch.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
         <Source name="interruptLogic/source/interruptStateMachine.v" type="Verilog" type_short="Verilog">
