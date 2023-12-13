@@ -1,9 +1,13 @@
 # Reading pref.tcl
 # do {C:/Users/Duncan/git/ForthCPU/impl1/test/blinkTestbench/blinkTestbench.mdo}
 # Loading project blinkTestbench
-# Compile of instructionPhaseDecoder.v was successful.
+# Compile of debugPort.v was successful.
+# Compile of core.v was successful.
+# Compile of mcu.v was successful.
+# Compile of constants.v was successful.
+# 4 compiles, 0 failed with no errors.
 # vsim -L work -L pmi_work -L ovi_machxo3l blinkTests 
-# Start time: 10:51:41 on Dec 13,2023
+# Start time: 22:51:42 on Dec 13,2023
 # //  ModelSim - Lattice FPGA Edition 2020.3 Oct 14 2020
 # //
 # //  Copyright 1991-2020 Mentor Graphics Corporation
@@ -66,7 +70,12 @@
 #    Time: 0 ps  Iteration: 0  Instance: /blinkTests/mcuInst/mcuResourcesInst/RAMInst File: C:/Users/Duncan/git/ForthCPU/mcuResources/source/mcuResources.v Line: 101
 # Loading ovi_machxo3l.UDFDL5E_UDP_X
 # .main_pane.wave.interior.cs.body.pw.wf
-run 30us
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: Duncan  Hostname: EDAWIN  ProcessID: 16740
+#           Attempting to use alternate WLF file "./wlft7gnqyv".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlft7gnqyv
+run 1ms
 # [T=  2300000] WRITE
 # [T=  4900000] WRITE
 # [T=  6200000] WRITE
@@ -99,7 +108,6 @@ run 30us
 # [T= 28600000]   SET OP
 # [T= 29800000] STEP
 # [T= 31000000] READ
-run 10us
 # [T= 31300000] READ
 # [T= 31600000] STEP
 # [T= 32800000] READ PC
@@ -113,146 +121,182 @@ run 10us
 # [T= 38200000]   SET MODE
 # [T= 39400000]   SET OP
 # [T= 40600000] STEP
-add wave -position 9  sim:/blinkTests/mcuInst/coreInst/debugger/decoder/S0
-add wave -position 10  sim:/blinkTests/mcuInst/coreInst/debugger/decoder/S1
-add wave -position 11  sim:/blinkTests/mcuInst/coreInst/debugger/decoder/S2
-add wave -position 12  sim:/blinkTests/mcuInst/coreInst/debugger/decoder/S3
-add wave -position 13  sim:/blinkTests/mcuInst/coreInst/debugger/decoder/S4
-add wave -position 14  sim:/blinkTests/mcuInst/coreInst/debugger/decoder/S5
-add wave -position 15  sim:/blinkTests/mcuInst/coreInst/debugger/decoder/S6
-add wave -position 16  sim:/blinkTests/mcuInst/coreInst/debugger/decoder/S7
-restart; run 30us
+# [T= 41800000] READ
+# [T= 42100000] READ
+# Compile of interruptMaskRegister.v was successful.
+# Compile of transmitter.v was successful.
+# Compile of receiver.v was successful.
+# Compile of UART.v was successful.
+# Compile of memoryMapper.v was successful.
+# Compile of mcuResources.v was successful.
+# Compile of registerSequencer.v was successful.
+# Compile of opxMultiplexer.v was successful.
+# Compile of generalGroupDecoder.v was successful.
+# Compile of jumpGroupDecoder.v was successful.
+# Compile of loadStoreGroupDecoder.v was successful.
+# Compile of aluGroupDecoder.v was successful.
+# Compile of interruptStateMachine.v was successful.
+# Compile of programCounter.v was successful.
+# Compile of busSequencer.v was successful.
+# Compile of busController.v was successful.
+# Compile of registerFile.v was successful.
+# Compile of ccRegisters.v was successful.
+# Compile of aluBMux.v was successful.
+# Compile of aluAMux.v was successful.
+# Compile of alu.v was successful.
+# Compile of fullALU.v was successful.
+# Compile of instructionLatch.v was successful.
+# Compile of instructionPhaseDecoder.v was successful.
+# Compile of debugSequencer.v was successful.
+# Compile of debugDecoder.v was successful.
+# Compile of synchronizer.v was successful.
+# Compile of register.v was successful.
+# Compile of synchronizedCounter.v was successful.
+# Compile of requestGenerator.v was successful.
+# Compile of oneOfEightDecoder.v was successful.
+# Compile of debugPort.v was successful.
+# Compile of core.v was successful.
+# Compile of mcu.v was successful.
+# Compile of blinkTest.v was successful.
+# Compile of branchLogic.v was successful.
+# Compile of upCounter.v was successful.
+# Compile of transparentLatch.v was successful.
+# Compile of constants.v was successful.
+# Compile of instructionTestSetup.v was successful.
+# Compile of rom.v was successful.
+# Compile of registers.v was successful.
+# Compile of RAM.v was successful.
+# 43 compiles, 0 failed with no errors.
+restart; run 1ms
 # ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.blinkTests
+# Loading work.mcu
+# Loading work.core
+# Loading work.register
+# Loading work.debugPort
+# Loading work.oneOfEightDecoder
+# Loading work.requestGenerator
+# Loading work.synchronizer
+# Loading work.synchronizedCounter
+# Loading work.debugDecoder
+# Loading work.debugSequencer
+# Loading work.instructionPhaseDecoder
+# Loading work.instructionLatch
+# Loading work.fullALU
+# Loading work.alu
+# Loading work.aluAMux
+# Loading work.aluBMux
+# Loading work.ccRegisters
+# Loading work.registerFile
+# Loading work.registers
+# Loading work.busController
+# Loading work.busSequencer
+# Loading work.programCounter
+# Loading work.interruptStateMachine
+# Loading work.aluGroupDecoder
+# Loading work.loadStoreGroupDecoder
+# Loading work.jumpGroupDecoder
+# Loading work.generalGroupDecoder
+# Loading work.opxMultiplexer
+# Loading work.registerSequencer
+# Loading work.mcuResources
+# Loading work.memoryMapper
+# Loading work.rom
+# Loading work.RAM
+# Loading work.UART
+# Loading work.UART_RX
+# Loading work.UART_TX
+# Loading work.interruptMaskRegister
 # ** Warning: (vsim-3015) [PCDPC] - Port size (12) does not match connection size (13) for port 'Address'. The port definition is at: C:/Users/Duncan/git/ForthCPU/RAM/source/RAM.v(8).
 #    Time: 0 ps  Iteration: 0  Instance: /blinkTests/mcuInst/mcuResourcesInst/RAMInst File: C:/Users/Duncan/git/ForthCPU/mcuResources/source/mcuResources.v Line: 101
-# GetModuleFileName: The specified module could not be found.
-# 
-# 
 # [T=  2300000] WRITE
+# [T=  3600000] WRITE
 # [T=  4900000] WRITE
 # [T=  6200000] WRITE
 # [T=  7500000] WRITE
-# [T=  8800000] WRITE
-# [T= 10100000] READ
-# [T= 10400000] READ
-# [T= 10700000] READ
-# [T= 11000000] READ
-# [T= 11300000] READ
-# [T= 11600000] READ
-# [T= 14200000] STOP
-# [T= 15400000] STEP
-# [T= 16600000] READ PC
-# [T= 16600000]   SET MODE
-# [T= 17800000]   SET OP
-# [T= 19000000] STEP
-# [T= 20200000] READ
-# [T= 20500000] READ
-# [T= 20800000] STEP
-# [T= 22000000] READ PC
-# [T= 22000000]   SET MODE
-# [T= 23200000]   SET OP
-# [T= 24400000] STEP
-# [T= 25600000] READ
-# [T= 25900000] READ
-# [T= 26200000] STEP
-# [T= 27400000] READ PC
-# [T= 27400000]   SET MODE
-# [T= 28600000]   SET OP
-# [T= 29800000] STEP
-add wave -position 17  sim:/blinkTests/mcuInst/coreInst/debugger/requestGen/DEBUG_WRN
-add wave -position 18  sim:/blinkTests/mcuInst/coreInst/debugger/requestGen/DEBUG_RDN
-add wave -position 19  sim:/blinkTests/mcuInst/coreInst/debugger/requestGen/EN_MODE
-add wave -position 20  sim:/blinkTests/mcuInst/coreInst/debugger/requestGen/DEBUG_DIN_REQ
-add wave -position 21  sim:/blinkTests/mcuInst/coreInst/debugger/requestGen/EN_DH
-add wave -position 22  sim:/blinkTests/mcuInst/coreInst/debugger/requestGen/DEBUG_INCX
-add wave -position 23  sim:/blinkTests/mcuInst/coreInst/debugger/requestGen/DEBUG_ACK
-add wave -position 24  sim:/blinkTests/mcuInst/coreInst/debugger/requestGen/DEBUG_REQ
+# [T=  8800000] READ
+# [T=  9100000] READ
+# [T=  9400000] READ
+# [T=  9700000] READ
+# [T= 10000000] READ
+# [T= 10300000] READ
+# [T= 10600000] WRITE
+# [T= 11900000] WRITE
+# [T= 13200000] WRITE
+# [T= 14500000] READ
+# [T= 14800000] READ
+# [T= 15100000] READ
+# [T= 15400000] READ
+# [T= 15700000] READ
+# [T= 16000000] READ
+# [T= 18600000] STOP
+# [T= 19800000] STEP
+# [T= 21000000] READ PC
+# [T= 21000000]   SET MODE
+# [T= 22200000]   SET OP
+# [T= 23400000] STEP
+# [T= 24600000] READ
+# [T= 24900000] READ
+# [T= 25200000] STEP
+# [T= 26400000] READ PC
+# [T= 26400000]   SET MODE
+# [T= 27600000]   SET OP
+# [T= 28800000] STEP
+# [T= 30000000] READ
+# [T= 30300000] READ
+# [T= 30600000] STEP
+# [T= 31800000] READ PC
+# [T= 31800000]   SET MODE
+# [T= 33000000]   SET OP
+# [T= 34200000] STEP
+# [T= 35400000] READ
+# [T= 35700000] READ
+# [T= 36000000] STEP
+# [T= 37200000] READ PC
+# [T= 37200000]   SET MODE
+# [T= 38400000]   SET OP
+# [T= 39600000] STEP
+# [T= 40800000] READ
+# [T= 41100000] READ
+# [T= 41400000] STEP
+# [T= 42600000] READ PC
+# [T= 42600000]   SET MODE
+# [T= 43800000]   SET OP
+# [T= 45000000] STEP
+# [T= 46200000] READ
+# [T= 46500000] READ
+add wave -position 2  sim:/blinkTests/mcuInst/coreInst/debugger/RESETN
+add wave -position 3  sim:/blinkTests/mcuInst/coreInst/debugger/RESET
+add wave -position 4  sim:/blinkTests/mcuInst/coreInst/debugger/DEBUG_RESET
+add wave -position 5  sim:/blinkTests/mcuInst/coreInst/debugger/DEBUG_LOCAL_RESET
+run restart; run 20us
+# Invalid time value: restart
 restart; run 20us
 # ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
 # ** Warning: (vsim-3015) [PCDPC] - Port size (12) does not match connection size (13) for port 'Address'. The port definition is at: C:/Users/Duncan/git/ForthCPU/RAM/source/RAM.v(8).
 #    Time: 0 ps  Iteration: 0  Instance: /blinkTests/mcuInst/mcuResourcesInst/RAMInst File: C:/Users/Duncan/git/ForthCPU/mcuResources/source/mcuResources.v Line: 101
-# GetModuleFileName: The specified module could not be found.
-# 
-# 
 # [T=  2300000] WRITE
+# [T=  3600000] WRITE
 # [T=  4900000] WRITE
 # [T=  6200000] WRITE
 # [T=  7500000] WRITE
-# [T=  8800000] WRITE
-# [T= 10100000] READ
-# [T= 10400000] READ
-# [T= 10700000] READ
-# [T= 11000000] READ
-# [T= 11300000] READ
-# [T= 11600000] READ
-# [T= 14200000] STOP
-# [T= 15400000] STEP
-# [T= 16600000] READ PC
-# [T= 16600000]   SET MODE
-# [T= 17800000]   SET OP
-# [T= 19000000] STEP
-add wave -position 25  sim:/blinkTests/mcuInst/coreInst/debugger/requestGen/EN_MODE
-add wave -position 26  sim:/blinkTests/mcuInst/coreInst/debugger/requestGen/DEBUG_DIN_REQ
-add wave -position 27  sim:/blinkTests/mcuInst/coreInst/debugger/requestGen/DEBUG_MODE_REQ
-add wave -position 28  sim:/blinkTests/mcuInst/coreInst/debugger/requestGen/DEBUG_INC_REQ
-restart; run 20us
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# ** Warning: (vsim-3015) [PCDPC] - Port size (12) does not match connection size (13) for port 'Address'. The port definition is at: C:/Users/Duncan/git/ForthCPU/RAM/source/RAM.v(8).
-#    Time: 0 ps  Iteration: 0  Instance: /blinkTests/mcuInst/mcuResourcesInst/RAMInst File: C:/Users/Duncan/git/ForthCPU/mcuResources/source/mcuResources.v Line: 101
-# GetModuleFileName: The specified module could not be found.
-# 
-# 
-# [T=  2300000] WRITE
-# [T=  4900000] WRITE
-# [T=  6200000] WRITE
-# [T=  7500000] WRITE
-# [T=  8800000] WRITE
-# [T= 10100000] READ
-# [T= 10400000] READ
-# [T= 10700000] READ
-# [T= 11000000] READ
-# [T= 11300000] READ
-# [T= 11600000] READ
-# [T= 14200000] STOP
-# [T= 15400000] STEP
-# [T= 16600000] READ PC
-# [T= 16600000]   SET MODE
-# [T= 17800000]   SET OP
-# [T= 19000000] STEP
-add wave -position 27  sim:/blinkTests/mcuInst/coreInst/debugger/requestGen/modeReqReg/RESET
-add wave -position 28  sim:/blinkTests/mcuInst/coreInst/debugger/requestGen/modeReqReg/SLOWCLK
-add wave -position 29  sim:/blinkTests/mcuInst/coreInst/debugger/requestGen/modeReqReg/EN
-add wave -position 30  sim:/blinkTests/mcuInst/coreInst/debugger/requestGen/modeReqReg/LD
-add wave -position 31  sim:/blinkTests/mcuInst/coreInst/debugger/requestGen/modeReqReg/FASTCLK
-add wave -position 32  sim:/blinkTests/mcuInst/coreInst/debugger/requestGen/modeReqReg/CLR
-add wave -position 33  sim:/blinkTests/mcuInst/coreInst/debugger/requestGen/modeReqReg/D
-add wave -position 34  sim:/blinkTests/mcuInst/coreInst/debugger/requestGen/modeReqReg/Q
-add wave -position 35  sim:/blinkTests/mcuInst/coreInst/debugger/requestGen/modeReqReg/Q_R
-add wave -position 36  sim:/blinkTests/mcuInst/coreInst/debugger/requestGen/modeReqReg/Q_PHI0
-restart; run 20us
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# ** Warning: (vsim-3015) [PCDPC] - Port size (12) does not match connection size (13) for port 'Address'. The port definition is at: C:/Users/Duncan/git/ForthCPU/RAM/source/RAM.v(8).
-#    Time: 0 ps  Iteration: 0  Instance: /blinkTests/mcuInst/mcuResourcesInst/RAMInst File: C:/Users/Duncan/git/ForthCPU/mcuResources/source/mcuResources.v Line: 101
-# GetModuleFileName: The specified module could not be found.
-# 
-# 
-# [T=  2300000] WRITE
-# [T=  4900000] WRITE
-# [T=  6200000] WRITE
-# [T=  7500000] WRITE
-# [T=  8800000] WRITE
-# [T= 10100000] READ
-# [T= 10400000] READ
-# [T= 10700000] READ
-# [T= 11000000] READ
-# [T= 11300000] READ
-# [T= 11600000] READ
-# [T= 14200000] STOP
-# [T= 15400000] STEP
-# [T= 16600000] READ PC
-# [T= 16600000]   SET MODE
-# [T= 17800000]   SET OP
-# [T= 19000000] STEP
+# [T=  8800000] READ
+# [T=  9100000] READ
+# [T=  9400000] READ
+# [T=  9700000] READ
+# [T= 10000000] READ
+# [T= 10300000] READ
+# [T= 10600000] WRITE
+# [T= 11900000] WRITE
+# [T= 13200000] WRITE
+# [T= 14500000] READ
+# [T= 14800000] READ
+# [T= 15100000] READ
+# [T= 15400000] READ
+# [T= 15700000] READ
+# [T= 16000000] READ
+# [T= 18600000] STOP
+# [T= 19800000] STEP
 # Compile of interruptMaskRegister.v was successful.
 # Compile of transmitter.v was successful.
 # Compile of receiver.v was successful.
@@ -339,38 +383,25 @@ restart; run 20us
 # Loading work.interruptMaskRegister
 # ** Warning: (vsim-3015) [PCDPC] - Port size (12) does not match connection size (13) for port 'Address'. The port definition is at: C:/Users/Duncan/git/ForthCPU/RAM/source/RAM.v(8).
 #    Time: 0 ps  Iteration: 0  Instance: /blinkTests/mcuInst/mcuResourcesInst/RAMInst File: C:/Users/Duncan/git/ForthCPU/mcuResources/source/mcuResources.v Line: 101
-# GetModuleFileName: The specified module could not be found.
-# 
-# 
 # [T=  2300000] WRITE
+# [T=  3600000] WRITE
 # [T=  4900000] WRITE
 # [T=  6200000] WRITE
 # [T=  7500000] WRITE
-# [T=  8800000] WRITE
-# [T= 10100000] READ
-# [T= 10400000] READ
-# [T= 10700000] READ
-# [T= 11000000] READ
-# [T= 11300000] READ
-# [T= 11600000] READ
-# [T= 14200000] STOP
-# [T= 15400000] STEP
-# [T= 16600000] READ PC
-# [T= 16600000]   SET MODE
-# [T= 17800000]   SET OP
-# [T= 19000000] STEP
-run 10us
-# [T= 20200000] READ
-# [T= 20500000] READ
-# [T= 20800000] STEP
-# [T= 22000000] READ PC
-# [T= 22000000]   SET MODE
-# [T= 23200000]   SET OP
-# [T= 24400000] STEP
-# [T= 25600000] READ
-# [T= 25900000] READ
-# [T= 26200000] STEP
-# [T= 27400000] READ PC
-# [T= 27400000]   SET MODE
-# [T= 28600000]   SET OP
-# [T= 29800000] STEP
+# [T=  8800000] READ
+# [T=  9100000] READ
+# [T=  9400000] READ
+# [T=  9700000] READ
+# [T= 10000000] READ
+# [T= 10300000] READ
+# [T= 10600000] WRITE
+# [T= 11900000] WRITE
+# [T= 13200000] WRITE
+# [T= 14500000] READ
+# [T= 14800000] READ
+# [T= 15100000] READ
+# [T= 15400000] READ
+# [T= 15700000] READ
+# [T= 16000000] READ
+# [T= 18600000] STOP
+# [T= 19800000] STEP

@@ -31,7 +31,8 @@ module debugPort(
 	* Signals to the CPU
 	****************************************/
 	input             CLK,
-	input             RESET,
+	input             RESETN,
+	output            RESET,
 	
 	output [3:0]     DEBUG_OP,
 	output            DEBUG_MODE,
@@ -79,7 +80,12 @@ wire AH_RO; // unused
 * Internal control signals
 ****************************************************/
 wire DEBUG_INCX = DEBUG_OP[0];
-wire DEBUG_DIN_REQ = DEBUG_DIN[2];
+wire DEBUG_DIN_REQ = DEBUG_DIN[3];
+wire DEBUG_RESET;
+wire DEBUG_LOCAL_RESET;
+
+assign DEBUG_LOCAL_RESET = ~RESETN;
+assign RESET = DEBUG_LOCAL_RESET | DEBUG_RESET;
 
 /***************************************************
 * Instances
@@ -98,7 +104,7 @@ oneOfEightDecoder decoder(
 
 requestGenerator requestGen(
 	.CLK(CLK),
-	.RESET(RESET),
+	.RESET(DEBUG_LOCAL_RESET),
 	.DEBUG_WRN(DEBUG_WRN),
 	.DEBUG_RDN(DEBUG_RDN),
 	
@@ -118,7 +124,7 @@ assign DEBUG_ADDR_OUT[0] = 1'b0;
 synchronizedCounter #(.BUS_WIDTH(7)) addrL(
 
 	.SLOWCLK(DEBUG_WRN),
-	.RESET(RESET),
+	.RESET(DEBUG_LOCAL_RESET),
 	.FASTCLK(CLK),
 	.EN(EN_AL),
 	.LD(1'b1),
@@ -132,7 +138,7 @@ synchronizedCounter #(.BUS_WIDTH(7)) addrL(
 synchronizedCounter #(.BUS_WIDTH(8)) addrH(
 
 	.SLOWCLK(DEBUG_WRN),
-	.RESET(RESET),
+	.RESET(DEBUG_LOCAL_RESET),
 	.FASTCLK(CLK),
 	.EN(EN_AH),
 	.LD(1'b1),
@@ -146,7 +152,7 @@ synchronizedCounter #(.BUS_WIDTH(8)) addrH(
 // Data synchronized registers
 synchronizer #(.BUS_WIDTH(8)) dataL(
 
-	.RESET(RESET),
+	.RESET(DEBUG_LOCAL_RESET),
 	.SLOWCLK(DEBUG_WRN),
 	.EN(EN_DL),
 	.LD(1'b1),
@@ -158,7 +164,7 @@ synchronizer #(.BUS_WIDTH(8)) dataL(
 
 synchronizer #(.BUS_WIDTH(8)) dataH(
 
-	.RESET(RESET),
+	.RESET(DEBUG_LOCAL_RESET),
 	.SLOWCLK(DEBUG_WRN),
 	.EN(EN_DH),
 	.LD(1'b1),
@@ -172,7 +178,7 @@ synchronizer #(.BUS_WIDTH(8)) dataH(
 register #(.BUS_WIDTH(16)) dataR(
 
 	.CLK(CLK),
-	.RESET(RESET),
+	.RESET(DEBUG_LOCAL_RESET),
 	.LD(DEBUG_LD_DATA_EN),
 	.EN(1'b1),
 	.DIN(DEBUG_DATA_MUX_OUT),
@@ -182,20 +188,20 @@ register #(.BUS_WIDTH(16)) dataR(
 // Control registers
 register #(.BUS_WIDTH(4)) opReg(
 	.CLK(DEBUG_WRN),
-	.RESET(RESET),
+	.RESET(DEBUG_LOCAL_RESET),
 	.DIN(DEBUG_DIN[3:0]),
 	.DOUT(DEBUG_OP),
 	.LD(1'b1),
 	.EN(EN_OP)
 );	
 
-synchronizer #(.BUS_WIDTH(2)) modeReg(
+synchronizer #(.BUS_WIDTH(3)) modeReg(
 	.SLOWCLK(DEBUG_WRN),
 	.FASTCLK(CLK),
-	.RESET(RESET),
-	.D(DEBUG_DIN[1:0]),
-	.Q({DEBUG_MODE, DEBUG_STOP}),
-	.CLR(RESET),
+	.RESET(DEBUG_LOCAL_RESET),
+	.D(DEBUG_DIN[2:0]),
+	.Q({DEBUG_RESET, DEBUG_MODE, DEBUG_STOP}),
+	.CLR(DEBUG_LOCAL_RESET),
 	.LD(1'b1),
 	.EN(EN_MODE)
 );

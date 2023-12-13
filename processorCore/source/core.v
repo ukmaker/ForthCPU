@@ -6,7 +6,8 @@
 module core(
 	
 	input CLK,
-	input RESET,
+	input RESETN,
+	output RESET,
 	
 	output wire STOPPED, FETCH, DECODE, EXECUTE, COMMIT,
 	
@@ -173,6 +174,7 @@ register #(.BUS_WIDTH(16)) dinLatch(
 debugPort debugger(
 	.CLK(CLK),
 	.RESET(RESET),
+	.RESETN(RESETN),
 	.DEBUG_DIN(DEBUG_DIN),
 	.DEBUG_DOUT(DEBUG_DOUT),
 	.DEBUG_ADDR(DEBUG_ADDR),

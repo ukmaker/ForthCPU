@@ -166,14 +166,6 @@ initial begin
 	// Write STOP to the debug port
 	`debugWrite( `DEBUG_ADDRX_MODE, `DEBUG_MODEX_STOP | `DEBUG_MODEX_DEBUG)
 	
-	DEBUG_SEND = 8'h01;
-	#100;
-	PIN_DEBUG_WRN = 1'b0;
-	#100;
-	PIN_DEBUG_WRN = 1'b1;
-	#100;
-	DEBUG_SEND = 8'hzz;
-	#1000;
 	// Read the ROM
 	`debugWrite( `DEBUG_ADDRX_AL, 8'h00)
 	`debugWrite( `DEBUG_ADDRX_AH, 8'h00)
@@ -186,6 +178,19 @@ initial begin
 	`debugRead( `DEBUG_ADDRX_DH, 8'h00)
 	`debugRead( `DEBUG_ADDRX_DL, 8'h00)
 	`debugRead( `DEBUG_ADDRX_DH, 8'h00)
+	// Write RESET to the debug port
+	`debugWrite( `DEBUG_ADDRX_MODE, `DEBUG_MODEX_STOP | `DEBUG_MODEX_RESET)
+	// Write STOP to the debug port
+	`debugWrite( `DEBUG_ADDRX_MODE, `DEBUG_MODEX_STOP | `DEBUG_MODEX_DEBUG)
+	// Repeat RAM read cycles
+	`debugWrite( `DEBUG_ADDRX_MODE, `DEBUG_MODEX_STOP | `DEBUG_MODEX_DEBUG | `DEBUG_MODEX_REQ)
+	`debugRead( `DEBUG_ADDRX_DL, 8'h00)
+	`debugRead( `DEBUG_ADDRX_DH, 8'h00)
+	`debugRead( `DEBUG_ADDRX_DL, 8'h00)
+	`debugRead( `DEBUG_ADDRX_DH, 8'h00)
+	`debugRead( `DEBUG_ADDRX_DL, 8'h00)
+	`debugRead( `DEBUG_ADDRX_DH, 8'h00)
+
 	PIN_RESETN = 0;
 	DEBUG_SEND = 8'hzz;
 	PIN_DEBUG_ADDR = 3'b000;

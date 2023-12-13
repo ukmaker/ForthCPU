@@ -47,6 +47,7 @@ set_option -seqshift_no_replicate 0
 #-- add_file options
 set_option -include_path {C:/Users/Duncan/git/ForthCPU}
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/constants.v}
+add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/processorCore/source/core.v}
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/impl1/source/mcu.v}
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/impl1/test/blinkTest.v}
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/instructionTestSetup.v}
@@ -80,7 +81,6 @@ add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/loadStoreGroupDec
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/mcuResources/source/mcuResources.v}
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/memoryMapper/source/memoryMapper.v}
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/opxMultiplexer/source/opxMultiplexer.v}
-add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/processorCore/source/core.v}
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/processorCore/source/transparentLatch.v}
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/programCounter/source/programCounter.v}
 add_file -verilog -vlog_std v2001 {C:/Users/Duncan/git/ForthCPU/registerFileB/source/registers.v}

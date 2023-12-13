@@ -80,7 +80,7 @@ wire WR_GPIO;
 
 assign PIN_DEBUG_DATA = PIN_DEBUG_RDN ? 8'hzz : DEBUG_DOUT;
 assign DEBUG_DIN      = PIN_DEBUG_DATA;
-assign RESET          = ~PIN_RESETN;
+assign RESETN         = PIN_RESETN;
 assign CLK            = PIN_CLK_X1;
 
 assign PIN_ADDR_BUS = ABUS_OEN ? 16'hzzzz : ADDR;
@@ -100,6 +100,7 @@ core coreInst(
 	
 	.CLK(CLK),
 	.RESET(RESET),
+	.RESETN(RESETN),
 	
 	.STOPPED(STOPPED), .FETCH(FETCH), .DECODE(DECODE), .EXECUTE(EXECUTE), .COMMIT(COMMIT),
 	

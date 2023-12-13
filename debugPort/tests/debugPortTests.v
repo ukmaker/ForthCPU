@@ -5,21 +5,22 @@
 module debugPortTests;
 	
 	reg             CLK;
-	reg             RESET;
+	reg             RESETN;
+	wire            RESET;
 	reg  [7:0]     DEBUG_DIN;
 	wire [7:0]     DEBUG_DOUT;
 	reg  [2:0]     DEBUG_ADDR;
 	reg             DEBUG_RDN;
 	reg             DEBUG_WRN;
 	
-	wire [2:0]     DEBUG_OP;
+	wire [3:0]     DEBUG_OP;
 	wire [15:0]    DEBUG_ADDR_OUT;
-	wire [7:0]     DEBUG_ARGX_OUT;
+	wire [3:0]     DEBUG_ARGX_OUT;
 	wire [15:0]    DEBUG_DATA_OUT;
 
-	reg             DEBUG_ADDR_INCX;
+	reg             DEBUG_ADDR_INC_EN;
 	
-	reg             DEBUG_LD_DATAX;
+	reg             DEBUG_LD_DATA_EN;
 	reg [1:0]      DEBUG_DATAX;
 	reg [15:0]     DEBUG_DIN_DIN;
 	reg [15:0]     DEBUG_REGB_DATA;
@@ -28,13 +29,14 @@ module debugPortTests;
 
 	wire            DEBUG_STOP;
 	wire            DEBUG_MODE;
-	wire            DEBUG_REQX;
-	reg             DEBUG_ACKX;
+	wire            DEBUG_REQ;
+	reg             DEBUG_ACK;
 
 	
 debugPort testInstance(
 	.CLK(CLK),
 	.RESET(RESET),
+	.RESETN(RESETN),
 	.DEBUG_DIN(DEBUG_DIN),
 	.DEBUG_DOUT(DEBUG_DOUT),
 	.DEBUG_ADDR(DEBUG_ADDR),
@@ -44,8 +46,8 @@ debugPort testInstance(
 	.DEBUG_ADDR_OUT(DEBUG_ADDR_OUT),
 	.DEBUG_ARGX_OUT(DEBUG_ARGX_OUT),
 	.DEBUG_DATA_OUT(DEBUG_DATA_OUT),
-	.DEBUG_ADDR_INCX(DEBUG_ADDR_INCX),
-	.DEBUG_LD_DATAX(DEBUG_LD_DATAX),
+	.DEBUG_ADDR_INC_EN(DEBUG_ADDR_INC_EN),
+	.DEBUG_LD_DATA_EN(DEBUG_LD_DATA_EN),
 	.DEBUG_DATAX(DEBUG_DATAX),
 	.DEBUG_DIN_DIN(DEBUG_DIN_DIN),
 	.DEBUG_REGB_DATA(DEBUG_REGB_DATA),
@@ -53,8 +55,8 @@ debugPort testInstance(
 	.DEBUG_PC_A_NEXT(DEBUG_PC_A_NEXT),
 	.DEBUG_STOP(DEBUG_STOP),
 	.DEBUG_MODE(DEBUG_MODE),
-	.DEBUG_REQX(DEBUG_REQX),
-	.DEBUG_ACKX(DEBUG_ACKX)
+	.DEBUG_REQ(DEBUG_REQ),
+	.DEBUG_ACK(DEBUG_ACK)
 	
 );
 
@@ -74,11 +76,11 @@ debugPort testInstance(
 	DEBUG_DATAX = addr; \
 	`debugWrite(`DEBUG_OPX_RD_REG,  `DEBUG_ADDRX_OP) \
 	$display("ACK DIN"); \
-	DEBUG_ACKX = 1; \
-	DEBUG_LD_DATAX = 1; \
+	DEBUG_ACK = 1; \
+	DEBUG_LD_DATA_EN = 1; \
 	`TICKTOCK; \
-	DEBUG_ACKX = 0; \
-	DEBUG_LD_DATAX = 0; \
+	DEBUG_ACK = 0; \
+	DEBUG_LD_DATA_EN = 0; \
 	`TICKTOCK;	\
 	$display(" - READ DIN"); \
 	DEBUG_ADDR = `DEBUG_ADDRX_DL; \
@@ -95,15 +97,15 @@ debugPort testInstance(
 	`TICKTOCK; \
 	DEBUG_RDN = 1; \
 	`TICKTOCK; \
-	`assert("DEBUG_REQX",         0,               DEBUG_REQX ) \
+	`assert("DEBUG_REQ",         0,               DEBUG_REQ ) \
 	`TICKTOCK; \
 	`TICKTOCK; \
-	`assert("DEBUG_REQX",         1,               DEBUG_REQX ) \
-	DEBUG_ACKX = 1; \
-	DEBUG_LD_DATAX = 1; \
+	`assert("DEBUG_REQ",         1,               DEBUG_REQ ) \
+	DEBUG_ACK = 1; \
+	DEBUG_LD_DATA_EN = 1; \
 	`TICKTOCK; \
-	DEBUG_ACKX = 0; \
-	DEBUG_LD_DATAX = 0; \
+	DEBUG_ACK = 0; \
+	DEBUG_LD_DATA_EN = 0; \
 	`TICKTOCK;
 
 always begin
@@ -112,7 +114,7 @@ end
 
 initial begin
 	CLK              = 0;
-	RESET            = 0;
+	RESETN           = 1;
 	DEBUG_DIN        = 8'h00;
 	DEBUG_ADDR       = 3'b000;
 	DEBUG_RDN        = 1;
@@ -121,22 +123,22 @@ initial begin
 	DEBUG_REGB_DATA  = 16'hbbcc;
 	DEBUG_CC_DATA    = 16'hccdd;
 	DEBUG_PC_A_NEXT  = 16'hddee;
-	DEBUG_LD_DATAX   = 1'b0;
-	DEBUG_ACKX       = 1'b0;
-	DEBUG_ADDR_INCX  = 1'b0;
+	DEBUG_LD_DATA_EN   = 1'b0;
+	DEBUG_ACK       = 1'b0;
+	DEBUG_ADDR_INC_EN  = 1'b0;
 	DEBUG_DATAX      = `DEBUG_DATAX_DIN;
 	
 	`TICKTOCK;
-	RESET = 1;
+	RESETN = 0;
 	`TICKTOCK;
-	RESET = 0;
+	RESETN = 1;
 	`TICKTOCK;
 	`assert("DEBUG_DOUT",         8'h00,           DEBUG_DOUT)
 	`assert("DEBUG_ADDR_OUT",     16'h0000,        DEBUG_ADDR_OUT )
 	`assert("DEBUG_DATA_OUT",     16'h0000,        DEBUG_DATA_OUT)
 	`assert("DEBUG_OP",           `DEBUG_OPX_NONE, DEBUG_OP)
 	`assert("DEBUG_ARGX_OUT",     4'b0000,         DEBUG_ARGX_OUT)
-	`assert("DEBUG_REQX",         0,               DEBUG_REQX)
+	`assert("DEBUG_REQ",         0,               DEBUG_REQ)
 	`TICKTOCK;
 	// Stop the CPU
 	`debugWrite(`DEBUG_MODEX_STOP,  `DEBUG_ADDRX_MODE)
@@ -157,9 +159,9 @@ initial begin
 	`assert("DEBUG_DATA_OUT", 16'h1234,        DEBUG_DATA_OUT )
 	`TICKTOCK;
 	// Increment the address
-	DEBUG_ADDR_INCX = 1;
+	DEBUG_ADDR_INC_EN = 1;
 	`TICKTOCK;
-	DEBUG_ADDR_INCX = 0;
+	DEBUG_ADDR_INC_EN = 0;
 	`TICKTOCK;
 	`assert("DEBUG_ADDR_OUT", 16'h567a,        DEBUG_ADDR_OUT )
 	`assert("DEBUG_DATA_OUT", 16'h1234,        DEBUG_DATA_OUT )

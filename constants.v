@@ -136,9 +136,10 @@
 `define DEBUG_DATAX_CC_DATA   2'b10
 `define DEBUG_DATAX_PC_A_NEXT 2'b11
 
-`define DEBUG_MODEX_STOP  3'b001
-`define DEBUG_MODEX_DEBUG 3'b010
-`define DEBUG_MODEX_REQ   3'b100
+`define DEBUG_MODEX_STOP  4'b0001
+`define DEBUG_MODEX_DEBUG 4'b0010
+`define DEBUG_MODEX_RESET 4'b0100
+`define DEBUG_MODEX_REQ   4'b1000
 
 /*******************************************
 * Program counter control inputs
