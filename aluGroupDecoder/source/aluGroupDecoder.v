@@ -35,7 +35,7 @@ module aluGroupDecoder(
 	
 	input CLK,
 	input RESET,
-	input [13:0] INSTRUCTION,
+	input [5:0] ALU_INSTRUCTION,
 	
 	input FETCH,
 	input DECODE,
@@ -73,8 +73,8 @@ wire [1:0] ARGF;
 reg  [3:0] REGA_OP;
 reg         IMM;
 
-assign ALU_OPX = INSTRUCTION[13:10];
-assign ARGF    = INSTRUCTION[9:8];
+assign ALU_OPX = ALU_INSTRUCTION[5:2];
+assign ARGF    = ALU_INSTRUCTION[1:0];
 
 // Combinational logic
 // Setup the data sources

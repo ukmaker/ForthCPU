@@ -9,6 +9,7 @@
 module busController(
 	
 	input CLK,
+	input RESET,
 	input FETCH,
 	input DECODE,
 	input EXECUTE,

@@ -1,7 +1,6 @@
 @N: MF916 |Option synthesis_strategy=base is enabled. 
 @N: MF248 |Running in 64-bit mode.
 @N: MF666 |Clock conversion enabled. (Command "set_option -fix_gated_and_generated_clocks 1" in the project file.)
-@N: MO111 :"c:\users\duncan\git\forthcpu\buscontroller\source\buscontroller.v":58:8:58:12|Tristate driver RESET (in view: work.busController(verilog)) on net RESET (in view: work.busController(verilog)) has its enable tied to GND.
 @N: MO111 :"c:\users\duncan\git\forthcpu\impl1\source\mcu.v":43:16:43:29|Tristate driver PIN_DEBUG_STOP (in view: work.mcu(verilog)) on net PIN_DEBUG_STOP (in view: work.mcu(verilog)) has its enable tied to GND.
 @N: MO111 :"c:\users\duncan\git\forthcpu\impl1\source\mcu.v":37:19:37:25|Tristate driver PIN_LED_1 (in view: work.mcu(verilog)) on net PIN_LED[7] (in view: work.mcu(verilog)) has its enable tied to GND.
 @N: MO111 :"c:\users\duncan\git\forthcpu\impl1\source\mcu.v":37:19:37:25|Tristate driver PIN_LED_2 (in view: work.mcu(verilog)) on net PIN_LED[6] (in view: work.mcu(verilog)) has its enable tied to GND.
@@ -11,9 +10,9 @@
 @N: MO111 :"c:\users\duncan\git\forthcpu\impl1\source\mcu.v":37:19:37:25|Tristate driver PIN_LED_6 (in view: work.mcu(verilog)) on net PIN_LED[2] (in view: work.mcu(verilog)) has its enable tied to GND.
 @N: MO111 :"c:\users\duncan\git\forthcpu\impl1\source\mcu.v":37:19:37:25|Tristate driver PIN_LED_7 (in view: work.mcu(verilog)) on net PIN_LED[1] (in view: work.mcu(verilog)) has its enable tied to GND.
 @N: MO111 :"c:\users\duncan\git\forthcpu\impl1\source\mcu.v":37:19:37:25|Tristate driver PIN_LED_8 (in view: work.mcu(verilog)) on net PIN_LED[0] (in view: work.mcu(verilog)) has its enable tied to GND.
+@N: MO111 :"c:\users\duncan\git\forthcpu\impl1\source\mcu.v":31:13:31:20|Tristate driver PIN_WR1N (in view: work.mcu(verilog)) on net PIN_WR1N (in view: work.mcu(verilog)) has its enable tied to GND.
 @N: MO106 :"c:\users\duncan\git\forthcpu\alub\source\alu.v":34:3:34:6|Found ROM arithmetic (in view: work.alu(verilog)) with 16 words by 1 bit.
 @N: MO106 :"c:\users\duncan\git\forthcpu\registersequencer\source\registersequencer.v":61:1:61:4|Found ROM REGA_EN_R[3:0] (in view: work.registerSequencer(verilog)) with 10 words by 4 bits.
-@N: BN362 :"c:\users\duncan\git\forthcpu\instructionlatch\source\instructionlatch.v":24:0:24:5|Removing sequential instance instructionLatchInst.DEBUG_INSTRUCTION[7] (in view: work.core(verilog)) because it does not drive other instances.
 @N: MO231 :"c:\users\duncan\git\forthcpu\debugport\source\synchronizedcounter.v":50:0:50:5|Found counter in view:work.core(verilog) instance debugger.addrH.Q[7:0] 
 @N: MO231 :"c:\users\duncan\git\forthcpu\debugport\source\synchronizedcounter.v":50:0:50:5|Found counter in view:work.core(verilog) instance debugger.addrL.Q[6:0] 
 @N: MF179 :"c:\users\duncan\git\forthcpu\uart\source\receiver.v":56:14:56:49|Found 17 by 17 bit equality operator ('==') r_Clock_Count17 (in view: work.UART_RX(verilog))
@@ -29,12 +28,10 @@
 @N: FX1019 :"c:\users\duncan\git\forthcpu\debugport\source\synchronizer.v":36:0:36:5|Adding ASYNC_REG property on synchronizing instance coreInst.debugger.requestGen.dhReqReg.Q_PHI0[0] (in view: work.mcu(verilog)).
 @N: FX1019 :"c:\users\duncan\git\forthcpu\debugport\source\synchronizedcounter.v":50:0:50:5|Adding ASYNC_REG property on synchronizing instance coreInst.debugger.addrL.PL_PHI0 (in view: work.mcu(verilog)).
 @N: FX1019 :"c:\users\duncan\git\forthcpu\debugport\source\synchronizer.v":36:0:36:5|Adding ASYNC_REG property on synchronizing instance coreInst.debugger.modeReg.Q_PHI0[1] (in view: work.mcu(verilog)).
-@N: FX271 :"c:\users\duncan\git\forthcpu\instructionlatch\source\instructionlatch.v":24:0:24:5|Replicating instance coreInst.instructionLatchInst.DEBUG_INSTRUCTION[3] (in view: work.mcu(verilog)) with 31 loads 1 time to improve timing.
-@N: FX271 :"c:\users\duncan\git\forthcpu\instructionlatch\source\instructionlatch.v":24:0:24:5|Replicating instance coreInst.instructionLatchInst.DEBUG_INSTRUCTION[2] (in view: work.mcu(verilog)) with 12 loads 1 time to improve timing.
-@N: FX271 :"c:\users\duncan\git\forthcpu\instructionlatch\source\instructionlatch.v":24:0:24:5|Replicating instance coreInst.instructionLatchInst.DEBUG_INSTRUCTION[1] (in view: work.mcu(verilog)) with 11 loads 1 time to improve timing.
-@N: FX271 :"c:\users\duncan\git\forthcpu\instructionlatch\source\instructionlatch.v":24:0:24:5|Replicating instance coreInst.instructionLatchInst.DEBUG_INSTRUCTION[5] (in view: work.mcu(verilog)) with 7 loads 1 time to improve timing.
-@N: FX271 :"c:\users\duncan\git\forthcpu\instructionlatch\source\instructionlatch.v":24:0:24:5|Replicating instance coreInst.instructionLatchInst.GROUPX[1] (in view: work.mcu(verilog)) with 35 loads 1 time to improve timing.
-@N: FX271 :"c:\users\duncan\git\forthcpu\instructionlatch\source\instructionlatch.v":24:0:24:5|Replicating instance coreInst.instructionLatchInst.GROUPX[0] (in view: work.mcu(verilog)) with 33 loads 1 time to improve timing.
+@N: FX271 :"c:\users\duncan\git\forthcpu\instructionlatch\source\instructionlatch.v":24:0:24:5|Replicating instance coreInst.instructionLatchInst.DEBUG_INSTRUCTION[2] (in view: work.mcu(verilog)) with 10 loads 1 time to improve timing.
+@N: FX271 :"c:\users\duncan\git\forthcpu\instructionlatch\source\instructionlatch.v":24:0:24:5|Replicating instance coreInst.instructionLatchInst.DEBUG_INSTRUCTION[3] (in view: work.mcu(verilog)) with 10 loads 1 time to improve timing.
+@N: FX271 :"c:\users\duncan\git\forthcpu\instructionlatch\source\instructionlatch.v":24:0:24:5|Replicating instance coreInst.instructionLatchInst.DEBUG_INSTRUCTION[1] (in view: work.mcu(verilog)) with 10 loads 1 time to improve timing.
+@N: FX271 :"c:\users\duncan\git\forthcpu\instructionlatch\source\instructionlatch.v":24:0:24:5|Replicating instance coreInst.instructionLatchInst.GROUPX[1] (in view: work.mcu(verilog)) with 33 loads 1 time to improve timing.
 @N: FX164 |The option to pack registers in the IOB has not been specified. Please set syn_useioff attribute.  
 @N: FX1056 |Writing EDF file: C:\Users\Duncan\git\ForthCPU\impl1\ForthCPU_impl1.edi
 @N: BW106 |Synplicity Constraint File capacitance units using default value of 1pF 

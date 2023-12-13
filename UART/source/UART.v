@@ -51,7 +51,6 @@ wire TX_ACTIVE;
 reg DATA_AVAILABLE_R;
 reg TX_ACTIVE_R;
 reg TX_COMPLETE_R;
-reg RXI_R;
 reg TXI_R;
 
 reg START_TX;

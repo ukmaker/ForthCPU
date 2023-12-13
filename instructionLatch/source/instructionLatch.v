@@ -9,13 +9,13 @@ module instructionLatch(
 	input [15:0] DIN,
 	
 	input [3:0]   DEBUG_OP,
-	input [3:0]   DEBUG_ARG,
+	input [2:0]   DEBUG_ARG,
 	input          DEBUG_MODE,
 	
 	output reg [13:0] INSTRUCTION,
 	output reg [1:0]  GROUPX,
 	
-	output reg [7:0]  DEBUG_INSTRUCTION,
+	output reg [6:0]  DEBUG_INSTRUCTION,
 	output reg         DEBUG_MODEX
 	
 );

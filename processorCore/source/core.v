@@ -55,7 +55,7 @@ wire [1:0]  DATA_BUSX;
 
 wire [15:0] DEBUG_ADDR_OUT;
 wire [15:0] DEBUG_DATA_OUT;
-wire [7:0]  DEBUG_INSTRUCTION;
+wire [6:0]  DEBUG_INSTRUCTION;
 wire [3:0]  DEBUG_OP;
 wire         DEBUG_MODEX;
 wire         DEBUG_STOPX;
@@ -239,6 +239,7 @@ instructionPhaseDecoder instructionPhaseDecoderInst(
 	.RESET(RESET),
 	.HALTX(HALTX),
 	.DEBUG_STOP(DEBUG_STOP),
+	.DEBUG_MODE(DEBUG_MODE),
 	.DEBUG_STEP_REQ(DEBUG_REQ),
 	
 	.STOPPED(STOPPED),
@@ -261,7 +262,7 @@ instructionLatch instructionLatchInst(
 	.EXECUTE(EXECUTE),
 	.DIN(DIN),
 	.DEBUG_OP(DEBUG_OP),
-	.DEBUG_ARG(DEBUG_ARGX_OUT),
+	.DEBUG_ARG(DEBUG_ARGX_OUT[2:0]),
 	.DEBUG_MODE(DEBUG_MODE),
 	.INSTRUCTION(INSTRUCTION),
 	.GROUPX(GROUPX),
@@ -331,6 +332,7 @@ registerFile registerFileInst(
 ****************************************/
 busController busControllerInst(
 	.CLK(CLK),
+	.RESET(RESET),
 	.FETCH(FETCH),
 	.DECODE(DECODE),
 	.EXECUTE(EXECUTE),
@@ -402,7 +404,7 @@ interruptStateMachine interruptStateMachineInst(
 aluGroupDecoder aluGroupDecoderInst(
 	.CLK(CLK),
 	.RESET(RESET),
-	.INSTRUCTION(INSTRUCTION[13:0]),
+	.ALU_INSTRUCTION(INSTRUCTION[13:8]),
 	.FETCH(FETCH),
 	.DECODE(DECODE),
 	.EXECUTE(EXECUTE),

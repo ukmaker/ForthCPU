@@ -1,49 +1,15 @@
 i PIN_CLK_X1
 m 0 0
-u 129 386
+u 139 392
 p {p:PIN_CLK_X1}{t:mcuResourcesInst.CLK}{p:mcuResourcesInst.CLK}{t:mcuResourcesInst.interruptMaskRegisterInst.CLK}{p:mcuResourcesInst.interruptMaskRegisterInst.CLK}{t:mcuResourcesInst.interruptMaskRegisterInst.PRI_REG[2:0].C}
 e ckid0_0 {t:mcuResourcesInst.interruptMaskRegisterInst.PRI_REG[2:0].C} dffr
 c ckid0_0 {p:PIN_CLK_X1} port Unsupported/too complex instance on clock path
-i coreInst.instructionPhaseDecoderInst.un1_PHASE_NEXT_1_sqmuxa_buf
-m 0 0
-u 4 4
-n ckid0_1 {t:coreInst.instructionPhaseDecoderInst.PHASE_NEXT[3].C} Clock source is invalid for GCC
-p {t:coreInst.instructionPhaseDecoderInst.un1_PHASE_NEXT_1_sqmuxa.OUT}{t:coreInst.instructionPhaseDecoderInst.un1_PHASE_NEXT_1_sqmuxa_buf_i.I[0]}{t:coreInst.instructionPhaseDecoderInst.un1_PHASE_NEXT_1_sqmuxa_buf_i.OUT[0]}{t:coreInst.instructionPhaseDecoderInst.PHASE_NEXT[3].C}
-e ckid0_1 {t:coreInst.instructionPhaseDecoderInst.PHASE_NEXT[3].C} lat
-d ckid0_1 {t:coreInst.instructionPhaseDecoderInst.un1_PHASE_NEXT_1_sqmuxa.OUT} or Unable to find a clock in input cone
 i PIN_DEBUG_WRN
 m 0 0
 u 8 25
-n ckid0_2 {t:coreInst.debugger.requestGen.dhReqReg.Q_R[0].C} Clock source is invalid for GCC
+n ckid0_1 {t:coreInst.debugger.requestGen.dhReqReg.Q_R[0].C} Clock source is invalid for GCC
 p {p:PIN_DEBUG_WRN}{t:coreInst.DEBUG_WRN}{p:coreInst.DEBUG_WRN}{t:coreInst.debugger.DEBUG_WRN}{p:coreInst.debugger.DEBUG_WRN}{t:coreInst.debugger.requestGen.DEBUG_WRN}{p:coreInst.debugger.requestGen.DEBUG_WRN}{t:coreInst.debugger.requestGen.uclk_un1_DEBUG_WRN.I[1]}{t:coreInst.debugger.requestGen.uclk_un1_DEBUG_WRN.OUT}{t:coreInst.debugger.requestGen.dhReqReg.un1_DEBUG_WRN_uclk}{p:coreInst.debugger.requestGen.dhReqReg.un1_DEBUG_WRN_uclk}{t:coreInst.debugger.requestGen.dhReqReg.Q_R[0].C}
-e ckid0_2 {t:coreInst.debugger.requestGen.dhReqReg.Q_R[0].C} dffre
-d ckid0_2 {p:PIN_DEBUG_WRN} port Unsupported/too complex instance on clock path
-i coreInst.instructionPhaseDecoderInst.PHASE_R[2]
-m 0 0
-u 0 0
-i coreInst.instructionPhaseDecoderInst.PHASE_R[1]
-m 0 0
-u 0 0
-i coreInst.instructionPhaseDecoderInst.PHASE_R[0]
-m 0 0
-u 0 0
-i coreInst.instructionPhaseDecoderInst.PHASE_R[3]
-m 0 0
-u 0 0
-i coreInst.debugger.modeReg.Q[0]
-m 0 0
-u 0 0
-i coreInst.debugger.requestGen.modeReqReg.Q[0]
-m 0 0
-u 0 0
-i coreInst.debugger.requestGen.dhReqReg.Q[0]
-m 0 0
-u 0 0
-i coreInst.generalGroupDecoderInst.HALTX
-m 0 0
-u 0 0
-i coreInst.instructionPhaseDecoderInst.DEBUG_STEP_ACK
-m 0 0
-u 0 0
+e ckid0_1 {t:coreInst.debugger.requestGen.dhReqReg.Q_R[0].C} dffre
+d ckid0_1 {p:PIN_DEBUG_WRN} port Unsupported/too complex instance on clock path
 l 0 0 0 0 0 0
 r 0 0 0 0 0 0 0 0

@@ -6,7 +6,7 @@
 **************************************************/
 module debugDecoder(
 	
-	input [7:0]       DEBUG_INSTRUCTION,
+	input [6:0]       DEBUG_INSTRUCTION,
 	
 	output reg        DEBUG_ADDR_INCX,
 	output reg        DEBUG_LD_DATAX,
@@ -19,7 +19,7 @@ module debugDecoder(
 );
 
 wire [3:0] DEBUG_OP   = DEBUG_INSTRUCTION[3:0];
-wire [3:0] DEBUG_ARGX = DEBUG_INSTRUCTION[7:4];
+wire [2:0] DEBUG_ARGX = DEBUG_INSTRUCTION[6:4];
 wire DEBUG_ADDR_INC    = DEBUG_OP[0];
 wire [2:0] DEBUG_OPX  = DEBUG_OP[3:1];
 

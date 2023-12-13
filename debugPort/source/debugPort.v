@@ -58,19 +58,16 @@ module debugPort(
 * Internal wiring
 ****************************************************/
 assign DEBUG_ARGX_OUT = DEBUG_ADDR_OUT[4:1];
-assign DEBUG_DIN_REQ  = DEBUG_DIN[2];
 /***************************************************
 * Register selects
 ****************************************************/
 wire EN_MODE, EN_OP, EN_DL, EN_DH, EN_AL, EN_AH, EN_UNUSED0, EN_UNUSED1;
-wire EN_INC_REQ;
 
 /***************************************************
 * Internal muxes
 ****************************************************/
 wire [7:0]  DEBUG_READ_MUX_IN_L;
 wire [7:0]  DEBUG_READ_MUX_IN_H;
-wire [7:0]  DEBUG_READ_MUX_OUT;
 reg  [15:0] DEBUG_DATA_MUX_OUT;
 
 /***************************************************
@@ -82,6 +79,7 @@ wire AH_RO; // unused
 * Internal control signals
 ****************************************************/
 wire DEBUG_INCX = DEBUG_OP[0];
+wire DEBUG_DIN_REQ = DEBUG_DIN[2];
 
 /***************************************************
 * Instances
