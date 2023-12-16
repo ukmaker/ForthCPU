@@ -79,6 +79,12 @@ mcu mcuInst(
 	.PIN_ADDR_GPIO(PIN_ADDR_GPIO)
 );
 
+reg [15:0] DEBUG_DIN_DISPLAY;
+reg [15:0] DEBUG_REGA_DISPLAY;
+reg [15:0] DEBUG_ADDR_DISPLAY;
+reg [15:0] DEBUG_INSTR_DISPLAY;
+reg [7:0]  DEBUG_CC_DISPLAY;
+
 `define debugWrite(reg, value) \
 	$display("[T=%09t] WRITE", $realtime); \
 	PIN_DEBUG_ADDR = reg; \
@@ -110,7 +116,7 @@ mcu mcuInst(
 	PIN_DEBUG_WRN = 1'b0; \
 	#100; \
 	PIN_DEBUG_WRN = 1'b1; \
-	#1000;\
+	#200;\
 	$display("[T=%09t]   SET OP", $realtime); \
 	PIN_DEBUG_ADDR = `DEBUG_ADDRX_OP; \
 	DEBUG_SEND = {`DEBUG_OPX_RD_PC, `DEBUG_ADDR_INCX_NONE}; \
@@ -118,10 +124,58 @@ mcu mcuInst(
 	PIN_DEBUG_WRN = 1'b0; \
 	#100; \
 	PIN_DEBUG_WRN = 1'b1; \
-	#1000; \
-	`debugStep \
+	#200; \
+	`debugCycle \
+	$display("[T=%09t]   READ DL", $realtime); \
 	`debugRead( `DEBUG_ADDRX_DL, 8'h00) \
+	$display("[T=%09t]   READ DH", $realtime); \
 	`debugRead( `DEBUG_ADDRX_DH, 8'h00)
+
+`define debugReadInstruction(expected) \
+	$display("[T=%09t] READ INSTRUCTION", $realtime); \
+	$display("[T=%09t]   SET MODE", $realtime); \
+	PIN_DEBUG_ADDR = `DEBUG_ADDRX_MODE; \
+	DEBUG_SEND = `DEBUG_MODEX_STOP; \
+	#100; \
+	PIN_DEBUG_WRN = 1'b0; \
+	#100; \
+	PIN_DEBUG_WRN = 1'b1; \
+	#200;\
+	$display("[T=%09t]   SET OP", $realtime); \
+	PIN_DEBUG_ADDR = `DEBUG_ADDRX_OP; \
+	DEBUG_SEND = {`DEBUG_OPX_RD_INSTRUCTION, `DEBUG_ADDR_INCX_NONE}; \
+	#100; \
+	PIN_DEBUG_WRN = 1'b0; \
+	#100; \
+	PIN_DEBUG_WRN = 1'b1; \
+	#200; \
+	`debugCycle \
+	$display("[T=%09t]   READ DL", $realtime); \
+	`debugRead( `DEBUG_ADDRX_DL, 8'h00) \
+	$display("[T=%09t]   READ DH", $realtime); \
+	`debugRead( `DEBUG_ADDRX_DH, 8'h00)
+
+`define debugReadCC(expected) \
+	$display("[T=%09t] READ CC", $realtime); \
+	$display("[T=%09t]   SET MODE", $realtime); \
+	PIN_DEBUG_ADDR = `DEBUG_ADDRX_MODE; \
+	DEBUG_SEND = `DEBUG_MODEX_STOP; \
+	#100; \
+	PIN_DEBUG_WRN = 1'b0; \
+	#100; \
+	PIN_DEBUG_WRN = 1'b1; \
+	#200;\
+	$display("[T=%09t]   SET OP", $realtime); \
+	PIN_DEBUG_ADDR = `DEBUG_ADDRX_OP; \
+	DEBUG_SEND = {`DEBUG_OPX_RD_CC, `DEBUG_ADDR_INCX_NONE}; \
+	#100; \
+	PIN_DEBUG_WRN = 1'b0; \
+	#100; \
+	PIN_DEBUG_WRN = 1'b1; \
+	#200; \
+	`debugCycle \
+	$display("[T=%09t]   READ DL", $realtime); \
+	`debugRead( `DEBUG_ADDRX_DL, 8'h00) 
 
 `define debugStop \
 	$display("[T=%09t] STOP", $realtime); \
@@ -143,6 +197,16 @@ mcu mcuInst(
 	PIN_DEBUG_WRN = 1'b1; \
 	#1000;
 	
+`define debugCycle \
+	$display("[T=%09t] STEP", $realtime); \
+	PIN_DEBUG_ADDR = `DEBUG_ADDRX_MODE; \
+	DEBUG_SEND = `DEBUG_MODEX_STOP | `DEBUG_MODEX_REQ | `DEBUG_MODEX_DEBUG; \
+	#100; \
+	PIN_DEBUG_WRN = 1'b0; \
+	#100; \
+	PIN_DEBUG_WRN = 1'b1; \
+	#1000;
+	
 	
 assign PIN_DEBUG_DATA = DEBUG_SEND;
 assign DEBUG_RECV = PIN_DEBUG_DATA;
@@ -158,11 +222,21 @@ initial begin
 	PIN_DEBUG_ADDR = 3'b000;
 	PIN_DEBUG_RDN = 1'b1;
 	PIN_DEBUG_WRN = 1'b1;
+	PIN_RXD = 0;
+	PIN_INT0 = 0;
+	PIN_INT1 = 0;
+	PIN_INT2 = 0;
+	PIN_INT3 = 0;
+	PIN_INT4 = 0;
+	PIN_INT5 = 0;
+	PIN_INT6 = 0;
+	
 	`TICKTOCK;
 	`TICKTOCK;
 	PIN_RESETN = 1;
 	`TICKTOCK;
-	#2000;
+	// Let it run for a few cycles
+	#4000;
 	// Write STOP to the debug port
 	`debugWrite( `DEBUG_ADDRX_MODE, `DEBUG_MODEX_STOP | `DEBUG_MODEX_DEBUG)
 	
@@ -200,18 +274,60 @@ initial begin
 	`TICKTOCK;
 	PIN_RESETN = 1;
 	`TICKTOCK;
-	#2000;
+	#200;
+	`comment("Start stepping")
 	`debugStop
 	`debugStep
+	`step(1, "readPC")
 	`debugReadPC(0)
-	`debugStep
+	`debugReadInstruction(0)
+	
+	`step(2, "readPC")
 	`debugReadPC(0)
+	`debugReadInstruction(0)
+	`debugReadCC(0)
 	`debugStep
+	
+	`step(3, "readPC")
 	`debugReadPC(0)
+	`debugReadInstruction(0)
+	`debugReadCC(0)
 	`debugStep
+	
+	`step(4, "readPC")
 	`debugReadPC(0)
+	`debugReadInstruction(0)
+	`debugReadCC(0)
 	`debugStep
-	`debugReadPC(0)	
+	
+	`step(5, "readPC")
+	`debugReadPC(0)
+	`debugReadInstruction(0)
+	`debugReadCC(0)
+	`debugStep
+	
+	`step(6, "readPC")
+	`debugReadPC(0)
+	`debugReadInstruction(0)
+	`debugReadCC(0)
+	`debugStep
+	
+	`step(7, "readPC")
+	`debugReadPC(0)
+	`debugReadInstruction(0)
+	`debugReadCC(0)
+	`debugStep
+	
+	PIN_RESETN = 0;
+	DEBUG_SEND = 8'hzz;
+	PIN_DEBUG_ADDR = 3'b000;
+	PIN_DEBUG_RDN = 1'b1;
+	PIN_DEBUG_WRN = 1'b1;
+	`TICKTOCK;
+	`TICKTOCK;
+	PIN_RESETN = 1;
+	`TICKTOCK;
+
 end
 
 endmodule

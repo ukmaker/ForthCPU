@@ -104,7 +104,7 @@ RAM RAMInst(
 	.Reset(RESET),
 	.ByteEn({BE1,BE0}),
 	.WE(WR_RAM),
-	.Address({ADDR[12:1], 1'b0}),
+	.Address({ADDR[11:1], 1'b0}),
 	.Data(CPU_DOUT),
 	.Q(DIN_RAM)
 );

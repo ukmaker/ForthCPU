@@ -63,10 +63,10 @@ always @(posedge CLK or posedge RESET) begin
 	if(RESET) begin
 		ADDR_BUSX_R <= `ADDR_BUSX_PC_A;
 	end else begin
-		if(FETCH | DECODE) begin
+		if(FETCH) begin
 			// Instruction fetch next
 			ADDR_BUSX_R <= `ADDR_BUSX_PC_A;
-		end else begin
+		end else if(EXECUTE) begin
 			ADDR_BUSX_R <= ADDR_BUSX;
 		end
 	end

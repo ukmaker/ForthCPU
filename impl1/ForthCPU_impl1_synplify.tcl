@@ -93,6 +93,7 @@ add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/UART/source/recei
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/UART/source/transmitter.v}
 add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/UART/source/UART.v}
 add_file -verilog -vlog_std v2001 {C:/Users/Duncan/git/ForthCPU/RAM/source/RAM.v}
+add_file -verilog -vlog_std sysv {C:/Users/Duncan/git/ForthCPU/testSetup.v}
 
 #-- top module name
 set_option -top_module mcu

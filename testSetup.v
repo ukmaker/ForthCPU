@@ -7,15 +7,20 @@
 `define STEP     #(`INSTRUCTION_CYCLE)
 
 `define assert(what, expected, actual) \
-    if (expected !== actual) begin \
+    if (actual !== expected) begin \
         $display("[T=%0t] FAILED in %m: %s expected %b != actual %b", $realtime, what, expected, actual); \
-    end
+    end else begin \
+        $display("[T=%0t]                                             passed in %m: %s expected %b actual %b", $realtime, what, expected, actual); \
+	end
 
 `define mark(n)  \
 	$display("[T=%09t] %d", $realtime, n);
-
-`define step(n,comment) \
-	$display("[T=%09t] %d %s", $realtime, n, comment); \
+	
+`define step(n, m)  \
+	$display("[T=%09t] %d %s", $realtime, n, m);
+	
+`define comment(c) \
+	$display("[T=%09t] %s", $realtime, c); \
 	`TICKTOCK;
 	
 `define FETCH(n, addr, instruction, m) \

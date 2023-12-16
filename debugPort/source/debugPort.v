@@ -34,20 +34,21 @@ module debugPort(
 	input             RESETN,
 	output            RESET,
 	
-	output [3:0]     DEBUG_OP,
+	output [4:0]     DEBUG_OP,
 	output            DEBUG_MODE,
 	output [15:0]    DEBUG_ADDR_OUT,
-	output [3:0]     DEBUG_ARGX_OUT,
 	output [15:0]    DEBUG_DATA_OUT,
 
 	input             DEBUG_ADDR_INC_EN,
 	
 	input             DEBUG_LD_DATA_EN,
-	input [1:0]      DEBUG_DATAX,
+	input             DEBUG_LD_ARG_EN,
+	input [2:0]      DEBUG_DATAX,
 	input [15:0]     DEBUG_DIN_DIN,
 	input [15:0]     DEBUG_REGB_DATA,
 	input [15:0]     DEBUG_CC_DATA,
-	input [15:0]     DEBUG_PC_A_NEXT,
+	input [15:0]     DEBUG_PC_A,
+	input [15:0]     DEBUG_INSTRUCTION,
 
 	output            DEBUG_STOP,
 	output            DEBUG_REQ,
@@ -58,7 +59,7 @@ module debugPort(
 /***************************************************
 * Internal wiring
 ****************************************************/
-assign DEBUG_ARGX_OUT = DEBUG_ADDR_OUT[4:1];
+
 /***************************************************
 * Register selects
 ****************************************************/
@@ -67,8 +68,11 @@ wire EN_MODE, EN_OP, EN_DL, EN_DH, EN_AL, EN_AH, EN_UNUSED0, EN_UNUSED1;
 /***************************************************
 * Internal muxes
 ****************************************************/
-wire [7:0]  DEBUG_READ_MUX_IN_L;
-wire [7:0]  DEBUG_READ_MUX_IN_H;
+wire [7:0]  DEBUG_READ_MUX_IN_DL;
+wire [7:0]  DEBUG_READ_MUX_IN_DH;
+wire [7:0]  DEBUG_READ_MUX_IN_ARGL;
+wire [7:0]  DEBUG_READ_MUX_IN_ARGH;
+reg  [15:0] DEBUG_READ_MUX_OUT;
 reg  [15:0] DEBUG_DATA_MUX_OUT;
 
 /***************************************************
@@ -94,10 +98,10 @@ oneOfEightDecoder decoder(
 	DEBUG_ADDR,
 	EN_MODE,
 	EN_OP,
-	EN_DL,
-	EN_DH,
 	EN_AL,
 	EN_AH,
+	EN_DL,
+	EN_DH,
 	EN_UNUSED0,
 	EN_UNUSED1
 );
@@ -182,14 +186,25 @@ register #(.BUS_WIDTH(16)) dataR(
 	.LD(DEBUG_LD_DATA_EN),
 	.EN(1'b1),
 	.DIN(DEBUG_DATA_MUX_OUT),
-	.DOUT({DEBUG_READ_MUX_IN_H, DEBUG_READ_MUX_IN_L})
+	.DOUT({DEBUG_READ_MUX_IN_DH, DEBUG_READ_MUX_IN_DL})
+);
+
+// Read arg register
+register #(.BUS_WIDTH(16)) argR(
+
+	.CLK(CLK),
+	.RESET(DEBUG_LOCAL_RESET),
+	.LD(DEBUG_LD_ARG_EN),
+	.EN(1'b1),
+	.DIN(DEBUG_DIN_DIN),
+	.DOUT({DEBUG_READ_MUX_IN_ARGH, DEBUG_READ_MUX_IN_ARGL})
 );
 
 // Control registers
-register #(.BUS_WIDTH(4)) opReg(
+register #(.BUS_WIDTH(5)) opReg(
 	.CLK(DEBUG_WRN),
 	.RESET(DEBUG_LOCAL_RESET),
-	.DIN(DEBUG_DIN[3:0]),
+	.DIN(DEBUG_DIN[4:0]),
 	.DOUT(DEBUG_OP),
 	.LD(1'b1),
 	.EN(EN_OP)
@@ -213,10 +228,12 @@ synchronizer #(.BUS_WIDTH(3)) modeReg(
 **/
 always @(*) begin
 	case(DEBUG_DATAX)
-		`DEBUG_DATAX_DIN:       DEBUG_DATA_MUX_OUT = DEBUG_DIN_DIN;
-		`DEBUG_DATAX_REGB_DATA: DEBUG_DATA_MUX_OUT = DEBUG_REGB_DATA;
-		`DEBUG_DATAX_CC_DATA:   DEBUG_DATA_MUX_OUT = DEBUG_CC_DATA;
-		`DEBUG_DATAX_PC_A_NEXT: DEBUG_DATA_MUX_OUT = DEBUG_PC_A_NEXT;
+		`DEBUG_DATAX_DIN:         DEBUG_DATA_MUX_OUT = DEBUG_DIN_DIN;
+		`DEBUG_DATAX_REGB_DATA:   DEBUG_DATA_MUX_OUT = DEBUG_REGB_DATA;
+		`DEBUG_DATAX_CC_DATA:     DEBUG_DATA_MUX_OUT = DEBUG_CC_DATA;
+		`DEBUG_DATAX_PC_A:        DEBUG_DATA_MUX_OUT = DEBUG_PC_A;
+		`DEBUG_DATAX_INSTRUCTION: DEBUG_DATA_MUX_OUT = DEBUG_INSTRUCTION;
+		default:                  DEBUG_DATA_MUX_OUT = DEBUG_DIN_DIN;
 	endcase
 end
 
@@ -224,11 +241,13 @@ end
 * Register read
 **/
 always @(*) begin
-	if(EN_DH) begin
-		DEBUG_DOUT = DEBUG_READ_MUX_IN_H;
-	end else begin
-		DEBUG_DOUT = DEBUG_READ_MUX_IN_L;
-	end
+	case(DEBUG_ADDR)
+		`DEBUG_ADDRX_DL:   DEBUG_DOUT = DEBUG_READ_MUX_IN_DL;
+		`DEBUG_ADDRX_DH:   DEBUG_DOUT = DEBUG_READ_MUX_IN_DH;
+		`DEBUG_ADDRX_ARGL: DEBUG_DOUT = DEBUG_READ_MUX_IN_ARGL;
+		`DEBUG_ADDRX_ARGH: DEBUG_DOUT = DEBUG_READ_MUX_IN_ARGH;
+		default: 	       DEBUG_DOUT = DEBUG_READ_MUX_IN_DL;
+	endcase
 end
 
 endmodule

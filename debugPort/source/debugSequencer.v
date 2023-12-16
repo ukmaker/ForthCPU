@@ -8,26 +8,42 @@
 module debugSequencer(
 	input CLK,
 	input RESET,
+	input EXECUTE,
 	input COMMIT,
 	input DEBUG_ADDR_INCX,
 	input DEBUG_LD_DATAX,
+	input DEBUG_LD_ARGX,
 	
 	output reg DEBUG_ADDR_INC_EN,
-	output reg DEBUG_LD_DATA_EN
+	output reg DEBUG_LD_DATA_EN,
+	output reg DEBUG_LD_ARG_EN
 );
 
-always @(posedge CLK or posedge RESET) begin
+always @(negedge CLK or posedge RESET) begin
 	
 	if(RESET) begin
 		DEBUG_ADDR_INC_EN <= 0;
-		DEBUG_LD_DATA_EN <= 0;
+		DEBUG_LD_DATA_EN  <= 0;
 	end else begin
-		if(COMMIT) begin
+		if(EXECUTE) begin
 			DEBUG_ADDR_INC_EN <= DEBUG_ADDR_INCX;
 			DEBUG_LD_DATA_EN  <= DEBUG_LD_DATAX;
 		end else begin
 			DEBUG_ADDR_INC_EN <= 0;
 			DEBUG_LD_DATA_EN  <= 0;
+		end
+	end
+end
+
+always @(posedge CLK or posedge RESET) begin
+	
+	if(RESET) begin
+		DEBUG_LD_ARG_EN   <= 0;
+	end else begin
+		if(COMMIT) begin
+			DEBUG_LD_ARG_EN  <= DEBUG_LD_ARGX;
+		end else begin
+			DEBUG_LD_ARG_EN  <= 0;
 		end
 	end
 end

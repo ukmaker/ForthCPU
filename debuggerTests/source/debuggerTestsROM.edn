@@ -1,0 +1,2813 @@
+(edif debuggerTestsROM
+  (edifVersion 2 0 0)
+  (edifLevel 0)
+  (keywordMap (keywordLevel 0))
+  (status
+    (written
+      (timestamp 2023 12 16 15 59 0)
+      (program "SCUBA" (version "Diamond (64-bit) 3.12.1.454"))))
+      (comment "C:\lscc\diamond\3.12\ispfpga\bin\nt64\scuba.exe -w -n debuggerTestsROM -lang verilog -synth synplify -bus_exp 7 -bb -arch xo3c00a -type bram -wp 00 -rp 1100 -addr_width 13 -data_width 16 -num_rows 8192 -cascade -1 -memfile c:/users/duncan/git/forthcpu/debuggertests/source/debugger-tests.mem -memformat orca ")
+  (library ORCLIB
+    (edifLevel 0)
+    (technology
+      (numberDefinition))
+    (cell VHI
+      (cellType GENERIC)
+      (view view1
+        (viewType NETLIST)
+        (interface
+          (port Z
+            (direction OUTPUT)))))
+    (cell VLO
+      (cellType GENERIC)
+      (view view1
+        (viewType NETLIST)
+        (interface
+          (port Z
+            (direction OUTPUT)))))
+    (cell DP8KC
+      (cellType GENERIC)
+      (view view1
+        (viewType NETLIST)
+        (interface
+          (port DIA8
+            (direction INPUT))
+          (port DIA7
+            (direction INPUT))
+          (port DIA6
+            (direction INPUT))
+          (port DIA5
+            (direction INPUT))
+          (port DIA4
+            (direction INPUT))
+          (port DIA3
+            (direction INPUT))
+          (port DIA2
+            (direction INPUT))
+          (port DIA1
+            (direction INPUT))
+          (port DIA0
+            (direction INPUT))
+          (port ADA12
+            (direction INPUT))
+          (port ADA11
+            (direction INPUT))
+          (port ADA10
+            (direction INPUT))
+          (port ADA9
+            (direction INPUT))
+          (port ADA8
+            (direction INPUT))
+          (port ADA7
+            (direction INPUT))
+          (port ADA6
+            (direction INPUT))
+          (port ADA5
+            (direction INPUT))
+          (port ADA4
+            (direction INPUT))
+          (port ADA3
+            (direction INPUT))
+          (port ADA2
+            (direction INPUT))
+          (port ADA1
+            (direction INPUT))
+          (port ADA0
+            (direction INPUT))
+          (port CEA
+            (direction INPUT))
+          (port OCEA
+            (direction INPUT))
+          (port CLKA
+            (direction INPUT))
+          (port WEA
+            (direction INPUT))
+          (port CSA2
+            (direction INPUT))
+          (port CSA1
+            (direction INPUT))
+          (port CSA0
+            (direction INPUT))
+          (port RSTA
+            (direction INPUT))
+          (port DIB8
+            (direction INPUT))
+          (port DIB7
+            (direction INPUT))
+          (port DIB6
+            (direction INPUT))
+          (port DIB5
+            (direction INPUT))
+          (port DIB4
+            (direction INPUT))
+          (port DIB3
+            (direction INPUT))
+          (port DIB2
+            (direction INPUT))
+          (port DIB1
+            (direction INPUT))
+          (port DIB0
+            (direction INPUT))
+          (port ADB12
+            (direction INPUT))
+          (port ADB11
+            (direction INPUT))
+          (port ADB10
+            (direction INPUT))
+          (port ADB9
+            (direction INPUT))
+          (port ADB8
+            (direction INPUT))
+          (port ADB7
+            (direction INPUT))
+          (port ADB6
+            (direction INPUT))
+          (port ADB5
+            (direction INPUT))
+          (port ADB4
+            (direction INPUT))
+          (port ADB3
+            (direction INPUT))
+          (port ADB2
+            (direction INPUT))
+          (port ADB1
+            (direction INPUT))
+          (port ADB0
+            (direction INPUT))
+          (port CEB
+            (direction INPUT))
+          (port OCEB
+            (direction INPUT))
+          (port CLKB
+            (direction INPUT))
+          (port WEB
+            (direction INPUT))
+          (port CSB2
+            (direction INPUT))
+          (port CSB1
+            (direction INPUT))
+          (port CSB0
+            (direction INPUT))
+          (port RSTB
+            (direction INPUT))
+          (port DOA8
+            (direction OUTPUT))
+          (port DOA7
+            (direction OUTPUT))
+          (port DOA6
+            (direction OUTPUT))
+          (port DOA5
+            (direction OUTPUT))
+          (port DOA4
+            (direction OUTPUT))
+          (port DOA3
+            (direction OUTPUT))
+          (port DOA2
+            (direction OUTPUT))
+          (port DOA1
+            (direction OUTPUT))
+          (port DOA0
+            (direction OUTPUT))
+          (port DOB8
+            (direction OUTPUT))
+          (port DOB7
+            (direction OUTPUT))
+          (port DOB6
+            (direction OUTPUT))
+          (port DOB5
+            (direction OUTPUT))
+          (port DOB4
+            (direction OUTPUT))
+          (port DOB3
+            (direction OUTPUT))
+          (port DOB2
+            (direction OUTPUT))
+          (port DOB1
+            (direction OUTPUT))
+          (port DOB0
+            (direction OUTPUT)))))
+    (cell debuggerTestsROM
+      (cellType GENERIC)
+      (view view1
+        (viewType NETLIST)
+        (interface
+          (port (array (rename Address "Address(12:0)") 13)
+            (direction INPUT))
+          (port OutClock
+            (direction INPUT))
+          (port OutClockEn
+            (direction INPUT))
+          (port Reset
+            (direction INPUT))
+          (port (array (rename Q "Q(15:0)") 16)
+            (direction OUTPUT)))
+        (property NGD_DRC_MASK (integer 1))
+        (contents
+          (instance debuggerTestsROM_0_0_15
+            (viewRef view1 
+              (cellRef DP8KC))
+            (property INIT_DATA
+              (string "STATIC"))
+            (property ASYNC_RESET_RELEASE
+              (string "SYNC"))
+            (property MEM_LPC_FILE
+              (string "debuggerTestsROM.lpc"))
+            (property MEM_INIT_FILE
+              (string "debugger-tests.mem"))
+            (property INITVAL_1F
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1E
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1D
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1C
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1B
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1A
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_19
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_18
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_17
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_16
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_15
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_14
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_13
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_12
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_11
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_10
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0F
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0E
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0D
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0C
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0B
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0A
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_09
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_08
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_07
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_06
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_05
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_04
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_03
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_02
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_01
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_00
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000021100015"))
+            (property CSDECODE_B
+              (string "0b111"))
+            (property CSDECODE_A
+              (string "0b000"))
+            (property WRITEMODE_B
+              (string "NORMAL"))
+            (property WRITEMODE_A
+              (string "NORMAL"))
+            (property GSR
+              (string "ENABLED"))
+            (property RESETMODE
+              (string "ASYNC"))
+            (property REGMODE_B
+              (string "NOREG"))
+            (property REGMODE_A
+              (string "NOREG"))
+            (property DATA_WIDTH_B
+              (string "1"))
+            (property DATA_WIDTH_A
+              (string "1")))
+          (instance debuggerTestsROM_0_1_14
+            (viewRef view1 
+              (cellRef DP8KC))
+            (property INIT_DATA
+              (string "STATIC"))
+            (property ASYNC_RESET_RELEASE
+              (string "SYNC"))
+            (property MEM_LPC_FILE
+              (string "debuggerTestsROM.lpc"))
+            (property MEM_INIT_FILE
+              (string "debugger-tests.mem"))
+            (property INITVAL_1F
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1E
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1D
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1C
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1B
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1A
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_19
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_18
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_17
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_16
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_15
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_14
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_13
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_12
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_11
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_10
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0F
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0E
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0D
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0C
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0B
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0A
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_09
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_08
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_07
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_06
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_05
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_04
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_03
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_02
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_01
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_00
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000020402004"))
+            (property CSDECODE_B
+              (string "0b111"))
+            (property CSDECODE_A
+              (string "0b000"))
+            (property WRITEMODE_B
+              (string "NORMAL"))
+            (property WRITEMODE_A
+              (string "NORMAL"))
+            (property GSR
+              (string "ENABLED"))
+            (property RESETMODE
+              (string "ASYNC"))
+            (property REGMODE_B
+              (string "NOREG"))
+            (property REGMODE_A
+              (string "NOREG"))
+            (property DATA_WIDTH_B
+              (string "1"))
+            (property DATA_WIDTH_A
+              (string "1")))
+          (instance debuggerTestsROM_0_2_13
+            (viewRef view1 
+              (cellRef DP8KC))
+            (property INIT_DATA
+              (string "STATIC"))
+            (property ASYNC_RESET_RELEASE
+              (string "SYNC"))
+            (property MEM_LPC_FILE
+              (string "debuggerTestsROM.lpc"))
+            (property MEM_INIT_FILE
+              (string "debugger-tests.mem"))
+            (property INITVAL_1F
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1E
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1D
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1C
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1B
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1A
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_19
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_18
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_17
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_16
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_15
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_14
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_13
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_12
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_11
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_10
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0F
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0E
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0D
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0C
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0B
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0A
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_09
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_08
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_07
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_06
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_05
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_04
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_03
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_02
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_01
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_00
+              (string "0x0000000000000000000000000000000000000000000000000000000000000000000000000000A201"))
+            (property CSDECODE_B
+              (string "0b111"))
+            (property CSDECODE_A
+              (string "0b000"))
+            (property WRITEMODE_B
+              (string "NORMAL"))
+            (property WRITEMODE_A
+              (string "NORMAL"))
+            (property GSR
+              (string "ENABLED"))
+            (property RESETMODE
+              (string "ASYNC"))
+            (property REGMODE_B
+              (string "NOREG"))
+            (property REGMODE_A
+              (string "NOREG"))
+            (property DATA_WIDTH_B
+              (string "1"))
+            (property DATA_WIDTH_A
+              (string "1")))
+          (instance debuggerTestsROM_0_3_12
+            (viewRef view1 
+              (cellRef DP8KC))
+            (property INIT_DATA
+              (string "STATIC"))
+            (property ASYNC_RESET_RELEASE
+              (string "SYNC"))
+            (property MEM_LPC_FILE
+              (string "debuggerTestsROM.lpc"))
+            (property MEM_INIT_FILE
+              (string "debugger-tests.mem"))
+            (property INITVAL_1F
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1E
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1D
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1C
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1B
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1A
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_19
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_18
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_17
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_16
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_15
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_14
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_13
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_12
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_11
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_10
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0F
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0E
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0D
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0C
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0B
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0A
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_09
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_08
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_07
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_06
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_05
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_04
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_03
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_02
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_01
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_00
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property CSDECODE_B
+              (string "0b111"))
+            (property CSDECODE_A
+              (string "0b000"))
+            (property WRITEMODE_B
+              (string "NORMAL"))
+            (property WRITEMODE_A
+              (string "NORMAL"))
+            (property GSR
+              (string "ENABLED"))
+            (property RESETMODE
+              (string "ASYNC"))
+            (property REGMODE_B
+              (string "NOREG"))
+            (property REGMODE_A
+              (string "NOREG"))
+            (property DATA_WIDTH_B
+              (string "1"))
+            (property DATA_WIDTH_A
+              (string "1")))
+          (instance debuggerTestsROM_0_4_11
+            (viewRef view1 
+              (cellRef DP8KC))
+            (property INIT_DATA
+              (string "STATIC"))
+            (property ASYNC_RESET_RELEASE
+              (string "SYNC"))
+            (property MEM_LPC_FILE
+              (string "debuggerTestsROM.lpc"))
+            (property MEM_INIT_FILE
+              (string "debugger-tests.mem"))
+            (property INITVAL_1F
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1E
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1D
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1C
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1B
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1A
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_19
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_18
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_17
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_16
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_15
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_14
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_13
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_12
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_11
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_10
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0F
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0E
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0D
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0C
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0B
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0A
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_09
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_08
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_07
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_06
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_05
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_04
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_03
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_02
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_01
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_00
+              (string "0x0000000000000000000000000000000000000000000000000000000000000000000000002540AA04"))
+            (property CSDECODE_B
+              (string "0b111"))
+            (property CSDECODE_A
+              (string "0b000"))
+            (property WRITEMODE_B
+              (string "NORMAL"))
+            (property WRITEMODE_A
+              (string "NORMAL"))
+            (property GSR
+              (string "ENABLED"))
+            (property RESETMODE
+              (string "ASYNC"))
+            (property REGMODE_B
+              (string "NOREG"))
+            (property REGMODE_A
+              (string "NOREG"))
+            (property DATA_WIDTH_B
+              (string "1"))
+            (property DATA_WIDTH_A
+              (string "1")))
+          (instance debuggerTestsROM_0_5_10
+            (viewRef view1 
+              (cellRef DP8KC))
+            (property INIT_DATA
+              (string "STATIC"))
+            (property ASYNC_RESET_RELEASE
+              (string "SYNC"))
+            (property MEM_LPC_FILE
+              (string "debuggerTestsROM.lpc"))
+            (property MEM_INIT_FILE
+              (string "debugger-tests.mem"))
+            (property INITVAL_1F
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1E
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1D
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1C
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1B
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1A
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_19
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_18
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_17
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_16
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_15
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_14
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_13
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_12
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_11
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_10
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0F
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0E
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0D
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0C
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0B
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0A
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_09
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_08
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_07
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_06
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_05
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_04
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_03
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_02
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_01
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_00
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000508A40"))
+            (property CSDECODE_B
+              (string "0b111"))
+            (property CSDECODE_A
+              (string "0b000"))
+            (property WRITEMODE_B
+              (string "NORMAL"))
+            (property WRITEMODE_A
+              (string "NORMAL"))
+            (property GSR
+              (string "ENABLED"))
+            (property RESETMODE
+              (string "ASYNC"))
+            (property REGMODE_B
+              (string "NOREG"))
+            (property REGMODE_A
+              (string "NOREG"))
+            (property DATA_WIDTH_B
+              (string "1"))
+            (property DATA_WIDTH_A
+              (string "1")))
+          (instance debuggerTestsROM_0_6_9
+            (viewRef view1 
+              (cellRef DP8KC))
+            (property INIT_DATA
+              (string "STATIC"))
+            (property ASYNC_RESET_RELEASE
+              (string "SYNC"))
+            (property MEM_LPC_FILE
+              (string "debuggerTestsROM.lpc"))
+            (property MEM_INIT_FILE
+              (string "debugger-tests.mem"))
+            (property INITVAL_1F
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1E
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1D
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1C
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1B
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1A
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_19
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_18
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_17
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_16
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_15
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_14
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_13
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_12
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_11
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_10
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0F
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0E
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0D
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0C
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0B
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0A
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_09
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_08
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_07
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_06
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_05
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_04
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_03
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_02
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_01
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_00
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000002000"))
+            (property CSDECODE_B
+              (string "0b111"))
+            (property CSDECODE_A
+              (string "0b000"))
+            (property WRITEMODE_B
+              (string "NORMAL"))
+            (property WRITEMODE_A
+              (string "NORMAL"))
+            (property GSR
+              (string "ENABLED"))
+            (property RESETMODE
+              (string "ASYNC"))
+            (property REGMODE_B
+              (string "NOREG"))
+            (property REGMODE_A
+              (string "NOREG"))
+            (property DATA_WIDTH_B
+              (string "1"))
+            (property DATA_WIDTH_A
+              (string "1")))
+          (instance debuggerTestsROM_0_7_8
+            (viewRef view1 
+              (cellRef DP8KC))
+            (property INIT_DATA
+              (string "STATIC"))
+            (property ASYNC_RESET_RELEASE
+              (string "SYNC"))
+            (property MEM_LPC_FILE
+              (string "debuggerTestsROM.lpc"))
+            (property MEM_INIT_FILE
+              (string "debugger-tests.mem"))
+            (property INITVAL_1F
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1E
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1D
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1C
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1B
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1A
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_19
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_18
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_17
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_16
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_15
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_14
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_13
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_12
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_11
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_10
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0F
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0E
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0D
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0C
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0B
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0A
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_09
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_08
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_07
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_06
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_05
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_04
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_03
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_02
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_01
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_00
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property CSDECODE_B
+              (string "0b111"))
+            (property CSDECODE_A
+              (string "0b000"))
+            (property WRITEMODE_B
+              (string "NORMAL"))
+            (property WRITEMODE_A
+              (string "NORMAL"))
+            (property GSR
+              (string "ENABLED"))
+            (property RESETMODE
+              (string "ASYNC"))
+            (property REGMODE_B
+              (string "NOREG"))
+            (property REGMODE_A
+              (string "NOREG"))
+            (property DATA_WIDTH_B
+              (string "1"))
+            (property DATA_WIDTH_A
+              (string "1")))
+          (instance debuggerTestsROM_0_8_7
+            (viewRef view1 
+              (cellRef DP8KC))
+            (property INIT_DATA
+              (string "STATIC"))
+            (property ASYNC_RESET_RELEASE
+              (string "SYNC"))
+            (property MEM_LPC_FILE
+              (string "debuggerTestsROM.lpc"))
+            (property MEM_INIT_FILE
+              (string "debugger-tests.mem"))
+            (property INITVAL_1F
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1E
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1D
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1C
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1B
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1A
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_19
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_18
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_17
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_16
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_15
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_14
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_13
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_12
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_11
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_10
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0F
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0E
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0D
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0C
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0B
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0A
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_09
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_08
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_07
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_06
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_05
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_04
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_03
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_02
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_01
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_00
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000845"))
+            (property CSDECODE_B
+              (string "0b111"))
+            (property CSDECODE_A
+              (string "0b000"))
+            (property WRITEMODE_B
+              (string "NORMAL"))
+            (property WRITEMODE_A
+              (string "NORMAL"))
+            (property GSR
+              (string "ENABLED"))
+            (property RESETMODE
+              (string "ASYNC"))
+            (property REGMODE_B
+              (string "NOREG"))
+            (property REGMODE_A
+              (string "NOREG"))
+            (property DATA_WIDTH_B
+              (string "1"))
+            (property DATA_WIDTH_A
+              (string "1")))
+          (instance debuggerTestsROM_0_9_6
+            (viewRef view1 
+              (cellRef DP8KC))
+            (property INIT_DATA
+              (string "STATIC"))
+            (property ASYNC_RESET_RELEASE
+              (string "SYNC"))
+            (property MEM_LPC_FILE
+              (string "debuggerTestsROM.lpc"))
+            (property MEM_INIT_FILE
+              (string "debugger-tests.mem"))
+            (property INITVAL_1F
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1E
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1D
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1C
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1B
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1A
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_19
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_18
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_17
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_16
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_15
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_14
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_13
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_12
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_11
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_10
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0F
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0E
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0D
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0C
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0B
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0A
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_09
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_08
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_07
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_06
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_05
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_04
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_03
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_02
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_01
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_00
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000080000200"))
+            (property CSDECODE_B
+              (string "0b111"))
+            (property CSDECODE_A
+              (string "0b000"))
+            (property WRITEMODE_B
+              (string "NORMAL"))
+            (property WRITEMODE_A
+              (string "NORMAL"))
+            (property GSR
+              (string "ENABLED"))
+            (property RESETMODE
+              (string "ASYNC"))
+            (property REGMODE_B
+              (string "NOREG"))
+            (property REGMODE_A
+              (string "NOREG"))
+            (property DATA_WIDTH_B
+              (string "1"))
+            (property DATA_WIDTH_A
+              (string "1")))
+          (instance debuggerTestsROM_0_10_5
+            (viewRef view1 
+              (cellRef DP8KC))
+            (property INIT_DATA
+              (string "STATIC"))
+            (property ASYNC_RESET_RELEASE
+              (string "SYNC"))
+            (property MEM_LPC_FILE
+              (string "debuggerTestsROM.lpc"))
+            (property MEM_INIT_FILE
+              (string "debugger-tests.mem"))
+            (property INITVAL_1F
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1E
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1D
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1C
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1B
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1A
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_19
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_18
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_17
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_16
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_15
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_14
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_13
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_12
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_11
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_10
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0F
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0E
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0D
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0C
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0B
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0A
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_09
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_08
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_07
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_06
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_05
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_04
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_03
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_02
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_01
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_00
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000001002000"))
+            (property CSDECODE_B
+              (string "0b111"))
+            (property CSDECODE_A
+              (string "0b000"))
+            (property WRITEMODE_B
+              (string "NORMAL"))
+            (property WRITEMODE_A
+              (string "NORMAL"))
+            (property GSR
+              (string "ENABLED"))
+            (property RESETMODE
+              (string "ASYNC"))
+            (property REGMODE_B
+              (string "NOREG"))
+            (property REGMODE_A
+              (string "NOREG"))
+            (property DATA_WIDTH_B
+              (string "1"))
+            (property DATA_WIDTH_A
+              (string "1")))
+          (instance debuggerTestsROM_0_11_4
+            (viewRef view1 
+              (cellRef DP8KC))
+            (property INIT_DATA
+              (string "STATIC"))
+            (property ASYNC_RESET_RELEASE
+              (string "SYNC"))
+            (property MEM_LPC_FILE
+              (string "debuggerTestsROM.lpc"))
+            (property MEM_INIT_FILE
+              (string "debugger-tests.mem"))
+            (property INITVAL_1F
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1E
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1D
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1C
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1B
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1A
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_19
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_18
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_17
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_16
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_15
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_14
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_13
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_12
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_11
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_10
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0F
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0E
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0D
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0C
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0B
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0A
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_09
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_08
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_07
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_06
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_05
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_04
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_03
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_02
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_01
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_00
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000004000000"))
+            (property CSDECODE_B
+              (string "0b111"))
+            (property CSDECODE_A
+              (string "0b000"))
+            (property WRITEMODE_B
+              (string "NORMAL"))
+            (property WRITEMODE_A
+              (string "NORMAL"))
+            (property GSR
+              (string "ENABLED"))
+            (property RESETMODE
+              (string "ASYNC"))
+            (property REGMODE_B
+              (string "NOREG"))
+            (property REGMODE_A
+              (string "NOREG"))
+            (property DATA_WIDTH_B
+              (string "1"))
+            (property DATA_WIDTH_A
+              (string "1")))
+          (instance debuggerTestsROM_0_12_3
+            (viewRef view1 
+              (cellRef DP8KC))
+            (property INIT_DATA
+              (string "STATIC"))
+            (property ASYNC_RESET_RELEASE
+              (string "SYNC"))
+            (property MEM_LPC_FILE
+              (string "debuggerTestsROM.lpc"))
+            (property MEM_INIT_FILE
+              (string "debugger-tests.mem"))
+            (property INITVAL_1F
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1E
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1D
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1C
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1B
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1A
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_19
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_18
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_17
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_16
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_15
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_14
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_13
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_12
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_11
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_10
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0F
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0E
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0D
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0C
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0B
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0A
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_09
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_08
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_07
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_06
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_05
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_04
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_03
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_02
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_01
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_00
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000021502210"))
+            (property CSDECODE_B
+              (string "0b111"))
+            (property CSDECODE_A
+              (string "0b000"))
+            (property WRITEMODE_B
+              (string "NORMAL"))
+            (property WRITEMODE_A
+              (string "NORMAL"))
+            (property GSR
+              (string "ENABLED"))
+            (property RESETMODE
+              (string "ASYNC"))
+            (property REGMODE_B
+              (string "NOREG"))
+            (property REGMODE_A
+              (string "NOREG"))
+            (property DATA_WIDTH_B
+              (string "1"))
+            (property DATA_WIDTH_A
+              (string "1")))
+          (instance debuggerTestsROM_0_13_2
+            (viewRef view1 
+              (cellRef DP8KC))
+            (property INIT_DATA
+              (string "STATIC"))
+            (property ASYNC_RESET_RELEASE
+              (string "SYNC"))
+            (property MEM_LPC_FILE
+              (string "debuggerTestsROM.lpc"))
+            (property MEM_INIT_FILE
+              (string "debugger-tests.mem"))
+            (property INITVAL_1F
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1E
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1D
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1C
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1B
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1A
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_19
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_18
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_17
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_16
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_15
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_14
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_13
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_12
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_11
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_10
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0F
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0E
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0D
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0C
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0B
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0A
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_09
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_08
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_07
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_06
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_05
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_04
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_03
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_02
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_01
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_00
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000002000"))
+            (property CSDECODE_B
+              (string "0b111"))
+            (property CSDECODE_A
+              (string "0b000"))
+            (property WRITEMODE_B
+              (string "NORMAL"))
+            (property WRITEMODE_A
+              (string "NORMAL"))
+            (property GSR
+              (string "ENABLED"))
+            (property RESETMODE
+              (string "ASYNC"))
+            (property REGMODE_B
+              (string "NOREG"))
+            (property REGMODE_A
+              (string "NOREG"))
+            (property DATA_WIDTH_B
+              (string "1"))
+            (property DATA_WIDTH_A
+              (string "1")))
+          (instance debuggerTestsROM_0_14_1
+            (viewRef view1 
+              (cellRef DP8KC))
+            (property INIT_DATA
+              (string "STATIC"))
+            (property ASYNC_RESET_RELEASE
+              (string "SYNC"))
+            (property MEM_LPC_FILE
+              (string "debuggerTestsROM.lpc"))
+            (property MEM_INIT_FILE
+              (string "debugger-tests.mem"))
+            (property INITVAL_1F
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1E
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1D
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1C
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1B
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1A
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_19
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_18
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_17
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_16
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_15
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_14
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_13
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_12
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_11
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_10
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0F
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0E
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0D
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0C
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0B
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0A
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_09
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_08
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_07
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_06
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_05
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_04
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_03
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_02
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_01
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_00
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000025508855"))
+            (property CSDECODE_B
+              (string "0b111"))
+            (property CSDECODE_A
+              (string "0b000"))
+            (property WRITEMODE_B
+              (string "NORMAL"))
+            (property WRITEMODE_A
+              (string "NORMAL"))
+            (property GSR
+              (string "ENABLED"))
+            (property RESETMODE
+              (string "ASYNC"))
+            (property REGMODE_B
+              (string "NOREG"))
+            (property REGMODE_A
+              (string "NOREG"))
+            (property DATA_WIDTH_B
+              (string "1"))
+            (property DATA_WIDTH_A
+              (string "1")))
+          (instance scuba_vhi_inst
+            (viewRef view1 
+              (cellRef VHI)))
+          (instance scuba_vlo_inst
+            (viewRef view1 
+              (cellRef VLO)))
+          (instance debuggerTestsROM_0_15_0
+            (viewRef view1 
+              (cellRef DP8KC))
+            (property INIT_DATA
+              (string "STATIC"))
+            (property ASYNC_RESET_RELEASE
+              (string "SYNC"))
+            (property MEM_LPC_FILE
+              (string "debuggerTestsROM.lpc"))
+            (property MEM_INIT_FILE
+              (string "debugger-tests.mem"))
+            (property INITVAL_1F
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1E
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1D
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1C
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1B
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_1A
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_19
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_18
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_17
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_16
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_15
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_14
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_13
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_12
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_11
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_10
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0F
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0E
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0D
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0C
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0B
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_0A
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_09
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_08
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_07
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_06
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_05
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_04
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_03
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_02
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_01
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000"))
+            (property INITVAL_00
+              (string "0x00000000000000000000000000000000000000000000000000000000000000000000000085008005"))
+            (property CSDECODE_B
+              (string "0b111"))
+            (property CSDECODE_A
+              (string "0b000"))
+            (property WRITEMODE_B
+              (string "NORMAL"))
+            (property WRITEMODE_A
+              (string "NORMAL"))
+            (property GSR
+              (string "ENABLED"))
+            (property RESETMODE
+              (string "ASYNC"))
+            (property REGMODE_B
+              (string "NOREG"))
+            (property REGMODE_A
+              (string "NOREG"))
+            (property DATA_WIDTH_B
+              (string "1"))
+            (property DATA_WIDTH_A
+              (string "1")))
+          (net scuba_vhi
+            (joined
+              (portRef Z (instanceRef scuba_vhi_inst))
+              (portRef OCEB (instanceRef debuggerTestsROM_0_0_15))
+              (portRef CEB (instanceRef debuggerTestsROM_0_0_15))
+              (portRef OCEB (instanceRef debuggerTestsROM_0_1_14))
+              (portRef CEB (instanceRef debuggerTestsROM_0_1_14))
+              (portRef OCEB (instanceRef debuggerTestsROM_0_2_13))
+              (portRef CEB (instanceRef debuggerTestsROM_0_2_13))
+              (portRef OCEB (instanceRef debuggerTestsROM_0_3_12))
+              (portRef CEB (instanceRef debuggerTestsROM_0_3_12))
+              (portRef OCEB (instanceRef debuggerTestsROM_0_4_11))
+              (portRef CEB (instanceRef debuggerTestsROM_0_4_11))
+              (portRef OCEB (instanceRef debuggerTestsROM_0_5_10))
+              (portRef CEB (instanceRef debuggerTestsROM_0_5_10))
+              (portRef OCEB (instanceRef debuggerTestsROM_0_6_9))
+              (portRef CEB (instanceRef debuggerTestsROM_0_6_9))
+              (portRef OCEB (instanceRef debuggerTestsROM_0_7_8))
+              (portRef CEB (instanceRef debuggerTestsROM_0_7_8))
+              (portRef OCEB (instanceRef debuggerTestsROM_0_8_7))
+              (portRef CEB (instanceRef debuggerTestsROM_0_8_7))
+              (portRef OCEB (instanceRef debuggerTestsROM_0_9_6))
+              (portRef CEB (instanceRef debuggerTestsROM_0_9_6))
+              (portRef OCEB (instanceRef debuggerTestsROM_0_10_5))
+              (portRef CEB (instanceRef debuggerTestsROM_0_10_5))
+              (portRef OCEB (instanceRef debuggerTestsROM_0_11_4))
+              (portRef CEB (instanceRef debuggerTestsROM_0_11_4))
+              (portRef OCEB (instanceRef debuggerTestsROM_0_12_3))
+              (portRef CEB (instanceRef debuggerTestsROM_0_12_3))
+              (portRef OCEB (instanceRef debuggerTestsROM_0_13_2))
+              (portRef CEB (instanceRef debuggerTestsROM_0_13_2))
+              (portRef OCEB (instanceRef debuggerTestsROM_0_14_1))
+              (portRef CEB (instanceRef debuggerTestsROM_0_14_1))
+              (portRef OCEB (instanceRef debuggerTestsROM_0_15_0))
+              (portRef CEB (instanceRef debuggerTestsROM_0_15_0))))
+          (net scuba_vlo
+            (joined
+              (portRef Z (instanceRef scuba_vlo_inst))
+              (portRef CSB2 (instanceRef debuggerTestsROM_0_0_15))
+              (portRef CSA2 (instanceRef debuggerTestsROM_0_0_15))
+              (portRef CSB1 (instanceRef debuggerTestsROM_0_0_15))
+              (portRef CSA1 (instanceRef debuggerTestsROM_0_0_15))
+              (portRef CSB0 (instanceRef debuggerTestsROM_0_0_15))
+              (portRef CSA0 (instanceRef debuggerTestsROM_0_0_15))
+              (portRef RSTB (instanceRef debuggerTestsROM_0_0_15))
+              (portRef WEB (instanceRef debuggerTestsROM_0_0_15))
+              (portRef WEA (instanceRef debuggerTestsROM_0_0_15))
+              (portRef CLKB (instanceRef debuggerTestsROM_0_0_15))
+              (portRef ADB12 (instanceRef debuggerTestsROM_0_0_15))
+              (portRef ADB11 (instanceRef debuggerTestsROM_0_0_15))
+              (portRef ADB10 (instanceRef debuggerTestsROM_0_0_15))
+              (portRef ADB9 (instanceRef debuggerTestsROM_0_0_15))
+              (portRef ADB8 (instanceRef debuggerTestsROM_0_0_15))
+              (portRef ADB7 (instanceRef debuggerTestsROM_0_0_15))
+              (portRef ADB6 (instanceRef debuggerTestsROM_0_0_15))
+              (portRef ADB5 (instanceRef debuggerTestsROM_0_0_15))
+              (portRef ADB4 (instanceRef debuggerTestsROM_0_0_15))
+              (portRef ADB3 (instanceRef debuggerTestsROM_0_0_15))
+              (portRef ADB2 (instanceRef debuggerTestsROM_0_0_15))
+              (portRef ADB1 (instanceRef debuggerTestsROM_0_0_15))
+              (portRef ADB0 (instanceRef debuggerTestsROM_0_0_15))
+              (portRef DIB8 (instanceRef debuggerTestsROM_0_0_15))
+              (portRef DIA8 (instanceRef debuggerTestsROM_0_0_15))
+              (portRef DIB7 (instanceRef debuggerTestsROM_0_0_15))
+              (portRef DIA7 (instanceRef debuggerTestsROM_0_0_15))
+              (portRef DIB6 (instanceRef debuggerTestsROM_0_0_15))
+              (portRef DIA6 (instanceRef debuggerTestsROM_0_0_15))
+              (portRef DIB5 (instanceRef debuggerTestsROM_0_0_15))
+              (portRef DIA5 (instanceRef debuggerTestsROM_0_0_15))
+              (portRef DIB4 (instanceRef debuggerTestsROM_0_0_15))
+              (portRef DIA4 (instanceRef debuggerTestsROM_0_0_15))
+              (portRef DIB3 (instanceRef debuggerTestsROM_0_0_15))
+              (portRef DIA3 (instanceRef debuggerTestsROM_0_0_15))
+              (portRef DIB2 (instanceRef debuggerTestsROM_0_0_15))
+              (portRef DIA2 (instanceRef debuggerTestsROM_0_0_15))
+              (portRef DIB1 (instanceRef debuggerTestsROM_0_0_15))
+              (portRef DIA1 (instanceRef debuggerTestsROM_0_0_15))
+              (portRef DIB0 (instanceRef debuggerTestsROM_0_0_15))
+              (portRef DIA0 (instanceRef debuggerTestsROM_0_0_15))
+              (portRef CSB2 (instanceRef debuggerTestsROM_0_1_14))
+              (portRef CSA2 (instanceRef debuggerTestsROM_0_1_14))
+              (portRef CSB1 (instanceRef debuggerTestsROM_0_1_14))
+              (portRef CSA1 (instanceRef debuggerTestsROM_0_1_14))
+              (portRef CSB0 (instanceRef debuggerTestsROM_0_1_14))
+              (portRef CSA0 (instanceRef debuggerTestsROM_0_1_14))
+              (portRef RSTB (instanceRef debuggerTestsROM_0_1_14))
+              (portRef WEB (instanceRef debuggerTestsROM_0_1_14))
+              (portRef WEA (instanceRef debuggerTestsROM_0_1_14))
+              (portRef CLKB (instanceRef debuggerTestsROM_0_1_14))
+              (portRef ADB12 (instanceRef debuggerTestsROM_0_1_14))
+              (portRef ADB11 (instanceRef debuggerTestsROM_0_1_14))
+              (portRef ADB10 (instanceRef debuggerTestsROM_0_1_14))
+              (portRef ADB9 (instanceRef debuggerTestsROM_0_1_14))
+              (portRef ADB8 (instanceRef debuggerTestsROM_0_1_14))
+              (portRef ADB7 (instanceRef debuggerTestsROM_0_1_14))
+              (portRef ADB6 (instanceRef debuggerTestsROM_0_1_14))
+              (portRef ADB5 (instanceRef debuggerTestsROM_0_1_14))
+              (portRef ADB4 (instanceRef debuggerTestsROM_0_1_14))
+              (portRef ADB3 (instanceRef debuggerTestsROM_0_1_14))
+              (portRef ADB2 (instanceRef debuggerTestsROM_0_1_14))
+              (portRef ADB1 (instanceRef debuggerTestsROM_0_1_14))
+              (portRef ADB0 (instanceRef debuggerTestsROM_0_1_14))
+              (portRef DIB8 (instanceRef debuggerTestsROM_0_1_14))
+              (portRef DIA8 (instanceRef debuggerTestsROM_0_1_14))
+              (portRef DIB7 (instanceRef debuggerTestsROM_0_1_14))
+              (portRef DIA7 (instanceRef debuggerTestsROM_0_1_14))
+              (portRef DIB6 (instanceRef debuggerTestsROM_0_1_14))
+              (portRef DIA6 (instanceRef debuggerTestsROM_0_1_14))
+              (portRef DIB5 (instanceRef debuggerTestsROM_0_1_14))
+              (portRef DIA5 (instanceRef debuggerTestsROM_0_1_14))
+              (portRef DIB4 (instanceRef debuggerTestsROM_0_1_14))
+              (portRef DIA4 (instanceRef debuggerTestsROM_0_1_14))
+              (portRef DIB3 (instanceRef debuggerTestsROM_0_1_14))
+              (portRef DIA3 (instanceRef debuggerTestsROM_0_1_14))
+              (portRef DIB2 (instanceRef debuggerTestsROM_0_1_14))
+              (portRef DIA2 (instanceRef debuggerTestsROM_0_1_14))
+              (portRef DIB1 (instanceRef debuggerTestsROM_0_1_14))
+              (portRef DIA1 (instanceRef debuggerTestsROM_0_1_14))
+              (portRef DIB0 (instanceRef debuggerTestsROM_0_1_14))
+              (portRef DIA0 (instanceRef debuggerTestsROM_0_1_14))
+              (portRef CSB2 (instanceRef debuggerTestsROM_0_2_13))
+              (portRef CSA2 (instanceRef debuggerTestsROM_0_2_13))
+              (portRef CSB1 (instanceRef debuggerTestsROM_0_2_13))
+              (portRef CSA1 (instanceRef debuggerTestsROM_0_2_13))
+              (portRef CSB0 (instanceRef debuggerTestsROM_0_2_13))
+              (portRef CSA0 (instanceRef debuggerTestsROM_0_2_13))
+              (portRef RSTB (instanceRef debuggerTestsROM_0_2_13))
+              (portRef WEB (instanceRef debuggerTestsROM_0_2_13))
+              (portRef WEA (instanceRef debuggerTestsROM_0_2_13))
+              (portRef CLKB (instanceRef debuggerTestsROM_0_2_13))
+              (portRef ADB12 (instanceRef debuggerTestsROM_0_2_13))
+              (portRef ADB11 (instanceRef debuggerTestsROM_0_2_13))
+              (portRef ADB10 (instanceRef debuggerTestsROM_0_2_13))
+              (portRef ADB9 (instanceRef debuggerTestsROM_0_2_13))
+              (portRef ADB8 (instanceRef debuggerTestsROM_0_2_13))
+              (portRef ADB7 (instanceRef debuggerTestsROM_0_2_13))
+              (portRef ADB6 (instanceRef debuggerTestsROM_0_2_13))
+              (portRef ADB5 (instanceRef debuggerTestsROM_0_2_13))
+              (portRef ADB4 (instanceRef debuggerTestsROM_0_2_13))
+              (portRef ADB3 (instanceRef debuggerTestsROM_0_2_13))
+              (portRef ADB2 (instanceRef debuggerTestsROM_0_2_13))
+              (portRef ADB1 (instanceRef debuggerTestsROM_0_2_13))
+              (portRef ADB0 (instanceRef debuggerTestsROM_0_2_13))
+              (portRef DIB8 (instanceRef debuggerTestsROM_0_2_13))
+              (portRef DIA8 (instanceRef debuggerTestsROM_0_2_13))
+              (portRef DIB7 (instanceRef debuggerTestsROM_0_2_13))
+              (portRef DIA7 (instanceRef debuggerTestsROM_0_2_13))
+              (portRef DIB6 (instanceRef debuggerTestsROM_0_2_13))
+              (portRef DIA6 (instanceRef debuggerTestsROM_0_2_13))
+              (portRef DIB5 (instanceRef debuggerTestsROM_0_2_13))
+              (portRef DIA5 (instanceRef debuggerTestsROM_0_2_13))
+              (portRef DIB4 (instanceRef debuggerTestsROM_0_2_13))
+              (portRef DIA4 (instanceRef debuggerTestsROM_0_2_13))
+              (portRef DIB3 (instanceRef debuggerTestsROM_0_2_13))
+              (portRef DIA3 (instanceRef debuggerTestsROM_0_2_13))
+              (portRef DIB2 (instanceRef debuggerTestsROM_0_2_13))
+              (portRef DIA2 (instanceRef debuggerTestsROM_0_2_13))
+              (portRef DIB1 (instanceRef debuggerTestsROM_0_2_13))
+              (portRef DIA1 (instanceRef debuggerTestsROM_0_2_13))
+              (portRef DIB0 (instanceRef debuggerTestsROM_0_2_13))
+              (portRef DIA0 (instanceRef debuggerTestsROM_0_2_13))
+              (portRef CSB2 (instanceRef debuggerTestsROM_0_3_12))
+              (portRef CSA2 (instanceRef debuggerTestsROM_0_3_12))
+              (portRef CSB1 (instanceRef debuggerTestsROM_0_3_12))
+              (portRef CSA1 (instanceRef debuggerTestsROM_0_3_12))
+              (portRef CSB0 (instanceRef debuggerTestsROM_0_3_12))
+              (portRef CSA0 (instanceRef debuggerTestsROM_0_3_12))
+              (portRef RSTB (instanceRef debuggerTestsROM_0_3_12))
+              (portRef WEB (instanceRef debuggerTestsROM_0_3_12))
+              (portRef WEA (instanceRef debuggerTestsROM_0_3_12))
+              (portRef CLKB (instanceRef debuggerTestsROM_0_3_12))
+              (portRef ADB12 (instanceRef debuggerTestsROM_0_3_12))
+              (portRef ADB11 (instanceRef debuggerTestsROM_0_3_12))
+              (portRef ADB10 (instanceRef debuggerTestsROM_0_3_12))
+              (portRef ADB9 (instanceRef debuggerTestsROM_0_3_12))
+              (portRef ADB8 (instanceRef debuggerTestsROM_0_3_12))
+              (portRef ADB7 (instanceRef debuggerTestsROM_0_3_12))
+              (portRef ADB6 (instanceRef debuggerTestsROM_0_3_12))
+              (portRef ADB5 (instanceRef debuggerTestsROM_0_3_12))
+              (portRef ADB4 (instanceRef debuggerTestsROM_0_3_12))
+              (portRef ADB3 (instanceRef debuggerTestsROM_0_3_12))
+              (portRef ADB2 (instanceRef debuggerTestsROM_0_3_12))
+              (portRef ADB1 (instanceRef debuggerTestsROM_0_3_12))
+              (portRef ADB0 (instanceRef debuggerTestsROM_0_3_12))
+              (portRef DIB8 (instanceRef debuggerTestsROM_0_3_12))
+              (portRef DIA8 (instanceRef debuggerTestsROM_0_3_12))
+              (portRef DIB7 (instanceRef debuggerTestsROM_0_3_12))
+              (portRef DIA7 (instanceRef debuggerTestsROM_0_3_12))
+              (portRef DIB6 (instanceRef debuggerTestsROM_0_3_12))
+              (portRef DIA6 (instanceRef debuggerTestsROM_0_3_12))
+              (portRef DIB5 (instanceRef debuggerTestsROM_0_3_12))
+              (portRef DIA5 (instanceRef debuggerTestsROM_0_3_12))
+              (portRef DIB4 (instanceRef debuggerTestsROM_0_3_12))
+              (portRef DIA4 (instanceRef debuggerTestsROM_0_3_12))
+              (portRef DIB3 (instanceRef debuggerTestsROM_0_3_12))
+              (portRef DIA3 (instanceRef debuggerTestsROM_0_3_12))
+              (portRef DIB2 (instanceRef debuggerTestsROM_0_3_12))
+              (portRef DIA2 (instanceRef debuggerTestsROM_0_3_12))
+              (portRef DIB1 (instanceRef debuggerTestsROM_0_3_12))
+              (portRef DIA1 (instanceRef debuggerTestsROM_0_3_12))
+              (portRef DIB0 (instanceRef debuggerTestsROM_0_3_12))
+              (portRef DIA0 (instanceRef debuggerTestsROM_0_3_12))
+              (portRef CSB2 (instanceRef debuggerTestsROM_0_4_11))
+              (portRef CSA2 (instanceRef debuggerTestsROM_0_4_11))
+              (portRef CSB1 (instanceRef debuggerTestsROM_0_4_11))
+              (portRef CSA1 (instanceRef debuggerTestsROM_0_4_11))
+              (portRef CSB0 (instanceRef debuggerTestsROM_0_4_11))
+              (portRef CSA0 (instanceRef debuggerTestsROM_0_4_11))
+              (portRef RSTB (instanceRef debuggerTestsROM_0_4_11))
+              (portRef WEB (instanceRef debuggerTestsROM_0_4_11))
+              (portRef WEA (instanceRef debuggerTestsROM_0_4_11))
+              (portRef CLKB (instanceRef debuggerTestsROM_0_4_11))
+              (portRef ADB12 (instanceRef debuggerTestsROM_0_4_11))
+              (portRef ADB11 (instanceRef debuggerTestsROM_0_4_11))
+              (portRef ADB10 (instanceRef debuggerTestsROM_0_4_11))
+              (portRef ADB9 (instanceRef debuggerTestsROM_0_4_11))
+              (portRef ADB8 (instanceRef debuggerTestsROM_0_4_11))
+              (portRef ADB7 (instanceRef debuggerTestsROM_0_4_11))
+              (portRef ADB6 (instanceRef debuggerTestsROM_0_4_11))
+              (portRef ADB5 (instanceRef debuggerTestsROM_0_4_11))
+              (portRef ADB4 (instanceRef debuggerTestsROM_0_4_11))
+              (portRef ADB3 (instanceRef debuggerTestsROM_0_4_11))
+              (portRef ADB2 (instanceRef debuggerTestsROM_0_4_11))
+              (portRef ADB1 (instanceRef debuggerTestsROM_0_4_11))
+              (portRef ADB0 (instanceRef debuggerTestsROM_0_4_11))
+              (portRef DIB8 (instanceRef debuggerTestsROM_0_4_11))
+              (portRef DIA8 (instanceRef debuggerTestsROM_0_4_11))
+              (portRef DIB7 (instanceRef debuggerTestsROM_0_4_11))
+              (portRef DIA7 (instanceRef debuggerTestsROM_0_4_11))
+              (portRef DIB6 (instanceRef debuggerTestsROM_0_4_11))
+              (portRef DIA6 (instanceRef debuggerTestsROM_0_4_11))
+              (portRef DIB5 (instanceRef debuggerTestsROM_0_4_11))
+              (portRef DIA5 (instanceRef debuggerTestsROM_0_4_11))
+              (portRef DIB4 (instanceRef debuggerTestsROM_0_4_11))
+              (portRef DIA4 (instanceRef debuggerTestsROM_0_4_11))
+              (portRef DIB3 (instanceRef debuggerTestsROM_0_4_11))
+              (portRef DIA3 (instanceRef debuggerTestsROM_0_4_11))
+              (portRef DIB2 (instanceRef debuggerTestsROM_0_4_11))
+              (portRef DIA2 (instanceRef debuggerTestsROM_0_4_11))
+              (portRef DIB1 (instanceRef debuggerTestsROM_0_4_11))
+              (portRef DIA1 (instanceRef debuggerTestsROM_0_4_11))
+              (portRef DIB0 (instanceRef debuggerTestsROM_0_4_11))
+              (portRef DIA0 (instanceRef debuggerTestsROM_0_4_11))
+              (portRef CSB2 (instanceRef debuggerTestsROM_0_5_10))
+              (portRef CSA2 (instanceRef debuggerTestsROM_0_5_10))
+              (portRef CSB1 (instanceRef debuggerTestsROM_0_5_10))
+              (portRef CSA1 (instanceRef debuggerTestsROM_0_5_10))
+              (portRef CSB0 (instanceRef debuggerTestsROM_0_5_10))
+              (portRef CSA0 (instanceRef debuggerTestsROM_0_5_10))
+              (portRef RSTB (instanceRef debuggerTestsROM_0_5_10))
+              (portRef WEB (instanceRef debuggerTestsROM_0_5_10))
+              (portRef WEA (instanceRef debuggerTestsROM_0_5_10))
+              (portRef CLKB (instanceRef debuggerTestsROM_0_5_10))
+              (portRef ADB12 (instanceRef debuggerTestsROM_0_5_10))
+              (portRef ADB11 (instanceRef debuggerTestsROM_0_5_10))
+              (portRef ADB10 (instanceRef debuggerTestsROM_0_5_10))
+              (portRef ADB9 (instanceRef debuggerTestsROM_0_5_10))
+              (portRef ADB8 (instanceRef debuggerTestsROM_0_5_10))
+              (portRef ADB7 (instanceRef debuggerTestsROM_0_5_10))
+              (portRef ADB6 (instanceRef debuggerTestsROM_0_5_10))
+              (portRef ADB5 (instanceRef debuggerTestsROM_0_5_10))
+              (portRef ADB4 (instanceRef debuggerTestsROM_0_5_10))
+              (portRef ADB3 (instanceRef debuggerTestsROM_0_5_10))
+              (portRef ADB2 (instanceRef debuggerTestsROM_0_5_10))
+              (portRef ADB1 (instanceRef debuggerTestsROM_0_5_10))
+              (portRef ADB0 (instanceRef debuggerTestsROM_0_5_10))
+              (portRef DIB8 (instanceRef debuggerTestsROM_0_5_10))
+              (portRef DIA8 (instanceRef debuggerTestsROM_0_5_10))
+              (portRef DIB7 (instanceRef debuggerTestsROM_0_5_10))
+              (portRef DIA7 (instanceRef debuggerTestsROM_0_5_10))
+              (portRef DIB6 (instanceRef debuggerTestsROM_0_5_10))
+              (portRef DIA6 (instanceRef debuggerTestsROM_0_5_10))
+              (portRef DIB5 (instanceRef debuggerTestsROM_0_5_10))
+              (portRef DIA5 (instanceRef debuggerTestsROM_0_5_10))
+              (portRef DIB4 (instanceRef debuggerTestsROM_0_5_10))
+              (portRef DIA4 (instanceRef debuggerTestsROM_0_5_10))
+              (portRef DIB3 (instanceRef debuggerTestsROM_0_5_10))
+              (portRef DIA3 (instanceRef debuggerTestsROM_0_5_10))
+              (portRef DIB2 (instanceRef debuggerTestsROM_0_5_10))
+              (portRef DIA2 (instanceRef debuggerTestsROM_0_5_10))
+              (portRef DIB1 (instanceRef debuggerTestsROM_0_5_10))
+              (portRef DIA1 (instanceRef debuggerTestsROM_0_5_10))
+              (portRef DIB0 (instanceRef debuggerTestsROM_0_5_10))
+              (portRef DIA0 (instanceRef debuggerTestsROM_0_5_10))
+              (portRef CSB2 (instanceRef debuggerTestsROM_0_6_9))
+              (portRef CSA2 (instanceRef debuggerTestsROM_0_6_9))
+              (portRef CSB1 (instanceRef debuggerTestsROM_0_6_9))
+              (portRef CSA1 (instanceRef debuggerTestsROM_0_6_9))
+              (portRef CSB0 (instanceRef debuggerTestsROM_0_6_9))
+              (portRef CSA0 (instanceRef debuggerTestsROM_0_6_9))
+              (portRef RSTB (instanceRef debuggerTestsROM_0_6_9))
+              (portRef WEB (instanceRef debuggerTestsROM_0_6_9))
+              (portRef WEA (instanceRef debuggerTestsROM_0_6_9))
+              (portRef CLKB (instanceRef debuggerTestsROM_0_6_9))
+              (portRef ADB12 (instanceRef debuggerTestsROM_0_6_9))
+              (portRef ADB11 (instanceRef debuggerTestsROM_0_6_9))
+              (portRef ADB10 (instanceRef debuggerTestsROM_0_6_9))
+              (portRef ADB9 (instanceRef debuggerTestsROM_0_6_9))
+              (portRef ADB8 (instanceRef debuggerTestsROM_0_6_9))
+              (portRef ADB7 (instanceRef debuggerTestsROM_0_6_9))
+              (portRef ADB6 (instanceRef debuggerTestsROM_0_6_9))
+              (portRef ADB5 (instanceRef debuggerTestsROM_0_6_9))
+              (portRef ADB4 (instanceRef debuggerTestsROM_0_6_9))
+              (portRef ADB3 (instanceRef debuggerTestsROM_0_6_9))
+              (portRef ADB2 (instanceRef debuggerTestsROM_0_6_9))
+              (portRef ADB1 (instanceRef debuggerTestsROM_0_6_9))
+              (portRef ADB0 (instanceRef debuggerTestsROM_0_6_9))
+              (portRef DIB8 (instanceRef debuggerTestsROM_0_6_9))
+              (portRef DIA8 (instanceRef debuggerTestsROM_0_6_9))
+              (portRef DIB7 (instanceRef debuggerTestsROM_0_6_9))
+              (portRef DIA7 (instanceRef debuggerTestsROM_0_6_9))
+              (portRef DIB6 (instanceRef debuggerTestsROM_0_6_9))
+              (portRef DIA6 (instanceRef debuggerTestsROM_0_6_9))
+              (portRef DIB5 (instanceRef debuggerTestsROM_0_6_9))
+              (portRef DIA5 (instanceRef debuggerTestsROM_0_6_9))
+              (portRef DIB4 (instanceRef debuggerTestsROM_0_6_9))
+              (portRef DIA4 (instanceRef debuggerTestsROM_0_6_9))
+              (portRef DIB3 (instanceRef debuggerTestsROM_0_6_9))
+              (portRef DIA3 (instanceRef debuggerTestsROM_0_6_9))
+              (portRef DIB2 (instanceRef debuggerTestsROM_0_6_9))
+              (portRef DIA2 (instanceRef debuggerTestsROM_0_6_9))
+              (portRef DIB1 (instanceRef debuggerTestsROM_0_6_9))
+              (portRef DIA1 (instanceRef debuggerTestsROM_0_6_9))
+              (portRef DIB0 (instanceRef debuggerTestsROM_0_6_9))
+              (portRef DIA0 (instanceRef debuggerTestsROM_0_6_9))
+              (portRef CSB2 (instanceRef debuggerTestsROM_0_7_8))
+              (portRef CSA2 (instanceRef debuggerTestsROM_0_7_8))
+              (portRef CSB1 (instanceRef debuggerTestsROM_0_7_8))
+              (portRef CSA1 (instanceRef debuggerTestsROM_0_7_8))
+              (portRef CSB0 (instanceRef debuggerTestsROM_0_7_8))
+              (portRef CSA0 (instanceRef debuggerTestsROM_0_7_8))
+              (portRef RSTB (instanceRef debuggerTestsROM_0_7_8))
+              (portRef WEB (instanceRef debuggerTestsROM_0_7_8))
+              (portRef WEA (instanceRef debuggerTestsROM_0_7_8))
+              (portRef CLKB (instanceRef debuggerTestsROM_0_7_8))
+              (portRef ADB12 (instanceRef debuggerTestsROM_0_7_8))
+              (portRef ADB11 (instanceRef debuggerTestsROM_0_7_8))
+              (portRef ADB10 (instanceRef debuggerTestsROM_0_7_8))
+              (portRef ADB9 (instanceRef debuggerTestsROM_0_7_8))
+              (portRef ADB8 (instanceRef debuggerTestsROM_0_7_8))
+              (portRef ADB7 (instanceRef debuggerTestsROM_0_7_8))
+              (portRef ADB6 (instanceRef debuggerTestsROM_0_7_8))
+              (portRef ADB5 (instanceRef debuggerTestsROM_0_7_8))
+              (portRef ADB4 (instanceRef debuggerTestsROM_0_7_8))
+              (portRef ADB3 (instanceRef debuggerTestsROM_0_7_8))
+              (portRef ADB2 (instanceRef debuggerTestsROM_0_7_8))
+              (portRef ADB1 (instanceRef debuggerTestsROM_0_7_8))
+              (portRef ADB0 (instanceRef debuggerTestsROM_0_7_8))
+              (portRef DIB8 (instanceRef debuggerTestsROM_0_7_8))
+              (portRef DIA8 (instanceRef debuggerTestsROM_0_7_8))
+              (portRef DIB7 (instanceRef debuggerTestsROM_0_7_8))
+              (portRef DIA7 (instanceRef debuggerTestsROM_0_7_8))
+              (portRef DIB6 (instanceRef debuggerTestsROM_0_7_8))
+              (portRef DIA6 (instanceRef debuggerTestsROM_0_7_8))
+              (portRef DIB5 (instanceRef debuggerTestsROM_0_7_8))
+              (portRef DIA5 (instanceRef debuggerTestsROM_0_7_8))
+              (portRef DIB4 (instanceRef debuggerTestsROM_0_7_8))
+              (portRef DIA4 (instanceRef debuggerTestsROM_0_7_8))
+              (portRef DIB3 (instanceRef debuggerTestsROM_0_7_8))
+              (portRef DIA3 (instanceRef debuggerTestsROM_0_7_8))
+              (portRef DIB2 (instanceRef debuggerTestsROM_0_7_8))
+              (portRef DIA2 (instanceRef debuggerTestsROM_0_7_8))
+              (portRef DIB1 (instanceRef debuggerTestsROM_0_7_8))
+              (portRef DIA1 (instanceRef debuggerTestsROM_0_7_8))
+              (portRef DIB0 (instanceRef debuggerTestsROM_0_7_8))
+              (portRef DIA0 (instanceRef debuggerTestsROM_0_7_8))
+              (portRef CSB2 (instanceRef debuggerTestsROM_0_8_7))
+              (portRef CSA2 (instanceRef debuggerTestsROM_0_8_7))
+              (portRef CSB1 (instanceRef debuggerTestsROM_0_8_7))
+              (portRef CSA1 (instanceRef debuggerTestsROM_0_8_7))
+              (portRef CSB0 (instanceRef debuggerTestsROM_0_8_7))
+              (portRef CSA0 (instanceRef debuggerTestsROM_0_8_7))
+              (portRef RSTB (instanceRef debuggerTestsROM_0_8_7))
+              (portRef WEB (instanceRef debuggerTestsROM_0_8_7))
+              (portRef WEA (instanceRef debuggerTestsROM_0_8_7))
+              (portRef CLKB (instanceRef debuggerTestsROM_0_8_7))
+              (portRef ADB12 (instanceRef debuggerTestsROM_0_8_7))
+              (portRef ADB11 (instanceRef debuggerTestsROM_0_8_7))
+              (portRef ADB10 (instanceRef debuggerTestsROM_0_8_7))
+              (portRef ADB9 (instanceRef debuggerTestsROM_0_8_7))
+              (portRef ADB8 (instanceRef debuggerTestsROM_0_8_7))
+              (portRef ADB7 (instanceRef debuggerTestsROM_0_8_7))
+              (portRef ADB6 (instanceRef debuggerTestsROM_0_8_7))
+              (portRef ADB5 (instanceRef debuggerTestsROM_0_8_7))
+              (portRef ADB4 (instanceRef debuggerTestsROM_0_8_7))
+              (portRef ADB3 (instanceRef debuggerTestsROM_0_8_7))
+              (portRef ADB2 (instanceRef debuggerTestsROM_0_8_7))
+              (portRef ADB1 (instanceRef debuggerTestsROM_0_8_7))
+              (portRef ADB0 (instanceRef debuggerTestsROM_0_8_7))
+              (portRef DIB8 (instanceRef debuggerTestsROM_0_8_7))
+              (portRef DIA8 (instanceRef debuggerTestsROM_0_8_7))
+              (portRef DIB7 (instanceRef debuggerTestsROM_0_8_7))
+              (portRef DIA7 (instanceRef debuggerTestsROM_0_8_7))
+              (portRef DIB6 (instanceRef debuggerTestsROM_0_8_7))
+              (portRef DIA6 (instanceRef debuggerTestsROM_0_8_7))
+              (portRef DIB5 (instanceRef debuggerTestsROM_0_8_7))
+              (portRef DIA5 (instanceRef debuggerTestsROM_0_8_7))
+              (portRef DIB4 (instanceRef debuggerTestsROM_0_8_7))
+              (portRef DIA4 (instanceRef debuggerTestsROM_0_8_7))
+              (portRef DIB3 (instanceRef debuggerTestsROM_0_8_7))
+              (portRef DIA3 (instanceRef debuggerTestsROM_0_8_7))
+              (portRef DIB2 (instanceRef debuggerTestsROM_0_8_7))
+              (portRef DIA2 (instanceRef debuggerTestsROM_0_8_7))
+              (portRef DIB1 (instanceRef debuggerTestsROM_0_8_7))
+              (portRef DIA1 (instanceRef debuggerTestsROM_0_8_7))
+              (portRef DIB0 (instanceRef debuggerTestsROM_0_8_7))
+              (portRef DIA0 (instanceRef debuggerTestsROM_0_8_7))
+              (portRef CSB2 (instanceRef debuggerTestsROM_0_9_6))
+              (portRef CSA2 (instanceRef debuggerTestsROM_0_9_6))
+              (portRef CSB1 (instanceRef debuggerTestsROM_0_9_6))
+              (portRef CSA1 (instanceRef debuggerTestsROM_0_9_6))
+              (portRef CSB0 (instanceRef debuggerTestsROM_0_9_6))
+              (portRef CSA0 (instanceRef debuggerTestsROM_0_9_6))
+              (portRef RSTB (instanceRef debuggerTestsROM_0_9_6))
+              (portRef WEB (instanceRef debuggerTestsROM_0_9_6))
+              (portRef WEA (instanceRef debuggerTestsROM_0_9_6))
+              (portRef CLKB (instanceRef debuggerTestsROM_0_9_6))
+              (portRef ADB12 (instanceRef debuggerTestsROM_0_9_6))
+              (portRef ADB11 (instanceRef debuggerTestsROM_0_9_6))
+              (portRef ADB10 (instanceRef debuggerTestsROM_0_9_6))
+              (portRef ADB9 (instanceRef debuggerTestsROM_0_9_6))
+              (portRef ADB8 (instanceRef debuggerTestsROM_0_9_6))
+              (portRef ADB7 (instanceRef debuggerTestsROM_0_9_6))
+              (portRef ADB6 (instanceRef debuggerTestsROM_0_9_6))
+              (portRef ADB5 (instanceRef debuggerTestsROM_0_9_6))
+              (portRef ADB4 (instanceRef debuggerTestsROM_0_9_6))
+              (portRef ADB3 (instanceRef debuggerTestsROM_0_9_6))
+              (portRef ADB2 (instanceRef debuggerTestsROM_0_9_6))
+              (portRef ADB1 (instanceRef debuggerTestsROM_0_9_6))
+              (portRef ADB0 (instanceRef debuggerTestsROM_0_9_6))
+              (portRef DIB8 (instanceRef debuggerTestsROM_0_9_6))
+              (portRef DIA8 (instanceRef debuggerTestsROM_0_9_6))
+              (portRef DIB7 (instanceRef debuggerTestsROM_0_9_6))
+              (portRef DIA7 (instanceRef debuggerTestsROM_0_9_6))
+              (portRef DIB6 (instanceRef debuggerTestsROM_0_9_6))
+              (portRef DIA6 (instanceRef debuggerTestsROM_0_9_6))
+              (portRef DIB5 (instanceRef debuggerTestsROM_0_9_6))
+              (portRef DIA5 (instanceRef debuggerTestsROM_0_9_6))
+              (portRef DIB4 (instanceRef debuggerTestsROM_0_9_6))
+              (portRef DIA4 (instanceRef debuggerTestsROM_0_9_6))
+              (portRef DIB3 (instanceRef debuggerTestsROM_0_9_6))
+              (portRef DIA3 (instanceRef debuggerTestsROM_0_9_6))
+              (portRef DIB2 (instanceRef debuggerTestsROM_0_9_6))
+              (portRef DIA2 (instanceRef debuggerTestsROM_0_9_6))
+              (portRef DIB1 (instanceRef debuggerTestsROM_0_9_6))
+              (portRef DIA1 (instanceRef debuggerTestsROM_0_9_6))
+              (portRef DIB0 (instanceRef debuggerTestsROM_0_9_6))
+              (portRef DIA0 (instanceRef debuggerTestsROM_0_9_6))
+              (portRef CSB2 (instanceRef debuggerTestsROM_0_10_5))
+              (portRef CSA2 (instanceRef debuggerTestsROM_0_10_5))
+              (portRef CSB1 (instanceRef debuggerTestsROM_0_10_5))
+              (portRef CSA1 (instanceRef debuggerTestsROM_0_10_5))
+              (portRef CSB0 (instanceRef debuggerTestsROM_0_10_5))
+              (portRef CSA0 (instanceRef debuggerTestsROM_0_10_5))
+              (portRef RSTB (instanceRef debuggerTestsROM_0_10_5))
+              (portRef WEB (instanceRef debuggerTestsROM_0_10_5))
+              (portRef WEA (instanceRef debuggerTestsROM_0_10_5))
+              (portRef CLKB (instanceRef debuggerTestsROM_0_10_5))
+              (portRef ADB12 (instanceRef debuggerTestsROM_0_10_5))
+              (portRef ADB11 (instanceRef debuggerTestsROM_0_10_5))
+              (portRef ADB10 (instanceRef debuggerTestsROM_0_10_5))
+              (portRef ADB9 (instanceRef debuggerTestsROM_0_10_5))
+              (portRef ADB8 (instanceRef debuggerTestsROM_0_10_5))
+              (portRef ADB7 (instanceRef debuggerTestsROM_0_10_5))
+              (portRef ADB6 (instanceRef debuggerTestsROM_0_10_5))
+              (portRef ADB5 (instanceRef debuggerTestsROM_0_10_5))
+              (portRef ADB4 (instanceRef debuggerTestsROM_0_10_5))
+              (portRef ADB3 (instanceRef debuggerTestsROM_0_10_5))
+              (portRef ADB2 (instanceRef debuggerTestsROM_0_10_5))
+              (portRef ADB1 (instanceRef debuggerTestsROM_0_10_5))
+              (portRef ADB0 (instanceRef debuggerTestsROM_0_10_5))
+              (portRef DIB8 (instanceRef debuggerTestsROM_0_10_5))
+              (portRef DIA8 (instanceRef debuggerTestsROM_0_10_5))
+              (portRef DIB7 (instanceRef debuggerTestsROM_0_10_5))
+              (portRef DIA7 (instanceRef debuggerTestsROM_0_10_5))
+              (portRef DIB6 (instanceRef debuggerTestsROM_0_10_5))
+              (portRef DIA6 (instanceRef debuggerTestsROM_0_10_5))
+              (portRef DIB5 (instanceRef debuggerTestsROM_0_10_5))
+              (portRef DIA5 (instanceRef debuggerTestsROM_0_10_5))
+              (portRef DIB4 (instanceRef debuggerTestsROM_0_10_5))
+              (portRef DIA4 (instanceRef debuggerTestsROM_0_10_5))
+              (portRef DIB3 (instanceRef debuggerTestsROM_0_10_5))
+              (portRef DIA3 (instanceRef debuggerTestsROM_0_10_5))
+              (portRef DIB2 (instanceRef debuggerTestsROM_0_10_5))
+              (portRef DIA2 (instanceRef debuggerTestsROM_0_10_5))
+              (portRef DIB1 (instanceRef debuggerTestsROM_0_10_5))
+              (portRef DIA1 (instanceRef debuggerTestsROM_0_10_5))
+              (portRef DIB0 (instanceRef debuggerTestsROM_0_10_5))
+              (portRef DIA0 (instanceRef debuggerTestsROM_0_10_5))
+              (portRef CSB2 (instanceRef debuggerTestsROM_0_11_4))
+              (portRef CSA2 (instanceRef debuggerTestsROM_0_11_4))
+              (portRef CSB1 (instanceRef debuggerTestsROM_0_11_4))
+              (portRef CSA1 (instanceRef debuggerTestsROM_0_11_4))
+              (portRef CSB0 (instanceRef debuggerTestsROM_0_11_4))
+              (portRef CSA0 (instanceRef debuggerTestsROM_0_11_4))
+              (portRef RSTB (instanceRef debuggerTestsROM_0_11_4))
+              (portRef WEB (instanceRef debuggerTestsROM_0_11_4))
+              (portRef WEA (instanceRef debuggerTestsROM_0_11_4))
+              (portRef CLKB (instanceRef debuggerTestsROM_0_11_4))
+              (portRef ADB12 (instanceRef debuggerTestsROM_0_11_4))
+              (portRef ADB11 (instanceRef debuggerTestsROM_0_11_4))
+              (portRef ADB10 (instanceRef debuggerTestsROM_0_11_4))
+              (portRef ADB9 (instanceRef debuggerTestsROM_0_11_4))
+              (portRef ADB8 (instanceRef debuggerTestsROM_0_11_4))
+              (portRef ADB7 (instanceRef debuggerTestsROM_0_11_4))
+              (portRef ADB6 (instanceRef debuggerTestsROM_0_11_4))
+              (portRef ADB5 (instanceRef debuggerTestsROM_0_11_4))
+              (portRef ADB4 (instanceRef debuggerTestsROM_0_11_4))
+              (portRef ADB3 (instanceRef debuggerTestsROM_0_11_4))
+              (portRef ADB2 (instanceRef debuggerTestsROM_0_11_4))
+              (portRef ADB1 (instanceRef debuggerTestsROM_0_11_4))
+              (portRef ADB0 (instanceRef debuggerTestsROM_0_11_4))
+              (portRef DIB8 (instanceRef debuggerTestsROM_0_11_4))
+              (portRef DIA8 (instanceRef debuggerTestsROM_0_11_4))
+              (portRef DIB7 (instanceRef debuggerTestsROM_0_11_4))
+              (portRef DIA7 (instanceRef debuggerTestsROM_0_11_4))
+              (portRef DIB6 (instanceRef debuggerTestsROM_0_11_4))
+              (portRef DIA6 (instanceRef debuggerTestsROM_0_11_4))
+              (portRef DIB5 (instanceRef debuggerTestsROM_0_11_4))
+              (portRef DIA5 (instanceRef debuggerTestsROM_0_11_4))
+              (portRef DIB4 (instanceRef debuggerTestsROM_0_11_4))
+              (portRef DIA4 (instanceRef debuggerTestsROM_0_11_4))
+              (portRef DIB3 (instanceRef debuggerTestsROM_0_11_4))
+              (portRef DIA3 (instanceRef debuggerTestsROM_0_11_4))
+              (portRef DIB2 (instanceRef debuggerTestsROM_0_11_4))
+              (portRef DIA2 (instanceRef debuggerTestsROM_0_11_4))
+              (portRef DIB1 (instanceRef debuggerTestsROM_0_11_4))
+              (portRef DIA1 (instanceRef debuggerTestsROM_0_11_4))
+              (portRef DIB0 (instanceRef debuggerTestsROM_0_11_4))
+              (portRef DIA0 (instanceRef debuggerTestsROM_0_11_4))
+              (portRef CSB2 (instanceRef debuggerTestsROM_0_12_3))
+              (portRef CSA2 (instanceRef debuggerTestsROM_0_12_3))
+              (portRef CSB1 (instanceRef debuggerTestsROM_0_12_3))
+              (portRef CSA1 (instanceRef debuggerTestsROM_0_12_3))
+              (portRef CSB0 (instanceRef debuggerTestsROM_0_12_3))
+              (portRef CSA0 (instanceRef debuggerTestsROM_0_12_3))
+              (portRef RSTB (instanceRef debuggerTestsROM_0_12_3))
+              (portRef WEB (instanceRef debuggerTestsROM_0_12_3))
+              (portRef WEA (instanceRef debuggerTestsROM_0_12_3))
+              (portRef CLKB (instanceRef debuggerTestsROM_0_12_3))
+              (portRef ADB12 (instanceRef debuggerTestsROM_0_12_3))
+              (portRef ADB11 (instanceRef debuggerTestsROM_0_12_3))
+              (portRef ADB10 (instanceRef debuggerTestsROM_0_12_3))
+              (portRef ADB9 (instanceRef debuggerTestsROM_0_12_3))
+              (portRef ADB8 (instanceRef debuggerTestsROM_0_12_3))
+              (portRef ADB7 (instanceRef debuggerTestsROM_0_12_3))
+              (portRef ADB6 (instanceRef debuggerTestsROM_0_12_3))
+              (portRef ADB5 (instanceRef debuggerTestsROM_0_12_3))
+              (portRef ADB4 (instanceRef debuggerTestsROM_0_12_3))
+              (portRef ADB3 (instanceRef debuggerTestsROM_0_12_3))
+              (portRef ADB2 (instanceRef debuggerTestsROM_0_12_3))
+              (portRef ADB1 (instanceRef debuggerTestsROM_0_12_3))
+              (portRef ADB0 (instanceRef debuggerTestsROM_0_12_3))
+              (portRef DIB8 (instanceRef debuggerTestsROM_0_12_3))
+              (portRef DIA8 (instanceRef debuggerTestsROM_0_12_3))
+              (portRef DIB7 (instanceRef debuggerTestsROM_0_12_3))
+              (portRef DIA7 (instanceRef debuggerTestsROM_0_12_3))
+              (portRef DIB6 (instanceRef debuggerTestsROM_0_12_3))
+              (portRef DIA6 (instanceRef debuggerTestsROM_0_12_3))
+              (portRef DIB5 (instanceRef debuggerTestsROM_0_12_3))
+              (portRef DIA5 (instanceRef debuggerTestsROM_0_12_3))
+              (portRef DIB4 (instanceRef debuggerTestsROM_0_12_3))
+              (portRef DIA4 (instanceRef debuggerTestsROM_0_12_3))
+              (portRef DIB3 (instanceRef debuggerTestsROM_0_12_3))
+              (portRef DIA3 (instanceRef debuggerTestsROM_0_12_3))
+              (portRef DIB2 (instanceRef debuggerTestsROM_0_12_3))
+              (portRef DIA2 (instanceRef debuggerTestsROM_0_12_3))
+              (portRef DIB1 (instanceRef debuggerTestsROM_0_12_3))
+              (portRef DIA1 (instanceRef debuggerTestsROM_0_12_3))
+              (portRef DIB0 (instanceRef debuggerTestsROM_0_12_3))
+              (portRef DIA0 (instanceRef debuggerTestsROM_0_12_3))
+              (portRef CSB2 (instanceRef debuggerTestsROM_0_13_2))
+              (portRef CSA2 (instanceRef debuggerTestsROM_0_13_2))
+              (portRef CSB1 (instanceRef debuggerTestsROM_0_13_2))
+              (portRef CSA1 (instanceRef debuggerTestsROM_0_13_2))
+              (portRef CSB0 (instanceRef debuggerTestsROM_0_13_2))
+              (portRef CSA0 (instanceRef debuggerTestsROM_0_13_2))
+              (portRef RSTB (instanceRef debuggerTestsROM_0_13_2))
+              (portRef WEB (instanceRef debuggerTestsROM_0_13_2))
+              (portRef WEA (instanceRef debuggerTestsROM_0_13_2))
+              (portRef CLKB (instanceRef debuggerTestsROM_0_13_2))
+              (portRef ADB12 (instanceRef debuggerTestsROM_0_13_2))
+              (portRef ADB11 (instanceRef debuggerTestsROM_0_13_2))
+              (portRef ADB10 (instanceRef debuggerTestsROM_0_13_2))
+              (portRef ADB9 (instanceRef debuggerTestsROM_0_13_2))
+              (portRef ADB8 (instanceRef debuggerTestsROM_0_13_2))
+              (portRef ADB7 (instanceRef debuggerTestsROM_0_13_2))
+              (portRef ADB6 (instanceRef debuggerTestsROM_0_13_2))
+              (portRef ADB5 (instanceRef debuggerTestsROM_0_13_2))
+              (portRef ADB4 (instanceRef debuggerTestsROM_0_13_2))
+              (portRef ADB3 (instanceRef debuggerTestsROM_0_13_2))
+              (portRef ADB2 (instanceRef debuggerTestsROM_0_13_2))
+              (portRef ADB1 (instanceRef debuggerTestsROM_0_13_2))
+              (portRef ADB0 (instanceRef debuggerTestsROM_0_13_2))
+              (portRef DIB8 (instanceRef debuggerTestsROM_0_13_2))
+              (portRef DIA8 (instanceRef debuggerTestsROM_0_13_2))
+              (portRef DIB7 (instanceRef debuggerTestsROM_0_13_2))
+              (portRef DIA7 (instanceRef debuggerTestsROM_0_13_2))
+              (portRef DIB6 (instanceRef debuggerTestsROM_0_13_2))
+              (portRef DIA6 (instanceRef debuggerTestsROM_0_13_2))
+              (portRef DIB5 (instanceRef debuggerTestsROM_0_13_2))
+              (portRef DIA5 (instanceRef debuggerTestsROM_0_13_2))
+              (portRef DIB4 (instanceRef debuggerTestsROM_0_13_2))
+              (portRef DIA4 (instanceRef debuggerTestsROM_0_13_2))
+              (portRef DIB3 (instanceRef debuggerTestsROM_0_13_2))
+              (portRef DIA3 (instanceRef debuggerTestsROM_0_13_2))
+              (portRef DIB2 (instanceRef debuggerTestsROM_0_13_2))
+              (portRef DIA2 (instanceRef debuggerTestsROM_0_13_2))
+              (portRef DIB1 (instanceRef debuggerTestsROM_0_13_2))
+              (portRef DIA1 (instanceRef debuggerTestsROM_0_13_2))
+              (portRef DIB0 (instanceRef debuggerTestsROM_0_13_2))
+              (portRef DIA0 (instanceRef debuggerTestsROM_0_13_2))
+              (portRef CSB2 (instanceRef debuggerTestsROM_0_14_1))
+              (portRef CSA2 (instanceRef debuggerTestsROM_0_14_1))
+              (portRef CSB1 (instanceRef debuggerTestsROM_0_14_1))
+              (portRef CSA1 (instanceRef debuggerTestsROM_0_14_1))
+              (portRef CSB0 (instanceRef debuggerTestsROM_0_14_1))
+              (portRef CSA0 (instanceRef debuggerTestsROM_0_14_1))
+              (portRef RSTB (instanceRef debuggerTestsROM_0_14_1))
+              (portRef WEB (instanceRef debuggerTestsROM_0_14_1))
+              (portRef WEA (instanceRef debuggerTestsROM_0_14_1))
+              (portRef CLKB (instanceRef debuggerTestsROM_0_14_1))
+              (portRef ADB12 (instanceRef debuggerTestsROM_0_14_1))
+              (portRef ADB11 (instanceRef debuggerTestsROM_0_14_1))
+              (portRef ADB10 (instanceRef debuggerTestsROM_0_14_1))
+              (portRef ADB9 (instanceRef debuggerTestsROM_0_14_1))
+              (portRef ADB8 (instanceRef debuggerTestsROM_0_14_1))
+              (portRef ADB7 (instanceRef debuggerTestsROM_0_14_1))
+              (portRef ADB6 (instanceRef debuggerTestsROM_0_14_1))
+              (portRef ADB5 (instanceRef debuggerTestsROM_0_14_1))
+              (portRef ADB4 (instanceRef debuggerTestsROM_0_14_1))
+              (portRef ADB3 (instanceRef debuggerTestsROM_0_14_1))
+              (portRef ADB2 (instanceRef debuggerTestsROM_0_14_1))
+              (portRef ADB1 (instanceRef debuggerTestsROM_0_14_1))
+              (portRef ADB0 (instanceRef debuggerTestsROM_0_14_1))
+              (portRef DIB8 (instanceRef debuggerTestsROM_0_14_1))
+              (portRef DIA8 (instanceRef debuggerTestsROM_0_14_1))
+              (portRef DIB7 (instanceRef debuggerTestsROM_0_14_1))
+              (portRef DIA7 (instanceRef debuggerTestsROM_0_14_1))
+              (portRef DIB6 (instanceRef debuggerTestsROM_0_14_1))
+              (portRef DIA6 (instanceRef debuggerTestsROM_0_14_1))
+              (portRef DIB5 (instanceRef debuggerTestsROM_0_14_1))
+              (portRef DIA5 (instanceRef debuggerTestsROM_0_14_1))
+              (portRef DIB4 (instanceRef debuggerTestsROM_0_14_1))
+              (portRef DIA4 (instanceRef debuggerTestsROM_0_14_1))
+              (portRef DIB3 (instanceRef debuggerTestsROM_0_14_1))
+              (portRef DIA3 (instanceRef debuggerTestsROM_0_14_1))
+              (portRef DIB2 (instanceRef debuggerTestsROM_0_14_1))
+              (portRef DIA2 (instanceRef debuggerTestsROM_0_14_1))
+              (portRef DIB1 (instanceRef debuggerTestsROM_0_14_1))
+              (portRef DIA1 (instanceRef debuggerTestsROM_0_14_1))
+              (portRef DIB0 (instanceRef debuggerTestsROM_0_14_1))
+              (portRef DIA0 (instanceRef debuggerTestsROM_0_14_1))
+              (portRef CSB2 (instanceRef debuggerTestsROM_0_15_0))
+              (portRef CSA2 (instanceRef debuggerTestsROM_0_15_0))
+              (portRef CSB1 (instanceRef debuggerTestsROM_0_15_0))
+              (portRef CSA1 (instanceRef debuggerTestsROM_0_15_0))
+              (portRef CSB0 (instanceRef debuggerTestsROM_0_15_0))
+              (portRef CSA0 (instanceRef debuggerTestsROM_0_15_0))
+              (portRef RSTB (instanceRef debuggerTestsROM_0_15_0))
+              (portRef WEB (instanceRef debuggerTestsROM_0_15_0))
+              (portRef WEA (instanceRef debuggerTestsROM_0_15_0))
+              (portRef CLKB (instanceRef debuggerTestsROM_0_15_0))
+              (portRef ADB12 (instanceRef debuggerTestsROM_0_15_0))
+              (portRef ADB11 (instanceRef debuggerTestsROM_0_15_0))
+              (portRef ADB10 (instanceRef debuggerTestsROM_0_15_0))
+              (portRef ADB9 (instanceRef debuggerTestsROM_0_15_0))
+              (portRef ADB8 (instanceRef debuggerTestsROM_0_15_0))
+              (portRef ADB7 (instanceRef debuggerTestsROM_0_15_0))
+              (portRef ADB6 (instanceRef debuggerTestsROM_0_15_0))
+              (portRef ADB5 (instanceRef debuggerTestsROM_0_15_0))
+              (portRef ADB4 (instanceRef debuggerTestsROM_0_15_0))
+              (portRef ADB3 (instanceRef debuggerTestsROM_0_15_0))
+              (portRef ADB2 (instanceRef debuggerTestsROM_0_15_0))
+              (portRef ADB1 (instanceRef debuggerTestsROM_0_15_0))
+              (portRef ADB0 (instanceRef debuggerTestsROM_0_15_0))
+              (portRef DIB8 (instanceRef debuggerTestsROM_0_15_0))
+              (portRef DIA8 (instanceRef debuggerTestsROM_0_15_0))
+              (portRef DIB7 (instanceRef debuggerTestsROM_0_15_0))
+              (portRef DIA7 (instanceRef debuggerTestsROM_0_15_0))
+              (portRef DIB6 (instanceRef debuggerTestsROM_0_15_0))
+              (portRef DIA6 (instanceRef debuggerTestsROM_0_15_0))
+              (portRef DIB5 (instanceRef debuggerTestsROM_0_15_0))
+              (portRef DIA5 (instanceRef debuggerTestsROM_0_15_0))
+              (portRef DIB4 (instanceRef debuggerTestsROM_0_15_0))
+              (portRef DIA4 (instanceRef debuggerTestsROM_0_15_0))
+              (portRef DIB3 (instanceRef debuggerTestsROM_0_15_0))
+              (portRef DIA3 (instanceRef debuggerTestsROM_0_15_0))
+              (portRef DIB2 (instanceRef debuggerTestsROM_0_15_0))
+              (portRef DIA2 (instanceRef debuggerTestsROM_0_15_0))
+              (portRef DIB1 (instanceRef debuggerTestsROM_0_15_0))
+              (portRef DIA1 (instanceRef debuggerTestsROM_0_15_0))
+              (portRef DIB0 (instanceRef debuggerTestsROM_0_15_0))
+              (portRef DIA0 (instanceRef debuggerTestsROM_0_15_0))))
+          (net dataout15
+            (joined
+              (portRef (member Q 0))
+              (portRef DOA0 (instanceRef debuggerTestsROM_0_15_0))))
+          (net dataout14
+            (joined
+              (portRef (member Q 1))
+              (portRef DOA0 (instanceRef debuggerTestsROM_0_14_1))))
+          (net dataout13
+            (joined
+              (portRef (member Q 2))
+              (portRef DOA0 (instanceRef debuggerTestsROM_0_13_2))))
+          (net dataout12
+            (joined
+              (portRef (member Q 3))
+              (portRef DOA0 (instanceRef debuggerTestsROM_0_12_3))))
+          (net dataout11
+            (joined
+              (portRef (member Q 4))
+              (portRef DOA0 (instanceRef debuggerTestsROM_0_11_4))))
+          (net dataout10
+            (joined
+              (portRef (member Q 5))
+              (portRef DOA0 (instanceRef debuggerTestsROM_0_10_5))))
+          (net dataout9
+            (joined
+              (portRef (member Q 6))
+              (portRef DOA0 (instanceRef debuggerTestsROM_0_9_6))))
+          (net dataout8
+            (joined
+              (portRef (member Q 7))
+              (portRef DOA0 (instanceRef debuggerTestsROM_0_8_7))))
+          (net dataout7
+            (joined
+              (portRef (member Q 8))
+              (portRef DOA0 (instanceRef debuggerTestsROM_0_7_8))))
+          (net dataout6
+            (joined
+              (portRef (member Q 9))
+              (portRef DOA0 (instanceRef debuggerTestsROM_0_6_9))))
+          (net dataout5
+            (joined
+              (portRef (member Q 10))
+              (portRef DOA0 (instanceRef debuggerTestsROM_0_5_10))))
+          (net dataout4
+            (joined
+              (portRef (member Q 11))
+              (portRef DOA0 (instanceRef debuggerTestsROM_0_4_11))))
+          (net dataout3
+            (joined
+              (portRef (member Q 12))
+              (portRef DOA0 (instanceRef debuggerTestsROM_0_3_12))))
+          (net dataout2
+            (joined
+              (portRef (member Q 13))
+              (portRef DOA0 (instanceRef debuggerTestsROM_0_2_13))))
+          (net dataout1
+            (joined
+              (portRef (member Q 14))
+              (portRef DOA0 (instanceRef debuggerTestsROM_0_1_14))))
+          (net dataout0
+            (joined
+              (portRef (member Q 15))
+              (portRef DOA0 (instanceRef debuggerTestsROM_0_0_15))))
+          (net Reset
+            (joined
+              (portRef Reset)
+              (portRef RSTA (instanceRef debuggerTestsROM_0_0_15))
+              (portRef RSTA (instanceRef debuggerTestsROM_0_1_14))
+              (portRef RSTA (instanceRef debuggerTestsROM_0_2_13))
+              (portRef RSTA (instanceRef debuggerTestsROM_0_3_12))
+              (portRef RSTA (instanceRef debuggerTestsROM_0_4_11))
+              (portRef RSTA (instanceRef debuggerTestsROM_0_5_10))
+              (portRef RSTA (instanceRef debuggerTestsROM_0_6_9))
+              (portRef RSTA (instanceRef debuggerTestsROM_0_7_8))
+              (portRef RSTA (instanceRef debuggerTestsROM_0_8_7))
+              (portRef RSTA (instanceRef debuggerTestsROM_0_9_6))
+              (portRef RSTA (instanceRef debuggerTestsROM_0_10_5))
+              (portRef RSTA (instanceRef debuggerTestsROM_0_11_4))
+              (portRef RSTA (instanceRef debuggerTestsROM_0_12_3))
+              (portRef RSTA (instanceRef debuggerTestsROM_0_13_2))
+              (portRef RSTA (instanceRef debuggerTestsROM_0_14_1))
+              (portRef RSTA (instanceRef debuggerTestsROM_0_15_0))))
+          (net RdClockEn
+            (joined
+              (portRef OutClockEn)
+              (portRef OCEA (instanceRef debuggerTestsROM_0_0_15))
+              (portRef CEA (instanceRef debuggerTestsROM_0_0_15))
+              (portRef OCEA (instanceRef debuggerTestsROM_0_1_14))
+              (portRef CEA (instanceRef debuggerTestsROM_0_1_14))
+              (portRef OCEA (instanceRef debuggerTestsROM_0_2_13))
+              (portRef CEA (instanceRef debuggerTestsROM_0_2_13))
+              (portRef OCEA (instanceRef debuggerTestsROM_0_3_12))
+              (portRef CEA (instanceRef debuggerTestsROM_0_3_12))
+              (portRef OCEA (instanceRef debuggerTestsROM_0_4_11))
+              (portRef CEA (instanceRef debuggerTestsROM_0_4_11))
+              (portRef OCEA (instanceRef debuggerTestsROM_0_5_10))
+              (portRef CEA (instanceRef debuggerTestsROM_0_5_10))
+              (portRef OCEA (instanceRef debuggerTestsROM_0_6_9))
+              (portRef CEA (instanceRef debuggerTestsROM_0_6_9))
+              (portRef OCEA (instanceRef debuggerTestsROM_0_7_8))
+              (portRef CEA (instanceRef debuggerTestsROM_0_7_8))
+              (portRef OCEA (instanceRef debuggerTestsROM_0_8_7))
+              (portRef CEA (instanceRef debuggerTestsROM_0_8_7))
+              (portRef OCEA (instanceRef debuggerTestsROM_0_9_6))
+              (portRef CEA (instanceRef debuggerTestsROM_0_9_6))
+              (portRef OCEA (instanceRef debuggerTestsROM_0_10_5))
+              (portRef CEA (instanceRef debuggerTestsROM_0_10_5))
+              (portRef OCEA (instanceRef debuggerTestsROM_0_11_4))
+              (portRef CEA (instanceRef debuggerTestsROM_0_11_4))
+              (portRef OCEA (instanceRef debuggerTestsROM_0_12_3))
+              (portRef CEA (instanceRef debuggerTestsROM_0_12_3))
+              (portRef OCEA (instanceRef debuggerTestsROM_0_13_2))
+              (portRef CEA (instanceRef debuggerTestsROM_0_13_2))
+              (portRef OCEA (instanceRef debuggerTestsROM_0_14_1))
+              (portRef CEA (instanceRef debuggerTestsROM_0_14_1))
+              (portRef OCEA (instanceRef debuggerTestsROM_0_15_0))
+              (portRef CEA (instanceRef debuggerTestsROM_0_15_0))))
+          (net rdclk
+            (joined
+              (portRef OutClock)
+              (portRef CLKA (instanceRef debuggerTestsROM_0_0_15))
+              (portRef CLKA (instanceRef debuggerTestsROM_0_1_14))
+              (portRef CLKA (instanceRef debuggerTestsROM_0_2_13))
+              (portRef CLKA (instanceRef debuggerTestsROM_0_3_12))
+              (portRef CLKA (instanceRef debuggerTestsROM_0_4_11))
+              (portRef CLKA (instanceRef debuggerTestsROM_0_5_10))
+              (portRef CLKA (instanceRef debuggerTestsROM_0_6_9))
+              (portRef CLKA (instanceRef debuggerTestsROM_0_7_8))
+              (portRef CLKA (instanceRef debuggerTestsROM_0_8_7))
+              (portRef CLKA (instanceRef debuggerTestsROM_0_9_6))
+              (portRef CLKA (instanceRef debuggerTestsROM_0_10_5))
+              (portRef CLKA (instanceRef debuggerTestsROM_0_11_4))
+              (portRef CLKA (instanceRef debuggerTestsROM_0_12_3))
+              (portRef CLKA (instanceRef debuggerTestsROM_0_13_2))
+              (portRef CLKA (instanceRef debuggerTestsROM_0_14_1))
+              (portRef CLKA (instanceRef debuggerTestsROM_0_15_0))))
+          (net raddr12
+            (joined
+              (portRef (member Address 0))
+              (portRef ADA12 (instanceRef debuggerTestsROM_0_0_15))
+              (portRef ADA12 (instanceRef debuggerTestsROM_0_1_14))
+              (portRef ADA12 (instanceRef debuggerTestsROM_0_2_13))
+              (portRef ADA12 (instanceRef debuggerTestsROM_0_3_12))
+              (portRef ADA12 (instanceRef debuggerTestsROM_0_4_11))
+              (portRef ADA12 (instanceRef debuggerTestsROM_0_5_10))
+              (portRef ADA12 (instanceRef debuggerTestsROM_0_6_9))
+              (portRef ADA12 (instanceRef debuggerTestsROM_0_7_8))
+              (portRef ADA12 (instanceRef debuggerTestsROM_0_8_7))
+              (portRef ADA12 (instanceRef debuggerTestsROM_0_9_6))
+              (portRef ADA12 (instanceRef debuggerTestsROM_0_10_5))
+              (portRef ADA12 (instanceRef debuggerTestsROM_0_11_4))
+              (portRef ADA12 (instanceRef debuggerTestsROM_0_12_3))
+              (portRef ADA12 (instanceRef debuggerTestsROM_0_13_2))
+              (portRef ADA12 (instanceRef debuggerTestsROM_0_14_1))
+              (portRef ADA12 (instanceRef debuggerTestsROM_0_15_0))))
+          (net raddr11
+            (joined
+              (portRef (member Address 1))
+              (portRef ADA11 (instanceRef debuggerTestsROM_0_0_15))
+              (portRef ADA11 (instanceRef debuggerTestsROM_0_1_14))
+              (portRef ADA11 (instanceRef debuggerTestsROM_0_2_13))
+              (portRef ADA11 (instanceRef debuggerTestsROM_0_3_12))
+              (portRef ADA11 (instanceRef debuggerTestsROM_0_4_11))
+              (portRef ADA11 (instanceRef debuggerTestsROM_0_5_10))
+              (portRef ADA11 (instanceRef debuggerTestsROM_0_6_9))
+              (portRef ADA11 (instanceRef debuggerTestsROM_0_7_8))
+              (portRef ADA11 (instanceRef debuggerTestsROM_0_8_7))
+              (portRef ADA11 (instanceRef debuggerTestsROM_0_9_6))
+              (portRef ADA11 (instanceRef debuggerTestsROM_0_10_5))
+              (portRef ADA11 (instanceRef debuggerTestsROM_0_11_4))
+              (portRef ADA11 (instanceRef debuggerTestsROM_0_12_3))
+              (portRef ADA11 (instanceRef debuggerTestsROM_0_13_2))
+              (portRef ADA11 (instanceRef debuggerTestsROM_0_14_1))
+              (portRef ADA11 (instanceRef debuggerTestsROM_0_15_0))))
+          (net raddr10
+            (joined
+              (portRef (member Address 2))
+              (portRef ADA10 (instanceRef debuggerTestsROM_0_0_15))
+              (portRef ADA10 (instanceRef debuggerTestsROM_0_1_14))
+              (portRef ADA10 (instanceRef debuggerTestsROM_0_2_13))
+              (portRef ADA10 (instanceRef debuggerTestsROM_0_3_12))
+              (portRef ADA10 (instanceRef debuggerTestsROM_0_4_11))
+              (portRef ADA10 (instanceRef debuggerTestsROM_0_5_10))
+              (portRef ADA10 (instanceRef debuggerTestsROM_0_6_9))
+              (portRef ADA10 (instanceRef debuggerTestsROM_0_7_8))
+              (portRef ADA10 (instanceRef debuggerTestsROM_0_8_7))
+              (portRef ADA10 (instanceRef debuggerTestsROM_0_9_6))
+              (portRef ADA10 (instanceRef debuggerTestsROM_0_10_5))
+              (portRef ADA10 (instanceRef debuggerTestsROM_0_11_4))
+              (portRef ADA10 (instanceRef debuggerTestsROM_0_12_3))
+              (portRef ADA10 (instanceRef debuggerTestsROM_0_13_2))
+              (portRef ADA10 (instanceRef debuggerTestsROM_0_14_1))
+              (portRef ADA10 (instanceRef debuggerTestsROM_0_15_0))))
+          (net raddr9
+            (joined
+              (portRef (member Address 3))
+              (portRef ADA9 (instanceRef debuggerTestsROM_0_0_15))
+              (portRef ADA9 (instanceRef debuggerTestsROM_0_1_14))
+              (portRef ADA9 (instanceRef debuggerTestsROM_0_2_13))
+              (portRef ADA9 (instanceRef debuggerTestsROM_0_3_12))
+              (portRef ADA9 (instanceRef debuggerTestsROM_0_4_11))
+              (portRef ADA9 (instanceRef debuggerTestsROM_0_5_10))
+              (portRef ADA9 (instanceRef debuggerTestsROM_0_6_9))
+              (portRef ADA9 (instanceRef debuggerTestsROM_0_7_8))
+              (portRef ADA9 (instanceRef debuggerTestsROM_0_8_7))
+              (portRef ADA9 (instanceRef debuggerTestsROM_0_9_6))
+              (portRef ADA9 (instanceRef debuggerTestsROM_0_10_5))
+              (portRef ADA9 (instanceRef debuggerTestsROM_0_11_4))
+              (portRef ADA9 (instanceRef debuggerTestsROM_0_12_3))
+              (portRef ADA9 (instanceRef debuggerTestsROM_0_13_2))
+              (portRef ADA9 (instanceRef debuggerTestsROM_0_14_1))
+              (portRef ADA9 (instanceRef debuggerTestsROM_0_15_0))))
+          (net raddr8
+            (joined
+              (portRef (member Address 4))
+              (portRef ADA8 (instanceRef debuggerTestsROM_0_0_15))
+              (portRef ADA8 (instanceRef debuggerTestsROM_0_1_14))
+              (portRef ADA8 (instanceRef debuggerTestsROM_0_2_13))
+              (portRef ADA8 (instanceRef debuggerTestsROM_0_3_12))
+              (portRef ADA8 (instanceRef debuggerTestsROM_0_4_11))
+              (portRef ADA8 (instanceRef debuggerTestsROM_0_5_10))
+              (portRef ADA8 (instanceRef debuggerTestsROM_0_6_9))
+              (portRef ADA8 (instanceRef debuggerTestsROM_0_7_8))
+              (portRef ADA8 (instanceRef debuggerTestsROM_0_8_7))
+              (portRef ADA8 (instanceRef debuggerTestsROM_0_9_6))
+              (portRef ADA8 (instanceRef debuggerTestsROM_0_10_5))
+              (portRef ADA8 (instanceRef debuggerTestsROM_0_11_4))
+              (portRef ADA8 (instanceRef debuggerTestsROM_0_12_3))
+              (portRef ADA8 (instanceRef debuggerTestsROM_0_13_2))
+              (portRef ADA8 (instanceRef debuggerTestsROM_0_14_1))
+              (portRef ADA8 (instanceRef debuggerTestsROM_0_15_0))))
+          (net raddr7
+            (joined
+              (portRef (member Address 5))
+              (portRef ADA7 (instanceRef debuggerTestsROM_0_0_15))
+              (portRef ADA7 (instanceRef debuggerTestsROM_0_1_14))
+              (portRef ADA7 (instanceRef debuggerTestsROM_0_2_13))
+              (portRef ADA7 (instanceRef debuggerTestsROM_0_3_12))
+              (portRef ADA7 (instanceRef debuggerTestsROM_0_4_11))
+              (portRef ADA7 (instanceRef debuggerTestsROM_0_5_10))
+              (portRef ADA7 (instanceRef debuggerTestsROM_0_6_9))
+              (portRef ADA7 (instanceRef debuggerTestsROM_0_7_8))
+              (portRef ADA7 (instanceRef debuggerTestsROM_0_8_7))
+              (portRef ADA7 (instanceRef debuggerTestsROM_0_9_6))
+              (portRef ADA7 (instanceRef debuggerTestsROM_0_10_5))
+              (portRef ADA7 (instanceRef debuggerTestsROM_0_11_4))
+              (portRef ADA7 (instanceRef debuggerTestsROM_0_12_3))
+              (portRef ADA7 (instanceRef debuggerTestsROM_0_13_2))
+              (portRef ADA7 (instanceRef debuggerTestsROM_0_14_1))
+              (portRef ADA7 (instanceRef debuggerTestsROM_0_15_0))))
+          (net raddr6
+            (joined
+              (portRef (member Address 6))
+              (portRef ADA6 (instanceRef debuggerTestsROM_0_0_15))
+              (portRef ADA6 (instanceRef debuggerTestsROM_0_1_14))
+              (portRef ADA6 (instanceRef debuggerTestsROM_0_2_13))
+              (portRef ADA6 (instanceRef debuggerTestsROM_0_3_12))
+              (portRef ADA6 (instanceRef debuggerTestsROM_0_4_11))
+              (portRef ADA6 (instanceRef debuggerTestsROM_0_5_10))
+              (portRef ADA6 (instanceRef debuggerTestsROM_0_6_9))
+              (portRef ADA6 (instanceRef debuggerTestsROM_0_7_8))
+              (portRef ADA6 (instanceRef debuggerTestsROM_0_8_7))
+              (portRef ADA6 (instanceRef debuggerTestsROM_0_9_6))
+              (portRef ADA6 (instanceRef debuggerTestsROM_0_10_5))
+              (portRef ADA6 (instanceRef debuggerTestsROM_0_11_4))
+              (portRef ADA6 (instanceRef debuggerTestsROM_0_12_3))
+              (portRef ADA6 (instanceRef debuggerTestsROM_0_13_2))
+              (portRef ADA6 (instanceRef debuggerTestsROM_0_14_1))
+              (portRef ADA6 (instanceRef debuggerTestsROM_0_15_0))))
+          (net raddr5
+            (joined
+              (portRef (member Address 7))
+              (portRef ADA5 (instanceRef debuggerTestsROM_0_0_15))
+              (portRef ADA5 (instanceRef debuggerTestsROM_0_1_14))
+              (portRef ADA5 (instanceRef debuggerTestsROM_0_2_13))
+              (portRef ADA5 (instanceRef debuggerTestsROM_0_3_12))
+              (portRef ADA5 (instanceRef debuggerTestsROM_0_4_11))
+              (portRef ADA5 (instanceRef debuggerTestsROM_0_5_10))
+              (portRef ADA5 (instanceRef debuggerTestsROM_0_6_9))
+              (portRef ADA5 (instanceRef debuggerTestsROM_0_7_8))
+              (portRef ADA5 (instanceRef debuggerTestsROM_0_8_7))
+              (portRef ADA5 (instanceRef debuggerTestsROM_0_9_6))
+              (portRef ADA5 (instanceRef debuggerTestsROM_0_10_5))
+              (portRef ADA5 (instanceRef debuggerTestsROM_0_11_4))
+              (portRef ADA5 (instanceRef debuggerTestsROM_0_12_3))
+              (portRef ADA5 (instanceRef debuggerTestsROM_0_13_2))
+              (portRef ADA5 (instanceRef debuggerTestsROM_0_14_1))
+              (portRef ADA5 (instanceRef debuggerTestsROM_0_15_0))))
+          (net raddr4
+            (joined
+              (portRef (member Address 8))
+              (portRef ADA4 (instanceRef debuggerTestsROM_0_0_15))
+              (portRef ADA4 (instanceRef debuggerTestsROM_0_1_14))
+              (portRef ADA4 (instanceRef debuggerTestsROM_0_2_13))
+              (portRef ADA4 (instanceRef debuggerTestsROM_0_3_12))
+              (portRef ADA4 (instanceRef debuggerTestsROM_0_4_11))
+              (portRef ADA4 (instanceRef debuggerTestsROM_0_5_10))
+              (portRef ADA4 (instanceRef debuggerTestsROM_0_6_9))
+              (portRef ADA4 (instanceRef debuggerTestsROM_0_7_8))
+              (portRef ADA4 (instanceRef debuggerTestsROM_0_8_7))
+              (portRef ADA4 (instanceRef debuggerTestsROM_0_9_6))
+              (portRef ADA4 (instanceRef debuggerTestsROM_0_10_5))
+              (portRef ADA4 (instanceRef debuggerTestsROM_0_11_4))
+              (portRef ADA4 (instanceRef debuggerTestsROM_0_12_3))
+              (portRef ADA4 (instanceRef debuggerTestsROM_0_13_2))
+              (portRef ADA4 (instanceRef debuggerTestsROM_0_14_1))
+              (portRef ADA4 (instanceRef debuggerTestsROM_0_15_0))))
+          (net raddr3
+            (joined
+              (portRef (member Address 9))
+              (portRef ADA3 (instanceRef debuggerTestsROM_0_0_15))
+              (portRef ADA3 (instanceRef debuggerTestsROM_0_1_14))
+              (portRef ADA3 (instanceRef debuggerTestsROM_0_2_13))
+              (portRef ADA3 (instanceRef debuggerTestsROM_0_3_12))
+              (portRef ADA3 (instanceRef debuggerTestsROM_0_4_11))
+              (portRef ADA3 (instanceRef debuggerTestsROM_0_5_10))
+              (portRef ADA3 (instanceRef debuggerTestsROM_0_6_9))
+              (portRef ADA3 (instanceRef debuggerTestsROM_0_7_8))
+              (portRef ADA3 (instanceRef debuggerTestsROM_0_8_7))
+              (portRef ADA3 (instanceRef debuggerTestsROM_0_9_6))
+              (portRef ADA3 (instanceRef debuggerTestsROM_0_10_5))
+              (portRef ADA3 (instanceRef debuggerTestsROM_0_11_4))
+              (portRef ADA3 (instanceRef debuggerTestsROM_0_12_3))
+              (portRef ADA3 (instanceRef debuggerTestsROM_0_13_2))
+              (portRef ADA3 (instanceRef debuggerTestsROM_0_14_1))
+              (portRef ADA3 (instanceRef debuggerTestsROM_0_15_0))))
+          (net raddr2
+            (joined
+              (portRef (member Address 10))
+              (portRef ADA2 (instanceRef debuggerTestsROM_0_0_15))
+              (portRef ADA2 (instanceRef debuggerTestsROM_0_1_14))
+              (portRef ADA2 (instanceRef debuggerTestsROM_0_2_13))
+              (portRef ADA2 (instanceRef debuggerTestsROM_0_3_12))
+              (portRef ADA2 (instanceRef debuggerTestsROM_0_4_11))
+              (portRef ADA2 (instanceRef debuggerTestsROM_0_5_10))
+              (portRef ADA2 (instanceRef debuggerTestsROM_0_6_9))
+              (portRef ADA2 (instanceRef debuggerTestsROM_0_7_8))
+              (portRef ADA2 (instanceRef debuggerTestsROM_0_8_7))
+              (portRef ADA2 (instanceRef debuggerTestsROM_0_9_6))
+              (portRef ADA2 (instanceRef debuggerTestsROM_0_10_5))
+              (portRef ADA2 (instanceRef debuggerTestsROM_0_11_4))
+              (portRef ADA2 (instanceRef debuggerTestsROM_0_12_3))
+              (portRef ADA2 (instanceRef debuggerTestsROM_0_13_2))
+              (portRef ADA2 (instanceRef debuggerTestsROM_0_14_1))
+              (portRef ADA2 (instanceRef debuggerTestsROM_0_15_0))))
+          (net raddr1
+            (joined
+              (portRef (member Address 11))
+              (portRef ADA1 (instanceRef debuggerTestsROM_0_0_15))
+              (portRef ADA1 (instanceRef debuggerTestsROM_0_1_14))
+              (portRef ADA1 (instanceRef debuggerTestsROM_0_2_13))
+              (portRef ADA1 (instanceRef debuggerTestsROM_0_3_12))
+              (portRef ADA1 (instanceRef debuggerTestsROM_0_4_11))
+              (portRef ADA1 (instanceRef debuggerTestsROM_0_5_10))
+              (portRef ADA1 (instanceRef debuggerTestsROM_0_6_9))
+              (portRef ADA1 (instanceRef debuggerTestsROM_0_7_8))
+              (portRef ADA1 (instanceRef debuggerTestsROM_0_8_7))
+              (portRef ADA1 (instanceRef debuggerTestsROM_0_9_6))
+              (portRef ADA1 (instanceRef debuggerTestsROM_0_10_5))
+              (portRef ADA1 (instanceRef debuggerTestsROM_0_11_4))
+              (portRef ADA1 (instanceRef debuggerTestsROM_0_12_3))
+              (portRef ADA1 (instanceRef debuggerTestsROM_0_13_2))
+              (portRef ADA1 (instanceRef debuggerTestsROM_0_14_1))
+              (portRef ADA1 (instanceRef debuggerTestsROM_0_15_0))))
+          (net raddr0
+            (joined
+              (portRef (member Address 12))
+              (portRef ADA0 (instanceRef debuggerTestsROM_0_0_15))
+              (portRef ADA0 (instanceRef debuggerTestsROM_0_1_14))
+              (portRef ADA0 (instanceRef debuggerTestsROM_0_2_13))
+              (portRef ADA0 (instanceRef debuggerTestsROM_0_3_12))
+              (portRef ADA0 (instanceRef debuggerTestsROM_0_4_11))
+              (portRef ADA0 (instanceRef debuggerTestsROM_0_5_10))
+              (portRef ADA0 (instanceRef debuggerTestsROM_0_6_9))
+              (portRef ADA0 (instanceRef debuggerTestsROM_0_7_8))
+              (portRef ADA0 (instanceRef debuggerTestsROM_0_8_7))
+              (portRef ADA0 (instanceRef debuggerTestsROM_0_9_6))
+              (portRef ADA0 (instanceRef debuggerTestsROM_0_10_5))
+              (portRef ADA0 (instanceRef debuggerTestsROM_0_11_4))
+              (portRef ADA0 (instanceRef debuggerTestsROM_0_12_3))
+              (portRef ADA0 (instanceRef debuggerTestsROM_0_13_2))
+              (portRef ADA0 (instanceRef debuggerTestsROM_0_14_1))
+              (portRef ADA0 (instanceRef debuggerTestsROM_0_15_0))))))))
+  (design debuggerTestsROM
+    (cellRef debuggerTestsROM
+      (libraryRef ORCLIB)))
+)
