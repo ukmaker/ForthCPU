@@ -217,8 +217,6 @@
 	`TICK; \
 	`TOCK;
 	
-	
-	
 `define JMP_HERE_N_STEP(n, pc_addr, instruction, m) \
 	$display("%04d FETCH1   [T=%09t] {%04x} :: {%04x} %s", n, $realtime, pc_addr, instruction, m); \
 	#1 \
@@ -292,7 +290,22 @@
 `define ADDAS(n, addr, a) \
 	INSTR = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_ADD,`MODE_ALU_REGA_S8, a}; \
 	`ALU_STEP(  n, addr,   INSTR, $sformatf("ADDAS %1x", a))
+`define AND(n, addr, a, b) \
+	INSTR = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_AND,`MODE_ALU_REG_REG, a, b}; \
+	`ALU_STEP(  n, addr,   INSTR, $sformatf("AND R%1x,R%1x", a, b))
+
+`define ANDI(n, addr, a, b) \
+	INSTR = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_AND,`MODE_ALU_REG_U4, a, b}; \
+	`ALU_STEP(  n, addr,   INSTR, $sformatf("ANDI R%1x,%1x", a, b))
 	
+`define ANDAI(n, addr, a) \
+	INSTR = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_AND,`MODE_ALU_REGA_U8, a}; \
+	`ALU_STEP(  n, addr,   INSTR, $sformatf("ANDAI %1x", a))
+	
+`define ANDAS(n, addr, a) \
+	INSTR = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_AND,`MODE_ALU_REGA_S8, a}; \
+	`ALU_STEP(  n, addr,   INSTR, $sformatf("ANDAS %1x", a))
+
 `define SUB(n, addr, a, b) \
 	INSTR = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_SUB,`MODE_ALU_REG_REG, a, b}; \
 	`ALU_STEP(  n, addr,   INSTR, $sformatf("SUB R%1x,R%1x", a, b))

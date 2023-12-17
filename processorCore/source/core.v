@@ -25,7 +25,7 @@ module core(
 	// Debugger interface
 	input  [7:0]  DEBUG_DIN,
 	output [7:0]  DEBUG_DOUT,
-	input [2:0]   DEBUG_ADDR,
+	input [2:0]   DEBUG_REG_ADDR,
 	input          DEBUG_RDN,
 	input          DEBUG_WRN
 );
@@ -56,9 +56,11 @@ wire [1:0]  DATA_BUSX;
 
 wire [15:0] DEBUG_ADDR_OUT;
 wire [15:0] DEBUG_DATA_OUT;
-wire [2:0]  DEBUG_ARGX;
+wire [2:0]  DEBUG_ARG;
 wire [3:0]  DEBUG_ARGBX;
-wire [4:0]  DEBUG_OP;
+wire [2:0]  DEBUG_OP;
+wire [2:0]  DEBUG_OP_I;
+wire         DEBUG_ADDR_INC_I;
 wire [4:0]  DEBUG_OPX;
 wire         DEBUG_MODEX;
 wire         DEBUG_STOPX;
@@ -160,7 +162,7 @@ wire [15:0] DEBUG_PC_A_NEXT = PC_A_NEXT;
 assign ABUS_OEN = 0;
 assign ARGA_X = INSTRUCTION[7:4];
 
-assign DEBUG_ARGX  = DEBUG_ADDR_OUT[2:0];
+assign DEBUG_ARG   = DEBUG_ADDR_OUT[2:0];
 assign DEBUG_ARGBX = DEBUG_ADDR_OUT[3:0];
 
 /***************************************
@@ -184,10 +186,11 @@ debugPort debugger(
 	.RESETN(RESETN),
 	.DEBUG_DIN(DEBUG_DIN),
 	.DEBUG_DOUT(DEBUG_DOUT),
-	.DEBUG_ADDR(DEBUG_ADDR),
+	.DEBUG_REG_ADDR(DEBUG_REG_ADDR),
 	.DEBUG_RDN(DEBUG_RDN),
 	.DEBUG_WRN(DEBUG_WRN),
 	
+	.DEBUG_ADDR_INC(DEBUG_ADDR_INC),
 	.DEBUG_OP(DEBUG_OP),
 	.DEBUG_MODE(DEBUG_MODE),	
 	.DEBUG_ADDR_OUT(DEBUG_ADDR_OUT),
@@ -216,8 +219,10 @@ debugPort debugger(
 * Debugging operation decoder
 ****************************************/
 debugDecoder debugDecoderInst(
-	.DEBUG_OPX(DEBUG_OPX),
-	.DEBUG_ARGX(DEBUG_ARGX),
+	.DEBUG_ADDR_INC_I(DEBUG_ADDR_INC_I),
+	.DEBUG_OP_I(DEBUG_OP_I),
+	.DEBUG_ARG(DEBUG_ARG),
+	
 	.DEBUG_ADDR_BUSX(DEBUG_ADDR_BUSX),
 	.DEBUG_ADDR_INCX(DEBUG_ADDR_INCX),
 	.DEBUG_LD_ARGX(DEBUG_LD_ARGX),
@@ -225,7 +230,8 @@ debugDecoder debugDecoderInst(
 	.DEBUG_DATAX(DEBUG_DATAX),
 	.DEBUG_BUS_SEQX(DEBUG_BUS_SEQX),
 	.DEBUG_REG_SEQX(DEBUG_REG_SEQX),
-	.DEBUG_CC_REGX(DEBUG_CC_REGX)
+	.DEBUG_CC_REGX(DEBUG_CC_REGX),
+	.DEBUG_PC_NEXTX(DEBUG_PC_NEXTX)
 
 );
 /***************************************
@@ -275,11 +281,13 @@ instructionLatch instructionLatchInst(
 	.EXECUTE(EXECUTE),
 	.DIN(DIN),
 	.DEBUG_OP(DEBUG_OP),
+	.DEBUG_ADDR_INC(DEBUG_ADDR_INC),
 	.DEBUG_MODE(DEBUG_MODE),
 	.INSTRUCTION(INSTRUCTION),
 	.GROUPX(GROUPX),
-	.DEBUG_OPX(DEBUG_OPX),
-	.DEBUG_MODEX(DEBUG_MODEX)
+	.DEBUG_ADDR_INC_I(DEBUG_ADDR_INC_I),
+	.DEBUG_OP_I(DEBUG_OP_I),
+	.DEBUG_MODE_I(DEBUG_MODE_I)
 );
 
 /***************************************

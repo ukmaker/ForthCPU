@@ -5,8 +5,9 @@
 module processorCoreInterruptTests;
 	
 reg CLK;
-reg RESET;
+reg RESETN;
 	
+wire RESET;
 wire STOPPED;
 wire FETCH;
 wire DECODE;
@@ -23,9 +24,9 @@ reg  [15:0] DIN;
 // Debugger interface
 reg  [7:0]  DEBUG_DIN;
 wire [7:0]  DEBUG_DOUT;
-reg [2:0]   DEBUG_ADDR;
-reg          DEBUG_RD;
-reg          DEBUG_WR;
+reg [2:0]   DEBUG_REG_ADDR;
+reg          DEBUG_RDN;
+reg          DEBUG_WRN;
 
 PUR PUR_INST(.PUR(1'b1));
 GSR GSR_INST(.GSR(1'b1));
@@ -33,6 +34,7 @@ GSR GSR_INST(.GSR(1'b1));
 core testInstance(
 	
 	.CLK(CLK),
+	.RESETN(RESETN),
 	.RESET(RESET),
 	
 	.STOPPED(STOPPED),
@@ -55,9 +57,9 @@ core testInstance(
 	
 	.DEBUG_DIN(DEBUG_DIN),
 	.DEBUG_DOUT(DEBUG_DOUT),
-	.DEBUG_ADDR(DEBUG_ADDR),
-	.DEBUG_RD(DEBUG_RD),
-	.DEBUG_WR(DEBUG_WR)
+	.DEBUG_REG_ADDR(DEBUG_REG_ADDR),
+	.DEBUG_RDN(DEBUG_RDN),
+	.DEBUG_WRN(DEBUG_WRN)
 );
 
 reg [15:0] INSTR;
@@ -89,18 +91,18 @@ end
 initial begin
 	CLK = 0; 
 	`TICK;
-	RESET = 1;
+	RESETN = 0;
 	DIN = 16'h0000;
 	INT0 = 0;
 	INT1 = 0;
 	
 	DEBUG_DIN = 8'h00;
-	DEBUG_ADDR = 3'b000;
-	DEBUG_RD = 0;
-	DEBUG_WR = 0;
+	DEBUG_REG_ADDR = 3'b000;
+	DEBUG_RDN = 1;
+	DEBUG_WRN = 1;
 	
 	`TICKTOCK;
-	#5 RESET = 0;
+	#5 RESETN = 1;
 	`TICKTOCK;
 	`TICKTOCK;	
 	/**************************************************************************

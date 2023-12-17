@@ -1,7 +1,6 @@
 @N: MF916 |Option synthesis_strategy=base is enabled. 
 @N: MF248 |Running in 64-bit mode.
 @N: MF666 |Clock conversion enabled. (Command "set_option -fix_gated_and_generated_clocks 1" in the project file.)
-@N: MO111 :"c:\users\duncan\git\forthcpu\processorcore\source\core.v":325:7:325:22|Tristate driver DEBUG_PC_NEXTX (in view: work.core(verilog)) on net DEBUG_PC_NEXTX (in view: work.core(verilog)) has its enable tied to GND.
 @N: MO111 :"c:\users\duncan\git\forthcpu\debuggertests\source\mcu.v":43:16:43:29|Tristate driver PIN_DEBUG_STOP (in view: work.mcu(verilog)) on net PIN_DEBUG_STOP (in view: work.mcu(verilog)) has its enable tied to GND.
 @N: MO111 :"c:\users\duncan\git\forthcpu\debuggertests\source\mcu.v":37:19:37:25|Tristate driver PIN_LED_1 (in view: work.mcu(verilog)) on net PIN_LED[7] (in view: work.mcu(verilog)) has its enable tied to GND.
 @N: MO111 :"c:\users\duncan\git\forthcpu\debuggertests\source\mcu.v":37:19:37:25|Tristate driver PIN_LED_2 (in view: work.mcu(verilog)) on net PIN_LED[6] (in view: work.mcu(verilog)) has its enable tied to GND.
@@ -11,32 +10,28 @@
 @N: MO111 :"c:\users\duncan\git\forthcpu\debuggertests\source\mcu.v":37:19:37:25|Tristate driver PIN_LED_6 (in view: work.mcu(verilog)) on net PIN_LED[2] (in view: work.mcu(verilog)) has its enable tied to GND.
 @N: MO111 :"c:\users\duncan\git\forthcpu\debuggertests\source\mcu.v":37:19:37:25|Tristate driver PIN_LED_7 (in view: work.mcu(verilog)) on net PIN_LED[1] (in view: work.mcu(verilog)) has its enable tied to GND.
 @N: MO111 :"c:\users\duncan\git\forthcpu\debuggertests\source\mcu.v":37:19:37:25|Tristate driver PIN_LED_8 (in view: work.mcu(verilog)) on net PIN_LED[0] (in view: work.mcu(verilog)) has its enable tied to GND.
+@N: MO111 :"c:\users\duncan\git\forthcpu\debuggertests\source\mcu.v":31:13:31:20|Tristate driver PIN_WR1N (in view: work.mcu(verilog)) on net PIN_WR1N (in view: work.mcu(verilog)) has its enable tied to GND.
 @N: MO106 :"c:\users\duncan\git\forthcpu\alub\source\alu.v":34:3:34:6|Found ROM arithmetic (in view: work.alu(verilog)) with 16 words by 1 bit.
 @N: MO106 :"c:\users\duncan\git\forthcpu\registersequencer\source\registersequencer.v":61:1:61:4|Found ROM REGA_EN_R[3:0] (in view: work.registerSequencer(verilog)) with 10 words by 4 bits.
-@N: BN362 :"c:\users\duncan\git\forthcpu\instructionlatch\source\instructionlatch.v":23:0:23:5|Removing sequential instance instructionLatchInst.DEBUG_OPX[4] (in view: work.core(verilog)) because it does not drive other instances.
 @N: MO231 :"c:\users\duncan\git\forthcpu\debugport\source\synchronizedcounter.v":50:0:50:5|Found counter in view:work.debugPort(verilog) instance addrH.Q[7:0] 
-@N: MO231 :"c:\users\duncan\git\forthcpu\debugport\source\synchronizedcounter.v":50:0:50:5|Found counter in view:work.debugPort(verilog) instance addrL.Q[6:0] 
+@N: MO231 :"c:\users\duncan\git\forthcpu\debugport\source\synchronizedcounter.v":50:0:50:5|Found counter in view:work.debugPort(verilog) instance addrL.Q[7:0] 
 @N: MF179 :"c:\users\duncan\git\forthcpu\uart\source\receiver.v":56:14:56:49|Found 17 by 17 bit equality operator ('==') r_Clock_Count17 (in view: work.UART_RX(verilog))
-@N: BN362 :"c:\users\duncan\git\forthcpu\debugport\source\register.v":14:0:14:5|Removing sequential instance coreInst.debugger.opReg.DOUT[4] (in view: work.mcu(verilog)) because it does not drive other instances.
-@N: FA113 :"c:\users\duncan\git\forthcpu\processorcore\source\core.v":325:7:325:22|Pipelining module un1_HERE[15:1]. For more information, search for "pipelining" in Online Help.
-@N: MF169 :"c:\users\duncan\git\forthcpu\programcounter\source\programcounter.v":102:0:102:5|Pushed in register HERE[15:0].
-@N: MF169 :"c:\users\duncan\git\forthcpu\programcounter\source\programcounter.v":111:0:111:5|Pushed in register PC_A[15:0].
-@N: FX1019 :"c:\users\duncan\git\forthcpu\debugport\source\synchronizer.v":36:0:36:5|Adding ASYNC_REG property on synchronizing instance coreInst.debugger.modeReg.Q_PHI0[0] (in view: work.mcu(verilog)).
+@N: FX1019 :"c:\users\duncan\git\forthcpu\debugport\source\synchronizer.v":36:0:36:5|Adding ASYNC_REG property on synchronizing instance coreInst.debugger.modeReg.Q_PHI0[1] (in view: work.mcu(verilog)).
 @N: FX1019 :"c:\users\duncan\git\forthcpu\debugport\source\synchronizer.v":36:0:36:5|Adding ASYNC_REG property on synchronizing instance coreInst.debugger.modeReg.Q_PHI0[2] (in view: work.mcu(verilog)).
+@N: FX1019 :"c:\users\duncan\git\forthcpu\debugport\source\synchronizer.v":36:0:36:5|Adding ASYNC_REG property on synchronizing instance coreInst.debugger.modeReg.Q_PHI0[0] (in view: work.mcu(verilog)).
+@N: FX1019 :"c:\users\duncan\git\forthcpu\debugport\source\synchronizedcounter.v":50:0:50:5|Adding ASYNC_REG property on synchronizing instance coreInst.debugger.addrL.PL_PHI0 (in view: work.mcu(verilog)).
 @N: FX1019 :"c:\users\duncan\git\forthcpu\debugport\source\synchronizedcounter.v":50:0:50:5|Adding ASYNC_REG property on synchronizing instance coreInst.debugger.addrH.PL_PHI0 (in view: work.mcu(verilog)).
 @N: FX1019 :"c:\users\duncan\git\forthcpu\debugport\source\synchronizer.v":36:0:36:5|Adding ASYNC_REG property on synchronizing instance coreInst.debugger.requestGen.modeReqReg.Q_PHI0[0] (in view: work.mcu(verilog)).
 @N: FX1019 :"c:\users\duncan\git\forthcpu\debugport\source\synchronizer.v":36:0:36:5|Adding ASYNC_REG property on synchronizing instance coreInst.debugger.requestGen.dhReqReg.Q_PHI0[0] (in view: work.mcu(verilog)).
-@N: FX1019 :"c:\users\duncan\git\forthcpu\debugport\source\synchronizedcounter.v":50:0:50:5|Adding ASYNC_REG property on synchronizing instance coreInst.debugger.addrL.PL_PHI0 (in view: work.mcu(verilog)).
 @N: FX1019 :"c:\users\duncan\git\forthcpu\debugport\source\synchronizer.v":36:0:36:5|Adding ASYNC_REG property on synchronizing instance coreInst.debugger.modeReg.Q_PHI0[1] (in view: work.mcu(verilog)).
-@N: FX1019 :"c:\users\duncan\git\forthcpu\debugport\source\synchronizer.v":36:0:36:5|Adding ASYNC_REG property on synchronizing instance coreInst.debugger.modeReg.Q_PHI0[0] (in view: work.mcu(verilog)).
 @N: FX1019 :"c:\users\duncan\git\forthcpu\debugport\source\synchronizer.v":36:0:36:5|Adding ASYNC_REG property on synchronizing instance coreInst.debugger.modeReg.Q_PHI0[2] (in view: work.mcu(verilog)).
+@N: FX1019 :"c:\users\duncan\git\forthcpu\debugport\source\synchronizer.v":36:0:36:5|Adding ASYNC_REG property on synchronizing instance coreInst.debugger.modeReg.Q_PHI0[0] (in view: work.mcu(verilog)).
+@N: FX1019 :"c:\users\duncan\git\forthcpu\debugport\source\synchronizedcounter.v":50:0:50:5|Adding ASYNC_REG property on synchronizing instance coreInst.debugger.addrL.PL_PHI0 (in view: work.mcu(verilog)).
 @N: FX1019 :"c:\users\duncan\git\forthcpu\debugport\source\synchronizedcounter.v":50:0:50:5|Adding ASYNC_REG property on synchronizing instance coreInst.debugger.addrH.PL_PHI0 (in view: work.mcu(verilog)).
 @N: FX1019 :"c:\users\duncan\git\forthcpu\debugport\source\synchronizer.v":36:0:36:5|Adding ASYNC_REG property on synchronizing instance coreInst.debugger.requestGen.modeReqReg.Q_PHI0[0] (in view: work.mcu(verilog)).
 @N: FX1019 :"c:\users\duncan\git\forthcpu\debugport\source\synchronizer.v":36:0:36:5|Adding ASYNC_REG property on synchronizing instance coreInst.debugger.requestGen.dhReqReg.Q_PHI0[0] (in view: work.mcu(verilog)).
-@N: FX1019 :"c:\users\duncan\git\forthcpu\debugport\source\synchronizedcounter.v":50:0:50:5|Adding ASYNC_REG property on synchronizing instance coreInst.debugger.addrL.PL_PHI0 (in view: work.mcu(verilog)).
-@N: FX1019 :"c:\users\duncan\git\forthcpu\debugport\source\synchronizer.v":36:0:36:5|Adding ASYNC_REG property on synchronizing instance coreInst.debugger.modeReg.Q_PHI0[1] (in view: work.mcu(verilog)).
-@N: FX271 :"c:\users\duncan\git\forthcpu\instructionlatch\source\instructionlatch.v":23:0:23:5|Replicating instance coreInst.instructionLatchInst.DEBUG_OPX[3] (in view: work.mcu(verilog)) with 11 loads 1 time to improve timing.
-@N: FX271 :"c:\users\duncan\git\forthcpu\instructionlatch\source\instructionlatch.v":23:0:23:5|Replicating instance coreInst.instructionLatchInst.DEBUG_OPX[1] (in view: work.mcu(verilog)) with 10 loads 1 time to improve timing.
+@N: FX271 :"c:\users\duncan\git\forthcpu\instructionlatch\source\instructionlatch.v":25:0:25:5|Replicating instance coreInst.instructionLatchInst.DEBUG_OP_I[0] (in view: work.mcu(verilog)) with 15 loads 1 time to improve timing.
+@N: FX271 :"c:\users\duncan\git\forthcpu\instructionlatch\source\instructionlatch.v":25:0:25:5|Replicating instance coreInst.instructionLatchInst.DEBUG_OP_I[2] (in view: work.mcu(verilog)) with 14 loads 1 time to improve timing.
 @N: FX164 |The option to pack registers in the IOB has not been specified. Please set syn_useioff attribute.  
 @N: FX1056 |Writing EDF file: C:\Users\Duncan\git\ForthCPU\debuggerTests\ForthCPU_debuggerTests.edi
 @N: BW106 |Synplicity Constraint File capacitance units using default value of 1pF 

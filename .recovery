@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<BaliProject version="3.2" title="ForthCPU" device="LCMXO3L-6900C-5BG256C" default_implementation="impl1">
+<BaliProject version="3.2" title="ForthCPU" device="LCMXO3L-6900C-5BG256C" default_implementation="processorCore">
     <Options/>
     <Implementation title="RAM" dir="RAM" description="RAM" synthesis="synplify" default_strategy="Area">
         <Options def_top="ramTests"/>
@@ -342,6 +342,12 @@
         <Source name="constants.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
+        <Source name="testSetup.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="debuggerTestSetup.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
         <Source name="processorCore/source/core.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
@@ -483,13 +489,10 @@
         <Source name="RAM/source/RAM.ipx" type="IPX_Module" type_short="IPX">
             <Options/>
         </Source>
-        <Source name="testSetup.v" type="Verilog" type_short="Verilog">
-            <Options/>
-        </Source>
         <Source name="debuggerTests/debuggerTests.xcf" type="Programming Project File" type_short="Programming">
             <Options/>
         </Source>
-        <Source name="debuggerTests/test/blinkTestbench/blinkTestbench.spf" type="Simulation Project File" type_short="SPF">
+        <Source name="debuggerTests/test/blinkTestbench/debuggerFullTestbench/debuggerFullTestbench.spf" type="Simulation Project File" type_short="SPF">
             <Options/>
         </Source>
         <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">
@@ -682,9 +685,6 @@
             <Options/>
         </Source>
         <Source name="testSetup.v" type="Verilog" type_short="Verilog">
-            <Options/>
-        </Source>
-        <Source name="../../Desktop/MachXO3L_Starter_Kit/project/impl1/impl1.xcf" type="Programming Project File" type_short="Programming">
             <Options/>
         </Source>
         <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">

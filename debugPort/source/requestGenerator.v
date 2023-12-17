@@ -18,8 +18,10 @@ module requestGenerator(
 	input EN_MODE,
 	input DEBUG_DIN_REQ,
 
+	input EN_DL,
 	input EN_DH,
-	input DEBUG_INCX,
+	input DEBUG_ADDR_INC,
+	input OP_CCRD,
 	
 	input DEBUG_ACK,
 	output reg DEBUG_REQ
@@ -30,6 +32,7 @@ module requestGenerator(
 *****************************************/
 wire DEBUG_MODE_REQ;
 wire DEBUG_INC_REQ;
+wire INC_EN;
 
 /****************************************
 * Synchronizer for the DEBUG_MODE_REQ bit
@@ -55,15 +58,18 @@ synchronizer #(.BUS_WIDTH(1)) dhReqReg(
 
 	.RESET(RESET),
 	.SLOWCLK(DEBUG_WRN & DEBUG_RDN),
-	.EN(EN_DH),
+	.EN(INC_EN),
 	.LD(1'b1),
 	
 	.FASTCLK(CLK),
 	.CLR(DEBUG_ACK),
 	
-	.D(DEBUG_INCX),
+	.D(DEBUG_ADDR_INC),
 	.Q(DEBUG_INC_REQ)
 );
+
+// OP logic
+assign INC_EN = (EN_DH & ~OP_CCRD) | (EN_DL & OP_CCRD);
 
 always @(*) begin
 	DEBUG_REQ = DEBUG_INC_REQ | DEBUG_MODE_REQ;

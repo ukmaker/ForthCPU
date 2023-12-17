@@ -23,7 +23,7 @@ module debugPort(
 	****************************************/
 	input [7:0]      DEBUG_DIN,
 	output reg [7:0] DEBUG_DOUT,
-	input [2:0]      DEBUG_ADDR,
+	input [2:0]      DEBUG_REG_ADDR,
 	input             DEBUG_RDN,
 	input             DEBUG_WRN,
 	
@@ -34,9 +34,10 @@ module debugPort(
 	input             RESETN,
 	output            RESET,
 	
-	output [4:0]     DEBUG_OP,
+	output            DEBUG_ADDR_INC,
+	output [2:0]     DEBUG_OP,
 	output            DEBUG_MODE,
-	output [15:0]    DEBUG_ADDR_OUT,
+	output reg [15:0]DEBUG_ADDR_OUT,
 	output [15:0]    DEBUG_DATA_OUT,
 
 	input             DEBUG_ADDR_INC_EN,
@@ -59,11 +60,12 @@ module debugPort(
 /***************************************************
 * Internal wiring
 ****************************************************/
-
+wire [15:0] DEBUG_ADDR_OUT_R;
 /***************************************************
 * Register selects
 ****************************************************/
 wire EN_MODE, EN_OP, EN_DL, EN_DH, EN_AL, EN_AH, EN_UNUSED0, EN_UNUSED1;
+wire OP_NOP,OP_MEMRD,OP_MEMWR,OP_REGRD,OP_REGWR,OP_CCRD,OP_PCRD,OP_INSTRD;
 
 /***************************************************
 * Internal muxes
@@ -83,7 +85,6 @@ wire AH_RO; // unused
 /***************************************************
 * Internal control signals
 ****************************************************/
-wire DEBUG_INCX = DEBUG_OP[0];
 wire DEBUG_DIN_REQ = DEBUG_DIN[3];
 wire DEBUG_RESET;
 wire DEBUG_LOCAL_RESET;
@@ -94,8 +95,8 @@ assign RESET = DEBUG_LOCAL_RESET | DEBUG_RESET;
 /***************************************************
 * Instances
 ****************************************************/
-oneOfEightDecoder decoder(
-	DEBUG_ADDR,
+oneOfEightDecoder regAddrDecoder(
+	DEBUG_REG_ADDR,
 	EN_MODE,
 	EN_OP,
 	EN_AL,
@@ -104,6 +105,19 @@ oneOfEightDecoder decoder(
 	EN_DH,
 	EN_UNUSED0,
 	EN_UNUSED1
+);
+
+// OPERATION decode
+oneOfEightDecoder opDecoder(
+	DEBUG_OP,
+	OP_NOP,
+	OP_MEMRD,
+	OP_MEMWR,
+	OP_REGRD,
+	OP_REGWR,
+	OP_CCRD,
+	OP_PCRD,
+	OP_INSTRD
 );
 
 requestGenerator requestGen(
@@ -116,16 +130,18 @@ requestGenerator requestGen(
 	.DEBUG_DIN_REQ(DEBUG_DIN_REQ),
 	
 	.EN_DH(EN_DH),
-	.DEBUG_INCX(DEBUG_INCX),
+	.EN_DL(EN_DL),
+	.DEBUG_ADDR_INC(DEBUG_ADDR_INC),
+	.OP_CCRD(OP_CCRD),
 	
 	.DEBUG_ACK(DEBUG_ACK),
 	.DEBUG_REQ(DEBUG_REQ)
 );
 
-assign DEBUG_ADDR_OUT[0] = 1'b0;
+//assign DEBUG_ADDR_OUT[0] = 1'b0;
 
 // Address synchronized counters
-synchronizedCounter #(.BUS_WIDTH(7)) addrL(
+synchronizedCounter #(.BUS_WIDTH(8)) addrL(
 
 	.SLOWCLK(DEBUG_WRN),
 	.RESET(DEBUG_LOCAL_RESET),
@@ -135,8 +151,8 @@ synchronizedCounter #(.BUS_WIDTH(7)) addrL(
 	.COUNT(DEBUG_ADDR_INC_EN),
 	.RI(1'b1),
 	.RO(AL_RO),
-	.D(DEBUG_DIN[7:1]),
-	.Q(DEBUG_ADDR_OUT[7:1])
+	.D(DEBUG_DIN[7:0]),
+	.Q(DEBUG_ADDR_OUT_R[7:0])
 );
 
 synchronizedCounter #(.BUS_WIDTH(8)) addrH(
@@ -150,7 +166,7 @@ synchronizedCounter #(.BUS_WIDTH(8)) addrH(
 	.RI(AL_RO),
 	.RO(AH_RO),
 	.D(DEBUG_DIN),
-	.Q(DEBUG_ADDR_OUT[15:8])
+	.Q(DEBUG_ADDR_OUT_R[15:8])
 );
 
 // Data synchronized registers
@@ -201,11 +217,11 @@ register #(.BUS_WIDTH(16)) argR(
 );
 
 // Control registers
-register #(.BUS_WIDTH(5)) opReg(
+register #(.BUS_WIDTH(4)) opReg(
 	.CLK(DEBUG_WRN),
 	.RESET(DEBUG_LOCAL_RESET),
-	.DIN(DEBUG_DIN[4:0]),
-	.DOUT(DEBUG_OP),
+	.DIN(DEBUG_DIN[3:0]),
+	.DOUT({DEBUG_OP, DEBUG_ADDR_INC}),
 	.LD(1'b1),
 	.EN(EN_OP)
 );	
@@ -221,7 +237,16 @@ synchronizer #(.BUS_WIDTH(3)) modeReg(
 	.EN(EN_MODE)
 );
 
-
+/**
+* Address out multiplexer
+**/
+always @(*) begin
+	if(OP_MEMRD | OP_MEMWR) begin
+		DEBUG_ADDR_OUT = {DEBUG_ADDR_OUT_R[15:1], 1'b1};
+	end else begin
+		DEBUG_ADDR_OUT = DEBUG_ADDR_OUT_R;
+	end
+end
 
 /**
 * Data multiplexer
@@ -241,12 +266,12 @@ end
 * Register read
 **/
 always @(*) begin
-	case(DEBUG_ADDR)
-		`DEBUG_ADDRX_DL:   DEBUG_DOUT = DEBUG_READ_MUX_IN_DL;
-		`DEBUG_ADDRX_DH:   DEBUG_DOUT = DEBUG_READ_MUX_IN_DH;
-		`DEBUG_ADDRX_ARGL: DEBUG_DOUT = DEBUG_READ_MUX_IN_ARGL;
-		`DEBUG_ADDRX_ARGH: DEBUG_DOUT = DEBUG_READ_MUX_IN_ARGH;
-		default: 	       DEBUG_DOUT = DEBUG_READ_MUX_IN_DL;
+	case(DEBUG_REG_ADDR)
+		`DEBUG_REG_ADDR_DL:   DEBUG_DOUT = DEBUG_READ_MUX_IN_DL;
+		`DEBUG_REG_ADDR_DH:   DEBUG_DOUT = DEBUG_READ_MUX_IN_DH;
+		`DEBUG_REG_ADDR_ARGL: DEBUG_DOUT = DEBUG_READ_MUX_IN_ARGL;
+		`DEBUG_REG_ADDR_ARGH: DEBUG_DOUT = DEBUG_READ_MUX_IN_ARGH;
+		default: 	          DEBUG_DOUT = DEBUG_READ_MUX_IN_DL;
 	endcase
 end
 

@@ -23,21 +23,21 @@ Target Vendor:  LATTICE
 Target Device:  LCMXO3L-6900CCABGA256
 Target Performance:   5
 Mapper:  xo3c00a,  version:  Diamond (64-bit) 3.12.1.454
-Mapped on:  12/16/23  17:46:36
+Mapped on:  12/17/23  18:16:05
 
 
 <A name="mrp_ds"></A><B><U><big>Design Summary</big></U></B>
-   Number of registers:    392 out of  7485 (5%)
-      PFU registers:          377 out of  6864 (5%)
+   Number of registers:    410 out of  7485 (5%)
+      PFU registers:          395 out of  6864 (6%)
       PIO registers:           15 out of   621 (2%)
-   Number of SLICEs:       991 out of  3432 (29%)
-      SLICEs as Logic/ROM:    991 out of  3432 (29%)
+   Number of SLICEs:      1007 out of  3432 (29%)
+      SLICEs as Logic/ROM:   1007 out of  3432 (29%)
       SLICEs as RAM:            0 out of  2574 (0%)
-      SLICEs as Carry:        289 out of  3432 (8%)
-   Number of LUT4s:        1976 out of  6864 (29%)
-      Number used as logic LUTs:        1398
+      SLICEs as Carry:        290 out of  3432 (8%)
+   Number of LUT4s:        2008 out of  6864 (29%)
+      Number used as logic LUTs:        1428
       Number used as distributed RAM:     0
-      Number used as ripple logic:      578
+      Number used as ripple logic:      580
       Number used as shift registers:     0
    Number of PIO sites used: 92 + 4(JTAG) out of 207 (46%)
    Number of block RAMs:  26 out of 26 (100%)
@@ -65,14 +65,14 @@ Mapped on:  12/16/23  17:46:36
       2. Number of logic LUT4s does not include count of distributed RAM and
      ripple logic.
    Number of clocks:  3
-     Net PIN_CLK_X1_c: 250 loads, 217 rising, 33 falling (Driver: PIO PIN_CLK_X1
+     Net PIN_CLK_X1_c: 256 loads, 224 rising, 32 falling (Driver: PIO PIN_CLK_X1
      )
 
      Net PIN_DEBUG_WRN_c: 19 loads, 19 rising, 0 falling (Driver: PIO
      PIN_DEBUG_WRN )
      Net coreInst/debugger/requestGen/dhReqReg/un1_DEBUG_WRN_uclk: 1 loads, 1
-     rising, 0 falling (Driver: coreInst/debugger/requestGen/dhReqReg/Q_R_RNO[0]
-     )
+     rising, 0 falling (Driver:
+     coreInst/debugger/requestGen/dhReqReg/Q_R_RNO_0[0] )
    Number of Clock Enables:  43
      Net mcuResourcesInst.N_167: 1 loads, 0 LSLICEs
      Net mcuResourcesInst/interruptMaskRegisterInst/MASK_REG_0_sqmuxa: 4 loads,
@@ -96,25 +96,25 @@ Mapped on:  12/16/23  17:46:36
      Net mcuResourcesInst/UARTInst/uartRXInst/r_RX_Bytece[6]: 1 loads, 1 LSLICEs
      
      Net mcuResourcesInst/UARTInst/TX_COMPLETE_R_1_sqmuxa_i: 1 loads, 1 LSLICEs
-     Net mcuResourcesInst/UARTInst/START_TX_1_sqmuxa_1_i: 1 loads, 1 LSLICEs
      Net mcuResourcesInst/UARTInst/TX_CLK_DIV_1_sqmuxa: 8 loads, 8 LSLICEs
      Net mcuResourcesInst/UARTInst/TXI_R_1_sqmuxa_i: 1 loads, 1 LSLICEs
-     Net mcuResourcesInst/UARTInst/RX_CLK_DIV_1_sqmuxa: 9 loads, 9 LSLICEs
+     Net mcuResourcesInst/UARTInst/START_TX_1_sqmuxa_1_i: 1 loads, 1 LSLICEs
+     Net mcuResourcesInst/UARTInst/RX_CLK_DIV_1_sqmuxa: 8 loads, 8 LSLICEs
      Net mcuResourcesInst/UARTInst/DATA_AVAILABLE_R_1_sqmuxa_i_0: 1 loads, 1
      LSLICEs
      Net mcuResourcesInst/EN_RAM: 18 loads, 2 LSLICEs
      Net coreInst/REGB_EN: 4 loads, 0 LSLICEs
      Net coreInst/REGA_EN: 4 loads, 0 LSLICEs
      Net coreInst/COMMIT: 10 loads, 10 LSLICEs
-     Net coreInst/EXECUTE: 15 loads, 15 LSLICEs
-     Net coreInst/generalGroupDecoderInst/EIX6: 1 loads, 1 LSLICEs
-     Net coreInst/programCounterInst/HERE11: 9 loads, 9 LSLICEs
-     Net coreInst/programCounterInst/N_240_i: 8 loads, 8 LSLICEs
+     Net coreInst/EXECUTE: 14 loads, 14 LSLICEs
+     Net coreInst/generalGroupDecoderInst/N_379_i: 1 loads, 1 LSLICEs
+     Net coreInst/programCounterInst/HERE11: 16 loads, 16 LSLICEs
+     Net coreInst/programCounterInst/N_411_i: 8 loads, 8 LSLICEs
      Net coreInst/programCounterInst/INTR05: 8 loads, 8 LSLICEs
-     Net coreInst/busControllerInst/sequencer/N_961_i: 2 loads, 2 LSLICEs
+     Net coreInst/busControllerInst/sequencer/N_1063_i: 2 loads, 2 LSLICEs
      Net coreInst/fullALUInst/ccRegs/CC_RUN_REG_0_sqmuxa: 2 loads, 2 LSLICEs
      Net coreInst/fullALUInst/ccRegs/CC_INT1_REG_0_sqmuxa: 2 loads, 2 LSLICEs
-     Net coreInst/fullALUInst/ccRegs/CC_INT0_REG_0_sqmuxa: 2 loads, 2 LSLICEs
+     Net coreInst/fullALUInst/ccRegs/CC_INT0_REG_0_sqmuxa: 3 loads, 3 LSLICEs
      Net coreInst/DEBUG_LD_DATA_EN: 8 loads, 8 LSLICEs
      Net coreInst/DEBUG_LD_ARG_EN: 8 loads, 8 LSLICEs
      Net coreInst/debugger/EN_MODE: 3 loads, 3 LSLICEs
@@ -123,35 +123,35 @@ Mapped on:  12/16/23  17:46:36
      Net coreInst/debugger/addrH/PL: 4 loads, 4 LSLICEs
      Net coreInst.debugger.EN_AH: 8 loads, 0 LSLICEs
      Net coreInst/debugger/EN_AL: 4 loads, 4 LSLICEs
-     Net coreInst/debugger/addrL/Qe: 4 loads, 4 LSLICEs
-
      Net coreInst/debugger/addrL/PL: 4 loads, 4 LSLICEs
-     Net coreInst/debugger/EN_DH: 1 loads, 1 LSLICEs
-     Net coreInst/dinLatch/DOUT6: 10 loads, 10 LSLICEs
-   Number of local set/reset loads for net RESET merged into GSR:  213
+
+     Net coreInst/debugger/addrL/Qe: 5 loads, 5 LSLICEs
+     Net coreInst/debugger/requestGen/dhReqReg/N_236_i: 1 loads, 1 LSLICEs
+     Net coreInst/dinLatch/DOUT6: 9 loads, 9 LSLICEs
+   Number of local set/reset loads for net RESET merged into GSR:  228
    Number of LSRs:  8
      Net RESET: 28 loads, 0 LSLICEs
-     Net PIN_RESETN_c: 57 loads, 49 LSLICEs
-     Net mcuResourcesInst/UARTInst/DOUT_22: 4 loads, 4 LSLICEs
+     Net PIN_RESETN_c: 58 loads, 50 LSLICEs
+     Net mcuResourcesInst/UARTInst/DOUT_30: 4 loads, 4 LSLICEs
      Net mcuResourcesInst/UARTInst/uartTxInst/r_Clock_Count15_cry_16_0_RNIBNIL:
      9 loads, 9 LSLICEs
      Net mcuResourcesInst/UARTInst/uartTxInst/un1_r_TX_Data_0_sqmuxa_1: 2 loads,
      2 LSLICEs
      Net mcuResourcesInst/UARTInst/uartRXInst/r_RX_DV8: 10 loads, 10 LSLICEs
-     Net mcuResourcesInst/UARTInst/DOUT_19: 2 loads, 2 LSLICEs
+     Net mcuResourcesInst/UARTInst/DOUT_27: 2 loads, 2 LSLICEs
      Net coreInst/debugger/requestGen/Q_R10: 4 loads, 4 LSLICEs
    Number of nets driven by tri-state buffers:  0
    Top 10 highest fanout non-clock nets:
-     Net coreInst/ALUB_DATA[0]: 115 loads
-     Net coreInst/N_243: 87 loads
-     Net coreInst/ALUB_DATA[3]: 79 loads
-     Net coreInst/fullALUInst/ALUB_DATA[2]: 74 loads
-     Net coreInst/ALUB_DATA[1]: 73 loads
+     Net coreInst/ALUB_DATA[0]: 112 loads
+     Net coreInst/N_254: 106 loads
+     Net coreInst/fullALUInst/ALUB_DATA[3]: 78 loads
+     Net coreInst/ALUB_DATA[1]: 77 loads
+     Net coreInst/ALUB_DATA[2]: 74 loads
      Net PIN_RESETN_c: 67 loads
-     Net coreInst/fullALUInst/ALUA_DATA[15]: 59 loads
-     Net coreInst/GROUPX[0]: 58 loads
-     Net coreInst/ALU_OPX_i_1[0]: 55 loads
-     Net coreInst/ALU_OPX[1]: 54 loads
+     Net N_105_i: 63 loads
+     Net coreInst/fullALUInst/ALUA_DATA[15]: 60 loads
+     Net coreInst/ALU_OPX_i_1[0]: 58 loads
+     Net coreInst/ALU_OPX[1]: 56 loads
 
 
 
@@ -380,9 +380,9 @@ Block coreInst/dinLatch/GND undriven or does not drive anything - clipped.
 Block coreInst/dinLatch/VCC undriven or does not drive anything - clipped.
 Block coreInst/debugger/VCC undriven or does not drive anything - clipped.
 Block coreInst/debugger/GND undriven or does not drive anything - clipped.
-Block coreInst/debugger/decoder/VCC undriven or does not drive anything -
+Block coreInst/debugger/regAddrDecoder/VCC undriven or does not drive anything -
      clipped.
-Block coreInst/debugger/decoder/GND undriven or does not drive anything -
+Block coreInst/debugger/regAddrDecoder/GND undriven or does not drive anything -
      clipped.
 Block coreInst/debugger/requestGen/VCC undriven or does not drive anything -
      clipped.
@@ -447,15 +447,15 @@ Block coreInst/busControllerInst/VCC undriven or does not drive anything -
      clipped.
 Block coreInst/busControllerInst/GND undriven or does not drive anything -
      clipped.
-Block coreInst/busControllerInst/sequencer/VCC undriven or does not drive
-     anything - clipped.
 Block coreInst/busControllerInst/sequencer/GND undriven or does not drive
+     anything - clipped.
+Block coreInst/busControllerInst/sequencer/VCC undriven or does not drive
      anything - clipped.
 Block coreInst/programCounterInst/VCC undriven or does not drive anything -
      clipped.
-Block coreInst/interruptStateMachineInst/VCC undriven or does not drive anything
-     - clipped.
 Block coreInst/interruptStateMachineInst/GND undriven or does not drive anything
+     - clipped.
+Block coreInst/interruptStateMachineInst/VCC undriven or does not drive anything
      - clipped.
 Block coreInst/aluGroupDecoderInst/VCC undriven or does not drive anything -
      clipped.
@@ -465,18 +465,18 @@ Block coreInst/jumpGroupDecoderInst/GND undriven or does not drive anything -
      clipped.
 Block coreInst/jumpGroupDecoderInst/VCC undriven or does not drive anything -
      clipped.
-Block coreInst/generalGroupDecoderInst/GND undriven or does not drive anything -
-     clipped.
 Block coreInst/generalGroupDecoderInst/VCC undriven or does not drive anything -
+     clipped.
+Block coreInst/generalGroupDecoderInst/GND undriven or does not drive anything -
      clipped.
 Block coreInst/opxMultiplexerInst/VCC undriven or does not drive anything -
 
      clipped.
 Block coreInst/opxMultiplexerInst/GND undriven or does not drive anything -
      clipped.
-Block coreInst/registerSequencerInst/VCC undriven or does not drive anything -
-     clipped.
 Block coreInst/registerSequencerInst/GND undriven or does not drive anything -
+     clipped.
+Block coreInst/registerSequencerInst/VCC undriven or does not drive anything -
      clipped.
 Block mcuResourcesInst/GND undriven or does not drive anything - clipped.
 Block mcuResourcesInst/VCC undriven or does not drive anything - clipped.
@@ -484,9 +484,9 @@ Block mcuResourcesInst/memoryMapperInst/VCC undriven or does not drive anything
      - clipped.
 Block mcuResourcesInst/memoryMapperInst/GND undriven or does not drive anything
      - clipped.
-Block mcuResourcesInst/UARTInst/VCC undriven or does not drive anything -
-     clipped.
 Block mcuResourcesInst/UARTInst/GND undriven or does not drive anything -
+     clipped.
+Block mcuResourcesInst/UARTInst/VCC undriven or does not drive anything -
      clipped.
 Block mcuResourcesInst/interruptMaskRegisterInst/GND undriven or does not drive
      anything - clipped.
@@ -529,7 +529,9 @@ Signal coreInst/debugger/addrL/Q_cry_0_S0_0[0] undriven or does not drive
 Signal coreInst/debugger/addrL/N_1 undriven or does not drive anything -
 
      clipped.
-Signal coreInst/debugger/addrL/Q_cry_0_COUT[5] undriven or does not drive
+Signal coreInst/debugger/addrL/Q_s_0_S1_0[7] undriven or does not drive anything
+     - clipped.
+Signal coreInst/debugger/addrL/Q_s_0_COUT_0[7] undriven or does not drive
      anything - clipped.
 Signal coreInst/debugger/addrH/Q_cry_0_S0[0] undriven or does not drive anything
      - clipped.
@@ -543,7 +545,7 @@ Signal coreInst/fullALUInst/aluInst/madd_cry_0_s1_0_S1 undriven or does not
      drive anything - clipped.
 Signal coreInst/fullALUInst/aluInst/madd_cry_0_s1_0_S0 undriven or does not
      drive anything - clipped.
-Signal coreInst/fullALUInst/aluInst/N_4 undriven or does not drive anything -
+Signal coreInst/fullALUInst/aluInst/N_2 undriven or does not drive anything -
      clipped.
 Signal coreInst/fullALUInst/aluInst/madd_cry_15_s1_0_COUT undriven or does not
      drive anything - clipped.
@@ -551,173 +553,124 @@ Signal coreInst/fullALUInst/aluInst/madd_cry_1_s0_0_S1 undriven or does not
      drive anything - clipped.
 Signal coreInst/fullALUInst/aluInst/madd_cry_1_s0_0_S0 undriven or does not
      drive anything - clipped.
-Signal coreInst/fullALUInst/aluInst/N_5 undriven or does not drive anything -
+Signal coreInst/fullALUInst/aluInst/N_4 undriven or does not drive anything -
      clipped.
 Signal coreInst/fullALUInst/aluInst/madd_s_16_s0_0_S1 undriven or does not drive
      anything - clipped.
 Signal coreInst/fullALUInst/aluInst/madd_s_16_s0_0_COUT undriven or does not
      drive anything - clipped.
-Signal coreInst/fullALUInst/aluInst/un1_RESULT_cry_0_0_S1 undriven or does not
-     drive anything - clipped.
-Signal coreInst/fullALUInst/aluInst/un1_RESULT_cry_0_0_S0 undriven or does not
-     drive anything - clipped.
-Signal coreInst/fullALUInst/aluInst/N_15 undriven or does not drive anything -
-     clipped.
-Signal coreInst/fullALUInst/aluInst/un1_RESULT_cry_15_0_COUT undriven or does
-     not drive anything - clipped.
-Signal coreInst/fullALUInst/aluInst/un10_RESULT_cry_0_0_S1 undriven or does not
-     drive anything - clipped.
-Signal coreInst/fullALUInst/aluInst/un10_RESULT_cry_0_0_S0 undriven or does not
-     drive anything - clipped.
-Signal coreInst/fullALUInst/aluInst/N_18 undriven or does not drive anything -
-     clipped.
-Signal coreInst/fullALUInst/aluInst/un10_RESULT_cry_15_0_COUT undriven or does
-     not drive anything - clipped.
-Signal coreInst/fullALUInst/aluInst/un47_RESULT_cry_0_0_S1 undriven or does not
-     drive anything - clipped.
-Signal coreInst/fullALUInst/aluInst/un47_RESULT_cry_0_0_S0 undriven or does not
-     drive anything - clipped.
-Signal coreInst/fullALUInst/aluInst/N_30 undriven or does not drive anything -
-     clipped.
-Signal coreInst/fullALUInst/aluInst/un47_RESULT_cry_15_0_COUT undriven or does
-     not drive anything - clipped.
-Signal coreInst/fullALUInst/aluInst/madd_0_cry_0_0_S1 undriven or does not drive
-     anything - clipped.
-Signal coreInst/fullALUInst/aluInst/madd_0_cry_0_0_S0 undriven or does not drive
-
-     anything - clipped.
-Signal coreInst/fullALUInst/aluInst/N_49 undriven or does not drive anything -
-     clipped.
-Signal coreInst/fullALUInst/aluInst/madd_0_cry_15_0_COUT undriven or does not
-     drive anything - clipped.
-Signal coreInst/fullALUInst/aluInst/madd_2_cry_1_0_S1 undriven or does not drive
-     anything - clipped.
-Signal coreInst/fullALUInst/aluInst/madd_2_cry_1_0_S0 undriven or does not drive
-     anything - clipped.
-Signal coreInst/fullALUInst/aluInst/N_50 undriven or does not drive anything -
-     clipped.
-Signal coreInst/fullALUInst/aluInst/madd_2_cry_15_0_S1 undriven or does not
-     drive anything - clipped.
-Signal coreInst/fullALUInst/aluInst/madd_2_cry_15_0_COUT undriven or does not
-     drive anything - clipped.
-Signal coreInst/fullALUInst/aluInst/madd_3_cry_1_0_S1 undriven or does not drive
-     anything - clipped.
-Signal coreInst/fullALUInst/aluInst/madd_3_cry_1_0_S0 undriven or does not drive
-     anything - clipped.
-Signal coreInst/fullALUInst/aluInst/N_51 undriven or does not drive anything -
-     clipped.
-Signal coreInst/fullALUInst/aluInst/madd_3_cry_15_0_S1 undriven or does not
-     drive anything - clipped.
-Signal coreInst/fullALUInst/aluInst/madd_3_cry_15_0_COUT undriven or does not
-     drive anything - clipped.
-Signal coreInst/fullALUInst/aluInst/madd_1_cry_1_0_S1 undriven or does not drive
-     anything - clipped.
-Signal coreInst/fullALUInst/aluInst/madd_1_cry_1_0_S0 undriven or does not drive
-     anything - clipped.
-Signal coreInst/fullALUInst/aluInst/N_52 undriven or does not drive anything -
-     clipped.
-Signal coreInst/fullALUInst/aluInst/madd_1_cry_15_0_S1 undriven or does not
-     drive anything - clipped.
-Signal coreInst/fullALUInst/aluInst/madd_1_cry_15_0_COUT undriven or does not
-     drive anything - clipped.
 Signal coreInst/fullALUInst/aluInst/madd_8_cry_0_0_S1 undriven or does not drive
      anything - clipped.
 Signal coreInst/fullALUInst/aluInst/madd_8_cry_0_0_S0 undriven or does not drive
      anything - clipped.
-Signal coreInst/fullALUInst/aluInst/N_53 undriven or does not drive anything -
+Signal coreInst/fullALUInst/aluInst/N_5 undriven or does not drive anything -
      clipped.
 Signal coreInst/fullALUInst/aluInst/madd_8_cry_16_0_S1 undriven or does not
      drive anything - clipped.
 Signal coreInst/fullALUInst/aluInst/madd_8_cry_16_0_COUT undriven or does not
      drive anything - clipped.
-Signal coreInst/fullALUInst/aluInst/madd_10_cry_2_0_S1 undriven or does not
-     drive anything - clipped.
-Signal coreInst/fullALUInst/aluInst/madd_10_cry_2_0_S0 undriven or does not
-     drive anything - clipped.
-Signal coreInst/fullALUInst/aluInst/N_54 undriven or does not drive anything -
-     clipped.
-Signal coreInst/fullALUInst/aluInst/madd_10_cry_18_0_S1 undriven or does not
-     drive anything - clipped.
-Signal coreInst/fullALUInst/aluInst/madd_10_cry_18_0_COUT undriven or does not
-     drive anything - clipped.
 Signal coreInst/fullALUInst/aluInst/madd_7_cry_1_0_S1 undriven or does not drive
-
      anything - clipped.
 Signal coreInst/fullALUInst/aluInst/madd_7_cry_1_0_S0 undriven or does not drive
      anything - clipped.
-Signal coreInst/fullALUInst/aluInst/N_55 undriven or does not drive anything -
+Signal coreInst/fullALUInst/aluInst/N_6 undriven or does not drive anything -
      clipped.
 Signal coreInst/fullALUInst/aluInst/madd_7_cry_16_0_COUT undriven or does not
-     drive anything - clipped.
-Signal coreInst/fullALUInst/aluInst/madd_9_cry_2_0_S1 undriven or does not drive
-     anything - clipped.
-Signal coreInst/fullALUInst/aluInst/madd_9_cry_2_0_S0 undriven or does not drive
-     anything - clipped.
-Signal coreInst/fullALUInst/aluInst/N_56 undriven or does not drive anything -
-     clipped.
-Signal coreInst/fullALUInst/aluInst/madd_9_cry_18_0_S1 undriven or does not
-     drive anything - clipped.
-Signal coreInst/fullALUInst/aluInst/madd_9_cry_18_0_COUT undriven or does not
-     drive anything - clipped.
-Signal coreInst/fullALUInst/aluInst/madd_4_cry_1_0_S1 undriven or does not drive
-     anything - clipped.
-Signal coreInst/fullALUInst/aluInst/madd_4_cry_1_0_S0 undriven or does not drive
-     anything - clipped.
-Signal coreInst/fullALUInst/aluInst/N_57 undriven or does not drive anything -
-     clipped.
-Signal coreInst/fullALUInst/aluInst/madd_4_cry_15_0_S1 undriven or does not
-     drive anything - clipped.
-Signal coreInst/fullALUInst/aluInst/madd_4_cry_15_0_COUT undriven or does not
-     drive anything - clipped.
-Signal coreInst/fullALUInst/aluInst/madd_5_cry_1_0_S1 undriven or does not drive
-     anything - clipped.
-Signal coreInst/fullALUInst/aluInst/madd_5_cry_1_0_S0 undriven or does not drive
-     anything - clipped.
-Signal coreInst/fullALUInst/aluInst/N_58 undriven or does not drive anything -
-     clipped.
-Signal coreInst/fullALUInst/aluInst/madd_5_cry_15_0_S1 undriven or does not
-     drive anything - clipped.
-Signal coreInst/fullALUInst/aluInst/madd_5_cry_15_0_COUT undriven or does not
      drive anything - clipped.
 Signal coreInst/fullALUInst/aluInst/madd_6_cry_1_0_S1 undriven or does not drive
      anything - clipped.
 Signal coreInst/fullALUInst/aluInst/madd_6_cry_1_0_S0 undriven or does not drive
      anything - clipped.
-Signal coreInst/fullALUInst/aluInst/N_59 undriven or does not drive anything -
+Signal coreInst/fullALUInst/aluInst/N_8 undriven or does not drive anything -
      clipped.
 Signal coreInst/fullALUInst/aluInst/madd_6_cry_15_0_S1 undriven or does not
+
      drive anything - clipped.
 Signal coreInst/fullALUInst/aluInst/madd_6_cry_15_0_COUT undriven or does not
      drive anything - clipped.
-Signal coreInst/fullALUInst/aluInst/madd_11_cry_2_0_S1 undriven or does not
+Signal coreInst/fullALUInst/aluInst/madd_5_cry_1_0_S1 undriven or does not drive
+     anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_5_cry_1_0_S0 undriven or does not drive
+     anything - clipped.
+Signal coreInst/fullALUInst/aluInst/N_16 undriven or does not drive anything -
+     clipped.
+Signal coreInst/fullALUInst/aluInst/madd_5_cry_15_0_S1 undriven or does not
      drive anything - clipped.
-Signal coreInst/fullALUInst/aluInst/madd_11_cry_2_0_S0 undriven or does not
+Signal coreInst/fullALUInst/aluInst/madd_5_cry_15_0_COUT undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_4_cry_1_0_S1 undriven or does not drive
+     anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_4_cry_1_0_S0 undriven or does not drive
+     anything - clipped.
+Signal coreInst/fullALUInst/aluInst/N_17 undriven or does not drive anything -
+     clipped.
+Signal coreInst/fullALUInst/aluInst/madd_4_cry_15_0_S1 undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_4_cry_15_0_COUT undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_3_cry_1_0_S1 undriven or does not drive
+     anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_3_cry_1_0_S0 undriven or does not drive
+     anything - clipped.
+Signal coreInst/fullALUInst/aluInst/N_25 undriven or does not drive anything -
+     clipped.
+Signal coreInst/fullALUInst/aluInst/madd_3_cry_15_0_S1 undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_3_cry_15_0_COUT undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_2_cry_1_0_S1 undriven or does not drive
+     anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_2_cry_1_0_S0 undriven or does not drive
+     anything - clipped.
+Signal coreInst/fullALUInst/aluInst/N_29 undriven or does not drive anything -
+     clipped.
+Signal coreInst/fullALUInst/aluInst/madd_2_cry_15_0_S1 undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_2_cry_15_0_COUT undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_1_cry_1_0_S1 undriven or does not drive
+     anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_1_cry_1_0_S0 undriven or does not drive
+     anything - clipped.
+Signal coreInst/fullALUInst/aluInst/N_49 undriven or does not drive anything -
+     clipped.
+Signal coreInst/fullALUInst/aluInst/madd_1_cry_15_0_S1 undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_1_cry_15_0_COUT undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_0_cry_0_0_S1 undriven or does not drive
+     anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_0_cry_0_0_S0 undriven or does not drive
+
+     anything - clipped.
+Signal coreInst/fullALUInst/aluInst/N_59 undriven or does not drive anything -
+     clipped.
+Signal coreInst/fullALUInst/aluInst/madd_0_cry_15_0_COUT undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/un47_RESULT_cry_0_0_S1 undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/un47_RESULT_cry_0_0_S0 undriven or does not
      drive anything - clipped.
 Signal coreInst/fullALUInst/aluInst/N_60 undriven or does not drive anything -
      clipped.
-Signal coreInst/fullALUInst/aluInst/madd_11_cry_18_0_S1 undriven or does not
+Signal coreInst/fullALUInst/aluInst/un47_RESULT_cry_15_0_COUT undriven or does
+     not drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/un10_RESULT_cry_0_0_S1 undriven or does not
      drive anything - clipped.
-Signal coreInst/fullALUInst/aluInst/madd_11_cry_18_0_COUT undriven or does not
-
-     drive anything - clipped.
-Signal coreInst/fullALUInst/aluInst/madd_12_cry_0_0_S1 undriven or does not
-     drive anything - clipped.
-Signal coreInst/fullALUInst/aluInst/madd_12_cry_0_0_S0 undriven or does not
+Signal coreInst/fullALUInst/aluInst/un10_RESULT_cry_0_0_S0 undriven or does not
      drive anything - clipped.
 Signal coreInst/fullALUInst/aluInst/N_62 undriven or does not drive anything -
      clipped.
-Signal coreInst/fullALUInst/aluInst/madd_12_cry_19_0_COUT undriven or does not
+Signal coreInst/fullALUInst/aluInst/un10_RESULT_cry_15_0_COUT undriven or does
+     not drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/un1_RESULT_cry_0_0_S1 undriven or does not
      drive anything - clipped.
-Signal coreInst/fullALUInst/aluInst/madd_13_cry_4_0_S1 undriven or does not
-     drive anything - clipped.
-Signal coreInst/fullALUInst/aluInst/madd_13_cry_4_0_S0 undriven or does not
+Signal coreInst/fullALUInst/aluInst/un1_RESULT_cry_0_0_S0 undriven or does not
      drive anything - clipped.
 Signal coreInst/fullALUInst/aluInst/N_63 undriven or does not drive anything -
      clipped.
-Signal coreInst/fullALUInst/aluInst/madd_13_s_23_0_S1 undriven or does not drive
-     anything - clipped.
-Signal coreInst/fullALUInst/aluInst/madd_13_s_23_0_COUT undriven or does not
-     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/un1_RESULT_cry_15_0_COUT undriven or does
+     not drive anything - clipped.
 Signal coreInst/fullALUInst/aluInst/madd_14_cry_0_0_S1 undriven or does not
      drive anything - clipped.
 Signal coreInst/fullALUInst/aluInst/madd_14_cry_0_0_S0 undriven or does not
@@ -728,6 +681,55 @@ Signal coreInst/fullALUInst/aluInst/madd_14_s_23_0_S1 undriven or does not drive
      anything - clipped.
 Signal coreInst/fullALUInst/aluInst/madd_14_s_23_0_COUT undriven or does not
      drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_13_cry_4_0_S1 undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_13_cry_4_0_S0 undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/N_65 undriven or does not drive anything -
+     clipped.
+Signal coreInst/fullALUInst/aluInst/madd_13_s_23_0_S1 undriven or does not drive
+     anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_13_s_23_0_COUT undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_12_cry_0_0_S1 undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_12_cry_0_0_S0 undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/N_66 undriven or does not drive anything -
+     clipped.
+Signal coreInst/fullALUInst/aluInst/madd_12_cry_19_0_COUT undriven or does not
+
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_11_cry_2_0_S1 undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_11_cry_2_0_S0 undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/N_70 undriven or does not drive anything -
+     clipped.
+Signal coreInst/fullALUInst/aluInst/madd_11_cry_18_0_S1 undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_11_cry_18_0_COUT undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_10_cry_2_0_S1 undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_10_cry_2_0_S0 undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/N_72 undriven or does not drive anything -
+     clipped.
+Signal coreInst/fullALUInst/aluInst/madd_10_cry_18_0_S1 undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_10_cry_18_0_COUT undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_9_cry_2_0_S1 undriven or does not drive
+     anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_9_cry_2_0_S0 undriven or does not drive
+     anything - clipped.
+Signal coreInst/fullALUInst/aluInst/N_74 undriven or does not drive anything -
+     clipped.
+Signal coreInst/fullALUInst/aluInst/madd_9_cry_18_0_S1 undriven or does not
+     drive anything - clipped.
+Signal coreInst/fullALUInst/aluInst/madd_9_cry_18_0_COUT undriven or does not
+     drive anything - clipped.
 Signal coreInst/registerFileInst/regs/registers_0_1_0_DOB8 undriven or does not
      drive anything - clipped.
 Signal coreInst/registerFileInst/regs/registers_0_1_0_DOA8 undriven or does not
@@ -736,16 +738,6 @@ Signal coreInst/registerFileInst/regs/registers_0_0_1_DOB8 undriven or does not
      drive anything - clipped.
 Signal coreInst/registerFileInst/regs/registers_0_0_1_DOA8 undriven or does not
      drive anything - clipped.
-Signal coreInst/programCounterInst/SUM_cry_0_0_S1 undriven or does not drive
-     anything - clipped.
-Signal coreInst/programCounterInst/SUM_cry_0_0_S0 undriven or does not drive
-     anything - clipped.
-Signal coreInst/programCounterInst/N_3 undriven or does not drive anything -
-     clipped.
-Signal coreInst/programCounterInst/SUM_s_15_0_S1 undriven or does not drive
-     anything - clipped.
-Signal coreInst/programCounterInst/SUM_s_15_0_COUT undriven or does not drive
-     anything - clipped.
 Signal coreInst/programCounterInst/un2_HERE_cry_1_0_S1 undriven or does not
      drive anything - clipped.
 Signal coreInst/programCounterInst/un2_HERE_cry_1_0_S0 undriven or does not
@@ -754,8 +746,18 @@ Signal coreInst/programCounterInst/N_4 undriven or does not drive anything -
      clipped.
 Signal coreInst/programCounterInst/un2_HERE_cry_14_0_COUT undriven or does not
      drive anything - clipped.
-Signal coreInst/un1_HERE_cry_0_0_S1 undriven or does not drive anything -
+Signal coreInst/programCounterInst/SUM_cry_0_0_S1 undriven or does not drive
+     anything - clipped.
+Signal coreInst/programCounterInst/SUM_cry_0_0_S0 undriven or does not drive
+     anything - clipped.
+Signal coreInst/programCounterInst/N_5 undriven or does not drive anything -
+     clipped.
+Signal coreInst/programCounterInst/SUM_s_15_0_S1 undriven or does not drive
+     anything - clipped.
+Signal coreInst/programCounterInst/SUM_s_15_0_COUT undriven or does not drive
 
+     anything - clipped.
+Signal coreInst/un1_HERE_cry_0_0_S1 undriven or does not drive anything -
      clipped.
 Signal coreInst/un1_HERE_cry_0_0_S0 undriven or does not drive anything -
      clipped.
@@ -810,9 +812,9 @@ Signal mcuResourcesInst/ROMInst/rom_0_13_2_DOB2 undriven or does not drive
      anything - clipped.
 Signal mcuResourcesInst/ROMInst/rom_0_13_2_DOB1 undriven or does not drive
      anything - clipped.
+
 Signal mcuResourcesInst/ROMInst/rom_0_13_2_DOB0 undriven or does not drive
      anything - clipped.
-
 Signal mcuResourcesInst/ROMInst/rom_0_13_2_DOA8 undriven or does not drive
      anything - clipped.
 Signal mcuResourcesInst/ROMInst/rom_0_13_2_DOA7 undriven or does not drive
@@ -867,9 +869,9 @@ Signal mcuResourcesInst/ROMInst/rom_0_11_4_DOB8 undriven or does not drive
      anything - clipped.
 Signal mcuResourcesInst/ROMInst/rom_0_11_4_DOB7 undriven or does not drive
      anything - clipped.
+
 Signal mcuResourcesInst/ROMInst/rom_0_11_4_DOB6 undriven or does not drive
      anything - clipped.
-
 Signal mcuResourcesInst/ROMInst/rom_0_11_4_DOB5 undriven or does not drive
      anything - clipped.
 Signal mcuResourcesInst/ROMInst/rom_0_11_4_DOB4 undriven or does not drive
@@ -924,9 +926,9 @@ Signal mcuResourcesInst/ROMInst/rom_0_10_5_DOA6 undriven or does not drive
      anything - clipped.
 Signal mcuResourcesInst/ROMInst/rom_0_10_5_DOA5 undriven or does not drive
      anything - clipped.
+
 Signal mcuResourcesInst/ROMInst/rom_0_10_5_DOA4 undriven or does not drive
      anything - clipped.
-
 Signal mcuResourcesInst/ROMInst/rom_0_10_5_DOA3 undriven or does not drive
      anything - clipped.
 Signal mcuResourcesInst/ROMInst/rom_0_10_5_DOA2 undriven or does not drive
@@ -981,9 +983,9 @@ Signal mcuResourcesInst/ROMInst/rom_0_8_7_DOB3 undriven or does not drive
      anything - clipped.
 Signal mcuResourcesInst/ROMInst/rom_0_8_7_DOB2 undriven or does not drive
      anything - clipped.
+
 Signal mcuResourcesInst/ROMInst/rom_0_8_7_DOB1 undriven or does not drive
      anything - clipped.
-
 Signal mcuResourcesInst/ROMInst/rom_0_8_7_DOB0 undriven or does not drive
      anything - clipped.
 Signal mcuResourcesInst/ROMInst/rom_0_8_7_DOA8 undriven or does not drive
@@ -1038,9 +1040,9 @@ Signal mcuResourcesInst/ROMInst/rom_0_7_8_DOA1 undriven or does not drive
      anything - clipped.
 Signal mcuResourcesInst/ROMInst/rom_0_6_9_DOB8 undriven or does not drive
      anything - clipped.
+
 Signal mcuResourcesInst/ROMInst/rom_0_6_9_DOB7 undriven or does not drive
      anything - clipped.
-
 Signal mcuResourcesInst/ROMInst/rom_0_6_9_DOB6 undriven or does not drive
      anything - clipped.
 Signal mcuResourcesInst/ROMInst/rom_0_6_9_DOB5 undriven or does not drive
@@ -1095,9 +1097,9 @@ Signal mcuResourcesInst/ROMInst/rom_0_5_10_DOA7 undriven or does not drive
      anything - clipped.
 Signal mcuResourcesInst/ROMInst/rom_0_5_10_DOA6 undriven or does not drive
      anything - clipped.
+
 Signal mcuResourcesInst/ROMInst/rom_0_5_10_DOA5 undriven or does not drive
      anything - clipped.
-
 Signal mcuResourcesInst/ROMInst/rom_0_5_10_DOA4 undriven or does not drive
      anything - clipped.
 Signal mcuResourcesInst/ROMInst/rom_0_5_10_DOA3 undriven or does not drive
@@ -1152,9 +1154,9 @@ Signal mcuResourcesInst/ROMInst/rom_0_3_12_DOB4 undriven or does not drive
      anything - clipped.
 Signal mcuResourcesInst/ROMInst/rom_0_3_12_DOB3 undriven or does not drive
      anything - clipped.
+
 Signal mcuResourcesInst/ROMInst/rom_0_3_12_DOB2 undriven or does not drive
      anything - clipped.
-
 Signal mcuResourcesInst/ROMInst/rom_0_3_12_DOB1 undriven or does not drive
      anything - clipped.
 Signal mcuResourcesInst/ROMInst/rom_0_3_12_DOB0 undriven or does not drive
@@ -1209,9 +1211,9 @@ Signal mcuResourcesInst/ROMInst/rom_0_2_13_DOA2 undriven or does not drive
      anything - clipped.
 Signal mcuResourcesInst/ROMInst/rom_0_2_13_DOA1 undriven or does not drive
      anything - clipped.
+
 Signal mcuResourcesInst/ROMInst/rom_0_1_14_DOB8 undriven or does not drive
      anything - clipped.
-
 Signal mcuResourcesInst/ROMInst/rom_0_1_14_DOB7 undriven or does not drive
      anything - clipped.
 Signal mcuResourcesInst/ROMInst/rom_0_1_14_DOB6 undriven or does not drive
@@ -1266,9 +1268,9 @@ Signal mcuResourcesInst/ROMInst/rom_0_0_15_DOA8 undriven or does not drive
      anything - clipped.
 Signal mcuResourcesInst/ROMInst/rom_0_0_15_DOA7 undriven or does not drive
      anything - clipped.
+
 Signal mcuResourcesInst/ROMInst/rom_0_0_15_DOA6 undriven or does not drive
      anything - clipped.
-
 Signal mcuResourcesInst/ROMInst/rom_0_0_15_DOA5 undriven or does not drive
      anything - clipped.
 Signal mcuResourcesInst/ROMInst/rom_0_0_15_DOA4 undriven or does not drive
@@ -1323,9 +1325,9 @@ Signal mcuResourcesInst/RAMInst/RAM_3_1_0_DOB5 undriven or does not drive
      anything - clipped.
 Signal mcuResourcesInst/RAMInst/RAM_3_1_0_DOB4 undriven or does not drive
      anything - clipped.
+
 Signal mcuResourcesInst/RAMInst/RAM_3_1_0_DOB3 undriven or does not drive
      anything - clipped.
-
 Signal mcuResourcesInst/RAMInst/RAM_3_1_0_DOB2 undriven or does not drive
      anything - clipped.
 Signal mcuResourcesInst/RAMInst/RAM_3_1_0_DOB1 undriven or does not drive
@@ -1380,9 +1382,9 @@ Signal mcuResourcesInst/RAMInst/RAM_2_0_3_DOB7 undriven or does not drive
      anything - clipped.
 Signal mcuResourcesInst/RAMInst/RAM_2_0_3_DOB6 undriven or does not drive
      anything - clipped.
+
 Signal mcuResourcesInst/RAMInst/RAM_2_0_3_DOB5 undriven or does not drive
      anything - clipped.
-
 Signal mcuResourcesInst/RAMInst/RAM_2_0_3_DOB4 undriven or does not drive
      anything - clipped.
 Signal mcuResourcesInst/RAMInst/RAM_2_0_3_DOB3 undriven or does not drive
@@ -1437,9 +1439,9 @@ Signal mcuResourcesInst/RAMInst/mdout0_1_8 undriven or does not drive anything -
      clipped.
 Signal mcuResourcesInst/RAMInst/RAM_0_1_6_DOB8 undriven or does not drive
      anything - clipped.
+
 Signal mcuResourcesInst/RAMInst/RAM_0_1_6_DOB7 undriven or does not drive
      anything - clipped.
-
 Signal mcuResourcesInst/RAMInst/RAM_0_1_6_DOB6 undriven or does not drive
      anything - clipped.
 Signal mcuResourcesInst/RAMInst/RAM_0_1_6_DOB5 undriven or does not drive
@@ -1494,9 +1496,9 @@ Signal mcuResourcesInst/UARTInst/uartRXInst/un1_CLKS_PER_BIT_s_17_0_COUT
      undriven or does not drive anything - clipped.
 Signal mcuResourcesInst/UARTInst/uartRXInst/r_Clock_Count32_cry_0_0_S1 undriven
      or does not drive anything - clipped.
+
 Signal mcuResourcesInst/UARTInst/uartRXInst/r_Clock_Count32_cry_0_0_S0 undriven
      or does not drive anything - clipped.
-
 Signal mcuResourcesInst/UARTInst/uartRXInst/N_3 undriven or does not drive
      anything - clipped.
 Signal mcuResourcesInst/UARTInst/uartRXInst/r_Clock_Count32_cry_1_0_S1 undriven
@@ -1551,9 +1553,9 @@ Signal mcuResourcesInst/UARTInst/uartRXInst/r_Clock_Count17_0_I_45_0_S0 undriven
      or does not drive anything - clipped.
 Signal mcuResourcesInst/UARTInst/uartRXInst/r_Clock_Count17_0_I_15_0_S1 undriven
      or does not drive anything - clipped.
+
 Signal mcuResourcesInst/UARTInst/uartRXInst/r_Clock_Count17_0_I_15_0_S0 undriven
      or does not drive anything - clipped.
-
 Signal mcuResourcesInst/UARTInst/uartRXInst/r_Clock_Count17_0_I_33_0_S1 undriven
      or does not drive anything - clipped.
 Signal mcuResourcesInst/UARTInst/uartRXInst/r_Clock_Count17_0_I_33_0_S0 undriven
@@ -1562,19 +1564,19 @@ Signal mcuResourcesInst/UARTInst/uartRXInst/r_Clock_Count17_0_I_51_0_S1 undriven
      or does not drive anything - clipped.
 Signal mcuResourcesInst/UARTInst/uartRXInst/r_Clock_Count17_0_I_51_0_COUT
      undriven or does not drive anything - clipped.
+Signal mcuResourcesInst/UARTInst/uartTxInst/un1_CLKS_PER_BIT_cry_0_0_S0 undriven
+     or does not drive anything - clipped.
+Signal mcuResourcesInst/UARTInst/uartTxInst/N_5 undriven or does not drive
+     anything - clipped.
+Signal mcuResourcesInst/UARTInst/uartTxInst/un1_CLKS_PER_BIT_cry_15_0_COUT
+     undriven or does not drive anything - clipped.
 Signal mcuResourcesInst/UARTInst/uartTxInst/un1_r_Clock_Count_cry_0_0_S0
      undriven or does not drive anything - clipped.
-Signal mcuResourcesInst/UARTInst/uartTxInst/N_5 undriven or does not drive
+Signal mcuResourcesInst/UARTInst/uartTxInst/N_6 undriven or does not drive
      anything - clipped.
 Signal mcuResourcesInst/UARTInst/uartTxInst/un1_r_Clock_Count_s_15_0_S1 undriven
      or does not drive anything - clipped.
 Signal mcuResourcesInst/UARTInst/uartTxInst/un1_r_Clock_Count_s_15_0_COUT
-     undriven or does not drive anything - clipped.
-Signal mcuResourcesInst/UARTInst/uartTxInst/un1_CLKS_PER_BIT_cry_0_0_S0 undriven
-     or does not drive anything - clipped.
-Signal mcuResourcesInst/UARTInst/uartTxInst/N_6 undriven or does not drive
-     anything - clipped.
-Signal mcuResourcesInst/UARTInst/uartTxInst/un1_CLKS_PER_BIT_cry_15_0_COUT
      undriven or does not drive anything - clipped.
 Signal mcuResourcesInst/UARTInst/uartTxInst/r_Clock_Count15_cry_0_0_S1 undriven
      or does not drive anything - clipped.
@@ -1608,9 +1610,9 @@ Signal mcuResourcesInst/UARTInst/uartTxInst/r_Clock_Count15_cry_11_0_S0 undriven
      or does not drive anything - clipped.
 Signal mcuResourcesInst/UARTInst/uartTxInst/r_Clock_Count15_cry_13_0_S1 undriven
      or does not drive anything - clipped.
+
 Signal mcuResourcesInst/UARTInst/uartTxInst/r_Clock_Count15_cry_13_0_S0 undriven
      or does not drive anything - clipped.
-
 Signal mcuResourcesInst/UARTInst/uartTxInst/r_Clock_Count15_cry_15_0_S1 undriven
      or does not drive anything - clipped.
 Signal mcuResourcesInst/UARTInst/uartTxInst/r_Clock_Count15_cry_15_0_S0 undriven
@@ -1644,7 +1646,7 @@ Block mcuResourcesInst/UARTInst/uartTxInst/GND was optimized away.
 /coreInst/registerFileInst/regs:
     EBRs: 2
     RAM SLICEs: 0
-    Logic SLICEs: 6
+    Logic SLICEs: 0
     PFU Registers: 0
     -Contains EBR registers_0_0_1:  TYPE= DP8KC,  Width_A= 8,  Width_B= 8,
          Depth_A= 16,  Depth_B= 16,  REGMODE_A= NOREG,  REGMODE_B= NOREG,
@@ -1666,9 +1668,9 @@ Block mcuResourcesInst/UARTInst/uartTxInst/GND was optimized away.
          ASYNC_RESET_RELEASE= SYNC,  WRITEMODE_A= WRITETHROUGH,  WRITEMODE_B=
          NORMAL,  GSR= DISABLED,  MEM_INIT_FILE= INIT_ALL_0s,  MEM_LPC_FILE=
          RAM.lpc
+
     -Contains EBR RAM_0_1_6:  TYPE= DP8KC,  Width_A= 8,  Depth_A= 1024,
          REGMODE_A= NOREG,  REGMODE_B= NOREG,  RESETMODE= ASYNC,
-
          ASYNC_RESET_RELEASE= SYNC,  WRITEMODE_A= WRITETHROUGH,  WRITEMODE_B=
          NORMAL,  GSR= DISABLED,  MEM_INIT_FILE= INIT_ALL_0s,  MEM_LPC_FILE=
          RAM.lpc
@@ -1723,9 +1725,9 @@ Block mcuResourcesInst/UARTInst/uartTxInst/GND was optimized away.
          REGMODE_A= NOREG,  REGMODE_B= NOREG,  RESETMODE= ASYNC,
          ASYNC_RESET_RELEASE= SYNC,  WRITEMODE_A= NORMAL,  WRITEMODE_B= NORMAL,
          GSR= DISABLED,  MEM_INIT_FILE= core.mem,  MEM_LPC_FILE= rom.lpc
+
     -Contains EBR rom_0_3_12:  TYPE= DP8KC,  Width_A= 1,  Depth_A= 4096,
          REGMODE_A= NOREG,  REGMODE_B= NOREG,  RESETMODE= ASYNC,
-
          ASYNC_RESET_RELEASE= SYNC,  WRITEMODE_A= NORMAL,  WRITEMODE_B= NORMAL,
          GSR= DISABLED,  MEM_INIT_FILE= core.mem,  MEM_LPC_FILE= rom.lpc
     -Contains EBR rom_0_4_11:  TYPE= DP8KC,  Width_A= 1,  Depth_A= 4096,
@@ -1782,9 +1784,9 @@ Block mcuResourcesInst/UARTInst/uartTxInst/GND was optimized away.
 
 Instance Name: mcuResourcesInst/RAMInst/RAM_0_0_7
          Type: DP8KC
+
 Instance Name: mcuResourcesInst/RAMInst/RAM_0_1_6
          Type: DP8KC
-
 Instance Name: mcuResourcesInst/RAMInst/RAM_1_0_5
          Type: DP8KC
 Instance Name: mcuResourcesInst/RAMInst/RAM_1_1_4
@@ -1841,9 +1843,9 @@ Instance Name: coreInst/registerFileInst/regs/registers_0_1_0
 
 GSR Component:
    The local reset signal 'RESET' of the design has been inferred as Global Set
+
         Reset (GSR). The reset signal used for GSR control is 'RESET'.
         
-
 
      GSR Property:
    The design components with GSR property set to ENABLED will respond to global
@@ -1896,12 +1898,10 @@ GSR Component:
 <A name="mrp_runtime"></A><B><U><big>Run Time and Memory Usage</big></U></B>
 -------------------------
 
-   Total CPU Time: 1 secs  
-   Total REAL Time: 0 secs  
-   Peak Memory Usage: 73 MB
+   Total CPU Time: 2 secs  
+   Total REAL Time: 3 secs  
+   Peak Memory Usage: 74 MB
         
-
-
 
 
 

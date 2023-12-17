@@ -107,10 +107,42 @@ reg [7:0]  DEBUG_CC_DISPLAY;
 	PIN_DEBUG_RDN = 1'b1; \
 	#100;
 
+`define debugReadWord \
+	$display("[T=%09t]   READ DL", $realtime); \
+	`debugRead( `DEBUG_REG_ADDR_DL, 8'h00) \
+	$display("[T=%09t]   READ DH", $realtime); \
+	`debugRead( `DEBUG_REG_ADDR_DH, 8'h00)	\
+	#800;
+	
+`define debugReadRegistersStart \
+	$display("[T=%09t] READ REGS", $realtime); \
+	`debugStop \
+	`debugWrite( `DEBUG_REG_ADDR_OP, {`DEBUG_OPX_RD_REG, `DEBUG_ADDR_INCX_INC}) \
+	`debugCycle
+
+`define debugReadRegisters \
+	`debugReadRegistersStart \
+    `debugReadWord \
+    `debugReadWord \
+    `debugReadWord \
+    `debugReadWord \
+    `debugReadWord \
+    `debugReadWord \
+    `debugReadWord \
+    `debugReadWord \
+    `debugReadWord \
+    `debugReadWord \
+    `debugReadWord \
+    `debugReadWord \
+    `debugReadWord \
+    `debugReadWord \
+    `debugReadWord \
+    `debugReadWord 	
+	
 `define debugReadPC(expected) \
 	$display("[T=%09t] READ PC", $realtime); \
 	$display("[T=%09t]   SET MODE", $realtime); \
-	PIN_DEBUG_ADDR = `DEBUG_ADDRX_MODE; \
+	PIN_DEBUG_ADDR = `DEBUG_REG_ADDR_MODE; \
 	DEBUG_SEND = `DEBUG_MODEX_STOP; \
 	#100; \
 	PIN_DEBUG_WRN = 1'b0; \
@@ -118,7 +150,7 @@ reg [7:0]  DEBUG_CC_DISPLAY;
 	PIN_DEBUG_WRN = 1'b1; \
 	#200;\
 	$display("[T=%09t]   SET OP", $realtime); \
-	PIN_DEBUG_ADDR = `DEBUG_ADDRX_OP; \
+	PIN_DEBUG_ADDR = `DEBUG_REG_ADDR_OP; \
 	DEBUG_SEND = {`DEBUG_OPX_RD_PC, `DEBUG_ADDR_INCX_NONE}; \
 	#100; \
 	PIN_DEBUG_WRN = 1'b0; \
@@ -127,14 +159,14 @@ reg [7:0]  DEBUG_CC_DISPLAY;
 	#200; \
 	`debugCycle \
 	$display("[T=%09t]   READ DL", $realtime); \
-	`debugRead( `DEBUG_ADDRX_DL, 8'h00) \
+	`debugRead( `DEBUG_REG_ADDR_DL, 8'h00) \
 	$display("[T=%09t]   READ DH", $realtime); \
-	`debugRead( `DEBUG_ADDRX_DH, 8'h00)
+	`debugRead( `DEBUG_REG_ADDR_DH, 8'h00)
 
 `define debugReadInstruction(expected) \
 	$display("[T=%09t] READ INSTRUCTION", $realtime); \
 	$display("[T=%09t]   SET MODE", $realtime); \
-	PIN_DEBUG_ADDR = `DEBUG_ADDRX_MODE; \
+	PIN_DEBUG_ADDR = `DEBUG_REG_ADDR_MODE; \
 	DEBUG_SEND = `DEBUG_MODEX_STOP; \
 	#100; \
 	PIN_DEBUG_WRN = 1'b0; \
@@ -142,7 +174,7 @@ reg [7:0]  DEBUG_CC_DISPLAY;
 	PIN_DEBUG_WRN = 1'b1; \
 	#200;\
 	$display("[T=%09t]   SET OP", $realtime); \
-	PIN_DEBUG_ADDR = `DEBUG_ADDRX_OP; \
+	PIN_DEBUG_ADDR = `DEBUG_REG_ADDR_OP; \
 	DEBUG_SEND = {`DEBUG_OPX_RD_INSTRUCTION, `DEBUG_ADDR_INCX_NONE}; \
 	#100; \
 	PIN_DEBUG_WRN = 1'b0; \
@@ -151,14 +183,14 @@ reg [7:0]  DEBUG_CC_DISPLAY;
 	#200; \
 	`debugCycle \
 	$display("[T=%09t]   READ DL", $realtime); \
-	`debugRead( `DEBUG_ADDRX_DL, 8'h00) \
+	`debugRead( `DEBUG_REG_ADDR_DL, 8'h00) \
 	$display("[T=%09t]   READ DH", $realtime); \
-	`debugRead( `DEBUG_ADDRX_DH, 8'h00)
+	`debugRead( `DEBUG_REG_ADDR_DH, 8'h00)
 
 `define debugReadCC(expected) \
 	$display("[T=%09t] READ CC", $realtime); \
 	$display("[T=%09t]   SET MODE", $realtime); \
-	PIN_DEBUG_ADDR = `DEBUG_ADDRX_MODE; \
+	PIN_DEBUG_ADDR = `DEBUG_REG_ADDR_MODE; \
 	DEBUG_SEND = `DEBUG_MODEX_STOP; \
 	#100; \
 	PIN_DEBUG_WRN = 1'b0; \
@@ -166,7 +198,7 @@ reg [7:0]  DEBUG_CC_DISPLAY;
 	PIN_DEBUG_WRN = 1'b1; \
 	#200;\
 	$display("[T=%09t]   SET OP", $realtime); \
-	PIN_DEBUG_ADDR = `DEBUG_ADDRX_OP; \
+	PIN_DEBUG_ADDR = `DEBUG_REG_ADDR_OP; \
 	DEBUG_SEND = {`DEBUG_OPX_RD_CC, `DEBUG_ADDR_INCX_NONE}; \
 	#100; \
 	PIN_DEBUG_WRN = 1'b0; \
@@ -175,11 +207,11 @@ reg [7:0]  DEBUG_CC_DISPLAY;
 	#200; \
 	`debugCycle \
 	$display("[T=%09t]   READ DL", $realtime); \
-	`debugRead( `DEBUG_ADDRX_DL, 8'h00) 
+	`debugRead( `DEBUG_REG_ADDR_DL, 8'h00) 
 
 `define debugStop \
 	$display("[T=%09t] STOP", $realtime); \
-	PIN_DEBUG_ADDR = `DEBUG_ADDRX_MODE; \
+	PIN_DEBUG_ADDR = `DEBUG_REG_ADDR_MODE; \
 	DEBUG_SEND = `DEBUG_MODEX_STOP; \
 	#100; \
 	PIN_DEBUG_WRN = 1'b0; \
@@ -189,7 +221,7 @@ reg [7:0]  DEBUG_CC_DISPLAY;
 
 `define debugStep \
 	$display("[T=%09t] STEP", $realtime); \
-	PIN_DEBUG_ADDR = `DEBUG_ADDRX_MODE; \
+	PIN_DEBUG_ADDR = `DEBUG_REG_ADDR_MODE; \
 	DEBUG_SEND = `DEBUG_MODEX_STOP | `DEBUG_MODEX_REQ; \
 	#100; \
 	PIN_DEBUG_WRN = 1'b0; \
@@ -199,7 +231,7 @@ reg [7:0]  DEBUG_CC_DISPLAY;
 	
 `define debugCycle \
 	$display("[T=%09t] STEP", $realtime); \
-	PIN_DEBUG_ADDR = `DEBUG_ADDRX_MODE; \
+	PIN_DEBUG_ADDR = `DEBUG_REG_ADDR_MODE; \
 	DEBUG_SEND = `DEBUG_MODEX_STOP | `DEBUG_MODEX_REQ | `DEBUG_MODEX_DEBUG; \
 	#100; \
 	PIN_DEBUG_WRN = 1'b0; \
@@ -238,32 +270,32 @@ initial begin
 	// Let it run for a few cycles
 	#4000;
 	// Write STOP to the debug port
-	`debugWrite( `DEBUG_ADDRX_MODE, `DEBUG_MODEX_STOP | `DEBUG_MODEX_DEBUG)
+	`debugWrite( `DEBUG_REG_ADDR_MODE, `DEBUG_MODEX_STOP | `DEBUG_MODEX_DEBUG)
 	
 	// Read the ROM
-	`debugWrite( `DEBUG_ADDRX_AL, 8'h00)
-	`debugWrite( `DEBUG_ADDRX_AH, 8'h00)
-	`debugWrite( `DEBUG_ADDRX_OP, {`DEBUG_OPX_RD_MEM, `DEBUG_ADDR_INCX_INC} )
+	`debugWrite( `DEBUG_REG_ADDR_AL, 8'h00)
+	`debugWrite( `DEBUG_REG_ADDR_AH, 8'h00)
+	`debugWrite( `DEBUG_REG_ADDR_OP, {`DEBUG_OPX_RD_MEM, `DEBUG_ADDR_INCX_INC} )
 	// First read cycle
-	`debugWrite( `DEBUG_ADDRX_MODE, `DEBUG_MODEX_STOP | `DEBUG_MODEX_DEBUG | `DEBUG_MODEX_REQ)
-	`debugRead( `DEBUG_ADDRX_DL, 8'h00)
-	`debugRead( `DEBUG_ADDRX_DH, 8'h00)
-	`debugRead( `DEBUG_ADDRX_DL, 8'h00)
-	`debugRead( `DEBUG_ADDRX_DH, 8'h00)
-	`debugRead( `DEBUG_ADDRX_DL, 8'h00)
-	`debugRead( `DEBUG_ADDRX_DH, 8'h00)
+	`debugWrite( `DEBUG_REG_ADDR_MODE, `DEBUG_MODEX_STOP | `DEBUG_MODEX_DEBUG | `DEBUG_MODEX_REQ)
+	`debugRead( `DEBUG_REG_ADDR_DL, 8'h00)
+	`debugRead( `DEBUG_REG_ADDR_DH, 8'h00)
+	`debugRead( `DEBUG_REG_ADDR_DL, 8'h00)
+	`debugRead( `DEBUG_REG_ADDR_DH, 8'h00)
+	`debugRead( `DEBUG_REG_ADDR_DL, 8'h00)
+	`debugRead( `DEBUG_REG_ADDR_DH, 8'h00)
 	// Write RESET to the debug port
-	`debugWrite( `DEBUG_ADDRX_MODE, `DEBUG_MODEX_STOP | `DEBUG_MODEX_RESET)
+	`debugWrite( `DEBUG_REG_ADDR_MODE, `DEBUG_MODEX_STOP | `DEBUG_MODEX_RESET)
 	// Write STOP to the debug port
-	`debugWrite( `DEBUG_ADDRX_MODE, `DEBUG_MODEX_STOP | `DEBUG_MODEX_DEBUG)
+	`debugWrite( `DEBUG_REG_ADDR_MODE, `DEBUG_MODEX_STOP | `DEBUG_MODEX_DEBUG)
 	// Repeat RAM read cycles
-	`debugWrite( `DEBUG_ADDRX_MODE, `DEBUG_MODEX_STOP | `DEBUG_MODEX_DEBUG | `DEBUG_MODEX_REQ)
-	`debugRead( `DEBUG_ADDRX_DL, 8'h00)
-	`debugRead( `DEBUG_ADDRX_DH, 8'h00)
-	`debugRead( `DEBUG_ADDRX_DL, 8'h00)
-	`debugRead( `DEBUG_ADDRX_DH, 8'h00)
-	`debugRead( `DEBUG_ADDRX_DL, 8'h00)
-	`debugRead( `DEBUG_ADDRX_DH, 8'h00)
+	`debugWrite( `DEBUG_REG_ADDR_MODE, `DEBUG_MODEX_STOP | `DEBUG_MODEX_DEBUG | `DEBUG_MODEX_REQ)
+	`debugRead( `DEBUG_REG_ADDR_DL, 8'h00)
+	`debugRead( `DEBUG_REG_ADDR_DH, 8'h00)
+	`debugRead( `DEBUG_REG_ADDR_DL, 8'h00)
+	`debugRead( `DEBUG_REG_ADDR_DH, 8'h00)
+	`debugRead( `DEBUG_REG_ADDR_DL, 8'h00)
+	`debugRead( `DEBUG_REG_ADDR_DH, 8'h00)
 
 	PIN_RESETN = 0;
 	DEBUG_SEND = 8'hzz;
@@ -289,6 +321,7 @@ initial begin
 	`debugStep
 	
 	`step(3, "readPC")
+	`debugReadRegisters
 	`debugReadPC(0)
 	`debugReadInstruction(0)
 	`debugReadCC(0)

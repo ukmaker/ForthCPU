@@ -1,6 +1,7 @@
 `timescale 1 ns / 1 ns
 `include "../../constants.v"
 `include "../../testSetup.v"
+`include "../../debuggerTestSetup.v"
 
 module blinkTests;
 	
@@ -86,153 +87,6 @@ reg [15:0] DEBUG_INSTR_DISPLAY;
 reg [7:0]  DEBUG_CC_DISPLAY;
 
 reg [7:0] TEST_EXPECTED_BYTE;
-
-`define debugWrite(reg, value) \
-	$display("[T=%09t] WRITE", $realtime); \
-	PIN_DEBUG_ADDR = reg; \
-	DEBUG_SEND = value; \
-	#100; \
-	PIN_DEBUG_WRN = 1'b0; \
-	#100; \
-	PIN_DEBUG_WRN = 1'b1; \
-	#100; \
-	DEBUG_SEND = 8'hzz; \
-	#1000;  
-
-`define debugReadReg(what, reg, expected) \
-	$display("[T=%09t] READ %s", $realtime, what); \
-	PIN_DEBUG_ADDR = reg; \
-	DEBUG_SEND = 8'hzz; \
-	#100; \
-	PIN_DEBUG_RDN = 1'b0; \
-	#100; \
-	`assert(what, expected, PIN_DEBUG_DATA) \
-	PIN_DEBUG_RDN = 1'b1; \
-	#100;
-	
-`define debugReadWord(expected) \
-	TEST_EXPECTED_BYTE = 8'hff & expected; \
-	`debugReadReg("MEM Low Byte", `DEBUG_ADDRX_DL,  TEST_EXPECTED_BYTE) \
-	TEST_EXPECTED_BYTE = 8'hff & (expected >> 8); \
-	`debugReadReg("MEM High Byte", `DEBUG_ADDRX_DH, TEST_EXPECTED_BYTE) \
-	#600;
-
-`define debugReadPC(expected) \
-	$display("[T=%09t] READ PC", $realtime); \
-	PIN_DEBUG_ADDR = `DEBUG_ADDRX_MODE; \
-	DEBUG_SEND = `DEBUG_MODEX_STOP; \
-	#100; \
-	PIN_DEBUG_WRN = 1'b0; \
-	#100; \
-	PIN_DEBUG_WRN = 1'b1; \
-	#200;\
-	PIN_DEBUG_ADDR = `DEBUG_ADDRX_OP; \
-	DEBUG_SEND = {`DEBUG_OPX_RD_PC, `DEBUG_ADDR_INCX_NONE}; \
-	#100; \
-	PIN_DEBUG_WRN = 1'b0; \
-	#100; \
-	PIN_DEBUG_WRN = 1'b1; \
-	#200; \
-	`debugCycle \
-	`debugReadWord(expected)
-
-`define debugReadInstruction(expected) \
-	$display("[T=%09t] READ INSTRUCTION", $realtime); \
-	PIN_DEBUG_ADDR = `DEBUG_ADDRX_MODE; \
-	DEBUG_SEND = `DEBUG_MODEX_STOP; \
-	#100; \
-	PIN_DEBUG_WRN = 1'b0; \
-	#100; \
-	PIN_DEBUG_WRN = 1'b1; \
-	#200;\
-	PIN_DEBUG_ADDR = `DEBUG_ADDRX_OP; \
-	DEBUG_SEND = {`DEBUG_OPX_RD_INSTRUCTION, `DEBUG_ADDR_INCX_NONE}; \
-	#100; \
-	PIN_DEBUG_WRN = 1'b0; \
-	#100; \
-	PIN_DEBUG_WRN = 1'b1; \
-	#200; \
-	`debugCycle \
-	`debugReadWord(expected)
-
-`define debugReadCC(expected) \
-	$display("[T=%09t] READ CC", $realtime); \
-	PIN_DEBUG_ADDR = `DEBUG_ADDRX_MODE; \
-	DEBUG_SEND = `DEBUG_MODEX_STOP; \
-	#100; \
-	PIN_DEBUG_WRN = 1'b0; \
-	#100; \
-	PIN_DEBUG_WRN = 1'b1; \
-	#200;\
-	PIN_DEBUG_ADDR = `DEBUG_ADDRX_OP; \
-	DEBUG_SEND = {`DEBUG_OPX_RD_CC, `DEBUG_ADDR_INCX_NONE}; \
-	#100; \
-	PIN_DEBUG_WRN = 1'b0; \
-	#100; \
-	PIN_DEBUG_WRN = 1'b1; \
-	#200; \
-	`debugCycle \
-	`debugReadReg("CC", `DEBUG_ADDRX_DL, expected) 
-
-`define debugStop \
-	$display("[T=%09t] STOP", $realtime); \
-	PIN_DEBUG_ADDR = `DEBUG_ADDRX_MODE; \
-	DEBUG_SEND = `DEBUG_MODEX_STOP; \
-	#100; \
-	PIN_DEBUG_WRN = 1'b0; \
-	#100; \
-	PIN_DEBUG_WRN = 1'b1; \
-	#1000;
-
-`define debugReset \
-	$display("[T=%09t] RESET", $realtime); \
-	PIN_DEBUG_ADDR = `DEBUG_ADDRX_MODE; \
-	DEBUG_SEND = `DEBUG_MODEX_STOP | `DEBUG_MODEX_RESET; \
-	#100; \
-	PIN_DEBUG_WRN = 1'b0; \
-	#100; \
-	PIN_DEBUG_WRN = 1'b1; \
-	#1000;
-
-`define debugStep \
-	$display("[T=%09t] STEP", $realtime); \
-	PIN_DEBUG_ADDR = `DEBUG_ADDRX_MODE; \
-	DEBUG_SEND = `DEBUG_MODEX_STOP | `DEBUG_MODEX_REQ; \
-	#100; \
-	PIN_DEBUG_WRN = 1'b0; \
-	#100; \
-	PIN_DEBUG_WRN = 1'b1; \
-	#1000;
-	
-`define debugCycle \
-	$display("[T=%09t] CYCLE", $realtime); \
-	PIN_DEBUG_ADDR = `DEBUG_ADDRX_MODE; \
-	DEBUG_SEND = `DEBUG_MODEX_STOP | `DEBUG_MODEX_REQ | `DEBUG_MODEX_DEBUG; \
-	#100; \
-	PIN_DEBUG_WRN = 1'b0; \
-	#100; \
-	PIN_DEBUG_WRN = 1'b1; \
-	#1000;
-	
-`define debugStepCheck(addr, asm, instr) \
-	`step(addr, asm) \
-	`debugStep \
-	`debugReadPC(addr) \
-	`debugReadInstruction(instr)
-	
-`define debugStepCheckST(addr, asm, instr) \
-	`step(addr, asm) \
-	`debugStep \
-	`debugReadPC(addr) \
-	`debugReadInstruction(instr)
-
-`define debugStepCheckCC(addr, asm, instr, cc) \
-	`step(addr, asm) \
-	`debugStep \
-	`debugReadPC(addr) \
-	`debugReadInstruction(instr) \
-	`debugReadCC(cc)
-
 	
 assign PIN_DEBUG_DATA = DEBUG_SEND;
 assign DEBUG_RECV = PIN_DEBUG_DATA;
@@ -252,81 +106,35 @@ initial begin
 	`TICKTOCK;
 	PIN_RESETN = 1;
 	`TICKTOCK;
-	// Let it run for a few cycles
-	#4000;
-	// Write RESET to the debug port
-	`debugWrite( `DEBUG_ADDRX_MODE, `DEBUG_MODEX_STOP | `DEBUG_MODEX_RESET | `DEBUG_MODEX_DEBUG)
-	// Setup to read the ROM
-	`debugWrite( `DEBUG_ADDRX_AL, 8'h00)
-	`debugWrite( `DEBUG_ADDRX_AH, 8'h00)
-	`debugWrite( `DEBUG_ADDRX_OP, {`DEBUG_OPX_RD_MEM, `DEBUG_ADDR_INCX_INC})
-	`debugCycle
-	
-	/**	
-	; Test loading immediates
-	MOVI R0,5
-	MOVI R1,3
-	ST R0,R1
-	LDI R2,0x1234
-	LDI R3,0x3456
-	MOV R3,R4
-	ST R2,R1
-	ST R3,R2
-	AND R1,R1
-	SUB R1,R0
-	ST R1,R3
-	JPI 0x0000
-	
-	0000: c105
-	0002: c113
-	0004: 5001
-	0006: 4120
-	0008: 1234
-	000a: 4130
-	000c: 3456
-	000e: c034
-	0010: 5021
-	0012: 5032
-	0014: d411
-	0016: c810
-	0018: 5013
-	001a: 8200
-	001c: 0000
-	**/
-	// Repeat RAM read cycles
-	// LDI R0,0x1234
-	`debugReadWord(16'hc105) 
-	`debugReadWord(16'hc113)
-	`debugReadWord(16'h5001) 
-	`debugReadWord(16'h4120)
-	`debugReadWord(16'h1234)
-	`debugReadWord(16'h4130)
-	`debugReadWord(16'h3456)
-	`debugReadWord(16'hc034)
-	`debugReadWord(16'h5021)
-	`debugReadWord(16'h5032)
-	`debugReadWord(16'hd411)
-	`debugReadWord(16'hc810)
-	`debugReadWord(16'h5013)
-	`debugReadWord(16'h8200)
-	`debugReadWord(16'h0000)
-
-	PIN_RESETN = 0;
-	DEBUG_SEND = 8'hzz;
-	PIN_DEBUG_ADDR = 3'b000;
-	PIN_DEBUG_RDN = 1'b1;
-	PIN_DEBUG_WRN = 1'b1;
-	`TICKTOCK;
-	`TICKTOCK;
-	PIN_RESETN = 1;
-	`TICKTOCK;
-	#200;
-	`comment("Start stepping")
+	// 16 LDI instructions * 4 clock cycles
+	#6400;
 	`debugReset
-
 	/******************************
 	* Verilog test vectors 
 	*******************************/
+	`debugReadRegistersStart
+	`debugExpectWord(16'h0011)
+	`debugExpectWord(16'h1111)
+	`debugExpectWord(16'h2222)
+	`debugExpectWord(16'h3333)
+	`debugExpectWord(16'h4444)
+	`debugExpectWord(16'h5555)
+	`debugExpectWord(16'h6666)
+	`debugExpectWord(16'h7777)
+	`debugExpectWord(16'h8888)
+	`debugExpectWord(16'h9999)
+	`debugExpectWord(16'haaaa)
+	`debugExpectWord(16'hbbbb)
+	`debugExpectWord(16'hcccc)
+	`debugExpectWord(16'hdddd)
+	`debugExpectWord(16'heeee)
+	`debugExpectWord(16'hffff)
+	
+	
+
+	/******************************
+	* Verilog test vectors 
+	*******************************
 	`debugStepCheck(16'h0000,"MOVI R0,5",16'hc105)
 	`debugStepCheck(16'h0002,"MOVI R1,3",16'hc113)
 	`debugStepCheck(16'h0004,"ST R0,R1",16'h5001)
@@ -339,7 +147,7 @@ initial begin
 	`debugStepCheck(16'h0016,"SUB R1,R0",16'hc810)
 	`debugStepCheck(16'h0018,"ST R1,R3",16'h5013)
 	`debugStepCheck(16'h001a,"JPI 0000",16'h8200)
-	
+	**/
 end
 
 endmodule

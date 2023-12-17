@@ -35,6 +35,7 @@ module fullALUTests;
 fullALU testInstance(
 	.CLK(CLK),
 	.RESET(RESET),
+	.FETCH(FETCH),
 	.REGA_DOUT(REGA_DOUT),
 	.REGB_DOUT(REGB_DOUT),
 	.ALU_OPX(ALU_OPX),

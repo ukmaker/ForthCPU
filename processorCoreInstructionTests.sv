@@ -5,8 +5,8 @@
 module processorCoreInstructionTests;
 	
 reg CLK;
-reg RESET;
-	
+reg RESETN;
+wire RESET;
 wire STOPPED;
 wire FETCH;
 wire DECODE;
@@ -28,9 +28,9 @@ wire WRN1_BUF;
 // Debugger interface
 reg  [7:0]  DEBUG_DIN;
 wire [7:0]  DEBUG_DOUT;
-reg [2:0]   DEBUG_ADDR;
-reg          DEBUG_RD;
-reg          DEBUG_WR;
+reg [2:0]   DEBUG_REG_ADDR;
+reg          DEBUG_RDN;
+reg          DEBUG_WRN;
 
 PUR PUR_INST(.PUR(1'b1));
 GSR GSR_INST(.GSR(1'b1));
@@ -40,6 +40,7 @@ GSR GSR_INST(.GSR(1'b1));
 core testInstance(
 	
 	.CLK(CLK),
+	.RESETN(RESETN),
 	.RESET(RESET),
 	
 	.STOPPED(STOPPED),
@@ -62,9 +63,9 @@ core testInstance(
 	
 	.DEBUG_DIN(DEBUG_DIN),
 	.DEBUG_DOUT(DEBUG_DOUT),
-	.DEBUG_ADDR(DEBUG_ADDR),
-	.DEBUG_RD(DEBUG_RD),
-	.DEBUG_WR(DEBUG_WR)
+	.DEBUG_REG_ADDR(DEBUG_REG_ADDR),
+	.DEBUG_RDN(DEBUG_RDN),
+	.DEBUG_WRN(DEBUG_WRN)
 );
 
 reg [15:0] INSTR;
@@ -80,16 +81,16 @@ end
 initial begin
 	CLK = 0; 
 	`TICK;
-	RESET = 1;
+	RESETN = 0;
 	DIN = 16'h0000;
 	DEBUG_DIN = 8'h00;
-	DEBUG_RD = 0;
-	DEBUG_WR = 0;
-	DEBUG_ADDR = 0;
+	DEBUG_RDN = 1;
+	DEBUG_WRN = 1;
+	DEBUG_REG_ADDR = 0;
 	INT0 = 0;
 	INT1 = 0;
 	`TICKTOCK;
-	#5 RESET = 0;
+	#5 RESETN = 1;
 	`TICKTOCK;
 	`TICKTOCK;
 
@@ -223,6 +224,15 @@ initial begin
 	`JPI_N(71, 16'h00d0, 16'h3333, `SKIPF_NOT_SKIP, `CC_SELECTX_S)
 	`JPI_N(72, 16'h00d4, 16'h3333, `SKIPF_NOT_SKIP, `CC_SELECTX_P)
 
+	// Test flags on AND Z
+	`LDI(  73, 16'h00d8, 16'h1111, `RA)
+	`LDI(  74, 16'h00dc, 16'h2222, `R1)
+	`AND(  75, 16'h00e0, `RA, `R1)
+	`ST(   76, 16'h00e2, 16'h4040, 16'h0000, `RA, `RL)
+	`JPI_N(77, 16'h00e4, 16'h3333, `SKIPF_SKIP, `CC_SELECTX_Z)
+	`JPI_N(78, 16'h00e8, 16'h3333, `SKIPF_NOT_SKIP, `CC_SELECTX_C)
+	`JPI_N(79, 16'h00ec, 16'h3333, `SKIPF_NOT_SKIP, `CC_SELECTX_S)
+	`JPI_N(80, 16'h00f0, 16'h3333, `SKIPF_NOT_SKIP, `CC_SELECTX_P)
 
 end
 
