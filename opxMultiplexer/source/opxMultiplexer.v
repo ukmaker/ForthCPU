@@ -37,11 +37,11 @@ module opxMultiplexer(
 	input [2:0]  ALU_REGB_ADDRX,
 	input [3:0]  ALU_REG_SEQX,
 	
-	input         DEBUG_MODEX,
 	input [2:0]  DEBUG_ADDR_BUSX,
 	input [3:0]  DEBUG_ARGBX,
 	input [1:0]  DEBUG_BUS_SEQX,
 	input [1:0]  DEBUG_CC_REGX,
+	input         DEBUG_MODEX,
 	input [2:0]  DEBUG_PC_NEXTX,
 	input [3:0]  DEBUG_REG_SEQX,
 	

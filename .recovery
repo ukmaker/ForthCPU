@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<BaliProject version="3.2" title="ForthCPU" device="LCMXO3L-6900C-5BG256C" default_implementation="processorCore">
+<BaliProject version="3.2" title="ForthCPU" device="LCMXO3L-6900C-5BG256C" default_implementation="debugPortV2">
     <Options/>
     <Implementation title="RAM" dir="RAM" description="RAM" synthesis="synplify" default_strategy="Area">
         <Options def_top="ramTests"/>
@@ -55,6 +55,30 @@
             <Options top_module="addressBusController"/>
         </Source>
         <Source name="constants.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">
+            <Options/>
+        </Source>
+    </Implementation>
+    <Implementation title="addressMonitors" dir="addressMonitors" description="addressMonitors" synthesis="synplify" default_strategy="Area">
+        <Options def_top="windowMonitorTests"/>
+        <Source name="addressMonitors/source/locationMonitor.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="addressMonitors/test/locationMonitorTests.v" type="Verilog" type_short="Verilog">
+            <Options top_module="locationMonitorTests"/>
+        </Source>
+        <Source name="addressMonitors/source/windowMonitor.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="addressMonitors/test/windowMonitorTests.v" type="Verilog" type_short="Verilog">
+            <Options top_module="windowMonitorTests"/>
+        </Source>
+        <Source name="addressMonitors/test/locationMonittorTestbench/locationMonittorTestbench.spf" type="Simulation Project File" type_short="SPF">
+            <Options/>
+        </Source>
+        <Source name="addressMonitors/test/windowMonitorTestbench/windowMonitorTestbench.spf" type="Simulation Project File" type_short="SPF">
             <Options/>
         </Source>
         <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">
@@ -315,6 +339,9 @@
         <Source name="debugPort/tests/debugSequencerTests.v" type="Verilog" type_short="Verilog">
             <Options top_module="debugSequencerTests"/>
         </Source>
+        <Source name="debugPort/source/oneOfSixteenDecoder.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
         <Source name="debugPort/tests/debugPortTestbench/debugPortTestbench.spf" type="Simulation Project File" type_short="SPF">
             <Options/>
         </Source>
@@ -331,6 +358,54 @@
             <Options/>
         </Source>
         <Source name="debugPort/tests/upCounterTestbench/upCounterTestbench.spf" type="Simulation Project File" type_short="SPF">
+            <Options/>
+        </Source>
+        <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">
+            <Options/>
+        </Source>
+    </Implementation>
+    <Implementation title="debugPortV2" dir="debugPortV2" description="debugPortV2" synthesis="synplify" default_strategy="Area">
+        <Options def_top="synchronizedCounter"/>
+        <Source name="constants.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="debugPortV2/source/debugDecoder.v" type="Verilog" type_short="Verilog">
+            <Options top_module="debugDecoder"/>
+        </Source>
+        <Source name="debugPortV2/source/debugPort.v" type="Verilog" type_short="Verilog">
+            <Options top_module="debugPort"/>
+        </Source>
+        <Source name="debugPortV2/source/debugSequencer.v" type="Verilog" type_short="Verilog">
+            <Options top_module="debugSequencer"/>
+        </Source>
+        <Source name="debugPortV2/source/requestGenerator.v" type="Verilog" type_short="Verilog">
+            <Options top_module="requestGenerator"/>
+        </Source>
+        <Source name="generics/source/wordToByteRegister.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="generics/source/wordRegister.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="generics/source/wordSynchronizer.v" type="Verilog" type_short="Verilog">
+            <Options top_module="wordSynchronizer"/>
+        </Source>
+        <Source name="generics/source/upCounter.v" type="Verilog" type_short="Verilog">
+            <Options top_module="upCounter"/>
+        </Source>
+        <Source name="generics/source/oneOfEightDecoder.v" type="Verilog" type_short="Verilog">
+            <Options top_module="oneOfEightDecoder"/>
+        </Source>
+        <Source name="generics/source/oneOfSixteenDecoder.v" type="Verilog" type_short="Verilog">
+            <Options top_module="oneOfSixteenDecoder"/>
+        </Source>
+        <Source name="generics/source/register.v" type="Verilog" type_short="Verilog">
+            <Options top_module="register"/>
+        </Source>
+        <Source name="generics/source/synchronizedCounter.v" type="Verilog" type_short="Verilog">
+            <Options top_module="synchronizedCounter"/>
+        </Source>
+        <Source name="generics/source/synchronizer.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
         <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">
@@ -535,6 +610,66 @@
             <Options/>
         </Source>
         <Source name="generalGroupDecoder/test/generalGroupDecoderTestbench/generalGroupDecoderTestbench.spf" type="Simulation Project File" type_short="SPF">
+            <Options/>
+        </Source>
+    </Implementation>
+    <Implementation title="generics" dir="generics" description="generics" synthesis="synplify" default_strategy="Area">
+        <Options def_top="wordToByteRegisterTests"/>
+        <Source name="generics/source/oneOfEightDecoder.v" type="Verilog" type_short="Verilog">
+            <Options top_module="oneOfEightDecoder"/>
+        </Source>
+        <Source name="generics/source/oneOfSixteenDecoder.v" type="Verilog" type_short="Verilog">
+            <Options top_module="oneOfSixteenDecoder"/>
+        </Source>
+        <Source name="generics/source/register.v" type="Verilog" type_short="Verilog">
+            <Options top_module="register"/>
+        </Source>
+        <Source name="generics/source/synchronizedCounter.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="generics/source/synchronizer.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="generics/source/upCounter.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="generics/source/synchronizedCounterTests.v" type="Verilog" type_short="Verilog">
+            <Options top_module="synchronizedCounterTests"/>
+        </Source>
+        <Source name="generics/source/synchronizerTests.v" type="Verilog" type_short="Verilog">
+            <Options top_module="synchronizerTests"/>
+        </Source>
+        <Source name="generics/source/upCounterTest.v" type="Verilog" type_short="Verilog">
+            <Options top_module="upCounterTest"/>
+        </Source>
+        <Source name="generics/source/wordRegister.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="generics/test/wordRegisterTests.v" type="Verilog" type_short="Verilog">
+            <Options top_module="wordRegisterTests"/>
+        </Source>
+        <Source name="generics/source/wordSynchronizer.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="generics/test/wordSynchronizerTests.v" type="Verilog" type_short="Verilog">
+            <Options top_module="wordSynchronizerTests"/>
+        </Source>
+        <Source name="generics/source/wordToByteRegister.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="generics/test/wordToByteRegisterTests.v" type="Verilog" type_short="Verilog">
+            <Options top_module="wordToByteRegisterTests"/>
+        </Source>
+        <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">
+            <Options/>
+        </Source>
+        <Source name="generics/test/wordRegisterTestbench/wordRegisterTestbench.spf" type="Simulation Project File" type_short="SPF">
+            <Options/>
+        </Source>
+        <Source name="generics/test/wordSynchronizerTestbench/wordSynchronizerTestbench.spf" type="Simulation Project File" type_short="SPF">
+            <Options/>
+        </Source>
+        <Source name="generics/test/wordToByteRegisterTestbench/wordToByteRegisterTestbench.spf" type="Simulation Project File" type_short="SPF">
             <Options/>
         </Source>
     </Implementation>
@@ -1053,6 +1188,15 @@
         <Source name="constants.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
+        <Source name="testSetup.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="debuggerTestSetup.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="processorCore/test/processorCoreDebuggerTests.v" type="Verilog" type_short="Verilog">
+            <Options top_module="processorCoreDebuggerTests"/>
+        </Source>
         <Source name="instructionTestSetup.sv" type="Verilog" type_short="Verilog">
             <Options VerilogStandard="System Verilog"/>
         </Source>
@@ -1165,6 +1309,9 @@
             <Options top_module="transparentLatchTests"/>
         </Source>
         <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">
+            <Options/>
+        </Source>
+        <Source name="processorCore/test/processorCoreDebuggerTestbench/processorCoreDebuggerTestbench.spf" type="Simulation Project File" type_short="SPF">
             <Options/>
         </Source>
         <Source name="processorCore/test/processorCoreInstructionTestbench/processorCoreInstructionTestbench.spf" type="Simulation Project File" type_short="SPF">

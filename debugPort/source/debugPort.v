@@ -1,19 +1,56 @@
 `include "C:/Users/Duncan/git/ForthCPU/constants.v"
 
 /*********************************************
-* Debugging interface provides control signals
-* to the instruction phase decoder and
-* the opxMultiplexer
-* It takes data input from
-* - the program counter
-* - condition code registers
-* - interrupt return registers
-* - register file
-* - data bus
+* Debugging interface 
 *
-* It can write words to the bus, with an autoincrementing address
+* Interface is over an 8-bit bus
 *
-* Interface is over an 8-bit data bus to save pins
+* Registers - 
+* 
+* 0 - W MODE        - Set the debugging mode
+* 1 - W OP          - The debugging operation to run when DEBUG_MODE_DEBUG is set
+* 2 - W MRAL        - Low byte of address for register and memory writes or reads
+* 3 - W MRAH
+* 4 - W MRDL
+* 5 - W MRDH
+* 6 - R SNOOPINSTAL - Low byte of instruction load address snoop
+*     W BREAKAL     - Low byte of breakpoint address
+* 7 - R SNOOPINSTAH
+*     W BREAKAH
+* 8 - R SNOOPINSTDL - Low byte of the actual instruction snooped
+*     W WATCHSAL    - Low byte of watch start address
+* 9 - R SNOOPINSTDH
+*     W WATCHSAH
+* A - R SNOOPARGAL  - Low byte of snooped argument address for e.g. LD and ST
+*     W WATCHEAL    - Low byte of watch end address
+* B - R SNOOPARGAH
+*     W WATCHEAH
+* C - SNOOPARGDL
+* D - SNOOPARGDH
+* E - SNOOPSTATUS - Snooped processor status bits, CCs
+* F - DEBUGSTATUS - Bits set if a breakpoint or watch is hit
+*
+* DEBUG_MODE Register
+* ===================
+* x I R W B Q D S
+*               |-- DEBUG_MODE_STOP
+*             |---- DEBUG_MODE_DEBUG Run a DEBUG or INSTRUCTION operation on the next request
+*           |------ DEBUG_MODE_REQ   Request a cycle
+*         |-------- DEBUG_MODE_BREAK Activate breakpoint
+*       |---------- DEBUG_MODE_WATCH Activate watchpoint
+*     |------------ DEBUG_MODE_RESET Global reset
+*   |-------------- DEBUG_INCREMENT  Run the requested operation and increment the WRA registers after the next write to WRDH
+*
+* DEBUG_OP Register
+* ==================
+* 0 - DEBUG_OP_MEMRD   - Uses MRA registers as the memory address. Increment by 2 after access to MRDH
+* 1 - DEBUG_OP_MEMWR
+* 2 - DEBUG_OP_REGRD   - Uses MRAL register >> 1 as the register index. Increment by 1 after access to MRDH
+* 3 - DEBUG_OP_REGWR
+* 4 - DEBUG_OP_CCRD   - Uses MRAL register as the CC register index. Increment by 1 after access to MRDH
+* 5 - DEBUG_OP_PCRD   - Uses MRAL register as the PC register index. Increment by 1 after access to MRDH
+* 6 - DEBUG_OP_INSTRD - Read the instruction at the current PC into MRD registers
+* 
 **/
 
 module debugPort(
@@ -23,7 +60,7 @@ module debugPort(
 	****************************************/
 	input [7:0]      DEBUG_DIN,
 	output reg [7:0] DEBUG_DOUT,
-	input [2:0]      DEBUG_REG_ADDR,
+	input [3:0]      DEBUG_REG_ADDR,
 	input             DEBUG_RDN,
 	input             DEBUG_WRN,
 	
@@ -32,15 +69,20 @@ module debugPort(
 	****************************************/
 	input             CLK,
 	input             RESETN,
+	/**
+	* Combined with the DEBUG_MODE_RESET signal
+	**/
 	output            RESET,
 	
 	output            DEBUG_ADDR_INC,
+	output            DEBUG_EN_BKP,
 	output [2:0]     DEBUG_OP,
 	output            DEBUG_MODE,
 	output reg [15:0]DEBUG_ADDR_OUT,
 	output [15:0]    DEBUG_DATA_OUT,
 
 	input             DEBUG_ADDR_INC_EN,
+	input             AT_BKP,
 	
 	input             DEBUG_LD_DATA_EN,
 	input             DEBUG_LD_ARG_EN,
@@ -65,7 +107,7 @@ wire [15:0] DEBUG_ADDR_OUT_R;
 * Register selects
 ****************************************************/
 wire EN_MODE, EN_OP, EN_DL, EN_DH, EN_AL, EN_AH, EN_UNUSED0, EN_UNUSED1;
-wire OP_NOP,OP_MEMRD,OP_MEMWR,OP_REGRD,OP_REGWR,OP_CCRD,OP_PCRD,OP_INSTRD;
+wire OP_WRBKP,OP_MEMRD,OP_MEMWR,OP_REGRD,OP_REGWR,OP_CCRD,OP_PCRD,OP_INSTRD;
 
 /***************************************************
 * Internal muxes
@@ -85,7 +127,7 @@ wire AH_RO; // unused
 /***************************************************
 * Internal control signals
 ****************************************************/
-wire DEBUG_DIN_REQ = DEBUG_DIN[3];
+wire DEBUG_DIN_REQ = DEBUG_DIN[4];
 wire DEBUG_RESET;
 wire DEBUG_LOCAL_RESET;
 
@@ -110,7 +152,7 @@ oneOfEightDecoder regAddrDecoder(
 // OPERATION decode
 oneOfEightDecoder opDecoder(
 	DEBUG_OP,
-	OP_NOP,
+	OP_WRBKP,
 	OP_MEMRD,
 	OP_MEMWR,
 	OP_REGRD,
@@ -177,7 +219,7 @@ synchronizer #(.BUS_WIDTH(8)) dataL(
 	.EN(EN_DL),
 	.LD(1'b1),
 	.FASTCLK(CLK),
-	.CLR(RESET),
+	.CLR(DEBUG_LOCAL_RESET),
 	.D(DEBUG_DIN),
 	.Q(DEBUG_DATA_OUT[7:0])
 );
@@ -189,7 +231,7 @@ synchronizer #(.BUS_WIDTH(8)) dataH(
 	.EN(EN_DH),
 	.LD(1'b1),
 	.FASTCLK(CLK),
-	.CLR(RESET),
+	.CLR(DEBUG_LOCAL_RESET),
 	.D(DEBUG_DIN),
 	.Q(DEBUG_DATA_OUT[15:8])
 );
@@ -226,12 +268,12 @@ register #(.BUS_WIDTH(4)) opReg(
 	.EN(EN_OP)
 );	
 
-synchronizer #(.BUS_WIDTH(3)) modeReg(
+synchronizer #(.BUS_WIDTH(4)) modeReg(
 	.SLOWCLK(DEBUG_WRN),
 	.FASTCLK(CLK),
 	.RESET(DEBUG_LOCAL_RESET),
-	.D(DEBUG_DIN[2:0]),
-	.Q({DEBUG_RESET, DEBUG_MODE, DEBUG_STOP}),
+	.D(DEBUG_DIN[3:0]),
+	.Q({DEBUG_EN_BKP,DEBUG_RESET, DEBUG_MODE, DEBUG_STOP}),
 	.CLR(DEBUG_LOCAL_RESET),
 	.LD(1'b1),
 	.EN(EN_MODE)
@@ -267,6 +309,7 @@ end
 **/
 always @(*) begin
 	case(DEBUG_REG_ADDR)
+		`DEBUG_REG_ADDR_MODE: DEBUG_DOUT = {2'b00,AT_BKP,1'b0,DEBUG_EN_BKP,DEBUG_RESET, DEBUG_MODE, DEBUG_STOP};
 		`DEBUG_REG_ADDR_DL:   DEBUG_DOUT = DEBUG_READ_MUX_IN_DL;
 		`DEBUG_REG_ADDR_DH:   DEBUG_DOUT = DEBUG_READ_MUX_IN_DH;
 		`DEBUG_REG_ADDR_ARGL: DEBUG_DOUT = DEBUG_READ_MUX_IN_ARGL;

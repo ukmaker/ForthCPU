@@ -127,7 +127,7 @@
 `define DEBUG_LD_ARGX_NONE  1'b0
 `define DEBUG_LD_ARGX_LD    1'b1
 
-`define DEBUG_OPX_NONE            3'b000
+`define DEBUG_OPX_WR_BKP          3'b000
 `define DEBUG_OPX_RD_MEM          3'b001
 `define DEBUG_OPX_WR_MEM          3'b010
 `define DEBUG_OPX_RD_REG          3'b011
@@ -142,10 +142,14 @@
 `define DEBUG_DATAX_PC_A        3'b011
 `define DEBUG_DATAX_INSTRUCTION 3'b100
 
-`define DEBUG_MODEX_STOP  4'b0001
-`define DEBUG_MODEX_DEBUG 4'b0010
-`define DEBUG_MODEX_RESET 4'b0100
-`define DEBUG_MODEX_REQ   4'b1000
+`define DEBUG_MODEX_RUN      8'b00000000
+`define DEBUG_MODEX_STOP     8'b00000001
+`define DEBUG_MODEX_DEBUG    8'b00000010
+`define DEBUG_MODEX_REQ      8'b00000100
+`define DEBUG_MODEX_EN_BKP   8'b00001000
+`define DEBUG_MODEX_EN_WATCH 8'b00010000
+`define DEBUG_MODEX_RESET    8'b00100000
+`define DEBUG_MODEX_INC      8'b01000000
 
 /*******************************************
 * Program counter control inputs

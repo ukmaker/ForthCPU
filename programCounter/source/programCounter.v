@@ -17,6 +17,7 @@ module programCounter(
 	input CLK,
 	input RESET,
 	input FETCH,
+	input COMMIT,
 	input DECODE,
 	input PC_ENX,
 	
@@ -24,6 +25,11 @@ module programCounter(
 	input PC_LD_INT1X,
 	input [1:0] PC_BASEX,
 	input [1:0] PC_OFFSETX,
+	
+	input DEBUG_LD_BKP_EN,
+	input EN_BKPX,
+	input [15:0] DIN_BKP,
+	output reg AT_BKP,
 	
 	input [15:0] REGB_DOUT,
 	input [15:0] DIN,
@@ -40,6 +46,8 @@ reg [15:0] ARGB;
 reg [15:0] SUM;
 reg [15:0] INTR0;
 reg [15:0] INTR1;
+reg [15:0] BKP_ADDR;
+reg BKP_ACTIVE;
 wire [15:0] ZERO = 16'h0000;
 wire [15:0] TWO  = 16'h0002;
 wire [15:0] FOUR  = 16'h0004;
@@ -115,5 +123,30 @@ always @(posedge CLK or posedge RESET) begin
 		PC_A <= PC_NEXT;
 	end
 end
+
+// The breakpoint register
+always @(posedge CLK or posedge RESET) begin
+	if(RESET) begin
+		BKP_ADDR <= 16'h0000;
+		BKP_ACTIVE <= 0;
+	end else if(DEBUG_LD_BKP_EN) begin
+		BKP_ADDR <= DIN_BKP;
+		BKP_ACTIVE <= EN_BKPX;
+	end
+end
+
+// The breakpoint
+always @(posedge CLK or posedge RESET) begin
+	if(RESET) begin
+		AT_BKP <= 0;
+	end else if(BKP_ACTIVE & COMMIT) begin
+		if(PC_NEXT == BKP_ADDR) begin
+			AT_BKP <= 1;
+		end else begin
+			AT_BKP <= 0;
+		end
+	end
+end
+
 
 endmodule

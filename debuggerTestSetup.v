@@ -1,7 +1,7 @@
 
 `define debugWrite(reg, value) \
 	$display("[T=%09t] WRITE", $realtime); \
-	PIN_DEBUG_ADDR = reg; \
+	DEBUG_REG_ADDR = reg; \
 	DEBUG_SEND = value; \
 	#100; \
 	PIN_DEBUG_WRN = 1'b0; \
@@ -11,9 +11,22 @@
 	DEBUG_SEND = 8'hzz; \
 	#1000;  
 
+`define debugWriteWord(reg, data) \
+	TEST_EXPECTED_BYTE = 8'hff & data; \
+	`debugWrite(reg,  TEST_EXPECTED_BYTE) \
+	TEST_EXPECTED_BYTE = 8'hff & (data >> 8); \
+	`debugWrite(reg+1, TEST_EXPECTED_BYTE) \
+	#600;
+	
+`define debugWriteAddress(addr) \
+	`debugWriteWord(`DEBUG_REG_ADDR_AL, addr)
+	
+`define debugWriteData(data) \
+	`debugWriteWord(`DEBUG_REG_ADDR_DL, data)
+	
 `define debugRead(reg, expected) \
 	$display("[T=%09t] READ", $realtime); \
-	PIN_DEBUG_ADDR = reg; \
+	DEBUG_REG_ADDR = reg; \
 	DEBUG_SEND = 8'hzz; \
 	#100; \
 	PIN_DEBUG_RDN = 1'b0; \
@@ -23,7 +36,7 @@
 
 `define debugReadReg(what, reg, expected) \
 	$display("[T=%09t] READ %s", $realtime, what); \
-	PIN_DEBUG_ADDR = reg; \
+	DEBUG_REG_ADDR = reg; \
 	DEBUG_SEND = 8'hzz; \
 	#100; \
 	PIN_DEBUG_RDN = 1'b0; \
@@ -76,7 +89,7 @@
 `define debugReadPC(expected) \
 	$display("[T=%09t] READ PC", $realtime); \
 	$display("[T=%09t]   SET MODE", $realtime); \
-	PIN_DEBUG_ADDR = `DEBUG_REG_ADDR_MODE; \
+	DEBUG_REG_ADDR = `DEBUG_REG_ADDR_MODE; \
 	DEBUG_SEND = `DEBUG_MODEX_STOP; \
 	#100; \
 	PIN_DEBUG_WRN = 1'b0; \
@@ -84,7 +97,7 @@
 	PIN_DEBUG_WRN = 1'b1; \
 	#200;\
 	$display("[T=%09t]   SET OP", $realtime); \
-	PIN_DEBUG_ADDR = `DEBUG_REG_ADDR_OP; \
+	DEBUG_REG_ADDR = `DEBUG_REG_ADDR_OP; \
 	DEBUG_SEND = {`DEBUG_OPX_RD_PC, `DEBUG_ADDR_INCX_NONE}; \
 	#100; \
 	PIN_DEBUG_WRN = 1'b0; \
@@ -100,7 +113,7 @@
 `define debugReadInstruction(expected) \
 	$display("[T=%09t] READ INSTRUCTION", $realtime); \
 	$display("[T=%09t]   SET MODE", $realtime); \
-	PIN_DEBUG_ADDR = `DEBUG_REG_ADDR_MODE; \
+	DEBUG_REG_ADDR = `DEBUG_REG_ADDR_MODE; \
 	DEBUG_SEND = `DEBUG_MODEX_STOP; \
 	#100; \
 	PIN_DEBUG_WRN = 1'b0; \
@@ -108,7 +121,7 @@
 	PIN_DEBUG_WRN = 1'b1; \
 	#200;\
 	$display("[T=%09t]   SET OP", $realtime); \
-	PIN_DEBUG_ADDR = `DEBUG_REG_ADDR_OP; \
+	DEBUG_REG_ADDR = `DEBUG_REG_ADDR_OP; \
 	DEBUG_SEND = {`DEBUG_OPX_RD_INSTRUCTION, `DEBUG_ADDR_INCX_NONE}; \
 	#100; \
 	PIN_DEBUG_WRN = 1'b0; \
@@ -124,7 +137,7 @@
 `define debugReadCC(expected) \
 	$display("[T=%09t] READ CC", $realtime); \
 	$display("[T=%09t]   SET MODE", $realtime); \
-	PIN_DEBUG_ADDR = `DEBUG_REG_ADDR_MODE; \
+	DEBUG_REG_ADDR = `DEBUG_REG_ADDR_MODE; \
 	DEBUG_SEND = `DEBUG_MODEX_STOP; \
 	#100; \
 	PIN_DEBUG_WRN = 1'b0; \
@@ -132,7 +145,7 @@
 	PIN_DEBUG_WRN = 1'b1; \
 	#200;\
 	$display("[T=%09t]   SET OP", $realtime); \
-	PIN_DEBUG_ADDR = `DEBUG_REG_ADDR_OP; \
+	DEBUG_REG_ADDR = `DEBUG_REG_ADDR_OP; \
 	DEBUG_SEND = {`DEBUG_OPX_RD_CC, `DEBUG_ADDR_INCX_NONE}; \
 	#100; \
 	PIN_DEBUG_WRN = 1'b0; \
@@ -145,7 +158,7 @@
 
 `define debugStop \
 	$display("[T=%09t] STOP", $realtime); \
-	PIN_DEBUG_ADDR = `DEBUG_REG_ADDR_MODE; \
+	DEBUG_REG_ADDR = `DEBUG_REG_ADDR_MODE; \
 	DEBUG_SEND = `DEBUG_MODEX_STOP; \
 	#100; \
 	PIN_DEBUG_WRN = 1'b0; \
@@ -155,7 +168,7 @@
 
 `define debugReset \
 	$display("[T=%09t] RESET", $realtime); \
-	PIN_DEBUG_ADDR = `DEBUG_REG_ADDR_MODE; \
+	DEBUG_REG_ADDR = `DEBUG_REG_ADDR_MODE; \
 	DEBUG_SEND = `DEBUG_MODEX_STOP | `DEBUG_MODEX_RESET; \
 	#100; \
 	PIN_DEBUG_WRN = 1'b0; \
@@ -165,7 +178,7 @@
 
 `define debugStep \
 	$display("[T=%09t] STEP", $realtime); \
-	PIN_DEBUG_ADDR = `DEBUG_REG_ADDR_MODE; \
+	DEBUG_REG_ADDR = `DEBUG_REG_ADDR_MODE; \
 	DEBUG_SEND = `DEBUG_MODEX_STOP | `DEBUG_MODEX_REQ; \
 	#100; \
 	PIN_DEBUG_WRN = 1'b0; \
@@ -175,7 +188,7 @@
 	
 `define debugCycle \
 	$display("[T=%09t] STEP", $realtime); \
-	PIN_DEBUG_ADDR = `DEBUG_REG_ADDR_MODE; \
+	DEBUG_REG_ADDR = `DEBUG_REG_ADDR_MODE; \
 	DEBUG_SEND = `DEBUG_MODEX_STOP | `DEBUG_MODEX_REQ | `DEBUG_MODEX_DEBUG; \
 	#100; \
 	PIN_DEBUG_WRN = 1'b0; \
@@ -183,6 +196,8 @@
 	PIN_DEBUG_WRN = 1'b1; \
 	#1000;
 	
+`define debugRun \
+	`debugWrite(`DEBUG_REG_ADDR_MODE, `DEBUG_MODEX_RUN)
     	
 `define debugStepCheck(addr, asm, instr) \
 	`step(addr, asm) \

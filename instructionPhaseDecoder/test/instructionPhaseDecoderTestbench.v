@@ -17,6 +17,7 @@ wire PC_ENX;
 reg DEBUG_STOP;
 reg DEBUG_MODE;
 reg DEBUG_STEP_REQ;
+reg DEBUG_AT_BKP;
 wire DEBUG_ACTIVE;
 wire DEBUG_STEP_ACK;
 
@@ -28,6 +29,7 @@ instructionPhaseDecoder ipd(
 	.HALTX(HALTX),
 	.PC_ENX(PC_ENX),
 	
+	.DEBUG_AT_BKP(DEBUG_AT_BKP),
 	.DEBUG_MODE(DEBUG_MODE),
 	.DEBUG_STOP(DEBUG_STOP),
 	.DEBUG_STEP_REQ(DEBUG_STEP_REQ),
@@ -50,6 +52,7 @@ initial begin
 	CLK = 0;
 	RESET = 0;
 	HALTX = 0;
+	DEBUG_AT_BKP = 0;
 	DEBUG_STOP = 0;
 	DEBUG_MODE = 0; 
 	DEBUG_STEP_REQ = 0;
@@ -138,7 +141,25 @@ initial begin
 	`assert("COMMIT", 1'b1, COMMIT)
 	`TICKTOCK;
 	`assert("FETCH", 1'b1, FETCH)
-	
+	`TICKTOCK;
+	`assert("DECODE", 1'b1, DECODE)
+	`TICKTOCK;
+	`assert("EXECUTE", 1'b1, EXECUTE)
+	`TICKTOCK;
+	`assert("COMMIT", 1'b1, COMMIT)
+	`TICKTOCK;
+	`assert("FETCH", 1'b1, FETCH)
+	// Hit a breakpoint
+	DEBUG_AT_BKP = 1;
+	`TICKTOCK;
+	`assert("STOPPED", 1'b1, STOPPED)
+	`assert("DECODE", 1'b0, DECODE)
+	`TICKTOCK;
+	`assert("EXECUTE", 1'b0, EXECUTE)
+	`TICKTOCK;
+	`assert("COMMIT", 1'b0, COMMIT)
+	`TICKTOCK;
+	`assert("FETCH", 1'b0, FETCH)
 end
 
 endmodule

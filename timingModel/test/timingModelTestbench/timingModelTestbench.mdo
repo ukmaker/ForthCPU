@@ -3,6 +3,7 @@ if {![file exists "C:/Users/Duncan/git/ForthCPU/timingModel/test/timingModelTest
 	project addfile "C:/Users/Duncan/git/ForthCPU/registerSequencer/source/registerSequencer.v"
 	project addfile "C:/Users/Duncan/git/ForthCPU/busController/source/busSequencer.v"
 	project addfile "C:/Users/Duncan/git/ForthCPU/timingModel/source/timingModel.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/loadStoreGroupDecoder/source/loadStoreGroupDecoder.v"
 	project addfile "C:/Users/Duncan/git/ForthCPU/testSetup.v"
 	project addfile "C:/Users/Duncan/git/ForthCPU/constants.v"
 	vlib  work
@@ -11,6 +12,7 @@ if {![file exists "C:/Users/Duncan/git/ForthCPU/timingModel/test/timingModelTest
 	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/registerSequencer/source  -work work  "C:/Users/Duncan/git/ForthCPU/registerSequencer/source/registerSequencer.v"
 	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/busController/source  -work work  "C:/Users/Duncan/git/ForthCPU/busController/source/busSequencer.v"
 	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/timingModel/source  -work work  "C:/Users/Duncan/git/ForthCPU/timingModel/source/timingModel.v"
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/loadStoreGroupDecoder/source  -work work  "C:/Users/Duncan/git/ForthCPU/loadStoreGroupDecoder/source/loadStoreGroupDecoder.v"
 	vlog  +incdir+C:/Users/Duncan/git/ForthCPU  -work work  "C:/Users/Duncan/git/ForthCPU/testSetup.v"
 	vlog  +incdir+C:/Users/Duncan/git/ForthCPU  -work work  "C:/Users/Duncan/git/ForthCPU/constants.v"
 } else {

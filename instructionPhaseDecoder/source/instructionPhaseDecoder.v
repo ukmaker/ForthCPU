@@ -22,6 +22,7 @@ module instructionPhaseDecoder(
 	input               CLK,
 	input               RESET,
 	input               HALTX,
+	input               DEBUG_AT_BKP,
 	input               DEBUG_STOP,
 	input               DEBUG_MODE,
 	input               DEBUG_STEP_REQ,
@@ -33,7 +34,6 @@ module instructionPhaseDecoder(
 	output reg          DECODE,
 	
 	output reg          DEBUG_STEP_ACK,
-	output reg          DEBUG_ACTIVE,
 
 	output reg          PC_ENX
 
@@ -60,7 +60,7 @@ assign PC_STOP = DEBUG_ACTIVE_NEXT & DEBUG_MODE;
 always @(*) begin
 	case(PHASE_R)
 		`PHI_STOPPED: begin
-			if(DEBUG_STOP) begin
+			if(DEBUG_STOP | DEBUG_AT_BKP) begin
 				PHASE_NEXT = `PHI_DEBUG_STOPPED;
 			end else if(!HALTX) begin
 				PHASE_NEXT = RESET_R ? `PHI_FETCH : `PHI_DECODE;
@@ -70,7 +70,7 @@ always @(*) begin
 		end
 		
 		`PHI_FETCH: begin
-			if(DEBUG_STOP) begin
+			if(DEBUG_STOP | DEBUG_AT_BKP) begin
 				PHASE_NEXT = `PHI_DEBUG_STOPPED;
 			end else begin
 				PHASE_NEXT = `PHI_DECODE;
@@ -84,7 +84,7 @@ always @(*) begin
 		`PHI_DEBUG_STOPPED: begin
 			if(DEBUG_STEP_REQ) begin
 				PHASE_NEXT = `PHI_DEBUG_DECODE;
-			end else if(!DEBUG_STOP) begin
+			end else if(!(DEBUG_STOP | DEBUG_AT_BKP)) begin
 				PHASE_NEXT = `PHI_STOPPED;
 			end else begin
 				PHASE_NEXT = `PHI_DEBUG_STOPPED;
@@ -118,12 +118,10 @@ end
 always @(posedge CLK or posedge RESET) begin
 	if(RESET) begin
 		PC_ENX <= 1;
-		DEBUG_ACTIVE <= 0;
 		RESET_R <= 1;
 	end else begin
 		RESET_R <= 0;
 		PC_ENX <= ~PC_STOP;
-		DEBUG_ACTIVE <= DEBUG_STOP;
 	end
 end
 		

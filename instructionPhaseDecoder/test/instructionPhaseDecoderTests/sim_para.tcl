@@ -1,4 +1,4 @@
-lappend auto_path "C:/lscc/diamond/3.12/data/script"
+lappend auto_path "C:/lscc/diamond/3.13/data/script"
 package require simulation_generation
 set ::bali::simulation::Para(DEVICEFAMILYNAME) {MachXO3L}
 set ::bali::simulation::Para(PROJECT) {instructionPhaseDecoderTests}
@@ -15,7 +15,7 @@ set ::bali::simulation::Para(SIMULATIONTOPMODULE) {instruction_phase_decoder_tes
 set ::bali::simulation::Para(SIMULATIONINSTANCE) {}
 set ::bali::simulation::Para(LANGUAGE) {VERILOG}
 set ::bali::simulation::Para(SDFPATH)  {}
-set ::bali::simulation::Para(INSTALLATIONPATH) {C:/lscc/diamond/3.12}
+set ::bali::simulation::Para(INSTALLATIONPATH) {C:/lscc/diamond/3.13}
 set ::bali::simulation::Para(ADDTOPLEVELSIGNALSTOWAVEFORM)  {1}
 set ::bali::simulation::Para(RUNSIMULATION)  {1}
 set ::bali::simulation::Para(HDLPARAMETERS) {}

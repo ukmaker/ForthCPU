@@ -56,11 +56,13 @@ wire [1:0]  DATA_BUSX;
 
 wire [15:0] DEBUG_ADDR_OUT;
 wire [15:0] DEBUG_DATA_OUT;
+wire [15:0] DIN_BKP;
 wire [2:0]  DEBUG_ARG;
 wire [3:0]  DEBUG_ARGBX;
 wire [2:0]  DEBUG_OP;
 wire [2:0]  DEBUG_OP_I;
 wire         DEBUG_ADDR_INC_I;
+wire         DEBUG_EN_BKP_I;
 wire [4:0]  DEBUG_OPX;
 wire         DEBUG_MODEX;
 wire         DEBUG_STOPX;
@@ -116,6 +118,8 @@ wire         DEBUG_ADDR_INCX;
 wire         DEBUG_LD_ARGX;
 wire         DEBUG_LD_DATAX;
 wire [2:0]  DEBUG_DATAX;
+wire         DEBUG_WR_BKPX;
+wire         DEBUG_EN_BKPX;
 
 
 wire [1:0]  INT_CC_REGX;
@@ -191,12 +195,14 @@ debugPort debugger(
 	.DEBUG_WRN(DEBUG_WRN),
 	
 	.DEBUG_ADDR_INC(DEBUG_ADDR_INC),
+	.DEBUG_EN_BKP(DEBUG_EN_BKP),
 	.DEBUG_OP(DEBUG_OP),
 	.DEBUG_MODE(DEBUG_MODE),	
 	.DEBUG_ADDR_OUT(DEBUG_ADDR_OUT),
 	
 	.DEBUG_DATA_OUT(DEBUG_DATA_OUT),
 	.DEBUG_ADDR_INC_EN(DEBUG_ADDR_INC_EN),
+	.AT_BKP(AT_BKP),
 	
 	.DEBUG_LD_ARG_EN(DEBUG_LD_ARG_EN),
 	.DEBUG_LD_DATA_EN(DEBUG_LD_DATA_EN),
@@ -219,20 +225,43 @@ debugPort debugger(
 * Debugging operation decoder
 ****************************************/
 debugDecoder debugDecoderInst(
+	/***********************************
+	* Inputs from instructionLatch
+	************************************/
 	.DEBUG_ADDR_INC_I(DEBUG_ADDR_INC_I),
+	.DEBUG_EN_BKP_I(DEBUG_EN_BKP_I),
 	.DEBUG_OP_I(DEBUG_OP_I),
 	.DEBUG_ARG(DEBUG_ARG),
 	
+	/***********************************
+	* Outputs to OpxMux
+	************************************/
 	.DEBUG_ADDR_BUSX(DEBUG_ADDR_BUSX),
+	// .DEBUG_ARGBX
+	.DEBUG_BUS_SEQX(DEBUG_BUS_SEQX),
+	.DEBUG_CC_REGX(DEBUG_CC_REGX),
+	// .DEBUG_MODEX
+	.DEBUG_PC_NEXTX(DEBUG_PC_NEXTX),
+	.DEBUG_REG_SEQX(DEBUG_REG_SEQX),
+	
+	/***********************************
+	* Outputs to debugSequencer
+	************************************/	
 	.DEBUG_ADDR_INCX(DEBUG_ADDR_INCX),
 	.DEBUG_LD_ARGX(DEBUG_LD_ARGX),
 	.DEBUG_LD_DATAX(DEBUG_LD_DATAX),
-	.DEBUG_DATAX(DEBUG_DATAX),
-	.DEBUG_BUS_SEQX(DEBUG_BUS_SEQX),
-	.DEBUG_REG_SEQX(DEBUG_REG_SEQX),
-	.DEBUG_CC_REGX(DEBUG_CC_REGX),
-	.DEBUG_PC_NEXTX(DEBUG_PC_NEXTX)
-
+	.DEBUG_WR_BKPX(DEBUG_WR_BKPX),
+	
+	/***********************************
+	* Outputs to programCounter
+	************************************/	
+	.DEBUG_EN_BKPX(DEBUG_EN_BKPX),
+	
+	/***********************************
+	* Outputs to debugPort
+	************************************/	
+	.DEBUG_DATAX(DEBUG_DATAX)
+	
 );
 /***************************************
 * Debugging latches sequencer
@@ -240,12 +269,21 @@ debugDecoder debugDecoderInst(
 debugSequencer debugSequencerInst(	
 	.CLK(CLK),
 	.RESET(RESET),
+	.FETCH(FETCH),
+	.DECODE(DECODE),
 	.COMMIT(COMMIT),
 	.EXECUTE(EXECUTE),
+	
+	/***********************************
+	* Inputs from opxMux
+	************************************/	
 	.DEBUG_ADDR_INCX(DEBUG_ADDR_INCX),
+	.DEBUG_WR_BKPX(DEBUG_WR_BKPX),
 	.DEBUG_LD_ARGX(DEBUG_LD_ARGX),
 	.DEBUG_LD_DATAX(DEBUG_LD_DATAX),
+	
 	.DEBUG_ADDR_INC_EN(DEBUG_ADDR_INC_EN),
+	.DEBUG_LD_BKP_EN(DEBUG_LD_BKP_EN),
 	.DEBUG_LD_DATA_EN(DEBUG_LD_DATA_EN),
 	.DEBUG_LD_ARG_EN(DEBUG_LD_ARG_EN)
 );
@@ -257,6 +295,7 @@ instructionPhaseDecoder instructionPhaseDecoderInst(
 	.CLK(CLK),
 	.RESET(RESET),
 	.HALTX(HALTX),
+	.DEBUG_AT_BKP(AT_BKP),
 	.DEBUG_STOP(DEBUG_STOP),
 	.DEBUG_MODE(DEBUG_MODE),
 	.DEBUG_STEP_REQ(DEBUG_REQ),
@@ -268,7 +307,6 @@ instructionPhaseDecoder instructionPhaseDecoderInst(
 	.COMMIT(COMMIT),
 
 	.DEBUG_STEP_ACK(DEBUG_ACK),
-	.DEBUG_ACTIVE(DEBUG_ACTIVE),
 	.PC_ENX(PC_ENX)
 );
 
@@ -282,10 +320,12 @@ instructionLatch instructionLatchInst(
 	.DIN(DIN),
 	.DEBUG_OP(DEBUG_OP),
 	.DEBUG_ADDR_INC(DEBUG_ADDR_INC),
+	.DEBUG_EN_BKP(DEBUG_EN_BKP),
 	.DEBUG_MODE(DEBUG_MODE),
 	.INSTRUCTION(INSTRUCTION),
 	.GROUPX(GROUPX),
 	.DEBUG_ADDR_INC_I(DEBUG_ADDR_INC_I),
+	.DEBUG_EN_BKP_I(DEBUG_EN_BKP_I),
 	.DEBUG_OP_I(DEBUG_OP_I),
 	.DEBUG_MODE_I(DEBUG_MODE_I)
 );
@@ -383,6 +423,7 @@ programCounter programCounterInst(
 	.CLK(CLK),
 	.RESET(RESET),
 	.FETCH(FETCH),
+	.COMMIT(COMMIT),
 	.DECODE(DECODE),
 	.PC_ENX(PC_ENX),
 	.PC_LD_INT0X(PC_LD_INT0X),
@@ -394,7 +435,11 @@ programCounter programCounterInst(
 	.PC_NEXTX(PC_NEXTX),
 	.HERE(HERE),
 	.PC_A_NEXT(PC_A_NEXT),
-	.PC_A(PC_A)
+	.PC_A(PC_A),
+	.DEBUG_LD_BKP_EN(DEBUG_LD_BKP_EN),
+	.EN_BKPX(DEBUG_EN_BKPX),
+	.DIN_BKP(DEBUG_DATA_OUT),
+	.AT_BKP(AT_BKP)
 );
 
 /***************************************

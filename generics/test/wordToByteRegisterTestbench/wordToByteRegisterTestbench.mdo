@@ -1,0 +1,17 @@
+if {![file exists "C:/Users/Duncan/git/ForthCPU/generics/test/wordToByteRegisterTestbench/wordToByteRegisterTestbench.mpf"]} { 
+	project new "C:/Users/Duncan/git/ForthCPU/generics/test/wordToByteRegisterTestbench" wordToByteRegisterTestbench
+	project addfile "C:/Users/Duncan/git/ForthCPU/generics/source/wordToByteRegister.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/generics/test/wordToByteRegisterTests.v"
+	vlib  work
+	vdel -lib work -all 
+	vlib work
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/generics/source  -work work  "C:/Users/Duncan/git/ForthCPU/generics/source/wordToByteRegister.v"
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/generics/test  -work work  "C:/Users/Duncan/git/ForthCPU/generics/test/wordToByteRegisterTests.v"
+} else {
+	project open "C:/Users/Duncan/git/ForthCPU/generics/test/wordToByteRegisterTestbench/wordToByteRegisterTestbench"
+	project compileoutofdate
+}
+vsim -L work -L pmi_work -L ovi_machxo3l  wordToByteRegisterTests
+view wave
+add wave /*
+run 1000ns
