@@ -365,7 +365,7 @@
         </Source>
     </Implementation>
     <Implementation title="debugPortV2" dir="debugPortV2" description="debugPortV2" synthesis="synplify" default_strategy="Area">
-        <Options def_top="synchronizedCounter"/>
+        <Options def_top="watcherTests"/>
         <Source name="constants.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
@@ -406,6 +406,30 @@
             <Options top_module="synchronizedCounter"/>
         </Source>
         <Source name="generics/source/synchronizer.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="debugPortV2/source/snooper.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="debugPortV2/test/snooperTests.v" type="Verilog" type_short="Verilog">
+            <Options top_module="snooperTests"/>
+        </Source>
+        <Source name="debugPortV2/source/watcher.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="debugPortV2/test/watcherTests.v" type="Verilog" type_short="Verilog">
+            <Options top_module="watcherTests"/>
+        </Source>
+        <Source name="debugPortV2/source/watcherBlock.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="testSetup.v" type="Verilog" type_short="Verilog">
+            <Options/>
+        </Source>
+        <Source name="debugPortV2/test/snooperTestbench/snooperTestbench.spf" type="Simulation Project File" type_short="SPF">
+            <Options/>
+        </Source>
+        <Source name="debugPortV2/test/watcherTestbench/watcherTestbench.spf" type="Simulation Project File" type_short="SPF">
             <Options/>
         </Source>
         <Source name="ForthCPU.lpf" type="Logic Preference" type_short="LPF">

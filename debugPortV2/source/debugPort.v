@@ -27,10 +27,10 @@
 *     W WATCHEAL    - Low byte of watch end address
 * B - R SNOOPARGAH
 *     W WATCHEAH
-* C - SNOOPARGDL
-* D - SNOOPARGDH
-* E - SNOOPSTATUS - Snooped processor status bits, CCs
-* F - DEBUGSTATUS - Bits set if a breakpoint or watch is hit
+* C - R SNOOPARGDL
+* D - R SNOOPARGDH
+* E - R SNOOPSTATUS - Snooped processor status bits, CCs
+* F - R DEBUGSTATUS - Bits set if a breakpoint or watch is hit
 *
 * DEBUG_MODE Register
 * ===================
@@ -51,7 +51,8 @@
 * 3 - DEBUG_OP_REGWR
 * 4 - DEBUG_OP_CCRD   - Uses MRAL register as the CC register index. Increment by 1 after access to MRDH
 * 5 - DEBUG_OP_PCRD   - Uses MRAL register as the PC register index. Increment by 1 after access to MRDH
-* 6 - DEBUG_OP_INSTRD - Read the instruction at the current PC into MRD registers
+* 6 - 
+* 7 - 
 * 
 *                   Debug Port                                                    Instruction   Decoders  OpxMux  Sequencers
 *                                                                                    Latch       /-------           /-------    
@@ -62,7 +63,7 @@
 * DEBUG_WR   ----->|          |---> MR_DATA                                        |      |     |      |  . |  | | |      |  .
 * DEBUG_INT  <-----|          |                                                --->|      |     |      |--->| /  | |      |---> DBG_SEQ_LD_MRD, DEBUG_SEQ_LD_SNOOPINST,...
 *                  |          |                                               |    --------     --------    |/   | --------
-*                  |          |<--- CLK                                       |                                  |
+*                  |          |<--- CLK         w                              |                                  |
 *                  |          |<--- RESETN                              DEBUG_OP_EN                               ------------> xx_OPX
 *                  |          |---> RESET                                     |
 *                  |          |                                               |   Instruction
@@ -70,23 +71,39 @@
 *                  |          |                                               |    ---\/---   
 *                  |          |                                               -----|      |---> FETCH     |
 *                  |          |<--- PHI -------------------------------------------|      |---> DECODE    |
-*                  |          |---> DEBUG_REQ ------------------------------------>|      |---> EXECUTE   |--> PHI
+*                  |          |---> DEBUG_MODE_REQ ------------------------------->|      |---> EXECUTE   |--> PHI
 *                  |          |<--- DEBUG_ACK -------------------------------------|      |---> COMMIT    |
-*                  |          |---- DEBUG_STOP ----------------------------------->|      |---> STOPPED   |
-*                  |          |---- DEBUG_MODE ----------------------------------->|      |
+*                  |          |---- DEBUG_MODE_STOP ------------------------------>|      |---> STOPPED   |
+*                  |          |---- DEBUG_MODE_DEBUG------------------------------>|      |
 *                  |          |                                                    |      |<--- AT_DEBUG_BKP
 *                  |          |<--- DIN, PC_A, CC_D, REGB_DATA, INSTRUCTION        |      |<--- IN_DEBUG_WATCH
 *                  |          |                                                    |      |
 *                  |          |<--- ADDR                                           --------
+*                  |          |<--- STOPPED                                                   
+*                  |          |                                                     Watcher
+*                  |          |                                                    ---\/---
+*                  |          |---> DEBUG_BKP_ADDR ------------------------------->|      |
+*                  |          |---> DEBUG_BKP_ENX -------------------------------->|      |<--- RESET 
+*                  |          |<--- AT_DEBUG_BKP ----------------------------------|      |<--- PHI
+*                  |          |                                                    |      |
+*                  |          |---> DEBUG_WATCH_START_ADDR ----------------------->|      |
+*                  |          |---> DEBUG_WATCH_END_ADDR ------------------------->|      |<--- ADDR 
+*                  |          |---> DEBUG_WATCH_ENX ------------------------------>|      |
+*                  |          |<--- IN_DEBUG_WATCH --------------------------------|      |
+*                  |          |                                                    --------
 *                  |          |
-*                  |          |---> DEBUG_BKP_ADDR
-*                  |          |---> DEBUG_BKP_ENX
-*                  |          |<--- AT_DEBUG_BKP
+*                  |          |                                                     Snooper
+*                  |          |                                                    ---\/---
+*                  |          |                                                    |      |
+*                  |          |<--- SNOOP_INST_A ----------------------------------|      |<--- RESET
+*                  |          |<--- SNOOP_INST_D ----------------------------------|      |<--- PHI
+*                  |          |<--- SNOOP_ARG_A -----------------------------------|      |<--- RD
+*                  |          |<--- SNOOP_ARG_D -----------------------------------|      | 
+*                  |          |                                                    |      |<--- ADDR 
+*                  |          |                                                    |      |<--- DIN
+*                  |          |                                                    |      |
+*                  |          |                                                    --------
 *                  |          |
-*                  |          |---> DEBUG_WATCH_START_ADDR
-*                  |          |---> DEBUG_WATCH_END_ADDR
-*                  |          |---> DEBUG_WATCH_ENX
-*                  |          |<--- IN_DEBUG_WATCH
 *                  |          |
 *                  |          |
 *                  ------------
@@ -98,16 +115,20 @@ module debugPort(
 	* Interface signals
 	****************************************/
 	input [7:0]      DEBUG_DIN,
-	output reg [7:0] DEBUG_DOUT,
 	input [3:0]      DEBUG_REG_ADDR,
 	input             DEBUG_RDN,
 	input             DEBUG_WRN,
+	output reg        DEBUG_INT,
+	output reg [7:0] DEBUG_DOUT,
 	
 	/***************************************
 	* Global signals
 	****************************************/
 	input             CLK,
 	input             RESETN,
+	input             RD,
+	input             WR,
+	input [15:0]     ADDR,
 	/**
 	* Combined with the DEBUG_MODE_RESET signal
 	**/
@@ -116,13 +137,13 @@ module debugPort(
 	/***************************************************************
 	* Outputs to instruction latch
 	****************************************************************/
-	output [15:0] DEBUG_OP_INSTRUCTION,
+	output [15:0] DEBUG_OP,
 	/***************************************************************
-	* Outputs to instruction phase decoder
+	* Outputs to instruction phase decoder and 
 	****************************************************************/
-	output            DEBUG_REQ,
-	output            DEBUG_STOP,
-	output            DEBUG_MODE,
+	output            DEBUG_MODE_REQ,
+	output            DEBUG_MODE_STOP,
+	output            DEBUG_MODE_DEBUG,
 	/***************************************************************
 	* Inputs from the phase decoder
 	****************************************************************/
@@ -278,41 +299,6 @@ wordRegister mrdReg (
 
 );
 
-wordRegister breakAReg (
-
-	.CLK(DEBUG_WRN),
-	.RESET(RESET),
-	.EN0(EN_BREAK_AL),
-	.EN1(EN_BREAK_AH),
-	.LD(1'b1),
-	.DIN(DEBUG_DIN),
-	.DOUT(DEBUG_BKP_ADDR)
-
-);
-
-wordRegister watchStartReg (
-
-	.CLK(DEBUG_WRN),
-	.RESET(RESET),
-	.EN0(EN_WATCH_START_AL),
-	.EN1(EN_WATCH_START_AH),
-	.LD(1'b1),
-	.DIN(DEBUG_DIN),
-	.DOUT(DEBUG_WATCH_START_ADDR)
-
-);
-
-wordRegister watchEndReg (
-
-	.CLK(DEBUG_WRN),
-	.RESET(RESET),
-	.EN0(EN_WATCH_END_AL),
-	.EN1(EN_WATCH_END_AH),
-	.LD(1'b1),
-	.DIN(DEBUG_DIN),
-	.DOUT(DEBUG_WATCH_END_ADDR)
-
-);
 
 /**************************************************************
 * Mem/reg read data CPU -> DEBUGGER
@@ -372,6 +358,34 @@ wordToByteRegister snoopArgD (
 	.D(DEBUG_DIN_DIN),
 	.Q(SNOOP_ARG_DATA)
 
+);
+
+/**************************************************************
+* Address watcher
+**************************************************************/
+watcherBlock watcherBlockInst (
+
+	.CLK(CLK),
+	.RESET(RESET),
+	.FETCH(FETCH),
+	.DECODE(DECODE),
+	.EXECUTE(EXECUTE),
+	.COMMIT(COMMIT),
+	.RD(RD),
+	.ADDR(ADDR),
+	.DEBUG_WR(DEBUG_WR),
+	.DEBUG_EN_BREAK_AL(DEBUG_EN_BREAK_AL),
+	.DEBUG_EN_BREAK_AH(DEBUG_EN_BREAK_AH),
+	.DEBUG_EN_WATCH_START_AL(DEBUG_EN_WATCH_START_AL),
+	.DEBUG_EN_WATCH_START_AH(DEBUG_EN_WATCH_START_AH),
+	.DEBUG_EN_WATCH_END_AL(DEBUG_EN_WATCH_END_AL),
+	.DEBUG_EN_WATCH_END_AH(DEBUG_EN_WATCH_END_AH),
+	.DEBUG_BKP_ENX(DEBUG_BKP_ENX),
+	.DEBUG_WATCH_ENX(DEBUG_WATCH_ENX),
+	.DEBUG_DIN(DEBUG_DIN),
+	.DEBUG_AT_BKP(DEBUG_AT_BKP),
+	.DEBUG_IN_WATCH(DEBUG_IN_WATCH)
+	
 );
 /**
 * 0 - W MODE        - Set the debugging mode

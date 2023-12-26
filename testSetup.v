@@ -46,5 +46,43 @@
 	
 `define COMMIT(n,m) \
 	$display("COMMIT  [T=%09t] %04d %s", $realtime, n, m); 
+
+`define internalCycle(addr, inst) \
+	FETCH = 1;   \
+	`TICKTOCK;   \
+	FETCH = 0;   \
+	DECODE = 1;  \
+	`TICK;       \
+	ADDR = addr; \
+	`TOCK;       \
+	DECODE = 0;  \
+	EXECUTE = 1; \
+	DIN = inst;  \
+	`TICKTOCK;   \
+	EXECUTE = 0; \
+	COMMIT = 1;  \
+	`TICKTOCK;   \
+	COMMIT = 0;
 	
-	
+`define externalCycle(addr, inst, argAddr, argData) \
+	FETCH = 1;      \
+	`TICKTOCK;      \
+	FETCH = 0;      \
+	DECODE = 1;     \
+	`TICK;          \
+	ADDR = addr;    \
+	`TOCK;          \
+	DECODE = 0;     \
+	EXECUTE = 1;    \
+	DIN = inst;     \
+	`TICK;          \
+	RD = 1;         \
+	`TOCK;          \
+	EXECUTE = 0;    \
+	COMMIT = 1;     \
+	`TICK;          \
+	ADDR = argAddr; \
+	DIN = argData;  \
+	`TOCK;          \
+	COMMIT = 0;    \
+	RD = 0;
