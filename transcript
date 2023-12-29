@@ -1,31 +1,31 @@
 # Reading pref.tcl
-# do {C:/Users/Duncan/git/ForthCPU/masterSequencer/test/masterSequencerTestbench/masterSequencerTestbench.mdo}
-# Loading project masterSequencerTestbench
+# do {C:/Users/Duncan/git/ForthCPU/busInterface/test/busInterfaceTestbench/busInterfaceTestbench.mdo}
+# Loading project busInterfaceTestbench
 # Model Technology ModelSim - Lattice FPGA Edition vlog 2023.3 Compiler 2023.07 Jul 18 2023
-# Start time: 13:47:42 on Dec 29,2023
-# vlog -reportprogress 300 "+incdir+C:/Users/Duncan/git/ForthCPU/masterSequencer/source" -work work C:/Users/Duncan/git/ForthCPU/masterSequencer/source/masterSequencer.v 
-# -- Compiling module masterSequencer
+# Start time: 22:18:53 on Dec 29,2023
+# vlog -reportprogress 300 "+incdir+C:/Users/Duncan/git/ForthCPU/busInterface/source" -work work C:/Users/Duncan/git/ForthCPU/busInterface/source/busInterface.v 
+# -- Compiling module busInterface
 # 
 # Top level modules:
-# 	masterSequencer
-# End time: 13:47:42 on Dec 29,2023, Elapsed time: 0:00:00
+# 	busInterface
+# End time: 22:18:53 on Dec 29,2023, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Lattice FPGA Edition vlog 2023.3 Compiler 2023.07 Jul 18 2023
-# Start time: 13:47:42 on Dec 29,2023
-# vlog -reportprogress 300 "+incdir+C:/Users/Duncan/git/ForthCPU/masterSequencer/test" -work work C:/Users/Duncan/git/ForthCPU/masterSequencer/test/masterSequencerTests.v 
-# -- Compiling module masterSequencerTests
+# Start time: 22:18:53 on Dec 29,2023
+# vlog -reportprogress 300 "+incdir+C:/Users/Duncan/git/ForthCPU/busInterface/test" -work work C:/Users/Duncan/git/ForthCPU/busInterface/test/busInterfaceTests.v 
+# -- Compiling module busInterfaceTests
 # 
 # Top level modules:
-# 	masterSequencerTests
-# End time: 13:47:42 on Dec 29,2023, Elapsed time: 0:00:00
+# 	busInterfaceTests
+# End time: 22:18:53 on Dec 29,2023, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # Model Technology ModelSim - Lattice FPGA Edition vlog 2023.3 Compiler 2023.07 Jul 18 2023
-# Start time: 13:47:42 on Dec 29,2023
+# Start time: 22:18:53 on Dec 29,2023
 # vlog -reportprogress 300 "+incdir+C:/Users/Duncan/git/ForthCPU" -work work C:/Users/Duncan/git/ForthCPU/constants.v 
-# End time: 13:47:42 on Dec 29,2023, Elapsed time: 0:00:00
+# End time: 22:18:53 on Dec 29,2023, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-# vsim -L work -L pmi_work -L ovi_machxo3l masterSequencerTests 
-# Start time: 13:47:42 on Dec 29,2023
+# vsim -L work -L pmi_work -L ovi_machxo3l busInterfaceTests 
+# Start time: 22:18:53 on Dec 29,2023
 # //  ModelSim - Lattice FPGA Edition 2023.3 Jul 18 2023
 # //
 # //  Copyright 1991-2023 Mentor Graphics Corporation
@@ -39,436 +39,108 @@
 # //  is prohibited from disclosure under the Trade Secrets Act,
 # //  18 U.S.C. Section 1905.
 # //
-# Loading work.masterSequencerTests
-# Loading work.masterSequencer
+# Loading work.busInterfaceTests
+# Loading work.busInterface
 # .main_pane.wave.interior.cs.body.pw.wf
-# Compile of masterSequencer.v was successful.
-# Compile of masterSequencerTests.v was successful.
+# [T=100] FAILED in busInterfaceTests: STOPPED expected 0 != actual x
+# [T=100] FAILED in busInterfaceTests: FETCH expected 1 != actual x
+# [T=100] FAILED in busInterfaceTests: DECODE expected 0 != actual x
+# [T=100] FAILED in busInterfaceTests: EXECUTE expected 0 != actual x
+# [T=100] FAILED in busInterfaceTests: COMMIT expected 0 != actual x
+# Compile of busInterface.v was successful.
+# Compile of busInterfaceTests.v was successful.
+# Compile of constants.v was successful.
+# 3 compiles, 0 failed with no errors.
+restart; run 1us
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.busInterfaceTests
+# Loading work.busInterface
+# Compile of busInterface.v was successful.
+# Compile of busInterfaceTests.v was successful.
+# Compile of constants.v was successful.
+# 3 compiles, 0 failed with no errors.
+restart; run 2us
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.busInterfaceTests
+# Loading work.busInterface
+# Compile of busInterface.v was successful.
+# Compile of busInterfaceTests.v was successful.
+# Compile of constants.v was successful.
+# 3 compiles, 0 failed with no errors.
+restart; run 2us
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.busInterfaceTests
+# Loading work.busInterface
+# Compile of busInterface.v was successful.
+# Compile of busInterfaceTests.v was successful.
+# Compile of constants.v was successful.
+# 3 compiles, 0 failed with no errors.
+restart; run 2us
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.busInterfaceTests
+# Loading work.busInterface
+# Compile of busInterface.v was successful.
+# Compile of busInterfaceTests.v was successful.
+# Compile of constants.v was successful.
+# 3 compiles, 0 failed with no errors.
+restart; run 2us
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.busInterfaceTests
+# Loading work.busInterface
+# Compile of busInterface.v was successful.
+# Compile of busInterfaceTests.v was successful.
+# Compile of constants.v was successful.
+# 3 compiles, 0 failed with no errors.
+restart; run 4us
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.busInterfaceTests
+# Loading work.busInterface
+# Compile of busInterface.v was successful.
+# Compile of busInterfaceTests.v was successful.
+# Compile of constants.v was successful.
+# 3 compiles, 0 failed with no errors.
+restart; run 4us
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.busInterfaceTests
+# Loading work.busInterface
+# Compile of busInterface.v was successful.
+# Compile of busInterfaceTests.v was successful.
+# Compile of constants.v was successful.
+# 3 compiles, 0 failed with no errors.
+restart; run 4us
+# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
+# Loading work.busInterfaceTests
+# Loading work.busInterface
+# Compile of busInterface.v was successful.
+# Compile of busInterfaceTests.v was successful.
 # Compile of constants.v was successful.
 # 3 compiles, 0 failed with no errors.
 restart; run 10us
 # ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.masterSequencerTests
-# Loading work.masterSequencer
-# [T=100]                                             passed in masterSequencerTests: STOPPED expected 00000000000000000000000000000001 actual 1
-# [T=100]                                             passed in masterSequencerTests: FETCH expected 00000000000000000000000000000000 actual 0
-# [T=100]                                             passed in masterSequencerTests: DECODE expected 00000000000000000000000000000000 actual 0
-# [T=100]                                             passed in masterSequencerTests: EXECUTE expected 00000000000000000000000000000000 actual 0
-# [T=100]                                             passed in masterSequencerTests: COMMIT expected 00000000000000000000000000000000 actual 0
-# [T=300] FAILED in masterSequencerTests: STOPPED expected 00000000000000000000000000000001 != actual 0
-# [T=300] FAILED in masterSequencerTests: FETCH expected 00000000000000000000000000000000 != actual 1
-# [T=300]                                             passed in masterSequencerTests: DECODE expected 00000000000000000000000000000000 actual 0
-# [T=300]                                             passed in masterSequencerTests: EXECUTE expected 00000000000000000000000000000000 actual 0
-# [T=300]                                             passed in masterSequencerTests: COMMIT expected 00000000000000000000000000000000 actual 0
-# [T=400]                                             passed in masterSequencerTests: STOPPED expected 00000000000000000000000000000000 actual 0
-# [T=400] FAILED in masterSequencerTests: FETCH expected 00000000000000000000000000000001 != actual 0
-# [T=400] FAILED in masterSequencerTests: DECODE expected 00000000000000000000000000000000 != actual 1
-# [T=400]                                             passed in masterSequencerTests: EXECUTE expected 00000000000000000000000000000000 actual 0
-# [T=400]                                             passed in masterSequencerTests: COMMIT expected 00000000000000000000000000000000 actual 0
-# [T=500]                                             passed in masterSequencerTests: STOPPED expected 00000000000000000000000000000000 actual 0
-# [T=500]                                             passed in masterSequencerTests: FETCH expected 00000000000000000000000000000000 actual 0
-# [T=500] FAILED in masterSequencerTests: DECODE expected 00000000000000000000000000000001 != actual 0
-# [T=500] FAILED in masterSequencerTests: EXECUTE expected 00000000000000000000000000000000 != actual 1
-# [T=500]                                             passed in masterSequencerTests: COMMIT expected 00000000000000000000000000000000 actual 0
-# [T=600]                                             passed in masterSequencerTests: STOPPED expected 00000000000000000000000000000000 actual 0
-# [T=600]                                             passed in masterSequencerTests: FETCH expected 00000000000000000000000000000000 actual 0
-# [T=600]                                             passed in masterSequencerTests: DECODE expected 00000000000000000000000000000000 actual 0
-# [T=600] FAILED in masterSequencerTests: EXECUTE expected 00000000000000000000000000000001 != actual 0
-# [T=600] FAILED in masterSequencerTests: COMMIT expected 00000000000000000000000000000000 != actual 1
-# [T=700]                                             passed in masterSequencerTests: STOPPED expected 00000000000000000000000000000000 actual 0
-# [T=700] FAILED in masterSequencerTests: FETCH expected 00000000000000000000000000000000 != actual 1
-# [T=700]                                             passed in masterSequencerTests: DECODE expected 00000000000000000000000000000000 actual 0
-# [T=700]                                             passed in masterSequencerTests: EXECUTE expected 00000000000000000000000000000000 actual 0
-# [T=700] FAILED in masterSequencerTests: COMMIT expected 00000000000000000000000000000001 != actual 0
-# Compile of masterSequencer.v was successful.
-# Compile of masterSequencerTests.v was successful.
+# Loading work.busInterfaceTests
+# Loading work.busInterface
+# Warning in wave window restart: (vish-4014) No objects found matching '/busInterfaceTests/DEBUG_DEBUG'. 
+# Compile of busInterface.v was successful.
+# Compile of busInterfaceTests.v was successful.
 # Compile of constants.v was successful.
 # 3 compiles, 0 failed with no errors.
 restart; run 10us
 # ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.masterSequencerTests
-# Loading work.masterSequencer
-# [T=110]                                             passed in masterSequencerTests: STOPPED expected 00000000000000000000000000000001 actual 1
-# [T=110]                                             passed in masterSequencerTests: FETCH expected 00000000000000000000000000000000 actual 0
-# [T=110]                                             passed in masterSequencerTests: DECODE expected 00000000000000000000000000000000 actual 0
-# [T=110]                                             passed in masterSequencerTests: EXECUTE expected 00000000000000000000000000000000 actual 0
-# [T=110]                                             passed in masterSequencerTests: COMMIT expected 00000000000000000000000000000000 actual 0
-# [T=310] FAILED in masterSequencerTests: STOPPED expected 00000000000000000000000000000001 != actual 0
-# [T=310] FAILED in masterSequencerTests: FETCH expected 00000000000000000000000000000000 != actual 1
-# [T=310]                                             passed in masterSequencerTests: DECODE expected 00000000000000000000000000000000 actual 0
-# [T=310]                                             passed in masterSequencerTests: EXECUTE expected 00000000000000000000000000000000 actual 0
-# [T=310]                                             passed in masterSequencerTests: COMMIT expected 00000000000000000000000000000000 actual 0
-# [T=410]                                             passed in masterSequencerTests: STOPPED expected 00000000000000000000000000000000 actual 0
-# [T=410] FAILED in masterSequencerTests: FETCH expected 00000000000000000000000000000001 != actual 0
-# [T=410] FAILED in masterSequencerTests: DECODE expected 00000000000000000000000000000000 != actual 1
-# [T=410]                                             passed in masterSequencerTests: EXECUTE expected 00000000000000000000000000000000 actual 0
-# [T=410]                                             passed in masterSequencerTests: COMMIT expected 00000000000000000000000000000000 actual 0
-# [T=510]                                             passed in masterSequencerTests: STOPPED expected 00000000000000000000000000000000 actual 0
-# [T=510]                                             passed in masterSequencerTests: FETCH expected 00000000000000000000000000000000 actual 0
-# [T=510] FAILED in masterSequencerTests: DECODE expected 00000000000000000000000000000001 != actual 0
-# [T=510] FAILED in masterSequencerTests: EXECUTE expected 00000000000000000000000000000000 != actual 1
-# [T=510]                                             passed in masterSequencerTests: COMMIT expected 00000000000000000000000000000000 actual 0
-# [T=610]                                             passed in masterSequencerTests: STOPPED expected 00000000000000000000000000000000 actual 0
-# [T=610]                                             passed in masterSequencerTests: FETCH expected 00000000000000000000000000000000 actual 0
-# [T=610]                                             passed in masterSequencerTests: DECODE expected 00000000000000000000000000000000 actual 0
-# [T=610] FAILED in masterSequencerTests: EXECUTE expected 00000000000000000000000000000001 != actual 0
-# [T=610] FAILED in masterSequencerTests: COMMIT expected 00000000000000000000000000000000 != actual 1
-# [T=710]                                             passed in masterSequencerTests: STOPPED expected 00000000000000000000000000000000 actual 0
-# [T=710] FAILED in masterSequencerTests: FETCH expected 00000000000000000000000000000000 != actual 1
-# [T=710]                                             passed in masterSequencerTests: DECODE expected 00000000000000000000000000000000 actual 0
-# [T=710]                                             passed in masterSequencerTests: EXECUTE expected 00000000000000000000000000000000 actual 0
-# [T=710] FAILED in masterSequencerTests: COMMIT expected 00000000000000000000000000000001 != actual 0
-# Compile of masterSequencer.v was successful.
-# Compile of masterSequencerTests.v was successful.
+# Loading work.busInterfaceTests
+# Loading work.busInterface
+# Compile of busInterface.v was successful.
+# Compile of busInterfaceTests.v was successful.
 # Compile of constants.v was successful.
 # 3 compiles, 0 failed with no errors.
 restart; run 10us
 # ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.masterSequencerTests
-# Loading work.masterSequencer
-# [T=110]                                             passed in masterSequencerTests: STOPPED expected 00000000000000000000000000000001 actual 1
-# [T=110]                                             passed in masterSequencerTests: FETCH expected 00000000000000000000000000000000 actual 0
-# [T=110]                                             passed in masterSequencerTests: DECODE expected 00000000000000000000000000000000 actual 0
-# [T=110]                                             passed in masterSequencerTests: EXECUTE expected 00000000000000000000000000000000 actual 0
-# [T=110]                                             passed in masterSequencerTests: COMMIT expected 00000000000000000000000000000000 actual 0
-# [T=310]                                             passed in masterSequencerTests: STOPPED expected 00000000000000000000000000000000 actual 0
-# [T=310]                                             passed in masterSequencerTests: FETCH expected 00000000000000000000000000000001 actual 1
-# [T=310]                                             passed in masterSequencerTests: DECODE expected 00000000000000000000000000000000 actual 0
-# [T=310]                                             passed in masterSequencerTests: EXECUTE expected 00000000000000000000000000000000 actual 0
-# [T=310]                                             passed in masterSequencerTests: COMMIT expected 00000000000000000000000000000000 actual 0
-# [T=410]                                             passed in masterSequencerTests: STOPPED expected 00000000000000000000000000000000 actual 0
-# [T=410]                                             passed in masterSequencerTests: FETCH expected 00000000000000000000000000000000 actual 0
-# [T=410]                                             passed in masterSequencerTests: DECODE expected 00000000000000000000000000000001 actual 1
-# [T=410]                                             passed in masterSequencerTests: EXECUTE expected 00000000000000000000000000000000 actual 0
-# [T=410]                                             passed in masterSequencerTests: COMMIT expected 00000000000000000000000000000000 actual 0
-# [T=510]                                             passed in masterSequencerTests: STOPPED expected 00000000000000000000000000000000 actual 0
-# [T=510]                                             passed in masterSequencerTests: FETCH expected 00000000000000000000000000000000 actual 0
-# [T=510]                                             passed in masterSequencerTests: DECODE expected 00000000000000000000000000000000 actual 0
-# [T=510]                                             passed in masterSequencerTests: EXECUTE expected 00000000000000000000000000000001 actual 1
-# [T=510]                                             passed in masterSequencerTests: COMMIT expected 00000000000000000000000000000000 actual 0
-# [T=610]                                             passed in masterSequencerTests: STOPPED expected 00000000000000000000000000000000 actual 0
-# [T=610]                                             passed in masterSequencerTests: FETCH expected 00000000000000000000000000000000 actual 0
-# [T=610]                                             passed in masterSequencerTests: DECODE expected 00000000000000000000000000000000 actual 0
-# [T=610]                                             passed in masterSequencerTests: EXECUTE expected 00000000000000000000000000000000 actual 0
-# [T=610]                                             passed in masterSequencerTests: COMMIT expected 00000000000000000000000000000001 actual 1
-# Compile of masterSequencer.v was successful.
-# Compile of masterSequencerTests.v was successful.
+# Loading work.busInterfaceTests
+# Loading work.busInterface
+# Compile of busInterface.v was successful.
+# Compile of busInterfaceTests.v was successful.
 # Compile of constants.v was successful.
 # 3 compiles, 0 failed with no errors.
-restart; run 10us
+restart; run 4us
 # ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.masterSequencerTests
-# Loading work.masterSequencer
-# [T=110]                                             passed in masterSequencerTests: STOPPED expected 1 actual 1
-# [T=110]                                             passed in masterSequencerTests: FETCH expected 0 actual 0
-# [T=110]                                             passed in masterSequencerTests: DECODE expected 0 actual 0
-# [T=110]                                             passed in masterSequencerTests: EXECUTE expected 0 actual 0
-# [T=110]                                             passed in masterSequencerTests: COMMIT expected 0 actual 0
-# [T=310]                                             passed in masterSequencerTests: STOPPED expected 0 actual 0
-# [T=310]                                             passed in masterSequencerTests: FETCH expected 1 actual 1
-# [T=310]                                             passed in masterSequencerTests: DECODE expected 0 actual 0
-# [T=310]                                             passed in masterSequencerTests: EXECUTE expected 0 actual 0
-# [T=310]                                             passed in masterSequencerTests: COMMIT expected 0 actual 0
-# [T=410]                                             passed in masterSequencerTests: STOPPED expected 0 actual 0
-# [T=410]                                             passed in masterSequencerTests: FETCH expected 0 actual 0
-# [T=410]                                             passed in masterSequencerTests: DECODE expected 1 actual 1
-# [T=410]                                             passed in masterSequencerTests: EXECUTE expected 0 actual 0
-# [T=410]                                             passed in masterSequencerTests: COMMIT expected 0 actual 0
-# [T=510]                                             passed in masterSequencerTests: STOPPED expected 0 actual 0
-# [T=510]                                             passed in masterSequencerTests: FETCH expected 0 actual 0
-# [T=510]                                             passed in masterSequencerTests: DECODE expected 0 actual 0
-# [T=510]                                             passed in masterSequencerTests: EXECUTE expected 1 actual 1
-# [T=510]                                             passed in masterSequencerTests: COMMIT expected 0 actual 0
-# [T=610]                                             passed in masterSequencerTests: STOPPED expected 0 actual 0
-# [T=610]                                             passed in masterSequencerTests: FETCH expected 0 actual 0
-# [T=610]                                             passed in masterSequencerTests: DECODE expected 0 actual 0
-# [T=610]                                             passed in masterSequencerTests: EXECUTE expected 0 actual 0
-# [T=610]                                             passed in masterSequencerTests: COMMIT expected 1 actual 1
-# Compile of masterSequencer.v was successful.
-# Compile of masterSequencerTests.v was successful.
-# Compile of constants.v was successful.
-# 3 compiles, 0 failed with no errors.
-restart; run 10us
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.masterSequencerTests
-# Loading work.masterSequencer
-# [T=110]                                             passed in masterSequencerTests: STOPPED expected 1 actual 1
-# [T=110]                                             passed in masterSequencerTests: FETCH expected 0 actual 0
-# [T=110]                                             passed in masterSequencerTests: DECODE expected 0 actual 0
-# [T=110]                                             passed in masterSequencerTests: EXECUTE expected 0 actual 0
-# [T=110]                                             passed in masterSequencerTests: COMMIT expected 0 actual 0
-# [T=310]                                             passed in masterSequencerTests: STOPPED expected 0 actual 0
-# [T=310]                                             passed in masterSequencerTests: FETCH expected 1 actual 1
-# [T=310]                                             passed in masterSequencerTests: DECODE expected 0 actual 0
-# [T=310]                                             passed in masterSequencerTests: EXECUTE expected 0 actual 0
-# [T=310]                                             passed in masterSequencerTests: COMMIT expected 0 actual 0
-# [T=410]                                             passed in masterSequencerTests: STOPPED expected 0 actual 0
-# [T=410]                                             passed in masterSequencerTests: FETCH expected 0 actual 0
-# [T=410]                                             passed in masterSequencerTests: DECODE expected 1 actual 1
-# [T=410]                                             passed in masterSequencerTests: EXECUTE expected 0 actual 0
-# [T=410]                                             passed in masterSequencerTests: COMMIT expected 0 actual 0
-# [T=510]                                             passed in masterSequencerTests: STOPPED expected 0 actual 0
-# [T=510]                                             passed in masterSequencerTests: FETCH expected 0 actual 0
-# [T=510]                                             passed in masterSequencerTests: DECODE expected 0 actual 0
-# [T=510]                                             passed in masterSequencerTests: EXECUTE expected 1 actual 1
-# [T=510]                                             passed in masterSequencerTests: COMMIT expected 0 actual 0
-# [T=610]                                             passed in masterSequencerTests: STOPPED expected 0 actual 0
-# [T=610]                                             passed in masterSequencerTests: FETCH expected 0 actual 0
-# [T=610]                                             passed in masterSequencerTests: DECODE expected 0 actual 0
-# [T=610]                                             passed in masterSequencerTests: EXECUTE expected 0 actual 0
-# [T=610]                                             passed in masterSequencerTests: COMMIT expected 1 actual 1
-# [T=810]                                             passed in masterSequencerTests: STOPPED expected 1 actual 1
-# [T=810]                                             passed in masterSequencerTests: FETCH expected 0 actual 0
-# [T=810]                                             passed in masterSequencerTests: DECODE expected 0 actual 0
-# [T=810]                                             passed in masterSequencerTests: EXECUTE expected 0 actual 0
-# [T=810]                                             passed in masterSequencerTests: COMMIT expected 0 actual 0
-# [T=910]                                             passed in masterSequencerTests: STOPPED expected 1 actual 1
-# [T=910]                                             passed in masterSequencerTests: FETCH expected 0 actual 0
-# [T=910]                                             passed in masterSequencerTests: DECODE expected 0 actual 0
-# [T=910]                                             passed in masterSequencerTests: EXECUTE expected 0 actual 0
-# [T=910]                                             passed in masterSequencerTests: COMMIT expected 0 actual 0
-# Compile of masterSequencer.v was successful.
-# Compile of masterSequencerTests.v was successful.
-# Compile of constants.v was successful.
-# 3 compiles, 0 failed with no errors.
-restart; run 10us
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.masterSequencerTests
-# Loading work.masterSequencer
-# [T=110]                                             passed in masterSequencerTests: STOPPED expected 1 actual 1
-# [T=110]                                             passed in masterSequencerTests: FETCH expected 0 actual 0
-# [T=110]                                             passed in masterSequencerTests: DECODE expected 0 actual 0
-# [T=110]                                             passed in masterSequencerTests: EXECUTE expected 0 actual 0
-# [T=110]                                             passed in masterSequencerTests: COMMIT expected 0 actual 0
-# [T=110] FAILED in masterSequencerTests: PC_ENX expected 0 != actual 1
-# [T=110]                                             passed in masterSequencerTests: DEBUG_ACTIVE expected 0 actual 0
-# [T=310]                                             passed in masterSequencerTests: STOPPED expected 0 actual 0
-# [T=310]                                             passed in masterSequencerTests: FETCH expected 1 actual 1
-# [T=310]                                             passed in masterSequencerTests: DECODE expected 0 actual 0
-# [T=310]                                             passed in masterSequencerTests: EXECUTE expected 0 actual 0
-# [T=310]                                             passed in masterSequencerTests: COMMIT expected 0 actual 0
-# [T=410]                                             passed in masterSequencerTests: STOPPED expected 0 actual 0
-# [T=410]                                             passed in masterSequencerTests: FETCH expected 0 actual 0
-# [T=410]                                             passed in masterSequencerTests: DECODE expected 1 actual 1
-# [T=410]                                             passed in masterSequencerTests: EXECUTE expected 0 actual 0
-# [T=410]                                             passed in masterSequencerTests: COMMIT expected 0 actual 0
-# [T=510]                                             passed in masterSequencerTests: STOPPED expected 0 actual 0
-# [T=510]                                             passed in masterSequencerTests: FETCH expected 0 actual 0
-# [T=510]                                             passed in masterSequencerTests: DECODE expected 0 actual 0
-# [T=510]                                             passed in masterSequencerTests: EXECUTE expected 1 actual 1
-# [T=510]                                             passed in masterSequencerTests: COMMIT expected 0 actual 0
-# [T=610]                                             passed in masterSequencerTests: STOPPED expected 0 actual 0
-# [T=610]                                             passed in masterSequencerTests: FETCH expected 0 actual 0
-# [T=610]                                             passed in masterSequencerTests: DECODE expected 0 actual 0
-# [T=610]                                             passed in masterSequencerTests: EXECUTE expected 0 actual 0
-# [T=610]                                             passed in masterSequencerTests: COMMIT expected 1 actual 1
-# [T=810]                                             passed in masterSequencerTests: STOPPED expected 1 actual 1
-# [T=810]                                             passed in masterSequencerTests: FETCH expected 0 actual 0
-# [T=810]                                             passed in masterSequencerTests: DECODE expected 0 actual 0
-# [T=810]                                             passed in masterSequencerTests: EXECUTE expected 0 actual 0
-# [T=810]                                             passed in masterSequencerTests: COMMIT expected 0 actual 0
-# [T=810]                                             passed in masterSequencerTests: PC_ENX expected 0 actual 0
-# [T=810]                                             passed in masterSequencerTests: DEBUG_ACTIVE expected 1 actual 1
-# [T=910]                                             passed in masterSequencerTests: STOPPED expected 1 actual 1
-# [T=910]                                             passed in masterSequencerTests: FETCH expected 0 actual 0
-# [T=910]                                             passed in masterSequencerTests: DECODE expected 0 actual 0
-# [T=910]                                             passed in masterSequencerTests: EXECUTE expected 0 actual 0
-# [T=910]                                             passed in masterSequencerTests: COMMIT expected 0 actual 0
-# [T=910]                                             passed in masterSequencerTests: PC_ENX expected 0 actual 0
-# [T=910]                                             passed in masterSequencerTests: DEBUG_ACTIVE expected 1 actual 1
-# Compile of masterSequencer.v was successful.
-# Compile of masterSequencerTests.v was successful.
-# Compile of constants.v was successful.
-# 3 compiles, 0 failed with no errors.
-restart; run 10us
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.masterSequencerTests
-# Loading work.masterSequencer
-# [T=110]                                             passed in masterSequencerTests: STOPPED expected 1 actual 1
-# [T=110]                                             passed in masterSequencerTests: FETCH expected 0 actual 0
-# [T=110]                                             passed in masterSequencerTests: DECODE expected 0 actual 0
-# [T=110]                                             passed in masterSequencerTests: EXECUTE expected 0 actual 0
-# [T=110]                                             passed in masterSequencerTests: COMMIT expected 0 actual 0
-# [T=110] FAILED in masterSequencerTests: PC_ENX expected 0 != actual 1
-# [T=110]                                             passed in masterSequencerTests: DEBUG_ACTIVE expected 0 actual 0
-# [T=310]                                             passed in masterSequencerTests: STOPPED expected 0 actual 0
-# [T=310]                                             passed in masterSequencerTests: FETCH expected 1 actual 1
-# [T=310]                                             passed in masterSequencerTests: DECODE expected 0 actual 0
-# [T=310]                                             passed in masterSequencerTests: EXECUTE expected 0 actual 0
-# [T=310]                                             passed in masterSequencerTests: COMMIT expected 0 actual 0
-# [T=410]                                             passed in masterSequencerTests: STOPPED expected 0 actual 0
-# [T=410]                                             passed in masterSequencerTests: FETCH expected 0 actual 0
-# [T=410]                                             passed in masterSequencerTests: DECODE expected 1 actual 1
-# [T=410]                                             passed in masterSequencerTests: EXECUTE expected 0 actual 0
-# [T=410]                                             passed in masterSequencerTests: COMMIT expected 0 actual 0
-# [T=510]                                             passed in masterSequencerTests: STOPPED expected 0 actual 0
-# [T=510]                                             passed in masterSequencerTests: FETCH expected 0 actual 0
-# [T=510]                                             passed in masterSequencerTests: DECODE expected 0 actual 0
-# [T=510]                                             passed in masterSequencerTests: EXECUTE expected 1 actual 1
-# [T=510]                                             passed in masterSequencerTests: COMMIT expected 0 actual 0
-# [T=610]                                             passed in masterSequencerTests: STOPPED expected 0 actual 0
-# [T=610]                                             passed in masterSequencerTests: FETCH expected 0 actual 0
-# [T=610]                                             passed in masterSequencerTests: DECODE expected 0 actual 0
-# [T=610]                                             passed in masterSequencerTests: EXECUTE expected 0 actual 0
-# [T=610]                                             passed in masterSequencerTests: COMMIT expected 1 actual 1
-# [T=810]                                             passed in masterSequencerTests: STOPPED expected 1 actual 1
-# [T=810]                                             passed in masterSequencerTests: FETCH expected 0 actual 0
-# [T=810]                                             passed in masterSequencerTests: DECODE expected 0 actual 0
-# [T=810]                                             passed in masterSequencerTests: EXECUTE expected 0 actual 0
-# [T=810]                                             passed in masterSequencerTests: COMMIT expected 0 actual 0
-# [T=810]                                             passed in masterSequencerTests: PC_ENX expected 0 actual 0
-# [T=810]                                             passed in masterSequencerTests: DEBUG_ACTIVE expected 1 actual 1
-# [T=910]                                             passed in masterSequencerTests: STOPPED expected 1 actual 1
-# [T=910]                                             passed in masterSequencerTests: FETCH expected 0 actual 0
-# [T=910]                                             passed in masterSequencerTests: DECODE expected 0 actual 0
-# [T=910]                                             passed in masterSequencerTests: EXECUTE expected 0 actual 0
-# [T=910]                                             passed in masterSequencerTests: COMMIT expected 0 actual 0
-# [T=910]                                             passed in masterSequencerTests: PC_ENX expected 0 actual 0
-# [T=910]                                             passed in masterSequencerTests: DEBUG_ACTIVE expected 1 actual 1
-# Compile of masterSequencer.v was successful.
-# Compile of masterSequencerTests.v was successful.
-# Compile of constants.v was successful.
-# 3 compiles, 0 failed with no errors.
-restart; run 10us
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.masterSequencerTests
-# Loading work.masterSequencer
-# [T=110]                                             passed in masterSequencerTests: STOPPED expected 1 actual 1
-# [T=110]                                             passed in masterSequencerTests: FETCH expected 0 actual 0
-# [T=110]                                             passed in masterSequencerTests: DECODE expected 0 actual 0
-# [T=110]                                             passed in masterSequencerTests: EXECUTE expected 0 actual 0
-# [T=110]                                             passed in masterSequencerTests: COMMIT expected 0 actual 0
-# [T=110] FAILED in masterSequencerTests: PC_ENX expected 0 != actual 1
-# [T=110]                                             passed in masterSequencerTests: DEBUG_ACTIVE expected 0 actual 0
-# [T=310]                                             passed in masterSequencerTests: STOPPED expected 0 actual 0
-# [T=310]                                             passed in masterSequencerTests: FETCH expected 1 actual 1
-# [T=310]                                             passed in masterSequencerTests: DECODE expected 0 actual 0
-# [T=310]                                             passed in masterSequencerTests: EXECUTE expected 0 actual 0
-# [T=310]                                             passed in masterSequencerTests: COMMIT expected 0 actual 0
-# [T=410]                                             passed in masterSequencerTests: STOPPED expected 0 actual 0
-# [T=410]                                             passed in masterSequencerTests: FETCH expected 0 actual 0
-# [T=410]                                             passed in masterSequencerTests: DECODE expected 1 actual 1
-# [T=410]                                             passed in masterSequencerTests: EXECUTE expected 0 actual 0
-# [T=410]                                             passed in masterSequencerTests: COMMIT expected 0 actual 0
-# [T=510]                                             passed in masterSequencerTests: STOPPED expected 0 actual 0
-# [T=510]                                             passed in masterSequencerTests: FETCH expected 0 actual 0
-# [T=510]                                             passed in masterSequencerTests: DECODE expected 0 actual 0
-# [T=510]                                             passed in masterSequencerTests: EXECUTE expected 1 actual 1
-# [T=510]                                             passed in masterSequencerTests: COMMIT expected 0 actual 0
-# [T=610]                                             passed in masterSequencerTests: STOPPED expected 0 actual 0
-# [T=610]                                             passed in masterSequencerTests: FETCH expected 0 actual 0
-# [T=610]                                             passed in masterSequencerTests: DECODE expected 0 actual 0
-# [T=610]                                             passed in masterSequencerTests: EXECUTE expected 0 actual 0
-# [T=610]                                             passed in masterSequencerTests: COMMIT expected 1 actual 1
-# [T=810]                                             passed in masterSequencerTests: STOPPED expected 1 actual 1
-# [T=810]                                             passed in masterSequencerTests: FETCH expected 0 actual 0
-# [T=810]                                             passed in masterSequencerTests: DECODE expected 0 actual 0
-# [T=810]                                             passed in masterSequencerTests: EXECUTE expected 0 actual 0
-# [T=810]                                             passed in masterSequencerTests: COMMIT expected 0 actual 0
-# [T=810]                                             passed in masterSequencerTests: PC_ENX expected 0 actual 0
-# [T=810]                                             passed in masterSequencerTests: DEBUG_ACTIVE expected 1 actual 1
-# [T=910]                                             passed in masterSequencerTests: STOPPED expected 1 actual 1
-# [T=910]                                             passed in masterSequencerTests: FETCH expected 0 actual 0
-# [T=910]                                             passed in masterSequencerTests: DECODE expected 0 actual 0
-# [T=910]                                             passed in masterSequencerTests: EXECUTE expected 0 actual 0
-# [T=910]                                             passed in masterSequencerTests: COMMIT expected 0 actual 0
-# [T=910]                                             passed in masterSequencerTests: PC_ENX expected 0 actual 0
-# [T=910]                                             passed in masterSequencerTests: DEBUG_ACTIVE expected 1 actual 1
-# Compile of masterSequencer.v was successful.
-# Compile of masterSequencerTests.v was successful.
-# Compile of constants.v was successful.
-# 3 compiles, 0 failed with no errors.
-restart; run 10us
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.masterSequencerTests
-# Loading work.masterSequencer
-# [T=110]                                             passed in masterSequencerTests: STOPPED expected 1 actual 1
-# [T=110]                                             passed in masterSequencerTests: FETCH expected 0 actual 0
-# [T=110]                                             passed in masterSequencerTests: DECODE expected 0 actual 0
-# [T=110]                                             passed in masterSequencerTests: EXECUTE expected 0 actual 0
-# [T=110]                                             passed in masterSequencerTests: COMMIT expected 0 actual 0
-# [T=110] FAILED in masterSequencerTests: PC_ENX expected 0 != actual 1
-# [T=110]                                             passed in masterSequencerTests: DEBUG_ACTIVE expected 0 actual 0
-# [T=310]                                             passed in masterSequencerTests: STOPPED expected 0 actual 0
-# [T=310]                                             passed in masterSequencerTests: FETCH expected 1 actual 1
-# [T=310]                                             passed in masterSequencerTests: DECODE expected 0 actual 0
-# [T=310]                                             passed in masterSequencerTests: EXECUTE expected 0 actual 0
-# [T=310]                                             passed in masterSequencerTests: COMMIT expected 0 actual 0
-# [T=410]                                             passed in masterSequencerTests: STOPPED expected 0 actual 0
-# [T=410]                                             passed in masterSequencerTests: FETCH expected 0 actual 0
-# [T=410]                                             passed in masterSequencerTests: DECODE expected 1 actual 1
-# [T=410]                                             passed in masterSequencerTests: EXECUTE expected 0 actual 0
-# [T=410]                                             passed in masterSequencerTests: COMMIT expected 0 actual 0
-# [T=510]                                             passed in masterSequencerTests: STOPPED expected 0 actual 0
-# [T=510]                                             passed in masterSequencerTests: FETCH expected 0 actual 0
-# [T=510]                                             passed in masterSequencerTests: DECODE expected 0 actual 0
-# [T=510]                                             passed in masterSequencerTests: EXECUTE expected 1 actual 1
-# [T=510]                                             passed in masterSequencerTests: COMMIT expected 0 actual 0
-# [T=610]                                             passed in masterSequencerTests: STOPPED expected 0 actual 0
-# [T=610]                                             passed in masterSequencerTests: FETCH expected 0 actual 0
-# [T=610]                                             passed in masterSequencerTests: DECODE expected 0 actual 0
-# [T=610]                                             passed in masterSequencerTests: EXECUTE expected 0 actual 0
-# [T=610]                                             passed in masterSequencerTests: COMMIT expected 1 actual 1
-# [T=810]                                             passed in masterSequencerTests: STOPPED expected 1 actual 1
-# [T=810]                                             passed in masterSequencerTests: FETCH expected 0 actual 0
-# [T=810]                                             passed in masterSequencerTests: DECODE expected 0 actual 0
-# [T=810]                                             passed in masterSequencerTests: EXECUTE expected 0 actual 0
-# [T=810]                                             passed in masterSequencerTests: COMMIT expected 0 actual 0
-# [T=810]                                             passed in masterSequencerTests: PC_ENX expected 0 actual 0
-# [T=810]                                             passed in masterSequencerTests: DEBUG_ACTIVE expected 1 actual 1
-# [T=910]                                             passed in masterSequencerTests: STOPPED expected 1 actual 1
-# [T=910]                                             passed in masterSequencerTests: FETCH expected 0 actual 0
-# [T=910]                                             passed in masterSequencerTests: DECODE expected 0 actual 0
-# [T=910]                                             passed in masterSequencerTests: EXECUTE expected 0 actual 0
-# [T=910]                                             passed in masterSequencerTests: COMMIT expected 0 actual 0
-# [T=910]                                             passed in masterSequencerTests: PC_ENX expected 0 actual 0
-# [T=910]                                             passed in masterSequencerTests: DEBUG_ACTIVE expected 1 actual 1
-# Compile of masterSequencer.v was successful.
-# Compile of masterSequencerTests.v was successful.
-# Compile of constants.v was successful.
-# 3 compiles, 0 failed with no errors.
-restart; run 10us
-# ** Note: (vsim-12125) Error and warning message counts have been reset to '0' because of 'restart'.
-# Loading work.masterSequencerTests
-# Loading work.masterSequencer
-# [T=110]                                             passed in masterSequencerTests: STOPPED expected 1 actual 1
-# [T=110]                                             passed in masterSequencerTests: FETCH expected 0 actual 0
-# [T=110]                                             passed in masterSequencerTests: DECODE expected 0 actual 0
-# [T=110]                                             passed in masterSequencerTests: EXECUTE expected 0 actual 0
-# [T=110]                                             passed in masterSequencerTests: COMMIT expected 0 actual 0
-# [T=110]                                             passed in masterSequencerTests: PC_ENX expected 0 actual 0
-# [T=110]                                             passed in masterSequencerTests: DEBUG_ACTIVE expected 0 actual 0
-# [T=310]                                             passed in masterSequencerTests: STOPPED expected 0 actual 0
-# [T=310]                                             passed in masterSequencerTests: FETCH expected 1 actual 1
-# [T=310]                                             passed in masterSequencerTests: DECODE expected 0 actual 0
-# [T=310]                                             passed in masterSequencerTests: EXECUTE expected 0 actual 0
-# [T=310]                                             passed in masterSequencerTests: COMMIT expected 0 actual 0
-# [T=410]                                             passed in masterSequencerTests: STOPPED expected 0 actual 0
-# [T=410]                                             passed in masterSequencerTests: FETCH expected 0 actual 0
-# [T=410]                                             passed in masterSequencerTests: DECODE expected 1 actual 1
-# [T=410]                                             passed in masterSequencerTests: EXECUTE expected 0 actual 0
-# [T=410]                                             passed in masterSequencerTests: COMMIT expected 0 actual 0
-# [T=510]                                             passed in masterSequencerTests: STOPPED expected 0 actual 0
-# [T=510]                                             passed in masterSequencerTests: FETCH expected 0 actual 0
-# [T=510]                                             passed in masterSequencerTests: DECODE expected 0 actual 0
-# [T=510]                                             passed in masterSequencerTests: EXECUTE expected 1 actual 1
-# [T=510]                                             passed in masterSequencerTests: COMMIT expected 0 actual 0
-# [T=610]                                             passed in masterSequencerTests: STOPPED expected 0 actual 0
-# [T=610]                                             passed in masterSequencerTests: FETCH expected 0 actual 0
-# [T=610]                                             passed in masterSequencerTests: DECODE expected 0 actual 0
-# [T=610]                                             passed in masterSequencerTests: EXECUTE expected 0 actual 0
-# [T=610]                                             passed in masterSequencerTests: COMMIT expected 1 actual 1
-# [T=810]                                             passed in masterSequencerTests: STOPPED expected 1 actual 1
-# [T=810]                                             passed in masterSequencerTests: FETCH expected 0 actual 0
-# [T=810]                                             passed in masterSequencerTests: DECODE expected 0 actual 0
-# [T=810]                                             passed in masterSequencerTests: EXECUTE expected 0 actual 0
-# [T=810]                                             passed in masterSequencerTests: COMMIT expected 0 actual 0
-# [T=810]                                             passed in masterSequencerTests: PC_ENX expected 0 actual 0
-# [T=810]                                             passed in masterSequencerTests: DEBUG_ACTIVE expected 1 actual 1
-# [T=910]                                             passed in masterSequencerTests: STOPPED expected 1 actual 1
-# [T=910]                                             passed in masterSequencerTests: FETCH expected 0 actual 0
-# [T=910]                                             passed in masterSequencerTests: DECODE expected 0 actual 0
-# [T=910]                                             passed in masterSequencerTests: EXECUTE expected 0 actual 0
-# [T=910]                                             passed in masterSequencerTests: COMMIT expected 0 actual 0
-# [T=910]                                             passed in masterSequencerTests: PC_ENX expected 0 actual 0
-# [T=910]                                             passed in masterSequencerTests: DEBUG_ACTIVE expected 1 actual 1
+# Loading work.busInterfaceTests
+# Loading work.busInterface

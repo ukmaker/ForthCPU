@@ -118,6 +118,9 @@
 `define DEBUG_REG_ADDR_ARGL    3'b110
 `define DEBUG_REG_ADDR_ARGH    3'b111
 
+`define DEBUG_DATA_SELX_OP   1'b0
+`define DEBUG_DATA_SELX_ARG  1'b1
+
 `define DEBUG_ADDR_INCX_NONE 1'b0
 `define DEBUG_ADDR_INCX_INC  1'b1
 
@@ -150,6 +153,15 @@
 `define DEBUG_MODEX_EN_WATCH 8'b00010000
 `define DEBUG_MODEX_RESET    8'b00100000
 `define DEBUG_MODEX_INC      8'b01000000
+
+`define BUS_SEQX_IDLE       3'b000
+`define BUS_SEQX_IFETCH     3'b001
+`define BUS_SEQX_ARGRD      3'b010
+`define BUS_SEQX_ARGWR      3'b011
+`define BUS_SEQX_DFETCH     3'b100
+`define BUS_SEQX_DARGRD     3'b101
+`define BUS_SEQX_DARGWR     3'b110
+`define BUS_SEQX_ILLGL      3'b111
 
 /*******************************************
 * Program counter control inputs

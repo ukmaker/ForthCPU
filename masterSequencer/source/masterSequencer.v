@@ -52,6 +52,7 @@ module masterSequencer(
 reg [3:0] PHASE_R;
 reg [3:0] PHASE_NEXT;
 reg RESET_R;
+reg REQ_ARMED_R;
 wire PC_STOP;
 
 wire DEBUG_ACTIVE_NEXT;
@@ -80,6 +81,22 @@ always @(posedge CLK or posedge RESET) begin
 	end
 end
 
+/***************************************************
+* Reset trigger arming after REQ goes low following
+* ACK
+***************************************************/
+always @(posedge CLK or posedge RESET) begin
+	if(RESET) begin
+		REQ_ARMED_R <= 1;
+	end else begin
+		if(PHASE_NEXT == `PHI_DEBUG_DECODE) begin
+			REQ_ARMED_R <= 0;
+		end else if(PHASE_NEXT == `PHI_DEBUG_STOPPED && DEBUG_REQ == 0) begin
+			REQ_ARMED_R <= 1;
+		end
+	end
+end
+
 always @(*) begin
 	case(PHASE_R)
 		`PHI_STOPPED: begin
@@ -105,7 +122,7 @@ always @(*) begin
 		`PHI_COMMIT:  PHASE_NEXT = `PHI_FETCH;
 		
 		`PHI_DEBUG_STOPPED: begin
-			if(DEBUG_REQ) begin
+			if(DEBUG_REQ & REQ_ARMED_R) begin
 				PHASE_NEXT = `PHI_DEBUG_DECODE;
 			end else if(!(DEBUG_MODE_STOP | DEBUG_AT_BKP | DEBUG_IN_WATCH)) begin
 				PHASE_NEXT = `PHI_STOPPED;
@@ -120,12 +137,7 @@ always @(*) begin
 		`PHI_DEBUG_FETCH:  PHASE_NEXT = `PHI_DEBUG_ACK;
 		
 		`PHI_DEBUG_ACK: begin
-			// Wait for REQ to go low
-			if(!DEBUG_REQ) begin
-				PHASE_NEXT = `PHI_DEBUG_STOPPED;
-			end else begin
-				PHASE_NEXT = `PHI_DEBUG_ACK;
-			end
+			PHASE_NEXT = `PHI_DEBUG_STOPPED;
 		end
 		
 		default: begin
@@ -149,7 +161,7 @@ always @(posedge CLK or posedge RESET) begin
 		HALTED             <= 0;
 		DEBUG_ACTIVE       <= 0;
 	end else begin
-		STOPPED            <= PHASE_NEXT == `PHI_STOPPED || PHASE_NEXT == `PHI_DEBUG_STOPPED;
+		STOPPED            <= PHASE_NEXT == `PHI_STOPPED || PHASE_NEXT == `PHI_DEBUG_STOPPED || PHASE_NEXT == `PHI_DEBUG_ACK;
 		FETCH              <= PHASE_NEXT == `PHI_FETCH   || PHASE_NEXT == `PHI_DEBUG_FETCH;
 		DECODE             <= PHASE_NEXT == `PHI_DECODE  || PHASE_NEXT == `PHI_DEBUG_DECODE;
 		EXECUTE            <= PHASE_NEXT == `PHI_EXECUTE || PHASE_NEXT == `PHI_DEBUG_EXECUTE;
