@@ -12,10 +12,22 @@ module snooper (
 	input RESET,
 	input FETCH, DECODE, EXECUTE, COMMIT,
 	
+	/******************************************
+	* Inputs from the CPU for normal cycles
+	*******************************************/
 	input [15:0] DIN,
 	input [15:0] ADDR,
 	input         RD,
 	input         WR,
+	
+	/******************************************
+	* Additional input from DEBUG_SEQ for
+	* debug cycles to enable internal register
+	* reads putting data on the bus but not
+	* running a normal write-cycle
+	*******************************************/
+	input DEBUG_SNOOP_WR,
+	
 	
 	output reg [15:0] SNOOP_INST_ADDR,
 	output reg [15:0] SNOOP_INST_DATA,
@@ -38,7 +50,7 @@ always @(posedge CLK or posedge RESET) begin
 			SNOOP_INST_ADDR <= ADDR;
 			SNOOP_INST_DATA <= DIN;
 		end else if(COMMIT) begin
-			if(RD | WR) begin
+			if(RD | WR | DEBUG_SNOOP_WR) begin
 				// arg capture
 				SNOOP_ARG_ADDR  <= ADDR;
 				SNOOP_ARG_DATA  <= DIN;

@@ -1,0 +1,60 @@
+`timescale 1 ns / 1 ns
+
+`include "../../constants.v"
+`include "../../testSetup.v"
+
+
+module masterSequencerTests;
+	
+	reg CLK;
+	reg RESET;
+	// input DEBUG_MODE_RESET;
+	reg DEBUG_REQ;
+	reg DEBUG_MODE_STOP;
+	reg DEBUG_MODE_INC;
+	reg DEBUG_AT_BKP;
+	reg DEBUG_IN_WATCH;
+	reg HALTX;
+	
+	wire STOPPED;
+	wire FETCH;
+	wire DECODE;
+	wire EXECUTE;
+	wire COMMIT;
+	
+	wire DEBUG_ACK;
+	wire DEBUG_MR_ADDR_INCX;
+	wire HALTED;
+	wire PC_ENX;
+	
+	wire DEBUG_ACTIVE;
+	
+	masterSequencer testArticle(
+		. CLK;
+		. RESET;
+		// input DEBUG_MODE_RESET;
+		. DEBUG_REQ;
+		. DEBUG_MODE_STOP;
+		. DEBUG_MODE_INC;
+		. DEBUG_AT_BKP;
+		. DEBUG_IN_WATCH;
+		. HALTX;
+		
+		. STOPPED;
+		. FETCH;
+		. DECODE;
+		. EXECUTE;
+		. COMMIT;
+		
+		. DEBUG_ACK;
+		. DEBUG_MR_ADDR_INCX;
+		. HALTED;
+		. PC_ENX;
+		
+		. DEBUG_ACTIVE;	
+	);
+
+
+
+
+endmodule

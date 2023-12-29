@@ -1,9 +1,19 @@
 `include "C:/Users/Duncan/git/ForthCPU/constants.v"
-/**************************************************
-* Generates the data load and address increment
-* signals for the debugPort.
-* Driven by OPX signals decoded by the debugDecoder
-***************************************************/
+/******************************************************************
+* Generate 
+* - the load signal for the snooper
+* - bus control signals
+* - provide DEBUG_MR_ADDR_INCX at the right time (^CLK & FETCH)
+*
+* Sequence types are
+*                      RD WR DEBUG_WR DIN_BUSX ADDR_BUSX
+* - DEBUG_SEQ_NONE   : 0  0      0     NONE     NONE
+* - DEBUG_SEQ_RD_REG : 0  0      1     NONE     NONE   
+* - DEBUG_SEQ_WR_REG : 1  0      0     DEBUG_MD DEBUG_MA
+* - DEBUG_SEQ_RD_MEM : 0  0      1     DEBUG_MD DEBUG_MA
+* - DEBUG_SEQ_WR_MEM : 0  1      0     DEBUG_MD DEBUG_MA
+*
+*******************************************************************/
 
 module debugSequencer(
 	input CLK,

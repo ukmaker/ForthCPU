@@ -2,7 +2,8 @@
 
 /*************************************************
 * Decode DEBUG_OPX to provide register and memory 
-* control signals
+* control signals for DEBUG operations
+* 
 **************************************************/
 module debugDecoder(
 	input              DEBUG_ADDR_INC_I,
