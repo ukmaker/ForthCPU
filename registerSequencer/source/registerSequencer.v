@@ -38,7 +38,6 @@ module registerSequencer(
 	input DECODE,
 	input EXECUTE,
 	input COMMIT,
-	input STOPPED,
 	
 	input [3:0] REG_SEQX,
 	

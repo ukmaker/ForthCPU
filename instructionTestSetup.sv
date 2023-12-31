@@ -51,11 +51,11 @@
 	`asserth("ADDR_BUF", st_addr, ADDR_BUF) \
 	`asserth("DOUT_BUF", st_data, DOUT_BUF) \
 	$display("%04d COMMIT  [T=%09t]", n, $realtime); \
+	`assert("WRN0_BUF", 0, WRN0_BUF) \
+	`assert("WRN1_BUF", 0, WRN1_BUF) \
 	`TICK; \
 	`asserth("ADDR_BUF", st_addr, ADDR_BUF) \
 	`asserth("DOUT_BUF", st_data, DOUT_BUF) \
-	`assert("WRN0_BUF", 0, WRN0_BUF) \
-	`assert("WRN1_BUF", 0, WRN1_BUF) \
 	`TOCK;
 	
 
@@ -74,11 +74,11 @@
 	`asserth("ADDR_BUF", st_addr, ADDR_BUF) \
 	`asserth("DOUT_BUF", st_data, DOUT_BUF) \
 	$display("%04d COMMIT  [T=%09t]", n, $realtime); \
+	`assert("WRN0_BUF", 0, WRN0_BUF) \
+	`assert("WRN1_BUF", 1, WRN1_BUF) \
 	`TICK; \
 	`asserth("ADDR_BUF", st_addr, ADDR_BUF) \
 	`asserth("DOUT_BUF", st_data, DOUT_BUF) \
-	`assert("WRN0_BUF", 0, WRN0_BUF) \
-	`assert("WRN1_BUF", 1, WRN1_BUF) \
 	`TOCK;
 	
 	
@@ -98,11 +98,11 @@
 	`asserth("ADDR_BUF", st_addr, ADDR_BUF) \
 	`asserth("DOUT_BUF", st_data, DOUT_BUF) \
 	$display("%04d COMMIT  [T=%09t]", n, $realtime); \
+	`assert("WRN0_BUF", 1, WRN0_BUF) \
+	`assert("WRN1_BUF", 0, WRN1_BUF) \
 	`TICK; \
 	`asserth("ADDR_BUF", st_addr, ADDR_BUF) \
 	`asserth("DOUT_BUF", st_data, DOUT_BUF) \
-	`assert("WRN0_BUF", 1, WRN0_BUF) \
-	`assert("WRN1_BUF", 0, WRN1_BUF) \
 	`TOCK;
 	
 	
@@ -133,7 +133,7 @@
 	$display("%04d LDI    [T=%09t] R%02x, %04x", n, $realtime, rr, ld_data); \
 	#1 \
 	`asserth("ADDR", addr, ADDR_BUF) \
-	#49 DIN = {`GROUP_LOAD_STORE, 1'b0, `LDSOPF_LD, `MODE_LDS_REG_HERE, rr, 4'b0000}; \
+	#49 DIN = {`GROUPX_LDS, 1'b0, `LDSOPF_LD, `MODE_LDS_REG_HERE, rr, 4'b0000}; \
 	#50 \
 	`assert("WRN0_BUF", 1, WRN0_BUF) \
 	`assert("WRN1_BUF", 1, WRN1_BUF) \
@@ -261,104 +261,104 @@
 	`TOCK;
 
 `define MOV(n, addr, a, b) \
-	INSTR = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_MOV,`MODE_ALU_REG_REG, a, b}; \
+	INSTR = {`GROUPX_ALU,`ALU_OPX_MOV,`MODE_ALU_REG_REG, a, b}; \
 	`ALU_STEP(  n, addr,   INSTR, $sformatf("MOV R%1x,R%1x", a, b))
 
 `define MOVI(n, addr, a, b) \
-	INSTR = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_MOV,`MODE_ALU_REG_U4, a, b}; \
+	INSTR = {`GROUPX_ALU,`ALU_OPX_MOV,`MODE_ALU_REG_U4, a, b}; \
 	`ALU_STEP(  n, addr,   INSTR, $sformatf("MOVI R%1x,%1x", a, b))
 	
 `define MOVAI(n, addr, a) \
-	INSTR = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_MOV,`MODE_ALU_REGA_U8, a}; \
+	INSTR = {`GROUPX_ALU,`ALU_OPX_MOV,`MODE_ALU_REGA_U8, a}; \
 	`ALU_STEP(  n, addr,   INSTR, $sformatf("MOVAI %1x", a))
 	
 `define MOVAS(n, addr, a) \
-	INSTR = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_MOV,`MODE_ALU_REGA_S8, a}; \
+	INSTR = {`GROUPX_ALU,`ALU_OPX_MOV,`MODE_ALU_REGA_S8, a}; \
 	`ALU_STEP(  n, addr,   INSTR, $sformatf("MOVAS %1x", a))
 `define ADD(n, addr, a, b) \
-	INSTR = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_ADD,`MODE_ALU_REG_REG, a, b}; \
+	INSTR = {`GROUPX_ALU,`ALU_OPX_ADD,`MODE_ALU_REG_REG, a, b}; \
 	`ALU_STEP(  n, addr,   INSTR, $sformatf("ADD R%1x,R%1x", a, b))
 
 `define ADDI(n, addr, a, b) \
-	INSTR = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_ADD,`MODE_ALU_REG_U4, a, b}; \
+	INSTR = {`GROUPX_ALU,`ALU_OPX_ADD,`MODE_ALU_REG_U4, a, b}; \
 	`ALU_STEP(  n, addr,   INSTR, $sformatf("ADDI R%1x,%1x", a, b))
 	
 `define ADDAI(n, addr, a) \
-	INSTR = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_ADD,`MODE_ALU_REGA_U8, a}; \
+	INSTR = {`GROUPX_ALU,`ALU_OPX_ADD,`MODE_ALU_REGA_U8, a}; \
 	`ALU_STEP(  n, addr,   INSTR, $sformatf("ADDAI %1x", a))
 	
 `define ADDAS(n, addr, a) \
-	INSTR = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_ADD,`MODE_ALU_REGA_S8, a}; \
+	INSTR = {`GROUPX_ALU,`ALU_OPX_ADD,`MODE_ALU_REGA_S8, a}; \
 	`ALU_STEP(  n, addr,   INSTR, $sformatf("ADDAS %1x", a))
 `define AND(n, addr, a, b) \
-	INSTR = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_AND,`MODE_ALU_REG_REG, a, b}; \
+	INSTR = {`GROUPX_ALU,`ALU_OPX_AND,`MODE_ALU_REG_REG, a, b}; \
 	`ALU_STEP(  n, addr,   INSTR, $sformatf("AND R%1x,R%1x", a, b))
 
 `define ANDI(n, addr, a, b) \
-	INSTR = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_AND,`MODE_ALU_REG_U4, a, b}; \
+	INSTR = {`GROUPX_ALU,`ALU_OPX_AND,`MODE_ALU_REG_U4, a, b}; \
 	`ALU_STEP(  n, addr,   INSTR, $sformatf("ANDI R%1x,%1x", a, b))
 	
 `define ANDAI(n, addr, a) \
-	INSTR = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_AND,`MODE_ALU_REGA_U8, a}; \
+	INSTR = {`GROUPX_ALU,`ALU_OPX_AND,`MODE_ALU_REGA_U8, a}; \
 	`ALU_STEP(  n, addr,   INSTR, $sformatf("ANDAI %1x", a))
 	
 `define ANDAS(n, addr, a) \
-	INSTR = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_AND,`MODE_ALU_REGA_S8, a}; \
+	INSTR = {`GROUPX_ALU,`ALU_OPX_AND,`MODE_ALU_REGA_S8, a}; \
 	`ALU_STEP(  n, addr,   INSTR, $sformatf("ANDAS %1x", a))
 
 `define SUB(n, addr, a, b) \
-	INSTR = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_SUB,`MODE_ALU_REG_REG, a, b}; \
+	INSTR = {`GROUPX_ALU,`ALU_OPX_SUB,`MODE_ALU_REG_REG, a, b}; \
 	`ALU_STEP(  n, addr,   INSTR, $sformatf("SUB R%1x,R%1x", a, b))
 
 `define SUBI(n, addr, a, b) \
-	INSTR = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_SUB,`MODE_ALU_REG_U4, a, b}; \
+	INSTR = {`GROUPX_ALU,`ALU_OPX_SUB,`MODE_ALU_REG_U4, a, b}; \
 	`ALU_STEP(  n, addr,   INSTR, $sformatf("SUBI R%1x,%1x", a, b))
 	
 `define SUBAI(n, addr, a) \
-	INSTR = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_SUB,`MODE_ALU_REGA_U8, a}; \
+	INSTR = {`GROUPX_ALU,`ALU_OPX_SUB,`MODE_ALU_REGA_U8, a}; \
 	`ALU_STEP(  n, addr,   INSTR, $sformatf("SUBAI %1x", a))
 	
 `define SUBAS(n, addr, a) \
-	INSTR = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_SUB,`MODE_ALU_REGA_S8, a}; \
+	INSTR = {`GROUPX_ALU,`ALU_OPX_SUB,`MODE_ALU_REGA_S8, a}; \
 	`ALU_STEP(  n, addr,   INSTR, $sformatf("SUBAS %1x", a))
 
 `define CMP(n, addr, a, b) \
-	INSTR = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_CMP,`MODE_ALU_REG_REG, a, b}; \
+	INSTR = {`GROUPX_ALU,`ALU_OPX_CMP,`MODE_ALU_REG_REG, a, b}; \
 	`ALU_STEP(  n, addr,   INSTR, $sformatf("CMP R%1x,R%1x", a, b))
 
 `define CMPI(n, addr, a, b) \
-	INSTR = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_CMP,`MODE_ALU_REG_U4, a, b}; \
+	INSTR = {`GROUPX_ALU,`ALU_OPX_CMP,`MODE_ALU_REG_U4, a, b}; \
 	`ALU_STEP(  n, addr,   INSTR, $sformatf("CMPI R%1x,%1x", a, b))
 	
 `define CMPAI(n, addr, a) \
-	INSTR = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_CMP,`MODE_ALU_REGA_U8, a}; \
+	INSTR = {`GROUPX_ALU,`ALU_OPX_CMP,`MODE_ALU_REGA_U8, a}; \
 	`ALU_STEP(  n, addr,   INSTR, $sformatf("CMPAI %1x", a))
 	
 `define CMPAS(n, addr, a) \
-	INSTR = {`GROUP_ARITHMETIC_LOGIC,`ALU_OPX_CMP,`MODE_ALU_REGA_S8, a}; \
+	INSTR = {`GROUPX_ALU,`ALU_OPX_CMP,`MODE_ALU_REGA_S8, a}; \
 	`ALU_STEP(  n, addr,   INSTR, $sformatf("CMPAS %1x", a))
 
 `define LD(n, pc_addr, addr, data, a, b) \
-	INSTR = {`GROUP_LOAD_STORE,1'b0,`LDSOPF_LD,`MODE_LDS_REG_REG, a, b}; \
+	INSTR = {`GROUPX_LDS,1'b0,`LDSOPF_LD,`MODE_LDS_REG_REG, a, b}; \
 	`LD_STEP(  n, pc_addr,   INSTR, addr, data, $sformatf("LD R%1x,R%1x", a, b))
 
 `define LDI(n, pc_addr, data, a) \
 	`LD_HERE_STEP(  n, pc_addr, data, a)
 
 `define ST(n, pc_addr, addr, data, a, b) \
-	INSTR = {`GROUP_LOAD_STORE,1'b0,`LDSOPF_ST,`MODE_LDS_REG_REG,a, b}; \
+	INSTR = {`GROUPX_LDS,1'b0,`LDSOPF_ST,`MODE_LDS_REG_REG,a, b}; \
 	`ST_STEP(   n, pc_addr,   INSTR, addr, data, $sformatf("ST R%1x,R%1x", a, b))
 
 `define JP(n, pc_addr, dest, taken, skip, cond, reg) \
-	INSTR = {`GROUP_JUMP, skip, cond, `MODE_JMP_ABS_REG, 1'b0, 3'b0, reg};\
+	INSTR = {`GROUPX_JMP, skip, cond, `MODE_JMP_ABS_REG, 1'b0, 3'b0, reg};\
 	`JMP_STEP(n, pc_addr, INSTR, dest, taken, $sformatf("JP R%1x",reg))
 	
 `define JPI(n, pc_addr, dest, skip, cond) \
-	INSTR = {`GROUP_JUMP, skip, cond, `MODE_JMP_ABS_HERE, 8'h00};\
+	INSTR = {`GROUPX_JMP, skip, cond, `MODE_JMP_ABS_HERE, 8'h00};\
 	`JMP_HERE_STEP(n, pc_addr, INSTR, dest, $sformatf("JPI %4x",dest))
 	
 `define JPI_N(n, pc_addr, dest, skip, cond) \
-	INSTR = {`GROUP_JUMP, skip, cond, `MODE_JMP_ABS_HERE, 8'h00};\
+	INSTR = {`GROUPX_JMP, skip, cond, `MODE_JMP_ABS_HERE, 8'h00};\
 	`JMP_HERE_N_STEP(n, pc_addr, INSTR, $sformatf("JPI %4x",dest))
 	
 	

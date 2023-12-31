@@ -27,8 +27,8 @@ module interruptStateMachine(
 	input INT1, 
 	
 	output reg [2:0] PC_NEXTX,
-	output reg PC_LD_INT0,
-	output reg PC_LD_INT1,
+	output reg PC_LD_INT0X,
+	output reg PC_LD_INT1X,
 	
 	output reg CCL_ENRX,
 	output reg CCL_EN0X,
@@ -266,14 +266,14 @@ always @(posedge CLK or posedge RESET) begin
 	if(RESET) begin
 		STATE <= `INT_STATE_RUN;
 		PC_NEXTX <= `PC_NEXTX_NEXT;
-		PC_LD_INT0 <= 0;
-		PC_LD_INT1 <= 0;
+		PC_LD_INT0X <= 0;
+		PC_LD_INT1X <= 0;
 		EI <= 0;
 	end else if(COMMIT) begin
 		STATE <= STATE_NEXT;
 		PC_NEXTX <= PC_NEXTX_NEXT;
-		PC_LD_INT0 <= PC_LD_INT0_NEXT;
-		PC_LD_INT1 <= PC_LD_INT1_NEXT;
+		PC_LD_INT0X <= PC_LD_INT0_NEXT;
+		PC_LD_INT1X <= PC_LD_INT1_NEXT;
 		if(EIX) begin
 			EI <= 1;
 		end else if(DIX) begin

@@ -73,11 +73,18 @@ assign PC_STOP = DEBUG_ACTIVE_NEXT;
 ***************************************************/
 always @(posedge CLK or posedge RESET) begin
 	if(RESET) begin
-		PC_ENX <= 0;
+		PC_ENX  <= ~DEBUG_MODE_STOP;
 		RESET_R <= 1;
 	end else begin
 		RESET_R <= 0;
-		PC_ENX  <= ~PC_STOP & ~RESET_R;
+		// First cycle out of reset
+		// - PC enabled if no DEBUG_STOP
+		// After that PC enable follow PC_STOP
+		if(RESET_R) begin
+			PC_ENX <= ~DEBUG_MODE_STOP;
+		end else begin
+			PC_ENX <= ~PC_STOP;
+		end
 	end
 end
 

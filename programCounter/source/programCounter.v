@@ -27,9 +27,9 @@ module programCounter(
 	input [1:0] PC_OFFSETX,
 	
 	input DEBUG_LD_BKP_EN,
-	input EN_BKPX,
+	input DEBUG_EN_BKPX,
 	input [15:0] DIN_BKP,
-	output reg AT_BKP,
+	output reg DEBUG_AT_BKP,
 	
 	input [15:0] REGB_DOUT,
 	input [15:0] DIN,
@@ -51,7 +51,6 @@ reg BKP_ACTIVE;
 wire [15:0] ZERO = 16'h0000;
 wire [15:0] TWO  = 16'h0002;
 wire [15:0] FOUR  = 16'h0004;
-reg [15:0] PC_NEXT;
 
 
 // The input muxes and adder
@@ -77,15 +76,13 @@ end
 // The next address mux
 always @(*) begin
 	case(PC_NEXTX) 
-		`PC_NEXTX_NEXT:  PC_NEXT = SUM;
-		`PC_NEXTX_INTV0: PC_NEXT = `INTV0;
-		`PC_NEXTX_INTV1: PC_NEXT = `INTV1;
-		`PC_NEXTX_INTR0: PC_NEXT = INTR0;
-		`PC_NEXTX_INTR1: PC_NEXT = INTR1;
-		default:         PC_NEXT = SUM;
+		`PC_NEXTX_NEXT:  PC_A_NEXT = SUM;
+		`PC_NEXTX_INTV0: PC_A_NEXT = `INTV0;
+		`PC_NEXTX_INTV1: PC_A_NEXT = `INTV1;
+		`PC_NEXTX_INTR0: PC_A_NEXT = INTR0;
+		`PC_NEXTX_INTR1: PC_A_NEXT = INTR1;
+		default:         PC_A_NEXT = SUM;
 	endcase
-	
-	PC_A_NEXT = PC_NEXT;
 end
 
 // The INT0 register
@@ -111,7 +108,7 @@ always @(posedge CLK or posedge RESET) begin
 	if(RESET) begin
 		HERE <= 16'h0000;
 	end else if(PC_ENX & FETCH) begin
-		HERE <= PC_NEXT + 2;
+		HERE <= PC_A_NEXT + 2;
 	end
 end
 
@@ -120,7 +117,7 @@ always @(posedge CLK or posedge RESET) begin
 	if(RESET) begin
 		PC_A <= 16'hfffe;
 	end else if(PC_ENX & FETCH) begin
-		PC_A <= PC_NEXT;
+		PC_A <= PC_A_NEXT;
 	end
 end
 
@@ -131,19 +128,19 @@ always @(posedge CLK or posedge RESET) begin
 		BKP_ACTIVE <= 0;
 	end else if(DEBUG_LD_BKP_EN) begin
 		BKP_ADDR <= DIN_BKP;
-		BKP_ACTIVE <= EN_BKPX;
+		BKP_ACTIVE <= DEBUG_EN_BKPX;
 	end
 end
 
 // The breakpoint
 always @(posedge CLK or posedge RESET) begin
 	if(RESET) begin
-		AT_BKP <= 0;
+		DEBUG_AT_BKP <= 0;
 	end else if(BKP_ACTIVE & COMMIT) begin
-		if(PC_NEXT == BKP_ADDR) begin
-			AT_BKP <= 1;
+		if(PC_A_NEXT == BKP_ADDR) begin
+			DEBUG_AT_BKP <= 1;
 		end else begin
-			AT_BKP <= 0;
+			DEBUG_AT_BKP <= 0;
 		end
 	end
 end

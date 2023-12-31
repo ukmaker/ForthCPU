@@ -38,6 +38,8 @@ module busInterfaceTests;
 	/****************************************
 	* Signals to/from the debugPort
 	*****************************************/
+	reg DEBUG_DEBUG;
+	reg DEBUG_STOP;
 	wire DEBUG_RD;
 	wire DEBUG_WR;
 	wire DEBUG_DATA_SELX;
@@ -79,6 +81,8 @@ busInterface testArticle(
 	/****************************************
 	* Signals to/from the debugPort
 	*****************************************/
+	.DEBUG_DEBUG(DEBUG_DEBUG),
+	.DEBUG_STOP(DEBUG_STOP),
     .DEBUG_RD(DEBUG_RD),
     .DEBUG_WR(DEBUG_WR),
     .DEBUG_DATA_SELX(DEBUG_DATA_SELX),
@@ -100,6 +104,8 @@ initial begin
 	CPU_DOUT    = 16'h2222;
 	CPU_BYTEX   = 1'b0;
 	DIN_BUF     = 16'h3333;
+	DEBUG_DEBUG = 1'b0;
+	DEBUG_STOP  = 1'b0;
 	DEBUG_DOUT  = 16'h4444;
 	DEBUG_ADDR  = 16'h5555;
 	FETCH       = 1'b0;
@@ -126,7 +132,6 @@ initial begin
 	`TICKTOCK;
 	FETCH      = 1'b0;
 	DECODE       = 1'b1;
-	BUS_SEQX    = `BUS_SEQX_IFETCH;
 	`TICKTOCK;
 	DECODE      = 1'b0;
 	EXECUTE       = 1'b1;
@@ -140,7 +145,6 @@ initial begin
 	`TICKTOCK;
 	FETCH      = 1'b0;
 	DECODE       = 1'b1;
-	BUS_SEQX    = `BUS_SEQX_IFETCH;
 	`TICKTOCK;
 	DECODE      = 1'b0;
 	EXECUTE       = 1'b1;
@@ -154,7 +158,6 @@ initial begin
 	`TICKTOCK;
 	FETCH      = 1'b0;
 	DECODE       = 1'b1;
-	BUS_SEQX    = `BUS_SEQX_IFETCH;
 	`TICKTOCK;
 	DECODE      = 1'b0;
 	EXECUTE       = 1'b1;
@@ -169,9 +172,10 @@ initial begin
 	COMMIT      = 1'b0;
 	FETCH       = 1'b1;
 	`TICKTOCK;
-	FETCH      = 1'b0;
-	DECODE       = 1'b1;
-	BUS_SEQX    = `BUS_SEQX_DFETCH;
+	FETCH       = 1'b0;
+	DECODE      = 1'b1;
+	DEBUG_DEBUG = 1'b1;
+	DEBUG_STOP  = 1'b1;
 	`TICKTOCK;
 	DECODE      = 1'b0;
 	EXECUTE       = 1'b1;
@@ -185,28 +189,26 @@ initial begin
 	`TICKTOCK;
 	FETCH      = 1'b0;
 	DECODE       = 1'b1;
-	BUS_SEQX    = `BUS_SEQX_DFETCH;
 	`TICKTOCK;
 	DECODE      = 1'b0;
 	EXECUTE       = 1'b1;
 	`TICKTOCK;
 	EXECUTE      = 1'b0;
 	COMMIT       = 1'b1;
-	BUS_SEQX    = `BUS_SEQX_DARGRD;
+	BUS_SEQX    = `BUS_SEQX_ARGRD;
 	`TICKTOCK;
 	COMMIT      = 1'b0;
 	FETCH       = 1'b1;
 	`TICKTOCK;
 	FETCH      = 1'b0;
 	DECODE       = 1'b1;
-	BUS_SEQX    = `BUS_SEQX_DFETCH;
 	`TICKTOCK;
 	DECODE      = 1'b0;
 	EXECUTE       = 1'b1;
 	`TICKTOCK;
 	EXECUTE      = 1'b0;
 	COMMIT       = 1'b1;
-	BUS_SEQX    = `BUS_SEQX_DARGWR;
+	BUS_SEQX    = `BUS_SEQX_ARGWR;
 	`TICKTOCK;
 	COMMIT      = 1'b0;
 	FETCH       = 1'b1;
@@ -214,14 +216,12 @@ initial begin
 	`TICKTOCK;
 	FETCH      = 1'b0;
 	DECODE       = 1'b1;
-	BUS_SEQX    = `BUS_SEQX_DFETCH;
 	`TICKTOCK;
 	DECODE      = 1'b0;
 	EXECUTE       = 1'b1;
 	`TICKTOCK;
 	EXECUTE      = 1'b0;
 	COMMIT       = 1'b1;
-	BUS_SEQX    = `BUS_SEQX_DFETCH;
 	`TICKTOCK;
 	COMMIT      = 1'b0;
 	FETCH       = 1'b1;

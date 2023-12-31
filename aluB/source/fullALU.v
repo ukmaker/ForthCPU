@@ -19,8 +19,8 @@ module fullALU(
 	input [2:0] ALUA_SRCX,
 	input [2:0] ALUB_SRCX,
 	
-	input [3:0] ARGA_X,
-	input [3:0] ARGB_X,
+	input [3:0] ARGAX,
+	input [3:0] ARGBX,
 	input        B5,
 
 	input CCL_LD,
@@ -55,7 +55,7 @@ alu aluInst(
 );
 
 aluAMux muxA(
-	.U5({B5,ARGB_X}),
+	.U5({B5,ARGBX}),
 	.REGA_DOUT(REGA_DOUT),
 	.ALUA_SRCX(ALUA_SRCX),
 	.ALUA_DATA(ALUA_DATA)
@@ -64,8 +64,8 @@ aluAMux muxA(
 aluBMux muxB(
 	.REGB_DOUT(REGB_DOUT),
 	.ALUB_SRCX(ALUB_SRCX),
-	.ARGA_X(ARGA_X),
-	.ARGB_X(ARGB_X),
+	.ARGA_X(ARGAX),
+	.ARGB_X(ARGBX),
 	.ALUB_DATA(ALUB_DATA)
 
 );

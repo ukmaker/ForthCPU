@@ -156,8 +156,8 @@ wire PC_LD_INT0X;
 wire PC_LD_INT1X;
 wire [15:0] PC_A_NEXT;
 wire [15:0] PC_A;
-wire EN_BKPX;
-wire AT_BKP;
+wire DEBUG_EN_BKPX;
+wire DEBUG_AT_BKP;
 
 
 /****************************************
@@ -176,7 +176,7 @@ assign DEBUG_MODE_STOP  = 1'b0;
 assign DEBUG_MODE_DEBUG = 1'b0;
 assign DEBUG_MODE_INC   = 1'b0;
 assign DEBUG_LD_BKP_EN  = 1'b0;
-assign EN_BKPX          = 1'b0;
+assign DEBUG_EN_BKPX    = 1'b0;
 assign DEBUG_DOUT       = 16'h0000;
 assign DEBUG_ADDR       = 16'h0000;
 
@@ -310,7 +310,7 @@ loadStoreGroupDecoder loadStoreGroupDecoderInst(
 * OPX Mux
 ***********************************************/
 opxMultiplexer opxMultiplexerInst(
-	.INSTRUCTION_GROUP(INSTRUCTION[16:14]),
+	.INSTRUCTION_GROUP(GROUPX),
 	.INSTRUCTION_ARGBX(INSTRUCTION[3:0]),
 		
 	.ALU_ALU_OPX(ALU_ALU_OPX),
@@ -424,6 +424,33 @@ busInterface busInterfaceInst(
     .DEBUG_ADDR(DEBUG_ADDR)
 );
 
+addressBusController addressBusControllerInst(
+	.CLK(CLK),
+	.RESET(RESET),
+	.FETCH(FETCH),
+	.DECODE(DECODE),
+	.DEBUG_MODE_DEBUG(DEBUG_MODE_DEBUG),
+	.PC_A(PC_A),
+	.ALU_R(ALU_R),
+	.ALUB_DATA(ALUB_DATA),
+	.ADDR_BUSX(ADDR_BUSX),
+	.ADDR(ADDR),
+	.DEBUG_ADDR(DEBUG_ADDR),
+	.HERE(HERE),
+	.BYTEX(BYTEX),
+	.HIGH_BYTEX(HIGH_BYTEX)
+);
+
+dataBusController dataBusControllerInst(
+
+	.DATA_BUSX(DATA_BUSX),
+	.ALU_R(ALU_R),
+	.REGA_DOUT(REGA_DOUT),
+	.DEBUG_DOUT(DEBUG_DOUT),
+	.CCREGS_DOUT({CC_PARITY,CC_SIGN,CC_CARRY,CC_ZERO}),
+	.DOUT(DOUT)
+);
+
 /**********************************************
 * Register sequencer
 ***********************************************/	
@@ -459,7 +486,7 @@ registerFile registerFileInst (
 	.ARGBX(ARGBX),
 	
 	.REGA_DINX(REGA_DINX),
-	.REGA_BYTEX(REGA_BYTEX),
+	.REGA_BYTEX(HIGH_BYTEX),
 	.REGB_ADDRX(REGB_ADDRX),
 	.REGA_DOUT(REGA_DOUT),
 	.REGB_DOUT(REGB_DOUT)
@@ -509,9 +536,9 @@ programCounter programCounterInst(
 	.PC_OFFSETX(PC_OFFSETX),
 	
 	.DEBUG_LD_BKP_EN(DEBUG_LD_BKP_EN),
-	.EN_BKPX(EN_BKPX),
+	.DEBUG_EN_BKPX(DEBUG_EN_BKPX),
 	.DIN_BKP(DEBUG_DOUT),
-	.AT_BKP(AT_BKP),
+	.DEBUG_AT_BKP(DEBUG_AT_BKP),
 
 	.REGB_DOUT(REGB_DOUT),
 	.DIN(DIN),
@@ -534,8 +561,8 @@ interruptStateMachine interruptStateMachineInst(
 	.EIX(EIX),
 	.DIX(DIX),
 	.PC_NEXTX(PC_NEXTX),
-	.PC_LD_INT0(PC_LD_INT0),
-	.PC_LD_INT1(PC_LD_INT1),
+	.PC_LD_INT0X(PC_LD_INT0X),
+	.PC_LD_INT1X(PC_LD_INT1X),
 	.CC_REGX(CC_REGX),
 	.CCL_ENRX(CCL_ENRX),
 	.CCL_EN0X(CCL_EN0X),

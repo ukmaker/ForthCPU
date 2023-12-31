@@ -68,7 +68,7 @@ module jumpGroupDecoder(
 	/**
 	* Bus control
 	**/
-	output reg [1:0] BUS_SEQX
+	output reg [2:0] BUS_SEQX
 );
 
 reg RD_M;
@@ -198,9 +198,9 @@ end
 always @(posedge CLK or posedge RESET) begin
 	
 	if(RESET) begin
-		BUS_SEQX <= `BUS_SEQX_NONE;
+		BUS_SEQX <= `BUS_SEQX_IDLE;
 	end else begin
-		BUS_SEQX <= RD_M ? `BUS_SEQX_READ : `BUS_SEQX_NONE;
+		BUS_SEQX <= RD_M ? `BUS_SEQX_ARGRD : `BUS_SEQX_IDLE;
 	end
 end
 	

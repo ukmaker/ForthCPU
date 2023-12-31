@@ -48,7 +48,7 @@ module loadStoreGroupDecoderTests;
 	wire [1:0] BUS_SEQX;
 	wire       RDX;
 	wire       BYTEX;
-	wire [1:0] ADDR_BUSX;
+	wire [2:0] ADDR_BUSX;
 	
 	
 	reg  [15:0] DIN;

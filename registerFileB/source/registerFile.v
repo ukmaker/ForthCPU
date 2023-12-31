@@ -17,8 +17,8 @@ module registerFile(
 	**/
 	input REGA_EN,
 	input REGA_WEN,
-	input [1:0] REGA_BYTE_EN,
-	input [3:0] ARGA_X,
+	//input [1:0] REGA_BYTE_EN,
+	input [3:0] ARGAX,
 	input [1:0] REGA_ADDRX,
 	input [1:0] REGA_DINX,
 	input        REGA_BYTEX,
@@ -28,8 +28,8 @@ module registerFile(
 	**/
 	input REGB_EN,
 	input REGB_WEN,
-	input [1:0] REGB_BYTE_EN,
-	input [3:0] ARGB_X,
+	//input [1:0] REGB_BYTE_EN,
+	input [3:0] ARGBX,
 	input [2:0] REGB_ADDRX,
 	
 	output wire [15:0] REGA_DOUT,
@@ -57,8 +57,8 @@ registers regs(
 	.ClockEnB( REGB_EN), 
 	.WrA( REGA_WEN ), 
 	.WrB( REGB_WEN), 
-	.ByteEnA(REGA_BYTE_EN),
-	.ByteEnB(REGB_BYTE_EN),
+	.ByteEnA(2'b11),
+	.ByteEnB(2'b11),
     .ResetA( RESET ), 
 	.ResetB( RESET ), 
 	.QA( REGA_DOUT ), 
@@ -88,7 +88,7 @@ always @(*) begin
 		`REGA_ADDRX_RA:   ADDRA = `RA;
 		`REGA_ADDRX_RB:   ADDRA = `RB;
 		`REGA_ADDRX_RL:   ADDRA = `RL;
-		default:          ADDRA = ARGA_X;
+		default:          ADDRA = ARGAX;
 	endcase	
 	
 	case(REGB_ADDRX)
@@ -96,7 +96,7 @@ always @(*) begin
 		`REGB_ADDRX_RSP:  ADDRB = `RSP;
 		`REGB_ADDRX_RFP:  ADDRB = `RFP;
 		`REGB_ADDRX_RRS:  ADDRB = `RRS;
-		default:          ADDRB = ARGB_X;
+		default:          ADDRB = ARGBX;
 	endcase
 
 

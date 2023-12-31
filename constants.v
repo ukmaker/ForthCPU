@@ -76,10 +76,11 @@
 /*******************************************
 * Bus sequencer
 *******************************************/
-`define BUS_SEQX_NONE  2'b00
-`define BUS_SEQX_FETCH 2'b01
-`define BUS_SEQX_READ  2'b10
-`define BUS_SEQX_WRITE 2'b11
+`define BUS_SEQX_IDLE       2'b00
+`define BUS_SEQX_ARGRD      2'b01
+`define BUS_SEQX_ARGWR      2'b10
+`define BUS_SEQX_ILLGL0     2'b11
+
 
 /*******************************************
 * Branch logic control fields
@@ -105,6 +106,7 @@
 `define DATA_BUSX_REGA_DOUT  2'b00
 `define DATA_BUSX_ALU_R      2'b01
 `define DATA_BUSX_DEBUG      2'b10
+`define DATA_BUSX_CCREGS     2'b11
 
 /*******************************************
 * Debugging interface
@@ -153,15 +155,6 @@
 `define DEBUG_MODEX_EN_WATCH 8'b00010000
 `define DEBUG_MODEX_RESET    8'b00100000
 `define DEBUG_MODEX_INC      8'b01000000
-
-`define BUS_SEQX_IDLE       3'b000
-`define BUS_SEQX_IFETCH     3'b001
-`define BUS_SEQX_ARGRD      3'b010
-`define BUS_SEQX_ARGWR      3'b011
-`define BUS_SEQX_DFETCH     3'b100
-`define BUS_SEQX_DARGRD     3'b101
-`define BUS_SEQX_DARGWR     3'b110
-`define BUS_SEQX_ILLGL      3'b111
 
 /*******************************************
 * Program counter control inputs
@@ -323,10 +316,11 @@
 /**
 * Instruction group
 **/
-`define GROUP_SYSTEM 2'b00
-`define GROUP_LOAD_STORE 2'b01
-`define GROUP_JUMP 2'b10
-`define GROUP_ARITHMETIC_LOGIC 2'b11
+`define GROUPX_SYS 3'b000
+`define GROUPX_LDS 3'b001
+`define GROUPX_JMP 3'b010
+`define GROUPX_ALU 3'b011
+`define GROUPX_DBG 3'b100
 
 /**
 * General instructions

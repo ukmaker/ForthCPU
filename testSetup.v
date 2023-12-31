@@ -13,6 +13,13 @@
         $display("[T=%0t]                                             passed in %m: %s expected %b actual %b", $realtime, what, expected, actual); \
 	end
 
+`define asserth(what, expected, actual) \
+    if (actual !== expected) begin \
+        $display("[T=%0t] FAILED in %m: %s expected %04x != actual %04x", $realtime, what, expected, actual); \
+    end else begin \
+        $display("[T=%0t]                                             passed in %m: %s expected %04x actual %04x", $realtime, what, expected, actual); \
+	end
+
 `define mark(n)  \
 	$display("[T=%09t] %d", $realtime, n);
 	

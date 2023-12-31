@@ -14,8 +14,8 @@ module fullALUTests;
 	reg [2:0] ALUA_SRCX;
 	reg [2:0] ALUB_SRCX;
 	
-	reg [3:0] ARGA_X;
-	reg [3:0] ARGB_X;
+	reg [3:0] ARGAX;
+	reg [3:0] ARGBX;
 	reg B5;
 
 	reg CCL_LD;
@@ -41,8 +41,8 @@ fullALU testInstance(
 	.ALU_OPX(ALU_OPX),
 	.ALUA_SRCX(ALUA_SRCX),
 	.ALUB_SRCX(ALUB_SRCX),
-	.ARGA_X(ARGA_X),
-	.ARGB_X(ARGB_X),
+	.ARGAX(ARGAX),
+	.ARGBX(ARGBX),
 	.B5(B5),
 	.CCL_LD(CCL_LD),
 	.CCL_ENRX(CCL_ENRX),
@@ -79,8 +79,8 @@ initial begin
 	ALU_OPX = `ALU_OPX_ADD;
 	ALUA_SRCX = `ALUA_SRCX_REG_A;
 	ALUB_SRCX = `ALUB_SRCX_REG_B;
-	ARGA_X = 4'b0101;
-	ARGB_X = 4'b1010;
+	ARGAX = 4'b0101;
+	ARGBX = 4'b1010;
 	B5 = 0;
 	
 	`TICK;

@@ -14,8 +14,7 @@ module generalGroupDecoder(
 	input CLK,
 	input RESET,
 	input EXECUTE, COMMIT,
-	input [1:0] INSTRUCTION_GROUP,
-	input [2:0] INSTRUCTION_OP,
+	input [3:0] INSTRUCTION_OP,
 	
 	output reg EIX,
 	output reg DIX,
@@ -23,26 +22,22 @@ module generalGroupDecoder(
 	output reg HALTX
 );
 
-reg GEN, EI, DI, RETI, HALT;
+reg EI, DI, RETI, HALT;
 
 
 always @(*) begin
-	// decode the instruction
-	GEN = 0;
-	EI = 0;
-	DI = 0;
-	RETI = 0;
-	HALT = 0;
-	
-	if(INSTRUCTION_GROUP == 2'b00) begin
-		GEN = 1;
-		case(INSTRUCTION_OP)
-			`GEN_OP_HALT: HALT = 1;
-			`GEN_OP_EI:   EI = 1;
-			`GEN_OP_DI:   DI = 1;
-			`GEN_OP_RETI: RETI = 1;
-		endcase
-	end
+	case(INSTRUCTION_OP)
+		`GEN_OP_HALT: HALT = 1;
+		`GEN_OP_EI:   EI = 1;
+		`GEN_OP_DI:   DI = 1;
+		`GEN_OP_RETI: RETI = 1;
+		default: begin
+			EI = 0;
+			DI = 0;
+			RETI = 0;
+			HALT = 0;
+		end
+	endcase
 end
 
 always @(posedge CLK or posedge RESET) begin

@@ -122,7 +122,7 @@ module loadStoreGroupDecoder(
 	* Bus control
 	**/
 	output reg [1:0] DATA_BUSX,
-	output reg [1:0] BUS_SEQX,
+	output reg [2:0] BUS_SEQX,
 	output reg        BYTEX,
 	output reg [2:0] ADDR_BUSX
 );
@@ -134,7 +134,7 @@ always @(*) begin
 	ALUA_SRCX     = `ALUA_SRCX_REG_A;
 	ALUB_SRCX     = `ALUB_SRCX_REG_B;
 	BYTEX         = 0;
-	BUS_SEQX      = `BUS_SEQX_NONE;
+	BUS_SEQX      = `BUS_SEQX_IDLE;
 	ALU_OPX       = `ALU_OPX_ADD;
 	ADDR_BUSX     = `ADDR_BUSX_ALU_R;
 	DATA_BUSX     = `DATA_BUSX_REGA_DOUT;
@@ -146,19 +146,19 @@ always @(*) begin
 	// What operation is this?
 	case(OPF) 
 		`LDSOPF_LD: begin // LD Ra,(Rb) 
-			BUS_SEQX   = `BUS_SEQX_READ;
+			BUS_SEQX   = `BUS_SEQX_ARGRD;
 		end
 		`LDSOPF_LDB: begin // LD_B x,(y)
-			BUS_SEQX   = `BUS_SEQX_READ;
+			BUS_SEQX   = `BUS_SEQX_ARGRD;
 			BYTEX      = 1;
 			REGA_DINX  = `REGA_DINX_BYTE;
 		end
 		`LDSOPF_ST: begin // ST (Ra),Rb
-			BUS_SEQX   = `BUS_SEQX_WRITE;
+			BUS_SEQX   = `BUS_SEQX_ARGWR;
 			DATA_BUSX  = `DATA_BUSX_REGA_DOUT;
 		end
 		`LDSOPF_STB: begin // ST_B (Ra),Rb
-			BUS_SEQX   = `BUS_SEQX_WRITE;
+			BUS_SEQX   = `BUS_SEQX_ARGWR;
 			DATA_BUSX  = `DATA_BUSX_REGA_DOUT;
 			BYTEX      = 1;
 		end
