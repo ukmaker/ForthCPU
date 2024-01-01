@@ -9,7 +9,7 @@ module addressBusController(
 	
 	input [15:0] PC_A,
 	input [15:0] ALU_R,
-	input [15:0] ALUB_DATA,
+	input [15:0] REGB_DOUT,
 	input [15:0] HERE,
 	input [15:0] DEBUG_ADDR,
 	
@@ -19,7 +19,7 @@ module addressBusController(
 
 	output reg [15:0] ADDR,
 	
-	output HIGH_BYTEX
+	output HIGH_BYTEX 
 );
 
 reg [2:0] ADDR_BUSX_R;
@@ -46,10 +46,10 @@ always @(*) begin
 	case(ADDR_BUSX_R)
 		`ADDR_BUSX_PC_A:      ADDR = PC_A;
 		`ADDR_BUSX_ALU_R:     ADDR = ALU_R;
-		`ADDR_BUSX_ALUB_DATA: ADDR = ALUB_DATA;
+		`ADDR_BUSX_REGB_DOUT: ADDR = REGB_DOUT;
 		`ADDR_BUSX_HERE:      ADDR = HERE;
 		`ADDR_BUSX_DEBUG:     ADDR = DEBUG_ADDR;
-		default:              ADDR = ALUB_DATA;
+		default:              ADDR = REGB_DOUT;
 	endcase
 end
 	

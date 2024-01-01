@@ -6,15 +6,12 @@
 * 
 **************************************************/
 module debugDecoder(
-	input              DEBUG_ADDR_INC_I,
-	input              DEBUG_EN_BKP_I,
-	input [2:0]       DEBUG_OP_I,
-	input [2:0]       DEBUG_ARG,
+	input              DEBUG_OP_INCX,
+	input [2:0]       DEBUG_OPX,
+	input [3:0]       DEBUG_OP_ARGX,
 	
 	output reg         DEBUG_ADDR_INCX,
-	output reg         DEBUG_LD_DATAX,
 	output reg         DEBUG_LD_ARGX,
-	output reg [2:0]  DEBUG_DATAX,
 	output reg         DEBUG_WR_BKPX,
 	output reg         DEBUG_EN_BKPX,
 	
@@ -28,25 +25,12 @@ module debugDecoder(
 always @(*) begin
 	DEBUG_ADDR_BUSX  = `ADDR_BUSX_DEBUG;
 			
-	case(DEBUG_OP_I)
-		`DEBUG_OPX_WR_BKP: begin
-			DEBUG_BUS_SEQX   = `BUS_SEQX_IDLE;
-			DEBUG_REG_SEQX   = `REG_SEQX_NONE;
-			DEBUG_ADDR_INCX  = `DEBUG_ADDR_INCX_NONE;
-			DEBUG_DATAX      = `DEBUG_DATAX_DIN;
-			DEBUG_CC_REGX    = `CC_REGX_RUN;
-			DEBUG_LD_DATAX   = `DEBUG_LD_DATAX_NONE;
-			DEBUG_LD_ARGX    = `DEBUG_LD_ARGX_NONE;
-			DEBUG_PC_NEXTX   = `PC_NEXTX_NEXT;
-			DEBUG_WR_BKPX    = 1'b1;
-			DEBUG_EN_BKPX    = DEBUG_EN_BKP_I;
-		end
+	case(DEBUG_OPX)
 		
 		`DEBUG_OPX_RD_REG: begin
 			DEBUG_BUS_SEQX   = `BUS_SEQX_IDLE;
 			DEBUG_REG_SEQX   = `REG_SEQX_RDB;
 			DEBUG_ADDR_INCX  = DEBUG_ADDR_INC_I;
-			DEBUG_DATAX      = `DEBUG_DATAX_REGB_DATA;
 			DEBUG_CC_REGX    = `CC_REGX_RUN;
 			DEBUG_LD_DATAX   = `DEBUG_LD_DATAX_LD;
 			DEBUG_LD_ARGX    = `DEBUG_LD_ARGX_NONE;

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<BaliProject version="3.2" title="ForthCPU" device="LCMXO3L-6900C-5BG256C" default_implementation="coreWithDebug">
+<BaliProject version="3.2" title="ForthCPU" device="LCMXO3L-6900C-5BG256C" default_implementation="debugPortV2">
     <Options/>
     <Implementation title="RAM" dir="RAM" description="RAM" synthesis="synplify" default_strategy="Area">
         <Options def_top="ramTests"/>
@@ -275,7 +275,7 @@
         </Source>
     </Implementation>
     <Implementation title="core" dir="core" description="core" synthesis="synplify" default_strategy="Area">
-        <Options def_top="coreTests"/>
+        <Options def_top="interruptMaskRegister"/>
         <Source name="constants.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
@@ -436,7 +436,7 @@
             <Options/>
         </Source>
         <Source name="debugPortV2/source/debugDecoder.v" type="Verilog" type_short="Verilog">
-            <Options top_module="debugDecoder"/>
+            <Options/>
         </Source>
         <Source name="debugPortV2/source/debugPort.v" type="Verilog" type_short="Verilog">
             <Options top_module="debugPort"/>
@@ -596,15 +596,15 @@
         </Source>
     </Implementation>
     <Implementation title="debugPortV2" dir="debugPortV2" description="debugPortV2" synthesis="synplify" default_strategy="Area">
-        <Options/>
+        <Options def_top="masterSequencer"/>
         <Source name="constants.v" type="Verilog" type_short="Verilog">
             <Options/>
         </Source>
         <Source name="debugPortV2/source/debugDecoder.v" type="Verilog" type_short="Verilog">
-            <Options top_module="debugDecoder"/>
+            <Options/>
         </Source>
         <Source name="debugPortV2/source/debugPort.v" type="Verilog" type_short="Verilog">
-            <Options top_module="debugPort"/>
+            <Options/>
         </Source>
         <Source name="debugPortV2/source/debugSequencer.v" type="Verilog" type_short="Verilog">
             <Options top_module="debugSequencer"/>
@@ -613,7 +613,7 @@
             <Options top_module="requestGenerator"/>
         </Source>
         <Source name="generics/source/wordToByteRegister.v" type="Verilog" type_short="Verilog">
-            <Options/>
+            <Options top_module="wordToByteRegister"/>
         </Source>
         <Source name="generics/source/wordRegister.v" type="Verilog" type_short="Verilog">
             <Options/>
@@ -652,10 +652,16 @@
             <Options top_module="watcherTests"/>
         </Source>
         <Source name="debugPortV2/source/watcherBlock.v" type="Verilog" type_short="Verilog">
-            <Options/>
+            <Options top_module="watcherBlock"/>
         </Source>
         <Source name="testSetup.v" type="Verilog" type_short="Verilog">
             <Options/>
+        </Source>
+        <Source name="programCounter/source/programCounter.v" type="Verilog" type_short="Verilog">
+            <Options top_module="programCounter"/>
+        </Source>
+        <Source name="masterSequencer/source/masterSequencer.v" type="Verilog" type_short="Verilog">
+            <Options top_module="masterSequencer"/>
         </Source>
         <Source name="debugPortV2/test/snooperTestbench/snooperTestbench.spf" type="Simulation Project File" type_short="SPF">
             <Options/>

@@ -166,7 +166,7 @@ always @(*) begin
 			
 	case(MODEF)
 		`MODE_LDS_REG_REG: begin // LD x,(y) ; LD_B ; ST ; ST_B
-			ADDR_BUSX   = `ADDR_BUSX_ALUB_DATA;
+			ADDR_BUSX   = `ADDR_BUSX_REGB_DOUT;
 		end
 		
 		`MODE_LDS_REG_HERE: begin
@@ -176,7 +176,7 @@ always @(*) begin
 		
 		`MODE_LDS_REG_REG_INC: begin
 			// Address from the register
-			ADDR_BUSX = `ADDR_BUSX_ALUB_DATA;
+			ADDR_BUSX = `ADDR_BUSX_REGB_DOUT;
 			// Before the adder
 			ALUA_SRCX = BYTEX ? `ALUA_SRCX_ONE : `ALUA_SRCX_TWO;
 			ALUB_SRCX = `ALUB_SRCX_REG_B;

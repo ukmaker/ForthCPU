@@ -33,15 +33,15 @@ module fullALU(
 	output wire CC_ZERO,
 	output wire CC_CARRY,
 	output wire CC_SIGN,
-	output wire CC_PARITY,
-	output wire [15:0] ALUA_DATA,
-	output wire [15:0] ALUB_DATA
+	output wire CC_PARITY
 );
 
 wire CC_Z;
 wire CC_S;
 wire CC_P;
 wire CC_C;
+wire [15:0] ALUA_DATA;
+wire [15:0] ALUB_DATA;
 
 alu aluInst(
 	.ALUX(ALU_OPX),

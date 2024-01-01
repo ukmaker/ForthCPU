@@ -148,9 +148,6 @@ wire CCL_ENRX;
 wire CCL_EN0X;
 wire CCL_EN1X;
 
-wire [15:0] ALUA_DATA;
-wire [15:0] ALUB_DATA;
-
 // Program Counter
 wire PC_LD_INT0X;
 wire PC_LD_INT1X;
@@ -432,7 +429,7 @@ addressBusController addressBusControllerInst(
 	.DEBUG_MODE_DEBUG(DEBUG_MODE_DEBUG),
 	.PC_A(PC_A),
 	.ALU_R(ALU_R),
-	.ALUB_DATA(ALUB_DATA),
+	.REGB_DOUT(REGB_DOUT),
 	.ADDR_BUSX(ADDR_BUSX),
 	.ADDR(ADDR),
 	.DEBUG_ADDR(DEBUG_ADDR),
@@ -515,9 +512,7 @@ fullALU fullALUInst(
 	.CC_ZERO(CC_ZERO),
 	.CC_CARRY(CC_CARRY),
 	.CC_SIGN(CC_SIGN),
-	.CC_PARITY(CC_PARITY),
-	.ALUA_DATA(ALUA_DATA),
-	.ALUB_DATA(ALUB_DATA)
+	.CC_PARITY(CC_PARITY)
 );
 /**********************************************
 * Program Counter

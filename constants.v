@@ -49,7 +49,7 @@
 *******************************************/
 `define ADDR_BUSX_PC_A      3'b000
 `define ADDR_BUSX_ALU_R     3'b001
-`define ADDR_BUSX_ALUB_DATA 3'b010
+`define ADDR_BUSX_REGB_DOUT 3'b010
 `define ADDR_BUSX_HERE      3'b011
 `define ADDR_BUSX_DEBUG     3'b100
 
@@ -111,14 +111,33 @@
 /*******************************************
 * Debugging interface
 ********************************************/
-`define DEBUG_REG_ADDR_MODE    3'b000
-`define DEBUG_REG_ADDR_OP      3'b001
-`define DEBUG_REG_ADDR_AL      3'b010
-`define DEBUG_REG_ADDR_AH      3'b011
-`define DEBUG_REG_ADDR_DL      3'b100
-`define DEBUG_REG_ADDR_DH      3'b101
-`define DEBUG_REG_ADDR_ARGL    3'b110
-`define DEBUG_REG_ADDR_ARGH    3'b111
+`define DEBUG_REG_MODE          4'b0000
+`define DEBUG_REG_OP_ARG        4'b0001
+`define DEBUG_REG_OP_INST       4'b0010
+`define DEBUG_REG_AL            4'b0011
+`define DEBUG_REG_AH            4'b0100
+`define DEBUG_REG_DL            4'b0101
+`define DEBUG_REG_DH            4'b0110
+
+`define DEBUG_REG_SNOOP_INST_AL 4'b0111
+`define DEBUG_REG_BKP_AL        4'b0111
+`define DEBUG_REG_SNOOP_INST_AH 4'b1000
+`define DEBUG_REG_BKP_AH        4'b1000
+
+`define DEBUG_REG_SNOOP_INST_DL 4'b1001
+`define DEBUG_REG_WATCH_STARTL  4'b1001
+`define DEBUG_REG_SNOOP_INST_DH 4'b1010
+`define DEBUG_REG_WATCH_STARTH  4'b1010
+
+`define DEBUG_REG_SNOOP_ARG_AL  4'b1011
+`define DEBUG_REG_WATCH_ENDL    4'b1011
+`define DEBUG_REG_SNOOP_ARG_AH  4'b1100
+`define DEBUG_REG_WATCH_ENDH    4'b1100
+
+`define DEBUG_REG_SNOOP_ARG_DL  4'b1101
+`define DEBUG_REG_SNOOP_ARG_DH  4'b1110
+`define DEBUG_REG_STATUS        4'b1111
+
 
 `define DEBUG_DATA_SELX_OP   1'b0
 `define DEBUG_DATA_SELX_ARG  1'b1
@@ -132,14 +151,13 @@
 `define DEBUG_LD_ARGX_NONE  1'b0
 `define DEBUG_LD_ARGX_LD    1'b1
 
-`define DEBUG_OPX_WR_BKP          3'b000
-`define DEBUG_OPX_RD_MEM          3'b001
-`define DEBUG_OPX_WR_MEM          3'b010
-`define DEBUG_OPX_RD_REG          3'b011
-`define DEBUG_OPX_WR_REG          3'b100
-`define DEBUG_OPX_RD_CC           3'b101
-`define DEBUG_OPX_RD_PC           3'b110
-`define DEBUG_OPX_RD_INSTRUCTION  3'b111
+`define DEBUG_OPX_RD_MEM        3'b000
+`define DEBUG_OPX_WR_MEM        3'b001
+`define DEBUG_OPX_RD_REG        3'b010
+`define DEBUG_OPX_WR_REG        3'b011
+`define DEBUG_OPX_RD_CC         3'b100
+`define DEBUG_OPX_RD_PC         3'b101
+
 
 `define DEBUG_DATAX_DIN         3'b000
 `define DEBUG_DATAX_REGB_DATA   3'b001

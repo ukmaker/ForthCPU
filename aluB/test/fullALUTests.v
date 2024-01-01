@@ -24,8 +24,6 @@ module fullALUTests;
 	reg CCL_EN1X;
 	reg [1:0] CC_REGX;
 	
-	wire [15:0] ALUA_DATA;
-	wire [15:0] ALUB_DATA;
 	wire [15:0] ALU_R;
 	wire CC_ZERO;
 	wire CC_CARRY;
@@ -53,9 +51,7 @@ fullALU testInstance(
 	.CC_ZERO(CC_ZERO),
 	.CC_CARRY(CC_CARRY),
 	.CC_SIGN(CC_SIGN),
-	.CC_PARITY(CC_PARITY),
-	.ALUA_DATA(ALUA_DATA),
-	.ALUB_DATA(ALUB_DATA)
+	.CC_PARITY(CC_PARITY)
 );
 
 
