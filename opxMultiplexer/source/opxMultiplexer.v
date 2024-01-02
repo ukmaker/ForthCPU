@@ -25,7 +25,6 @@
 module opxMultiplexer(
 
 	input [2:0] INSTRUCTION_GROUP,
-	input [3:0] INSTRUCTION_ARGBX,
 		
 	input [3:0]  ALU_ALU_OPX,
 	input [2:0]  ALU_ALUA_SRCX,
@@ -36,7 +35,6 @@ module opxMultiplexer(
 	input [3:0]  ALU_REG_SEQX,
 	
 	input [2:0]  DEBUG_ADDR_BUSX,
-	input [3:0]  DEBUG_ARGBX,
 	input [2:0]  DEBUG_BUS_SEQX,
 	input [1:0]  DEBUG_CC_REGX,
 	input         DEBUG_MODEX,
@@ -76,7 +74,6 @@ module opxMultiplexer(
 	output reg [3:0]  ALU_OPX,
 	output reg [2:0]  ALUA_SRCX,
 	output reg [2:0]  ALUB_SRCX,
-	output reg [3:0]  ARGBX,
 	output reg [2:0]  BUS_SEQX,
 	output reg	       BYTEX,
 	output reg         CCL_LD,
@@ -96,7 +93,6 @@ always @(*) begin
 		
 	CC_REGX       = INT_CC_REGX;
 	PC_NEXTX      = INT_PC_NEXTX;	
-	ARGBX         = INSTRUCTION_ARGBX;
 
 	case(INSTRUCTION_GROUP)
 		`GROUPX_SYS: begin
@@ -172,7 +168,6 @@ always @(*) begin
 			ALU_OPX       = `ALU_OPX_MOV;
 			ALUA_SRCX     = `ALUA_SRCX_REG_A;
 			ALUB_SRCX     = `ALUB_SRCX_REG_B;
-			ARGBX         = DEBUG_ARGBX;
 			BUS_SEQX      = DEBUG_BUS_SEQX;
 			BYTEX         = `BYTEX_WORD;
 			CCL_LD        = 0;

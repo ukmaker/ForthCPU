@@ -28,7 +28,6 @@ module programCounter(
 	
 	input DEBUG_LD_BKP_EN,
 	input DEBUG_EN_BKPX,
-	input [15:0] DIN_BKP,
 	output reg DEBUG_AT_BKP,
 	
 	input [15:0] REGB_DOUT,
@@ -47,7 +46,7 @@ reg [15:0] SUM;
 reg [15:0] INTR0;
 reg [15:0] INTR1;
 reg [15:0] BKP_ADDR;
-reg BKP_ACTIVE;
+
 wire [15:0] ZERO = 16'h0000;
 wire [15:0] TWO  = 16'h0002;
 wire [15:0] FOUR  = 16'h0004;
@@ -125,10 +124,8 @@ end
 always @(posedge CLK or posedge RESET) begin
 	if(RESET) begin
 		BKP_ADDR <= 16'h0000;
-		BKP_ACTIVE <= 0;
-	end else if(DEBUG_LD_BKP_EN) begin
-		BKP_ADDR <= DIN_BKP;
-		BKP_ACTIVE <= DEBUG_EN_BKPX;
+	end else if(DEBUG_LD_BKP_EN & COMMIT) begin
+		BKP_ADDR <= DIN;
 	end
 end
 
@@ -136,7 +133,7 @@ end
 always @(posedge CLK or posedge RESET) begin
 	if(RESET) begin
 		DEBUG_AT_BKP <= 0;
-	end else if(BKP_ACTIVE & COMMIT) begin
+	end else if(DEBUG_EN_BKPX & COMMIT) begin
 		if(PC_A_NEXT == BKP_ADDR) begin
 			DEBUG_AT_BKP <= 1;
 		end else begin

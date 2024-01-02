@@ -8,17 +8,15 @@ add wave -noupdate /snooperTests/EXECUTE
 add wave -noupdate /snooperTests/COMMIT
 add wave -noupdate -radix hexadecimal /snooperTests/DIN
 add wave -noupdate -radix hexadecimal /snooperTests/ADDR
+add wave -noupdate /snooperTests/DEBUG_SNOOP_LD_EN
+add wave -noupdate /snooperTests/SNOOP_REGX
+add wave -noupdate -radix hexadecimal /snooperTests/SNOOP_REG
 add wave -noupdate /snooperTests/RD
 add wave -noupdate /snooperTests/WR
-add wave -noupdate -radix hexadecimal /snooperTests/SNOOP_INST_ADDR
-add wave -noupdate -radix hexadecimal /snooperTests/SNOOP_INST_DATA
-add wave -noupdate -radix hexadecimal /snooperTests/SNOOP_ARG_ADDR
-add wave -noupdate -radix hexadecimal /snooperTests/SNOOP_ARG_DATA
-add wave -noupdate /snooperTests/SNOOP_ARG_VALID
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {1200 ns} 0} {{Cursor 2} {797 ns} 0}
-quietly wave cursor active 2
-configure wave -namecolwidth 268
+WaveRestoreCursors {{Cursor 1} {0 ns} 0}
+quietly wave cursor active 0
+configure wave -namecolwidth 150
 configure wave -valuecolwidth 100
 configure wave -justifyvalue left
 configure wave -signalnamewidth 0
@@ -32,4 +30,4 @@ configure wave -griddelta 40
 configure wave -timeline 0
 configure wave -timelineunits ns
 update
-WaveRestoreZoom {0 ns} {1976 ns}
+WaveRestoreZoom {5746 ns} {7066 ns}

@@ -26,7 +26,7 @@ module core(
 /**********************************************
 * Internal wiring
 ***********************************************/
-// Debugger - tied off for this impl
+// Debugger
 wire [2:0]  DEBUG_ADDR_BUSX;
 wire [3:0]  DEBUG_ARGBX;
 wire [2:0]  DEBUG_BUS_SEQX;
@@ -142,6 +142,7 @@ wire [15:0] REGB_DOUT;
 
 // ALU
 wire [3:0] ARGAX;
+wire [3:0] ARGBX;
 wire B5;
 
 wire CCL_ENRX;
@@ -308,7 +309,6 @@ loadStoreGroupDecoder loadStoreGroupDecoderInst(
 ***********************************************/
 opxMultiplexer opxMultiplexerInst(
 	.INSTRUCTION_GROUP(GROUPX),
-	.INSTRUCTION_ARGBX(INSTRUCTION[3:0]),
 		
 	.ALU_ALU_OPX(ALU_ALU_OPX),
 	.ALU_ALUA_SRCX(ALU_ALUA_SRCX),
@@ -319,7 +319,6 @@ opxMultiplexer opxMultiplexerInst(
 	.ALU_REG_SEQX(ALU_REG_SEQX),
 	
 	.DEBUG_ADDR_BUSX(DEBUG_ADDR_BUSX),
-	.DEBUG_ARGBX(DEBUG_ARGBX),
 	.DEBUG_BUS_SEQX(DEBUG_BUS_SEQX),
 	.DEBUG_CC_REGX(DEBUG_CC_REGX),
 	.DEBUG_MODEX(DEBUG_MODEX),
@@ -359,7 +358,6 @@ opxMultiplexer opxMultiplexerInst(
 	.ALU_OPX(ALU_OPX),
 	.ALUA_SRCX(ALUA_SRCX),
 	.ALUB_SRCX(ALUB_SRCX),
-	.ARGBX(ARGBX),
 	.BUS_SEQX(BUS_SEQX),
 	.BYTEX(BYTEX),
 	.CCL_LD(CCL_LD),
@@ -476,7 +474,7 @@ registerFile registerFileInst (
 	.DIN(DIN),
 	.REGA_EN(REGA_EN),
 	.REGA_WEN(REGA_WEN),
-	.ARGAX(INSTRUCTION[7:4]),
+	.ARGAX(ARGAX),
 	.REGA_ADDRX(REGA_ADDRX),
 	.REGB_EN(REGB_EN),
 	.REGB_WEN(REGB_WEN),
@@ -532,7 +530,6 @@ programCounter programCounterInst(
 	
 	.DEBUG_LD_BKP_EN(DEBUG_LD_BKP_EN),
 	.DEBUG_EN_BKPX(DEBUG_EN_BKPX),
-	.DIN_BKP(DEBUG_DOUT),
 	.DEBUG_AT_BKP(DEBUG_AT_BKP),
 
 	.REGB_DOUT(REGB_DOUT),

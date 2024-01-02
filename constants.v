@@ -79,7 +79,7 @@
 `define BUS_SEQX_IDLE       2'b00
 `define BUS_SEQX_ARGRD      2'b01
 `define BUS_SEQX_ARGWR      2'b10
-`define BUS_SEQX_ILLGL0     2'b11
+`define BUS_SEQX_DEBUG_DOUT 2'b11
 
 
 /*******************************************
@@ -118,29 +118,30 @@
 `define DEBUG_REG_AH            4'b0100
 `define DEBUG_REG_DL            4'b0101
 `define DEBUG_REG_DH            4'b0110
+`define DEBUG_REG_STATUS        4'b0111
 
-`define DEBUG_REG_SNOOP_INST_AL 4'b0111
-`define DEBUG_REG_BKP_AL        4'b0111
-`define DEBUG_REG_SNOOP_INST_AH 4'b1000
-`define DEBUG_REG_BKP_AH        4'b1000
+`define DEBUG_REG_SNOOP_INST_AL 4'b1000
+`define DEBUG_REG_BKP_AL        4'b1000
+`define DEBUG_REG_SNOOP_INST_AH 4'b1001
+`define DEBUG_REG_BKP_AH        4'b1001
 
-`define DEBUG_REG_SNOOP_INST_DL 4'b1001
-`define DEBUG_REG_WATCH_STARTL  4'b1001
-`define DEBUG_REG_SNOOP_INST_DH 4'b1010
-`define DEBUG_REG_WATCH_STARTH  4'b1010
+`define DEBUG_REG_SNOOP_INST_DL 4'b1010
+`define DEBUG_REG_WATCH_STARTL  4'b1010
+`define DEBUG_REG_SNOOP_INST_DH 4'b1011
+`define DEBUG_REG_WATCH_STARTH  4'b1011
 
-`define DEBUG_REG_SNOOP_ARG_AL  4'b1011
-`define DEBUG_REG_WATCH_ENDL    4'b1011
-`define DEBUG_REG_SNOOP_ARG_AH  4'b1100
-`define DEBUG_REG_WATCH_ENDH    4'b1100
+`define DEBUG_REG_SNOOP_ARG_AL  4'b1100
+`define DEBUG_REG_WATCH_ENDL    4'b1100
+`define DEBUG_REG_SNOOP_ARG_AH  4'b1101
+`define DEBUG_REG_WATCH_ENDH    4'b1101
 
-`define DEBUG_REG_SNOOP_ARG_DL  4'b1101
-`define DEBUG_REG_SNOOP_ARG_DH  4'b1110
-`define DEBUG_REG_STATUS        4'b1111
+`define DEBUG_REG_SNOOP_ARG_DL  4'b1110
+`define DEBUG_REG_SNOOP_ARG_DH  4'b1111
 
 
-`define DEBUG_DATA_SELX_OP   1'b0
-`define DEBUG_DATA_SELX_ARG  1'b1
+
+`define DEBUG_DATA_OUT_SELX_INST  1'b0
+`define DEBUG_DATA_OUT_SELX_DATA  1'b1
 
 `define DEBUG_ADDR_INCX_NONE 1'b0
 `define DEBUG_ADDR_INCX_INC  1'b1
@@ -151,28 +152,36 @@
 `define DEBUG_LD_ARGX_NONE  1'b0
 `define DEBUG_LD_ARGX_LD    1'b1
 
-`define DEBUG_OPX_RD_MEM        3'b000
-`define DEBUG_OPX_WR_MEM        3'b001
-`define DEBUG_OPX_RD_REG        3'b010
-`define DEBUG_OPX_WR_REG        3'b011
-`define DEBUG_OPX_RD_CC         3'b100
-`define DEBUG_OPX_RD_PC         3'b101
+`define DEBUG_OPX_RD_MEM    3'b000
+`define DEBUG_OPX_WR_MEM    3'b001
+`define DEBUG_OPX_RD_REG    3'b010
+`define DEBUG_OPX_WR_REG    3'b011
+`define DEBUG_OPX_RD_CC     3'b100
+`define DEBUG_OPX_RD_PC     3'b101
+`define DEBUG_OPX_RD_INST   3'b110
+`define DEBUG_OPX_WR_BKP    3'b111
 
+`define DEBUG_OPX_INC_NONE  1'b0
+`define DEBUG_OPX_INC_INC   1'b1
 
-`define DEBUG_DATAX_DIN         3'b000
-`define DEBUG_DATAX_REGB_DATA   3'b001
-`define DEBUG_DATAX_CC_DATA     3'b010
-`define DEBUG_DATAX_PC_A        3'b011
-`define DEBUG_DATAX_INSTRUCTION 3'b100
+`define DEBUG_MODE_RUN      8'b00000000
+`define DEBUG_MODE_STOP     8'b00000001
+`define DEBUG_MODE_DEBUGX   8'b00000110
+`define DEBUG_MODE_REQ      8'b00001000
+`define DEBUG_MODE_EN_BKP   8'b00010000
+`define DEBUG_MODE_EN_WATCH 8'b00100000
+`define DEBUG_MODE_RESET    8'b01000000
+`define DEBUG_MODE_SNOOP    8'b10000000
 
-`define DEBUG_MODEX_RUN      8'b00000000
-`define DEBUG_MODEX_STOP     8'b00000001
-`define DEBUG_MODEX_DEBUG    8'b00000010
-`define DEBUG_MODEX_REQ      8'b00000100
-`define DEBUG_MODEX_EN_BKP   8'b00001000
-`define DEBUG_MODEX_EN_WATCH 8'b00010000
-`define DEBUG_MODEX_RESET    8'b00100000
-`define DEBUG_MODEX_INC      8'b01000000
+`define DEBUGX_STEP    2'b00
+`define DEBUGX_DSTEP   2'b01
+`define DEBUGX_ISTEP   2'b10
+`define DEBUGX_ILLEGAL 2'b11
+
+`define SNOOP_REGX_INST_ADDR 2'b00
+`define SNOOP_REGX_INST_DATA 2'b01
+`define SNOOP_REGX_ARG_ADDR  2'b10
+`define SNOOP_REGX_ARG_DATA  2'b11
 
 /*******************************************
 * Program counter control inputs
