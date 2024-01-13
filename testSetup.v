@@ -12,6 +12,13 @@
     end else begin \
         $display("[T=%0t]                                             passed in %m: %s expected %b actual %b", $realtime, what, expected, actual); \
 	end
+	
+`define sassert(step, what, expected, actual) \
+    if (actual !== expected) begin \
+        $display("[T=%0t] %d FAILED in %m: %s expected %b != actual %b", $realtime, step, what, expected, actual); \
+    end else begin \
+        $display("[T=%0t] %d passed in %m: %s expected %b actual %b", $realtime, step, what, expected, actual); \
+	end
 
 `define asserth(what, expected, actual) \
     if (actual !== expected) begin \

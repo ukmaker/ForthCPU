@@ -1,0 +1,39 @@
+if {![file exists "C:/Users/Duncan/git/ForthCPU/debugPortV2/test/requestGeneratorTestbench/requestGeneratorTestbench.mpf"]} { 
+	project new "C:/Users/Duncan/git/ForthCPU/debugPortV2/test/requestGeneratorTestbench" requestGeneratorTestbench
+	project addfile "C:/Users/Duncan/git/ForthCPU/generics/source/synchronizer.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/debugPortV2/source/requestGenerator.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/debugPortV2/test/requestGeneratorTests.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/debugSnooper/source/snooper.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/debugWatcher/source/addressWatcher.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/generics/source/wordRegister.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/debugWatcher/source/watcher.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/programCounter/source/programCounter.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/generics/source/oneOfSixteenDecoder.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/generics/source/wordSynchronizer.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/instructionPhaseDecoder/source/instructionPhaseDecoder.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/constants.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/testSetup.v"
+	vlib  work
+	vdel -lib work -all 
+	vlib work
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/generics/source  -work work  "C:/Users/Duncan/git/ForthCPU/generics/source/synchronizer.v"
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/debugPortV2/source  -work work  "C:/Users/Duncan/git/ForthCPU/debugPortV2/source/requestGenerator.v"
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/debugPortV2/test  -work work  "C:/Users/Duncan/git/ForthCPU/debugPortV2/test/requestGeneratorTests.v"
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/debugSnooper/source  -work work  "C:/Users/Duncan/git/ForthCPU/debugSnooper/source/snooper.v"
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/debugWatcher/source  -work work  "C:/Users/Duncan/git/ForthCPU/debugWatcher/source/addressWatcher.v"
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/generics/source  -work work  "C:/Users/Duncan/git/ForthCPU/generics/source/wordRegister.v"
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/debugWatcher/source  -work work  "C:/Users/Duncan/git/ForthCPU/debugWatcher/source/watcher.v"
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/programCounter/source  -work work  "C:/Users/Duncan/git/ForthCPU/programCounter/source/programCounter.v"
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/generics/source  -work work  "C:/Users/Duncan/git/ForthCPU/generics/source/oneOfSixteenDecoder.v"
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/generics/source  -work work  "C:/Users/Duncan/git/ForthCPU/generics/source/wordSynchronizer.v"
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/instructionPhaseDecoder/source  -work work  "C:/Users/Duncan/git/ForthCPU/instructionPhaseDecoder/source/instructionPhaseDecoder.v"
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU  -work work  "C:/Users/Duncan/git/ForthCPU/constants.v"
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU  -work work  "C:/Users/Duncan/git/ForthCPU/testSetup.v"
+} else {
+	project open "C:/Users/Duncan/git/ForthCPU/debugPortV2/test/requestGeneratorTestbench/requestGeneratorTestbench"
+	project compileoutofdate
+}
+vsim -L work -L pmi_work -L ovi_machxo3l  requestGeneratorTests
+view wave
+add wave /*
+run 1000ns

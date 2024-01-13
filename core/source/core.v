@@ -29,7 +29,7 @@ module core(
 // Debugger
 wire [2:0]  DEBUG_ADDR_BUSX;
 wire [3:0]  DEBUG_ARGBX;
-wire [2:0]  DEBUG_BUS_SEQX;
+wire [1:0]  DEBUG_BUS_SEQX;
 wire [1:0]  DEBUG_CC_REGX;
 wire         DEBUG_MODE_STOP;
 wire         DEBUG_MODE_DEBUG;
@@ -86,6 +86,8 @@ wire CC_ZERO;
 wire CC_CARRY;
 wire CC_SIGN;
 wire CC_PARITY;	
+wire [3:0] CCREGS_DOUT;
+
 // Jumps - decoder outputs
 wire [1:0] JMP_PC_OFFSETX;
 wire [1:0] JMP_PC_BASEX;
@@ -95,7 +97,7 @@ wire [1:0] JMP_REGA_DINX;
 wire [3:0] JMP_REG_SEQX;
 wire [2:0] JMP_ALUB_SRCX;
 wire [2:0] JMP_ADDR_BUSX;
-wire [2:0] JMP_BUS_SEQX;
+wire [1:0] JMP_BUS_SEQX;
 
 // Load/store
 wire [3:0] LDS_REG_SEQX;
@@ -107,7 +109,7 @@ wire [1:0] LDS_REGA_ADDRX;
 wire [2:0] LDS_REGB_ADDRX;
 wire [1:0] LDS_PC_OFFSETX;
 wire [1:0] LDS_DATA_BUSX;
-wire [2:0] LDS_BUS_SEQX;
+wire [1:0] LDS_BUS_SEQX;
 wire       LDS_RDX;
 wire       LDS_BYTEX;
 wire [2:0] LDS_ADDR_BUSX;
@@ -118,8 +120,7 @@ wire [2:0]  ADDR_BUSX;
 wire [3:0]  ALU_OPX;
 wire [2:0]  ALUA_SRCX;
 wire [2:0]  ALUB_SRCX;
-wire [3:0]  ARGBX;
-wire [2:0]  BUS_SEQX;
+wire [1:0]  BUS_SEQX;
 wire	     BYTEX;
 wire         CCL_LD;
 wire [1:0]  CC_REGX;
@@ -164,7 +165,7 @@ wire DEBUG_AT_BKP;
 assign ARGAX = INSTRUCTION[7:4];
 assign ARGBX = INSTRUCTION[3:0];
 assign B5    = INSTRUCTION[13];
-
+assign CCREGS_DOUT = {CC_ZERO, CC_CARRY, CC_SIGN, CC_PARITY};
 
 /****************************************
 * Debugger signals hardwiring
@@ -390,10 +391,16 @@ busInterface busInterfaceInst(
 	/****************************************
 	* Signals to/from the CPU
 	*****************************************/
-    .CPU_DIN(DIN),
-    .CPU_ADDR(ADDR),
-    .CPU_DOUT(DOUT),
-    .CPU_BYTEX(BYTEX),
+    .DATA_BUSX(DATA_BUSX),
+	.ALU_R(ALU_R),
+	.REGA_DOUT(REGA_DOUT),
+	.CCREGS_DOUT(CCREGS_DOUT),
+	.CPU_DIN(DIN),
+	.BYTEX(BYTEX),
+	.ADDR_BUSX(ADDR_BUSX),
+	.PC_A(PC_A),
+	.REGB_DOUT(REGB_DOUT),
+	.HERE(HERE),
 	
 	/****************************************
 	* Signals to/from the pin buffers
@@ -409,41 +416,14 @@ busInterface busInterfaceInst(
 	/****************************************
 	* Signals to/from the debugPort
 	*****************************************/
-	.DEBUG_STOP(DEBUG_MODE_STOP),
-	.DEBUG_DEBUG(DEBUG_MODE_DEBUG),
+	.DEBUG_MODE_STOP(DEBUG_MODE_STOP),
+	.DEBUG_MODE_DEBUGX(DEBUG_MODE_DEBUGX),
     .DEBUG_RD(DEBUG_RD),
     .DEBUG_WR(DEBUG_WR),
-    .DEBUG_DATA_SELX(DEBUG_DATA_SELX),
+    .DEBUG_DATA_OUT_SELX(DEBUG_DATA_OUT_SELX),
     .DEBUG_DIN(DEBUG_DIN),
     .DEBUG_DOUT(DEBUG_DOUT),
     .DEBUG_ADDR(DEBUG_ADDR)
-);
-
-addressBusController addressBusControllerInst(
-	.CLK(CLK),
-	.RESET(RESET),
-	.FETCH(FETCH),
-	.DECODE(DECODE),
-	.DEBUG_MODE_DEBUG(DEBUG_MODE_DEBUG),
-	.PC_A(PC_A),
-	.ALU_R(ALU_R),
-	.REGB_DOUT(REGB_DOUT),
-	.ADDR_BUSX(ADDR_BUSX),
-	.ADDR(ADDR),
-	.DEBUG_ADDR(DEBUG_ADDR),
-	.HERE(HERE),
-	.BYTEX(BYTEX),
-	.HIGH_BYTEX(HIGH_BYTEX)
-);
-
-dataBusController dataBusControllerInst(
-
-	.DATA_BUSX(DATA_BUSX),
-	.ALU_R(ALU_R),
-	.REGA_DOUT(REGA_DOUT),
-	.DEBUG_DOUT(DEBUG_DOUT),
-	.CCREGS_DOUT({CC_PARITY,CC_SIGN,CC_CARRY,CC_ZERO}),
-	.DOUT(DOUT)
 );
 
 /**********************************************

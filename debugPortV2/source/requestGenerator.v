@@ -5,6 +5,7 @@
 * - writing the DEBUG_REQ bit high in the MODE register
 * - a read or write to the DH register when 
 *   DEBUG_INC bit is set in the OP register
+*   and DEBUG_MODE_DEBUGX is DEBUGX_DSTEP
 **********************************************************/
 
 module requestGenerator(
@@ -12,27 +13,30 @@ module requestGenerator(
 	input CLK,
 	input RESET,
 	
-	input DEBUG_WRN,
-	input DEBUG_RDN,
+	input DEBUG_WR,
+	input DEBUG_RD,
 	
 	input EN_MODE,
-	input DEBUG_DIN_REQ,
+	input DEBUG_MODE_REQ_BIT,
 
-	input EN_DL,
-	input EN_DH,
-	input DEBUG_ADDR_INC,
-	input OP_CCRD,
+	input EN_MRDH,
+	input [1:0] DEBUGX,
+	input DEBUG_OP_INCX,
 	
 	input DEBUG_ACK,
-	output reg DEBUG_REQ
+	output DEBUG_REQ
 );
 
 /****************************************
 * Internal wiring
 *****************************************/
 wire DEBUG_MODE_REQ;
-wire DEBUG_INC_REQ;
-wire INC_EN;
+wire DEBUG_NEXT_REQ;
+wire DEBUG_NEXT_REQ_R;
+
+assign DEBUG_NEXT_REQ = DEBUG_OP_INCX & (DEBUGX != `DEBUGX_ILLEGAL);
+
+assign DEBUG_REQ = DEBUG_NEXT_REQ_R | DEBUG_MODE_REQ;
 
 /****************************************
 * Synchronizer for the DEBUG_MODE_REQ bit
@@ -40,14 +44,14 @@ wire INC_EN;
 synchronizer #(.BUS_WIDTH(1)) modeReqReg(
 
 	.RESET(RESET),
-	.SLOWCLK(DEBUG_WRN),
+	.SLOWCLK(DEBUG_WR),
 	.EN(EN_MODE),
 	.LD(1'b1),
 	
 	.FASTCLK(CLK),
 	.CLR(DEBUG_ACK),
 	
-	.D(DEBUG_DIN_REQ),
+	.D(DEBUG_MODE_REQ_BIT),
 	.Q(DEBUG_MODE_REQ)
 );
 
@@ -57,23 +61,15 @@ synchronizer #(.BUS_WIDTH(1)) modeReqReg(
 synchronizer #(.BUS_WIDTH(1)) dhReqReg(
 
 	.RESET(RESET),
-	.SLOWCLK(DEBUG_WRN & DEBUG_RDN),
-	.EN(INC_EN),
+	.SLOWCLK(DEBUG_WR | DEBUG_RD),
+	.EN(EN_MRDH),
 	.LD(1'b1),
 	
 	.FASTCLK(CLK),
 	.CLR(DEBUG_ACK),
 	
-	.D(DEBUG_ADDR_INC),
-	.Q(DEBUG_INC_REQ)
+	.D(DEBUG_NEXT_REQ),
+	.Q(DEBUG_NEXT_REQ_R)
 );
-
-// OP logic
-assign INC_EN = (EN_DH & ~OP_CCRD) | (EN_DL & OP_CCRD);
-
-always @(*) begin
-	DEBUG_REQ = DEBUG_INC_REQ | DEBUG_MODE_REQ;
-end
-
 
 endmodule

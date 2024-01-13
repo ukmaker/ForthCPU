@@ -10,8 +10,6 @@ if {![file exists "C:/Users/Duncan/git/ForthCPU/core/test/coreTestbench/coreTest
 	project addfile "C:/Users/Duncan/git/ForthCPU/registerFileB/source/registers.v"
 	project addfile "C:/Users/Duncan/git/ForthCPU/registerFileB/source/registerFile.v"
 	project addfile "C:/Users/Duncan/git/ForthCPU/registerSequencer/source/registerSequencer.v"
-	project addfile "C:/Users/Duncan/git/ForthCPU/dataBusController/source/dataBusController.v"
-	project addfile "C:/Users/Duncan/git/ForthCPU/addressBusController/source/addressBusController.v"
 	project addfile "C:/Users/Duncan/git/ForthCPU/busInterface/source/busInterface.v"
 	project addfile "C:/Users/Duncan/git/ForthCPU/opxMultiplexer/source/opxMultiplexer.v"
 	project addfile "C:/Users/Duncan/git/ForthCPU/loadStoreGroupDecoder/source/loadStoreGroupDecoder.v"
@@ -23,6 +21,8 @@ if {![file exists "C:/Users/Duncan/git/ForthCPU/core/test/coreTestbench/coreTest
 	project addfile "C:/Users/Duncan/git/ForthCPU/core/source/core.v"
 	project addfile "C:/Users/Duncan/git/ForthCPU/core/test/coreTests.v"
 	project addfile "C:/Users/Duncan/git/ForthCPU/interruptLogic/source/interruptMaskRegister.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/addressBusController/source/addressBusController.v"
+	project addfile "C:/Users/Duncan/git/ForthCPU/dataBusController/source/dataBusController.v"
 	project addfile "C:/Users/Duncan/git/ForthCPU/constants.v"
 	project addfile "C:/Users/Duncan/git/ForthCPU/instructionTestSetup.sv"
 	vlib  work
@@ -38,8 +38,6 @@ if {![file exists "C:/Users/Duncan/git/ForthCPU/core/test/coreTestbench/coreTest
 	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/registerFileB/source  -work work  "C:/Users/Duncan/git/ForthCPU/registerFileB/source/registers.v"
 	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/registerFileB/source  -work work  "C:/Users/Duncan/git/ForthCPU/registerFileB/source/registerFile.v"
 	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/registerSequencer/source  -work work  "C:/Users/Duncan/git/ForthCPU/registerSequencer/source/registerSequencer.v"
-	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/dataBusController/source  -work work  "C:/Users/Duncan/git/ForthCPU/dataBusController/source/dataBusController.v"
-	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/addressBusController/source  -work work  "C:/Users/Duncan/git/ForthCPU/addressBusController/source/addressBusController.v"
 	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/busInterface/source  -work work  "C:/Users/Duncan/git/ForthCPU/busInterface/source/busInterface.v"
 	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/opxMultiplexer/source  -work work  "C:/Users/Duncan/git/ForthCPU/opxMultiplexer/source/opxMultiplexer.v"
 	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/loadStoreGroupDecoder/source  -work work  "C:/Users/Duncan/git/ForthCPU/loadStoreGroupDecoder/source/loadStoreGroupDecoder.v"
@@ -51,6 +49,8 @@ if {![file exists "C:/Users/Duncan/git/ForthCPU/core/test/coreTestbench/coreTest
 	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/core/source  -work work  "C:/Users/Duncan/git/ForthCPU/core/source/core.v"
 	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/core/test  -work work  "C:/Users/Duncan/git/ForthCPU/core/test/coreTests.v"
 	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/interruptLogic/source  -work work  "C:/Users/Duncan/git/ForthCPU/interruptLogic/source/interruptMaskRegister.v"
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/addressBusController/source  -work work  "C:/Users/Duncan/git/ForthCPU/addressBusController/source/addressBusController.v"
+	vlog  +incdir+C:/Users/Duncan/git/ForthCPU/dataBusController/source  -work work  "C:/Users/Duncan/git/ForthCPU/dataBusController/source/dataBusController.v"
 	vlog  +incdir+C:/Users/Duncan/git/ForthCPU  -work work  "C:/Users/Duncan/git/ForthCPU/constants.v"
 	vlog -sv -mfcu \
 	+incdir+C:/Users/Duncan/git/ForthCPU \

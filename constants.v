@@ -161,8 +161,10 @@
 `define DEBUG_OPX_RD_INST   3'b110
 `define DEBUG_OPX_WR_BKP    3'b111
 
-`define DEBUG_OPX_INC_NONE  1'b0
-`define DEBUG_OPX_INC_INC   1'b1
+`define DEBUG_OPX_INC_NONE           1'b0
+`define DEBUG_OPX_INC_INC            1'b1
+`define DEBUG_OPX_INC_INC_BIT 8'b00100000
+`define DEBUG_OPX_INC_BIT_POS           5
 
 `define DEBUG_MODE_RUN      8'b00000000
 `define DEBUG_MODE_STOP     8'b00000001
@@ -172,6 +174,15 @@
 `define DEBUG_MODE_EN_WATCH 8'b00100000
 `define DEBUG_MODE_RESET    8'b01000000
 `define DEBUG_MODE_SNOOP    8'b10000000
+
+`define DEBUG_MODE_STOP_BIT_POS     0
+`define DEBUG_MODE_DEBUGX_BIT_POS   1
+`define DEBUG_MODE_REQ_BIT_POS      3
+`define DEBUG_MODE_EN_BKP_BIT_POS   4
+`define DEBUG_MODE_EN_WATCH_BIT_POS 5
+`define DEBUG_MODE_RESET_BIT_POS    6
+`define DEBUG_MODE_SNOOP_BIT_POS    7
+
 
 `define DEBUGX_STEP    2'b00
 `define DEBUGX_DSTEP   2'b01

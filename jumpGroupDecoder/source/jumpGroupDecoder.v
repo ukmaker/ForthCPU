@@ -68,7 +68,7 @@ module jumpGroupDecoder(
 	/**
 	* Bus control
 	**/
-	output reg [2:0] BUS_SEQX
+	output reg [1:0] BUS_SEQX
 );
 
 reg RD_M;

@@ -121,8 +121,8 @@
 	$display("%04d EXECUTE  [T=%09t]", n, $realtime); \
 	`TICKTOCK; \
 	$display("%04d COMMIT  [T=%09t]", n, $realtime); \
-	`TICK; \
 	DIN = ld_data; \
+	`TICK; \
 	`asserth("ADDR_BUF", ld_addr, ADDR_BUF) \
 	`assert("WRN0_BUF", 1, WRN0_BUF) \
 	`assert("WRN1_BUF", 1, WRN1_BUF) \

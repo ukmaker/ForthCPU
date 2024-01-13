@@ -153,22 +153,10 @@ always @(posedge CLK or posedge RESET) begin
 	end
 end
 
-
-
-always @(negedge CLK or posedge RESET) begin
-	if(RESET) begin
-		REGA_EN  <= 1'b0;
-		REGB_EN  <= 1'b0;
-	end else begin
-		if(COMMIT | FETCH | EXECUTE) begin
-			REGA_EN <= REGA_EN_R;
-			REGB_EN <= REGB_EN_R;
-		end else begin
-			// Everything idle
-			REGA_EN  <= 1'b0;
-			REGB_EN  <= 1'b0;
-		end
-	end
+always @(*) begin
+	REGA_EN = REGA_EN_R;
+	REGB_EN = REGB_EN_R;
 end
+
 
 endmodule

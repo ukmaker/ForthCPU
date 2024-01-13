@@ -1,0 +1,244 @@
+MPARTRCE: MultiPar and Trace Run Manager Tool
+
+Level/       Number       Worst        Timing       Worst        Timing       Run          NCD
+Cost [ncd]   Unrouted     Slack        Score        Slack(hold)  Score(hold)  Time         Status
+----------   --------     -----        ------       -----------  -----------  ----         ------
+5_1   *      0            -1.056       7511         0.306        0            12           Completed
+
+* : Design saved.
+
+par done!
+
+Lattice Place and Route Report for Design "ForthCPU_debugPortV2_map.ncd"
+Sat Jan 13 15:09:22 2024
+
+PAR: Place And Route Diamond (64-bit) 3.13.0.56.2.
+Command Line: par -w -l 5 -i 6 -t 1 -c 0 -e 0 -gui -msgset C:/Users/Duncan/git/ForthCPU/promote.xml -exp parUseNBR=1:parCDP=0:parCDR=0:parPathBased=OFF:parASE=1 ForthCPU_debugPortV2_map.ncd ForthCPU_debugPortV2.dir\5_1.dir/5_1.ncd ForthCPU_debugPortV2.prf
+Preference file: ForthCPU_debugPortV2.prf.
+Placement level-cost: 5-1.
+Routing Iterations: 6
+
+Loading design for application par from file ForthCPU_debugPortV2_map.ncd.
+Design name: instructionPhaseDecoder
+NCD version: 3.3
+Vendor:      LATTICE
+Device:      LCMXO3L-6900C
+Package:     CABGA256
+Performance: 5
+Loading device for application par from file 'xo3c6900.nph' in environment: C:/lscc/diamond/3.13/ispfpga.
+Package Status:                     Final          Version 1.17.
+Performance Hardware Data Status:   Final          Version 37.5.
+License checked out.
+
+
+Ignore Preference Error(s):  True
+Device utilization summary:
+
+   PIO (prelim)   14+4(JTAG)/336     5% used
+                  14+4(JTAG)/207     9% bonded
+   IOLOGIC            6/336           1% used
+
+   SLICE              9/3432         <1% used
+
+   GSR                1/1           100% used
+
+
+Number of Signals: 43
+Number of Connections: 97
+ 
+WARNING - par: When using the Master SPI interface for configuration, it is recommended that the PROGRAMN, DONE and INITN pins be used. Refer to the MachXO3L Handbook for information on these three ports.
+WARNING - par: The SN pin is not available for use as a general purpose I/O pin when the SLAVE_SPI_PORT attribute is enabled.  The SN pin should be tied high with an external pull-up if you are not using the Slave SPI port for configuration.
+
+Pin Constraint Summary:
+   0 out of 14 pins locked (0% locked).
+
+The following 1 signal is selected to use the primary clock routing resources:
+    CLK_c (driver: CLK, clk load #: 13)
+
+
+No signal is selected as secondary clock.
+
+Signal RESET_c is selected as Global Set/Reset.
+.
+Starting Placer Phase 0.
+..........
+Finished Placer Phase 0.  REAL time: 2 secs 
+
+Starting Placer Phase 1.
+...................
+Placer score = 6044.
+Finished Placer Phase 1.  REAL time: 10 secs 
+
+Starting Placer Phase 2.
+.
+Placer score =  6032
+Finished Placer Phase 2.  REAL time: 10 secs 
+
+
+------------------ Clock Report ------------------
+
+Global Clock Resources:
+  CLK_PIN    : 1 out of 8 (12%)
+  PLL        : 0 out of 2 (0%)
+  DCM        : 0 out of 2 (0%)
+  DCC        : 0 out of 8 (0%)
+
+Global Clocks:
+  PRIMARY "CLK_c" from comp "CLK" on CLK_PIN site "T9 (PB23A)", clk load = 13
+
+  PRIMARY  : 1 out of 8 (12%)
+  SECONDARY: 0 out of 8 (0%)
+
+Edge Clocks:
+  No edge clock selected.
+
+--------------- End of Clock Report ---------------
+
+
+I/O Usage Summary (final):
+   14 + 4(JTAG) out of 336 (5.4%) PIO sites used.
+   14 + 4(JTAG) out of 207 (8.7%) bonded PIO sites used.
+   Number of PIO comps: 14; differential: 0.
+   Number of Vref pins used: 0.
+
+I/O Bank Usage Summary:
++----------+---------------+------------+-----------+
+| I/O Bank | Usage         | Bank Vccio | Bank Vref |
++----------+---------------+------------+-----------+
+| 0        | 0 / 51 (  0%) | -          | -         |
+| 1        | 0 / 52 (  0%) | -          | -         |
+| 2        | 5 / 52 (  9%) | 2.5V       | -         |
+| 3        | 8 / 16 ( 50%) | 2.5V       | -         |
+| 4        | 0 / 16 (  0%) | -          | -         |
+| 5        | 1 / 20 (  5%) | 2.5V       | -         |
++----------+---------------+------------+-----------+
+
+Total placer CPU time: 9 secs 
+
+Dumping design to file ForthCPU_debugPortV2.dir\5_1.dir/5_1.ncd.
+
+0 connections routed; 97 unrouted.
+Starting router resource preassignment
+
+Completed router resource preassignment. Real time: 11 secs 
+
+Start NBR router at 15:09:33 01/13/24
+
+*****************************************************************
+Info: NBR allows conflicts(one node used by more than one signal)
+      in the earlier iterations. In each iteration, it tries to  
+      solve the conflicts while keeping the critical connections 
+      routed as short as possible. The routing process is said to
+      be completed when no conflicts exist and all connections   
+      are routed.                                                
+Note: NBR uses a different method to calculate timing slacks. The
+      worst slack and total negative slack may not be the same as
+      that in TRCE report. You should always run TRCE to verify  
+      your design.                                               
+*****************************************************************
+
+Start NBR special constraint process at 15:09:33 01/13/24
+
+Start NBR section for initial routing at 15:09:33 01/13/24
+Level 1, iteration 1
+1(0.00%) conflict; 65(67.01%) untouched conns; 21601 (nbr) score; 
+Estimated worst slack/total negative slack<setup>: -1.147ns/-21.601ns; real time: 11 secs 
+Level 2, iteration 1
+4(0.00%) conflicts; 58(59.79%) untouched conns; 14844 (nbr) score; 
+Estimated worst slack/total negative slack<setup>: -0.990ns/-14.844ns; real time: 11 secs 
+Level 3, iteration 1
+3(0.00%) conflicts; 23(23.71%) untouched conns; 15364 (nbr) score; 
+Estimated worst slack/total negative slack<setup>: -0.990ns/-15.365ns; real time: 11 secs 
+Level 4, iteration 1
+0(0.00%) conflict; 0(0.00%) untouched conn; 15978 (nbr) score; 
+Estimated worst slack/total negative slack<setup>: -1.056ns/-15.979ns; real time: 11 secs 
+
+Info: Initial congestion level at 75% usage is 0
+Info: Initial congestion area  at 75% usage is 0 (0.00%)
+
+Start NBR section for normal routing at 15:09:33 01/13/24
+Level 1, iteration 1
+2(0.00%) conflicts; 0(0.00%) untouched conn; 15714 (nbr) score; 
+Estimated worst slack/total negative slack<setup>: -0.990ns/-15.715ns; real time: 11 secs 
+Level 2, iteration 1
+6(0.00%) conflicts; 2(2.06%) untouched conns; 14148 (nbr) score; 
+Estimated worst slack/total negative slack<setup>: -0.990ns/-14.148ns; real time: 11 secs 
+Level 2, iteration 2
+0(0.00%) conflict; 3(3.09%) untouched conns; 15766 (nbr) score; 
+Estimated worst slack/total negative slack<setup>: -1.056ns/-15.766ns; real time: 11 secs 
+Level 2, iteration 3
+0(0.00%) conflict; 2(2.06%) untouched conns; 15978 (nbr) score; 
+Estimated worst slack/total negative slack<setup>: -1.056ns/-15.979ns; real time: 11 secs 
+Level 3, iteration 1
+0(0.00%) conflict; 2(2.06%) untouched conns; 15978 (nbr) score; 
+Estimated worst slack/total negative slack<setup>: -1.056ns/-15.979ns; real time: 11 secs 
+Level 4, iteration 1
+0(0.00%) conflict; 0(0.00%) untouched conn; 15978 (nbr) score; 
+Estimated worst slack/total negative slack<setup>: -1.056ns/-15.979ns; real time: 11 secs 
+
+Start NBR section for performance tuning (iteration 1) at 15:09:33 01/13/24
+Level 4, iteration 1
+3(0.00%) conflicts; 0(0.00%) untouched conn; 13629 (nbr) score; 
+Estimated worst slack/total negative slack<setup>: -1.056ns/-13.629ns; real time: 11 secs 
+Level 4, iteration 2
+1(0.00%) conflict; 0(0.00%) untouched conn; 16568 (nbr) score; 
+Estimated worst slack/total negative slack<setup>: -1.056ns/-16.568ns; real time: 11 secs 
+Level 4, iteration 3
+0(0.00%) conflict; 0(0.00%) untouched conn; 16154 (nbr) score; 
+Estimated worst slack/total negative slack<setup>: -1.056ns/-16.154ns; real time: 11 secs 
+
+Start NBR section for re-routing at 15:09:33 01/13/24
+Level 4, iteration 1
+0(0.00%) conflict; 0(0.00%) untouched conn; 16154 (nbr) score; 
+Estimated worst slack/total negative slack<setup>: -1.056ns/-16.154ns; real time: 11 secs 
+
+Start NBR section for post-routing at 15:09:33 01/13/24
+
+End NBR router with 0 unrouted connection
+
+NBR Summary
+-----------
+  Number of unrouted connections : 0 (0.00%)
+  Number of connections with timing violations : 28 (28.87%)
+  Estimated worst slack<setup> : -1.056ns
+  Timing score<setup> : 7511
+-----------
+Notes: The timing info is calculated for SETUP only and all PAR_ADJs are ignored.
+
+
+
+Total CPU time 10 secs 
+Total REAL time: 12 secs 
+Completely routed.
+End of route.  97 routed (100.00%); 0 unrouted.
+
+Hold time timing score: 0, hold timing errors: 0
+
+Timing score: 7511 
+
+Dumping design to file ForthCPU_debugPortV2.dir\5_1.dir/5_1.ncd.
+
+
+All signals are completely routed.
+
+
+PAR_SUMMARY::Run status = Completed
+PAR_SUMMARY::Number of unrouted conns = 0
+PAR_SUMMARY::Worst  slack<setup/<ns>> = -1.056
+PAR_SUMMARY::Timing score<setup/<ns>> = 7.511
+PAR_SUMMARY::Worst  slack<hold /<ns>> = 0.306
+PAR_SUMMARY::Timing score<hold /<ns>> = 0.000
+PAR_SUMMARY::Number of errors = 0
+
+Total CPU  time to completion: 10 secs 
+Total REAL time to completion: 12 secs 
+
+par done!
+
+Note: user must run 'Trace' for timing closure signoff.
+
+Copyright (c) 1991-1994 by NeoCAD Inc. All rights reserved.
+Copyright (c) 1995 AT&T Corp.   All rights reserved.
+Copyright (c) 1995-2001 Lucent Technologies Inc.  All rights reserved.
+Copyright (c) 2001 Agere Systems   All rights reserved.
+Copyright (c) 2002-2023 Lattice Semiconductor Corporation,  All rights reserved.

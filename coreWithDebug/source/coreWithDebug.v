@@ -1,11 +1,12 @@
 `include "../../constants.v"
 /*************************************************************
-* The core of the CPU and the debugging modules
+* The core of the CPU, not including the debug port. 
+* Bus multiplexers are tied
 **************************************************************/
 module coreWithDebug(
 	
 	input CLK,
-	input RESET,
+	input RESETN,
 	
 	output STOPPED,
 	output FETCH,
@@ -18,24 +19,37 @@ module coreWithDebug(
 	output [15:0] ADDR_BUF,
 	output RD_BUF,
 	output WR0_BUF,
-	output WR1_BUF
+	output WR1_BUF,
+	
+	// DebugPort
+	input [3:0] DEBUG_REG_ADDR,
+	input DEBUG_RDN,
+	input DEBUG_WRN,
+	input DEBUG_INT,
+	input  [7:0] DEBUG_DIN,
+	output [7:0] DEBUG_DOUT
 
 );
 
 /**********************************************
 * Internal wiring
 ***********************************************/
-// Debugger - tied off for this impl
-wire [2:0]  DEBUG_ADDR_BUSX;
-wire [3:0]  DEBUG_ARGBX;
-wire [2:0]  DEBUG_BUS_SEQX;
-wire [1:0]  DEBUG_CC_REGX;
+// debugPort
+wire         DEBUG_MODE_REQ;
 wire         DEBUG_MODE_STOP;
 wire         DEBUG_MODE_DEBUG;
-wire         DEBUG_MODE_INC;
-wire [2:0]  DEBUG_PC_NEXTX;
-wire [3:0]  DEBUG_REG_SEQX;
-wire         DEBUG_LD_BKP_EN;
+wire         DEBUG_MODE_ACK;
+wire         DEBUG_DATA_OUT_SELX;
+wire         DEBUG_ADDR_INCX;
+wire         DEBUG_SNOOP_LD_EN;
+wire         DEBUG_BKP_ENX;
+wire         DEBUG_WATCH_ENX;
+wire         DEBUG_IN_WATCH;
+wire         DEBUG_AT_BKP;
+wire [15:0] DEBUG_DATA_IN;
+wire [15:0] DEBUG_DATA_OUT;
+wire [15:0] DEBUG_ADDR_IN;
+wire [15:0] DEBUG_ADDR_OUT;
 
 
 // Interrupt logic
@@ -55,15 +69,6 @@ wire [15:0] ADDR;
 wire [15:0] ALU_R;
 wire [15:0] HERE;
 
-/****************************************
-* Signals to/from the debugPort
-*****************************************/
-wire DEBUG_RD;
-wire DEBUG_WR;
-wire DEBUG_DATA_SELX;
-wire [15:0] DEBUG_DIN;
-wire [15:0] DEBUG_DOUT;
-wire [15:0] DEBUG_ADDR;
 
 // ALU decoder outputs
 wire [3:0] ALU_REG_SEQX;
@@ -73,6 +78,16 @@ wire [3:0] ALU_ALU_OPX;
 wire        ALU_CCL_LD;
 wire [2:0] ALU_ALUA_SRCX;
 wire [2:0] ALU_ALUB_SRCX;
+
+// Debug decoder
+wire [2:0]  DEBUG_OPX;
+wire [1:0]  DEBUG_DATA_BUSX;
+wire [2:0]  DEBUG_ADDR_BUSX;
+wire [1:0]  DEBUG_BUS_SEQX;
+wire [1:0]  DEBUG_CC_REGX;
+wire [3:0]  DEBUG_REG_SEQX;
+wire [2:0]  DEBUG_PC_NEXTX;
+wire         DEBUG_LD_BKP_EN;
 
 // General decoder outputs
 wire GEN_EIX;
@@ -85,6 +100,8 @@ wire CC_ZERO;
 wire CC_CARRY;
 wire CC_SIGN;
 wire CC_PARITY;	
+wire [3:0] CCREGS_DOUT;
+
 // Jumps - decoder outputs
 wire [1:0] JMP_PC_OFFSETX;
 wire [1:0] JMP_PC_BASEX;
@@ -94,7 +111,7 @@ wire [1:0] JMP_REGA_DINX;
 wire [3:0] JMP_REG_SEQX;
 wire [2:0] JMP_ALUB_SRCX;
 wire [2:0] JMP_ADDR_BUSX;
-wire [2:0] JMP_BUS_SEQX;
+wire [1:0] JMP_BUS_SEQX;
 
 // Load/store
 wire [3:0] LDS_REG_SEQX;
@@ -106,7 +123,7 @@ wire [1:0] LDS_REGA_ADDRX;
 wire [2:0] LDS_REGB_ADDRX;
 wire [1:0] LDS_PC_OFFSETX;
 wire [1:0] LDS_DATA_BUSX;
-wire [2:0] LDS_BUS_SEQX;
+wire [1:0] LDS_BUS_SEQX;
 wire       LDS_RDX;
 wire       LDS_BYTEX;
 wire [2:0] LDS_ADDR_BUSX;
@@ -117,8 +134,7 @@ wire [2:0]  ADDR_BUSX;
 wire [3:0]  ALU_OPX;
 wire [2:0]  ALUA_SRCX;
 wire [2:0]  ALUB_SRCX;
-wire [3:0]  ARGBX;
-wire [2:0]  BUS_SEQX;
+wire [1:0]  BUS_SEQX;
 wire	     BYTEX;
 wire         CCL_LD;
 wire [1:0]  CC_REGX;
@@ -141,14 +157,12 @@ wire [15:0] REGB_DOUT;
 
 // ALU
 wire [3:0] ARGAX;
+wire [3:0] ARGBX;
 wire B5;
 
 wire CCL_ENRX;
 wire CCL_EN0X;
 wire CCL_EN1X;
-
-wire [15:0] ALUA_DATA;
-wire [15:0] ALUB_DATA;
 
 // Program Counter
 wire PC_LD_INT0X;
@@ -156,7 +170,6 @@ wire PC_LD_INT1X;
 wire [15:0] PC_A_NEXT;
 wire [15:0] PC_A;
 wire DEBUG_EN_BKPX;
-wire DEBUG_AT_BKP;
 
 
 /****************************************
@@ -165,7 +178,7 @@ wire DEBUG_AT_BKP;
 assign ARGAX = INSTRUCTION[7:4];
 assign ARGBX = INSTRUCTION[3:0];
 assign B5    = INSTRUCTION[13];
-
+assign CCREGS_DOUT = {CC_ZERO, CC_CARRY, CC_SIGN, CC_PARITY};
 
 /****************************************
 * Debugger signals hardwiring
@@ -176,13 +189,51 @@ assign DEBUG_MODE_DEBUG = 1'b0;
 assign DEBUG_MODE_INC   = 1'b0;
 assign DEBUG_LD_BKP_EN  = 1'b0;
 assign DEBUG_EN_BKPX    = 1'b0;
-assign DEBUG_DOUT       = 16'h0000;
+assign DEBUG_DOUT       = 8'h00;
 assign DEBUG_ADDR       = 16'h0000;
 
 
 /****************************************
 * The modules
 *****************************************/
+
+debugPort debugPortInst(
+	.DEBUG_DIN(DEBUG_DIN),
+	.DEBUG_REG_ADDR(DEBUG_REG_ADDR),
+	.DEBUG_RDN(DEBUG_RDN),
+	.DEBUG_WRN(DEBUG_WRN),
+	.DEBUG_INT(DEBUG_INT),
+	.DEBUG_DOUT(DEBUG_DOUT),
+	
+	.CLK(CLK),
+	.RESETN(RESETN),
+	.RD(RD),
+	.WR(WR),
+	.ADDR(ADDR),
+	.RESET(RESET),
+	
+	.DEBUG_MODE_REQ(DEBUG_MODE_REQ),
+	.DEBUG_MODE_STOP(DEBUG_MODE_STOP),
+	.DEBUG_MODE_DEBUG(DEBUG_MODE_DEBUG),
+	.DEBUG_ACK(DEBUG_ACK),
+	
+	.DEBUG_DATA_OUT_SELX(DEBUG_DATA_OUT_SELX),
+	.DEBUG_ADDR_INCX(DEBUG_ADDR_INCX),
+	.DEBUG_SNOOP_LD_EN(DEBUG_SNOOP_LD_EN),
+	
+	.DEBUG_BKP_ENX(DEBUG_BKP_ENX),
+	.DEBUG_WATCH_ENX(DEBUG_WATCH_ENX),
+	.DEBUG_IN_WATCH(DEBUG_IN_WATCH),
+	.DEBUG_AT_BKP(DEBUG_AT_BKP),
+	
+	.DEBUG_DATA_IN(DEBUG_DATA_IN),
+	.DEBUG_DATA_OUT(DEBUG_DATA_OUT),
+	
+	.DEBUG_ADDR_IN(DEBUG_ADDR_IN),
+	.DEBUG_ADDR_OUT(DEBUG_ADDR_OUT)
+);
+
+
 masterSequencer masterSequencerInst(
 	.CLK(CLK),
 	.RESET(RESET),
@@ -235,6 +286,17 @@ aluGroupDecoder aluGroupDecoderInst(
 	.CCL_LD(ALU_CCL_LD),
 	.ALUA_SRCX(ALU_ALUA_SRCX),
 	.ALUB_SRCX(ALU_ALUB_SRCX)	
+);
+
+debugDecoder debugDecoderInst(
+	.DEBUG_OPX(DEBUG_OPX),
+	.DATA_BUSX(DATA_BUSX),
+	.ADDR_BUSX(ADDR_BUSX),
+	.BUS_SEQX(BUS_SEQX),
+	.CC_REGX(CC_REGX),
+	.REG_SEQX(REG_SEQX),
+	.PC_NEXTX(PC_NEXTX),
+	.DEBUG_LD_BKP_EN(DEBUG_LD_BKP_EN)
 );
 
 generalGroupDecoder generalGroupDecoderInst(
@@ -310,7 +372,6 @@ loadStoreGroupDecoder loadStoreGroupDecoderInst(
 ***********************************************/
 opxMultiplexer opxMultiplexerInst(
 	.INSTRUCTION_GROUP(GROUPX),
-	.INSTRUCTION_ARGBX(INSTRUCTION[3:0]),
 		
 	.ALU_ALU_OPX(ALU_ALU_OPX),
 	.ALU_ALUA_SRCX(ALU_ALUA_SRCX),
@@ -321,7 +382,6 @@ opxMultiplexer opxMultiplexerInst(
 	.ALU_REG_SEQX(ALU_REG_SEQX),
 	
 	.DEBUG_ADDR_BUSX(DEBUG_ADDR_BUSX),
-	.DEBUG_ARGBX(DEBUG_ARGBX),
 	.DEBUG_BUS_SEQX(DEBUG_BUS_SEQX),
 	.DEBUG_CC_REGX(DEBUG_CC_REGX),
 	.DEBUG_MODEX(DEBUG_MODEX),
@@ -361,7 +421,6 @@ opxMultiplexer opxMultiplexerInst(
 	.ALU_OPX(ALU_OPX),
 	.ALUA_SRCX(ALUA_SRCX),
 	.ALUB_SRCX(ALUB_SRCX),
-	.ARGBX(ARGBX),
 	.BUS_SEQX(BUS_SEQX),
 	.BYTEX(BYTEX),
 	.CCL_LD(CCL_LD),
@@ -394,10 +453,16 @@ busInterface busInterfaceInst(
 	/****************************************
 	* Signals to/from the CPU
 	*****************************************/
-    .CPU_DIN(DIN),
-    .CPU_ADDR(ADDR),
-    .CPU_DOUT(DOUT),
-    .CPU_BYTEX(BYTEX),
+    .DATA_BUSX(DATA_BUSX),
+	.ALU_R(ALU_R),
+	.REGA_DOUT(REGA_DOUT),
+	.CCREGS_DOUT(CCREGS_DOUT),
+	.CPU_DIN(DIN),
+	.BYTEX(BYTEX),
+	.ADDR_BUSX(ADDR_BUSX),
+	.PC_A(PC_A),
+	.REGB_DOUT(REGB_DOUT),
+	.HERE(HERE),
 	
 	/****************************************
 	* Signals to/from the pin buffers
@@ -413,41 +478,30 @@ busInterface busInterfaceInst(
 	/****************************************
 	* Signals to/from the debugPort
 	*****************************************/
-	.DEBUG_STOP(DEBUG_MODE_STOP),
-	.DEBUG_DEBUG(DEBUG_MODE_DEBUG),
+	.DEBUG_MODE_STOP(DEBUG_MODE_STOP),
+	.DEBUG_MODE_DEBUGX(DEBUG_MODE_DEBUGX),
     .DEBUG_RD(DEBUG_RD),
     .DEBUG_WR(DEBUG_WR),
-    .DEBUG_DATA_SELX(DEBUG_DATA_SELX),
-    .DEBUG_DIN(DEBUG_DIN),
-    .DEBUG_DOUT(DEBUG_DOUT),
-    .DEBUG_ADDR(DEBUG_ADDR)
+    .DEBUG_DATA_OUT_SELX(DEBUG_DATA_OUT_SELX),
+    .DEBUG_DIN(DEBUG_DATA_OUT),
+    .DEBUG_DOUT(DEBUG_DATA_IN),
+    .DEBUG_ADDR(DEBUG_ADDR_OUT)
 );
 
-addressBusController addressBusControllerInst(
+/**********************************************
+* Debug sequencer
+***********************************************/	
+debugSequencer debugSequencerInst(
+
 	.CLK(CLK),
 	.RESET(RESET),
 	.FETCH(FETCH),
-	.DECODE(DECODE),
-	.DEBUG_MODE_DEBUG(DEBUG_MODE_DEBUG),
-	.PC_A(PC_A),
-	.ALU_R(ALU_R),
-	.ALUB_DATA(ALUB_DATA),
-	.ADDR_BUSX(ADDR_BUSX),
-	.ADDR(ADDR),
-	.DEBUG_ADDR(DEBUG_ADDR),
-	.HERE(HERE),
-	.BYTEX(BYTEX),
-	.HIGH_BYTEX(HIGH_BYTEX)
-);
-
-dataBusController dataBusControllerInst(
-
-	.DATA_BUSX(DATA_BUSX),
-	.ALU_R(ALU_R),
-	.REGA_DOUT(REGA_DOUT),
-	.DEBUG_DOUT(DEBUG_DOUT),
-	.CCREGS_DOUT({CC_PARITY,CC_SIGN,CC_CARRY,CC_ZERO}),
-	.DOUT(DOUT)
+	.EXECUTE(EXECUTE),
+	.DEBUG_OPX_INC(DEBUG_OPX_INC),
+	.DEBUG_MODE_SNOOP(DEBUG_MODE_SNOOP),
+	.DEBUG_ADDR_INC_EN(DEBUG_ADDR_INC_EN),
+	.DEBUG_SNOOP_LD_EN(DEBUG_SNOOP_LD_EN),
+	.DEBUG_DATA_OUT_SELX(DEBUG_DATA_OUT_SELX)
 );
 
 /**********************************************
@@ -478,7 +532,7 @@ registerFile registerFileInst (
 	.DIN(DIN),
 	.REGA_EN(REGA_EN),
 	.REGA_WEN(REGA_WEN),
-	.ARGAX(INSTRUCTION[7:4]),
+	.ARGAX(ARGAX),
 	.REGA_ADDRX(REGA_ADDRX),
 	.REGB_EN(REGB_EN),
 	.REGB_WEN(REGB_WEN),
@@ -514,9 +568,7 @@ fullALU fullALUInst(
 	.CC_ZERO(CC_ZERO),
 	.CC_CARRY(CC_CARRY),
 	.CC_SIGN(CC_SIGN),
-	.CC_PARITY(CC_PARITY),
-	.ALUA_DATA(ALUA_DATA),
-	.ALUB_DATA(ALUB_DATA)
+	.CC_PARITY(CC_PARITY)
 );
 /**********************************************
 * Program Counter
@@ -536,7 +588,6 @@ programCounter programCounterInst(
 	
 	.DEBUG_LD_BKP_EN(DEBUG_LD_BKP_EN),
 	.DEBUG_EN_BKPX(DEBUG_EN_BKPX),
-	.DIN_BKP(DEBUG_DOUT),
 	.DEBUG_AT_BKP(DEBUG_AT_BKP),
 
 	.REGB_DOUT(REGB_DOUT),

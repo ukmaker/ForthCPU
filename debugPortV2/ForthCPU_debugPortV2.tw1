@@ -1,0 +1,241 @@
+
+Loading design for application trce from file forthcpu_debugportv2_map.ncd.
+Design name: instructionPhaseDecoder
+NCD version: 3.3
+Vendor:      LATTICE
+Device:      LCMXO3L-6900C
+Package:     CABGA256
+Performance: 5
+Loading device for application trce from file 'xo3c6900.nph' in environment: C:/lscc/diamond/3.13/ispfpga.
+Package Status:                     Final          Version 1.17.
+Performance Hardware Data Status:   Final          Version 37.5.
+Setup and Hold Report
+
+--------------------------------------------------------------------------------
+Lattice TRACE Report - Setup, Version Diamond (64-bit) 3.13.0.56.2
+Sat Jan 13 15:09:22 2024
+
+Copyright (c) 1991-1994 by NeoCAD Inc. All rights reserved.
+Copyright (c) 1995 AT&T Corp.   All rights reserved.
+Copyright (c) 1995-2001 Lucent Technologies Inc.  All rights reserved.
+Copyright (c) 2001 Agere Systems   All rights reserved.
+Copyright (c) 2002-2023 Lattice Semiconductor Corporation,  All rights reserved.
+
+Report Information
+------------------
+Command line:    trce -v 1 -gt -mapchkpnt 0 -sethld -o ForthCPU_debugPortV2.tw1 -gui -msgset C:/Users/Duncan/git/ForthCPU/promote.xml ForthCPU_debugPortV2_map.ncd ForthCPU_debugPortV2.prf 
+Design file:     forthcpu_debugportv2_map.ncd
+Preference file: forthcpu_debugportv2.prf
+Device,speed:    LCMXO3L-6900C,5
+Report level:    verbose report, limited to 1 item per preference
+--------------------------------------------------------------------------------
+
+Report Type:     based on TRACE automatically generated preferences
+BLOCK ASYNCPATHS
+BLOCK RESETPATHS
+--------------------------------------------------------------------------------
+
+
+
+================================================================================
+Preference: FREQUENCY NET "CLK_c" 323.311000 MHz ;
+            43 items scored, 16 timing errors detected.
+--------------------------------------------------------------------------------
+
+
+Error: The following path exceeds requirements by 2.300ns
+
+ Logical Details:  Cell type  Pin type       Cell/ASIC name  (clock net +/-)
+
+   Source:         FF         Q              RESET_R  (from CLK_c +)
+   Destination:    FF         Data in        DECODE_0io  (to CLK_c +)
+
+   Delay:               5.256ns  (33.6% logic, 66.4% route), 4 logic levels.
+
+ Constraint Details:
+
+      5.256ns physical path delay SLICE_7 to DECODE_MGIOL exceeds
+      3.093ns delay constraint less
+      0.137ns DO_SET requirement (totaling 2.956ns) by 2.300ns
+
+ Physical Path Details:
+
+      Data path SLICE_7 to DECODE_MGIOL:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+REG_DEL     ---     0.409    SLICE_7.CLK to     SLICE_7.Q0 SLICE_7 (from CLK_c)
+ROUTE         1   e 0.401     SLICE_7.Q0 to     SLICE_7.B1 RESET_R
+CTOF_DEL    ---     0.452     SLICE_7.B1 to     SLICE_7.F1 SLICE_7
+ROUTE         2   e 1.030     SLICE_7.F1 to     SLICE_1.B1 PHASE_R_ns_o2[2]
+CTOF_DEL    ---     0.452     SLICE_1.B1 to     SLICE_1.F1 SLICE_1
+ROUTE         2   e 1.030     SLICE_1.F1 to     SLICE_4.A1 N_79
+CTOF_DEL    ---     0.452     SLICE_4.A1 to     SLICE_4.F1 SLICE_4
+ROUTE         1   e 1.030     SLICE_4.F1 to *DE_MGIOL.OPOS DECODE_2 (to CLK_c)
+                  --------
+                    5.256   (33.6% logic, 66.4% route), 4 logic levels.
+
+Warning: 185.426MHz is the maximum frequency for this preference.
+
+Report Summary
+--------------
+----------------------------------------------------------------------------
+Preference                              |   Constraint|       Actual|Levels
+----------------------------------------------------------------------------
+                                        |             |             |
+FREQUENCY NET "CLK_c" 323.311000 MHz ;  |  323.311 MHz|  185.426 MHz|   4 *
+                                        |             |             |
+----------------------------------------------------------------------------
+
+
+1 preference(marked by "*" above) not met.
+
+----------------------------------------------------------------------------
+Critical Nets                           |   Loads|  Errors| % of total
+----------------------------------------------------------------------------
+PC_STOP_i                               |       1|       6|     37.50%
+                                        |        |        |
+PC_STOP_2                               |       1|       3|     18.75%
+                                        |        |        |
+STOPPED_2_0_1                           |       1|       3|     18.75%
+                                        |        |        |
+N_71                                    |       2|       3|     18.75%
+                                        |        |        |
+PHASE_R[5]                              |       4|       3|     18.75%
+                                        |        |        |
+PHASE_R_ns[1]                           |       2|       3|     18.75%
+                                        |        |        |
+RESET_R                                 |       1|       3|     18.75%
+                                        |        |        |
+DECODE_2                                |       1|       3|     18.75%
+                                        |        |        |
+FETCH_2                                 |       1|       3|     18.75%
+                                        |        |        |
+STOPPED_2                               |       1|       3|     18.75%
+                                        |        |        |
+N_79                                    |       2|       3|     18.75%
+                                        |        |        |
+PHASE_R_ns_o2[2]                        |       2|       3|     18.75%
+                                        |        |        |
+PHASE_R[0]                              |       5|       3|     18.75%
+                                        |        |        |
+PHASE_R[4]                              |       2|       2|     12.50%
+                                        |        |        |
+----------------------------------------------------------------------------
+
+
+Clock Domains Analysis
+------------------------
+
+Found 1 clocks:
+
+Clock Domain: CLK_c   Source: CLK.PAD   Loads: 13
+   Covered under: FREQUENCY NET "CLK_c" 323.311000 MHz ;
+
+
+Timing summary (Setup):
+---------------
+
+Timing errors: 16  Score: 19663
+Cumulative negative slack: 19663
+
+Constraints cover 43 paths, 1 nets, and 69 connections (71.13% coverage)
+
+--------------------------------------------------------------------------------
+Lattice TRACE Report - Hold, Version Diamond (64-bit) 3.13.0.56.2
+Sat Jan 13 15:09:22 2024
+
+Copyright (c) 1991-1994 by NeoCAD Inc. All rights reserved.
+Copyright (c) 1995 AT&T Corp.   All rights reserved.
+Copyright (c) 1995-2001 Lucent Technologies Inc.  All rights reserved.
+Copyright (c) 2001 Agere Systems   All rights reserved.
+Copyright (c) 2002-2023 Lattice Semiconductor Corporation,  All rights reserved.
+
+Report Information
+------------------
+Command line:    trce -v 1 -gt -mapchkpnt 0 -sethld -o ForthCPU_debugPortV2.tw1 -gui -msgset C:/Users/Duncan/git/ForthCPU/promote.xml ForthCPU_debugPortV2_map.ncd ForthCPU_debugPortV2.prf 
+Design file:     forthcpu_debugportv2_map.ncd
+Preference file: forthcpu_debugportv2.prf
+Device,speed:    LCMXO3L-6900C,M
+Report level:    verbose report, limited to 1 item per preference
+--------------------------------------------------------------------------------
+
+BLOCK ASYNCPATHS
+BLOCK RESETPATHS
+--------------------------------------------------------------------------------
+
+
+
+================================================================================
+Preference: FREQUENCY NET "CLK_c" 323.311000 MHz ;
+            43 items scored, 0 timing errors detected.
+--------------------------------------------------------------------------------
+
+
+Passed: The following path meets requirements by 0.351ns
+
+ Logical Details:  Cell type  Pin type       Cell/ASIC name  (clock net +/-)
+
+   Source:         FF         Q              PHASE_R[2]  (from CLK_c +)
+   Destination:    FF         Data in        PHASE_R[3]  (to CLK_c +)
+
+   Delay:               0.332ns  (40.1% logic, 59.9% route), 1 logic levels.
+
+ Constraint Details:
+
+      0.332ns physical path delay SLICE_1 to SLICE_1 meets
+     -0.019ns M_HLD and
+      0.000ns delay constraint requirement (totaling -0.019ns) by 0.351ns
+
+ Physical Path Details:
+
+      Data path SLICE_1 to SLICE_1:
+
+   Name    Fanout   Delay (ns)          Site               Resource
+REG_DEL     ---     0.133    SLICE_1.CLK to     SLICE_1.Q0 SLICE_1 (from CLK_c)
+ROUTE         3   e 0.199     SLICE_1.Q0 to     SLICE_1.M1 PHASE_R[2] (to CLK_c)
+                  --------
+                    0.332   (40.1% logic, 59.9% route), 1 logic levels.
+
+Report Summary
+--------------
+----------------------------------------------------------------------------
+Preference(MIN Delays)                  |   Constraint|       Actual|Levels
+----------------------------------------------------------------------------
+                                        |             |             |
+FREQUENCY NET "CLK_c" 323.311000 MHz ;  |     0.000 ns|     0.351 ns|   1  
+                                        |             |             |
+----------------------------------------------------------------------------
+
+
+All preferences were met.
+
+
+Clock Domains Analysis
+------------------------
+
+Found 1 clocks:
+
+Clock Domain: CLK_c   Source: CLK.PAD   Loads: 13
+   Covered under: FREQUENCY NET "CLK_c" 323.311000 MHz ;
+
+
+Timing summary (Hold):
+---------------
+
+Timing errors: 0  Score: 0
+Cumulative negative slack: 0
+
+Constraints cover 43 paths, 1 nets, and 69 connections (71.13% coverage)
+
+
+
+Timing summary (Setup and Hold):
+---------------
+
+Timing errors: 16 (setup), 0 (hold)
+Score: 19663 (setup), 0 (hold)
+Cumulative negative slack: 19663 (19663+0)
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+

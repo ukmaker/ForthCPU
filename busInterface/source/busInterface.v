@@ -23,7 +23,7 @@ module busInterface(
 	input CLK,
 	input RESET,
 	input FETCH, DECODE, EXECUTE, COMMIT,
-	input [2:0] BUS_SEQX,
+	input [1:0] BUS_SEQX,
 	
 	/****************************************
 	* Signals to/from the CPU
@@ -99,7 +99,7 @@ end
 
 // Address bus mux
 always @(*) begin
-	case(ADDR_BUSX)
+	case(ADDR_BUSX_R)
 		`ADDR_BUSX_PC_A:      ADDR_BUF = PC_A;
 		`ADDR_BUSX_ALU_R:     ADDR_BUF = ALU_R;
 		`ADDR_BUSX_REGB_DOUT: ADDR_BUF = REGB_DOUT;

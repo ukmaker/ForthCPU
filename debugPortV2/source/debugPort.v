@@ -75,9 +75,8 @@ module debugPort(
 	****************************************/
 	input [7:0]      DEBUG_DIN,
 	input [3:0]      DEBUG_REG_ADDR,
-	input             DEBUG_RDN,
-	input             DEBUG_WRN,
-	output reg        DEBUG_INT,
+	input             DEBUG_RD,
+	input             DEBUG_WR,
 	output reg [7:0] DEBUG_DOUT,
 	
 	/***************************************
@@ -96,9 +95,9 @@ module debugPort(
 	/***************************************************************
 	* Outputs to instruction phase decoder and 
 	****************************************************************/
-	output            DEBUG_MODE_REQ,
+	output            DEBUG_REQ,
 	output            DEBUG_MODE_STOP,
-	output            DEBUG_MODE_DEBUG,
+	output [1:0]     DEBUG_MODE_DEBUGX,
 	/***************************************************************
 	* Inputs from the phase decoder
 	****************************************************************/
@@ -175,6 +174,7 @@ wire [7:0] DEBUG_STATUS;
 ****************************************************/
 wire DEBUG_RESET;
 wire DEBUG_LOCAL_RESET;
+wire DEBUG_MODE_REQ;
 
 assign DEBUG_LOCAL_RESET = ~RESETN;
 assign RESET = DEBUG_LOCAL_RESET | DEBUG_RESET;
@@ -182,8 +182,17 @@ assign RESET = DEBUG_LOCAL_RESET | DEBUG_RESET;
 /***************************************************
 * MODE signal mappings
 ****************************************************/
-assign DEBUG_BKP_ENX   = (DEBUG_MODE_R & `DEBUG_MODE_EN_BKP)   === `DEBUG_MODE_EN_BKP;
-assign DEBUG_WATCH_ENX = (DEBUG_MODE_R & `DEBUG_MODE_EN_WATCH) === `DEBUG_MODE_EN_WATCH;
+assign DEBUG_BKP_ENX      = (DEBUG_MODE_R & `DEBUG_MODE_EN_BKP)   === `DEBUG_MODE_EN_BKP;
+assign DEBUG_WATCH_ENX    = (DEBUG_MODE_R & `DEBUG_MODE_EN_WATCH) === `DEBUG_MODE_EN_WATCH;
+assign DEBUG_RESET        = (DEBUG_MODE_R & `DEBUG_MODE_RESET) === `DEBUG_MODE_RESET;
+assign DEBUG_MODE_REQ_BIT = (DEBUG_DIN    & `DEBUG_MODE_REQ) >> `DEBUG_MODE_REQ_BIT_POS;
+assign DEBUG_MODE_STOP    = (DEBUG_MODE_R & `DEBUG_MODE_STOP) === `DEBUG_MODE_STOP;
+assign DEBUG_MODE_DEBUGX  = (DEBUG_MODE_R & `DEBUG_MODE_DEBUGX) >> `DEBUG_MODE_DEBUGX_BIT_POS;
+
+/***************************************************
+* OP signal mappings
+****************************************************/
+assign DEBUG_OP_INCX      = (DEBUG_OP_R & `DEBUG_OPX_INC_INC_BIT) >> `DEBUG_OPX_INC_BIT_POS;
 
 /***************************************************
 * Data output multiplexer (to drive CPU DIN)
@@ -198,8 +207,8 @@ oneOfSixteenDecoder wrAddrDecoder (
 	.EN0(1'b1),
 	.EN1(1'b1),
 	.S0(EN_MODE),
-	.S1(EN_OP_INST),
-	.S2(EN_OP_ARG),
+	.S1(EN_OP_ARG),
+	.S2(EN_OP_INST),
 	.S3(EN_MRAL),
 	.S4(EN_MRAH),
 	.S5(EN_MRDL),
@@ -223,7 +232,7 @@ oneOfSixteenDecoder wrAddrDecoder (
 **************************************************************/
 synchronizer #(.BUS_WIDTH(8)) modeReg (
 
-	.SLOWCLK(DEBUG_WRN),
+	.SLOWCLK(DEBUG_WR),
 	.RESET(DEBUG_LOCAL_RESET),
 	.FASTCLK(CLK),
 	.EN(EN_MODE),
@@ -236,7 +245,7 @@ synchronizer #(.BUS_WIDTH(8)) modeReg (
 
 wordSynchronizer opReg (
 
-	.SLOWCLK(DEBUG_WRN),
+	.SLOWCLK(DEBUG_WR),
 	.RESET(DEBUG_LOCAL_RESET),
 	.FASTCLK(CLK),
 	.EN0(EN_OP_ARG),
@@ -249,23 +258,26 @@ wordSynchronizer opReg (
 );
 
 /**************************************************************
-* Normal registers for data and addresses DEBUG -> CPU
+* Registers for data and addresses DEBUG -> CPU
 **************************************************************/
-wordRegister mraReg (
+wordSynchronizedCounter mraReg (
 
-	.CLK(DEBUG_WRN),
-	.RESET(RESET),
+	.SLOWCLK(DEBUG_WR),
+	.RESET(DEBUG_LOCAL_RESET),
+	.FASTCLK(CLK),
 	.EN0(EN_MRAL),
 	.EN1(EN_MRAH),
 	.LD(1'b1),
-	.DIN(DEBUG_DIN),
-	.DOUT(DEBUG_ADDR_OUT)
+	.CLR(1'b0),
+	.COUNT(DEBUG_ADDR_INCX),
+	.D(DEBUG_DIN),
+	.Q(DEBUG_ADDR_OUT)
 
 );
 
 wordRegister mrdReg (
 
-	.CLK(DEBUG_WRN),
+	.CLK(DEBUG_WR),
 	.RESET(RESET),
 	.EN0(EN_MRDL),
 	.EN1(EN_MRDH),
@@ -310,6 +322,23 @@ snooper snooperInst(
 	.DEBUG_SNOOP_LD_EN(DEBUG_SNOOP_LD_EN),
 	.SNOOP_REGX(SNOOP_REGX),
 	.SNOOP_REG(SNOOP_REG)
+);
+
+/**************************************************************
+* Request generator
+**************************************************************/
+requestGenerator requestGeneratorInst(
+	.CLK(CLK),
+	.RESET(RESET),
+	.DEBUG_WR(DEBUG_WR),
+	.DEBUG_RD(DEBUG_RD),
+	.EN_MODE(EN_MODE),
+	.DEBUG_MODE_REQ_BIT(DEBUG_MODE_REQ_BIT),
+	.EN_MRDH(EN_MRDH),
+	.DEBUGX(DEBUG_MODE_DEBUGX),
+	.DEBUG_OP_INCX(DEBUG_OP_INCX),
+	.DEBUG_ACK(DEBUG_ACK),
+	.DEBUG_REQ(DEBUG_REQ)
 );
 
 /**************************************************************
